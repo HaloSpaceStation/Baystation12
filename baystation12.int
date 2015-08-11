@@ -1,9 +1,11 @@
 // BEGIN_INTERNALS
 /*
-LAST_COMPILE_TIME: 1438377687
-DIR: code\game\objects\items\weapons\grenades code\modules\halo\weapons code\modules\overmap\ships code\modules\overmap\ships\computers code\modules\overmap\ships\engines code\modules\projectiles\ammunition icons icons\obj 
+LAST_COMPILE_TIME: 1439272386
+DIR: code code\game\objects\items\weapons\grenades code\modules code\modules\clothing code\modules\halo\machinery code\modules\overmap\ships code\modules\overmap\ships\computers code\modules\overmap\ships\engines icons 
 AUTO_FILE_DIR: OFF
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 508.1294
+WINDOW: code\modules\halo\machinery\slotmachines.dm
+FILE: code\modules\halo\machinery\slotmachines.dm
 */
 // END_INTERNALS
