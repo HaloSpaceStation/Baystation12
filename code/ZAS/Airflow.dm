@@ -24,7 +24,8 @@ mob/living/carbon/metroid/airflow_stun()
 
 mob/living/carbon/human/airflow_stun()
 	if(shoes)
-		if(shoes.flags & NOSLIP) return 0
+		if(shoes.flags & NOSLIP)
+		return 0
 	..()
 
 atom/movable/proc/check_airflow_movable(n)
