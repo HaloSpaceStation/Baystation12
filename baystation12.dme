@@ -5,6 +5,10 @@
 // END_INTERNALS
 // BEGIN_FILE_DIR
 #define FILE_DIR .
+#define FILE_DIR "code"
+#define FILE_DIR "code/modules"
+#define FILE_DIR "code/modules/halo"
+#define FILE_DIR "code/modules/halo/icons"
 #define FILE_DIR "html"
 #define FILE_DIR "html/images"
 #define FILE_DIR "icons"
@@ -20,6 +24,7 @@
 #define FILE_DIR "icons/mob/human_races/monkeys"
 #define FILE_DIR "icons/mob/human_races/xenos"
 #define FILE_DIR "icons/mob/items"
+#define FILE_DIR "icons/mob/screen"
 #define FILE_DIR "icons/mob/species"
 #define FILE_DIR "icons/mob/species/skrell"
 #define FILE_DIR "icons/mob/species/tajaran"
@@ -67,7 +72,6 @@
 #define FILE_DIR "sound/voice"
 #define FILE_DIR "sound/voice/Serithi"
 #define FILE_DIR "sound/weapons"
-#define FILE_DIR "UNSC"
 // END_FILE_DIR
 // BEGIN_PREFERENCES
 #define DEBUG
@@ -1126,6 +1130,7 @@
 #include "code\modules\games\cards.dm"
 #include "code\modules\genetics\side_effects.dm"
 #include "code\modules\ghosttrap\trap.dm"
+#include "code\modules\halo\gamemodes\insurrection\innie.dm"
 #include "code\modules\halo\gamemodes\insurrection\insurrection.dm"
 #include "code\modules\halo\weapons\ammo.dm"
 #include "code\modules\halo\weapons\pistols.dm"
@@ -1170,8 +1175,6 @@
 #include "code\modules\maps\reader.dm"
 #include "code\modules\maps\swapmaps.dm"
 #include "code\modules\maps\writer.dm"
-#include "code\modules\MartialArts\boxing.dm"
-#include "code\modules\MartialArts\martial.dm"
 #include "code\modules\materials\material_recipes.dm"
 #include "code\modules\materials\material_sheets.dm"
 #include "code\modules\materials\material_synth.dm"
