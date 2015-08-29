@@ -15,7 +15,7 @@
 	..()
 	processing_objects += src
 
-/obj/item/device/radio/intercom/Del()
+/obj/item/device/radio/intercom/Destroy()
 	processing_objects -= src
 	..()
 
@@ -58,12 +58,19 @@
 			on = 0
 		else
 			var/area/A = src.loc.loc
-			if(!A || !isarea(A) || !A.master)
+			if(!A || !isarea(A))
 				on = 0
 			else
-				on = A.master.powered(EQUIP) // set "on" to the power status
+				on = A.powered(EQUIP) // set "on" to the power status
 
 		if(!on)
 			icon_state = "intercom-p"
 		else
 			icon_state = "intercom"
+
+/obj/item/device/radio/intercom/locked
+    freerange = 1
+    var/locked_frequency
+    
+/obj/item/device/radio/intercom/locked/set_frequency()
+    ..(locked_frequency)

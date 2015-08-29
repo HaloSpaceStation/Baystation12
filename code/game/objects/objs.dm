@@ -2,9 +2,7 @@
 	//Used to store information about the contents of the object.
 	var/list/matter
 
-	var/origin_tech = null	//Used by R&D to determine what research bonuses it grants.
-	var/reliability = 100	//Used by SOME devices to determine how reliable they are.
-	var/crit_fail = 0
+	var/list/origin_tech = null	//Used by R&D to determine what research bonuses it grants.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
 	animate_movement = 2
 	var/throwforce = 1
@@ -16,18 +14,18 @@
 	var/damtype = "brute"
 	var/force = 0
 
-/obj/Topic(href, href_list, var/nowindow = 0, var/datum/topic_state/custom_state)
-	// Calling Topic without a corresponding window open causes runtime errors
-	if(!nowindow && ..())
-		return 1
+/obj/Destroy()
+	processing_objects -= src
+	nanomanager.close_uis(src)
+	return ..()
 
-	if(!custom_state)
-		custom_state = default_state
+/obj/Topic(href, href_list, var/datum/topic_state/state = default_state)
+	if(usr && ..())
+		return 1
 
 	// In the far future no checks are made in an overriding Topic() beyond if(..()) return
 	// Instead any such checks are made in CanUseTopic()
-	var/obj/host = nano_host()
-	if(host.CanUseTopic(usr, href_list, custom_state) == STATUS_INTERACTIVE)
+	if(CanUseTopic(usr, state, href_list) == STATUS_INTERACTIVE)
 		CouldUseTopic(usr)
 		return 0
 
@@ -64,19 +62,6 @@
 		return loc.return_air()
 	else
 		return null
-
-/obj/proc/handle_internal_lifeform(mob/lifeform_inside_me, breath_request)
-	//Return: (NONSTANDARD)
-	//		null if object handles breathing logic for lifeform
-	//		datum/air_group to tell lifeform to process using that breath return
-	//DEFAULT: Take air from turf to give to have mob process
-	if(breath_request>0)
-		return remove_air(breath_request)
-	else
-		return null
-
-/atom/movable/proc/initialize()
-	return
 
 /obj/proc/updateUsrDialog()
 	if(in_use)
@@ -137,13 +122,11 @@
 	if(istype(M) && M.client && M.machine == src)
 		src.attack_self(M)
 
-
-/obj/proc/alter_health()
-	return 1
-
 /obj/proc/hide(h)
 	return
 
+/obj/proc/hides_under_flooring()
+	return 0
 
 /obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
 	if(talking_atom)
@@ -157,4 +140,7 @@
 	return
 
 /obj/proc/see_emote(mob/M as mob, text, var/emote_type)
+	return
+
+/obj/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 	return

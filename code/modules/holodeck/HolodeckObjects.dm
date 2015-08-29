@@ -1,83 +1,121 @@
 // Holographic Items!
 
-/turf/simulated/floor/holofloor/
+// Holographic tables are in code/modules/tables/presets.dm
+// Holographic racks are in code/modules/tables/rack.dm
+
+/turf/simulated/floor/holofloor
 	thermal_conductivity = 0
 
-/turf/simulated/floor/holofloor/grass
-	name = "Lush Grass"
-	icon_state = "grass1"
-	floor_type = /obj/item/stack/tile/grass
+/turf/simulated/floor/holofloor/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	return
+	// HOLOFLOOR DOES NOT GIVE A FUCK
 
-	New()
-		icon_state = "grass[pick("1","2","3","4")]"
-		..()
-		spawn(4)
-			update_icon()
-			for(var/direction in cardinal)
-				if(istype(get_step(src,direction),/turf/simulated/floor))
-					var/turf/simulated/floor/FF = get_step(src,direction)
-					FF.update_icon() //so siding get updated properly
+/turf/simulated/floor/holofloor/set_flooring()
+	return
+
+/turf/simulated/floor/holofloor/carpet
+	name = "carpet"
+	icon = 'icons/turf/flooring/carpet.dmi'
+	icon_state = "carpet"
+	initial_flooring = /decl/flooring/carpet
+
+/turf/simulated/floor/holofloor/tiled
+	name = "floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "steel"
+	initial_flooring = /decl/flooring/tiling
+
+/turf/simulated/floor/holofloor/tiled/dark
+	name = "dark floor"
+	icon_state = "dark"
+	initial_flooring = /decl/flooring/tiling/dark
+
+/turf/simulated/floor/holofloor/lino
+	name = "lino"
+	icon = 'icons/turf/flooring/linoleum.dmi'
+	icon_state = "lino"
+	initial_flooring = /decl/flooring/linoleum
+
+/turf/simulated/floor/holofloor/wood
+	name = "wooden floor"
+	icon = 'icons/turf/flooring/wood.dmi'
+	icon_state = "wood"
+	initial_flooring = /decl/flooring/wood
+
+/turf/simulated/floor/holofloor/grass
+	name = "lush grass"
+	icon = 'icons/turf/flooring/grass.dmi'
+	icon_state = "grass0"
+	initial_flooring = /decl/flooring/grass
+
+/turf/simulated/floor/holofloor/snow
+	name = "snow"
+	base_name = "snow"
+	icon = 'icons/turf/floors.dmi'
+	base_icon = 'icons/turf/floors.dmi'
+	icon_state = "snow"
+	base_icon_state = "snow"
 
 /turf/simulated/floor/holofloor/space
 	icon = 'icons/turf/space.dmi'
 	name = "\proper space"
 	icon_state = "0"
 
+/turf/simulated/floor/holofloor/reinforced
+	icon = 'icons/turf/flooring/tiles.dmi'
+	initial_flooring = /decl/flooring/reinforced
+	name = "reinforced holofloor"
+	icon_state = "reinforced"
+
 /turf/simulated/floor/holofloor/space/New()
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
+/turf/simulated/floor/holofloor/beach
+	desc = "Uncomfortably gritty for a hologram."
+	base_desc = "Uncomfortably gritty for a hologram."
+	icon = 'icons/misc/beach.dmi'
+	base_icon = 'icons/misc/beach.dmi'
+	initial_flooring = null
+
+/turf/simulated/floor/holofloor/beach/sand
+	name = "sand"
+	icon_state = "desert"
+	base_icon_state = "desert"
+
+/turf/simulated/floor/holofloor/beach/coastline
+	name = "coastline"
+	icon = 'icons/misc/beach2.dmi'
+	icon_state = "sandwater"
+	base_icon_state = "sandwater"
+
+/turf/simulated/floor/holofloor/beach/water
+	name = "water"
+	icon_state = "seashallow"
+	base_icon_state = "seashallow"
+
 /turf/simulated/floor/holofloor/desert
 	name = "desert sand"
+	base_name = "desert sand"
 	desc = "Uncomfortably gritty for a hologram."
+	base_desc = "Uncomfortably gritty for a hologram."
 	icon_state = "asteroid"
+	base_icon_state = "asteroid"
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	base_icon = 'icons/turf/flooring/asteroid.dmi'
+	initial_flooring = null
 
 /turf/simulated/floor/holofloor/desert/New()
 	..()
 	if(prob(10))
 		overlays += "asteroid[rand(0,9)]"
 
-/turf/simulated/floor/holofloor/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	return
-	// HOLOFLOOR DOES NOT GIVE A FUCK
-
-/obj/structure/table/holotable
-	name = "table"
-	desc = "A square piece of metal standing on four metal legs. It can not move."
-	icon = 'icons/obj/structures.dmi'
-	icon_state = "table"
-	density = 1
-	anchored = 1.0
-	layer = 2.8
-	throwpass = 1	//You can throw objects over this, despite it's density.
-
-/obj/structure/table/holotable/attack_hand(mob/user as mob)
-	return // HOLOTABLE DOES NOT GIVE A FUCK
-
-
-/obj/structure/table/holotable/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/weapon/wrench))
-		user << "It's a holotable!  There are no bolts!"
-		return
-
-	if(isrobot(user))
-		return
-
-	..()
-
-/obj/structure/table/woodentable/holotable
-	name = "table"
-	desc = "A square piece of wood standing on four wooden legs. It can not move."
-	icon = 'icons/obj/structures.dmi'
-	icon_state = "wood_table"
-
 /obj/structure/holostool
 	name = "stool"
 	desc = "Apply butt."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "stool"
+	icon = 'icons/obj/furniture.dmi'
+	icon_state = "stool_padded_preview"
 	anchored = 1.0
 	pressure_resistance = 15
-
 
 /obj/item/clothing/gloves/boxing/hologlove
 	name = "boxing gloves"
@@ -85,7 +123,7 @@
 	icon_state = "boxing"
 	item_state = "boxing"
 
-/obj/structure/window/reinforced/holowindow/Del()
+/obj/structure/window/reinforced/holowindow/Destroy()
 	..()
 
 /obj/structure/window/reinforced/holowindow/attackby(obj/item/W as obj, mob/user as mob)
@@ -95,7 +133,7 @@
 		if(istype(G.affecting,/mob/living))
 			var/mob/living/M = G.affecting
 			var/state = G.state
-			del(W)	//gotta delete it here because if window breaks, it won't get deleted
+			qdel(W)	//gotta delete it here because if window breaks, it won't get deleted
 			switch (state)
 				if(1)
 					M.visible_message("<span class='warning'>[user] slams [M] against \the [src]!</span>")
@@ -138,13 +176,13 @@
 	playsound(src, "shatter", 70, 1)
 	if(display_message)
 		visible_message("[src] fades away as it shatters!")
-	del(src)
+	qdel(src)
 	return
 
-/obj/structure/window/reinforced/holowindow/disappearing/Del()
+/obj/structure/window/reinforced/holowindow/disappearing/Destroy()
 	..()
 
-/obj/machinery/door/window/holowindoor/Del()
+/obj/machinery/door/window/holowindoor/Destroy()
 	..()
 
 /obj/machinery/door/window/holowindoor/attackby(obj/item/weapon/I as obj, mob/user as mob)
@@ -180,9 +218,9 @@
 	playsound(src, "shatter", 70, 1)
 	if(display_message)
 		visible_message("[src] fades away as it shatters!")
-	del(src)
+	qdel(src)
 
-/obj/structure/bed/chair/holochair/Del()
+/obj/structure/bed/chair/holochair/Destroy()
 	..()
 
 /obj/structure/bed/chair/holochair/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -202,8 +240,9 @@
 	throw_range = 5
 	throwforce = 0
 	w_class = 2.0
-	flags = NOSHIELD | NOBLOODY
+	flags = NOBLOODY
 	var/active = 0
+	var/item_color
 
 /obj/item/weapon/holo/esword/green
 	New()
@@ -275,10 +314,10 @@
 		G.affecting.loc = src.loc
 		G.affecting.Weaken(5)
 		visible_message("<span class='warning'>[G.assailant] dunks [G.affecting] into the [src]!</span>", 3)
-		del(W)
+		qdel(W)
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
-		user.drop_item(src)
+		user.drop_item(src.loc)
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return
 
@@ -334,7 +373,7 @@
 
 	currentarea = get_area(src.loc)
 	if(!currentarea)
-		del(src)
+		qdel(src)
 
 	if(eventstarted)
 		usr << "The event has already begun!"
@@ -365,26 +404,10 @@
 	eventstarted = 1
 
 	for(var/obj/structure/window/reinforced/holowindow/disappearing/W in currentarea)
-		del(W)
+		qdel(W)
 
 	for(var/mob/M in currentarea)
 		M << "FIGHT!"
-
-//Holorack
-
-/obj/structure/table/rack/holorack
-	name = "rack"
-	desc = "Different from the Middle Ages version."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "rack"
-
-/obj/structure/table/rack/holorack/attack_hand(mob/user as mob)
-	return
-
-/obj/structure/table/rack/holorack/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/weapon/wrench))
-		user << "It's a holorack!  You can't unwrench it!"
-		return
 
 //Holocarp
 
@@ -400,20 +423,20 @@
 
 /mob/living/simple_animal/hostile/carp/holodeck/New()
 	..()
-	SetLuminosity(2) //hologram lighting
+	set_light(2) //hologram lighting
 
 /mob/living/simple_animal/hostile/carp/holodeck/proc/set_safety(var/safe)
 	if (safe)
 		faction = "neutral"
 		melee_damage_lower = 0
 		melee_damage_upper = 0
-		wall_smash = 0
+		environment_smash = 0
 		destroy_surroundings = 0
 	else
 		faction = "carp"
 		melee_damage_lower = initial(melee_damage_lower)
 		melee_damage_upper = initial(melee_damage_upper)
-		wall_smash = initial(wall_smash)
+		environment_smash = initial(environment_smash)
 		destroy_surroundings = initial(destroy_surroundings)
 
 /mob/living/simple_animal/hostile/carp/holodeck/gib()
@@ -425,4 +448,4 @@
 
 /mob/living/simple_animal/hostile/carp/holodeck/proc/derez()
 	visible_message("<span class='notice'>\The [src] fades away!</span>")
-	del(src)
+	qdel(src)

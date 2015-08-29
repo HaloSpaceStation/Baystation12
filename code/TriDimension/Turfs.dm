@@ -1,6 +1,5 @@
 /turf/simulated/floor/open
 	name = "open space"
-	intact = 0
 	density = 0
 	icon_state = "black"
 	pathweight = 100000 //Seriously, don't try and path over this one numbnuts
@@ -71,7 +70,7 @@
 	for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
 		// check if there is something to draw below
 		if(!controller.down)
-			src.ChangeTurf(/turf/space)
+			src.ChangeTurf(get_base_turf(src.z))
 			return 0
 		else
 			floorbelow = locate(src.x, src.y, controller.down_target)
@@ -81,8 +80,7 @@
 // override to make sure nothing is hidden
 /turf/simulated/floor/open/levelupdate()
 	for(var/obj/O in src)
-		if(O.level == 1)
-			O.hide(0)
+		O.hide(0)
 
 //overwrite the attackby of space to transform it to openspace if necessary
 /turf/space/attackby(obj/item/C as obj, mob/user as mob)
@@ -109,22 +107,22 @@
 			return
 		var/obj/item/stack/rods/R = C
 		if (R.use(1))
-			user << "\blue Constructing support lattice ..."
+			user << "<span class='notice'>Constructing support lattice...</span>"
 			playsound(src.loc, 'sound/weapons/Genhit.ogg', 50, 1)
 			ReplaceWithLattice()
 		return
 
-	if (istype(C, /obj/item/stack/tile/plasteel))
+	if (istype(C, /obj/item/stack/tile/floor))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
-			var/obj/item/stack/tile/plasteel/S = C
+			var/obj/item/stack/tile/floor/S = C
 			if (S.get_amount() < 1)
 				return
-			del(L)
+			qdel(L)
 			playsound(src.loc, 'sound/weapons/Genhit.ogg', 50, 1)
-			S.build(src)
 			S.use(1)
+			ChangeTurf(/turf/simulated/floor/airless)
 			return
 		else
-			user << "\red The plating is going to need some support."
+			user << "<span class='warning'>The plating is going to need some support.</span>"
 	return

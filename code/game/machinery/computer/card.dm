@@ -3,9 +3,11 @@
 /obj/machinery/computer/card
 	name = "\improper ID card modification console"
 	desc = "Terminal for programming NanoTrasen employee ID cards to access parts of the station."
-	icon_state = "id"
+	icon_keyboard = "id_key"
+	icon_screen = "id"
+	light_color = "#0099ff"
 	req_access = list(access_change_ids)
-	circuit = "/obj/item/weapon/circuitboard/card"
+	circuit = /obj/item/weapon/circuitboard/card
 	var/obj/item/weapon/card/id/scan = null
 	var/obj/item/weapon/card/id/modify = null
 	var/mode = 0.0
@@ -182,7 +184,7 @@
 				if(is_authenticated())
 					var/access_type = text2num(href_list["access_target"])
 					var/access_allowed = text2num(href_list["allowed"])
-					if(access_type in (is_centcom() ? get_all_centcom_access() : get_all_accesses()))
+					if(access_type in (is_centcom() ? get_all_centcom_access() : get_all_station_access()))
 						modify.access -= access_type
 						if(!access_allowed)
 							modify.access += access_type
@@ -191,7 +193,7 @@
 			if (is_authenticated() && modify)
 				var/t1 = href_list["assign_target"]
 				if(t1 == "Custom")
-					var/temp_t = sanitize(copytext(input("Enter a custom job assignment.","Assignment"),1,45))
+					var/temp_t = sanitize(input("Enter a custom job assignment.","Assignment"), 45)
 					//let custom jobs function as an impromptu alt title, mainly for sechuds
 					if(temp_t && modify)
 						modify.assignment = temp_t
@@ -207,7 +209,7 @@
 								jobdatum = J
 								break
 						if(!jobdatum)
-							usr << "\red No log exists for this job: [t1]"
+							usr << "<span class='warning'>No log exists for this job: [t1]</span>"
 							return
 
 						access = jobdatum.get_access()
@@ -222,7 +224,7 @@
 			if (is_authenticated())
 				var/t2 = modify
 				if ((modify == t2 && (in_range(src, usr) || (istype(usr, /mob/living/silicon))) && istype(loc, /turf)))
-					var/temp_name = reject_bad_name(href_list["reg"])
+					var/temp_name = sanitizeName(href_list["reg"])
 					if(temp_name)
 						modify.registered_name = temp_name
 					else
@@ -283,7 +285,7 @@
 
 /obj/machinery/computer/card/centcom
 	name = "\improper CentCom ID card modification console"
-	circuit = "/obj/item/weapon/circuitboard/card/centcom"
+	circuit = /obj/item/weapon/circuitboard/card/centcom
 	req_access = list(access_cent_captain)
 
 

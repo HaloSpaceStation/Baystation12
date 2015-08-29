@@ -2,7 +2,7 @@
 	density = 1
 	layer = 4.0
 	animate_movement = 2
-//	flags = NOREACT
+	flags = PROXMOVE
 	var/datum/mind/mind
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
@@ -14,6 +14,7 @@
 	var/obj/screen/blind = null
 	var/obj/screen/hands = null
 	var/obj/screen/pullin = null
+	var/obj/screen/purged = null
 	var/obj/screen/internals = null
 	var/obj/screen/oxygen = null
 	var/obj/screen/i_select = null
@@ -28,9 +29,13 @@
 	var/obj/screen/damageoverlay = null
 	var/obj/screen/pain = null
 	var/obj/screen/gun/item/item_use_icon = null
+	var/obj/screen/gun/radio/radio_use_icon = null
 	var/obj/screen/gun/move/gun_move_icon = null
 	var/obj/screen/gun/run/gun_run_icon = null
 	var/obj/screen/gun/mode/gun_setting_icon = null
+
+	//spells hud icons - this interacts with add_spell and remove_spell
+	var/list/obj/screen/movable/spell_master/spell_masters = null
 
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
@@ -43,9 +48,6 @@
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
 	var/damageoverlaytemp = 0
 	var/computer_id = null
-	var/lastattacker = null
-	var/lastattacked = null
-	var/attack_log = list( )
 	var/already_placed = 0.0
 	var/obj/machinery/machine = null
 	var/other_mobs = null
@@ -55,7 +57,7 @@
 	var/disabilities = 0	//Carbon
 	var/atom/movable/pulling = null
 	var/next_move = null
-	var/monkeyizing = null	//Carbon
+	var/transforming = null	//Carbon
 	var/other = 0.0
 	var/hand = null
 	var/eye_blind = null	//Carbon
@@ -82,6 +84,8 @@
 	var/lying = 0
 	var/lying_prev = 0
 	var/canmove = 1
+	//Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
+	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
 	var/lastpuke = 0
 	var/unacidable = 0
 	var/small = 0
@@ -101,12 +105,6 @@
 	var/old_x = 0
 	var/old_y = 0
 	var/drowsyness = 0.0//Carbon
-	var/dizziness = 0//Carbon
-	var/is_dizzy = 0
-	var/is_jittery = 0
-	var/jitteriness = 0//Carbon
-	var/is_floating = 0
-	var/floatiness = 0
 	var/charges = 0.0
 	var/nutrition = 400.0//Carbon
 
@@ -117,7 +115,7 @@
 	var/losebreath = 0.0//Carbon
 	var/intent = null//Living
 	var/shakecamera = 0
-	var/a_intent = "help"//Living
+	var/a_intent = I_HELP//Living
 	var/m_int = null//Living
 	var/m_intent = "run"//Living
 	var/lastKnownIP = null
@@ -181,7 +179,7 @@
 	var/mob/living/carbon/LAssailant = null
 
 //Wizard mode, but can be used in other modes thanks to the brand new "Give Spell" badmin button
-	var/obj/effect/proc_holder/spell/list/spell_list = list()
+	var/spell/list/spell_list = list()
 
 //Changlings, but can be used in other modes
 //	var/obj/effect/proc_holder/changpower/list/power_list = list()
@@ -216,8 +214,8 @@
 
 	var/stance_damage = 0 //Whether this mob's ability to stand has been affected
 
-	//SSD var, changed it up some so people can have special things happen for different mobs when SSD.
-	var/player_logged = 0
+	//Indicates if a clientless mob is actually an admin aghosting
+	var/mob/dead/observer/aghosted = null
 
 	var/turf/listed_turf = null  	//the current turf being examined in the stat panel
 	var/list/shouldnt_see = list()	//list of objects that this mob shouldn't see in the stat panel. this silliness is needed because of AI alt+click and cult blood runes
