@@ -1,12 +1,11 @@
 #define MAGAZINE 		4
 
-
-
-/obj/item/weapon/gun/projectile/automatic/assault
-	name = "\improper MA5B Assault Rifle"
+/obj/item/weapon/gun/projectile/automatic/ma5d
+	name = "\improper MA5D Assault Rifle"
 	desc = "standard-issue service rifle of the UNSC Marines."
-	icon_state = "assault-loaded"
-	item_state = "assault"
+	icon = 'code/modules/halo/icons/fuck.dmi'
+	icon_state = "ma5d"
+	item_state = "ma5d"
 	w_class = 3
 	force = 10
 	caliber = "7.62mm"
@@ -17,10 +16,3 @@
 	magazine_type = /obj/item/ammo_magazine/assault
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-
-/obj/item/weapon/gun/projectile/assault/update_icon()
-	..()
-	if(loaded.len)
-		icon_state = "assault-loaded"
-	else
-		icon_state = "assault-empty"
