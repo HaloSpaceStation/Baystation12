@@ -4,7 +4,7 @@
 	set category = "Fun"
 
 	var/turf/target = get_turf(src.mob)
-	admin_log_and_message_admins("has fired the Icarus point defense laser at [target.x]-[target.y]-[target.z]")
+	log_and_message_admins("has fired the Icarus point defense laser at [target.x]-[target.y]-[target.z]")
 	if(!src.holder)
 		src << "Only administrators may use this command."
 		return
@@ -18,7 +18,7 @@
 	set category = "Fun"
 
 	var/turf/target = get_turf(src.mob)
-	admin_log_and_message_admins("has fired the Icarus main gun projectile at [target.x]-[target.y]-[target.z]")
+	log_and_message_admins("has fired the Icarus main gun projectile at [target.x]-[target.y]-[target.z]")
 	if(!src.holder)
 		src << "Only administrators may use this command."
 		return
@@ -31,7 +31,7 @@
 	set desc = "Lets you chose the position of the Icarus in regards to the map."
 	set category = "Fun"
 
-	admin_log_and_message_admins("is changing the Icarus position.")
+	log_and_message_admins("is changing the Icarus position.")
 	if(!src.holder)
 		src << "Only administrators may use this command."
 		return
@@ -111,11 +111,10 @@ proc/Icarus_FireCannon(var/turf/target)
 	target = locate(x, y, target.z)
 
 	// Finally fire the fucker.
-	var/obj/effect/meteor/small/projectile = new (start)
+	var/obj/effect/meteor/projectile = new (start)
 	projectile.dest = target
 	projectile.name = "main gun projectile" // stealthy
 	projectile.hits = 6
-	projectile.detonation_chance = 99 // it's a missile/cannon round thing!
 
 	// Make sure it travels
 	spawn(0)

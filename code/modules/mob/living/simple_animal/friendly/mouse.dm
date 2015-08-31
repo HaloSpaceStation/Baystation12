@@ -28,6 +28,7 @@
 	maxbodytemp = 323	//Above 50 Degrees Celcius
 	universal_speak = 0
 	universal_understand = 1
+	holder_type = /obj/item/weapon/holder/mouse
 	mob_size = 1
 
 /mob/living/simple_animal/mouse/Life()
@@ -76,6 +77,22 @@
 	if(client)
 		client.time_died_as_mouse = world.time
 
+/mob/living/simple_animal/mouse/MouseDrop(atom/over_object)
+
+	var/mob/living/carbon/H = over_object
+	if(!istype(H) || !Adjacent(H)) return ..()
+
+	if(H.a_intent == "help")
+		get_scooped(H)
+		return
+	else
+		return ..()
+
+/mob/living/simple_animal/mouse/get_scooped(var/mob/living/carbon/grabber)
+	if (stat >= DEAD)
+		return
+	..()
+
 /mob/living/simple_animal/mouse/start_pulling(var/atom/movable/AM)//Prevents mouse from pulling things
 	src << "<span class='warning'>You are too small to pull anything.</span>"
 	return
@@ -120,5 +137,5 @@
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 
-/mob/living/simple_animal/mouse/can_use_vents()
+/mob/living/simple_animal/mouse/cannot_use_vents()
 	return

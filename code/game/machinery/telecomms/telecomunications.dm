@@ -47,11 +47,13 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 	signal.data["slow"] += rand(0, round((100-integrity))) // apply some lag based on integrity
 
+	/*
+	// Edit by Atlantis: Commented out as emergency fix due to causing extreme delays in communications.
 	// Apply some lag based on traffic rates
 	var/netlag = round(traffic / 50)
 	if(netlag > signal.data["slow"])
 		signal.data["slow"] = netlag
-
+	*/
 // Loop through all linked machines and send the signal or copy.
 	for(var/obj/machinery/telecomms/machine in links)
 		if(filter && !istype( machine, text2path(filter) ))
@@ -130,9 +132,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 			for(var/obj/machinery/telecomms/T in telecomms_list)
 				add_link(T)
 
-
-/obj/machinery/telecomms/Del()
+/obj/machinery/telecomms/Destroy()
 	telecomms_list -= src
+	for(var/obj/machinery/telecomms/comm in telecomms_list)
+		comm.links -= src
+	links = list()
 	..()
 
 // Used in auto linking
@@ -546,9 +550,9 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 					var/mob/living/carbon/brain/B = M
 					race = "[B.species.name]"
 					log.parameters["intelligible"] = 1
-				else if(ismonkey(M))
+				else if(M.isMonkey())
 					race = "Monkey"
-				else if(issilicon(M))
+				else if(M.isSilicon())
 					race = "Artificial Life"
 					log.parameters["intelligible"] = 1
 				else if(isslime(M))

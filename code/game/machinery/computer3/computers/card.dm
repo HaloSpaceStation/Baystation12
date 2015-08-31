@@ -304,7 +304,7 @@
 			if(auth)
 				var/t1 = href_list["assign"]
 				if(t1 == "Custom")
-					var/temp_t = sanitize(copytext(input("Enter a custom job assignment.","Assignment"),1,MAX_MESSAGE_LEN))
+					var/temp_t = sanitize(input("Enter a custom job assignment.","Assignment"))
 					if(temp_t)
 						t1 = temp_t
 				set_default_access(t1)
@@ -333,7 +333,7 @@
 		return get_all_centcom_jobs() + "Custom"
 
 	accessblock()
-		var/accesses = "<h5>Central Command:</h5>"
+		var/accesses = "<h5>[boss_name]:</h5>"
 		for(var/A in get_all_centcom_access())
 			if(A in writer.access)
 				accesses += topic_link(src,"access=[A]","<font color='red'>[replacetext(get_centcom_access_desc(A), " ", "&nbsp")]</font>") + " "

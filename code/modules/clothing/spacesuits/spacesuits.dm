@@ -6,8 +6,12 @@
 	name = "Space helmet"
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
-	flags = HEADCOVERSEYES | BLOCKHAIR | HEADCOVERSMOUTH | STOPPRESSUREDAMAGE | THICKMATERIAL | AIRTIGHT
-	item_state = "space"
+	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL | AIRTIGHT
+	flags_inv = BLOCKHAIR
+	item_state_slots = list(
+		slot_l_hand_str = "s_helmet",
+		slot_r_hand_str = "s_helmet",
+		)
 	permeability_coefficient = 0.01
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
@@ -15,11 +19,12 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
-	species_restricted = list("exclude","Diona","Vox", "Xenomorph", "Xenomorph Drone", "Xenomorph Hunter", "Xenomorph Sentinel", "Xenomorph Queen")
+	species_restricted = list("exclude","Diona", "Xenomorph")
 
 	var/obj/machinery/camera/camera
 	var/list/camera_networks
 
+	action_button_name = "Toggle Helmet Light"
 	light_overlay = "helmet_light"
 	brightness_on = 4
 	on = 0
@@ -28,13 +33,11 @@
 
 	if(!camera && camera_networks)
 
-		if(!icon_action_button)
-			icon_action_button = "[icon_state]"
-
 		camera = new /obj/machinery/camera(src)
 		camera.replace_networks(camera_networks)
 		camera.c_tag = user.name
 		user << "\blue User scanned as [camera.c_tag]. Camera activated."
+		user.update_action_buttons()
 		return 1
 
 	..()
@@ -52,7 +55,7 @@
 	w_class = 4//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
-	flags = STOPPRESSUREDAMAGE | THICKMATERIAL
+	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/emergency_oxygen,/obj/item/device/suit_cooling_unit)
 	slowdown = 3
@@ -61,7 +64,7 @@
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
-	species_restricted = list("exclude","Diona","Vox", "Xenomorph", "Xenomorph Drone", "Xenomorph Hunter", "Xenomorph Sentinel", "Xenomorph Queen")
+	species_restricted = list("exclude","Diona", "Xenomorph")
 
 	var/list/supporting_limbs //If not-null, automatically splints breaks. Checked when removing the suit.
 
@@ -76,7 +79,7 @@
 // Some space suits are equipped with reactive membranes that support
 // broken limbs - at the time of writing, only the ninja suit, but
 // I can see it being useful for other suits as we expand them. ~ Z
-// The actual splinting occurs in /datum/organ/external/proc/fracture()
+// The actual splinting occurs in /obj/item/organ/external/proc/fracture()
 /obj/item/clothing/suit/space/proc/check_limb_support(var/mob/living/carbon/human/user)
 
 	// If this isn't set, then we don't need to care.
@@ -87,7 +90,7 @@
 		return
 
 	// Otherwise, remove the splints.
-	for(var/datum/organ/external/E in supporting_limbs)
+	for(var/obj/item/organ/external/E in supporting_limbs)
 		E.status &= ~ ORGAN_SPLINTED
-		user << "The suit stops supporting your [E.display_name]."
+		user << "The suit stops supporting your [E.name]."
 	supporting_limbs = list()

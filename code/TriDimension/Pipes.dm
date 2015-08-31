@@ -45,11 +45,9 @@ obj/machinery/atmospherics/pipe/zpipe/New()
 			initialize_directions = EAST
 		if(SOUTHWEST)
 			initialize_directions = SOUTH
-	initialize()
 
-
-obj/machinery/atmospherics/pipe/zpipe/hide(var/i)
-	if(level == 1 && istype(loc, /turf/simulated))
+/obj/machinery/atmospherics/pipe/zpipe/hide(var/i)
+	if(istype(loc, /turf/simulated))
 		invisibility = i ? 101 : 0
 	update_icon()
 
@@ -75,12 +73,12 @@ obj/machinery/atmospherics/pipe/zpipe/check_pressure(pressure)
 	else return 1
 
 obj/machinery/atmospherics/pipe/zpipe/proc/burst()
-	src.visible_message("\red \bold [src] bursts!");
+	src.visible_message("<span class='warning'>\The [src] bursts!</span>");
 	playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
 	var/datum/effect/effect/system/smoke_spread/smoke = new
 	smoke.set_up(1,0, src.loc, 0)
 	smoke.start()
-	del(src)
+	qdel(src) // NOT qdel.
 
 obj/machinery/atmospherics/pipe/zpipe/proc/normalize_dir()
 	if(dir==3)
@@ -88,7 +86,7 @@ obj/machinery/atmospherics/pipe/zpipe/proc/normalize_dir()
 	else if(dir==12)
 		set_dir(4)
 
-obj/machinery/atmospherics/pipe/zpipe/Del()
+obj/machinery/atmospherics/pipe/zpipe/Destroy()
 	if(node1)
 		node1.disconnect(src)
 	if(node2)
@@ -99,23 +97,41 @@ obj/machinery/atmospherics/pipe/zpipe/pipeline_expansion()
 	return list(node1, node2)
 
 obj/machinery/atmospherics/pipe/zpipe/update_icon()
-	return
+	if(!check_icon_cache())
+		return
+
+	alpha = 255
+
+	overlays.Cut()
+
+	if(!node1 && !node2)
+		var/turf/T = get_turf(src)
+		new /obj/item/pipe(loc, make_from=src)
+		for (var/obj/machinery/meter/meter in T)
+			if (meter.target == src)
+				new /obj/item/pipe_meter(T)
+				qdel(meter)
+		qdel(src)
+	else
+		overlays += icon_manager.get_atmos_icon("pipe", , pipe_color, icon_state)
 
 obj/machinery/atmospherics/pipe/zpipe/disconnect(obj/machinery/atmospherics/reference)
 	if(reference == node1)
 		if(istype(node1, /obj/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node1 = null
 
 	if(reference == node2)
 		if(istype(node2, /obj/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node2 = null
 
 	return null
+
 /////////////////////////
 // the elusive up pipe //
 /////////////////////////
+
 obj/machinery/atmospherics/pipe/zpipe/up
 		icon = 'icons/obj/structures.dmi'
 		icon_state = "up"
@@ -138,22 +154,16 @@ obj/machinery/atmospherics/pipe/zpipe/up/initialize()
 				node1 = target
 				break
 
-	var/turf/controllerlocation = locate(1, 1, src.z)
-	for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
-		if(controller.up)
-			var/turf/above = locate(src.x, src.y, controller.up_target)
-			if(above)
-				for(var/obj/machinery/atmospherics/target in above)
-					if(target.initialize_directions && istype(target, /obj/machinery/atmospherics/pipe/zpipe/down))
-						if (check_connect_types(target,src))
-							node2 = target
-							break
+	var/turf/T = src.loc
+	if(T.ztransit_enabled_up())
+		var/turf/above = locate(src.x, src.y, src.z - 1)
+		for(var/obj/machinery/atmospherics/target in above)
+			if(target.initialize_directions && istype(target, /obj/machinery/atmospherics/pipe/zpipe/down))
+				if (check_connect_types(target,src))
+					node2 = target
+					break
 
-
-	var/turf/T = src.loc			// hide if turf is not intact
-	hide(T.intact)
-
-///////////////////////
+	hide(!T.is_plating())///////////////////////
 // and the down pipe //
 ///////////////////////
 
@@ -179,21 +189,17 @@ obj/machinery/atmospherics/pipe/zpipe/down/initialize()
 				node1 = target
 				break
 
-	var/turf/controllerlocation = locate(1, 1, src.z)
-	for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
-		if(controller.down)
-			var/turf/below = locate(src.x, src.y, controller.down_target)
-			if(below)
-				for(var/obj/machinery/atmospherics/target in below)
-					if(target.initialize_directions && istype(target, /obj/machinery/atmospherics/pipe/zpipe/up))
-						if (check_connect_types(target,src))
-							node2 = target
-							break
+	var/turf/T = src.loc
+	if(T.ztransit_enabled_down())
+		var/turf/below = locate(src.x, src.y, src.z + 1)
+		for(var/obj/machinery/atmospherics/target in below)
+			if(target.initialize_directions && istype(target, /obj/machinery/atmospherics/pipe/zpipe/up))
+				if (check_connect_types(target,src))
+					node2 = target
+					break
 
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	hide(T.intact)
-
+	hide(!T.is_plating())			// hide if turf is not intact
 ///////////////////////
 // supply/scrubbers  //
 ///////////////////////

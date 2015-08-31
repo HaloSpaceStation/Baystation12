@@ -45,14 +45,17 @@
 	var/list/res = list()
 	for (var/specie in all_species)
 		var/datum/species/S = all_species[specie]
-		if(!(S.flags & IS_SYNTHETIC))
-			meat += S.name
+		if(!S.virus_immune)
+			meat += S
 	if(meat.len)
 		var/num = rand(1,meat.len)
 		for(var/i=0,i<num,i++)
-			var/picked = pick(meat)
-			meat -= picked
-			res += picked
+			var/datum/species/picked = pick_n_take(meat)
+			res |= picked.name
+			if(picked.greater_form)
+				res |= picked.greater_form
+			if(picked.primitive_form)
+				res |= picked.primitive_form
 	return res
 
 /datum/disease2/disease/proc/activate(var/mob/living/carbon/mob)
@@ -65,6 +68,12 @@
 	if(stage <= 1 && clicks == 0) 	// with a certain chance, the mob may become immune to the disease before it starts properly
 		if(prob(5))
 			mob.antibodies |= antigen // 20% immunity is a good chance IMO, because it allows finding an immune person easily
+
+	// Some species are flat out immune to organic viruses.
+	var/mob/living/carbon/human/H = mob
+	if(istype(H) && H.species.virus_immune)
+		cure(mob)
+		return
 
 	if(mob.radiation > 50)
 		if(prob(1))

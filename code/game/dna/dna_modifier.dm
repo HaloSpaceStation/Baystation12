@@ -99,14 +99,14 @@
 
 	if (usr.stat != 0)
 		return
-	if (!ishuman(usr) && !ismonkey(usr)) //Make sure they're a mob that has dna
-		usr << "\blue Try as you might, you can not climb up into the scanner."
+	if (!ishuman(usr) && !issmall(usr)) //Make sure they're a mob that has dna
+		usr << "<span class='notice'>Try as you might, you can not climb up into the scanner.</span>"
 		return
 	if (src.occupant)
-		usr << "\blue <B>The scanner is already occupied!</B>"
+		usr << "<span class='warning'>The scanner is already occupied!</span>"
 		return
 	if (usr.abiotic())
-		usr << "\blue <B>Subject cannot have abiotic items on.</B>"
+		usr << "<span class='warning'>The subject cannot have abiotic items on.</span>"
 		return
 	usr.stop_pulling()
 	usr.client.perspective = EYE_PERSPECTIVE
@@ -120,13 +120,13 @@
 /obj/machinery/dna_scannernew/attackby(var/obj/item/weapon/item as obj, var/mob/user as mob)
 	if(istype(item, /obj/item/weapon/reagent_containers/glass))
 		if(beaker)
-			user << "\red A beaker is already loaded into the machine."
+			user << "<span class='warning'>A beaker is already loaded into the machine.</span>"
 			return
 
 		beaker = item
 		user.drop_item()
 		item.loc = src
-		user.visible_message("[user] adds \a [item] to \the [src]!", "You add \a [item] to \the [src]!")
+		user.visible_message("\The [user] adds \a [item] to \the [src]!", "You add \a [item] to \the [src]!")
 		return
 	else if (!istype(item, /obj/item/weapon/grab))
 		return
@@ -134,14 +134,14 @@
 	if (!ismob(G.affecting))
 		return
 	if (src.occupant)
-		user << "\blue <B>The scanner is already occupied!</B>"
+		user << "<span class='warning'>The scanner is already occupied!</span>"
 		return
 	if (G.affecting.abiotic())
-		user << "\blue <B>Subject cannot have abiotic items on.</B>"
+		user << "<span class='warning'>The subject cannot have abiotic items on.</span>"
 		return
 	put_in(G.affecting)
 	src.add_fingerprint(user)
-	del(G)
+	qdel(G)
 	return
 
 /obj/machinery/dna_scannernew/proc/put_in(var/mob/M)
@@ -184,7 +184,7 @@
 				ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
-			del(src)
+			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
@@ -193,7 +193,7 @@
 					ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		if(3.0)
 			if (prob(25))
@@ -202,7 +202,7 @@
 					ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		else
 	return
@@ -212,13 +212,14 @@
 	if(prob(75))
 		for(var/atom/movable/A as mob|obj in src)
 			A.loc = src.loc
-		del(src)
+		qdel(src)
 
 /obj/machinery/computer/scan_consolenew
 	name = "DNA Modifier Access Console"
 	desc = "Scand DNA."
 	icon = 'icons/obj/computer.dmi'
-	icon_state = "scanner"
+	icon_keyboard = "med_key"
+	icon_screen = "dna"
 	density = 1
 	circuit = /obj/item/weapon/circuitboard/scan_consolenew
 	var/selected_ui_block = 1.0
@@ -259,31 +260,19 @@
 	switch(severity)
 		if(1.0)
 			//SN src = null
-			del(src)
+			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		else
 	return
 
 /obj/machinery/computer/scan_consolenew/blob_act()
-
 	if(prob(75))
-		del(src)
-
-/obj/machinery/computer/scan_consolenew/power_change()
-	..()
-	if(stat & BROKEN)
-		icon_state = "broken"
-	else
-		if (stat & NOPOWER)
-			spawn(rand(0, 15))
-				src.icon_state = "c_unpowered"
-		else
-			icon_state = initial(icon_state)
+		qdel(src)
 
 /obj/machinery/computer/scan_consolenew/New()
 	..()
@@ -595,8 +584,7 @@
 			inject_amount = 0
 		if (inject_amount > 50)
 			inject_amount = 50
-		connected.beaker.reagents.trans_to(connected.occupant, inject_amount)
-		connected.beaker.reagents.reaction(connected.occupant)
+		connected.beaker.reagents.trans_to_mob(connected.occupant, inject_amount, CHEM_BLOOD)
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
 	////////////////////////////////////////////////////////
@@ -734,7 +722,7 @@
 
 		if (bufferOption == "changeLabel")
 			var/datum/dna2/record/buf = src.buffers[bufferId]
-			var/text = sanitize(copytext(input(usr, "New Label:", "Edit Label", buf.name) as text|null, 1, MAX_NAME_LEN))
+			var/text = sanitize(input(usr, "New Label:", "Edit Label", buf.name) as text|null, MAX_NAME_LEN)
 			buf.name = text
 			src.buffers[bufferId] = buf
 			return 1

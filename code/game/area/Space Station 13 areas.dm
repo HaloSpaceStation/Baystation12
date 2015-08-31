@@ -26,15 +26,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	layer = 10
+	luminosity = 0
 	mouse_opacity = 0
-	invisibility = INVISIBILITY_LIGHTING
 	var/lightswitch = 1
 
 	var/eject = null
 
 	var/debug = 0
 	var/requires_power = 1
-	var/unlimited_power = 0
 	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
 
 	var/power_equip = 1
@@ -46,19 +45,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/used_environ = 0
 
 	var/has_gravity = 1
-	var/list/apc = list()
+	var/obj/machinery/power/apc/apc = null
 	var/no_air = null
-	var/area/master				// master area used for power calcluations
-								// (original area before splitting due to sd_DAL)
-	var/list/related			// the other areas of the same type as this
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = list()		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/air_doors_activated = 0
 	var/list/ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
-	var/sound/forced_ambience = null
-
-	var/rad_shielded = 0
-
+	var/list/forced_ambience = null
+	var/sound_env = STANDARD_STATION
 /*Adding a wizard area teleport list because motherfucking lag -- Urist*/
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
 var/list/teleportlocs = list()
@@ -104,7 +98,6 @@ var/list/ghostteleportlocs = list()
 	icon_state = "space"
 	requires_power = 1
 	always_unpowered = 1
-	lighting_use_dynamic = 1
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
@@ -147,10 +140,9 @@ area/space/atmosalert()
 //place to another. Look at escape shuttle for example.
 //All shuttles should now be under shuttle since we have smooth-wall code.
 
-/area/shuttle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
+/area/shuttle
 	requires_power = 0
-	luminosity = 1
-	lighting_use_dynamic = 0
+	sound_env = SMALL_ENCLOSED
 
 /area/shuttle/arrival
 	name = "\improper Arrival Shuttle"
@@ -251,15 +243,11 @@ area/space/atmosalert()
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Base"
 	requires_power = 1
-	luminosity = 0
-	lighting_use_dynamic = 1
 
 /area/shuttle/alien/mine
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Mine"
 	requires_power = 1
-	luminosity = 0
-	lighting_use_dynamic = 1
 
 /area/shuttle/prison/
 	name = "\improper Prison Shuttle"
@@ -332,11 +320,6 @@ area/space/atmosalert()
 /area/shuttle/research/outpost
 	icon_state = "shuttle"
 
-/area/shuttle/vox/station
-	name = "\improper Vox Skipjack"
-	icon_state = "yellow"
-	requires_power = 0
-
 /area/airtunnel1/      // referenced in airtunnel.dm:759
 
 /area/dummy/           // Referenced in engine.dm:261
@@ -345,7 +328,6 @@ area/space/atmosalert()
 	name = "start area"
 	icon_state = "start"
 	requires_power = 0
-	luminosity = 1
 	lighting_use_dynamic = 0
 	has_gravity = 1
 
@@ -362,7 +344,7 @@ area/space/atmosalert()
 	name = "\improper Centcom"
 	icon_state = "centcom"
 	requires_power = 0
-	unlimited_power = 1
+	lighting_use_dynamic = 0
 
 /area/centcom/control
 	name = "\improper Centcom Control"
@@ -400,7 +382,7 @@ area/space/atmosalert()
 	name = "\improper Mercenary Base"
 	icon_state = "syndie-ship"
 	requires_power = 0
-	unlimited_power = 1
+	lighting_use_dynamic = 0
 
 /area/syndicate_mothership/control
 	name = "\improper Mercenary Control Room"
@@ -410,21 +392,40 @@ area/space/atmosalert()
 	name = "\improper Elite Mercenary Squad"
 	icon_state = "syndie-elite"
 
+//INSURRECTION
+
+/area/innie_base
+	name = "\improper Insurectionist Base"
+	icon_state = "syndie-control"
+	requires_power = 0
+
+/area/innie_base/shuttle
+	name = "\improper Insurrectionist Shuttle"
+	icon_state = "syndie-ship"
+	requires_power = 0
+
+/area/innie_base/transit
+	name = "\improper Insurrectionist Shuttle Slipspace Bubble"
+	icon_state = "shuttle"
+
 //EXTRA
 
 /area/asteroid					// -- TLE
-	name = "\improper Asteroid"
+	name = "\improper Moon"
 	icon_state = "asteroid"
 	requires_power = 0
+	sound_env = ASTEROID
 
 /area/asteroid/cave				// -- TLE
-	name = "\improper Asteroid - Underground"
+	name = "\improper Moon - Underground"
 	icon_state = "cave"
 	requires_power = 0
+	sound_env = ASTEROID
 
 /area/asteroid/artifactroom
-	name = "\improper Asteroid - Artifact"
+	name = "\improper Moon - Artifact"
 	icon_state = "cave"
+	sound_env = SMALL_ENCLOSED
 
 
 
@@ -449,6 +450,8 @@ area/space/atmosalert()
 	name = "\improper Thunderdome"
 	icon_state = "thunder"
 	requires_power = 0
+	lighting_use_dynamic = 0
+	sound_env = ARENA
 
 /area/tdome/tdome1
 	name = "\improper Thunderdome (Team 1)"
@@ -473,8 +476,7 @@ area/space/atmosalert()
 	name = "\improper Independant Station"
 	icon_state = "yellow"
 	requires_power = 0
-	unlimited_power = 1
-	rad_shielded = 1
+	flags = RAD_SHIELDED
 
 /area/syndicate_station/start
 	name = "\improper Mercenary Forward Operating Base"
@@ -509,7 +511,7 @@ area/space/atmosalert()
 	icon_state = "south"
 
 /area/syndicate_station/mining
-	name = "\improper north east of the mining asteroid"
+	name = "\improper northeast of the mining station"
 	icon_state = "north"
 
 /area/syndicate_station/arrivals_dock
@@ -528,33 +530,39 @@ area/space/atmosalert()
 	name = "\improper Wizard's Den"
 	icon_state = "yellow"
 	requires_power = 0
+	lighting_use_dynamic = 0
 
-/area/vox_station
+/area/skipjack_station
+	name = "\improper Skipjack"
+	icon_state = "yellow"
 	requires_power = 0
-	rad_shielded = 1
 
-/area/vox_station/transit
+/area/skipjack_station/start
+	name = "\improper Skipjack"
+	icon_state = "yellow"
+
+/area/skipjack_station/transit
 	name = "\improper hyperspace"
 	icon_state = "shuttle"
 
-/area/vox_station/southwest_solars
+/area/skipjack_station/southwest_solars
 	name = "\improper aft port solars"
 	icon_state = "southwest"
 
-/area/vox_station/northwest_solars
+/area/skipjack_station/northwest_solars
 	name = "\improper fore port solars"
 	icon_state = "northwest"
 
-/area/vox_station/northeast_solars
+/area/skipjack_station/northeast_solars
 	name = "\improper fore starboard solars"
 	icon_state = "northeast"
 
-/area/vox_station/southeast_solars
+/area/skipjack_station/southeast_solars
 	name = "\improper aft starboard solars"
 	icon_state = "southeast"
 
-/area/vox_station/mining
-	name = "\improper nearby mining asteroid"
+/area/skipjack_station/mining
+	name = "\improper south of mining station"
 	icon_state = "north"
 
 //PRISON
@@ -647,7 +655,8 @@ area/space/atmosalert()
 //Maintenance
 
 /area/maintenance
-	rad_shielded = 1
+	flags = RAD_SHIELDED
+	sound_env = TUNNEL_ENCLOSED
 
 /area/maintenance/aft
 	name = "Aft Maintenance"
@@ -782,6 +791,7 @@ area/space/atmosalert()
 /area/maintenance/substation
 	name = "Substation"
 	icon_state = "substation"
+	sound_env = SMALL_ENCLOSED
 
 /area/maintenance/substation/engineering // Probably will be connected to engineering SMES room, as wires cannot be crossed properly without them sharing powernets.
 	name = "Engineering Substation"
@@ -812,6 +822,9 @@ area/space/atmosalert()
 
 
 //Hallway
+
+/area/hallway/primary/
+	sound_env = LARGE_ENCLOSED
 
 /area/hallway/primary/fore
 	name = "\improper Fore Primary Hallway"
@@ -876,29 +889,31 @@ area/space/atmosalert()
 	name = "\improper Heads of Staff Meeting Room"
 	icon_state = "bridge"
 	music = null
+	sound_env = MEDIUM_SOFTFLOOR
 
 /area/crew_quarters/captain
-	name = "\improper Captain's Office"
+	name = "\improper Command - Captain's Office"
 	icon_state = "captain"
+	sound_env = MEDIUM_SOFTFLOOR
 
 /area/crew_quarters/heads/hop
-	name = "\improper Head of Personnel's Office"
+	name = "\improper Command - HoP's Office"
 	icon_state = "head_quarters"
 
 /area/crew_quarters/heads/hor
-	name = "\improper Research Director's Office"
+	name = "\improper Research - RD's Office"
 	icon_state = "head_quarters"
 
 /area/crew_quarters/heads/chief
-	name = "\improper Chief Engineer's Office"
+	name = "\improper Engineering - CE's Office"
 	icon_state = "head_quarters"
 
 /area/crew_quarters/heads/hos
-	name = "\improper Head of Security's Office"
+	name = "\improper Security - HoS' Office"
 	icon_state = "head_quarters"
 
 /area/crew_quarters/heads/cmo
-	name = "\improper Chief Medical Officer's Office"
+	name = "\improper Medbay - CMO's Office"
 	icon_state = "head_quarters"
 
 /area/crew_quarters/courtroom
@@ -914,7 +929,7 @@ area/space/atmosalert()
 	icon_state = "tcomsatcham"
 
 /area/server
-	name = "\improper Messaging Server Room"
+	name = "\improper Research Server Room"
 	icon_state = "server"
 
 //Crew
@@ -922,11 +937,12 @@ area/space/atmosalert()
 /area/crew_quarters
 	name = "\improper Dormitories"
 	icon_state = "Sleep"
-	rad_shielded = 1
+	flags = RAD_SHIELDED
 
 /area/crew_quarters/toilet
 	name = "\improper Dormitory Toilets"
 	icon_state = "toilet"
+	sound_env = SMALL_ENCLOSED
 
 /area/crew_quarters/sleep
 	name = "\improper Dormitories"
@@ -935,10 +951,12 @@ area/space/atmosalert()
 /area/crew_quarters/sleep/engi_wash
 	name = "\improper Engineering Washroom"
 	icon_state = "toilet"
+	sound_env = SMALL_ENCLOSED
 
 /area/crew_quarters/sleep/bedrooms
 	name = "\improper Dormitory Bedroom One"
 	icon_state = "Sleep"
+	sound_env = SMALL_SOFTFLOOR
 
 /area/crew_quarters/sleep/cryo
 	name = "\improper Cryogenic Storage"
@@ -951,6 +969,7 @@ area/space/atmosalert()
 /area/crew_quarters/sleep_male/toilet_male
 	name = "\improper Male Toilets"
 	icon_state = "toilet"
+	sound_env = SMALL_ENCLOSED
 
 /area/crew_quarters/sleep_female
 	name = "\improper Female Dorm"
@@ -959,6 +978,7 @@ area/space/atmosalert()
 /area/crew_quarters/sleep_female/toilet_female
 	name = "\improper Female Toilets"
 	icon_state = "toilet"
+	sound_env = SMALL_ENCLOSED
 
 /area/crew_quarters/locker
 	name = "\improper Locker Room"
@@ -967,6 +987,7 @@ area/space/atmosalert()
 /area/crew_quarters/locker/locker_toilet
 	name = "\improper Locker Toilets"
 	icon_state = "toilet"
+	sound_env = SMALL_ENCLOSED
 
 /area/crew_quarters/fitness
 	name = "\improper Fitness Room"
@@ -983,19 +1004,23 @@ area/space/atmosalert()
 /area/crew_quarters/bar
 	name = "\improper Bar"
 	icon_state = "bar"
+	sound_env = LARGE_SOFTFLOOR
 
 /area/crew_quarters/theatre
 	name = "\improper Theatre"
 	icon_state = "Theatre"
+	sound_env = LARGE_SOFTFLOOR
 
 /area/library
  	name = "\improper Library"
  	icon_state = "library"
+ 	sound_env = LARGE_SOFTFLOOR
 
 /area/chapel/main
 	name = "\improper Chapel"
 	icon_state = "chapel"
 	ambience = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg','sound/music/traitor.ogg')
+	sound_env = LARGE_ENCLOSED
 
 /area/chapel/office
 	name = "\improper Chapel Office"
@@ -1011,36 +1036,38 @@ area/space/atmosalert()
 /area/holodeck
 	name = "\improper Holodeck"
 	icon_state = "Holodeck"
-	luminosity = 1
 	lighting_use_dynamic = 0
+	sound_env = LARGE_ENCLOSED
 
 /area/holodeck/alphadeck
 	name = "\improper Holodeck Alpha"
 
-
 /area/holodeck/source_plating
 	name = "\improper Holodeck - Off"
-	icon_state = "Holodeck"
 
 /area/holodeck/source_emptycourt
 	name = "\improper Holodeck - Empty Court"
+	sound_env = ARENA
 
 /area/holodeck/source_boxingcourt
 	name = "\improper Holodeck - Boxing Court"
+	sound_env = ARENA
 
 /area/holodeck/source_basketball
 	name = "\improper Holodeck - Basketball Court"
+	sound_env = ARENA
 
 /area/holodeck/source_thunderdomecourt
 	name = "\improper Holodeck - Thunderdome Court"
+	sound_env = ARENA
 
 /area/holodeck/source_courtroom
 	name = "\improper Holodeck - Courtroom"
-	icon_state = "Holodeck"
+	sound_env = AUDITORIUM
 
 /area/holodeck/source_beach
 	name = "\improper Holodeck - Beach"
-	icon_state = "Holodeck" // Lazy.
+	sound_env = PLAIN
 
 /area/holodeck/source_burntest
 	name = "\improper Holodeck - Atmospheric Burn Test"
@@ -1050,25 +1077,28 @@ area/space/atmosalert()
 
 /area/holodeck/source_meetinghall
 	name = "\improper Holodeck - Meeting Hall"
+	sound_env = AUDITORIUM
 
 /area/holodeck/source_theatre
 	name = "\improper Holodeck - Theatre"
+	sound_env = CONCERT_HALL
 
 /area/holodeck/source_picnicarea
 	name = "\improper Holodeck - Picnic Area"
+	sound_env = PLAIN
 
 /area/holodeck/source_snowfield
 	name = "\improper Holodeck - Snow Field"
+	sound_env = FOREST
 
 /area/holodeck/source_desert
 	name = "\improper Holodeck - Desert"
+	sound_env = PLAIN
 
 /area/holodeck/source_space
 	name = "\improper Holodeck - Space"
 	has_gravity = 0
-
-
-
+	sound_env = SPACE
 
 //Engineering
 
@@ -1080,26 +1110,32 @@ area/space/atmosalert()
 /area/engineering/atmos
  	name = "\improper Atmospherics"
  	icon_state = "atmos"
+ 	sound_env = LARGE_ENCLOSED
 
 /area/engineering/atmos/monitoring
 	name = "\improper Atmospherics Monitoring Room"
 	icon_state = "atmos_monitoring"
+	sound_env = STANDARD_STATION
 
 /area/engineering/atmos/storage
 	name = "\improper Atmospherics Storage"
 	icon_state = "atmos_storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/engineering/drone_fabrication
-	name = "\improper Drone Fabrication"
+	name = "\improper Engineering Drone Fabrication"
 	icon_state = "drone_fab"
+	sound_env = SMALL_ENCLOSED
 
 /area/engineering/engine_smes
 	name = "\improper Engineering SMES"
 	icon_state = "engine_smes"
+	sound_env = SMALL_ENCLOSED
 
 /area/engineering/engine_room
 	name = "\improper Engine Room"
 	icon_state = "engine"
+	sound_env = LARGE_ENCLOSED
 
 /area/engineering/engine_airlock
 	name = "\improper Engine Room Airlock"
@@ -1128,6 +1164,7 @@ area/space/atmosalert()
 /area/engineering/break_room
 	name = "\improper Engineering Break Room"
 	icon_state = "engineering_break"
+	sound_env = MEDIUM_SOFTFLOOR
 
 /area/engineering/engine_eva
 	name = "\improper Engine EVA"
@@ -1148,7 +1185,6 @@ area/space/atmosalert()
 /area/solar
 	requires_power = 1
 	always_unpowered = 1
-	luminosity = 1
 	lighting_use_dynamic = 0
 
 	auxport
@@ -1176,24 +1212,29 @@ area/space/atmosalert()
 		icon_state = "panelsP"
 
 /area/maintenance/auxsolarport
-	name = "Fore Port Solar Maintenance"
+	name = "Solar Maintenance - Fore Port"
 	icon_state = "SolarcontrolP"
+	sound_env = SMALL_ENCLOSED
 
 /area/maintenance/starboardsolar
-	name = "Aft Starboard Solar Maintenance"
+	name = "Solar Maintenance - Aft Starboard"
 	icon_state = "SolarcontrolS"
+	sound_env = SMALL_ENCLOSED
 
 /area/maintenance/portsolar
-	name = "Aft Port Solar Maintenance"
+	name = "Solar Maintenance - Aft Port"
 	icon_state = "SolarcontrolP"
+	sound_env = SMALL_ENCLOSED
 
 /area/maintenance/auxsolarstarboard
-	name = "Fore Starboard Solar Maintenance"
+	name = "Solar Maintenance - Fore Starboard"
 	icon_state = "SolarcontrolS"
+	sound_env = SMALL_ENCLOSED
 
 /area/maintenance/foresolar
-	name = "Fore Solar Maintenance"
+	name = "Solar Maintenance - Fore"
 	icon_state = "SolarcontrolA"
+	sound_env = SMALL_ENCLOSED
 
 /area/assembly/chargebay
 	name = "\improper Mech Bay"
@@ -1367,35 +1408,52 @@ area/space/atmosalert()
 	icon_state = "security"
 
 /area/security/lobby
-	name = "\improper Security lobby"
+	name = "\improper Security Lobby"
 	icon_state = "security"
 
 /area/security/brig
-	name = "\improper Brig"
+	name = "\improper Security - Brig"
 	icon_state = "brig"
 
+/area/security/brig/prison_break()
+	for(var/obj/structure/closet/secure_closet/brig/temp_closet in src)
+		temp_closet.locked = 0
+		temp_closet.icon_state = temp_closet.icon_closed
+	for(var/obj/machinery/door_timer/temp_timer in src)
+		temp_timer.releasetime = 1
+	..()
+
 /area/security/prison
-	name = "\improper Prison Wing"
+	name = "\improper Security - Prison Wing"
 	icon_state = "sec_prison"
 
+/area/security/prison/prison_break()
+	for(var/obj/structure/closet/secure_closet/brig/temp_closet in src)
+		temp_closet.locked = 0
+		temp_closet.icon_state = temp_closet.icon_closed
+	for(var/obj/machinery/door_timer/temp_timer in src)
+		temp_timer.releasetime = 1
+	..()
+
 /area/security/warden
-	name = "\improper Warden"
+	name = "\improper Security - Warden's Office"
 	icon_state = "Warden"
 
 /area/security/armoury
-	name = "\improper Armory"
+	name = "\improper Security - Armory"
 	icon_state = "Warden"
 
 /area/security/detectives_office
-	name = "\improper Detective's Office"
+	name = "\improper Security - Forensic Office"
 	icon_state = "detective"
+	sound_env = MEDIUM_SOFTFLOOR
 
 /area/security/range
-	name = "\improper Firing Range"
+	name = "\improper Security - Firing Range"
 	icon_state = "firingrange"
 
 /area/security/tactical
-	name = "\improper Tactical Equipment"
+	name = "\improper Security - Tactical Equipment"
 	icon_state = "Tactical"
 
 
@@ -1425,7 +1483,7 @@ area/space/atmosalert()
 	icon_state = "checkpoint1"
 
 /area/security/checkpoint2
-	name = "\improper Security Checkpoint"
+	name = "\improper Security - Arrival Checkpoint"
 	icon_state = "security"
 
 /area/security/checkpoint/supply
@@ -1456,14 +1514,6 @@ area/space/atmosalert()
 	name = "\improper Quartermasters"
 	icon_state = "quart"
 
-///////////WORK IN PROGRESS//////////
-
-/area/quartermaster/sorting
-	name = "\improper Delivery Office"
-	icon_state = "quartstorage"
-
-////////////WORK IN PROGRESS//////////
-
 /area/quartermaster/office
 	name = "\improper Cargo Office"
 	icon_state = "quartoffice"
@@ -1471,22 +1521,15 @@ area/space/atmosalert()
 /area/quartermaster/storage
 	name = "\improper Cargo Bay"
 	icon_state = "quartstorage"
+	sound_env = LARGE_ENCLOSED
 
 /area/quartermaster/qm
-	name = "\improper Quartermaster's Office"
+	name = "\improper Cargo - Quartermaster's Office"
 	icon_state = "quart"
 
 /area/quartermaster/miningdock
-	name = "\improper Mining Dock"
+	name = "\improper Cargo Mining Dock"
 	icon_state = "mining"
-
-/area/quartermaster/miningstorage
-	name = "\improper Mining Storage"
-	icon_state = "green"
-
-/area/quartermaster/mechbay
-	name = "\improper Mech Bay"
-	icon_state = "yellow"
 
 /area/janitor/
 	name = "\improper Custodial Closet"
@@ -1760,6 +1803,11 @@ area/space/atmosalert()
 	name = "\improper Construction Site Solars"
 	icon_state = "aft"
 
+/area/constructionsite/teleporter
+	name = "Construction Site Teleporter"
+	icon_state = "yellow"
+
+
 //area/constructionsite
 //	name = "\improper Construction Site Shuttle"
 
@@ -1770,7 +1818,7 @@ area/space/atmosalert()
 //Construction
 
 /area/construction
-	name = "\improper Construction Area"
+	name = "\improper Engineering Construction Area"
 	icon_state = "yellow"
 
 /area/construction/supplyshuttle
@@ -1824,10 +1872,12 @@ area/space/atmosalert()
 	name = "AI Upload Access"
 	icon_state = "ai_foyer"
 	ambience = list('sound/ambience/ambimalf.ogg')
+	sound_env = SMALL_ENCLOSED
 
 /area/turret_protected/ai_server_room
-	name = "AI Server Room"
+	name = "Messaging Server Room"
 	icon_state = "ai_server"
+	sound_env = SMALL_ENCLOSED
 
 /area/turret_protected/ai
 	name = "\improper AI Chamber"
@@ -1837,6 +1887,7 @@ area/space/atmosalert()
 /area/turret_protected/ai_cyborg_station
 	name = "\improper Cyborg Station"
 	icon_state = "ai_cyborg"
+	sound_env = SMALL_ENCLOSED
 
 /area/turret_protected/aisat
 	name = "\improper AI Satellite"
@@ -1942,6 +1993,9 @@ area/space/atmosalert()
 	name = "\improper Telecommunications Satellite Lounge"
 	icon_state = "tcomsatlounge"
 
+/area/tcommsat/powercontrol
+	name = "\improper Telecommunications Power Control"
+	icon_state = "tcomsatwest"
 
 
 // Away Missions
@@ -2041,6 +2095,7 @@ area/space/atmosalert()
 	luminosity = 1
 	lighting_use_dynamic = 0
 	requires_power = 0
+	ambience = list()
 	var/sound/mysound = null
 
 	New()

@@ -7,8 +7,6 @@
 #define PRESSURE_CHECK_EXTERNAL 1
 #define PRESSURE_CHECK_INTERNAL 2
 
-#undefine
-
 /obj/machinery/atmospherics/unary/vent_pump
 	icon = 'icons/atmos/vent_pump.dmi'
 	icon_state = "map_vent"
@@ -61,21 +59,30 @@
 	use_power = 1
 	icon_state = "map_vent_in"
 
+/obj/machinery/atmospherics/unary/vent_pump/siphon/on/atmos
+	use_power = 1
+	icon_state = "map_vent_in"
+	external_pressure_bound = 0
+	external_pressure_bound_default = 0
+	internal_pressure_bound = 2000
+	internal_pressure_bound_default = 2000
+	pressure_checks = 2
+	pressure_checks_default = 2
+
 /obj/machinery/atmospherics/unary/vent_pump/New()
 	..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP
 
 	icon = null
 	initial_loc = get_area(loc)
-	if (initial_loc.master)
-		initial_loc = initial_loc.master
 	area_uid = initial_loc.uid
 	if (!id_tag)
 		assign_uid()
 		id_tag = num2text(uid)
-	if(ticker && ticker.current_state == 3)//if the game is running
-		src.initialize()
-		src.broadcast_status()
+
+/obj/machinery/atmospherics/unary/vent_pump/Destroy()
+	unregister_radio(src, frequency)
+	..()
 
 /obj/machinery/atmospherics/unary/vent_pump/high_volume
 	name = "Large Air Vent"
@@ -109,7 +116,7 @@
 	if(!istype(T))
 		return
 
-	if(T.intact && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
 		vent_icon += "h"
 
 	if(welded)
@@ -127,7 +134,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(T.intact && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
 			return
 		else
 			if(node)
@@ -214,14 +221,6 @@
 
 	return pressure_delta
 
-//Radio remote control
-
-/obj/machinery/atmospherics/unary/vent_pump/proc/set_frequency(new_frequency)
-	radio_controller.remove_object(src, frequency)
-	frequency = new_frequency
-	if(frequency)
-		radio_connection = radio_controller.add_object(src, frequency,radio_filter_in)
-
 /obj/machinery/atmospherics/unary/vent_pump/proc/broadcast_status()
 	if(!radio_connection)
 		return 0
@@ -259,11 +258,12 @@
 /obj/machinery/atmospherics/unary/vent_pump/initialize()
 	..()
 
-	//some vents work his own spesial way
+	//some vents work his own special way
 	radio_filter_in = frequency==1439?(RADIO_FROM_AIRALARM):null
 	radio_filter_out = frequency==1439?(RADIO_TO_AIRALARM):null
 	if(frequency)
-		set_frequency(frequency)
+		radio_connection = register_radio(src, frequency, frequency, radio_filter_in)
+		src.broadcast_status()
 
 /obj/machinery/atmospherics/unary/vent_pump/receive_signal(datum/signal/signal)
 	if(stat & (NOPOWER|BROKEN))
@@ -356,22 +356,22 @@
 	if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))
-			user << "\blue Now welding the vent."
+			user << "<span class='notice'>Now welding the vent.</span>"
 			if(do_after(user, 20))
 				if(!src || !WT.isOn()) return
 				playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
 				if(!welded)
-					user.visible_message("[user] welds the vent shut.", "You weld the vent shut.", "You hear welding.")
+					user.visible_message("<span class='notice'>\The [user] welds the vent shut.</span>", "<span class='notice'>You weld the vent shut.</span>", "You hear welding.")
 					welded = 1
 					update_icon()
 				else
-					user.visible_message("[user] unwelds the vent.", "You unweld the vent.", "You hear welding.")
+					user.visible_message("<span class='notice'>[user] unwelds the vent.</span>", "<span class='notice'>You unweld the vent.</span>", "You hear welding.")
 					welded = 0
 					update_icon()
 			else
-				user << "\blue The welding tool needs to be on to start this task."
+				user << "<span class='notice'>The welding tool needs to be on to start this task.</span>"
 		else
-			user << "\blue You need more welding fuel to complete this task."
+			user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
 			return 1
 	else
 		..()
@@ -394,46 +394,40 @@
 	if (!istype(W, /obj/item/weapon/wrench))
 		return ..()
 	if (!(stat & NOPOWER) && use_power)
-		user << "\red You cannot unwrench this [src], turn it off first."
+		user << "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>"
 		return 1
 	var/turf/T = src.loc
-	if (node && node.level==1 && isturf(T) && T.intact)
-		user << "\red You must remove the plating first."
+	if (node && node.level==1 && isturf(T) && !T.is_plating())
+		user << "<span class='warning'>You must remove the plating first.</span>"
 		return 1
 	var/datum/gas_mixture/int_air = return_air()
 	var/datum/gas_mixture/env_air = loc.return_air()
 	if ((int_air.return_pressure()-env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
-		user << "\red You cannot unwrench this [src], it too exerted due to internal pressure."
+		user << "<span class='warning'>You cannot unwrench \the [src], it is too exerted due to internal pressure.</span>"
 		add_fingerprint(user)
 		return 1
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
-	user << "\blue You begin to unfasten \the [src]..."
+	user << "<span class='notice'>You begin to unfasten \the [src]...</span>"
 	if (do_after(user, 40))
 		user.visible_message( \
-			"[user] unfastens \the [src].", \
-			"\blue You have unfastened \the [src].", \
-			"You hear ratchet.")
+			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
+			"<span class='notice'>You have unfastened \the [src].</span>", \
+			"You hear a ratchet.")
 		new /obj/item/pipe(loc, make_from=src)
-		del(src)
+		qdel(src)
 
-/obj/machinery/atmospherics/unary/vent_pump/Del()
+/obj/machinery/atmospherics/unary/vent_pump/Destroy()
 	if(initial_loc)
 		initial_loc.air_vent_info -= id_tag
 		initial_loc.air_vent_names -= id_tag
 	..()
 	return
 
-/*
-	Alt-click to vent crawl - Monkeys, aliens, slimes and mice.
-	This is a little buggy but somehow that just seems to plague ventcrawl.
-	I am sorry, I don't know why.
-*/
-// Commenting this out for now, it's not critical, stated to be buggy, and seems like
-// a really clumsy way of doing this. ~Z
-/*/obj/machinery/atmospherics/unary/vent_pump/AltClick(var/mob/living/ML)
-	if(istype(ML))
-		var/list/ventcrawl_verbs = list(/mob/living/carbon/monkey/verb/ventcrawl, /mob/living/carbon/alien/verb/ventcrawl, /mob/living/carbon/slime/verb/ventcrawl,/mob/living/simple_animal/mouse/verb/ventcrawl)
-		if(length(ML.verbs & ventcrawl_verbs)) // alien queens have this removed, an istype would be complicated
-			ML.handle_ventcrawl(src)
-			return
-	..()*/
+#undef DEFAULT_PRESSURE_DELTA
+
+#undef EXTERNAL_PRESSURE_BOUND
+#undef INTERNAL_PRESSURE_BOUND
+#undef PRESSURE_CHECKS
+
+#undef PRESSURE_CHECK_EXTERNAL
+#undef PRESSURE_CHECK_INTERNAL

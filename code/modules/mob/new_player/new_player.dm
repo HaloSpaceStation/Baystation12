@@ -67,12 +67,7 @@
 	Stat()
 		..()
 
-		statpanel("Status")
-		if (client.statpanel == "Status" && ticker)
-			if (ticker.current_state != GAME_STATE_PREGAME)
-				stat(null, "Station Time: [worldtime2text()]")
-		statpanel("Lobby")
-		if(client.statpanel=="Lobby" && ticker)
+		if(statpanel("Lobby") && ticker)
 			if(ticker.hide_mode)
 				stat("Game Mode:", "Secret")
 			else
@@ -80,7 +75,7 @@
 					stat("Game Mode:", "[master_mode]") // Old setting for showing the game mode
 
 			if(ticker.current_state == GAME_STATE_PREGAME)
-				stat("Time To Start:", "[ticker.pregame_timeleft][going ? "" : " (DELAYED)"]")
+				stat("Time To Start:", "[ticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
 				stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 				totalPlayers = 0
 				totalPlayersReady = 0
@@ -138,7 +133,7 @@
 				if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
 					observer.verbs -= /mob/dead/observer/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
 				observer.key = key
-				del(src)
+				qdel(src)
 
 				return 1
 
@@ -154,7 +149,7 @@
 					return 0
 
 				var/datum/species/S = all_species[client.prefs.species]
-				if(!(S.flags & IS_WHITELISTED))
+				if(!(S.spawn_flags & IS_WHITELISTED))
 					src << alert("Your current species,[client.prefs.species], is not available for play on the station.")
 					return 0
 
@@ -178,7 +173,7 @@
 					return 0
 
 				var/datum/species/S = all_species[client.prefs.species]
-				if(!(S.flags & CAN_JOIN))
+				if(!(S.spawn_flags & CAN_JOIN))
 					src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
 					return 0
 
@@ -314,7 +309,7 @@
 		var/mob/living/character = create_character()	//creates the human and transfers vars and mind
 		character = job_master.EquipRank(character, rank, 1)					//equips the human
 		UpdateFactionList(character)
-		EquipCustomItems(character)
+		equip_custom_items(character)
 
 		// AIs don't need a spawnpoint, they must spawn at an empty core
 		if(character.mind.assigned_role == "AI")
@@ -330,8 +325,8 @@
 			AnnounceCyborg(character, rank, "has been downloaded to the empty core in \the [character.loc.loc]")
 			ticker.mode.latespawn(character)
 
-			del(C)
-			del(src)
+			qdel(C)
+			qdel(src)
 			return
 
 		//Find our spawning point.
@@ -361,8 +356,6 @@
 
 		ticker.mode.latespawn(character)
 
-		//ticker.mode.latespawn(character)
-
 		if(character.mind.assigned_role != "Cyborg")
 			data_core.manifest_inject(character)
 			ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
@@ -373,13 +366,7 @@
 		else
 			AnnounceCyborg(character, rank, join_message)
 
-		del(src)
-
-	proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message)
-		if (ticker.current_state == GAME_STATE_PLAYING)
-			if(character.mind.role_alt_title)
-				rank = character.mind.role_alt_title
-			global_announcer.autosay("[character.real_name],[rank ? " [rank]," : " visitor," ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
+		qdel(src)
 
 	proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message)
 		if (ticker.current_state == GAME_STATE_PLAYING)
@@ -389,16 +376,11 @@
 			global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
 
 	proc/LateChoices()
-		var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
-		//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
-		var/mins = (mills % 36000) / 600
-		var/hours = mills / 36000
-
 		var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
 
 		var/dat = "<html><body><center>"
 		dat += "<b>Welcome, [name].<br></b>"
-		dat += "Round Duration: [round(hours)]h [round(mins)]m<br>"
+		dat += "Round Duration: [round_duration()]<br>"
 
 		if(emergency_shuttle) //In case Nanotrasen decides reposess CentComm's shuttles.
 			if(emergency_shuttle.going_to_centcom()) //Shuttle is going to centcomm, not recalled
@@ -428,25 +410,28 @@
 
 		var/mob/living/carbon/human/new_character
 
+		var/use_species_name
 		var/datum/species/chosen_species
 		if(client.prefs.species)
 			chosen_species = all_species[client.prefs.species]
-		if(chosen_species)
+			use_species_name = chosen_species.get_station_variant() //Only used by pariahs atm.
+
+		if(chosen_species && use_species_name)
 			// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
 			if(is_species_whitelisted(chosen_species) || has_admin_rights())
-				new_character = new(loc, client.prefs.species)
+				new_character = new(loc, use_species_name)
 
 		if(!new_character)
 			new_character = new(loc)
 
 		new_character.lastarea = get_area(loc)
 
-		var/datum/language/chosen_language
-		if(client.prefs.language)
-			chosen_language = all_languages["[client.prefs.language]"]
-		if(chosen_language)
-			if(is_alien_whitelisted(src, client.prefs.language) || !config.usealienwhitelist || !(chosen_language.flags & WHITELISTED) || (new_character.species && (chosen_language.name in new_character.species.secondary_langs)))
-				new_character.add_language("[client.prefs.language]")
+		for(var/lang in client.prefs.alternate_languages)
+			var/datum/language/chosen_language = all_languages[lang]
+			if(chosen_language)
+				if(!config.usealienwhitelist || !(chosen_language.flags & WHITELISTED) || is_alien_whitelisted(src, lang) || has_admin_rights() \
+					|| (new_character.species && (chosen_language.name in new_character.species.secondary_langs)))
+					new_character.add_language(lang)
 
 		if(ticker.random_players)
 			new_character.gender = pick(MALE, FEMALE)
@@ -468,7 +453,7 @@
 		new_character.name = real_name
 		new_character.dna.ready_dna(new_character)
 		new_character.dna.b_type = client.prefs.b_type
-
+		new_character.sync_organ_dna()
 		if(client.prefs.disabilities)
 			// Set defer to 1 if you add more crap here so it only recalculates struc_enzymes once. - N3X
 			new_character.dna.SetSEState(GLASSESBLOCK,1,0)
@@ -478,6 +463,8 @@
 		//new_character.dna.UpdateSE()
 
 		// Do the initial caching of the player's body icons.
+		new_character.force_update_limbs()
+		new_character.update_eyes()
 		new_character.regenerate_icons()
 
 		new_character.key = key		//Manually transfer the key to log them in
@@ -503,7 +490,7 @@
 
 	proc/is_species_whitelisted(datum/species/S)
 		if(!S) return 1
-		return is_alien_whitelisted(src, S.name) || !config.usealienwhitelist || !(S.flags & IS_WHITELISTED)
+		return is_alien_whitelisted(src, S.name) || !config.usealienwhitelist || !(S.spawn_flags & IS_WHITELISTED)
 
 /mob/new_player/get_species()
 	var/datum/species/chosen_species

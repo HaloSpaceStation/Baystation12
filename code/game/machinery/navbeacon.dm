@@ -1,6 +1,9 @@
 // Navigation beacon for AI robots
 // Functions as a transponder: looks for incoming signal matching
 
+
+var/global/list/navbeacons			// no I don't like putting this in, but it will do for now
+
 /obj/machinery/navbeacon
 
 	icon = 'icons/obj/objects.dmi'
@@ -26,7 +29,14 @@
 		set_codes()
 
 		var/turf/T = loc
-		hide(T.intact)
+		hide(!T.is_plating())
+
+		// add beacon to MULE bot beacon list
+		if(freq == 1400)
+			if(!navbeacons)
+				navbeacons = new()
+			navbeacons += src
+
 
 		spawn(5)	// must wait for map loading to finish
 			if(radio_controller)
@@ -101,7 +111,7 @@
 
 	attackby(var/obj/item/I, var/mob/user)
 		var/turf/T = loc
-		if(T.intact)
+		if(!T.is_plating())
 			return		// prevent intraction when T-scanner revealed
 
 		if(istype(I, /obj/item/weapon/screwdriver))
@@ -117,7 +127,7 @@
 					src.locked = !src.locked
 					user << "Controls are now [src.locked ? "locked." : "unlocked."]"
 				else
-					user << "\red Access denied."
+					user << "<span class='warning'>Access denied.</span>"
 				updateDialog()
 			else
 				user << "You must open the cover first!"
@@ -135,7 +145,7 @@
 
 	interact(var/mob/user, var/ai = 0)
 		var/turf/T = loc
-		if(T.intact)
+		if(!T.is_plating())
 			return		// prevent intraction when T-scanner revealed
 
 		if(!open && !ai)	// can't alter controls if not open, unless you're an AI
@@ -194,7 +204,7 @@ Transponder Codes:<UL>"}
 					updateDialog()
 
 				else if(href_list["locedit"])
-					var/newloc = sanitize(copytext(input("Enter New Location", "Navigation Beacon", location) as text|null,1,MAX_MESSAGE_LEN))
+					var/newloc = sanitize(input("Enter New Location", "Navigation Beacon", location) as text|null)
 					if(newloc)
 						location = newloc
 						updateDialog()
@@ -240,6 +250,8 @@ Transponder Codes:<UL>"}
 
 					updateDialog()
 
-
-
-
+/obj/machinery/navbeacon/Destroy()
+	navbeacons.Remove(src)
+	if(radio_controller)
+		radio_controller.remove_object(src, freq)
+	..()

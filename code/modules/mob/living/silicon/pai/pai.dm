@@ -72,8 +72,6 @@
 	var/current_pda_messaging = null
 
 /mob/living/silicon/pai/New(var/obj/item/device/paicard)
-
-	canmove = 0
 	src.loc = paicard
 	card = paicard
 	sradio = new(src)
@@ -101,7 +99,6 @@
 
 /mob/living/silicon/pai/Login()
 	..()
-	usr << browse_rsc('html/paigrid.png')			// Go ahead and cache the interface resources as early as possible
 
 
 // this function shows the information about being silenced as a pAI in the Status panel
@@ -117,14 +114,9 @@
 	if (src.client.statpanel == "Status")
 		show_silenced()
 
-	if (proc_holder_list.len)//Generic list for proc_holder objects.
-		for(var/obj/effect/proc_holder/P in proc_holder_list)
-			statpanel("[P.panel]","",P)
-
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
 	if (!src.current)
 		return -1
-	user.reset_view(src.current)
 	return 0
 
 /mob/living/silicon/pai/blob_act()
@@ -172,17 +164,6 @@
 			src << "<font color=green>Pr1m3 d1r3c71v3 uPd473D.</font>"
 		if(3)
 			src << "<font color=green>You feel an electric surge run through your circuitry and become acutely aware at how lucky you are that you can still feel at all.</font>"
-
-// See software.dm for Topic()
-/mob/living/silicon/pai/meteorhit(obj/O as obj)
-	for(var/mob/M in viewers(src, null))
-		M.show_message(text("\red [] has been hit by []", src, O), 1)
-	if (src.health > 0)
-		src.adjustBruteLoss(30)
-		if ((O.icon_state == "flaming"))
-			src.adjustFireLoss(40)
-		src.updatehealth()
-	return
 
 /mob/living/silicon/pai/proc/switchCamera(var/obj/machinery/camera/C)
 	if (!C)
@@ -280,12 +261,18 @@
 		return 0
 	else if(istype(card.loc,/mob))
 		var/mob/holder = card.loc
+		if(ishuman(holder))
+			var/mob/living/carbon/human/H = holder
+			for(var/obj/item/organ/external/affecting in H.organs)
+				if(card in affecting.implants)
+					affecting.take_damage(rand(30,50))
+					affecting.implants -= card
+					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
+					break
 		holder.drop_from_inventory(card)
 	else if(istype(card.loc,/obj/item/device/pda))
 		var/obj/item/device/pda/holder = card.loc
 		holder.pai = null
-
-	canmove = 1
 
 	src.client.perspective = EYE_PERSPECTIVE
 	src.client.eye = src
@@ -348,12 +335,16 @@
 	set name = "Rest"
 	set category = "IC"
 
+	// Pass lying down or getting up to our pet human, if we're in a rig.
 	if(istype(src.loc,/obj/item/device/paicard))
 		resting = 0
+		var/obj/item/weapon/rig/rig = src.get_rig()
+		if(istype(rig))
+			rig.force_rest(src)
 	else
 		resting = !resting
 		icon_state = resting ? "[chassis]_rest" : "[chassis]"
-		src << "\blue You are now [resting ? "resting" : "getting up"]"
+		src << "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>"
 
 	canmove = !resting
 
@@ -388,12 +379,22 @@
 	src.client.perspective = EYE_PERSPECTIVE
 	src.client.eye = card
 
-	//This seems redundant but not including the forced loc setting messes the behavior up.
+	// If we are being held, handle removing our holder from their inv.
+	var/obj/item/weapon/holder/H = loc
+	if(istype(H))
+		var/mob/living/M = H.loc
+		if(istype(M))
+			M.drop_from_inventory(H)
+		H.loc = get_turf(src)
+		src.loc = get_turf(H)
+
+	// Move us into the card and move the card to the ground.
 	src.loc = card
 	card.loc = get_turf(card)
 	src.forceMove(card)
 	card.forceMove(card.loc)
-	canmove = 0
+	canmove = 1
+	resting = 0
 	icon_state = "[chassis]"
 
 /mob/living/silicon/pai/start_pulling(var/atom/movable/AM)
@@ -411,3 +412,22 @@
 // No binary for pAIs.
 /mob/living/silicon/pai/binarycheck()
 	return 0
+
+// Handle being picked up.
+/mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber)
+	var/obj/item/weapon/holder/H = ..()
+	if(!istype(H))
+		return
+	H.icon_state = "pai-[icon_state]"
+	grabber.update_inv_l_hand()
+	grabber.update_inv_r_hand()
+	return H
+
+/mob/living/silicon/pai/MouseDrop(atom/over_object)
+	var/mob/living/carbon/H = over_object
+	if(!istype(H) || !Adjacent(H)) return ..()
+	if(H.a_intent == "help")
+		get_scooped(H)
+		return
+	else
+		return ..()
