@@ -37,12 +37,12 @@
 /datum/poster/bay_8
 	icon_state="bsposter8"
 	name = "Pinup Girl Cindy"
-	desc = "This particular one is of Nanotrasen's PR girl, Cindy, in a particularly feminine pose."
+	desc = "This particular one is of a historical corporate PR girl, Cindy, in a particularly feminine pose."
 
 /datum/poster/bay_9
 	icon_state="bsposter9"
 	name = "Pinup Girl Amy"
-	desc = "This particular one is of Amy, the nymphomaniac Urban Legend of Nanotrasen Space Stations. How this photograph came to be is not known."
+	desc = "This particular one is of Amy, the nymphomaniac urban legend of deep space. How this photograph came to be is not known."
 
 /datum/poster/bay_10
 	icon_state="bsposter10"
@@ -52,12 +52,12 @@
 /datum/poster/bay_11
 	icon_state="bsposter11"
 	name = "Underwater Laboratory"
-	desc = "This particular one is of the fabled last crew of Nanotrasen's previous project before going big on phoron research."
+	desc = "This particular one is of the fabled last crew of a previous Company project."
 
 /datum/poster/bay_12
 	icon_state="bsposter12"
 	name = "Rogue AI"
-	desc = "This particular one depicts the shell of the infamous AI that catastropically comandeered one of Nanotrasen's earliest space stations. Back then, the corporation was just known as TriOptimum."
+	desc = "This particular one depicts the shell of the infamous AI that catastropically comandeered one of humanity's earliest space stations. Back then, the Company was just known as TriOptimum."
 
 /datum/poster/bay_13
 	icon_state="bsposter13"
@@ -172,7 +172,7 @@
 /datum/poster/bay_35
 	icon_state="bsposter35"
 	name = "Lamarr"
-	desc = "This is a poster depicting the pet and mascot of the NSS Exodus science department."
+	desc = "This is a poster depicting the pet and mascot of the science department."
 
 /datum/poster/bay_36
 	icon_state="bsposter36"
@@ -247,4 +247,44 @@
 /datum/poster/bay_50
 	icon_state="bsposter50"
 	name = "Pinup Girl Cindy Kate"
-	desc = "This particular one is of Cindy Kate, a seductive performer well known among less savoury circles." //idk
+	desc = "This particular one is of Cindy Kate, a seductive performer well known among less savoury circles."
+
+/datum/poster/bay_51
+	icon_state="bsposter51"
+	name = "space appreciation poster"
+	desc = "This is a poster produced by the Generic Space Company, as a part of a series of commemorative posters on the wonders of space. One of three."
+
+/datum/poster/bay_52
+	icon_state="bsposter52"
+	name = "fire safety poster"
+	desc = "This is a poster reminding you of what you should do if you are on fire, or if you are at a dance party."
+
+/datum/poster/bay_53
+	icon_state="bsposter53"
+	name = "fire extinguisher poster"
+	desc = "This is a poster reminding you of what you should use to put out a fire."
+
+/datum/poster/bay_54
+	icon_state="bsposter54"
+	name = "firefighter poster"
+	desc = "This is a poster of a particularly stern looking firefighter. The caption reads, \"Only you can prevent space fires.\""
+
+/datum/poster/bay_55
+	icon_state="bsposter55"
+	name = "Earth appreciation poster"
+	desc = "This is a poster produced by the Generic Space Company, as a part of a series of commemorative posters on the wonders of space. Two of three."
+
+/datum/poster/bay_56
+	icon_state="bsposter56"
+	name = "Mars appreciation poster"
+	desc = "This is a poster produced by the Generic Space Company, as a part of a series of commemorative posters on the wonders of space. Three of three."
+
+/datum/poster/bay_57
+	icon_state="bsposter57"
+	name = "space carp warning poster"
+	desc = "This poster tells of the dangers of space carp infestations."
+
+/datum/poster/bay_58
+	icon_state="bsposter58"
+	name = "space carp information poster"
+	desc = "This poster showcases an old spacer saying on the dangers of migrant space carp."

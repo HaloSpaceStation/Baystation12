@@ -5,13 +5,18 @@
 	icon = 'icons/obj/objects.dmi'
 	slot_flags = SLOT_HEAD
 	sprite_sheets = list("Vox" = 'icons/mob/species/vox/head.dmi')
+	origin_tech = null
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand_holder.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_holder.dmi',
+		)
+	pixel_y = 8
 
 /obj/item/weapon/holder/New()
-	item_state = icon_state
 	..()
 	processing_objects.Add(src)
 
-/obj/item/weapon/holder/Del()
+/obj/item/weapon/holder/Destroy()
 	processing_objects.Remove(src)
 	..()
 
@@ -26,15 +31,43 @@
 			mob_container.forceMove(get_turf(src))
 			M.reset_view()
 
-		del(src)
+		qdel(src)
+
+/obj/item/weapon/holder/proc/sync(var/mob/living/M)
+	dir = 2
+	overlays.Cut()
+	icon = M.icon
+	icon_state = M.icon_state
+	color = M.color
+	name = M.name
+	desc = M.desc
+	overlays |= M.overlays
+	var/mob/living/carbon/human/H = loc
+	if(istype(H))
+		if(H.l_hand == src)
+			H.update_inv_l_hand()
+		else if(H.r_hand == src)
+			H.update_inv_r_hand()
+		else
+			H.regenerate_icons()
+
+//Mob specific holders.
+/obj/item/weapon/holder/diona
+	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 5)
+	slot_flags = SLOT_HEAD | SLOT_OCLOTHING
+
+/obj/item/weapon/holder/drone
+	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINERING = 5)
+
+/obj/item/weapon/holder/mouse
+	w_class = 1
+
+/obj/item/weapon/holder/borer
+	origin_tech = list(TECH_BIO = 6)
 
 /obj/item/weapon/holder/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
-
-/obj/item/weapon/holder/proc/show_message(var/message, var/m_type)
-	for(var/mob/living/M in contents)
-		M.show_message(message,m_type)
 
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type
@@ -51,31 +84,5 @@
 	grabber << "You scoop up [src]."
 	src << "[grabber] scoops you up."
 	grabber.status_flags |= PASSEMOTES
-	return
-
-//Mob specific holders.
-
-/obj/item/weapon/holder/diona
-	name = "diona nymph"
-	desc = "It's a tiny plant critter."
-	icon_state = "nymph"
-	origin_tech = "magnets=3;biotech=5"
-	slot_flags = SLOT_HEAD | SLOT_OCLOTHING
-
-/obj/item/weapon/holder/drone
-	name = "maintenance drone"
-	desc = "It's a small maintenance robot."
-	icon_state = "drone"
-	origin_tech = "magnets=3;engineering=5"
-
-/obj/item/weapon/holder/cat
-	name = "cat"
-	desc = "It's a cat. Meow."
-	icon_state = "cat"
-	origin_tech = null
-
-/obj/item/weapon/holder/borer
-	name = "cortical borer"
-	desc = "It's a slimy brain slug. Gross."
-	icon_state = "borer"
-	origin_tech = "biotech=6"
+	H.sync(src)
+	return H

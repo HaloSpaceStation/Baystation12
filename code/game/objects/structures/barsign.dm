@@ -2,23 +2,46 @@
 	icon = 'icons/obj/barsigns.dmi'
 	icon_state = "empty"
 	anchored = 1
-	New()
-		ChangeSign(pick("pinkflamingo", "magmasea", "limbo", "rustyaxe", "armokbar", "brokendrum", "meadbay", "thedamnwall", "thecavern", "cindikate", "theorchard", "thesaucyclown", "theclownshead", "whiskeyimplant", "carpecarp", "robustroadhouse", "greytide", "theredshirt"))
-		return
-	proc/ChangeSign(var/Text)
-		src.icon_state = "[Text]"
-		//on = 0
-		//brightness_on = 4 //uncomment these when the lighting fixes get in
-		return
+	var/cult = 0
+
+/obj/structure/sign/double/barsign/proc/get_valid_states(initial=1)
+	. = icon_states(icon)
+	. -= "on"
+	. -= "narsiebistro"
+	. -= "empty"
+	if(initial)
+		. -= "Off"
+
+/obj/structure/sign/double/barsign/examine(mob/user)
+	..()
+	switch(icon_state)
+		if("Off")
+			user << "It appears to be switched off."
+		if("narsiebistro")
+			user << "It shows a picture of a large black and red being. Spooky!"
+		if("on", "empty")
+			user << "The lights are on, but there's no picture."
+		else
+			user << "It says '[icon_state]'"
+
+/obj/structure/sign/double/barsign/New()
+	..()
+	icon_state = pick(get_valid_states())
 
 /obj/structure/sign/double/barsign/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/card/id))
-		var/obj/item/weapon/card/id/card = I
+	if(cult)
+		return ..()
+
+	var/obj/item/weapon/card/id/card = I.GetID()
+	if(istype(card))
 		if(access_bar in card.GetAccess())
-			var/sign_type = input(user, "What would you like to change the barsign to?") as null|anything in list("Off", "Pink Flamingo", "Magma Sea", "Limbo", "Rusty Axe", "Armok Bar", "Broken Drum", "Mead Bay", "The Damn Wall", "The Cavern", "Cindi Kate", "The Orchard", "The Saucy Clown", "The Clowns Head", "Whiskey Implant", "Carpe Carp", "Robust Roadhouse", "Greytide", "The Redshirt")
-			if(sign_type == null)
+			var/sign_type = input(user, "What would you like to change the barsign to?") as null|anything in get_valid_states(0)
+			if(!sign_type)
 				return
-			else
-				sign_type = replacetext(lowertext(sign_type), " ", "") // lowercase, strip spaces - along with choices for user options, avoids huge if-else-else
-				src.ChangeSign(sign_type)
-				user << "You change the barsign."
+			icon_state = sign_type
+			user << "<span class='notice'>You change the barsign.</span>"
+		else
+			user << "<span class='warning'>Access denied.</span>"
+		return
+
+	return ..()

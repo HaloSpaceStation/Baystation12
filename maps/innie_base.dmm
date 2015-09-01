@@ -1,0 +1,175 @@
+"aa" = (/turf/space,/area/space)
+"ab" = (/turf/simulated/mineral,/area/space)
+"ac" = (/turf/unsimulated/wall,/area/innie_base)
+"ad" = (/obj/structure/table/steel,/obj/item/device/flashlight/lamp,/turf/unsimulated/floor{icon_state = "lino"},/area/innie_base)
+"ae" = (/obj/structure/table/steel,/obj/machinery/light{tag = "icon-tube1 (NORTH)"; icon_state = "tube1"; dir = 1},/turf/unsimulated/floor{icon_state = "lino"},/area/innie_base)
+"af" = (/obj/structure/table/steel,/turf/unsimulated/floor{icon_state = "lino"},/area/innie_base)
+"ag" = (/obj/machinery/light{dir = 1},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"ah" = (/obj/structure/table/rack,/obj/item/clothing/suit/space/syndicate/black/med,/obj/item/clothing/head/helmet/space/syndicate/black/med,/obj/item/clothing/suit/storage/vest/heavy/merc,/obj/item/weapon/storage/firstaid/combat,/obj/item/device/healthanalyzer,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"ai" = (/obj/structure/table/rack,/obj/item/weapon/tank/jetpack/oxygen,/obj/item/weapon/tank/jetpack/oxygen,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aj" = (/obj/structure/table/rack,/obj/item/clothing/suit/space/syndicate/black/red,/obj/item/clothing/head/helmet/space/syndicate/black/red,/obj/item/clothing/suit/storage/vest/heavy/merc,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"ak" = (/obj/structure/table/rack,/obj/item/weapon/tank/jetpack/oxygen,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"al" = (/obj/structure/table/rack,/obj/item/clothing/suit/space/syndicate/black/engie,/obj/item/clothing/head/helmet/space/syndicate/black/engie,/obj/item/clothing/suit/storage/vest/heavy/merc,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"am" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/turf/space,/area/innie_base)
+"an" = (/turf/unsimulated/wall/fakeglass{icon_state = "fakewindows"; dir = 4},/area/innie_base)
+"ao" = (/obj/structure/bed,/obj/item/weapon/bedsheet/brown,/turf/unsimulated/floor{icon_state = "lino"},/area/innie_base)
+"ap" = (/turf/unsimulated/floor{icon_state = "lino"},/area/innie_base)
+"aq" = (/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"ar" = (/turf/unsimulated/wall/fakeglass,/area/innie_base)
+"as" = (/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"at" = (/obj/machinery/light{tag = "icon-tube1 (NORTH)"; icon_state = "tube1"; dir = 1},/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"au" = (/obj/structure/window/reinforced/tinted{dir = 8; icon_state = "twindow"},/obj/structure/table/glass,/obj/item/weapon/circular_saw,/obj/item/weapon/surgicaldrill,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"av" = (/obj/structure/table/glass,/obj/item/weapon/FixOVein,/obj/item/stack/medical/advanced/bruise_pack,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aw" = (/obj/machinery/computer3/operating,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"ax" = (/obj/structure/table/rack,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"ay" = (/obj/machinery/bodyscanner,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"az" = (/obj/machinery/body_scanconsole,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aA" = (/obj/structure/window/reinforced/tinted{dir = 8; icon_state = "twindow"},/obj/structure/table/glass,/obj/item/weapon/bonegel,/obj/item/weapon/bonesetter,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aB" = (/obj/machinery/optable,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aC" = (/obj/machinery/iv_drip,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aD" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aE" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aF" = (/obj/structure/window/reinforced/tinted{dir = 8; icon_state = "twindow"},/obj/structure/table/glass,/obj/item/weapon/cautery,/obj/item/weapon/hemostat,/obj/item/weapon/scalpel,/obj/item/weapon/retractor,/obj/structure/window/reinforced/tinted,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aG" = (/obj/machinery/door/window/southleft,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aH" = (/obj/structure/window/reinforced/tinted,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aI" = (/obj/structure/table/rack,/obj/item/clothing/accessory/storage/black_vest,/obj/item/clothing/accessory/storage/black_vest,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aJ" = (/obj/structure/table/rack,/obj/item/weapon/gun/projectile/automatic/assault,/obj/item/weapon/gun/projectile/automatic/assault,/obj/item/weapon/gun/projectile/automatic/assault,/obj/item/weapon/gun/projectile/automatic/assault,/obj/item/weapon/gun/projectile/automatic/assault,/obj/item/weapon/gun/projectile/automatic/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/obj/item/ammo_magazine/assault,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aK" = (/obj/machinery/sleeper,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aL" = (/obj/structure/sink{dir = 4; icon_state = "sink"; pixel_x = 11; pixel_y = 0},/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aM" = (/obj/structure/table/rack,/obj/item/weapon/storage/box/anti_photons,/obj/item/weapon/storage/box/flashbangs,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aN" = (/obj/structure/table/rack,/obj/item/clothing/accessory/storage/brown_vest,/obj/item/clothing/accessory/storage/brown_vest,/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aO" = (/obj/structure/table/rack,/obj/item/weapon/gun/projectile/shotgun/pump/combat,/obj/item/weapon/gun/projectile/shotgun/pump/combat,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/obj/item/ammo_casing/shotgun/pellet,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aP" = (/obj/structure/table/glass,/obj/item/weapon/storage/firstaid/regular,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aQ" = (/obj/structure/table/glass,/obj/item/weapon/storage/firstaid/fire,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aR" = (/obj/structure/table/glass,/obj/item/weapon/storage/firstaid/o2,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aS" = (/obj/structure/table/glass,/obj/item/weapon/storage/firstaid/toxin,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aT" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"aU" = (/obj/machinery/recharger/wallcharger{pixel_x = -25},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aV" = (/obj/structure/table/rack,/obj/item/weapon/tank/emergency_oxygen/double,/obj/item/weapon/tank/emergency_oxygen/double,/obj/item/weapon/tank/emergency_oxygen/double,/obj/item/weapon/tank/emergency_oxygen/double,/obj/item/weapon/tank/emergency_oxygen/double,/obj/item/weapon/tank/emergency_oxygen/double,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aW" = (/turf/unsimulated/wall/fakeglass{dir = 1; icon_state = "fakewindows"},/area/innie_base)
+"aX" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aY" = (/obj/structure/table/rack,/obj/item/weapon/gun/energy/taser,/obj/machinery/recharger/wallcharger{pixel_x = -25},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"aZ" = (/obj/structure/table/rack,/obj/item/weapon/gun/projectile/magnum,/obj/item/weapon/gun/projectile/magnum,/obj/item/weapon/gun/projectile/magnum,/obj/item/weapon/gun/projectile/magnum,/obj/item/weapon/gun/projectile/magnum,/obj/item/weapon/gun/projectile/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/obj/item/ammo_magazine/magnum,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"ba" = (/turf/unsimulated/wall/fakeglass{icon_state = "fakewindows2"; dir = 1},/area/innie_base)
+"bb" = (/obj/machinery/door/airlock/centcom{name = "Barracks"; req_access = list(150)},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bc" = (/obj/machinery/door/airlock/glass{name = "Medical Facility"; req_access = list(150)},/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"bd" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/innie_base)
+"be" = (/obj/machinery/light,/turf/unsimulated/floor{icon = 'icons/turf/shuttle.dmi'; icon_state = "floor3"},/area/innie_base)
+"bf" = (/obj/machinery/door/airlock/multi_tile/glass{autoclose = 1; dir = 2; name = "Armory"; req_access = list(150)},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bg" = (/obj/machinery/light,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bh" = (/obj/structure/table/rack,/obj/item/clothing/suit/space/syndicate/black/green,/obj/item/clothing/head/helmet/space/syndicate/black/green,/obj/item/clothing/suit/storage/vest/heavy/merc,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bi" = (/obj/structure/table/rack,/obj/item/weapon/tank/jetpack/oxygen,/obj/item/weapon/tank/jetpack/oxygen,/obj/machinery/light,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bj" = (/obj/structure/table/rack,/obj/item/clothing/suit/space/syndicate/black/blue,/obj/item/clothing/head/helmet/space/syndicate/black/blue,/obj/item/clothing/suit/storage/vest/heavy/merc,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bk" = (/obj/structure/table/rack,/obj/item/weapon/tank/jetpack/oxygen,/obj/machinery/light,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bl" = (/obj/structure/table/rack,/obj/item/clothing/suit/space/syndicate/black/orange,/obj/item/clothing/head/helmet/space/syndicate/black/orange,/obj/item/clothing/suit/storage/vest/heavy/merc,/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bm" = (/obj/machinery/embedded_controller/radio/simple_docking_controller{id_tag = "innie_base"; pixel_x = 25},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bn" = (/obj/machinery/door/airlock/external{frequency = 1379; id_tag = "innie_base_hatch"; name = "Shuttle"; req_access = list(150)},/turf/unsimulated/floor{dir = 2; icon_state = "dark"},/area/innie_base)
+"bo" = (/turf/simulated/shuttle/wall{icon_state = "wall3"},/area/innie_base/shuttle)
+"bp" = (/obj/machinery/door/airlock/external{frequency = 1379; id_tag = "innie_shuttle_outer"; name = "Shuttle"; req_access = list(150)},/obj/machinery/door/blast/regular/open{id = "sinnie"},/turf/simulated/shuttle/plating,/area/innie_base/shuttle)
+"bq" = (/turf/simulated/shuttle/wall{dir = 8; icon_state = "diagonalWall3"},/area/innie_base/shuttle)
+"br" = (/turf/simulated/shuttle/wall{dir = 1; icon_state = "diagonalWall3"},/area/innie_base/shuttle)
+"bs" = (/obj/machinery/embedded_controller/radio/airlock/docking_port{id_tag = "innie_shuttle"; pixel_x = -25; req_access = list(150); tag_airpump = ""; tag_chamber_sensor = ""; tag_exterior_door = ""; tag_interior_door = ""},/obj/machinery/atmospherics/unary/vent_pump{frequency = 1379; id_tag = "innie_shuttle_pump"},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bt" = (/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bu" = (/obj/machinery/light{tag = "icon-tube1 (NORTH)"; icon_state = "tube1"; dir = 1},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bv" = (/obj/machinery/telecomms/allinone{intercept = 1},/turf/simulated/shuttle/floor{icon_state = "floor6"},/area/innie_base/shuttle)
+"bw" = (/obj/machinery/airlock_sensor{id_tag = "innie_shuttle_sensor"; master_tag = ""; pixel_x = -25},/obj/machinery/atmospherics/pipe/simple/visible/black,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bx" = (/obj/machinery/atmospherics/unary/vent_pump{frequency = 1379; id_tag = "innie_shuttle_pump"},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"by" = (/obj/machinery/door/airlock/external{frequency = 1379; id_tag = "innie_shuttle_inner"; name = "Shuttle"; req_access = list(150)},/obj/machinery/atmospherics/pipe/simple/visible/black,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bz" = (/obj/machinery/atmospherics/pipe/simple/visible/black,/obj/machinery/door/airlock/external{frequency = 1379; id_tag = "innie_shuttle_inner"; name = "Shuttle"; req_access = list(150)},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bA" = (/turf/space,/turf/simulated/shuttle/wall{dir = 1; icon_state = "diagonalWall3"},/area/innie_base/shuttle)
+"bB" = (/obj/structure/closet/secure_closet/medical_wall{pixel_y = 32; req_access = list(150)},/obj/item/device/healthanalyzer,/obj/item/weapon/storage/firstaid/combat,/obj/item/weapon/reagent_containers/pill/paracetamol,/obj/item/weapon/reagent_containers/pill/paracetamol,/obj/item/weapon/reagent_containers/pill/paracetamol,/obj/item/weapon/reagent_containers/pill/inaprovaline,/obj/item/weapon/reagent_containers/pill/inaprovaline,/obj/item/weapon/reagent_containers/pill/dylovene,/obj/item/weapon/reagent_containers/pill/dexalin,/obj/item/weapon/reagent_containers/pill/cyanide,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bC" = (/obj/structure/closet/syndicate/resources/everything,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bD" = (/obj/structure/closet/syndicate/suit{name = "suit closet"},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bE" = (/obj/machinery/atmospherics/pipe/simple/visible/black,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bF" = (/obj/machinery/atmospherics/pipe/simple/visible/black,/obj/machinery/access_button/airlock_interior{master_tag = "innie_shuttle"; pixel_x = 20; pixel_y = 25},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bG" = (/obj/machinery/computer/pod/old/syndicate{id = "sinnie"},/obj/structure/table/steel,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bH" = (/obj/machinery/atmospherics/pipe/tank/air,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bI" = (/obj/structure/table/rack,/obj/item/weapon/storage/toolbox/electrical,/obj/item/weapon/storage/belt/utility,/obj/item/device/multitool,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bJ" = (/obj/structure/table/steel,/obj/item/clothing/gloves/yellow,/obj/item/clothing/gloves/yellow,/obj/item/clothing/gloves/yellow,/obj/item/clothing/glasses/night,/obj/item/clothing/glasses/night,/obj/item/clothing/glasses/night,/obj/item/device/assembly/signaler,/obj/item/device/assembly/signaler,/obj/item/device/assembly/signaler,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bK" = (/obj/structure/table/steel,/obj/item/clothing/ears/earmuffs,/obj/item/clothing/ears/earmuffs,/obj/item/clothing/ears/earmuffs,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bL" = (/obj/structure/shuttle/engine/heater{icon_state = "heater"; dir = 4},/obj/structure/window/phoronreinforced{dir = 8},/turf/simulated/floor/airless,/area/innie_base/shuttle)
+"bM" = (/obj/structure/shuttle/engine/propulsion{icon_state = "burst_r"; dir = 4},/turf/space,/area/innie_base/shuttle)
+"bN" = (/obj/machinery/atmospherics/pipe/simple/visible/black{dir = 5},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bO" = (/obj/machinery/atmospherics/pipe/manifold/visible/black,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bP" = (/obj/machinery/meter,/obj/machinery/atmospherics/pipe/simple/visible/black{dir = 4},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bQ" = (/obj/machinery/atmospherics/pipe/simple/visible/black{dir = 9},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bR" = (/obj/structure/table/steel,/obj/effect/spawner/newbomb/timer/syndicate,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bS" = (/obj/structure/shuttle/engine/propulsion{dir = 4; icon_state = "propulsion"},/turf/space,/area/innie_base/shuttle)
+"bT" = (/obj/machinery/computer/shuttle_control/multi/innie,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bU" = (/obj/structure/bed/chair{dir = 1},/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bV" = (/obj/structure/table/steel,/obj/effect/spawner/newbomb/timer/syndicate,/obj/item/weapon/storage/toolbox/syndicate,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bW" = (/obj/machinery/computer3/customs,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bX" = (/obj/structure/bed/chair,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bY" = (/obj/structure/table/steel,/obj/item/device/aicard,/obj/item/weapon/storage/toolbox/syndicate,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"bZ" = (/obj/machinery/light,/turf/simulated/shuttle/floor4,/area/innie_base/shuttle)
+"ca" = (/obj/structure/shuttle/engine/propulsion{icon_state = "propulsion_l"; dir = 4},/turf/space,/area/innie_base/shuttle)
+"cb" = (/turf/space,/turf/simulated/shuttle/wall{dir = 4; icon_state = "diagonalWall3"},/area/innie_base/shuttle)
+"cc" = (/turf/simulated/shuttle/wall{icon_state = "diagonalWall3"},/area/innie_base/shuttle)
+"cd" = (/turf/simulated/shuttle/wall{dir = 4; icon_state = "diagonalWall3"},/area/innie_base/shuttle)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababaaaaaaaaaaaaaaaaababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababababababababababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababababababababababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababacacacacacabababacacacacacacacacacababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababacacadaeafacacababacagahaiajakalagacababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaamanacacacacacacacacaoapapapaoacababacaqaqaqaqaqaqaqacabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaarasatasauavawatacacaoapapapaoacababacaxaqaqaqaqaqaxacabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabacayazasaAasaBaCacacaoapapapaoacababacaDaqaqaqaqaqaqacabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabacaEasasaFaGaHaHacacacapapapacacababacaIaqaqaqaqaqaJacabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabacaKasasasasasaLacabacaDaqaqacabababacaqaqaqaqaqaqaMacabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabacasasasasasasasacabacaqaqaqacabababacaNaqaqaqaqaqaOacabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabacaPaQaRaSasasaTacabacaqaqaqacabababacaUaqaqaqaqaqaVaWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabacacacacacasasacacabacaqaqaXacabababacaYaqaqaqaqaqaZbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababacasasacacacacacbbacacacacacacaUaqaqaqaqaqaqbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababacasasbcaqagaqaqaqaqaqaqagaqbdaqaqaqaqaqaqaqbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababacbeasbcaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababacacacacaqaqaqaqaqaqaqaqaqaqbfaqaqaqaqaqaqaqbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababacaqaqaqaqaqbgaqaqaqaqbdaqbhbibjbkblaqaraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababacacacacacacacacaqaXacacacacacacacacacacaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababacaqaqacabababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababacaqaqacabababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababacaqaqacababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabacaqaqacababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacaDbmacabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacbnbnacababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacaqaqacababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacbnbnacababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobpbpboaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqbobobobobobobraaaaaaaabobsbtboaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobubtbtbtbtbvboaaaaaaaabobwbxboaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobtbtbtbtbtbtbobobobobobobybzbobobobobobobAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobtbtbtbtbtbtbtbtbubBbCbDbEbFbGbHbIbJbKbLbMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobtbtbtbtbtbtbtbtbtbtbtbtbNbObPbQbtbtbRbLbSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobTbtbtbtbtbtbtbUbUbUbtbtbtbtbtbtbtbtbVbLbSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobWbtbtbtbtbtbtbXbXbXbtbtbtbtbtbtbtbtbVbLbSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobtbtbtbtbtbtbtbtbtbtbtbtbtbtbtbtbtbtbYbLbSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobtbtbtbtbtbtbZbtbtbtbtbtbtbtbtbZbIbJbKbLcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobtbtbtbtbtbtbobobobobobobobobobobobobobocbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabobZbtbtbtbtbZboaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaccbobobobobobocdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

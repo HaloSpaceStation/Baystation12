@@ -1,6 +1,7 @@
 //Vox pinning weapon.
 /obj/item/weapon/gun/launcher/spikethrower
-	name = "vox spike thrower"
+
+	name = "spike thrower"
 	desc = "A vicious alien projectile weapon. Parts of it quiver gelatinously, as though the thing is insectile and alive."
 
 	var/last_regen = 0
@@ -19,7 +20,7 @@
 	processing_objects.Add(src)
 	last_regen = world.time
 
-/obj/item/weapon/gun/launcher/spikethrower/Del()
+/obj/item/weapon/gun/launcher/spikethrower/Destroy()
 	processing_objects.Remove(src)
 	..()
 
@@ -39,7 +40,7 @@
 /obj/item/weapon/gun/launcher/spikethrower/special_check(user)
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
-		if(H.species && H.species.name != "Vox")
+		if(H.species && H.species.get_bodytype() != "Vox")
 			user << "<span class='warning'>\The [src] does not respond to you!</span>"
 			return 0
 	return ..()

@@ -71,7 +71,7 @@
 
 	if(!T || !src || src.stat) return
 
-	if(get_dist(get_turf(T), get_turf(src)) > 6) return
+	if(get_dist(get_turf(T), get_turf(src)) > 4) return
 
 	if(last_special > world.time)
 		return
@@ -83,8 +83,8 @@
 	last_special = world.time + 75
 	status_flags |= LEAPING
 
-	src.visible_message("<span class='warning'><b>\The [src]</b> leaps at [T]!</span>")
-	src.throw_at(get_step(get_turf(T),get_turf(src)), 5, 1, src)
+	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
+	src.throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/voice/shriek1.ogg', 50, 1)
 
 	sleep(5)
@@ -92,13 +92,13 @@
 	if(status_flags & LEAPING) status_flags &= ~LEAPING
 
 	if(!src.Adjacent(T))
-		src << "\red You miss!"
+		src << "<span class='warning'>You miss!</span>"
 		return
 
-	T.Weaken(5)
+	T.Weaken(3)
 
-	//Only official cool kids get the grab and no self-prone.
-	if(!(src.mind && src.mind.special_role))
+	// Pariahs are not good at leaping. This is snowflakey, pls fix.
+	if(species.name == "Vox Pariah")
 		src.Weaken(5)
 		return
 
@@ -118,7 +118,7 @@
 	else
 		r_hand = G
 
-	G.state = GRAB_AGGRESSIVE
+	G.state = GRAB_PASSIVE
 	G.icon_state = "grabbed1"
 	G.synch()
 
@@ -175,7 +175,7 @@
 
 	text = input("What would you like to say?", "Speak to creature", null, null)
 
-	text = trim(sanitize(copytext(text, 1, MAX_MESSAGE_LEN)))
+	text = sanitize(text)
 
 	if(!text) return
 
@@ -213,9 +213,46 @@
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
-	var/msg = sanitize(copytext(input("Message:", "Psychic Whisper") as text|null, 1, MAX_MESSAGE_LEN))
+	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("PsychicWhisper: [key_name(src)]->[M.key] : [msg]")
 		M << "\green You hear a strange, alien voice in your head... \italic [msg]"
 		src << "\green You said: \"[msg]\" to [M]"
 	return
+
+/mob/living/carbon/human/proc/diona_split_nymph()
+	set name = "Split"
+	set desc = "Split your humanoid form into its constituent nymphs."
+	set category = "Abilities"
+
+	var/turf/T = get_turf(src)
+
+	var/mob/living/carbon/alien/diona/S = new(T)
+	S.set_dir(dir)
+	if(mind)
+		mind.transfer_to(S)
+
+	message_admins("\The [src] has split into nymphs; player now controls [key_name_admin(S)]")
+	log_admin("\The [src] has split into nymphs; player now controls [key_name(S)]")
+
+	var/nymphs = 1
+
+	for(var/mob/living/carbon/alien/diona/D in src)
+		nymphs++
+		D.loc = T
+		D.set_dir(pick(NORTH, SOUTH, EAST, WEST))
+
+	if(nymphs < 5)
+		for(var/i in nymphs to 4)
+			var/mob/M = new /mob/living/carbon/alien/diona(T)
+			M.set_dir(pick(NORTH, SOUTH, EAST, WEST))
+
+
+	for(var/obj/item/W in src)
+		drop_from_inventory(W)
+
+	visible_message("<span class='warning'>\The [src] quivers slightly, then splits apart with a wet slithering noise.</span>")
+
+	qdel(src)
+
+

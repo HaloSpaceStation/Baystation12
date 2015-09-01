@@ -5,11 +5,12 @@
 	var/min_weight	= 0 // The minimum weight that this event will have. Only used if non-zero.
 	var/max_weight	= 0 // The maximum weight that this event will have. Only use if non-zero.
 	var/severity 	= 0 // The current severity of this event
-	var/one_shot	= 0	//If true, then the event will not be re-added to the list of available events
+	var/one_shot	= 0	// If true, then the event will not be re-added to the list of available events
+	var/add_to_queue= 1	// If true, add back to the queue of events upon finishing.
 	var/list/role_weights = list()
 	var/datum/event/event_type
 
-/datum/event_meta/New(var/event_severity, var/event_name, var/datum/event/type, var/event_weight, var/list/job_weights, var/is_one_shot = 0, var/min_event_weight = 0, var/max_event_weight = 0)
+/datum/event_meta/New(var/event_severity, var/event_name, var/datum/event/type, var/event_weight, var/list/job_weights, var/is_one_shot = 0, var/min_event_weight = 0, var/max_event_weight = 0, var/add_to_queue = 1)
 	name = event_name
 	severity = event_severity
 	event_type = type
@@ -17,6 +18,7 @@
 	weight = event_weight
 	min_weight = min_event_weight
 	max_weight = max_event_weight
+	src.add_to_queue = add_to_queue
 	if(job_weights)
 		role_weights = job_weights
 
@@ -36,16 +38,6 @@
 	if(max_weight && total_weight > max_weight) total_weight = max_weight
 
 	return total_weight
-
-/datum/event_meta/alien/get_weight(var/list/active_with_role)
-	if(config.aliens_allowed)
-		return ..(active_with_role)
-	return 0
-
-/datum/event_meta/ninja/get_weight(var/list/active_with_role)
-	if(config.ninjas_allowed)
-		return ..(active_with_role)
-	return 0
 
 /datum/event	//NOTE: Times are measured in master controller ticks!
 	var/startWhen		= 0	//When in the lifetime to call start().

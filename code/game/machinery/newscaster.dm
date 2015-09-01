@@ -123,7 +123,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 /obj/machinery/newscaster
 	name = "newscaster"
-	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
+	desc = "A standard newsfeed handler for use on commercial space stations. All the news you absolutely have no use for, in one place!"
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "newscaster_normal"
 	var/isbroken = 0  //1 if someone banged it with something heavy
@@ -164,7 +164,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	var/c_locked=0;        //Will our new channel be locked to public submissions?
 	var/hitstaken = 0      //Death at 3 hits from an item with force>=15
 	var/datum/feed_channel/viewing_channel = null
-	luminosity = 0
+	light_range = 0
 	anchored = 1
 
 
@@ -180,7 +180,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	src.update_icon() //for any custom ones on the map...
 	..()                                //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
 
-/obj/machinery/newscaster/Del()
+/obj/machinery/newscaster/Destroy()
 	allCasters -= src
 	..()
 
@@ -223,12 +223,12 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 /obj/machinery/newscaster/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			del(src)
+			qdel(src)
 			return
 		if(2.0)
 			src.isbroken=1
 			if(prob(50))
-				del(src)
+				qdel(src)
 			else
 				src.update_icon() //can't place it above the return and outside the if-else. or we might get runtimes of null.update_icon() if(prob(50)) goes in.
 			return
@@ -277,7 +277,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					dat+="<HR><B>Feed Security functions:</B><BR>"
 					dat+="<BR><A href='?src=\ref[src];menu_wanted=1'>[(wanted_already) ? ("Manage") : ("Publish")] \"Wanted\" Issue</A>"
 					dat+="<BR><A href='?src=\ref[src];menu_censor_story=1'>Censor Feed Stories</A>"
-					dat+="<BR><A href='?src=\ref[src];menu_censor_channel=1'>Mark Feed Channel with Nanotrasen D-Notice</A>"
+					dat+="<BR><A href='?src=\ref[src];menu_censor_channel=1'>Mark Feed Channel with [company_name] D-Notice</A>"
 				dat+="<BR><HR>The newscaster recognises you as: <FONT COLOR='green'>[src.scanned_user]</FONT>"
 			if(1)
 				dat+= "Station Feed Channels<HR>"
@@ -358,7 +358,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			if(9)
 				dat+="<B>[src.viewing_channel.channel_name]: </B><FONT SIZE=1>\[created by: <FONT COLOR='maroon'>[src.viewing_channel.author]</FONT>\]</FONT><HR>"
 				if(src.viewing_channel.censored)
-					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a Nanotrasen D-Notice.<BR>"
+					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [company_name] D-Notice.<BR>"
 					dat+="No further feed story additions are allowed while the D-Notice is in effect.</FONT><BR><BR>"
 				else
 					if( isemptylist(src.viewing_channel.messages) )
@@ -378,7 +378,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				dat+="<BR><HR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
 				dat+="<BR><A href='?src=\ref[src];setScreen=[1]'>Back</A>"
 			if(10)
-				dat+="<B>Nanotrasen Feed Censorship Tool</B><BR>"
+				dat+="<B>[company_name] Feed Censorship Tool</B><BR>"
 				dat+="<FONT SIZE=1>NOTE: Due to the nature of news Feeds, total deletion of a Feed Story is not possible.<BR>"
 				dat+="Keep in mind that users attempting to view a censored feed will instead see the \[REDACTED\] tag above it.</FONT>"
 				dat+="<HR>Select Feed channel to get Stories from:<BR>"
@@ -389,7 +389,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						dat+="<A href='?src=\ref[src];pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
 				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Cancel</A>"
 			if(11)
-				dat+="<B>Nanotrasen D-Notice Handler</B><HR>"
+				dat+="<B>[company_name] D-Notice Handler</B><HR>"
 				dat+="<FONT SIZE=1>A D-Notice is to be bestowed upon the channel if the handling Authority deems it as harmful for the station's"
 				dat+="morale, integrity or disciplinary behaviour. A D-Notice will render a channel unable to be updated by anyone, without deleting any feed"
 				dat+="stories it might contain at the time. You can lift a D-Notice if you have the required access at any time.</FONT><HR>"
@@ -416,7 +416,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				dat+="<B>[src.viewing_channel.channel_name]: </B><FONT SIZE=1>\[ created by: <FONT COLOR='maroon'>[src.viewing_channel.author]</FONT> \]</FONT><BR>"
 				dat+="Channel messages listed below. If you deem them dangerous to the station, you can <A href='?src=\ref[src];toggle_d_notice=\ref[src.viewing_channel]'>Bestow a D-Notice upon the channel</A>.<HR>"
 				if(src.viewing_channel.censored)
-					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a Nanotrasen D-Notice.<BR>"
+					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [company_name] D-Notice.<BR>"
 					dat+="No further feed story additions are allowed while the D-Notice is in effect.</FONT><BR><BR>"
 				else
 					if( isemptylist(src.viewing_channel.messages) )
@@ -496,9 +496,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
 		usr.set_machine(src)
 		if(href_list["set_channel_name"])
-			src.channel_name = strip_html(input(usr, "Provide a Feed Channel Name", "Network Channel Handler", ""))
-			while (findtext(src.channel_name," ") == 1)
-				src.channel_name = copytext(src.channel_name,2,lentext(src.channel_name)+1)
+			src.channel_name = sanitizeSafe(input(usr, "Provide a Feed Channel Name", "Network Channel Handler", ""), MAX_LNAME_LEN)
 			src.updateUsrDialog()
 			//src.update_icon()
 
@@ -541,9 +539,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			src.updateUsrDialog()
 
 		else if(href_list["set_new_message"])
-			src.msg = strip_html(input(usr, "Write your Feed story", "Network Channel Handler", ""))
-			while (findtext(src.msg," ") == 1)
-				src.msg = copytext(src.msg,2,lentext(src.msg)+1)
+			src.msg = sanitize(input(usr, "Write your Feed story", "Network Channel Handler", ""))
 			src.updateUsrDialog()
 
 		else if(href_list["set_attachment"])
@@ -600,15 +596,11 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			src.updateUsrDialog()
 
 		else if(href_list["set_wanted_name"])
-			src.channel_name = strip_html(input(usr, "Provide the name of the Wanted person", "Network Security Handler", ""))
-			while (findtext(src.channel_name," ") == 1)
-				src.channel_name = copytext(src.channel_name,2,lentext(src.channel_name)+1)
+			src.channel_name = sanitizeSafe(input(usr, "Provide the name of the Wanted person", "Network Security Handler", ""), MAX_LNAME_LEN)
 			src.updateUsrDialog()
 
 		else if(href_list["set_wanted_desc"])
-			src.msg = strip_html(input(usr, "Provide the a description of the Wanted person and any other details you deem important", "Network Security Handler", ""))
-			while (findtext(src.msg," ") == 1)
-				src.msg = copytext(src.msg,2,lentext(src.msg)+1)
+			src.msg = sanitize(input(usr, "Provide the a description of the Wanted person and any other details you deem important", "Network Security Handler", ""))
 			src.updateUsrDialog()
 
 		else if(href_list["submit_wanted"])
@@ -630,7 +622,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						src.screen = 15
 					else
 						if(news_network.wanted_issue.is_admin_message)
-							alert("The wanted issue has been distributed by a Nanotrasen higherup. You cannot edit it.","Ok")
+							alert("The wanted issue has been distributed by a [company_name] higherup. You cannot edit it.","Ok")
 							return
 						news_network.wanted_issue.author = src.channel_name
 						news_network.wanted_issue.body = src.msg
@@ -643,7 +635,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["cancel_wanted"])
 			if(news_network.wanted_issue.is_admin_message)
-				alert("The wanted issue has been distributed by a Nanotrasen higherup. You cannot take it down.","Ok")
+				alert("The wanted issue has been distributed by a [company_name] higherup. You cannot take it down.","Ok")
 				return
 			var/choice = alert("Please confirm Wanted Issue removal","Network Security Handler","Confirm","Cancel")
 			if(choice=="Confirm")
@@ -659,7 +651,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["censor_channel_author"])
 			var/datum/feed_channel/FC = locate(href_list["censor_channel_author"])
 			if(FC.is_admin_channel)
-				alert("This channel was created by a Nanotrasen Officer. You cannot censor it.","Ok")
+				alert("This channel was created by a [company_name] Officer. You cannot censor it.","Ok")
 				return
 			if(FC.author != "<B>\[REDACTED\]</B>")
 				FC.backup_author = FC.author
@@ -672,7 +664,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["censor_channel_story_author"])
 			var/datum/feed_message/MSG = locate(href_list["censor_channel_story_author"])
 			if(MSG.is_admin_message)
-				alert("This message was created by a Nanotrasen Officer. You cannot censor its author.","Ok")
+				alert("This message was created by a [company_name] Officer. You cannot censor its author.","Ok")
 				return
 			if(MSG.author != "<B>\[REDACTED\]</B>")
 				MSG.backup_author = MSG.author
@@ -685,7 +677,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["censor_channel_story_body"])
 			var/datum/feed_message/MSG = locate(href_list["censor_channel_story_body"])
 			if(MSG.is_admin_message)
-				alert("This channel was created by a Nanotrasen Officer. You cannot censor it.","Ok")
+				alert("This channel was created by a [company_name] Officer. You cannot censor it.","Ok")
 				return
 			if(MSG.body != "<B>\[REDACTED\]</B>")
 				MSG.backup_body = MSG.body
@@ -711,7 +703,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["toggle_d_notice"])
 			var/datum/feed_channel/FC = locate(href_list["toggle_d_notice"])
 			if(FC.is_admin_channel)
-				alert("This channel was created by a Nanotrasen Officer. You cannot place a D-Notice upon it.","Ok")
+				alert("This channel was created by a [company_name] Officer. You cannot place a D-Notice upon it.","Ok")
 				return
 			FC.censored = !FC.censored
 			FC.update()
@@ -792,7 +784,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			photo_data.photo.loc = src.loc
 			if(!issilicon(user))
 				user.put_in_inactive_hand(photo_data.photo)
-		del(photo_data)
+		qdel(photo_data)
 
 	if(istype(user.get_active_hand(), /obj/item/weapon/photo))
 		var/obj/item/photo = user.get_active_hand()
@@ -814,7 +806,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 /obj/item/weapon/newspaper
 	name = "newspaper"
-	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Stations."
+	desc = "An issue of The Griffon, the newspaper circulating aboard most stations."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "newspaper"
 	w_class = 2	//Let's make it fit in trashbags!
@@ -835,7 +827,7 @@ obj/item/weapon/newspaper/attack_self(mob/user as mob)
 		switch(screen)
 			if(0) //Cover
 				dat+="<DIV ALIGN='center'><B><FONT SIZE=6>The Griffon</FONT></B></div>"
-				dat+="<DIV ALIGN='center'><FONT SIZE=2>Nanotrasen-standard newspaper, for use on Nanotrasen© Space Facilities</FONT></div><HR>"
+				dat+="<DIV ALIGN='center'><FONT SIZE=2>[company_name]-standard newspaper, for use on [company_name]© Space Facilities</FONT></div><HR>"
 				if(isemptylist(src.news_content))
 					if(src.important_message)
 						dat+="Contents:<BR><ul><B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [src.pages+2]\]</FONT><BR></ul>"
@@ -944,8 +936,8 @@ obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		if(src.scribble_page == src.curr_page)
 			user << "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>"
 		else
-			var/s = strip_html( input(user, "Write something", "Newspaper", "") )
-			s = sanitize(copytext(s, 1, MAX_MESSAGE_LEN))
+			var/s = sanitize(input(user, "Write something", "Newspaper", ""))
+			s = sanitize(s)
 			if (!s)
 				return
 			if (!in_range(src, usr) && src.loc != usr)

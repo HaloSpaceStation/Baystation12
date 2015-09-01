@@ -6,7 +6,7 @@
 	w_class = 3.0
 	throw_speed = 2
 	throw_range = 4
-	flags = CONDUCT //Copied this from old code, so this may or may not be necessary
+	flags = CONDUCT | PROXMOVE
 	var/status = 0   //0 - not readied //1 - bomb finished with welder
 	var/obj/item/device/assembly_holder/bombassembly = null   //The first part of the bomb is an assembly holder, holding an igniter+some device
 	var/obj/item/weapon/tank/bombtank = null //the second part of the bomb is a phoron tank
@@ -39,7 +39,7 @@
 		bombtank.master = null
 		bombtank = null
 
-		del(src)
+		qdel(src)
 		return
 	if((istype(W, /obj/item/weapon/weldingtool) && W:welding))
 		if(!status)
@@ -144,8 +144,8 @@
 		ground_zero.hotspot_expose(1000, 125)
 
 	if(master)
-		del(master)
-	del(src)
+		qdel(master)
+	qdel(src)
 
 /obj/item/weapon/tank/proc/release()	//This happens when the bomb is not welded. Tank contents are just spat out.
 	var/datum/gas_mixture/removed = air_contents.remove(air_contents.total_moles)
