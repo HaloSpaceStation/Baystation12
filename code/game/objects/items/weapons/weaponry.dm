@@ -205,7 +205,7 @@
 	qdel(src)
 
 /obj/effect/energy_net/bullet_act(var/obj/item/projectile/Proj)
-	health -= Proj.damage
+	health -= Proj.get_structure_damage()
 	healthcheck()
 	return 0
 
@@ -214,10 +214,6 @@
 	healthcheck()
 
 /obj/effect/energy_net/blob_act()
-	health = 0
-	healthcheck()
-
-/obj/effect/energy_net/meteorhit()
 	health = 0
 	healthcheck()
 

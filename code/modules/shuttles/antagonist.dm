@@ -7,3 +7,8 @@
 	name = "mercenary shuttle control console"
 	req_access = list(access_syndicate)
 	shuttle_tag = "Mercenary"
+
+/obj/machinery/computer/shuttle_control/multi/innie
+	name = "insurrectionist shuttle control console"
+	req_access = list(access_syndicate)
+	shuttle_tag = "Innie"

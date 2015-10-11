@@ -19,10 +19,13 @@
 	var/local_transmit //If set, can only speak to others of the same type within a short range.
 
 	var/sensor_mode = 0 //Determines the current HUD.
-	var/mob/living/cameraFollow = null
 
 	var/next_alarm_notice
 	var/list/datum/alarm/queued_alarms = new()
+
+	var/list/access_rights
+	var/obj/item/weapon/card/id/idcard
+	var/idcard_type = /obj/item/weapon/card/id/synthetic
 
 	#define SEC_HUD 1 //Security HUD mode
 	#define MED_HUD 2 //Medical HUD mode
@@ -31,6 +34,7 @@
 	silicon_mob_list |= src
 	..()
 	add_language("Galactic Common")
+	init_id()
 	init_subsystems()
 
 /mob/living/silicon/Destroy()
@@ -38,6 +42,12 @@
 	for(var/datum/alarm_handler/AH in alarm_manager.all_handlers)
 		AH.unregister(src)
 	..()
+
+/mob/living/silicon/proc/init_id()
+	if(idcard)
+		return
+	idcard = new idcard_type(src)
+	set_id_info(idcard)
 
 /mob/living/silicon/proc/SetName(pickedName as text)
 	real_name = pickedName
@@ -128,6 +138,9 @@
 			drowsyness = max(drowsyness,(effect/(blocked+1)))
 	updatehealth()
 	return 1*/
+
+/mob/living/silicon/attack_throat()
+	return
 
 /proc/islinked(var/mob/living/silicon/robot/bot, var/mob/living/silicon/ai/ai)
 	if(!istype(bot) || !istype(ai))
@@ -342,6 +355,11 @@
 /mob/living/silicon/proc/is_malf_or_traitor()
 	return is_traitor() || is_malf()
 
+/mob/living/silicon/adjustEarDamage()
+	return
+
+/mob/living/silicon/setEarDamage()
+	return
 
 /mob/living/silicon/reset_view()
 	..()

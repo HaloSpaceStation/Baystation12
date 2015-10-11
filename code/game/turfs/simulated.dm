@@ -3,6 +3,10 @@
 	var/wet = 0
 	var/image/wet_overlay = null
 
+	//Mining resources (for the large drills).
+	var/has_resources
+	var/list/resources
+
 	var/thermite = 0
 	oxygen = MOLES_O2STANDARD
 	nitrogen = MOLES_N2STANDARD
@@ -24,14 +28,13 @@
 
 /turf/simulated/Entered(atom/A, atom/OL)
 	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		usr << "\red Movement is admin-disabled." //This is to identify lag problems
+		usr << "<span class='danger'>Movement is admin-disabled.</span>" //This is to identify lag problems
 		return
 
 	if (istype(A,/mob/living))
 		var/mob/living/M = A
 		if(M.lying)
-			..()
-			return
+			return ..()
 
 		// Ugly hack :( Should never have multiple plants in the same tile.
 		var/obj/effect/plant/plant = locate() in contents

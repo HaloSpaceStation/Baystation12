@@ -1,0 +1,5 @@
+"a" = (/obj/effect/mapinfo/precreated/radiate,/turf/space,/area/space)
+
+(1,1,1) = {"
+a
+"}

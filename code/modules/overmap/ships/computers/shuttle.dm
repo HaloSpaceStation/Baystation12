@@ -1,5 +1,5 @@
 //Shuttle controller computer for shuttles going between sectors
-/datum/shuttle/ferry/var/range = 0	//how many overmap tiles can shuttle go, for picking destinatiosn and returning.
+/datum/shuttle/ferry/var/range = 5	//how many overmap tiles can shuttle go, for picking destinatiosn and returning.
 /obj/machinery/computer/shuttle_control/explore
 	name = "exploration shuttle console"
 	shuttle_tag = "Exploration"

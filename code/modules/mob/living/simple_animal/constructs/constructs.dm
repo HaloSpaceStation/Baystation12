@@ -27,7 +27,7 @@
 	show_stat_health = 1
 	faction = "cult"
 	supernatural = 1
-	see_invisible = SEE_INVISIBLE_OBSERVER_NOLIGHTING
+	see_invisible = SEE_INVISIBLE_NOLIGHTING
 	var/nullblock = 0
 
 	mob_swap_flags = HUMAN|SIMPLE_ANIMAL|SLIME|MONKEY
@@ -59,7 +59,7 @@
 	if(istype(user, /mob/living/simple_animal/construct/builder))
 		if(health < maxHealth)
 			adjustBruteLoss(-5)
-			user.visible_message("<span class='notice'>\The [user]</b> mends some of \the [src]'s wounds.</span>")
+			user.visible_message("<span class='notice'>\The [user] mends some of \the [src]'s wounds.</span>")
 		else
 			user << "<span class='notice'>\The [src] is undamaged.</span>"
 		return

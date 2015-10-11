@@ -28,14 +28,14 @@
 		var/obj/item/weapon/weldingtool/WT = W
 
 		if(get_amount() < 2)
-			user << "\red You need at least two rods to do this."
+			user << "<span class='warning'>You need at least two rods to do this.</span>"
 			return
 
 		if(WT.remove_fuel(0,user))
 			var/obj/item/stack/material/steel/new_item = new(usr.loc)
 			new_item.add_to_stacks(usr)
 			for (var/mob/M in viewers(src))
-				M.show_message("\red [src] is shaped into metal by [user.name] with the weldingtool.", 3, "\red You hear welding.", 2)
+				M.show_message("<span class='notice'>[src] is shaped into metal by [user.name] with the weldingtool.</span>", 3, "<span class='notice'>You hear welding.</span>", 2)
 			var/obj/item/stack/rods/R = src
 			src = null
 			var/replace = (user.get_inactive_hand()==R)
@@ -51,29 +51,47 @@
 
 	if(!istype(user.loc,/turf)) return 0
 
-	if (locate(/obj/structure/grille, usr.loc))
-		for(var/obj/structure/grille/G in usr.loc)
-			if (G.destroyed)
-				G.health = 10
-				G.density = 1
-				G.destroyed = 0
-				G.icon_state = "grille"
-				use(1)
-			else
-				return 1
+	var/buildtype = input(user, "Choose what to build", "Building with rods") in list("Grille", "Ladder", "Cancel")
 
-	else if(!in_use)
-		if(get_amount() < 2)
-			user << "\blue You need at least two rods to do this."
-			return
-		usr << "\blue Assembling grille..."
-		in_use = 1
-		if (!do_after(usr, 10))
+	if(buildtype == "Grille")
+		if (locate(/obj/structure/grille, usr.loc))
+			for(var/obj/structure/grille/G in usr.loc)
+				if (G.destroyed)
+					G.health = 10
+					G.density = 1
+					G.destroyed = 0
+					G.icon_state = "grille"
+					use(1)
+				else
+					return 1
+
+		else if(!in_use)
+			if(get_amount() < 2)
+				user << "<span class='warning'>You need at least two rods to do this.</span>"
+				return
+			usr << "<span class='notice'>Assembling grille...</span>"
+			in_use = 1
+			if (!do_after(usr, 10))
+				in_use = 0
+				return
+			var/obj/structure/grille/F = new /obj/structure/grille/ ( usr.loc )
+			usr << "<span class='notice'>You assemble a grille</span>"
 			in_use = 0
-			return
-		var/obj/structure/grille/F = new /obj/structure/grille/ ( usr.loc )
-		usr << "\blue You assemble a grille"
-		in_use = 0
-		F.add_fingerprint(usr)
-		use(2)
+			F.add_fingerprint(usr)
+			use(2)
+	if(buildtype == "Ladder")
+		if(!in_use)
+			if(get_amount() < 2)
+				user << "<span class='warning'>You need at least two rods to do this.</span>"
+				return
+			usr << "<span class='notice'>Assembling ladder...</span>"
+			in_use = 1
+			if (!do_after(usr, 30))
+				in_use = 0
+				return
+			var/obj/structure/ladder/F = new /obj/structure/ladder/ ( usr.loc )
+			usr << "<span class='notice'>You assemble a ladder</span>"
+			in_use = 0
+			F.add_fingerprint(usr)
+			use(2)
 	return

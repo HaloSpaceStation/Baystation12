@@ -22,10 +22,13 @@ var/datum/antagonist/cultist/cult
 	victory_feedback_tag = "win - cult win"
 	loss_feedback_tag = "loss - staff stopped the cult"
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
-	max_antags = 200 // No upper limit.
-	max_antags_round = 200
-	var/allow_narsie = 1
+	hard_cap = 5
+	hard_cap_round = 6
+	initial_spawn_req = 4
+	initial_spawn_target = 6
+	antaghud_indicator = "hudcultist"
 
+	var/allow_narsie = 1
 	var/datum/mind/sacrifice_target
 	var/list/startwords = list("blood","join","self","hell")
 	var/list/allwords = list("travel","self","see","hell","blood","join","tech","destroy", "other", "hide")
@@ -98,7 +101,7 @@ var/datum/antagonist/cultist/cult
 /datum/antagonist/cultist/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
 	if(!..())
 		return 0
-	player.current << "<span class='danger'>An unfamiliar white light flashes through your mind, cleansing the taint of the dark-one and the memories of your time as his servant with it."
+	player.current << "<span class='danger'>An unfamiliar white light flashes through your mind, cleansing the taint of the dark-one and the memories of your time as his servant with it.</span>"
 	player.memory = ""
 	if(show_message)
 		player.current.visible_message("<FONT size = 3>[player.current] looks like they just reverted to their old faith!</FONT>")

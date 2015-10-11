@@ -91,6 +91,13 @@ Class Procs:
 
 
 	Compiled by Aygar
+
+	machineClickOn(var/atom/A, var/params)      'game/machinery/machine.dm'
+		Called by '/mob/proc/ClickOn' in 'code\_onclick\click.dm' if the usr has a machine set.
+		A generalised system for mobs interacting with atoms via obj/machineryry eg for use with targetting systems
+		To use, define within your machine and return 1
+		For the equivalent proc with an obj held in the hand, see '/obj/item/proc/afterattack' in 'code\_onclick\item_attack.dm'
+
 */
 
 /obj/machinery
@@ -225,7 +232,7 @@ Class Procs:
 		return 1
 	if ( ! (istype(usr, /mob/living/carbon/human) || \
 			istype(usr, /mob/living/silicon)))
-		usr << "\red You don't have the dexterity to do this!"
+		usr << "<span class='warning'>You don't have the dexterity to do this!</span>"
 		return 1
 /*
 	//distance checks are made by atom/proc/DblClick
@@ -235,10 +242,10 @@ Class Procs:
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= 60)
-			visible_message("\red [H] stares cluelessly at [src] and drools.")
+			visible_message("<span class='warning'>[H] stares cluelessly at [src] and drools.</span>")
 			return 1
 		else if(prob(H.getBrainLoss()))
-			user << "\red You momentarily forget how to use [src]."
+			user << "<span class='warning'>You momentarily forget how to use [src].</span>"
 			return 1
 
 	src.add_fingerprint(user)
@@ -337,8 +344,10 @@ Class Procs:
 	M.state = 2
 	M.icon_state = "box_1"
 	for(var/obj/I in component_parts)
-		if(I.reliability != 100 && crit_fail)
-			I.crit_fail = 1
 		I.loc = loc
 	qdel(src)
 	return 1
+
+//called when the player clicks on something while using a machine
+/obj/machinery/proc/machineClickOn(var/atom/A, var/params)
+	return 0
