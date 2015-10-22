@@ -48,23 +48,25 @@
 		update()
 		*/
 
-/datum/vehicle_transform/proc/add_pixel_speed_forward(var/acceleration)
+/datum/vehicle_transform/proc/accelerate_forward(var/acceleration)
 
-	//work out the x and y components according to our heading
-	var/x_accel = sin(heading) * acceleration
-	var/y_accel = cos(heading) * acceleration
-
-	add_pixel_speed(x_accel, y_accel)
-	spawn_thrust()
+	add_pixel_speed_angle(heading, heading)
 
 /datum/vehicle_transform/proc/add_pixel_speed_direction(var/acceleration, var/direction)
+	add_pixel_speed_angle(acceleration, dir2angle(direction))
 
+/datum/vehicle_transform/proc/add_pixel_speed_direction_relative(var/acceleration, var/relative_direction)
+	add_pixel_speed_angle(acceleration, dir2angle(relative_direction) + heading)
+
+/datum/vehicle_transform/proc/add_pixel_speed_angle(var/acceleration, var/angle)
 	//work out the x and y components according to our heading
-	var/x_accel = sin(heading) * acceleration
-	var/y_accel = cos(heading) * acceleration
+	var/x_accel = sin(angle) * acceleration
+	var/y_accel = cos(angle) * acceleration
 
 	add_pixel_speed(x_accel, y_accel)
-	//spawn_thrust()
+
+	if(angle == heading)
+		spawn_thrust()
 
 /datum/vehicle_transform/proc/add_pixel_speed(var/accel_x, var/accel_y)
 	pixel_speed_x += accel_x
@@ -73,13 +75,13 @@
 	limit_speed()
 
 	if(!is_still())
-		update()
+		try_update()
 
 /datum/vehicle_transform/proc/limit_speed()
 	//work out if we're getting close to max speed
 	if(max_pixel_speed > 0)
 		var/total_speed = get_speed()
-		world << "current speed: [total_speed]/[max_pixel_speed]"
+		//world << "current speed: [total_speed]/[max_pixel_speed]"
 
 		//we're over max speed, so normalise then cap the speed
 		if(total_speed > max_pixel_speed)
@@ -87,16 +89,21 @@
 			pixel_speed_x *= max_pixel_speed
 			pixel_speed_y /= total_speed
 			pixel_speed_y *= max_pixel_speed
-			world << "normalised down to: [get_speed()]"
+			//world << "normalised down to: [get_speed()]"
 
-/datum/vehicle_transform/proc/update(var/my_update_start_time = -1)
+/datum/vehicle_transform/proc/try_update()
+	//world << "try_update() 1"
+	//if our control_object has a custom update loop, use that
+	if(istype(control_object, /obj/machinery/overmap_vehicle))
+		//world << "try_update() 2"
+		var/obj/machinery/overmap_vehicle/overmap_vehicle = control_object
+		overmap_vehicle.update()
+	else
+		//world << "try_update() 3"
+		//otherwise just use our internal one
+		update_loop()
 
-	if(!control_object || !control_object.loc)
-		return
-
-	if(is_still())
-		main_update_start_time = -1
-		return
+/datum/vehicle_transform/proc/update_loop(var/my_update_start_time = -1)
 
 	if(main_update_start_time < 0)
 		my_update_start_time = world.time
@@ -104,10 +111,22 @@
 	else if(my_update_start_time != main_update_start_time)
 		return
 
-	//world << "update [my_update_start_time]/[main_update_start_time]"
+	if(update(update_interval))
+		spawn(update_interval)
+			update_loop(my_update_start_time)
+	else
+		main_update_start_time = -1
 
-	pixel_progress_x += pixel_speed_x * update_interval * 0.1
-	pixel_progress_y += pixel_speed_y * update_interval * 0.1
+/datum/vehicle_transform/proc/update(var/delta_time)
+
+	if(!control_object || !control_object.loc)
+		return 0
+
+	if(is_still())
+		return 0
+
+	pixel_progress_x += pixel_speed_x * delta_time
+	pixel_progress_y += pixel_speed_y * delta_time
 
 	//apply speed
 	control_object.pixel_x += round(pixel_progress_x)
@@ -158,14 +177,17 @@
 		else
 			my_observers -= M
 
-	spawn(update_interval)
-		update(my_update_start_time)
+	return 1
 
 /datum/vehicle_transform/proc/turn_to_dir(var/target_dir, var/max_degrees)
+
+	//world << "turn_to_dir([target_dir])"
 
 	//proc/shortest_angle_to_dir(var/current_heading, var/target_dir, var/max_angle)
 	var/rotate_angle = shortest_angle_to_dir(heading, target_dir, max_degrees)
 	var/new_heading = heading + rotate_angle
+
+	//world << "rotate_angle:[rotate_angle]"
 
 	//world << "rotating [max_degrees] degrees from heading [heading] ([angle2dir(heading)]) to face heading [target_heading] ([angle2dir(target_heading)])"
 
@@ -173,7 +195,7 @@
 
 	//change the heading
 	heading = new_heading
-	while(heading > 360)
+	while(heading >= 360)
 		heading -= 360
 	while(heading < 0)
 		heading += 360

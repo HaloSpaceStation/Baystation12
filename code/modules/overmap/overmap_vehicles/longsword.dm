@@ -8,13 +8,16 @@
 	bound_height = 128
 	var/damage_state = 0
 	var/icon/damage_overlay
+	max_speed_hover = 16
+	yaw_speed = 10
+	accel_duration = 50
 
 /obj/machinery/overmap_vehicle/longsword/New()
 	..()
 	vehicle_transform.overlay_thrust_base = new('longsword.dmi', "longsword_thruster")
 
 /obj/machinery/overmap_vehicle/longsword/InitComponents()
-	thruster.rate = 0.5
+	thruster.rate = max_speed
 	..()
 
 /obj/machinery/overmap_vehicle/longsword/health_update()

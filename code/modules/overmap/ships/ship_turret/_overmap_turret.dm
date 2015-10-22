@@ -205,7 +205,7 @@
 		fire_angle += rand(0, degrees_inaccurate) - degrees_inaccurate / 2
 
 		//when we fire, slow down pixel speed to a more overmap-friendly one
-		OP.launch_heading(fire_angle, pixel_speed = overmap_pixel_speed)
+		OP.launch_heading(fire_angle, overmap_pixel_speed)
 
 /obj/machinery/overmap_turret/proc/halt_fire()
 	if(continuous_firing)

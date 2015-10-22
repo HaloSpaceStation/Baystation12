@@ -26,11 +26,17 @@
 	var/center_x = 0
 	var/center_y = 0
 
-	var/max_pixel_speed = 32	//per 1/10 second
 	var/datum/vehicle_transform/vehicle_transform
 
-	var/yaw_speed = 10	//degrees per tick
+	var/move_mode_absolute = 0
+
+	var/yaw_speed = 2	//degrees per tick
+	var/max_pixel_speed = 5
+	var/forward_acceleration = 0.1
 	var/thrusting = 0
+
+	var/main_update_start_time = -1
+	var/update_interval = 1
 
 /obj/effect/map/ship/New(var/obj/effect/mapinfo/data)
 	tag = "ship_[data.sectorname]"
@@ -71,12 +77,10 @@
 	//recalculate_physics_properties()
 
 /obj/effect/map/ship/relaymove(mob/user, direction)
-	//accelerate forward and apply torque towards desired direction
-	if(direction in cardinal)
-		accelerate(direction)
+	if(move_mode_absolute && (direction in cardinal))
+		accelerate(user, direction)
 	else
-		//var/rotate_angle = shortest_angle_to_dir(vehicle_transform.heading, diagonal_to_cardinal(direction), yaw_speed)
-		var/rotate_angle = vehicle_transform.turn_to_dir(diagonal_to_cardinal(direction), yaw_speed)
+		var/rotate_angle = vehicle_transform.turn_to_dir(direction, yaw_speed)
 		if(rotate_angle != 0)
 			//update the heading
 			/*heading += rotate_angle
@@ -131,14 +135,32 @@
 	thrusting = !thrusting
 	thrust_loop()
 
-/obj/effect/map/ship/proc/thrust_loop()
+//todo: should this be moved out to the vehicle_control datum?
+/obj/effect/map/ship/proc/thrust_loop(var/my_update_start_time = -1)
+	if(!src || !src.loc)
+		main_update_start_time = -1
+		return
+
+	if(main_update_start_time < 0)
+		my_update_start_time = world.time
+		main_update_start_time = my_update_start_time
+	else if(my_update_start_time != main_update_start_time)
+		return
+
 	if(thrusting)
 		thrust_forward()
-		spawn(1)
-			thrust_loop()
+
+		spawn(update_interval)
+			thrust_loop(my_update_start_time)
+	else
+		main_update_start_time = -1
 
 /obj/effect/map/ship/proc/thrust_forward()
-	vehicle_transform.add_pixel_speed_forward(eng_control.get_maneuvring_thrust() / vessel_mass)
+	//acceleration in meters per second
+	//var/acceleration = eng_control.get_maneuvring_thrust() / vessel_mass
+
+	//use pixels per microsecond instead
+	vehicle_transform.accelerate_forward(forward_acceleration)
 
 /obj/effect/map/ship/proc/is_still()
 	return vehicle_transform.is_still()

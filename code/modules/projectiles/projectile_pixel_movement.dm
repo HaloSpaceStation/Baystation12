@@ -1,5 +1,5 @@
 
-/obj/item/projectile/proc/launch_heading(var/heading, var/target_zone, var/pixel_speed = world.icon_size)
+/obj/item/projectile/proc/launch_heading(var/heading, var/pixel_speed = 32)
 	var/turf/curloc = get_turf(src)
 	if (!istype(curloc))
 		return 1
@@ -37,9 +37,9 @@
 	// generate this now since all visual effects the projectile makes can use it
 	effect_transform = new()
 	effect_transform.Scale(trajectory.return_hypotenuse(), 1)
-	effect_transform.Turn(heading)//-trajectory.return_angle())		//no idea why this has to be inverted, but it works
+	effect_transform.Turn(heading + 180)//-trajectory.return_angle())		//no idea why this has to be inverted, but it works
 
-	transform = turn(transform, heading)//-(trajectory.return_angle() + 90)) //no idea why 90 needs to be added, but it works
+	transform = turn(transform, heading + 180)//-(trajectory.return_angle() + 90)) //no idea why 90 needs to be added, but it works
 
 /*/obj/item/projectile/overmap/setup_trajectory(turf/startloc, turf/targloc, var/x_offset = 0, var/y_offset = 0)
 	..()

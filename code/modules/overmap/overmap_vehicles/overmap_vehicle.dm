@@ -14,7 +14,8 @@
 	var/list/passengers = list()
 	var/max_passengers = 0
 	var/hovering = 0
-	var/thrusting = 0
+	var/move_dir = 0
+	var/move_mode_absolute = 0
 
 	var/mob/living/pilot
 
@@ -24,15 +25,21 @@
 	var/armour = 100
 	var/hull_remaining = 100
 	var/hull_max = 100
-	var/max_speed = 1
-	var/max_speed_hover = 0.5
+	var/max_speed = 32			//pixels per ms
+	var/max_speed_hover = 10
+	var/accel_duration = 10		//how long until max speed in ms
 	var/yaw_speed = 5
 
 	var/datum/vehicle_transform/vehicle_transform
+
+	var/default_controlscheme_type = /datum/vehicle_controls
+	var/datum/vehicle_controls/vehicle_controls
+
 	var/list/my_turrets = list()
 	var/list/my_observers = list()
 
-	var/last_thrust_update = 0
+	var/main_update_start_time = -1
+	var/update_interval = 1
 
 	var/next_shot_loc = 0
 
@@ -64,6 +71,8 @@
 	vehicle_transform.heading = dir2angle(dir)
 	vehicle_transform.max_pixel_speed = max_speed
 
+	vehicle_controls = new default_controlscheme_type(src)
+
 	layer += 0.1
 
 //obj/machinery/overmap_vehicle/process()
@@ -74,10 +83,10 @@
 	//if(hovering)
 		//check fuel
 
-	//if(moving from gravity turfs to nongravity turfs)
+	//if(move_dir from gravity turfs to nongravity turfs)
 	//	lose control unless we have space capable thrusters
 
-	//if(moving from nongravity turfs to nongravity turfs)
+	//if(move_dir from nongravity turfs to nongravity turfs)
 		//if(check to see if we fall 1 or more zlevels)
 			//move down zlevels
 			//take falling damage when we eventually hit
@@ -94,56 +103,43 @@
 	//setup component stats in child objs
 
 /obj/machinery/overmap_vehicle/relaymove(mob/user, direction)
-	//accelerate to 10% of max speed
-	var/accel = 0
-	if(hovering || no_grav())
-		accel = thruster.rate
+	vehicle_controls.relay_move(user, direction)
+
+/obj/machinery/overmap_vehicle/proc/vehicle_thrust(var/mob/user)
+	vehicle_controls.move_vehicle(user, move_mode_absolute, NORTH)
+
+/obj/machinery/overmap_vehicle/proc/vehicle_thrust_toggle(var/mob/user)
+	vehicle_controls.move_toggle(user, move_mode_absolute, NORTH)
+
+/obj/machinery/overmap_vehicle/proc/update(var/my_update_start_time = -1)
+
+	if(!src || !src.loc)
+		main_update_start_time = -1
+		return
+
+	if(main_update_start_time < 0)
+		my_update_start_time = world.time
+		main_update_start_time = my_update_start_time
+	else if(my_update_start_time != main_update_start_time)
+		return
+
+	var/continue_update = 0
+
+	//apply thrust if we've got it toggled on
+	if(move_dir)
+		continue_update = 1
+		vehicle_controls.move_vehicle(pilot, move_mode_absolute, move_dir)
+
+	//update the sprite
+	if(vehicle_transform.update(update_interval))
+		continue_update = 1
+
+	//only spawn another update if there's something that needs updating
+	if(continue_update)
+		spawn(update_interval)
+			update(my_update_start_time)
 	else
-		accel = wheels.rate
-	accel /= 10
-
-	//thrust in direction
-	if(direction in cardinal)
-		vehicle_transform.add_pixel_speed_direction(accel, direction)
-	else
-		//if we're sending diagonals, just rotate
-		//var/rotate_angle = shortest_angle_to_dir(vehicle_transform.heading, diagonal_to_cardinal(direction), yaw_speed)
-		var/rotate_angle = vehicle_transform.turn_to_dir(diagonal_to_cardinal(direction), yaw_speed)
-		if(rotate_angle != 0)
-			//update the heading
-			/*heading += rotate_angle
-			while(heading > 360)
-				heading -= 360
-			while(heading < 0)
-				heading += 360*/
-
-			//world << "rotating [heading_change * rotate_speed] degrees from heading [heading] ([angle2dir(heading)]) to face heading [target_heading] ([angle2dir(target_heading)])"
-
-			//inform our turrets we about the new heading so they can update their targetting overlays
-			for(var/obj/machinery/overmap_turret/T in my_turrets)
-				T.rotate_targetting_overlay(rotate_angle)
-
-			//rotate the sprite
-			/*var/icon/I = new (src.icon, src.icon_state)
-			I.Turn(heading)
-			src.icon = I*/
-
-/obj/machinery/overmap_vehicle/proc/forward_toggle()
-	thrusting = !thrusting
-	thrust_loop()
-
-/obj/machinery/overmap_vehicle/proc/thrust_loop()
-	if(thrusting)
-		forward()
-		spawn(1)
-			thrust_loop()
-
-/obj/machinery/overmap_vehicle/proc/forward()
-	//accelerate to 10% of max speed
-	var/accel = max_speed / 10
-	if(hovering)
-		accel = max_speed_hover / 10
-	vehicle_transform.add_pixel_speed_forward(accel)
+		main_update_start_time = -1
 
 /*/obj/machinery/overmap_vehicle/proc/thrust(var/thrust_direction)
 	//standard checks
@@ -155,7 +151,7 @@
 			dir_next_update = dir_last_update | thrust_direction
 		dir_last_update |= thrust_direction
 
-		//world << "thrusting in dir [direction]"
+		//world << "move_dir in dir [direction]"
 
 /obj/machinery/overmap_vehicle/proc/ground_thrust(var/thrust_direction)
 	//standard checks
@@ -166,7 +162,7 @@
 		//check if we have traction
 		//
 
-		world << "moving in dir [thrust_direction]"*/
+		world << "move_dir in dir [thrust_direction]"*/
 
 /obj/machinery/overmap_vehicle/proc/set_landing_gear(var/extended)
 	if(extendable_landing_gear)
@@ -259,6 +255,8 @@
 					pilot.set_machine(src)
 					usr << "<span class='info'>You are now the pilot!.</span>"
 				my_observers.Add(usr)
+				if(usr.client)
+					usr.client.view = 14//world.view
 			else
 				usr << "<span class='info'>You are already inside [src].</span>"
 		else
@@ -278,6 +276,10 @@
 		pilot.unset_machine()
 		pilot = null
 		usr << "<span class='info'>You are no longer the pilot!.</span>"
+	my_observers -= usr
+	if(usr.client)
+		usr.client.view = world.view
+		usr.client.eye = usr
 
 //just stop motion, we can worry about even decelleration later
 /obj/machinery/overmap_vehicle/verb/halt()
@@ -287,3 +289,10 @@
 
 	vehicle_transform.pixel_speed_x = 0
 	vehicle_transform.pixel_speed_y = 0
+
+/obj/machinery/overmap_vehicle/verb/check_speed()
+	set name = "Get speed"
+	set category = "Vehicle"
+	set src = usr.loc
+
+	usr << "[src] is currently going at [vehicle_transform.get_speed()]"

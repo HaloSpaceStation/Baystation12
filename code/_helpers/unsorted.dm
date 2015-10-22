@@ -1351,6 +1351,7 @@ var/mob/dview/dview_mob = new
 	if(current_heading == target_heading)
 		return 0
 
+	//hardcode the expected values, until someone can work out a general solution
 	var/heading_change = 0
 	switch(target_dir)
 		if(NORTH)
@@ -1358,8 +1359,18 @@ var/mob/dview/dview_mob = new
 				heading_change = -1
 			else
 				heading_change = 1
+		if(NORTHEAST)
+			if(current_heading > 225 || current_heading < 45)
+				heading_change = 1
+			else
+				heading_change = -1
 		if(EAST)
 			if(current_heading < 90 || current_heading > 270)
+				heading_change = 1
+			else
+				heading_change = -1
+		if(SOUTHEAST)
+			if(current_heading < 135 || current_heading > 315)
 				heading_change = 1
 			else
 				heading_change = -1
@@ -1368,8 +1379,18 @@ var/mob/dview/dview_mob = new
 				heading_change = 1
 			else
 				heading_change = -1
+		if(SOUTHWEST)
+			if(current_heading > 225 || current_heading < 45)
+				heading_change = -1
+			else
+				heading_change = 1
 		if(WEST)
 			if(current_heading < 90 || current_heading > 270)
+				heading_change = -1
+			else
+				heading_change = 1
+		if(NORTHWEST)
+			if(current_heading < 135 || current_heading > 315)
 				heading_change = -1
 			else
 				heading_change = 1

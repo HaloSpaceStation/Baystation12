@@ -8,12 +8,12 @@
 
 	if(istype(src.mob) && istype(src.mob.machine, /obj/machinery/computer/helm))
 		var/obj/machinery/computer/helm/H = src.mob.machine
-		H.thrust_forward()
+		H.thrust_forward(src.mob)
 		return
 
 	if(istype(src.mob) && istype(src.mob.machine, /obj/machinery/overmap_vehicle))
 		var/obj/machinery/overmap_vehicle/V = src.mob.machine
-		V.forward()
+		V.vehicle_controls.move_vehicle(src.mob, 0, NORTH)
 		return
 
 /client/verb/vehicle_thrust_toggle()
@@ -21,10 +21,10 @@
 
 	if(istype(src.mob) && istype(src.mob.machine, /obj/machinery/computer/helm))
 		var/obj/machinery/computer/helm/H = src.mob.machine
-		H.thrust_forward_toggle()
+		H.thrust_forward_toggle(src.mob)
 		return
 
 	if(istype(src.mob) && istype(src.mob.machine, /obj/machinery/overmap_vehicle))
 		var/obj/machinery/overmap_vehicle/V = src.mob.machine
-		V.forward_toggle()
+		V.vehicle_controls.move_toggle(src.mob, 0, NORTH)
 		return
