@@ -1192,6 +1192,7 @@
 #include "code\modules\games\cards.dm"
 #include "code\modules\genetics\side_effects.dm"
 #include "code\modules\ghosttrap\trap.dm"
+#include "code\modules\halo\clothing\jumpsuits.dm"
 #include "code\modules\halo\weapons\ammo.dm"
 #include "code\modules\halo\weapons\energy.dm"
 #include "code\modules\halo\weapons\pistols.dm"
