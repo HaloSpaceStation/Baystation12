@@ -1,4 +1,5 @@
 /obj/item/clothing/under/unsc
+	icon = 'icons/mob/uniform.dmi'
 	icon_state = "base_s"
 	item_state = "base_s"
 	worn_state = "unscgrey"
@@ -22,7 +23,6 @@
 /obj/item/clothing/under/unsc/captain
 	desc = "a simple, but somewhat thick uniform"
 	name = "captain's uniform"
-	icon = 'code/modules/halo/icons/(new)captain.dmi'
 	icon_state = "lasky_s"
 	item_state = "lasky_s"
 	worn_state = "lasky"
@@ -39,9 +39,9 @@
 	desc = "standard issue command uniform, medical variant"
 	name = "CMO's uniform"
 	icon = 'code/modules/halo/icons/CMO Fancyman.dmi'
-	icon_state = "CMO-unsc"
-	item_state = "CMO-item"
-	worn_state = "CMO-unsc"
+	icon_state = "cmo-unsc_s"
+	item_state = "cmo-unsc_s"
+	worn_state = "cmo-unsc"
 
 /obj/item/clothing/under/unsc/engineering
 	desc = "standard issue engineering uniform"
@@ -91,8 +91,8 @@
 /obj/item/clothing/under/unsc/standard
 	desc = "standard UNSC undersuit, extremely flexible"
 	name = "UNSC undersuit"
-	icon_state = "marine_under"
-	item_state = "marine_under"
+	icon_state = "marine_under_s"
+	item_state = "marine_under_s"
 	worn_state = "marine_under"
 
 //Marine Gear\\
@@ -105,4 +105,4 @@
 	name = "UNSC Marine fatigues"
 	icon_state = "jumpsuit"
 	item_state = "jumpsuit-item"
-	worn_state = "jumpsuit"
+	worn_state = "jumpsuit-marine_s"
