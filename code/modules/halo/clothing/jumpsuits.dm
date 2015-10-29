@@ -95,6 +95,13 @@
 	item_state = "marine_under_s"
 	worn_state = "marine_under"
 
+/obj/item/clothing/under/unsc/odst
+	desc = "UNSC ODST undergarment"
+	name = "ODST undersuit"
+	icon_state = "odst_s"
+	item_state = "odst_s"
+	worn_state = "odst"
+
 //Marine Gear\\
 
 /obj/item/clothing/under/unsc/marine
@@ -103,6 +110,6 @@
 /obj/item/clothing/under/unsc/marine/fatigues
 	desc = "standard issue for UNSC marines"
 	name = "UNSC Marine fatigues"
-	icon_state = "jumpsuit"
+	icon_state = "jumpsuit-item"
 	item_state = "jumpsuit-item"
-	worn_state = "jumpsuit-marine_s"
+	worn_state = "jumpsuit-marine"
