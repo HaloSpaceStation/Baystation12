@@ -58,7 +58,7 @@ var/obj/effect/overmapobj/innie_base
 		if(innie_base)
 			innie_base.name = "Insurrection Asteroid Base"
 			innie_base.tag = "Insurrection Asteroid Base"
-			innie_base.icon = 'sector_icons.dmi'
+			innie_base.icon = 'code/modules/overmap/ships/sector_icons.dmi'
 			innie_base.icon_state = "listening_post"
 			overmap_controller.antagonist_home = innie_base
 

@@ -5,7 +5,7 @@
 
 /obj/effect/overmapobj
 	name = "undefined overmapobj"
-	icon = 'sector_icons.dmi'
+	icon = 'code/modules/overmap/ships/sector_icons.dmi'
 	icon_state = ""		//default warning signal to show a missing sprite
 	dir = 1
 	var/area/shuttle/shuttle_landing
