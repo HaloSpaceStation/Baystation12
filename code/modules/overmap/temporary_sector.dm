@@ -6,6 +6,7 @@
 	icon_state = "blank"
 	always_known = 0
 	var/map_z
+	//invisibility = 101	//leave "visible" but spriteless for testing
 
 /obj/effect/overmapobj/temporary_sector/New(var/nx, var/ny, var/nz)
 	loc = locate(nx, ny, OVERMAP_ZLEVEL)
@@ -23,11 +24,16 @@
 */
 
 /obj/effect/overmapobj/temporary_sector/proc/can_die(var/mob/observer)
-	testing("Checking if sector at [map_z] can die.")
-	for(var/mob/M in player_list)
+	testing("Checking if sector at [map_z] can die...")
+	for(var/obj/effect/zlevelinfo/zlevel in linked_zlevelinfos)
+		if(zlevel.objects_preventing_recycle.len)
+			testing("	Objects blocking recycling")
+			return 0
+	testing("	Able to be recycled")
+	/*for(var/mob/M in player_list)
 		if(M != observer && M.z == map_z)
 			testing("There are people on it.")
-			return 0
+			return 0*/
 	return 1
 
 /*
@@ -70,7 +76,7 @@
 //when spacetravelling out of a temporary sector, it will automatically call this proc
 //there are other ways than space travelling to leave a sector however, so temp sectors are periodically checked if they can be recycled
 /datum/controller/process/overmap/proc/attempt_recycle_temp_sector(var/obj/effect/overmapobj/temporary_sector/temp_sector)
-	if(!istype(temp_sector, /obj/effect/overmapobj/temporary_sector))
+	if(!istype(temp_sector))
 		return
 
 	if(temp_sector.can_die())
@@ -78,5 +84,6 @@
 		for(var/obj/effect/zlevelinfo/cur_level in temp_sector.linked_zlevelinfos)
 			cached_zlevels += cur_level
 			map_sectors -= "[cur_level.z]"
+			cur_level.name = "undefined zlevel (recycled)"
 		temp_sector.linked_zlevelinfos = list()
 		qdel(temp_sector)

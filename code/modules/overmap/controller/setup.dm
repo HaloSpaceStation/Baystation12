@@ -16,10 +16,10 @@ datum/controller/process/overmap/setup()
 	for(var/level in 1 to world.maxz)
 		data = locate("zlevel[level]")
 		if(data)
-			testing("Z-Level [level] is enabled on overmap")
+			//testing("Z-Level [level] is enabled on overmap")
 
 			if(istype(data, /obj/effect/zlevelinfo/precached))
-				testing("	pre-cached empty space")
+				//testing("	pre-cached empty space")
 				/*var/obj/effect/overmapobj/precached_zlevels = new /obj/effect/overmapobj()
 				precached_zlevels.loc = null*/
 				cached_zlevels += data
@@ -33,11 +33,7 @@ datum/controller/process/overmap/setup()
 				var/obj/effect/overmapobj/found_obj = locate("[data.name]")
 
 				if(found_obj)
-					if(!found_obj.initialised && data.use_me_to_initialise)
-						testing("	belongs to \"[data.name]\", initialising")
-						initialise_overmapobj(found_obj, data)
-					else
-						testing("	belongs to \"[data.name]\"")
+					//testing("	belongs to \"[data.name]\"")
 				else
 					//If there is no obj with such name, we will create one.
 					if(istype(data, /obj/effect/zlevelinfo/ship))
@@ -50,17 +46,19 @@ datum/controller/process/overmap/setup()
 					found_obj.y = rand(OVERMAP_EDGE, world.maxy - OVERMAP_EDGE)
 					found_obj.z = OVERMAP_ZLEVEL
 
-					if(data.use_me_to_initialise)
-						testing("	no overmapobj yet, \"[data.name]\" was spawned at rand coords ([found_obj.x],[found_obj.y]), initialising")
-						initialise_overmapobj(found_obj, data)
-					else
-						testing("	no overmapobj yet, \"[data.name]\" was spawned at rand coords ([found_obj.x],[found_obj.y]), not initialising")
+					//testing("	no overmapobj yet, \"[data.name]\" was spawned at rand coords ([found_obj.x],[found_obj.y]), not initialising")
+
+				if(!found_obj.initialised && data.use_me_to_initialise)
+					//testing("	initialising")
+					initialise_overmapobj(found_obj, data)
 
 				found_obj.linked_zlevelinfos += data
 				map_sectors["[level]"] = found_obj
 
 	for(var/obj/effect/overmapobj/ship/S in world)
 		S.update_spaceturfs()
+
+	transit_level = get_or_create_cached_zlevel()
 
 	current_starsystem = new()
 	all_starsystems.Add(current_starsystem)
@@ -77,3 +75,23 @@ datum/controller/process/overmap/setup()
 		H.reinit()
 
 	return 1
+
+datum/controller/process/overmap/proc/get_or_create_cached_zlevel()
+	var/obj/effect/zlevelinfo/data
+	if(!cached_zlevels.len)
+		data = create_new_zlevel()
+	else
+		data = cached_zlevels[cached_zlevels.len]
+	cached_zlevels -= data
+
+	return data
+
+datum/controller/process/overmap/proc/create_new_zlevel()
+	//extend the world depth by adding a whole new zlevel
+	world << "<span class='danger'>Adding new zlevel, server may lag for a few seconds to a minute...</span>"
+
+	spawn(1)
+		world.maxz++
+		var/obj/effect/zlevelinfo/data = new(locate(1, 1, world.maxz))
+		cached_zlevels += data
+		return data

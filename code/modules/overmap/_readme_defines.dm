@@ -108,3 +108,7 @@ non-zlevel overmap objects
 
 //How far from the edge of overmap zlevel could randomly placed objects spawn
 #define OVERMAP_EDGE 7
+
+//largest number of tiles a single "object" can cover on the overmap
+//this can be an artbitrary value, it's just defined to make sure cross-sector travel works properly
+#define MAX_OVERMAP_DIMS 5

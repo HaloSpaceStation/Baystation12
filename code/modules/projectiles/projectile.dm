@@ -208,6 +208,11 @@
 	return 1
 
 /obj/item/projectile/Bump(atom/A as mob|obj|turf|area, forced=0)
+
+	if(!A)
+		qdel(src)
+		return 1
+
 	if(A == src)
 		return 0 //no
 
@@ -402,9 +407,9 @@
 	var/turf/targloc = get_turf(target)
 	if(!curloc || !targloc)
 		return 0
-	
+
 	original = target
-	
+
 	//plot the initial trajectory
 	setup_trajectory(curloc, targloc)
 	return process(targloc)
@@ -438,7 +443,7 @@
 
 	//Set the flags and pass flags to that of the real projectile...
 	if(!isnull(flags))
-		trace.flags = flags 
+		trace.flags = flags
 	trace.pass_flags = pass_flags
 
 	var/output = trace.launch(target) //Test it!

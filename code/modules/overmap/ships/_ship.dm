@@ -1,9 +1,9 @@
 
 /obj/effect/overmapobj/ship
-	name = "generic ship"
+	name = "starship"
 	desc = "Space faring vessel."
-	icon = 'code/modules/overmap/ships/ships.dmi'
-	icon_state = "frigate"
+	icon = 'code/modules/overmap/ships/corvette.dmi'
+	icon_state = "base"
 
 	var/fore_dir = NORTH
 	var/list/ship_levels = list()
@@ -39,6 +39,8 @@
 	var/update_interval = 5
 	var/autobraking = 0
 
+	var/list/loctrackers = list()
+
 /*/obj/effect/overmapobj/ship/New(var/obj/effect/overmapobjinfo/data)
 	tag = "ship_[data.sectorname]"
 	map_z = data.z
@@ -68,13 +70,33 @@
 			nav_control = H
 			break*/
 
+	while(loctrackers.len < 16)
+		var/obj/effect/loctracker = new /obj/effect(src)
+		loctracker.name = "loctracker"
+		loctracker.layer = MOB_LAYER
+		loctracker.icon = 'icons/obj/inflatable.dmi'
+		loctracker.icon_state = "door_opening"
+		loctrackers.Add(loctracker)
+
+	processing_objects.Add(src)
+
+/obj/effect/overmapobj/ship/process()
+	var/index = 1
+	for(var/turf/T in locs)
+		var/obj/effect/loctracker = loctrackers[index]
+		loctracker.loc = T
+		index++
+
+/obj/effect/overmapobj/ship/overmap_init()
 	vehicle_transform = init_vehicle_transform(src)
 	vehicle_transform.max_pixel_speed = max_pixel_speed
 	vehicle_transform.heading = dir2angle(src.dir)
 	vehicle_transform.my_observers = my_observers
-	vehicle_transform.icon_state_thrust = "[icon_state]_thrust"
-	vehicle_transform.icon_state_brake = "[icon_state]_brake"
+	vehicle_transform.icon_state_thrust = "thrust"
+	vehicle_transform.icon_state_brake = "brake"
 
+	//don't bother doing physics based acceleration and turning
+	//we'll just hardcode the values and tweak them as needed
 	//recalculate_physics_properties()
 
 /obj/effect/overmapobj/ship/relaymove(mob/user, direction)

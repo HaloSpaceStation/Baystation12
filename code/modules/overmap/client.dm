@@ -26,5 +26,5 @@
 
 	if(src.mob && istype(src.mob.machine, /obj/machinery/overmap_vehicle))
 		var/obj/machinery/overmap_vehicle/V = src.mob.machine
-		V.vehicle_controls.move_toggle(src.mob, 0, NORTH)
+		V.vehicle_controls.move_toggle(src.mob, NORTH)
 		return

@@ -1,6 +1,6 @@
 "a" = (/turf/space,/area/space)
 "b" = (/turf/simulated/floor,/area/space)
-"c" = (/obj/effect/zlevelinfo/ship{desc = "She might not be easy on the eyes, but she's seen me through some hard times."; faction = "UNSC"; icon = 'code/modules/overmap/ships/ships.dmi'; icon_state = "frigate"; name = "UNSC Test Ship Please Ignore"; use_me_to_initialise = 1},/turf/space,/area/space)
+"c" = (/obj/effect/zlevelinfo/ship/testship,turf/space,/area/space)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

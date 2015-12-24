@@ -1178,6 +1178,10 @@ area/space/atmosalert()
 	name = "\improper Engineering Workshop"
 	icon_state = "engineering_workshop"
 
+/area/engineering/ftl_storage
+	name = "\improper FTL Storage"
+	icon_state = "engineering_storage"
+
 
 
 //Solars

@@ -4,13 +4,14 @@
 /datum/vehicle_controls
 	var/scheme_name = "Default control scheme"
 	var/obj/machinery/overmap_vehicle/vehicle
+	var/move_mode_absolute = 0
 
 /datum/vehicle_controls/New(var/obj/machinery/overmap_vehicle/new_owner)
 	vehicle = new_owner
 
 
 /datum/vehicle_controls/proc/relay_move(var/mob/user, var/direction)
-	if(vehicle.move_mode_absolute && (direction in cardinal))
+	if(move_mode_absolute && (direction in cardinal))
 		move_vehicle(user, direction)
 	else
 		turn_vehicle(user, direction)
@@ -18,7 +19,7 @@
 /datum/vehicle_controls/proc/turn_vehicle(var/mob/user, var/direction)
 	//world << "turn_vehicle([user], [direction])"
 	//only pilot can steer this bird
-	if(user == vehicle.pilot)
+	if(user == vehicle.pilot && !user.stat)
 		//world << "check1"
 
 		//if we're sending diagonals, just rotate
@@ -47,11 +48,14 @@
 
 /datum/vehicle_controls/proc/move_vehicle(var/mob/user, var/is_absolute, var/direction)
 	//access checks
-	if(user == vehicle.pilot)
+	if(user && user == vehicle.pilot && !user.stat)
 		//accelerate to 10% of max speed
 		var/accel = 0
 		if(vehicle.hovering || vehicle.no_grav())
-			accel = vehicle.thruster.rate
+			if(vehicle.cruising)
+				accel = vehicle.cruise_speed
+			else
+				accel = vehicle.thruster.rate
 		else
 			accel = vehicle.wheels.rate
 		accel /= vehicle.accel_duration
@@ -62,10 +66,9 @@
 		else
 			vehicle.vehicle_transform.add_pixel_speed_direction_relative(accel, direction)
 
-/datum/vehicle_controls/proc/move_toggle(var/mob/user, var/is_absolute, var/direction)
+/datum/vehicle_controls/proc/move_toggle(var/mob/user, var/direction)
 	//world << "move_toggle([is_absolute], [direction])"
-	if(user == vehicle.pilot)
-		vehicle.move_mode_absolute = is_absolute
+	if(user == vehicle.pilot && !user.stat)
 
 		if(vehicle.move_dir)
 			vehicle.move_dir = 0

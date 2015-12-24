@@ -13,6 +13,9 @@
 	var/set_autobrake = 0
 
 /obj/machinery/computer/helm/initialize()
+	reinit()
+
+/obj/machinery/computer/helm/proc/reinit()
 	linked = map_sectors["[z]"]
 	if (linked)
 		/*if(!linked.nav_control)
@@ -20,34 +23,23 @@
 		testing("Helm console at level [z] found a corresponding overmap object '[linked.name]'.")
 	else
 		testing("Helm console at level [z] was unable to find a corresponding overmap object.")
+
 	known_sectors = list()
-	for(var/level in map_sectors)
-		var/obj/effect/overmapobj/sector/S = map_sectors["[level]"]
-		if (istype(S) && S.always_known)
+	for(var/obj/effect/overmapobj/S in map_sectors)
+		if(S.always_known)
 			var/datum/data/record/R = new()
 			R.fields["name"] = S.name
 			R.fields["x"] = S.x
 			R.fields["y"] = S.y
 			known_sectors += R
 
-/obj/machinery/computer/helm/proc/reinit()
-	known_sectors = list()
-	for(var/level in map_sectors)
-		var/obj/effect/overmapobj/sector/S = map_sectors["[level]"]
-		if (istype(S) && S.always_known)
-			var/datum/data/record/R = new()
-			R.fields["name"] = S.name
-			R.fields["x"] = S.x
-			R.fields["y"] = S.y
-			known_sectors += R
-
+/*
 /obj/machinery/computer/helm/process()
-	..()
 
 	/*if(linked && set_autobrake != linked.autobraking)
 		linked.toggle_autobrake()*/
 
-/*	if (autopilot && dx && dy)
+	if (autopilot && dx && dy)
 		var/turf/T = locate(dx,dy,1)
 		if(linked.loc == T)
 			if(linked.is_still())
@@ -62,7 +54,8 @@
 		else
 			linked.decelerate()
 
-		return*/
+		return
+*/
 
 /obj/machinery/computer/helm/relaymove(var/mob/user, direction)
 	if(manual_control && linked)

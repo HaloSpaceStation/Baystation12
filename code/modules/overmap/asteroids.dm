@@ -23,15 +23,18 @@
 	var/datum/asteroidfield/owner
 
 /obj/effect/overmapobj/asteroidsector/Crossed(atom/movable/O)
+	world << "[src] crossed by [O]"
 	if(istype(O, /obj/effect/overmapobj))
 		var/obj/effect/overmapobj/S = O
 		S.start_meteors()
+		world << "	meteors enabled"
 
 /obj/effect/overmapobj/asteroidsector/Uncrossed(atom/movable/O)
+	world << "[src] uncrossed by [O]"
 	if(istype(O, /obj/effect/overmapobj))
 		var/obj/effect/overmapobj/S = O
 		S.stop_meteors()
-
+		world << "	meteors disabled"
 
 /datum/asteroidfield
 	var/list/big_asteroids = list()

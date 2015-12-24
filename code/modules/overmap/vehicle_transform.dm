@@ -24,10 +24,19 @@
 	var/icon/overlay_thrust_base
 	var/icon/overlay_thrust
 
+	var/obj/effect/overmapobj/vehicle/my_overmap_object
+	var/icon/overmap_icon_base
+	var/overmap_icon_state
+
+	var/obj/effect/loctracker
+
 	var/pixel_speed_x = 0
 	var/pixel_speed_y = 0
 	var/pixel_progress_x = 0
 	var/pixel_progress_y = 0
+
+	var/omap_pixel_x = 0
+	var/omap_pixel_y = 0
 
 	var/heading = 180
 
@@ -39,6 +48,13 @@
 
 	var/update_interval = 1
 	var/main_update_start_time = -1
+
+/datum/vehicle_transform/New()
+	loctracker = new /obj/effect(src)
+	loctracker.name = "loctracker"
+	loctracker.layer = MOB_LAYER
+	loctracker.icon = 'icons/obj/inflatable.dmi'
+	loctracker.icon_state = "door_opening"
 
 //unused for now
 /*
@@ -112,6 +128,17 @@
 
 			recalc_speed()
 
+/datum/vehicle_transform/proc/set_new_maxspeed(var/new_max_speed)
+	var/total_speed = get_speed()
+	max_pixel_speed = new_max_speed
+
+	if(total_speed)
+		pixel_speed_x /= total_speed
+		pixel_speed_x *= max_pixel_speed
+		pixel_speed_y /= total_speed
+		pixel_speed_y *= max_pixel_speed
+		recalc_speed()
+
 /datum/vehicle_transform/proc/try_update()
 	//world << "try_update() 1"
 	//if our control_object has a custom update loop, use that
@@ -175,8 +202,14 @@
 		newy -= 1
 		control_object.pixel_y += 32
 
+	//if we have a separate overmap object, update it's location
+	if(my_overmap_object)
+		my_overmap_object.pixel_x = 32 * (control_object.x / 255) - 16
+		my_overmap_object.pixel_y = 32 * (control_object.y / 255) - 16
+
 	if(newy != control_object.y || newx != control_object.x)
 		var/turf/newloc = locate(newx, newy, control_object.z)
+		//var/turf/edge_turf = locate(newx + control_object.max_turf_dimx, newy + control_object.max_turf_dimy, control_object.z)
 		if(newloc)
 			if(!control_object.Move(newloc))
 				//collide with something!
@@ -184,21 +217,33 @@
 				pixel_speed_x = 0
 				pixel_speed_y = 0
 				pixel_speed = 0
+			else
+				//loctracker.loc = newloc
 		else
-			//we're at the edge of the map, stop moving
-			pixel_speed_x = 0
-			pixel_speed_y = 0
-			control_object.pixel_y = 0
-			control_object.pixel_x = 0
-			pixel_speed = 0
+			//we're at the edge of the map, force a space travel
+			var/edgex = min(max(1, newx), 255)
+			var/edgey = min(max(1, newy), 255)
+			newloc = locate(edgex, edgey, control_object.z)
+			overmap_controller.overmap_spacetravel(newloc, control_object)
+
+			//preserve extra progress so we don't halt at each boundary edge causing erratic skips and jumps
+			pixel_progress_x += 32 * (edgex - newx)
+			pixel_progress_y += 32 * (edgey - newy)
+
+			//call recursively with the new progress
+			return update(0)
 
 	//move observers smoothly with each pixel
-	for(var/mob/M in my_observers)
-		if(M.client && M.client.eye == control_object)
-			M.client.pixel_x = control_object.pixel_x
-			M.client.pixel_y = control_object.pixel_y
-		else
-			my_observers -= M
+	if(pixel_speed_x || pixel_speed_y)
+		for(var/mob/M in my_observers)
+			if(M.client && M.client.eye == control_object)
+				M.client.pixel_x = control_object.pixel_x
+				M.client.pixel_y = control_object.pixel_y
+		if(my_overmap_object)
+			for(var/mob/M in my_overmap_object.my_observers)
+				if(M.client && M.client.eye == my_overmap_object)
+					M.client.pixel_x = my_overmap_object.pixel_x
+					M.client.pixel_y = my_overmap_object.pixel_y
 
 	return 1
 
@@ -238,6 +283,11 @@
 			overlay_thrust = new(overlay_thrust_base)
 			overlay_thrust.Turn(heading)
 			control_object.overlays.Add(overlay_thrust)
+
+		if(my_overmap_object)
+			var/icon/C = new(overmap_icon_base, overmap_icon_state)
+			C.Turn(heading)
+			my_overmap_object.icon = C
 
 	return degrees_travelled
 
@@ -279,3 +329,24 @@
 	else
 		spawn(4)
 			check_thrust()
+
+/datum/vehicle_transform/proc/enter_new_zlevel(var/obj/effect/overmapobj/target_obj)
+	//if we have a separate overmap object, update its turf on the overmap
+	if(my_overmap_object)
+
+		//update the pixel_x offset
+		my_overmap_object.pixel_x = 32 * (control_object.x / 255) - 16
+		my_overmap_object.pixel_y = 32 * (control_object.y / 255) - 16
+		/*if(my_overmap_object.x < target_obj.x)
+			my_overmap_object.pixel_x = 0
+		else if(my_overmap_object.x > target_obj.x)
+			my_overmap_object.pixel_x = 32
+		//update the pixel_y offset
+		if(my_overmap_object.y < target_obj.y)
+			my_overmap_object.pixel_y = 0
+		else if(my_overmap_object.y > target_obj.y)
+			my_overmap_object.pixel_y = 32*/
+
+		//update the turf loc
+		my_overmap_object.Move(target_obj.loc)
+		//loctracker.loc = my_overmap_object.loc

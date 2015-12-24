@@ -20,7 +20,7 @@
 "t" = (/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/plating,/area/space)
 "u" = (/obj/effect/floor_decal/industrial/warning{dir = 1},/turf/simulated/floor/plating,/area/space)
 "v" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/plating,/area/space)
-"w" = (/obj/effect/zlevelinfo/ship{desc = "She might not be easy on the eyes, but she's seen me through some hard times."; faction = "UNSC"; icon = 'code/modules/overmap/ships/ships.dmi'; icon_state = "frigate"; name = "UNSC Pillar of Autumn"; use_me_to_initialise = 1},/turf/space,/area/space)
+"w" = (/obj/effect/zlevelinfo/ship/pillarofautumn,/turf/space,/area/space)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

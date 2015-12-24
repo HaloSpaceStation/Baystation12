@@ -2,8 +2,8 @@
 /obj/machinery/overmap_vehicle
 	name = "vehicle"
 	desc = "A vehicle"
-	icon = 'longsword_test.dmi'
-	icon_state = "longsword_test0"
+	//icon = 'longsword_test.dmi'
+	//icon_state = "longsword_test0"
 	dir = 1
 	density = 1
 	anchored = 1
@@ -15,9 +15,12 @@
 	var/max_passengers = 0
 	var/hovering = 0
 	var/move_dir = 0
-	var/move_mode_absolute = 0
 
 	var/mob/living/pilot
+	var/max_crew = 1	//pilot + passengers
+	var/list/crew = list()
+
+	var/obj/effect/overmapobj/vehicle/overmap_object
 
 	var/landing_gear_extended = 1
 	var/extendable_landing_gear = 0
@@ -27,13 +30,21 @@
 	var/hull_max = 100
 	var/max_speed = 32			//pixels per ms
 	var/max_speed_hover = 10
+	var/cruise_speed = 320		//overmap pixels per ms
 	var/accel_duration = 10		//how long until max speed in ms
 	var/yaw_speed = 5
+	var/internal_cells = 1
+
+	var/cruising = 0
+
+	var/damage_state = 0
+	var/icon/damage_overlay
 
 	var/datum/vehicle_transform/vehicle_transform
 
 	var/default_controlscheme_type = /datum/vehicle_controls
 	var/datum/vehicle_controls/vehicle_controls
+	var/datum/gas_mixture/internal_atmosphere
 
 	var/list/my_turrets = list()
 	var/list/my_observers = list()
@@ -75,6 +86,26 @@
 
 	layer += 0.1
 
+	//just have approx 1 atm internal pressure along with a decent supply of air
+	internal_atmosphere = new/datum/gas_mixture
+	internal_atmosphere.temperature = T20C
+	internal_atmosphere.group_multiplier = 1
+	internal_atmosphere.volume = CELL_VOLUME * internal_cells
+	internal_atmosphere.adjust_multi("oxygen", MOLES_O2STANDARD * internal_cells, "carbon_dioxide", 0, "nitrogen", MOLES_N2STANDARD * internal_cells, "phoron", 0)
+
+	//world << "[src] internal pressure: [internal_atmosphere.return_pressure()] kpa"
+
+	overmap_object = new(src)//locate(src.x, src.y, OVERMAP_ZLEVEL)
+	var/obj/effect/overmapobj/overmapobj = map_sectors["[src.z]"]
+	if(overmapobj)
+		overmap_object.loc = overmapobj.loc
+	overmap_object.name = src.name
+	overmap_object.overmap_vehicle = src
+	vehicle_transform.my_overmap_object = overmap_object
+	vehicle_transform.overmap_icon_base = overmap_object.icon
+
+	verbs -= /obj/machinery/overmap_vehicle/verb/disable_cruise
+
 //obj/machinery/overmap_vehicle/process()
 
 	/*var/delta_time = world.time - time_last_process
@@ -98,7 +129,9 @@
 
 /obj/machinery/overmap_vehicle/proc/InitComponents()
 	//setup component verbs here
-	if(thruster && thruster.rate)
+	if(thruster)
+		if(!thruster.rate)
+			thruster.rate = max_speed
 		verbs += /datum/overmap_vehicle_component/verb/enable_hover
 	//setup component stats in child objs
 
@@ -106,10 +139,10 @@
 	vehicle_controls.relay_move(user, direction)
 
 /obj/machinery/overmap_vehicle/proc/vehicle_thrust(var/mob/user)
-	vehicle_controls.move_vehicle(user, move_mode_absolute, NORTH)
+	vehicle_controls.move_vehicle(user, NORTH)
 
 /obj/machinery/overmap_vehicle/proc/vehicle_thrust_toggle(var/mob/user)
-	vehicle_controls.move_toggle(user, move_mode_absolute, NORTH)
+	vehicle_controls.move_toggle(user, NORTH)
 
 /obj/machinery/overmap_vehicle/proc/update(var/my_update_start_time = -1)
 
@@ -128,7 +161,7 @@
 	//apply thrust if we've got it toggled on
 	if(move_dir)
 		continue_update = 1
-		vehicle_controls.move_vehicle(pilot, move_mode_absolute, move_dir)
+		vehicle_controls.move_vehicle(pilot, 0, move_dir)
 
 	//update the sprite
 	if(vehicle_transform.update(update_interval))
@@ -240,23 +273,45 @@
 
 	return 0
 
+/obj/machinery/overmap_vehicle/verb/take_control()
+	set name = "Take control"
+	set category = "Vehicle"
+	set src = usr.loc
+
+	if(ishuman(usr))
+		var/mob/living/H = usr
+		if(pilot && pilot.machine == src)
+			H << "<span class='info'>[src] is already being piloted by [pilot]</span>"
+		else
+			pilot = H
+			H.set_machine(src)
+			usr << "<span class='info'>You are now the pilot!.</span>"
+	return 0
+
 /obj/machinery/overmap_vehicle/verb/enter()
 	set name = "Enter vehicle"
-	set category = "Object"
+	set category = "Vehicle"
 	set src in oview(1)
 
 	if(ishuman(usr))
 		if(isturf(src.loc))
 			if(usr.loc != src)
-				usr << "<span class='info'><b>You enter [src].</b></span>"
-				usr.loc = src
-				if(!pilot)
-					pilot = usr
-					pilot.set_machine(src)
+				if(crew.len < max_crew)
+					//todo: check for active jetpacks and disable the ion trail
+					usr.loc = src
+					my_observers.Add(usr)
+					if(usr.client)
+						usr.client.view = 14//world.view
+						usr << "<span class='info'><b>You enter [src].</b></span>"
+					crew.Add(usr)
+
+					if(!pilot)
+						pilot = usr
+						pilot.set_machine(src)
+
 					usr << "<span class='info'>You are now the pilot!.</span>"
-				my_observers.Add(usr)
-				if(usr.client)
-					usr.client.view = 14//world.view
+				else
+					usr << "<span class='warning'>[src] is full, it can only hold [max_crew] people.</span>"
 			else
 				usr << "<span class='info'>You are already inside [src].</span>"
 		else
@@ -276,6 +331,8 @@
 		pilot.unset_machine()
 		pilot = null
 		usr << "<span class='info'>You are no longer the pilot!.</span>"
+
+	crew -= usr
 	my_observers -= usr
 	if(usr.client)
 		usr.client.view = world.view
@@ -287,6 +344,7 @@
 	set category = "Vehicle"
 	set src = usr.loc
 
+	disable_cruise()
 	vehicle_transform.pixel_speed_x = 0
 	vehicle_transform.pixel_speed_y = 0
 
@@ -296,3 +354,33 @@
 	set src = usr.loc
 
 	usr << "[src] is currently going at [vehicle_transform.get_speed()]"
+
+/obj/machinery/overmap_vehicle/verb/enable_cruise()
+	set name = "Enable engine cruise mode"
+	set category = "Vehicle"
+	set src = usr.loc
+
+	usr << "<span class='info'>You enable engine cruise mode.</span>"
+	cruising = 1
+	if(!move_dir)
+		vehicle_controls.move_toggle(usr, NORTH)
+	vehicle_transform.set_new_maxspeed(cruise_speed)
+	verbs -= /obj/machinery/overmap_vehicle/verb/enable_cruise
+	verbs += /obj/machinery/overmap_vehicle/verb/disable_cruise
+
+/obj/machinery/overmap_vehicle/verb/disable_cruise()
+	set name = "Disable engine cruise mode"
+	set category = "Vehicle"
+	set src = usr.loc
+
+	usr << "<span class='info'>You disable engine cruise mode.</span>"
+	cruising = 0
+	if(move_dir)
+		vehicle_controls.move_toggle(usr, NORTH)
+	vehicle_transform.set_new_maxspeed(max_speed)
+	verbs -= /obj/machinery/overmap_vehicle/verb/disable_cruise
+	verbs += /obj/machinery/overmap_vehicle/verb/enable_cruise
+
+//so passengers and pilots dont asphyxiate
+/obj/machinery/overmap_vehicle/return_air_for_internal_lifeform()
+	return internal_atmosphere

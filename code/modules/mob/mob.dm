@@ -526,11 +526,15 @@
 			if(mob_eye == client.mob || client.eye == client.mob)
 				client.adminobs = 0
 
+/obj/machinery/proc/cancel_camera(var/mob/M)
+	return 0
+
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"
 	set category = "OOC"
-	unset_machine()
-	reset_view(null)
+	if(!src.machine || !src.machine.cancel_camera(src))
+		unset_machine()
+		reset_view(null)
 
 /mob/Topic(href, href_list)
 	if(href_list["mach_close"])

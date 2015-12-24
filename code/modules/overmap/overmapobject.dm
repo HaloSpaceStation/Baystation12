@@ -4,7 +4,8 @@
 //===================================================================================
 
 /obj/effect/overmapobj
-	name = "undefined overmapobj"
+	name = "undefined overmapobj"				//the display name for everybody
+	var/true_name = "undefined overmapobj"		//the hidden name for people who know what it is (mainly just occupants)
 	icon = 'code/modules/overmap/ships/sector_icons.dmi'
 	icon_state = ""		//default warning signal to show a missing sprite
 	dir = 1
@@ -19,6 +20,11 @@
 	var/in_meteor_sector = 0
 
 	var/initialised = 0
+	var/max_turf_dimx = 1	//for cross-sector travel if this object is travelling faster than 1 turf at a time
+	var/max_turf_dimy = 1
+
+//override in children if necessary (used by ships)
+/obj/effect/overmapobj/proc/overmap_init()
 
 /obj/effect/overmapobj/proc/start_meteors()
 	if(!in_meteor_sector)
@@ -72,3 +78,77 @@
 		return PROJECTILE_CONTINUE
 
 	world << "[src] has been hit by [P]"
+
+/obj/effect/overmapobj/proc/observe_space(var/mob/user)
+	user.set_machine(src)
+	my_observers.Add(user)
+	check_eye(user)
+
+/obj/effect/overmapobj/check_eye(var/mob/user)
+	//world << "/obj/effect/overmapobj/check_eye([user])"
+	//a player is trying to manually look out the window
+	//todo: remove duplicate code here with /obj/machinery/computer/helm/check_eye()
+	if(user)
+		if(user.machine == src)
+
+			//if it's a player we already know about, and we have a ship for them to view...
+			//...but somehow they can't see where the ship is flying, let's reset their view for them
+			if(user.client && user.client.eye != src)
+				//world << "check a"
+				user.reset_view(src, 0)
+				my_observers.Remove(user)		//so we can avoid doubleups
+				my_observers.Add(user)
+
+			//world << "	return 0"
+			return 0
+
+		else
+			//reset some custom view settings for ship control before resetting the view entirely
+
+			my_observers.Remove(user)
+			if(user.client)
+				user.client.pixel_x = 0
+				user.client.pixel_y = 0
+			user.reset_view(null, 0)
+
+	//world << "	return -1"
+	return -1
+
+/obj/effect/overmapobj/proc/get_offedge_turf(var/atom/movable/source_atom, var/movedir)
+	var/turf/inner_edge = src.loc
+	if(source_atom.loc in locs)
+		inner_edge = source_atom.loc
+
+	for(var/turf/T in locs)
+		//if we're heading in the right direction and this turf lines up, check it
+
+		if(movedir & NORTH)
+			if(T.y < inner_edge.y)
+				continue
+			if(T.y > inner_edge.y || T.x == inner_edge.x)
+				inner_edge = T
+
+		if(movedir & SOUTH)
+			if(T.y > inner_edge.y)
+				continue
+			if(T.y < inner_edge.y || T.x == inner_edge.x)
+				inner_edge = T
+
+		if(movedir & EAST)
+			if(T.x > inner_edge.x)
+				continue
+			if(T.x < inner_edge.x || T.y == inner_edge.y)
+				inner_edge = T
+
+		if(movedir & WEST)
+			if(T.x < inner_edge.x)
+				continue
+			if(T.x > inner_edge.x || T.y == inner_edge.y)
+				inner_edge = T
+
+	var/turf/outer_edge = get_step(inner_edge, movedir)
+	//check for nulls (edge of map)
+	if(!outer_edge)
+		outer_edge = inner_edge
+
+	return outer_edge
