@@ -11,8 +11,8 @@
 	leader_welcome_text = "You are the leader of the Insurrectionist forces, down with the UNSC! Use :t to speak to your underlings."
 	welcome_text = "To speak on your group's private channel use :t."
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_CLEAR_EQUIPMENT | ANTAG_CHOOSE_NAME | ANTAG_HAS_LEADER
-	id_type = /obj/item/weapon/card/id/syndicate
-	default_access = list(access_insurrectionist)
+	id_type = /obj/item/weapon/card/id/insurrectionist
+	//default_access = list(access_insurrectionist)
 	antaghud_indicator = "hudinnie"
 
 	hard_cap = 4
@@ -68,3 +68,10 @@
 
 	global_objectives |= insurrection_objectives
 	return 1
+
+/obj/item/weapon/card/id/insurrectionist
+	name = "UNSC identification card"
+	desc = "a almost perfect replica of a UNSC ID card, the only difference is that the UNSC logo is scratched out and besides it reads: 'UNSC SUKS DIKS'"
+	registered_name = "UNSC"
+	assignment = "?????"
+	access = list(access_insurrectionist)

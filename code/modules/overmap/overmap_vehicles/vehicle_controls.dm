@@ -52,10 +52,7 @@
 		//accelerate to 10% of max speed
 		var/accel = 0
 		if(vehicle.hovering || vehicle.no_grav())
-			if(vehicle.cruising)
-				accel = vehicle.cruise_speed
-			else
-				accel = vehicle.thruster.rate
+			accel = vehicle.thruster.rate
 		else
 			accel = vehicle.wheels.rate
 		accel /= vehicle.accel_duration

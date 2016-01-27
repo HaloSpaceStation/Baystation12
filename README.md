@@ -1,7 +1,8 @@
-# baystation12
+# Halo: Space Station Evolved
 
-[Website](http://baystation12.net/) - [Code](http://github.com/Baystation12/Baystation12/) - [IRC](http://baystation12.net/forums/viewtopic.php?f=12&t=5088)
+[![Build Status](https://travis-ci.org/HaloSpaceStation/HaloSpaceStation13.svg?branch=alpha)](https://travis-ci.org/HaloSpaceStation/HaloSpaceStation13)
 
+[Website](http://projectunsc.com/) - [Code](https://github.com/HaloSpaceStation/HaloSpaceStation13) - 
 ---
 
 ### LICENSE

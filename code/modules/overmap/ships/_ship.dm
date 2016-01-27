@@ -78,7 +78,8 @@
 		loctracker.icon_state = "door_opening"
 		loctrackers.Add(loctracker)
 
-	processing_objects.Add(src)
+	//uncomment this for airlock sprites following the capital ship around showing it's turf overlaps
+	//processing_objects.Add(src)
 
 /obj/effect/overmapobj/ship/process()
 	var/index = 1

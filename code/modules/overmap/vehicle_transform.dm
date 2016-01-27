@@ -234,16 +234,15 @@
 			return update(0)
 
 	//move observers smoothly with each pixel
-	if(pixel_speed_x || pixel_speed_y)
-		for(var/mob/M in my_observers)
-			if(M.client && M.client.eye == control_object)
-				M.client.pixel_x = control_object.pixel_x
-				M.client.pixel_y = control_object.pixel_y
-		if(my_overmap_object)
-			for(var/mob/M in my_overmap_object.my_observers)
-				if(M.client && M.client.eye == my_overmap_object)
-					M.client.pixel_x = my_overmap_object.pixel_x
-					M.client.pixel_y = my_overmap_object.pixel_y
+	for(var/mob/M in my_observers)
+		if(M.client && M.client.eye == control_object)
+			M.client.pixel_x = control_object.pixel_x
+			M.client.pixel_y = control_object.pixel_y
+	if(my_overmap_object)
+		for(var/mob/M in my_overmap_object.my_observers)
+			if(M.client && M.client.eye == my_overmap_object)
+				M.client.pixel_x = my_overmap_object.pixel_x
+				M.client.pixel_y = my_overmap_object.pixel_y
 
 	return 1
 
@@ -275,19 +274,25 @@
 
 	//rotate the sprite
 	if(control_object)
-		var/icon/I = new(icon_base, icon_state)
+
+		var/matrix/M = matrix()
+		M.Turn(heading)
+		control_object.transform = M
+
+		/*var/icon/I = new(icon_base, icon_state)
 		I.Turn(heading)
 		control_object.icon = I
 		if(overlay_thrust_base && world.time - last_thrust <= 4)
 			control_object.overlays.Remove(overlay_thrust)
 			overlay_thrust = new(overlay_thrust_base)
 			overlay_thrust.Turn(heading)
-			control_object.overlays.Add(overlay_thrust)
+			control_object.overlays.Add(overlay_thrust)*/
 
 		if(my_overmap_object)
-			var/icon/C = new(overmap_icon_base, overmap_icon_state)
+			my_overmap_object.transform = M
+			/*var/icon/C = new(overmap_icon_base, overmap_icon_state)
 			C.Turn(heading)
-			my_overmap_object.icon = C
+			my_overmap_object.icon = C*/
 
 	return degrees_travelled
 
@@ -302,15 +307,15 @@
 
 /datum/vehicle_transform/proc/spawn_thrust()
 	if(world.time - last_thrust >= 4)
-		if(icon_state_thrust)
+		/*if(icon_state_thrust)
 			icon_state = "[icon_state_thrust]"
 			var/icon/I = new (icon_base, icon_state)
-			I.Turn(heading)
+			//I.Turn(heading)
 			control_object.icon = I
-		else if(overlay_thrust_base)
+		else */if(overlay_thrust_base)
 			control_object.overlays.Remove(overlay_thrust)
 			overlay_thrust = new(overlay_thrust_base)
-			overlay_thrust.Turn(heading)
+			//overlay_thrust.Turn(heading)
 			control_object.overlays.Add(overlay_thrust)
 
 	last_thrust = world.time

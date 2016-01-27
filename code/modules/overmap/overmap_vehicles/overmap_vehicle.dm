@@ -20,6 +20,15 @@
 	var/max_crew = 1	//pilot + passengers
 	var/list/crew = list()
 
+	var/iff_faction_broadcast			//set this to a faction
+	var/sensor_icon_state = "unknown"	//the icon state for this vehicle on other vehicle's sensors
+	var/time_next_sensor_update = 0
+	var/sensor_update_delay = 0			//just update every process()
+	var/list/tracked_vehicles = list()
+	var/list/all_sensor_objects = list()
+	var/list/mobs_tracking = list()
+	var/iff_faction_colours = 1
+
 	var/obj/effect/overmapobj/vehicle/overmap_object
 
 	var/landing_gear_extended = 1
@@ -34,8 +43,6 @@
 	var/accel_duration = 10		//how long until max speed in ms
 	var/yaw_speed = 5
 	var/internal_cells = 1
-
-	var/cruising = 0
 
 	var/damage_state = 0
 	var/icon/damage_overlay
@@ -75,7 +82,6 @@
 
 /obj/machinery/overmap_vehicle/New()
 	InitComponents()
-	//processing_objects.Add(src)
 
 	vehicle_transform = init_vehicle_transform(src)
 	vehicle_transform.my_observers = my_observers
@@ -104,9 +110,21 @@
 	vehicle_transform.my_overmap_object = overmap_object
 	vehicle_transform.overmap_icon_base = overmap_object.icon
 
-	verbs -= /obj/machinery/overmap_vehicle/verb/disable_cruise
+	//verbs -= /obj/machinery/overmap_vehicle/verb/disable_cruise
 
-//obj/machinery/overmap_vehicle/process()
+	processing_objects.Add(src)
+
+	//initiate tracking sensors
+	var/obj/effect/zlevelinfo/curz = locate("zlevel[src.z]")
+	curz.objects_preventing_recycle.Add(src)
+	enter_new_zlevel(curz)
+
+obj/machinery/overmap_vehicle/process()
+
+	//todo: tweak the update delay
+	if(world.time >= time_next_sensor_update)
+		time_next_sensor_update = world.time + sensor_update_delay
+		update_tracking_overlays()
 
 	/*var/delta_time = world.time - time_last_process
 	time_last_process = world.time*/
@@ -273,114 +291,18 @@
 
 	return 0
 
-/obj/machinery/overmap_vehicle/verb/take_control()
-	set name = "Take control"
-	set category = "Vehicle"
-	set src = usr.loc
-
-	if(ishuman(usr))
-		var/mob/living/H = usr
-		if(pilot && pilot.machine == src)
-			H << "<span class='info'>[src] is already being piloted by [pilot]</span>"
+/obj/machinery/overmap_vehicle/proc/make_pilot(var/mob/living/H)
+	if(pilot && pilot.machine == src)
+		if(pilot == H)
+			H << "\icon[src] <span class='info'>You already control [src].</span>"
 		else
-			pilot = H
-			H.set_machine(src)
-			usr << "<span class='info'>You are now the pilot!.</span>"
-	return 0
-
-/obj/machinery/overmap_vehicle/verb/enter()
-	set name = "Enter vehicle"
-	set category = "Vehicle"
-	set src in oview(1)
-
-	if(ishuman(usr))
-		if(isturf(src.loc))
-			if(usr.loc != src)
-				if(crew.len < max_crew)
-					//todo: check for active jetpacks and disable the ion trail
-					usr.loc = src
-					my_observers.Add(usr)
-					if(usr.client)
-						usr.client.view = 14//world.view
-						usr << "<span class='info'><b>You enter [src].</b></span>"
-					crew.Add(usr)
-
-					if(!pilot)
-						pilot = usr
-						pilot.set_machine(src)
-
-					usr << "<span class='info'>You are now the pilot!.</span>"
-				else
-					usr << "<span class='warning'>[src] is full, it can only hold [max_crew] people.</span>"
-			else
-				usr << "<span class='info'>You are already inside [src].</span>"
-		else
-			usr << "<span class='info'>You cannot reach [src] from here.</span>"
+			H << "\icon[src] <span class='info'>[src] is already being piloted by [pilot]</span>"
 	else
-		usr << "<span class='info'>You are unable to enter [src].</span>"
+		pilot = H
+		H.set_machine(src)
+		usr << "\icon[src] <span class='info'>You are now the pilot!</span>"
+		add_tracking_overlays(H)
 
-/obj/machinery/overmap_vehicle/verb/exit()
-	set name = "Exit vehicle"
-	set category = "Vehicle"
-	set src = usr.loc
-
-	usr.loc = src.loc
-	usr << "<span class='info'><b>You exit [src].</b></span>"
-	my_observers.Remove(usr)
-	if(pilot == usr)
-		pilot.unset_machine()
-		pilot = null
-		usr << "<span class='info'>You are no longer the pilot!.</span>"
-
-	crew -= usr
-	my_observers -= usr
-	if(usr.client)
-		usr.client.view = world.view
-		usr.client.eye = usr
-
-//just stop motion, we can worry about even decelleration later
-/obj/machinery/overmap_vehicle/verb/halt()
-	set name = "Halt movement"
-	set category = "Vehicle"
-	set src = usr.loc
-
-	disable_cruise()
-	vehicle_transform.pixel_speed_x = 0
-	vehicle_transform.pixel_speed_y = 0
-
-/obj/machinery/overmap_vehicle/verb/check_speed()
-	set name = "Get speed"
-	set category = "Vehicle"
-	set src = usr.loc
-
-	usr << "[src] is currently going at [vehicle_transform.get_speed()]"
-
-/obj/machinery/overmap_vehicle/verb/enable_cruise()
-	set name = "Enable engine cruise mode"
-	set category = "Vehicle"
-	set src = usr.loc
-
-	usr << "<span class='info'>You enable engine cruise mode.</span>"
-	cruising = 1
-	if(!move_dir)
-		vehicle_controls.move_toggle(usr, NORTH)
-	vehicle_transform.set_new_maxspeed(cruise_speed)
-	verbs -= /obj/machinery/overmap_vehicle/verb/enable_cruise
-	verbs += /obj/machinery/overmap_vehicle/verb/disable_cruise
-
-/obj/machinery/overmap_vehicle/verb/disable_cruise()
-	set name = "Disable engine cruise mode"
-	set category = "Vehicle"
-	set src = usr.loc
-
-	usr << "<span class='info'>You disable engine cruise mode.</span>"
-	cruising = 0
-	if(move_dir)
-		vehicle_controls.move_toggle(usr, NORTH)
-	vehicle_transform.set_new_maxspeed(max_speed)
-	verbs -= /obj/machinery/overmap_vehicle/verb/disable_cruise
-	verbs += /obj/machinery/overmap_vehicle/verb/enable_cruise
-
-//so passengers and pilots dont asphyxiate
-/obj/machinery/overmap_vehicle/return_air_for_internal_lifeform()
+//so passengers dont asphyxiate or die of pressure loss
+/obj/machinery/overmap_vehicle/return_air()
 	return internal_atmosphere

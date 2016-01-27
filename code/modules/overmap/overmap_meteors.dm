@@ -1,6 +1,11 @@
 //see code\game\game_modes\meteor\meteors.dm
 
 /obj/effect/overmapobj/proc/spawn_overmap_meteor()
+	//we're not "in" a sector
+	if(!linked_zlevelinfos.len)
+		//todo: have a chance to spawn a virtual meter hit
+		return
+
 	var/list/start = pick_overmap_meteor_start()
 
 	var/startLevel = start[1]

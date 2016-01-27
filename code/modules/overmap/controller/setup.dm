@@ -41,9 +41,9 @@ datum/controller/process/overmap/setup()
 					else
 						found_obj = new /obj/effect/overmapobj()
 
-					//spawn the ship at random coords, since one wasn't preplaced on the overmap
-					found_obj.x = rand(OVERMAP_EDGE, world.maxx - OVERMAP_EDGE)
-					found_obj.y = rand(OVERMAP_EDGE, world.maxy - OVERMAP_EDGE)
+					//spawn the center of the world
+					found_obj.x = 1
+					found_obj.y = 1
 					found_obj.z = OVERMAP_ZLEVEL
 
 					//testing("	no overmapobj yet, \"[data.name]\" was spawned at rand coords ([found_obj.x],[found_obj.y]), not initialising")

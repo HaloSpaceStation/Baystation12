@@ -15,7 +15,7 @@
 
 /obj/item/weapon/gun/energy/railrifle/innie
 	name = " Asymmetric Recoilless Carbine-920"
-	desc = "is a compact-channel linear accelerator that fires a high-explosive round at incredible speed. The UNSC logo is scratched out and besides it reads 'UNSC SUKS DIKS'"
+	desc = "A compact-channel linear accelerator that fires a high-explosive round at incredible speed. The UNSC logo is scratched out and besides it reads 'UNSC SUKS DIKS'"
 	icon_state = "spartanlaser"
 	item_state = "spartanlaser"
 	fire_sound = 'sound/weapons/pulse.ogg'
@@ -30,7 +30,7 @@
 
 /obj/item/weapon/gun/energy/spartanlaser
 	name = "M6 Grindell/Galilean Nonlinear Rifle"
-	desc = "also known as the spartan laser, is the most powerful handheld weapon produced by the UNSC. It can disable most vehicles and infantry in a single hit."
+	desc = "Also known as the spartan laser, is the most powerful handheld weapon produced by the UNSC. It can disable most vehicles and infantry in a single hit."
 	icon_state = "spartanlaser"
 	item_state = "spartanlaser"
 	slot_flags = SLOT_BACK

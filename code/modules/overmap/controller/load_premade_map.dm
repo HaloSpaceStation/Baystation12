@@ -65,7 +65,7 @@ datum/controller/process/overmap/proc/load_premade_map(var/mapname)
 
 		level_data.tag = oldtag
 
-		message_admins("	Done ([(world.time - time_started) / 10]s), initializing lighting and ladders...")
+		message_admins("	Done ([(world.time - time_started) / 10]s), initializing lighting, ladders and airlocks...")
 		time_started = world.time
 
 		//enable dynamic lighting on the new level (should be almost very quick)
@@ -74,6 +74,19 @@ datum/controller/process/overmap/proc/load_premade_map(var/mapname)
 		//init ladder states, something about runtime maploading borks this
 		for(var/obj/structure/ladder/ladder in world)
 			ladder.init_zdir()
+
+		//fix airlocks as the way they are loaded stores their access lists in an incorrect format
+		for(var/obj/machinery/door/airlock/A in world)
+			if(A.z == loadz)
+				var/list/req_access_new = list()
+				for(var/entry in A.req_access)
+					req_access_new += text2num(entry)
+				A.req_access = req_access_new
+				//
+				var/list/req_one_access_new = list()
+				for(var/entry in A.req_one_access)
+					req_one_access_new += text2num(entry)
+				A.req_one_access = req_one_access_new
 
 		message_admins("	Done ([(world.time - time_started) / 10]s), initializing atmos...")
 		time_started = world.time

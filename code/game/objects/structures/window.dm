@@ -541,7 +541,23 @@
 		animate(src, color="#222222", time=5)
 		set_opacity(1)
 
+/obj/structure/window/reinforced/crescent/attack_hand()
+	return
 
+/obj/structure/window/reinforced/crescent/attackby()
+	return
+
+/obj/structure/window/reinforced/crescent/ex_act()
+	return
+
+/obj/structure/window/reinforced/crescent/hitby()
+	return
+
+/obj/structure/window/reinforced/crescent/take_damage()
+	return
+
+/obj/structure/window/reinforced/crescent/shatter()
+	return
 
 /obj/machinery/button/windowtint
 	name = "window tint control"

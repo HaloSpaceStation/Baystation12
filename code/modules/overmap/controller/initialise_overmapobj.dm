@@ -30,5 +30,18 @@ datum/controller/process/overmap/proc/initialise_overmapobj(var/obj/effect/overm
 		//let the overmap object initialise it's stuff
 		overmapobj.overmap_init()
 
+		//if the object was spawned at 1,1 then it's expecting us to place it somewhere
+		if(overmapobj.x == 1 && overmapobj.y == 1)
+			//work out if there is a faction base we can spawn it
+			var/obj/effect/overmapobj/spawn_base = get_random_faction_base(overmapobj.faction)
+			if(spawn_base)
+				//spawn nearby but not on top of it
+				overmapobj.x = spawn_base.x + pick(rand(-6, -3), rand(3, 6))
+				overmapobj.y = spawn_base.y + pick(rand(-6, -3), rand(3, 6))
+			else
+				//just go to random coords
+				overmapobj.x = rand(OVERMAP_EDGE, world.maxx - OVERMAP_EDGE)
+				overmapobj.y = rand(OVERMAP_EDGE, world.maxy - OVERMAP_EDGE)
+
 		//so no other data overwrites this one
 		overmapobj.initialised = 1

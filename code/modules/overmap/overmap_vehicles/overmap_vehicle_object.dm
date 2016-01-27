@@ -23,3 +23,16 @@
 		return 0
 
 	return ..()
+
+/obj/effect/overmapobj/vehicle/spawn_overmap_meteor()
+	//very low chance for it to actually hit the fighter
+	if(prob(5))
+		var/fulldamage = pick(10, 25, 50) * rand(5,10)
+		overmap_vehicle.hull_remaining -= fulldamage / overmap_vehicle.armour
+		overmap_vehicle.health_update()
+
+		//shake camera around!
+		spawn(0)
+			for(var/mob/M in overmap_vehicle.crew)
+				M.playsound_local(null, get_sfx("explosion"), 100, 1, get_rand_frequency(), falloff = 5)
+				shake_camera(M, 5, 5)

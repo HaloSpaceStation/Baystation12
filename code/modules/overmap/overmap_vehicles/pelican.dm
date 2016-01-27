@@ -12,6 +12,8 @@
 	yaw_speed = 5
 	accel_duration = 50
 	max_crew = 11
+	sensor_icon_state = "pelican"
+	iff_faction_broadcast = "UNSC"
 
 /obj/machinery/overmap_vehicle/pelican/New()
 	..()
@@ -37,7 +39,6 @@
 		overlays -= damage_overlay
 		if(new_damage_state)
 			damage_overlay = new('pelican.dmi', "dam[damage_state]")
-			damage_overlay.Turn(vehicle_transform.heading)
 			overlays += damage_overlay
 
 		damage_state = new_damage_state

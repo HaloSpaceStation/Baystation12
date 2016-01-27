@@ -1,9 +1,9 @@
 
-/obj/machinery/overmap_vehicle/longsword/var/projectile_pixel_speed = 64
+/obj/machinery/overmap_vehicle/var/projectile_pixel_speed = 64
 
 //this is all basically just a hack for the pre-alpha stream
 //it'll need to be split off into a subclass of overmap_vehicle_component eventually to make the code generic
-/obj/machinery/overmap_vehicle/longsword/machineClickOn(var/atom/A, var/params)
+/obj/machinery/overmap_vehicle/machineClickOn(var/atom/A, var/params)
 
 	. = 1
 

@@ -50,8 +50,6 @@ var/list/lastsignalers = list() // Keeps last 100 signals here in format: "[src]
 var/list/lawchanges    = list() // Stores who uploaded laws to which silicon-based lifeform, and what the law was.
 var/list/reg_dna       = list()
 
-var/mouse_respawn_time = 5 // Amount of time that must pass between a player dying as a mouse and repawning as a mouse. In minutes.
-
 var/list/monkeystart     = list()
 var/list/wizardstart     = list()
 var/list/newplayer_start = list()
@@ -105,7 +103,6 @@ var/join_motd = null
 
 var/datum/nanomanager/nanomanager		= new() // NanoManager, the manager for Nano UIs.
 var/datum/event_manager/event_manager	= new() // Event Manager, the manager for events.
-var/datum/subsystem/alarm/alarm_manager	= new() // Alarm Manager, the manager for alarms.
 
 var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
 

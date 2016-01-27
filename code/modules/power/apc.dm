@@ -101,6 +101,8 @@
 	var/is_critical = 0
 	var/global/status_overlays = 0
 	var/updating_icon = 0
+	var/failure_timer = 0
+	var/force_update = 0
 	var/global/list/status_overlays_lock
 	var/global/list/status_overlays_charging
 	var/global/list/status_overlays_equipment
@@ -188,6 +190,9 @@
 		hacker.hacked_apcs -= src
 
 	return ..()
+
+/obj/machinery/power/apc/proc/energy_fail(var/duration)
+	failure_timer = max(failure_timer, duration)
 
 /obj/machinery/power/apc/proc/make_terminal()
 	// create a terminal object at the same position as original turf loc
@@ -359,7 +364,7 @@
 			update_state |= UPDATE_OPENED1
 		if(opened==2)
 			update_state |= UPDATE_OPENED2
-	else if(emagged || hacker)
+	else if(emagged || hacker || failure_timer)
 		update_state |= UPDATE_BLUESCREEN
 	else if(wiresexposed)
 		update_state |= UPDATE_WIREEXP
@@ -729,11 +734,6 @@
 	// do APC interaction
 	src.interact(user)
 
-/obj/machinery/power/apc/attack_ghost(user as mob)
-	if(stat & (BROKEN|MAINT))
-		return
-	return ui_interact(user)
-
 /obj/machinery/power/apc/interact(mob/user)
 	if(!user)
 		return
@@ -758,6 +758,7 @@
 		"totalLoad" = round(lastused_total),
 		"totalCharging" = round(lastused_charging),
 		"coverLocked" = coverlocked,
+		"failTime" = failure_timer * 2,
 		"siliconUser" = istype(user, /mob/living/silicon),
 
 		"powerChannels" = list(
@@ -811,7 +812,7 @@
 	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_equip+lastused_light+lastused_environ]) : [cell? cell.percent() : "N/C"] ([charging])"
 
 /obj/machinery/power/apc/proc/update()
-	if(operating && !shorted)
+	if(operating && !shorted && !failure_timer)
 		area.power_light = (lighting > 1)
 		area.power_equip = (equipment > 1)
 		area.power_environ = (environ > 1)
@@ -891,6 +892,11 @@
 
 	else if (href_list["breaker"])
 		toggle_breaker()
+
+	else if( href_list["reboot"] )
+		failure_timer = 0
+		update_icon()
+		update()
 
 	else if (href_list["cmode"])
 		chargemode = !chargemode
@@ -986,6 +992,12 @@
 	if(stat & (BROKEN|MAINT))
 		return
 	if(!area.requires_power)
+		return
+	if(failure_timer)
+		update()
+		queue_icon_update()
+		failure_timer--
+		force_update = 1
 		return
 
 	lastused_light = area.usage(LIGHT)
@@ -1086,7 +1098,8 @@
 		autoflag = 0
 
 	// update icon & area power if anything changed
-	if(last_lt != lighting || last_eq != equipment || last_en != environ)
+	if(last_lt != lighting || last_eq != equipment || last_en != environ || force_update)
+		force_update = 0
 		queue_icon_update()
 		update()
 	else if (last_ch != charging)

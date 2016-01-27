@@ -26,6 +26,9 @@
 /obj/effect/overmapobj/temporary_sector/proc/can_die(var/mob/observer)
 	testing("Checking if sector at [map_z] can die...")
 	for(var/obj/effect/zlevelinfo/zlevel in linked_zlevelinfos)
+		for(var/atom/movable/A in zlevel.objects_preventing_recycle)
+			if(A.z != zlevel.z)
+				zlevel.objects_preventing_recycle -= A
 		if(zlevel.objects_preventing_recycle.len)
 			testing("	Objects blocking recycling")
 			return 0

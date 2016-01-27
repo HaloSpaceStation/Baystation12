@@ -20,6 +20,12 @@
 	var/turf/curturf = get_turf(M)
 	var/turf/T = GetAboveBelow(curturf, zdir)
 	if(T)
+		//ghosts don't need handholds and can fly through walls/floors
+		if(!M.density)
+			M.Move(T)
+			M << "<span class='info'>You move [zdir == UP ? "up" : "down"]wards.</span>"
+			return
+
 		var/blocked = 0
 		if(!T.CanPass(M, T))
 			blocked = T

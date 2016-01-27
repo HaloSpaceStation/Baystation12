@@ -86,16 +86,16 @@ var/list/delete_on_spacetravel = list(\
 			world << "	checking #[cur_size]: [map ? "[map.x],[map.y]" : "null"]: [target_obj ? target_obj : "null"]"*/
 
 	//if there's something pre-existing there to fly towards, do it
+	var/obj/effect/zlevelinfo/entry_level
 	if(target_obj)
 		//always just come in on the top level for now
-		var/obj/effect/zlevelinfo/entry_level = target_obj.linked_zlevelinfos[1]
-		nz = entry_level.z
+		entry_level = target_obj.linked_zlevelinfos[1]
 		testing("	Space travel destination is object: [target_obj]")
 	else
 		//otherwise, we're headed for deep space!
 		testing("	Space travel destination is ~deep space~")
 
-		var/obj/effect/zlevelinfo/data// = overmap_controller.transit_level
+		//var/obj/effect/zlevelinfo/data// = overmap_controller.transit_level
 
 		//vehicles such as fighters or shuttles will use fast transit, let them handle that
 		/*if(V)
@@ -103,18 +103,18 @@ var/list/delete_on_spacetravel = list(\
 			return*/
 
 		//otherwise we're going to grab a free empty zlevel and just lurk there
-		data = get_or_create_cached_zlevel()
-		data.name = "Temporary space sector"
-		data.objects_preventing_recycle.Add(A)
-		nz = data.z
+		entry_level = get_or_create_cached_zlevel()
+		entry_level.name = "Temporary space sector"
 
 		//create a corresponding deep space sector so we can be found
 		testing("	Adding new temporary space sector...")
 		target_obj = new /obj/effect/overmapobj/temporary_sector(mapx, mapy, nz)
-		target_obj.linked_zlevelinfos.Add(data)
-		map_sectors["[data.z]"] = target_obj
+		target_obj.linked_zlevelinfos.Add(entry_level)
+		map_sectors["[entry_level.z]"] = target_obj
 
 	//testing("Destination: z[nz] [target_obj]")
+	entry_level.objects_preventing_recycle.Add(A)
+	nz = entry_level.z
 
 	var/turf/dest = locate(nx,ny,nz)
 	if(dest)
@@ -123,6 +123,10 @@ var/list/delete_on_spacetravel = list(\
 		//move the mini-fighter on the overmap to the new turf
 		if(V)
 			V.vehicle_transform.enter_new_zlevel(target_obj)
+
+	//update tracking HUDs
+	if(istype(V))
+		V.enter_new_zlevel(entry_level)
 
 /datum/controller/process/overmap/proc/get_destination_object(var/turf/mapturf)
 	var/obj/effect/overmapobj/target_obj
