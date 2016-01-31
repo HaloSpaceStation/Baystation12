@@ -5,8 +5,8 @@
 /obj/item/weapon/gun/projectile/automatic/assault
 	name = "\improper MA5B Assault Rifle"
 	desc = "standard-issue service rifle of the UNSC Marines."
-	icon_state = "assault"
-	item_state = "assault"
+	icon_state = "MA5D"
+	item_state = "MA5D"
 	w_class = 3
 	force = 10
 	caliber = "7.62mm"
