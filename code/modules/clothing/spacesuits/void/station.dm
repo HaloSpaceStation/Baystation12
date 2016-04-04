@@ -99,23 +99,3 @@
 	item_state = "atmos_voidsuit"
 	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 50)
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
-
-/obj/item/clothing/head/helmet/space/void/salvage
-	name = "salvaging voidsuit helmet"
-	desc = "A bulky UNSC salvager's voidsuit helmet. Perfect for scrapping unused ships, stations, and other space junk."
-	icon_state = "rig0-salvage"
-	item_state = "rig0-salvage"
-	item_state_slots = list(
-		slot_l_hand_str = "mining_helm",
-		slot_r_hand_str = "mining_helm",
-		)
-	armor = list(melee = 50, bullet = 20, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 20)
-	light_overlay = "helmet_light_salvage"
-
-/obj/item/clothing/suit/space/void/salvage
-	icon_state = "salvage_void"
-	name = "salvaging voidsuit"
-	desc = "A bulky UNSC salvager's voidsuit. Perfect for scrapping unused ships, stations, and other space junk."
-	item_state = "salvage_void"
-	armor = list(melee = 50, bullet = 20, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 20)
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/storage/bag/ore,/obj/item/device/t_scanner,/obj/item/weapon/pickaxe, /obj/item/weapon/rcd)

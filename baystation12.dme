@@ -1131,6 +1131,7 @@
 #include "code\modules\ghosttrap\trap.dm"
 #include "code\modules\halo\clothing\jumpsuits.dm"
 #include "code\modules\halo\clothing\misc.dm"
+#include "code\modules\halo\clothing\space.dm"
 #include "code\modules\halo\doors\halo_doors.dm"
 #include "code\modules\halo\floorsigns\floorsigns.dm"
 #include "code\modules\halo\maps\unsc_cruiser.dm"
