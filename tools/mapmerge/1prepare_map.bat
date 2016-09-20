@@ -1,8 +1,8 @@
-SET z_levels=5
+SET z_levels=4
 cd ../../maps
 
 FOR /L %%i IN (1,1,%z_levels%) DO (
-  copy unsc_cruiser-%%i.dmm unsc_cruiser-%%i.dmm.backup
+  copy Forward_unto_dawn-%%i.dmm Forward_unto_dawn-%%i.dmm.backup
 )
 
 pause

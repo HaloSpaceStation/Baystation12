@@ -34,11 +34,51 @@ var/global/list/cached_zlevels = list()		//unused and empty zlevels in case they
 
 	var/datum/scanner_manager/overmap_scanner_manager
 
-	var/datum/big_asteroid_generation_settings/big_asteroid_generation_settings
+	var/datum/asteroid_gen_config/asteroid_gen_config
+
+	var/list/all_abundant_ores_reference
+	var/list/all_common_ores_reference
+	var/list/all_rare_ores_reference
+	//
+	var/list/unused_abundant_ores_reference
+	var/list/unused_common_ores_reference
+	var/list/unused_rare_ores_reference
+
+	var/list/asteroid_zlevels = list()
+	var/list/asteroid_zlevels_loading_assigned = list()
+	var/list/asteroid_zlevels_loading_unassigned = list()
+	var/obj/effect/zlevelinfo/bigasteroid/asteroid_zlevel_loading
+	var/list/asteroid_zlevels_ready = list()
 
 /datum/controller/process/overmap/doWork()
 	//see temporary_sector.dm
 	process_temp_sectors()
+
+	//load our asteroid zlevels
+	var/steps_per_asteroid = asteroid_gen_config.asteroid_steps_per_process
+	if(asteroid_zlevel_loading)
+		//prioritise loading this asteroid first
+		spawn(0)
+			if(!asteroid_zlevel_loading.step_generation(steps_per_asteroid))
+				asteroid_zlevels_ready.Add(asteroid_zlevel_loading)
+				asteroid_zlevel_loading = null
+
+	else if(asteroid_zlevels_loading_assigned.len)
+		//prioritise generating any assigned asteroids
+		var/num_steps = steps_per_asteroid / (asteroid_zlevels_loading_assigned.len)
+		for(var/obj/effect/zlevelinfo/bigasteroid/asteroid_zlevel in asteroid_zlevels_loading_assigned)
+			spawn(0)
+				if(!asteroid_zlevel.step_generation(num_steps))
+					asteroid_zlevels_loading_assigned.Remove(asteroid_zlevel)
+
+	else
+		//split between any remaining unassigned asteroids
+		var/num_steps = steps_per_asteroid / (asteroid_zlevels_loading_unassigned.len)
+		for(var/obj/effect/zlevelinfo/bigasteroid/asteroid_zlevel in asteroid_zlevels_loading_unassigned)
+			spawn(0)
+				if(!asteroid_zlevel.step_generation(num_steps))
+					asteroid_zlevels_ready.Add(asteroid_zlevel)
+					asteroid_zlevels_loading_unassigned.Remove(asteroid_zlevel)
 
 //just a placeholder proc for now. eventually have the mapunloader run over these levels to turn them back to empty space
 //then add them to the list to be reused

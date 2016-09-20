@@ -15,6 +15,15 @@ datum/controller/process/overmap/setup()
 	//to enable debugging
 	map_sectors_reference = map_sectors
 	cached_zlevels_reference = cached_zlevels
+	//
+	all_abundant_ores_reference = all_abundant_ores
+	unused_abundant_ores_reference = unused_abundant_ores
+	all_common_ores_reference = all_common_ores
+	unused_common_ores_reference = unused_common_ores
+	all_rare_ores_reference = all_rare_ores
+	unused_rare_ores_reference = unused_rare_ores
+
+	asteroid_gen_config = new()
 
 	var/obj/effect/zlevelinfo/data
 	for(var/level in 1 to world.maxz)
@@ -32,6 +41,12 @@ datum/controller/process/overmap/setup()
 				testing("Adding precreated ship! Tag: [data.tag] Name: [data.name] at [data.mapx],[data.mapy] corresponding to z[level]")
 				//map_sectors["[level]"] = new /obj/effect/overmapobj(data)
 				cached_zlevelspre["[data.name]"] = data*/
+
+			else if(istype(data, /obj/effect/zlevelinfo/bigasteroid))
+				asteroid_zlevels.Add(data)
+				asteroid_zlevels_loading_unassigned.Add(data)
+				asteroid_zlevel_loading = data
+				data:begin_generation()		//whatever
 
 			else
 				var/obj/effect/overmapobj/found_obj = locate("[data.name]")
@@ -67,7 +82,6 @@ datum/controller/process/overmap/setup()
 	current_starsystem = new()
 	all_starsystems.Add(current_starsystem)
 	//
-	big_asteroid_generation_settings = new()
 	current_starsystem.place_asteroid_fields()
 	overmap_scanner_manager.add_asteroidfields(current_starsystem.asteroid_fields)
 
@@ -102,3 +116,36 @@ datum/controller/process/overmap/proc/create_new_zlevel()
 	cached_zlevels += data
 	world << "<span class='danger'>	Finished adding new zlevel ([(world.time - starttime)/10]).</span>"
 	return data
+
+datum/controller/process/overmap/proc/get_finished_asteroid_zlevel()
+	if(asteroid_zlevels_ready.len)
+		return pop(asteroid_zlevels_ready)
+
+datum/controller/process/overmap/proc/get_or_create_asteroid_zlevel()
+	. = get_finished_asteroid_zlevel()
+	if(.)
+		return .
+
+	if(asteroid_zlevels_loading_unassigned.len)
+		. = pop(asteroid_zlevels_loading_unassigned)
+		asteroid_zlevels_loading_assigned.Add(.)
+		return .
+
+	//get an ordinary zlevel
+	var/obj/effect/zlevelinfo/new_level = get_or_create_cached_zlevel()
+
+	//create a special asteroid type info marker
+	var/obj/effect/zlevelinfo/bigasteroid/asteroid_level = new(new_level.loc)
+
+	//clear out the old one
+	new_level.tag = null
+	qdel(new_level)
+
+	//setup the new one
+	asteroid_level.tag = "zlevel[asteroid_level.z]"
+	asteroid_zlevels.Add(asteroid_level)
+	asteroid_zlevels_loading_assigned.Add(asteroid_level)
+	asteroid_level.begin_generation()
+
+	//return the result
+	. = asteroid_level

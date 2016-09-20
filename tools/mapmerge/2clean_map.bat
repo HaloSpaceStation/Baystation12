@@ -1,8 +1,8 @@
-SET z_levels=5
+SET z_levels=4
 cd 
 
 FOR /L %%i IN (1,1,%z_levels%) DO (
-  java -jar MapPatcher.jar -clean ../../maps/unsc_cruiser-%%i.dmm.backup ../../maps/unsc_cruiser-%%i.dmm ../../maps/unsc_cruiser-%%i.dmm
+  java -jar MapPatcher.jar -clean ../../maps/Forward_unto_dawn-%%i.dmm.backup ../../maps/Forward_unto_dawn-%%i.dmm ../../maps/Forward_unto_dawn-%%i.dmm
 )
 
 pause

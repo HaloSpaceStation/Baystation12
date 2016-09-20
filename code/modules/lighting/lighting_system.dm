@@ -5,6 +5,7 @@
 
 // duplicates lots of code, but this proc needs to be as fast as possible.
 /proc/create_lighting_overlays(zlevel = 0)
+	set background = 1
 	var/area/A
 	if(zlevel == 0) // populate all zlevels
 		for(var/turf/T in world)

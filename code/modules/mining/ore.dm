@@ -1,10 +1,13 @@
 /obj/item/weapon/ore
 	name = "rock"
 	icon = 'icons/obj/mining.dmi'
-	icon_state = "ore2"
+	icon_state = "ore1"
 	w_class = 2
 	var/datum/geosample/geologic_data
 	var/material
+	var/byproduct
+	var/byproduct_amount = 0.25
+	var/rock
 
 /obj/item/weapon/ore/uranium
 	name = "pitchblende"

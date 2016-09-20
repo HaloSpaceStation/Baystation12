@@ -25,7 +25,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	anchored = 1
 	icon = 'icons/obj/rune.dmi'
 	icon_state = "1"
-	var/visibility = 0
+	//var/visibility = 0
 	unacidable = 1
 	layer = TURF_LAYER
 

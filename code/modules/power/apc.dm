@@ -167,7 +167,7 @@
 		src.update_icon()
 
 	if(config.infinite_apc)
-		cell = /obj/item/weapon/cell/infinite
+		cell = new /obj/item/weapon/cell/infinite
 		cell_type = null //set this to null so the if in init() doesnt reset the cell.
 
 /obj/machinery/power/apc/Destroy()

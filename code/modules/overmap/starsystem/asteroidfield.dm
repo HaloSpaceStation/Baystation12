@@ -8,8 +8,9 @@
 	var/obj/effect/starsystem/my_starsystem
 	//
 	var/list/big_asteroids = list()
-	var/list/big_asteroids_generating = list()
+	//var/list/big_asteroids_generating = list()
 
+	/*
 /datum/asteroidfield/proc/run_steps(var/steps_this_cycle = 0)
 	set background = 1
 	. = 1
@@ -17,8 +18,16 @@
 	/*var/start_stage = -1
 	var/finish_stage = 0*/
 
+	var/num_skipped = 0
 	while(big_asteroids_generating.len && steps_this_cycle > 0)
 		var/obj/effect/overmapobj/bigasteroid/bigasteroid = big_asteroids_generating[1]
+
+		if(!bigasteroid.generating)
+			num_skipped++
+			if(num_skipped >= big_asteroids_generating.len)
+				break
+			else
+				continue
 
 		/*if(start_stage < 0)
 			start_stage = bigasteroid.gen_stage*/
@@ -30,13 +39,17 @@
 		if(!retval)
 			big_asteroids_generating -= bigasteroid
 
+		steps_this_cycle -= 1
+		if(overmap_controller.asteroid_gen_config.interrupting)
+			sleep(-1)
+
 		//finish_stage = bigasteroid.gen_stage
 
 	//world << "/datum/asteroidfield/proc/process() start_stage:[start_stage] finish_stage:[finish_stage]"
 
 	//no more asteroids to process
 	if(!big_asteroids_generating.len)
-		. = 0
+		. = 0*/
 
 /datum/asteroidfield/proc/generate()
 	set background = 1
@@ -84,12 +97,17 @@
 	//some last stuff
 	src.big_asteroids.Add(new_asteroid)
 	new_asteroid.owner = src
-	new_asteroid.myzlevel = overmap_controller.get_or_create_cached_zlevel()
-	new_asteroid.begin_generation()
-	new_asteroid.linked_zlevelinfos += new_asteroid.myzlevel
+	/*new_asteroid.myzlevel = overmap_controller.get_asteroid_zlevel()
+	if(new_asteroid.myzlevel)
+		new_asteroid.myzlevel.begin_generation()
+	else
+		new_asteroid.myzlevel = overmap_controller.get_or_create_cached_zlevel()
+		new_asteroid.myzlevel.begin_generation(1)
+
+	new_asteroid.linked_zlevelinfos += new_asteroid.myzlevel*/
 
 	//we'll generate it step by step over the round to avoid lag at round start
-	big_asteroids_generating += new_asteroid
+	//big_asteroids_generating += new_asteroid
 
 	/*
 	var/starttime = world.time

@@ -74,6 +74,7 @@ var/list/ghostteleportlocs = list()
 
 /hook/startup/proc/setupGhostTeleportLocs()
 	for(var/area/AR in world)
+		if(istype(AR, /area/space)) continue
 		if(ghostteleportlocs.Find(AR.name)) continue
 		if(istype(AR, /area/turret_protected/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom))
 			ghostteleportlocs += AR.name

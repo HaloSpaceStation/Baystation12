@@ -5,7 +5,7 @@ var/list/available_quadrants = list()
 	var/list/static_objs = list()
 	var/list/ships = list()
 	var/list/asteroid_fields = list()
-	var/list/asteroid_fields_processing = list()
+	//var/list/asteroid_fields_processing = list()
 	var/list/big_asteroids = list()
 
 /obj/effect/starsystem/New()
@@ -65,8 +65,8 @@ var/list/available_quadrants = list()
 	//reset the quadrants list
 	available_quadrants += used_quadrants
 
-	//max of 4 extra mineable asteroids scattered around
-	var/bonus_asteroids = 0//4
+	//some fields might get extra mineable asteroids
+	var/bonus_asteroids = overmap_controller.asteroid_zlevels_loading_unassigned.len + overmap_controller.asteroid_zlevels_ready.len - 3
 
 	//generate asteroid fields
 	for(var/datum/asteroidfield/current_field in asteroid_fields)
@@ -76,24 +76,29 @@ var/list/available_quadrants = list()
 		//give them one free mineable asteroid
 		current_field.place_bigasteroid()
 
-		//50% chance of 2 mineable asteroids
-		if(bonus_asteroids > 0 && prob(50))
+		//chance of extra mineable asteroids
+		if(bonus_asteroids > 0)
 			current_field.place_bigasteroid()
 			bonus_asteroids -= 1
 
-	asteroid_fields_processing |= asteroid_fields
+	//asteroid_fields_processing |= asteroid_fields
+/*
+/obj/effect/starsystem/var/looping = 0
 
 /obj/effect/starsystem/process()
-	//split the total step allocation up between all busy asteroid fields
-	var/steps_per_asteroid = overmap_controller.big_asteroid_generation_settings.asteroid_steps_per_process
-	steps_per_asteroid /= asteroid_fields_processing.len
-
 	var/list/finished = list()
+
+	//split the total step allocation up between all busy asteroid fields
+	var/steps_per_asteroid = overmap_controller.asteroid_gen_config.asteroid_steps_per_process
+	steps_per_asteroid /= asteroid_fields_processing.len
 	for(var/datum/asteroidfield/asteroidfield in asteroid_fields_processing)
-		if(!asteroidfield.run_steps(steps_per_asteroid))
+		if(asteroidfield.big_asteroids_generating.len)
+			asteroidfield.run_steps(steps_per_asteroid)
+		else
 			finished += asteroidfield
 
 	//if we're finished, stop processing
 	asteroid_fields_processing -= finished
 	if(!asteroid_fields_processing.len)
 		processing_objects.Remove(src)
+*/

@@ -99,10 +99,29 @@ var/list/delete_on_spacetravel = list(\
 	//if there's something pre-existing there to fly towards, do it
 	var/obj/effect/zlevelinfo/entry_level
 	if(target_sector)
-		//always just come in on the top level for now
-		entry_level = target_sector.linked_zlevelinfos[1]
-		testing("	Space travel destination is object: [target_sector]")
-	else
+		if(target_sector.linked_zlevelinfos.len)
+			//always just come in on the top level for now
+			entry_level = target_sector.linked_zlevelinfos[1]
+			testing("	Space travel destination is object: [target_sector]")
+		else
+			//special handling for asteroids, as they might still be generating
+			if(istype(target_sector, /obj/effect/overmapobj/bigasteroid))
+				var/obj/effect/overmapobj/bigasteroid/bigasteroid = target_sector
+
+				testing("	Space travel destination is bigasteroid: [bigasteroid]")
+				entry_level = bigasteroid.get_zlevel()
+
+			else
+				testing("WARNING: no valid zlevel target for spacetravel at overmap sector: [target_sector] [target_sector.type] ([target_sector.x],[target_sector.y]) [A]")
+
+		//if we cant get into this sector, force a travel to a temp sector on the same turf
+		if(!entry_level)
+			target_sector = locate(/obj/effect/overmapobj/temporary_sector) in map
+			if(target_sector)
+				testing("WARNING: no valid zlevel target for spacetravel at overmap sector, using stacked temp sector ([target_sector.x],[target_sector.y]) [A]")
+				entry_level = target_sector.linked_zlevelinfos[1]
+
+	if(!target_sector)
 		//otherwise, we're headed for deep space!
 		testing("	Space travel destination is ~deep space~")
 

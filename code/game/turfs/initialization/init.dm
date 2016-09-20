@@ -5,6 +5,7 @@
 	var/datum/turf_initializer/turf_initializer = null
 
 /area/initialize()
+	set background = 1
 	..()
 	for(var/turf/simulated/T in src)
 		T.initialize()
