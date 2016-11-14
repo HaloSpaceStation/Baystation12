@@ -496,3 +496,8 @@ its easier to just keep the beam vertical.
 		else if(ismob(I))
 			var/mob/M = I
 			M.show_message( message, 2, deaf_message, 1)
+
+//first, add your listening atom to var/entry_listeners of the desired turf
+//second, override this proc below because the desired turf calls it
+//do your own typechecking and handling from there
+/atom/proc/entry_triggered(var/turf/triggered, var/atom/movable/M)
