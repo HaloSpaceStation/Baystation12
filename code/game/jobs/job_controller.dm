@@ -622,7 +622,9 @@ var/global/datum/controller/occupations/job_master
 	var/datum/spawnpoint/spawnpos
 
 	if(H.client.prefs.spawnpoint)
-		spawnpos = spawntypes[H.client.prefs.spawnpoint]
+		//force everyone to spawn from cryo for now. later make this round dependant
+		spawnpos = spawntypes["Cryogenic Storage"]
+		//spawnpos = spawntypes[H.client.prefs.spawnpoint]
 
 	if(spawnpos && istype(spawnpos))
 		if(spawnpos.check_job_spawning(rank))

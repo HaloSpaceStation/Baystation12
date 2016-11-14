@@ -29,7 +29,7 @@ var/list/spawntypes = list()
 /datum/spawnpoint/arrivals/New()
 	..()
 	turfs = latejoin
-
+/*
 /datum/spawnpoint/gateway
 	display_name = "Gateway"
 	msg = "has completed translation from offsite gateway"
@@ -37,7 +37,7 @@ var/list/spawntypes = list()
 /datum/spawnpoint/gateway/New()
 	..()
 	turfs = latejoin_gateway
-
+*/
 /datum/spawnpoint/cryo
 	display_name = "Cryogenic Storage"
 	msg = "has completed cryogenic revival"
@@ -46,7 +46,7 @@ var/list/spawntypes = list()
 /datum/spawnpoint/cryo/New()
 	..()
 	turfs = latejoin_cryo
-
+/*
 /datum/spawnpoint/cyborg
 	display_name = "Cyborg Storage"
 	msg = "has been activated from storage"
@@ -55,3 +55,4 @@ var/list/spawntypes = list()
 /datum/spawnpoint/cyborg/New()
 	..()
 	turfs = latejoin_cyborg
+	*/
