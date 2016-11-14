@@ -14,6 +14,8 @@
 	var/hovering_underlay = "hovering"
 	var/client_screen_size = 14
 
+	var/spawn_dir = 1
+
 	var/list/occupants = list()
 	var/occupants_max = 1
 	var/move_dir = 0
