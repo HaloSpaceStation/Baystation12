@@ -13,11 +13,16 @@ var/list/floor_light_cache = list()
 	power_channel = LIGHT
 	matter = list(DEFAULT_WALL_MATERIAL = 2500, "glass" = 2750)
 
-	var/on
+	var/on = 0
 	var/damaged
 	var/default_light_range = 4
 	var/default_light_power = 2
 	var/default_light_colour = "#FFFFFF"
+
+/obj/machinery/floor_light/on
+	on = 1
+	anchored = 1
+	icon_state = "on"
 
 /obj/machinery/floor_light/New()
 	..()
