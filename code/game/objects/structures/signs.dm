@@ -200,28 +200,3 @@
 	name = "\improper Bridge"
 	desc = "A direction sign, pointing out which way the Bridge is."
 	icon_state = "direction_bdg"
-
-/obj/structure/sign/deck1
-	name = "\improper Deck 1"
-	desc = "An informational sign informing the reader that they're currently on deck 1"
-	icon_state = "deck1"
-
-/obj/structure/sign/deck2
-	name = "\improper Deck 2"
-	desc = "An informational sign informing the reader that they're currently on deck 2"
-	icon_state = "deck2"
-
-/obj/structure/sign/deck3
-	name = "\improper Deck 3"
-	desc = "An informational sign informing the reader that they're currently on deck 3"
-	icon_state = "deck3"
-
-/obj/structure/sign/deck4
-	name = "\improper Deck 4"
-	desc = "An informational sign informing the reader that they're currently on deck 4"
-	icon_state = "deck4"
-
-/obj/structure/sign/deck5
-	name = "\improper Deck 5"
-	desc = "An informational sign informing the reader that they're currently on deck 5"
-	icon_state = "deck5"
