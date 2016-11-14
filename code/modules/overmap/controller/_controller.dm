@@ -71,7 +71,7 @@ var/global/list/cached_zlevels = list()		//unused and empty zlevels in case they
 				if(!asteroid_zlevel.step_generation(num_steps))
 					asteroid_zlevels_loading_assigned.Remove(asteroid_zlevel)
 
-	else
+	else if(asteroid_zlevels_loading_unassigned.len)
 		//split between any remaining unassigned asteroids
 		var/num_steps = steps_per_asteroid / (asteroid_zlevels_loading_unassigned.len)
 		for(var/obj/effect/zlevelinfo/bigasteroid/asteroid_zlevel in asteroid_zlevels_loading_unassigned)
