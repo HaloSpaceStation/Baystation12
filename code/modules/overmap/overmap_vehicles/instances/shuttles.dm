@@ -3,6 +3,18 @@
 //when facing EAST|WEST, the transform offsets the sprite by 3 turfs X and 3 turfs Y
 
 
+/obj/machinery/overmap_vehicle/shuttle/cargo_darter
+	name = "D82-EST Darter"
+	icon = 'code/modules/overmap/overmap_vehicles/shuttles/unsc_cargo_shuttle.dmi'
+	desc = "A logistical support dropship for delivering supplies such as rations and munitions between UNSC facilities and warships."
+	//
+	maglock_strength = 6
+	bound_width = 192
+	bound_height = 384
+	layout_file = 'maps/ships/shuttle_unsccargo1.dmm'
+	layout_x = 6
+	layout_y = 112
+
 //when facing EAST|WEST, the transform offsets the sprite by 0.5 turfs X and 0.5 turfs Y
 /obj/machinery/overmap_vehicle/shuttle/med1
 	name = "Medstar 2200 Shuttlecraft"
@@ -69,7 +81,8 @@
 	layout_y = 14
 
 
-//dont use this one for anything
+//an early test map which is a copy of the SS13 nuke shuttle
+//i'm not happy with how big it is so i'm not planning to use it but keep it for reference instead
 /obj/machinery/overmap_vehicle/shuttle/innie
 	name = "Combat Shuttle"
 	icon = 'code/modules/overmap/overmap_vehicles/shuttles/innie_combat_shuttle.dmi'
@@ -77,7 +90,7 @@
 	maglock_strength = 10
 	bound_width = 544
 	bound_height = 864
-	layout_file = 'maps/shuttle_inniecombat1.dmm'
+	layout_file = 'maps/ships/shuttle_inniecombat1.dmm'
 	layout_x = 17
 	layout_y = 27
 
