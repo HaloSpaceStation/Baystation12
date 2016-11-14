@@ -31,6 +31,13 @@
 
 	//force an immediate update to prevent jitter
 	pixel_transform.update()
+
+	//reset this now
+	target_entry_level = null
+	is_docking = 1
+
+	//check if we are now running on autopilot
+	autopilot_attempt_begin(newsector)
 /*
 /obj/machinery/overmap_vehicle/proc/enter_new_zlevel(var/obj/effect/zlevelinfo/entryz)
 	hud_waypoint_controller.enter_new_zlevel(entryz)

@@ -100,9 +100,16 @@ var/list/delete_on_spacetravel = list(\
 	var/obj/effect/zlevelinfo/entry_level
 	if(target_sector)
 		if(target_sector.linked_zlevelinfos.len)
-			//always just come in on the top level for now
-			entry_level = target_sector.linked_zlevelinfos[1]
-			testing("	Space travel destination is object: [target_sector]")
+			//check if we are in a vehicle targetting a specific level
+			if(istype(A, /obj/machinery/overmap_vehicle))
+				var/obj/machinery/overmap_vehicle/overmap_vehicle = A
+				if(overmap_vehicle.target_entry_level && overmap_vehicle.target_entry_level in target_sector.linked_zlevelinfos)
+					entry_level = overmap_vehicle.target_entry_level
+					testing("	Space travel destination is object: [target_sector] (targetting zlevel [entry_level.z])")
+
+			if(!entry_level)
+				entry_level = target_sector.linked_zlevelinfos[1]
+				testing("	Space travel destination is object: [target_sector] (targetting default top zlevel [entry_level.z])")
 		else
 			//special handling for asteroids, as they might still be generating
 			if(istype(target_sector, /obj/effect/overmapobj/bigasteroid))
