@@ -13,7 +13,7 @@
 	bound_height = 384
 	layout_file = 'maps/ships/shuttle_unsccargo1.dmm'
 	layout_x = 6
-	layout_y = 112
+	layout_y = 12
 
 //when facing EAST|WEST, the transform offsets the sprite by 0.5 turfs X and 0.5 turfs Y
 /obj/machinery/overmap_vehicle/shuttle/med1

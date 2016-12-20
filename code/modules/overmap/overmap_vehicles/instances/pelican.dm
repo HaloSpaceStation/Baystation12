@@ -4,8 +4,8 @@
 	desc = "Versatile dropship and support gunship."
 	icon = 'code/modules/overmap/overmap_vehicles/icons/pelican.dmi'
 	icon_state = "pelican"
-	bound_width = 128
-	bound_height = 128
+	bound_width = 192//128
+	bound_height = 192//128
 	max_speed = 16
 	yaw_speed = 5
 	accel_duration = 50
