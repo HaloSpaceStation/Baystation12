@@ -70,3 +70,7 @@
 		var/fulldamage = pick(10, 25, 50) * rand(5,10)
 		overmap_vehicle.hull_remaining -= fulldamage / overmap_vehicle.armour
 		overmap_vehicle.health_update()
+
+//override in children
+/obj/effect/overmapobj/vehicle/machineClickOn(var/atom/A, var/params)
+	return overmap_vehicle.machineClickOn(A, params)

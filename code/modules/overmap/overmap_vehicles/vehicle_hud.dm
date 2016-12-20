@@ -44,5 +44,6 @@
 		world << "WARNING: attempted to create a vehicle hud for [usr] [usr.type] but they were not detected as piloting a vehicle!"
 
 	mymob.client.screen += src.adding// + src.other
+	mymob.client.images += my_vehicle.get_misc_hud_images()
 
 	return

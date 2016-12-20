@@ -4,7 +4,8 @@
 
 /obj/effect/overmapobj/proc/add_route_beacon(var/obj/machinery/autopilot_beacon/new_beacon)
 	//check if there is a route already we can slot this beacon into
-	var/list/autopilot_route = autopilot_routes[new_beacon.route_id]
+	autopilot_routes[new_beacon.route_name] = new_beacon
+	/*var/list/autopilot_route = autopilot_routes[new_beacon.route_id]
 	if(autopilot_route)
 		//lets loop through the route and find out where it goes
 		var/success = 0
@@ -24,8 +25,8 @@
 		autopilot_route = list(new_beacon)
 		autopilot_routes[new_beacon.route_id] = autopilot_route
 
-	new_beacon.my_route = autopilot_route
-
+	new_beacon.my_route = autopilot_route*/
+/*
 /obj/effect/overmapobj/verb/autodock()
 	set name = "Autodock strike craft..."
 	set src in view(9)
@@ -70,3 +71,4 @@
 		V.enter_new_sector(target_sector, entry_level)*/
 	else
 		usr << "<span class='warning'>ERROR: usr:machine validation check failed in /obj/effect/overmapobj/ship/verb/autodock() (must be piloting an overmapvehicle)</span>"
+*/

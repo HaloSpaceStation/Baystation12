@@ -34,10 +34,11 @@
 
 	//reset this now
 	target_entry_level = null
-	is_docking = 1
+	//docking_approach = 1
+	autodock_button.icon_state = "docking"
 
 	//check if we are now running on autopilot
-	autopilot_attempt_begin(newsector)
+	autopilot_begin_approach(newsector)
 /*
 /obj/machinery/overmap_vehicle/proc/enter_new_zlevel(var/obj/effect/zlevelinfo/entryz)
 	hud_waypoint_controller.enter_new_zlevel(entryz)

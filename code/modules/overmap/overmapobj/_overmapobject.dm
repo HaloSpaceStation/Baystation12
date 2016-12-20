@@ -47,6 +47,8 @@
 		//
 		scanner_manager = new()
 
+	//setup datanets
+
 /obj/effect/overmapobj/proc/start_meteors()
 	if(!in_meteor_sector)
 		processing_objects += src
@@ -138,3 +140,7 @@
 		outer_edge = inner_edge
 
 	return outer_edge
+
+//override in children
+/obj/effect/overmapobj/proc/machineClickOn(var/atom/A, var/params)
+	return 0

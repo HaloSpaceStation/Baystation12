@@ -34,5 +34,35 @@
 	autobrake_button.screen_loc = "[client_screen_size * 2 - 1],1"
 	misc_hud_objects += autobrake_button
 
+	//ship select underlay
+	hud_overmap_select = image('code/modules/overmap/overmap_vehicles/icons/overmap_vehicle_hud.dmi', "lockon")
+	hud_overmap_select.layer = 2.1
+	hud_vehicle_select = image('code/modules/overmap/overmap_vehicles/icons/overmap_vehicle_hud.dmi', "lockon")
+	hud_vehicle_select.layer = 2.1
+	misc_hud_images += hud_overmap_select
+	misc_hud_images += hud_vehicle_select
+	//
+	deselect_button = new(src)
+	deselect_button.screen_loc = "[client_screen_size * 2 - 2],1"
+	misc_hud_objects += deselect_button
+
+	//autodocking sequnce
+	autodock_button = new(src)
+	autodock_button.screen_loc = "[client_screen_size * 2 - 3],1"
+	misc_hud_objects += autodock_button
+
+	//observe overmap
+	observe_overmap_button = new(src)
+	observe_overmap_button.screen_loc = "[client_screen_size * 2 - 4],1"
+	misc_hud_objects += observe_overmap_button
+
+	//flood lights
+	floodlights = new(src)
+	floodlights.screen_loc = "[client_screen_size * 2 - 5],1"
+	misc_hud_objects += floodlights
+
 /obj/machinery/overmap_vehicle/proc/get_misc_hud_objects()
 	return misc_hud_objects
+
+/obj/machinery/overmap_vehicle/proc/get_misc_hud_images()
+	return misc_hud_images

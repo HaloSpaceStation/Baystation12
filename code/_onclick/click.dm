@@ -66,8 +66,8 @@
 	if(stat || paralysis || stunned || weakened)
 		return
 
-	//
-	if(machine && istype(machine))
+	//no safety type checks for MAXIMUM OVERDRIVE
+	if(machine)
 		if(machine.machineClickOn(A, params))
 			return
 
