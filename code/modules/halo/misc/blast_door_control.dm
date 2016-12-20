@@ -328,11 +328,3 @@ obj/machinery/door/blast/proc/arePowerSystemsOn()
 		return 0
 
 	return 1
-
-/obj/machinery/door/blast/var/locked = 1
-
-/obj/machinery/door/blast/proc/unlock(var/forced=0)
-	locked = 0
-
-/obj/machinery/door/blast/proc/lock(var/forced=0)
-	locked = 1

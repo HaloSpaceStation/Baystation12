@@ -29,6 +29,7 @@
 	var/obj/item/stack/material/steel/repairing
 	var/block_air_zones = 1 //If set, air zones cannot merge across the door even when it is opened.
 	var/close_door_at = 0 //When to automatically close the door, if possible
+	var/locked = 0
 
 	//Multi-tile doors
 	dir = EAST
@@ -474,6 +475,12 @@
 			bound_height = width * world.icon_size
 
 	update_nearby_tiles()
+
+/obj/machinery/door/proc/lock(var/forced=0)
+	locked = 1
+
+/obj/machinery/door/proc/unlock(var/forced=0)
+	locked = 0
 
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
