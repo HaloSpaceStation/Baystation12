@@ -151,9 +151,9 @@ var/const/enterloopsanity = 100
 					thing.HasProximity(A, 1)
 
 	//quick hack to only trigger off bottom left corner of multitile atoms, otherwise i could use the inbuilt byond procs
-	if(atom.loc == src)
-		for(var/atom/listening_atom in entry_listeners)
-			listening_atom.entry_triggered(src, atom)
+	//if(atom.loc == src)
+	for(var/atom/listening_atom in entry_listeners)
+		listening_atom.entry_triggered(src, atom)
 
 	return
 

@@ -39,13 +39,6 @@
 	var/obj/effect/overmapobj/vehicle/overmap_object
 	var/obj/effect/virtual_area/transit_area
 
-	var/list/current_dock_route
-	var/is_docking = 1
-	var/obj/machinery/autopilot_beacon/current_autopilot_beacon
-	//var/autopilot_targetx = 0
-	//var/autopilot_targety = 0
-	//var/is_autopilot_targetting_x = 1
-
 	var/obj/effect/zlevelinfo/target_entry_level
 
 	var/armour = 100
