@@ -12,9 +12,6 @@
 	iff_faction_broadcast = "UNSC"
 	//nosegun_enabled = 1
 
-	hud_type = /datum/hud/vehicle
-
-
 /obj/machinery/overmap_vehicle/longsword/New()
 	..()
 	overmap_object.icon_state = "longsword"

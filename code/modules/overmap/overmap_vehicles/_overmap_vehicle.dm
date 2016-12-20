@@ -135,3 +135,5 @@
 	var/obj/vehicle_hud/autobrake/autobrake_button
 	var/fire_control_mode = 0	//0 = single shot, 1 = continuous firing
 	var/continue_firing = 0
+
+	hud_type = /datum/hud/vehicle
