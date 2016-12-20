@@ -5,11 +5,15 @@
 	//first, if we are observing our overmap vehicle then the observer wants to go back to the shuttle interior
 	if(!user.machine || user.machine == src)
 		my_observers.Remove(user)
-		pilots.Remove(user)
+
 		user.unset_machine()
 		user.reset_view(null)
 		if(user.client)
 			user.client.view = 7
+
+		//clear out the pilot
+		clear_pilot(user)
+
 	else
 		//otherwise, reset the view to just observing the overmap vehicle
 		//this way, the first call to cancel_camera_view while on the overmap will send them back to viewing out the shuttle in sector view

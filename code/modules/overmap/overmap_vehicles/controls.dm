@@ -48,8 +48,25 @@
 		if(H.machine && H.machine.hud_type)
 			hudtype = H.machine.hud_type
 		H.hud_used = new hudtype(H)
+		return 1
 
-		enable_engines()
+/obj/machinery/overmap_vehicle/proc/clear_pilot(var/mob/living/H)
+	if(pilot == H)
+		pilot.unset_machine()
+		hud_waypoint_controller.remove_hud_from_mob(pilot)
+		overmap_object.hud_waypoint_controller.remove_hud_from_mob(pilot)
+
+		pilot.client.screen = null				//remove hud items just in case
+		pilot.client.images -= get_misc_hud_images()
+		if(pilot.hud_used)	qdel(pilot.hud_used)		//remove the hud objects
+
+		//reset the ordinary mob hud
+		pilot.hud_used = new /datum/hud(pilot)
+		pilot.update_hud()
+
+		pilot = null
+		pilot << "\icon[src] <span class='info'>You are no longer the pilot!</span>"
+		return 1
 
 /obj/machinery/overmap_vehicle/proc/get_absolute_directional_thrust(var/direction)
 	//north = north on the map

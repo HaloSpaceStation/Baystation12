@@ -172,10 +172,6 @@
 
 	return get_relative_directional_thrust(adjusted_direction)
 
-/obj/machinery/overmap_vehicle/shuttle/make_pilot(var/mob/living/H)
-	//handle piloting differently to other vehicle types
-	return
-
 //this proc doesn't safety check! make sure you pass it a turf in the virtual space only, and only when the shuttle is not maglocked
 /obj/machinery/overmap_vehicle/shuttle/proc/get_external_turf(var/turf/internal_turf)
 	var/turf/external_turf

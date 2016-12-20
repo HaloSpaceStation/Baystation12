@@ -8,7 +8,12 @@
 /obj/machinery/computer/shuttle_helm/attack_hand(var/mob/user as mob)
 	add_fingerprint(user)
 	if(can_use(user))
-		ui_interact(user)
+		if(my_shuttle.pilot)
+			user << "<span class='warning'>\icon[my_shuttle.pilot] [my_shuttle.pilot] is already piloting [my_shuttle]!!</span>"
+		else
+			user.set_machine(my_shuttle)
+			my_shuttle.make_pilot(user)
+			ui_interact(user)
 
 /obj/machinery/computer/shuttle_helm/relaymove(var/mob/user, direction)
 	if(my_shuttle)
@@ -78,7 +83,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "helm_shuttle.tmpl", "[my_shuttle.name] Helm", 450, 650)
+		ui = new(user, src, ui_key, "helm_shuttle.tmpl", "[my_shuttle.name] Helm", 450, 700)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)

@@ -59,8 +59,8 @@
 					check_eye(user)
 					occupants.Add(user)
 
-					if(!pilot)
-						make_pilot(user)
+					if(make_pilot(user))
+						enable_engines()
 
 					return 1
 				else
@@ -80,21 +80,8 @@
 	usr.loc = src.loc
 	usr << "<span class='info'><b>You exit [src].</b></span>"
 	my_observers.Remove(usr)
-	if(pilot == usr)
-		pilot.unset_machine()
-		hud_waypoint_controller.remove_hud_from_mob(pilot)
-		overmap_object.hud_waypoint_controller.remove_hud_from_mob(pilot)
-
-		pilot.client.screen = null				//remove hud items just in case
-		if(pilot.hud_used)	qdel(pilot.hud_used)		//remove the hud objects
-
-		//reset the ordinary mob hud
-		pilot.hud_used = new /datum/hud(pilot)
-		pilot.update_hud()
-
-		pilot = null
+	if(clear_pilot(usr))
 		disable_engines()
-		usr << "\icon[src] <span class='info'>You are no longer the pilot!</span>"
 
 	occupants -= usr
 	my_observers -= usr
