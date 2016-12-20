@@ -13,7 +13,7 @@ var/global/datum/controller/occupations/job_master
 	var/list/job_debug = list()
 
 
-	proc/SetupOccupations(var/faction = "Station")
+	proc/SetupOccupations(var/faction = "UNSC_ship")
 		occupations = list()
 		var/list/all_jobs = typesof(/datum/job)
 		if(!all_jobs.len)
@@ -455,9 +455,9 @@ var/global/datum/controller/occupations/job_master
 					return H.Robotize()
 				if("AI")
 					return H
-				if("Captain")
+				/*if("Captain")
 					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
-					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
+					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)*/
 
 			//Deferred item spawning.
 			if(spawn_in_storage && spawn_in_storage.len)

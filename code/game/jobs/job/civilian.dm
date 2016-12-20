@@ -27,7 +27,7 @@
 		return 1
 */
 
-
+/*
 /datum/job/chef
 	title = "Mess Cook"
 	flag = CHEF
@@ -52,7 +52,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/chefhat(H), slot_head)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/chef(H), slot_belt)
 		return 1
-
+*/
 
 /*
 /datum/job/hydro
@@ -89,7 +89,7 @@
 
 //Cargo
 /datum/job/qm
-	title = "Ordnance Officer"
+	title = "Chief Logistics Specialist"
 	flag = QUARTERMASTER
 	department = "Cargo"
 	department_flag = CIVILIAN
@@ -98,7 +98,7 @@
 	spawn_positions = 1
 	supervisors = "the first officer"
 	selection_color = "#dddddd"
-	economic_modifier = 5
+	//economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 
@@ -106,34 +106,35 @@
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/operations(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/logistics(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/quartermaster(H), slot_belt)
-//		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), slot_gloves)
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), slot_glasses)
+		//H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), slot_gloves)
+		//H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), slot_glasses)
 		H.equip_to_slot_or_del(new /obj/item/weapon/clipboard(H), slot_l_hand)
 		return 1
 
 
 
 /datum/job/cargo_tech
-	title = "Ordnance Technician"
+	title = "Logistics Specialist"
 	flag = CARGOTECH
 	department = "Cargo"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the ordnance officer and first officer"
+	total_positions = 6
+	spawn_positions = 6
+	supervisors = "the chief logistics specialist and first officer"
 	selection_color = "#dddddd"
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
+	alt_titles = list("Ordnance Specialist","Culinary Specialist", "Service Specialist")
 
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/operations/technician(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/logistics(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/cargo(H), slot_belt)
 //		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), slot_gloves)
@@ -252,7 +253,7 @@
 		return 1
 */
 
-
+/*
 /datum/job/janitor
 	title = "Janitor"
 	flag = JANITOR
@@ -274,7 +275,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/janitor(H), slot_belt)
 		return 1
-
+*/
 
 /*
 //More or less assistants

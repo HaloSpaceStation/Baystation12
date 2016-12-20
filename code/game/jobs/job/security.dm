@@ -1,5 +1,5 @@
 /datum/job/hos
-	title = "Chief Security Officer"
+	title = "Head of Security"
 	flag = HOS
 	head_position = 1
 	department = "Security"
@@ -29,7 +29,7 @@
 			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel_sec(H), slot_back)
 			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/heads/hos(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/security(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/head_of_security(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/hos(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), slot_gloves)
@@ -46,14 +46,14 @@
 
 
 /datum/job/warden
-	title = "Military Police Warden"
+	title = "Warden"
 	flag = WARDEN
 	department = "Security"
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "chief security officer"
+	supervisors = "the head of security"
 	selection_color = "#ffeeee"
 	economic_modifier = 5
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_external_airlocks)
@@ -67,7 +67,7 @@
 			if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/security(H), slot_back)
 			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel_sec(H), slot_back)
 			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/security(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/warden(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/warden(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), slot_gloves)
@@ -81,7 +81,7 @@
 		return 1
 
 
-/*
+
 /datum/job/detective
 	title = "Detective"
 	flag = DETECTIVE
@@ -120,20 +120,20 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/det_trench(H), slot_wear_suit)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/det(H), slot_head)
 		return 1
-*/
+
 
 
 /datum/job/officer
-	title = "Military Police"
+	title = "Security Officer"
 	flag = OFFICER
 	department = "Security"
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "chief security officer"
+	total_positions = 4
+	spawn_positions = 4
+	supervisors = "the head of security"
 	selection_color = "#ffeeee"
-	//alt_titles = list("Junior Officer")
+	alt_titles = list("Junior Officer")
 	economic_modifier = 4
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
@@ -145,7 +145,7 @@
 			if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/security(H), slot_back)
 			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel_sec(H), slot_back)
 			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/security(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/security(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/weapon/handcuffs(H), slot_s_store)
