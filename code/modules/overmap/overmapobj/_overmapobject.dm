@@ -33,6 +33,9 @@
 
 	var/sensor_icon_state = ""
 
+	//for docking stuff
+	var/connectors = list()
+
 //override in children if necessary (used by ships)
 /obj/effect/overmapobj/proc/overmap_init()
 	if(init_sensors)

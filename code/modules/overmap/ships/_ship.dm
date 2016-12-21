@@ -169,6 +169,11 @@
 		else
 			overmap_controller.toggle_move_stars(shipz, fore_dir)
 
+	if(!is_still())
+		for(var/obj/docking_umbilical/umb in connectors)
+			if(umb.deployed)
+				umb.rip()
+
 	//heading = -Atan2(speed[1], speed[2]) - 90
 
 /obj/effect/overmapobj/ship/proc/toggle_autobrake()

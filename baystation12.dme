@@ -1523,6 +1523,7 @@
 #include "code\modules\overmap\controller\spawn_to_sector.dm"
 #include "code\modules\overmap\controller\toggle_move_stars.dm"
 #include "code\modules\overmap\controller\virtual_areas.dm"
+#include "code\modules\overmap\docking\umbilical.dm"
 #include "code\modules\overmap\navigation_sensors\hud_waypoint\_hud_waypoint.dm"
 #include "code\modules\overmap\navigation_sensors\hud_waypoint\object.dm"
 #include "code\modules\overmap\navigation_sensors\hud_waypoint\object_mutators.dm"
