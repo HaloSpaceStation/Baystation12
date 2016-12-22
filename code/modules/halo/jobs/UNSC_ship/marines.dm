@@ -8,6 +8,7 @@
 	spawn_positions = 1
 	selection_color = "#667700"
 	req_admin_notify = 1
+	job_guide = "Your responsibility is to command the shipboard complement of marines. Nominally you answer to the captain, but he has limited control over you once deployed. Remember that a good soldier leads from the front, but you can't lead if you're dead."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -27,6 +28,7 @@
 	spawn_positions = 1
 	selection_color = "#667700"
 	req_admin_notify = 1
+	job_guide = "You are the 2IC of the shipboard marine complement, and what the marine CO says to you is gospel. Remember that a good soldier leads from the front, but you can't lead if you're dead."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -45,6 +47,7 @@
 	total_positions = 2
 	spawn_positions = 6
 	selection_color = "#667700"
+	job_guide = "You lead a squad of marines (not yet implemented, so pick some guys to be in your squad and try to RP it). Your marines are the best of the best, but they're only human."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -62,6 +65,7 @@
 	min_rank = RANK_GYSGT
 	default_rank = RANK_GYSGT
 	max_rank = RANK_MGYSGT
+	job_guide = "You, master guns, know your weaponry better than almost any human alive. It's too bad you get treated like a glorified desk jockey whose main responsibility is doling out responsible portions of weaponry to needy marines."
 
 /datum/job/UNSC_ship/marine
 	title = "Marine"
@@ -74,6 +78,7 @@
 	alt_titles = list("Machine Gunner Marine","Marine Combat Medic","Assault Recon Marine",\
 	"Designated Marksman Marine","Scout Sniper Marine","Anti-Tank Missile Gunner Marine",\
 	"EVA Combat Marine")
+	job_guide = "Ooh rah marines! You're tha hardest son of a bitch this side of Terra and don't you know it! Other navy personnel just can't compare. Don't forget to follow orders and listen to your squad leader though."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0

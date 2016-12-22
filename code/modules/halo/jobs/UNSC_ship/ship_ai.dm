@@ -3,6 +3,7 @@
 	spawn_positions = 1
 	selection_color = "#ccffcc"
 	req_admin_notify = 1
+	job_guide = "Your responsibility is to aid the captain and ship's crew and you are given a vast amount of autonomy to that end. You are entirely loyal to the UNSC and your current mission however."
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
 		return 1

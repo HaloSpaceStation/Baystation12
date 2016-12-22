@@ -141,6 +141,36 @@ var/global/datum/controller/gameticker/ticker
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
+		//if in lowpop mode, autpower the ship or station
+		if(config.enable_lowpop_autopower)
+			spawn(0)
+				//loop over all players and determine how many are not observing at roundstart
+				var/amount_active = 0
+				for(var/mob/M in player_list)
+					if(M.client && M.mind && M.mind.assigned_role) // longer than 10 minutes AFK counts them as inactive
+						amount_active++
+						if(amount_active > config.lowpop_autopower_threshold)
+							break
+
+				if(amount_active <= config.lowpop_autopower_threshold)
+					world << "<span class='info'>Due to low population, the server is automatically setting up all SMES and fusion reactors.</span>"
+					//enable all SMES on input and output
+					//don't do anything particularly fancy, this isn't mean to be an effective setup just an emergency one
+					for(var/obj/machinery/power/smes/smes in world)
+						smes.input_attempt = 1
+						smes.output_attempt = 1
+						smes.output_level = smes.output_level_max
+
+					//put aa fuel packet in all reactors which will automatically get them powering
+					for(var/obj/machinery/power/fusion_drive/drive in world)
+						var/obj/item/fusion_fuel/fuel = new(drive)
+						drive.held_fuel = fuel
+						drive.icon_state = "reactor1"
+						drive.update_overlays()
+
+						//a safe rate that wont overload
+						drive.fuel_consumption_rate = 0.5
+
 	//start_events() //handles random events and space dust.
 	//new random event system is handled from the MC.
 

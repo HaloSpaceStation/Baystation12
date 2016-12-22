@@ -9,6 +9,7 @@
 	selection_color = "#990000"
 	idtype = /obj/item/weapon/card/id/silver
 	req_admin_notify = 1
+	job_guide = "Your job is to supervise and lead naval security in enforcing discipline and that all crew work to keep the ship secure. In the event being boarded, you are in charge of the defence."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -26,6 +27,7 @@
 	total_positions = -1
 	spawn_positions = 3
 	selection_color = "#990000"
+	job_guide = "Your job is to enforce discipline and ensure all crew work to keep the ship secure. In the event of being boarded, you are the first line of defence."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0

@@ -79,7 +79,8 @@
 	qdel(wires)
 	wires = null
 	for(var/datum/nano_module/rcon/R in world)
-		R.FindDevices()
+		if(R.known_SMESs)
+			R.known_SMESs -= src
 	return ..()
 
 // Proc: process()

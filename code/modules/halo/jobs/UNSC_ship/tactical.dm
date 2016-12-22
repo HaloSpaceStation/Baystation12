@@ -9,6 +9,7 @@
 	selection_color = "#cc0000"
 	idtype = /obj/item/weapon/card/id/silver
 	req_admin_notify = 1
+	job_guide = "Your responsibility is to oversee the gunnery operators manning the ship's turrets. Unfortunately your job has no content yet but it's coming soon."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -26,6 +27,7 @@
 	total_positions = -1
 	spawn_positions = 2
 	selection_color = "#cc0000"
+	job_guide = "Your responsibility is to man the ship's turrets. Unfortunately your job has no content yet but it's coming soon."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0

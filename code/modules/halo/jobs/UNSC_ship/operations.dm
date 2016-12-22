@@ -8,6 +8,7 @@
 	spawn_positions = 1
 	selection_color = "#33ccff"
 	idtype = /obj/item/weapon/card/id/silver
+	job_guide = "Your responsibility is to supervise general ship and bridge operations including navigation and helm control. Unfortuantely you don't have much content, but more is coming soon."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -26,7 +27,8 @@
 	total_positions = -1
 	spawn_positions = 2
 	selection_color = "#33ccff"
-	alt_titles = list("Sensor Operator", "Electronic Warfare Specialist","Cryptologic Specialist","Signals Analyst")
+	alt_titles = list("Sensor Operator", "Electronic Warfare Specialist","Cryptologic Specialist","Signals Analyst","Navigator","Helmsman")
+	job_guide = "Your job is general ship and bridge operations like navigation and helm control. Unfortunately you don't have much content but more is coming soon."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0

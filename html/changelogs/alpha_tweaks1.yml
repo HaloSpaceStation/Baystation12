@@ -1,0 +1,5 @@
+author: Cael_Aislinn
+delete-after: True
+changes: 
+  - maptweak: "Added additional bulkheads and fixed wiring issues on deck 2."
+  - bugfix: "The event process controller hang after the server has been running for a while should be fixed now."

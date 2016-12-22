@@ -9,6 +9,7 @@
 	selection_color = "#995500"
 	idtype = /obj/item/weapon/card/id/silver
 	req_admin_notify = 1
+	job_guide = "Your job is to oversee the flight crew as they repair, maintain, upgrade, rearm and refuel the various strike craft (fighters, shuttles and drophips). You're probably a decent pilot as well but not necessarily combat qualified."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -28,6 +29,7 @@
 	spawn_positions = 4
 	selection_color = "#995500"
 	alt_titles = list("Deck Mechanic","Hangar Mechanic","Structural Mechanic","Reserve Pilot","Ordnance Mechanic")
+	job_guide = "Your job is to repair, maintain, upgrade, rearm and refuel the various strike craft (fighters, shuttles and drophips). You're probably a decent pilot as well but not necessarily combat qualified."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0

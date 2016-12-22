@@ -9,6 +9,7 @@
 	selection_color = "#3300cc"
 	idtype = /obj/item/weapon/card/id/silver
 	req_admin_notify = 1
+	job_guide = "Your responsibility is to supervise the hospital corpsman and ensure the crew, pilots and marines are in good medical condition."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -27,6 +28,7 @@
 	total_positions = -1
 	spawn_positions = 6
 	selection_color = "#CC6600"
+	job_guide = "Your job is ensure the crew, pilots and marines are in good medical condition."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0

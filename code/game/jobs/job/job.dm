@@ -23,6 +23,8 @@
 	var/account_allowed = 1				  // Does this job type come with a station account?
 	var/economic_modifier = 2			  // With how much does this job modify the initial account amount?
 
+	var/job_guide						  // Short text blurb on what the job role is
+
 /datum/job/proc/equip(var/mob/living/carbon/human/H)
 	return 1
 
@@ -102,3 +104,18 @@
 
 /datum/job/proc/is_position_available()
 	return (current_positions < total_positions) || (total_positions == -1)
+
+/mob/verb/get_job_guide()
+	set name = "Get Job Guide"
+	set category = "IC"
+	if(src.mind)
+		var/datum/job/job = job_master.GetJob(src.mind.assigned_role)
+		if(job)
+			if(job.job_guide)
+				usr << "<span class='info'>[job.job_guide]</span>"
+			else
+				usr << "<span class='warning'>Unfortunately no job guide has been written for your assigned role. Use ahelp, ooc or looc for assistance.</span>"
+		else
+			usr << "<span class='warning'>Error: Server is unable to determine your assigned role.</span>"
+	else
+		usr << "<span class='warning'>Error: You must be out of your mind, because this verb is unable to find it! Probably a bug so report it via ahelp.</span>"

@@ -1,0 +1,10 @@
+author: Cael_Aislinn
+delete-after: True
+changes: 
+  - maptweak: "Added additional bulkheads and fixed wiring issues on deck 2."
+  - bugfix: "The event process controller hang after the server has been running for a while should be fixed now."
+  - experiment: "For the upcoming playtests, the location of the Insurrection base will be revealed 30 seconds into the round instead of 15 minutes."
+  - experiment: "During lowpop rounds, power will now be automatically setup at minimum safe levels. Some brownouts expected."
+  - experiment: "UNSC crew positions all now have a short blurb explaining their rule. This can be accessed ingame with the Get-Job-Guide verb."
+  - tweak: "The Pilot job has now been added, although it's missing a proper uniform so they just use the mechanics for now."
+  - bugfix: "Airlocks can be opened up from the bottom of stairs now."

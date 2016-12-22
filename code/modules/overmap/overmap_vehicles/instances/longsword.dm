@@ -85,6 +85,7 @@
 
 //ATTACK-BOMBER LOADOUT
 //2 x wing mounted auto cannons, 1 x tail mounted Moray spacemine launcher, chassis mounted flare and chaff launchers, 85 bonus hull
+/*
 /obj/machinery/overmap_vehicle/longsword/attackbomber
 	external_loadout = list(\
 		/datum/vehicle_mount/fourbyfour/nose = /obj/structure/vehicle_component/plating/hull/small,\
@@ -119,3 +120,4 @@
 		null,
 		null,
 		)
+*/

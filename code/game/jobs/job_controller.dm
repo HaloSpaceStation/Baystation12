@@ -533,6 +533,11 @@ var/global/datum/controller/occupations/job_master
 			C.rank = rank
 			C.assignment = title ? title : rank
 			H.set_id_info(C)
+			if(job.max_rank)
+				if(prob(50))
+					C.unsc_rank = job.default_rank
+				else
+					C.unsc_rank = rand(job.min_rank, job.max_rank)
 
 			//put the player's account number onto the ID
 			if(H.mind && H.mind.initial_account)

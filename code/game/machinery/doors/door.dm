@@ -101,7 +101,7 @@
 		if(world.time - M.last_bumped <= 10) return	//Can bump-open one airlock per second. This is to prevent shock spam.
 		M.last_bumped = world.time
 		if(!M.restrained() && !issmall(M))
-			bumpopen(M)
+			. = bumpopen(M)
 		return
 
 	if(istype(AM, /obj/machinery/bot))
@@ -109,6 +109,7 @@
 		if(src.check_access(bot.botcard))
 			if(density)
 				open()
+				. = 1
 		return
 
 	if(istype(AM, /mob/living/bot))
@@ -116,6 +117,7 @@
 		if(src.check_access(bot.botcard))
 			if(density)
 				open()
+				. = 1
 		return
 
 	if(istype(AM, /obj/mecha))
@@ -123,6 +125,7 @@
 		if(density)
 			if(mecha.occupant && (src.allowed(mecha.occupant) || src.check_access_list(mecha.operation_req_access)))
 				open()
+				. = 1
 			else
 				do_animate("deny")
 		return
@@ -131,6 +134,7 @@
 		if(density)
 			if(wheel.pulling && (src.allowed(wheel.pulling)))
 				open()
+				. = 1
 			else
 				do_animate("deny")
 		return
@@ -150,8 +154,11 @@
 		return
 	src.add_fingerprint(user)
 	if(density)
-		if(allowed(user))	open()
-		else				do_animate("deny")
+		if(allowed(user))
+			open()
+			. = 1
+		else
+			do_animate("deny")
 	return
 
 /obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)

@@ -9,6 +9,7 @@
 	selection_color = "#ffee00"
 	idtype = /obj/item/weapon/card/id/silver
 	req_admin_notify = 1
+	job_guide = "Your responsibility is to oversee the logistics crewman as they distribute and manage inventory levels, as well as requesting and processing additional supplies as needed."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -28,6 +29,7 @@
 	spawn_positions = 6
 	selection_color = "#ffee00"
 	alt_titles = list("Ordnance Specialist","Culinary Specialist", "Service Specialist")
+	job_guide = "Your job is to distribute and manage inventory levels, as well as request and process additional supplies as needed."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0

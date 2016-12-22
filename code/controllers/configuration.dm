@@ -217,6 +217,10 @@ var/list/gamemode_cache = list()
 
 	var/ghosts_can_possess_animals = 0
 
+	//maximum number of players before SMES and reactors are automatically enabled at roundstart
+	var/enable_lowpop_autopower = 1
+	var/lowpop_autopower_threshold = 4
+
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
@@ -703,8 +707,15 @@ var/list/gamemode_cache = list()
 					if(values.len > 0)
 						language_prefixes = values
 
+				if ("enable_lowpop_autopower")
+					config.enable_lowpop_autopower = text2num(value)
+
+				if ("lowpop_autopower_threshold")
+					config.lowpop_autopower_threshold = text2num(value)
+
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
+
 
 		else if(type == "game_options")
 			if(!value)

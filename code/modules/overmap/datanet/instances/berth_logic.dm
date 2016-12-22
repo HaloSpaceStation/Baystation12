@@ -34,7 +34,7 @@
 
 		if(!berthed_vehicle)
 			for(var/dist = 1, dist < 5, dist++)
-				for(var/obj/machinery/overmap_vehicle/overmap_vehicle in view(berth_beacon, dist))
+				for(var/obj/machinery/overmap_vehicle/overmap_vehicle in view(dist, berth_beacon))
 					berthed_vehicle = overmap_vehicle
 					break
 				if(berthed_vehicle)

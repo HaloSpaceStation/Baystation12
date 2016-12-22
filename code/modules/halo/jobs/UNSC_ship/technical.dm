@@ -10,6 +10,8 @@
 	idtype = /obj/item/weapon/card/id/silver
 	req_admin_notify = 1
 
+	job_guide = "Your responsibility is to oversee the technicians in operating the fusion reactors and repairing damage to the ship. More content is planned in future."
+
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/heads/ce(H), slot_l_ear)
@@ -28,6 +30,7 @@
 	spawn_positions = 8
 	selection_color = "#CC6600"
 	alt_titles = list("Life Support Technician","Engine Technician","Electrical Technician","Damage Control Technician","EVA Technician","Hull Technician","Maintenance Technician")
+	job_guide = "Your responsibility is to operate the fusion reactors and repair damage to the ship. More content is planned in future."
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
