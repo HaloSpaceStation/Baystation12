@@ -208,6 +208,29 @@
 
 	return hear
 
+/proc/get_mobs_and_objs_in_view_fast(var/turf/T, var/range, var/list/mobs, var/list/objs, var/checkghosts = null)
+
+	var/list/hear = dview(range,T,INVISIBILITY_MAXIMUM)
+	var/list/hearturfs = list()
+
+	for(var/atom/movable/AM in hear)
+		if(ismob(AM))
+			mobs += AM
+			hearturfs += get_turf(AM)
+		else if(isobj(AM))
+			objs += AM
+			hearturfs += get_turf(AM)
+
+	for(var/mob/M in player_list)
+		if(checkghosts && M.stat == DEAD)// && M.is_preference_enabled(checkghosts))
+			mobs |= M
+		else if(get_turf(M) in hearturfs)
+			mobs |= M
+
+	//this is only used for snowflake objects that need to listen for voice commands... not important
+	/*for(var/obj/O in listening_objects)
+		if(get_turf(O) in hearturfs)
+			objs |= O*/
 
 /proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)
 

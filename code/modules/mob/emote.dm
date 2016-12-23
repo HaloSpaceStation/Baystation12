@@ -1,14 +1,13 @@
 // All mobs should have custom emote, really..
-//m_type == 1 --> visual.
-//m_type == 2 --> audible
-/mob/proc/custom_emote(var/m_type=1,var/message = null)
-
-	if(stat || !use_me && usr == src)
-		usr << "You are unable to emote."
+//m_type == VISIBLE_MESSAGE --> visual.
+//m_type == AUDIBLE_MESSAGE --> audible
+/mob/proc/custom_emote(var/m_type=VISIBLE_MESSAGE,var/message = null)
+	if(usr && stat || !use_me && usr == src)
+		src << "You are unable to emote."
 		return
 
 	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle)
-	if(m_type == 2 && muzzled) return
+	if(m_type == AUDIBLE_MESSAGE && muzzled) return
 
 	var/input
 	if(!message)
@@ -23,6 +22,15 @@
 
 	if (message)
 		log_emote("[name]/[key] : [message]")
+
+ //Hearing gasp and such every five seconds is not good emotes were not global for a reason.
+ // Maybe some people are okay with that.
+
+		switch(m_type)
+			if(VISIBLE_MESSAGE)
+				visible_message(message)//, checkghosts = /datum/client_preference/ghost_sight)
+			if(AUDIBLE_MESSAGE)
+				audible_message(message)//, checkghosts = /datum/client_preference/ghost_sight)
 
  //Hearing gasp and such every five seconds is not good emotes were not global for a reason.
  // Maybe some people are okay with that.

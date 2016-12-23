@@ -458,44 +458,40 @@ its easier to just keep the beam vertical.
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(var/message, var/blind_message)
+/atom/proc/visible_message(var/message, var/blind_message, var/range = world.view, var/checkghosts = null)
+	var/turf/T = get_turf(src)
+	var/list/mobs = list()
+	var/list/objs = list()
+	get_mobs_and_objs_in_view_fast(T,range, mobs, objs, checkghosts)
 
-	var/list/see = get_mobs_or_objects_in_view(world.view,src) | viewers(get_turf(src), null)
+	for(var/o in objs)
+		var/obj/O = o
+		O.show_message(message, VISIBLE_MESSAGE, blind_message, AUDIBLE_MESSAGE)
 
-	for(var/I in see)
-		if(isobj(I))
-			spawn(0)
-				if(I) //It's possible that it could be deleted in the meantime.
-					var/obj/O = I
-					O.show_message( message, 1, blind_message, 2)
-		else if(ismob(I))
-			var/mob/M = I
-			if(M.see_invisible >= invisibility) // Cannot view the invisible
-				M.show_message( message, 1, blind_message, 2)
-			else if (blind_message)
-				M.show_message(blind_message, 2)
+	for(var/m in mobs)
+		var/mob/M = m
+		if(M.see_invisible >= invisibility)
+			M.show_message(message, VISIBLE_MESSAGE, blind_message, AUDIBLE_MESSAGE)
+		else if(blind_message)
+			M.show_message(blind_message, AUDIBLE_MESSAGE)
 
 // Show a message to all mobs and objects in earshot of this atom
 // Use for objects performing audible actions
 // message is the message output to anyone who can hear.
 // deaf_message (optional) is what deaf people will see.
 // hearing_distance (optional) is the range, how many tiles away the message can be heard.
-/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance)
+/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance = world.view, var/checkghosts = null)
+	var/turf/T = get_turf(src)
+	var/list/mobs = list()
+	var/list/objs = list()
+	get_mobs_and_objs_in_view_fast(T, hearing_distance, mobs, objs, checkghosts)
 
-	var/range = world.view
-	if(hearing_distance)
-		range = hearing_distance
-	var/list/hear = get_mobs_or_objects_in_view(range,src)
-
-	for(var/I in hear)
-		if(isobj(I))
-			spawn(0)
-				if(I) //It's possible that it could be deleted in the meantime.
-					var/obj/O = I
-					O.show_message( message, 2, deaf_message, 1)
-		else if(ismob(I))
-			var/mob/M = I
-			M.show_message( message, 2, deaf_message, 1)
+	for(var/m in mobs)
+		var/mob/M = m
+		M.show_message(message,2,deaf_message,1)
+	for(var/o in objs)
+		var/obj/O = o
+		O.show_message(message,2,deaf_message,1)
 
 //first, add your listening atom to var/entry_listeners of the desired turf
 //second, override this proc below because the desired turf calls it

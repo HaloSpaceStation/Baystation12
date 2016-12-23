@@ -128,3 +128,6 @@
 
 #define ANIMAL_SPAWN_DELAY round(config.respawn_delay / 6)
 #define DRONE_SPAWN_DELAY  round(config.respawn_delay / 3)
+
+#define VISIBLE_MESSAGE 1
+#define AUDIBLE_MESSAGE 2
