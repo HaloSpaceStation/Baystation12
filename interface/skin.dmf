@@ -314,10 +314,6 @@ macro "macro"
 		command = ".center"
 		is-disabled = false
 	elem 
-		name = "RETURN+UP"
-		command = "vehicle-brake"
-		is-disabled = false
-	elem 
 		name = "SPACE+REP"
 		command = "vehicle-fire"
 		is-disabled = false

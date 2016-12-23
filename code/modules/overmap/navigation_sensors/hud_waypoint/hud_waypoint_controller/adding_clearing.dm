@@ -4,8 +4,15 @@
 		add_waypoint(waypoint)
 
 /datum/hud_waypoint_controller/proc/add_waypoint(var/datum/waypoint/new_waypoint)
+	//world << "/datum/hud_waypoint_controller/proc/add_waypoint([new_waypoint], [new_waypoint.type])"
 
-	var/datum/hud_waypoint/new_hud_waypoint = new hud_waypoint_type(new_waypoint, owner_faction = my_faction)
+	var/datum/hud_waypoint/new_hud_waypoint = new hud_waypoint_type(owner, new_waypoint, owner_faction = my_faction)
+
+	/*
+	if(new_waypoint.source)
+		world << "	new_waypoint.source:[new_waypoint.source] [new_waypoint.source.type]"
+		world << "	src.owner:[src.owner] [src.owner.type]"
+		*/
 
 	new_hud_waypoint.add_viewmobs(mobs_tracking)
 	all_hud_waypoints[new_waypoint] = new_hud_waypoint
@@ -18,6 +25,7 @@
 	if(old_hud_waypoint)
 		//we do, so lets clear it
 		old_hud_waypoint.remove_viewmobs(mobs_tracking)
+		hud_waypoints_updating.Remove(old_hud_waypoint)
 
 		if(remove_from_lists)
 			all_hud_waypoints.Remove(old_waypoint)

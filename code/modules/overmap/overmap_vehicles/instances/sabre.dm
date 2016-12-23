@@ -10,7 +10,7 @@
 	accel_duration = 50
 	sensor_icon_state = "sabre"
 	iff_faction_broadcast = "UNSC"
-	nosegun_enabled = 1
+	//nosegun_enabled = 1
 
 /obj/machinery/overmap_vehicle/sabre/New()
 	..()

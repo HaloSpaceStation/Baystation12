@@ -188,6 +188,14 @@
 		src.damtype = "fire"
 		processing_objects += src
 
+/obj/item/device/flashlight/flare/on/New()
+	..()
+
+	icon_state = "[initial(icon_state)]-on"
+	set_light(brightness_on)
+	src.force = on_damage
+	src.damtype = "fire"
+
 /obj/item/device/flashlight/slime
 	gender = PLURAL
 	name = "glowing slime extract"

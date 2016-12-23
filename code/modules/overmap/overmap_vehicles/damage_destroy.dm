@@ -18,6 +18,11 @@
 /obj/machinery/overmap_vehicle/emp_act(severity)
 	return
 
+/obj/machinery/overmap_vehicle/proc/take_damage(var/damage)
+	if(damage >= armour)
+		hull_remaining -= damage / armour
+		health_update()
+
 /obj/machinery/overmap_vehicle/proc/health_update()
 	if(hull_remaining <= 0)
 
@@ -29,14 +34,30 @@
 			M.loc = get_step_rand(centre_turf)
 			M.unset_machine()
 
+		//misc stuff
+		processing_objects.Remove(src)
+		disable_cruise()
+
+		//clear out the sensors
+		var/obj/effect/overmapobj/final_sector = map_sectors["[src.z]"]
+		final_sector.scanner_manager.remove_sector_vehicle(src)
+		final_sector.scanner_manager.remove_sector_scanner(waypoint_controller)
+		waypoint_controller.clear_all_waypoints()
+
+		//recycle the cruise transit area
+		if(transit_area)
+			transit_area.sprite_area_dark()
+			transit_area.overmap_eject_object = null
+
+			overmap_controller.virtual_areas_used -= transit_area
+			overmap_controller.virtual_areas_unused += transit_area
+			transit_area = null
+
 		qdel(src)
 		explosion(centre_turf, 2, 3, 4, 5)
 
 /obj/machinery/overmap_vehicle/Destroy()
 	. = ..()
-
-	processing_objects.Remove(src)
-	disable_cruise()
 
 	//clean up references
 	qdel(pixel_transform)
@@ -49,12 +70,3 @@
 	//
 	qdel(hud_waypoint_controller)
 	qdel(waypoint_controller)
-
-	//recycle the cruise transit area
-	if(transit_area)
-		transit_area.sprite_area_dark()
-		transit_area.overmap_eject_object = null
-
-		overmap_controller.virtual_areas_used -= transit_area
-		overmap_controller.virtual_areas_unused += transit_area
-		transit_area = null

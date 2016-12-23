@@ -2,14 +2,19 @@
 //this puts a waypoint in the center of the zlevel for the current sector
 /datum/waypoint_controller/proc/set_current_sector(var/obj/effect/overmapobj/new_sector, var/entryz_number)
 
+	//world << "/datum/waypoint_controller/proc/set_current_sector([new_sector] [new_sector.type], [entryz_number])"
+
 	//clear out old sector waypoint
 	if(current_sector)
+		//world << "	check1"
 		var/datum/waypoint/old_waypoint = waypoints_by_source[current_sector]
 		if(old_waypoint)
+			//world << "	check2"
 			waypoints_by_source.Remove(current_sector)
 			all_waypoints.Remove(old_waypoint)
 
 			for(var/datum/hud_waypoint_controller/hud_waypoint_controller in listening_huds)
+				//world << "	check3"
 				hud_waypoint_controller.clear_waypoint(old_waypoint)
 
 			qdel(old_waypoint)
@@ -18,6 +23,7 @@
 
 	//don't bother creating a waypoint in the middle of the sector if we're in deepspace
 	if(istype(new_sector, /obj/effect/overmapobj/temporary_sector))
+		//world << "	check4"
 		return
 
 	var/datum/waypoint/sector/new_waypoint = new()
@@ -33,4 +39,5 @@
 	all_waypoints.Add(new_waypoint)
 	waypoints_by_source[new_sector] = new_waypoint
 	for(var/datum/hud_waypoint_controller/hud_waypoint_controller in listening_huds)
+		//world << "	check6"
 		hud_waypoint_controller.add_waypoint(new_waypoint)

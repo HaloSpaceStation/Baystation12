@@ -7,7 +7,7 @@
 
 	if(oldsector)
 		oldsector.scanner_manager.remove_sector_vehicle(src)
-		oldsector.scanner_manager.remove_generic_scanner(waypoint_controller)
+		oldsector.scanner_manager.remove_sector_scanner(waypoint_controller)
 
 	waypoint_controller.clear_all_waypoints()
 

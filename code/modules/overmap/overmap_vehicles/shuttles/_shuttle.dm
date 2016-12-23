@@ -26,8 +26,7 @@
 	var/maneuvre_cooldown = 15
 
 	armour = 75
-	hull_remaining = 250
-	hull_max = 250
+	hull_default = 250
 
 	var/maglocked_at_spawn = 0
 

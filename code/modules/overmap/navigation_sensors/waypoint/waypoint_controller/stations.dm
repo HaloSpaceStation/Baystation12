@@ -5,9 +5,11 @@
 
 /datum/waypoint_controller/proc/add_new_station(var/obj/effect/overmapobj/station)
 
+	/*
 	//dont create a waypoint on ourself!
 	if(station == owner)
 		return
+		*/
 
 	var/datum/waypoint/new_waypoint = new()
 	new_waypoint.overmapobj = station

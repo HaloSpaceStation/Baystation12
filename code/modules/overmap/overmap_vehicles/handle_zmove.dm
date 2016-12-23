@@ -44,6 +44,9 @@
 				if(A == src)
 					continue
 
+				if(istype(A, /atom/movable/lighting_overlay))
+					continue
+
 				if(A.anchored)
 					blocking = A
 					break
@@ -61,6 +64,9 @@
 
 			//check for any blocking items
 			for(var/atom/movable/A in other_turf)
+				if(istype(A, /atom/movable/lighting_overlay))
+					continue
+
 				if(A.anchored)
 					blocking_other = A
 					break
@@ -78,16 +84,16 @@
 	if(blocking)
 		//something on this level is blocking the move
 		impact_occupants_major()
-		var/viewers_message = "\icon[src] <span class='warning'>[src] bumps into [blocking] while trying to move [target_dir_string].</span>"
-		var/occupants_message = "\icon[src] <span class='warning'>You bump into [blocking] while trying to move [target_dir_string].</span>"
+		var/viewers_message = "\icon[src] <span class='warning'>[src] bumps into [blocking] [blocking.type] while trying to move [target_dir_string].</span>"
+		var/occupants_message = "\icon[src] <span class='warning'>You bump into [blocking] [blocking.type] while trying to move [target_dir_string].</span>"
 		message_viewers(viewers_message, occupants_message)
 		//world << "check6"
 		return 0
 	else if(blocking_other)
 		//something on the other level is blocking the move
 		impact_occupants_major()
-		var/viewers_message = "\icon[src] <span class='warning'>[src] bumps into [blocking_other] on the [level_string] level while trying to move [target_dir_string].</span>"
-		var/occupants_message = "\icon[src] <span class='warning'>You bump into [blocking_other] on the [level_string] level while trying to move [target_dir_string].</span>"
+		var/viewers_message = "\icon[src] <span class='warning'>[src] bumps into [blocking_other] [blocking_other.type] on the [level_string] level while trying to move [target_dir_string].</span>"
+		var/occupants_message = "\icon[src] <span class='warning'>You bump into [blocking_other] [blocking_other.type] on the [level_string] level while trying to move [target_dir_string].</span>"
 		message_viewers(viewers_message, occupants_message)
 		//world << "check7"
 		return 0

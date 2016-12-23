@@ -63,5 +63,5 @@
 
 	if(src.mob && istype(src.mob.loc, /obj/machinery/overmap_vehicle))
 		var/obj/machinery/overmap_vehicle/V = src.mob.loc
-		V.fire_nosegun()
+		V.fire_weapon()
 		return

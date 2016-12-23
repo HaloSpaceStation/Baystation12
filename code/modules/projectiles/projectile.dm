@@ -217,7 +217,8 @@
 		return 0 //no
 
 	if(A == firer)
-		loc = A.loc
+		if(istype(A, /atom/movable) && A:bound_width == 32 && A:bound_height == 32)
+			loc = A.loc
 		return 0 //cannot shoot yourself
 
 	if((bumped && !forced) || (A in permutated))

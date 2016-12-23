@@ -1,6 +1,7 @@
+//a quick hack to allow infinite shooting... replace this with a proper weapon system eventually
 
 /obj/machinery/overmap_vehicle/var/projectile_pixel_speed = 64
-/obj/machinery/overmap_vehicle/var/nosegun_enabled = 0
+//obj/machinery/overmap_vehicle/var/nosegun_enabled = 0
 
 //this is all basically just a hack for the pre-alpha stream
 //it'll need to be split off into a subclass of overmap_vehicle_component eventually to make the code generic
@@ -9,8 +10,8 @@
 	return fire_nosegun(A, params)
 */
 /obj/machinery/overmap_vehicle/proc/fire_nosegun(var/atom/A, var/params)
-	if(!nosegun_enabled)
-		return
+	/*if(!nosegun_enabled)
+		return*/
 
 	. = 1
 

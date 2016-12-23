@@ -30,5 +30,5 @@
 
 		return 0
 
-	warning("[src] /obj/machinery/overmap_vehicle/check_eye([user]) reset view unexpectedly")
+	//warning("[src] /obj/machinery/overmap_vehicle/check_eye([user]) reset view unexpectedly")
 	return -1

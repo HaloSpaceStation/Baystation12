@@ -9,5 +9,5 @@
 	var/obj/effect/overmapobj/vehicle/overmap_vehicle_obj = overmapobj
 	return overmap_vehicle_obj.overmap_vehicle.iff_faction_broadcast
 
-/datum/waypoint/overmapobj_vehicle/get_spawn_loc()
+/datum/waypoint/overmapobj_vehicle/get_source()
 	return overmapobj

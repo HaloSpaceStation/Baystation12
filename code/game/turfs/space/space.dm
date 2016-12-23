@@ -24,7 +24,7 @@
 		O.hide(0)
 
 /turf/space/proc/update_starlight()
-	if(!config.starlight)
+	if(config && !config.starlight)
 		return
 	if(locate(/turf/simulated) in orange(src,1))
 		set_light(config.starlight)
@@ -66,6 +66,10 @@
 	if(movement_disabled)
 		usr << "<span class='warning'>Movement is admin-disabled.</span>" //This is to identify lag problems
 		return
+
+	//see code\modules\overmap\overmap_vehicles\components\weapon\instances\minelayer.dm
+	check_mine_trigger(A)
+
 	..()
 	if ((!(A) || src != A.loc))	return
 

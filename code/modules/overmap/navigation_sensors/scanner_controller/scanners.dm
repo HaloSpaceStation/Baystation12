@@ -3,6 +3,7 @@
 //Add scanner for everything
 
 /datum/scanner_manager/proc/add_sector_scanner(var/datum/waypoint_controller/scanner)
+	//world << "/datum/scanner_manager/proc/add_sector_scanner(var/datum/waypoint_controller/scanner)"
 	//ship_scanners.Add(scanner)
 	//scanner.add_new_ships(all_ships)
 	//
@@ -13,8 +14,12 @@
 	//scanner.add_new_asteroidfields(all_asteroidfields)
 	//
 	sector_vehicle_scanners.Add(scanner)
+	//world << "	sector_vehicles.len:[sector_vehicles.len]"
 	scanner.add_sector_vehicles(sector_vehicles)
 
+/datum/scanner_manager/proc/remove_sector_scanner(var/datum/waypoint_controller/scanner)
+	//world << "/datum/scanner_manager/proc/remove_sector_scanner(var/datum/waypoint_controller/scanner)"
+	sector_vehicle_scanners.Remove(scanner)
 
 //Remove scanner from everything
 

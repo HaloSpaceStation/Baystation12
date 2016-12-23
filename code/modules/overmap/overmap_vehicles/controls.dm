@@ -3,6 +3,7 @@
 	if(user == pilot)
 		vehicle_controls.relay_move(user, direction)
 		autobraking = 0
+		autobrake_button.update_icon()
 	else
 		user << "<span class='warning'>You are not the pilot of [src]!</span>"
 
@@ -17,6 +18,7 @@
 		vehicle_controls.move_vehicle_forward()
 		autobraking = 0
 		move_forward = 0
+		autobrake_button.update_icon()
 	else
 		user << "<span class='warning'>You are not the pilot of [src]!</span>"
 
@@ -24,6 +26,7 @@
 	if(user == pilot)
 		move_forward = !move_forward
 		autobraking = 0
+		autobrake_button.update_icon()
 		update()
 	else
 		user << "<span class='warning'>You are not the pilot of [src]!</span>"
@@ -37,7 +40,15 @@
 	else
 		pilot = H
 		usr << "\icon[src] <span class='info'>You are now the pilot!</span>"
-		hud_waypoint_controller.add_hud_to_mob(H)
+
+		H.client.screen = list()				//remove hud items just in case
+		if(H.hud_used)	qdel(H.hud_used)		//remove the hud objects
+		//check if we're in a vehicle
+		var/hudtype = /datum/hud
+		if(H.machine && H.machine.hud_type)
+			hudtype = H.machine.hud_type
+		H.hud_used = new hudtype(H)
+
 		enable_engines()
 
 /obj/machinery/overmap_vehicle/proc/get_absolute_directional_thrust(var/direction)

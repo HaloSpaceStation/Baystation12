@@ -595,3 +595,7 @@ th.misc {
 .width75btn {
     width: 75px;
 }
+
+.displayInline {
+	display: inline;
+}

@@ -1,0 +1,11 @@
+author: Cael_Aislinn
+delete-after: True
+changes: 
+  - rscadd: "Implemented a modular component system for fighter equipment. Mix and match your equipped loadout according to preferences or the situation at hand."
+  - rscadd: "Added a HUD for modular equipment system to longswords."
+  - rscadd: "Added a HUD for adding/removing modular fighter components."
+  - rscadd: "Reworked sensor system into two modes: floating and megamap to provide fighter sensor info in a more usable format."
+  - imageadd: "Added additional HUD and NanoUI resources."
+  - imageadd: "Added various sprites for the modular equipment system."
+  - bugfix: "Fixed some bugs with sensors and fighter piloting."
+  - wip: "We are in alpha, so please report bugs on skype or the forums."

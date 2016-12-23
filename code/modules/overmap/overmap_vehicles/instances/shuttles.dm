@@ -83,5 +83,4 @@
 
 	//iff_faction_broadcast = "Insurrection"
 	armour = 100
-	hull_remaining = 400
-	hull_max = 400
+	hull_default = 400

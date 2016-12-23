@@ -1,13 +1,18 @@
 
 /datum/waypoint_controller/proc/add_sector_vehicles(var/list/vehiclelist)
+	//world << "/datum/waypoint_controller/proc/add_sector_vehicles(listitems:[vehiclelist.len])"
 	for(var/obj/machinery/overmap_vehicle/overmap_vehicle in vehiclelist)
 		add_sector_vehicle(overmap_vehicle)
 
 /datum/waypoint_controller/proc/add_sector_vehicle(var/obj/machinery/overmap_vehicle/overmap_vehicle)
 
+	//world << "/datum/waypoint_controller/proc/add_sector_vehicle([overmap_vehicle] [overmap_vehicle.type])"
+
+	/*
 	//dont create a waypoint on ourself!
 	if(overmap_vehicle == owner)
 		return
+		*/
 
 	var/datum/waypoint/sector/vehicle/new_waypoint = new()
 	new_waypoint.source = overmap_vehicle
@@ -15,7 +20,9 @@
 	//
 	all_waypoints.Add(new_waypoint)
 	waypoints_by_source[overmap_vehicle] = new_waypoint
+	//world << "	listening_huds.len:[listening_huds.len]"
 	for(var/datum/hud_waypoint_controller/hud_waypoint_controller in listening_huds)
+		//world << "		check1"
 		hud_waypoint_controller.add_waypoint(new_waypoint)
 
 /datum/waypoint_controller/proc/remove_sector_vehicle(var/obj/machinery/overmap_vehicle/overmap_vehicle)

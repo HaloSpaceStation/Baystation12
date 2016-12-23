@@ -46,6 +46,10 @@
 	var/update_interval = 1
 	var/main_update_start_time = -1
 
+/datum/pixel_transform/New()
+	//quirky byond trig "fix" ... i should probably report this bug to dantom at some point
+	pixel_speed_y = 0
+
 /*/datum/pixel_transform/New()
 	loctracker = new /obj/effect(src)
 	loctracker.name = "loctracker"
@@ -84,12 +88,14 @@
 		add_pixel_speed(accel_x, accel_y)
 
 /datum/pixel_transform/proc/add_pixel_speed_direction(var/acceleration, var/direction)
+	//world << "/datum/pixel_transform/proc/add_pixel_speed_direction([acceleration], [direction])"
 	add_pixel_speed_angle(acceleration, dir2angle(direction))
 
 /datum/pixel_transform/proc/add_pixel_speed_direction_relative(var/acceleration, var/relative_direction)
 	add_pixel_speed_angle(acceleration, dir2angle(relative_direction) + heading)
 
 /datum/pixel_transform/proc/add_pixel_speed_angle(var/acceleration, var/angle)
+	//world << "/datum/pixel_transform/proc/add_pixel_speed_angle([acceleration], [angle])"
 	//work out the x and y components according to our heading
 	var/x_accel = sin(angle) * acceleration
 	var/y_accel = cos(angle) * acceleration
@@ -101,6 +107,8 @@
 	spawn_thrust()
 
 /datum/pixel_transform/proc/add_pixel_speed(var/accel_x, var/accel_y)
+	//world << "/datum/pixel_transform/proc/add_pixel_speed([accel_x], [accel_y])"
+	//world << "	pixel_speed_x:[pixel_speed_x] pixel_speed_y:[pixel_speed_y]"
 	pixel_speed_x += accel_x
 	pixel_speed_y += accel_y
 
@@ -118,10 +126,13 @@
 
 		//we're over max speed, so normalise then cap the speed
 		if(total_speed > max_pixel_speed)
+			//world << "	check3"
 			pixel_speed_x /= total_speed
 			pixel_speed_x *= max_pixel_speed
 			pixel_speed_y /= total_speed
+			//world << "	pixel_speed_y:[pixel_speed_y]"
 			pixel_speed_y *= max_pixel_speed
+			//world << "	pixel_speed_y:[pixel_speed_y]"
 			//world << "normalised down to: [get_speed()]"
 
 			recalc_speed()

@@ -75,6 +75,7 @@
 	if(autobraking)
 		if(pixel_transform.is_still())
 			autobraking = 0
+			autobrake_button.update_icon()
 		else
 			pixel_transform.brake(get_relative_directional_thrust(NORTH))
 			continue_update = 1

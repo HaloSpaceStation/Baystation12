@@ -45,8 +45,12 @@
 //Overmap vehicles in a sector (fighters, shuttles etc)
 
 /datum/scanner_manager/proc/add_sector_vehicle(var/obj/machinery/overmap_vehicle/overmap_vehicle)
+	//world << "/datum/scanner_manager/proc/add_sector_vehicle([overmap_vehicle])"
 	sector_vehicles.Add(overmap_vehicle)
+	//world << "	new sector_vehicles.len:[sector_vehicles.len]"
+	//world << "	sector_vehicle_scanners.len:[sector_vehicle_scanners.len]"
 	for(var/datum/waypoint_controller/scanner in sector_vehicle_scanners)
+		//world << "		check1"
 		scanner.add_sector_vehicle(overmap_vehicle)
 
 /datum/scanner_manager/proc/remove_sector_vehicle(var/obj/machinery/overmap_vehicle/overmap_vehicle)

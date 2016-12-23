@@ -11,6 +11,7 @@
 	vehicle = new_owner
 
 /datum/vehicle_controls/proc/relay_move(var/mob/user, var/direction)
+	//world << "/datum/vehicle_controls/proc/relay_move([user], [direction])"
 	if(move_mode_absolute)
 		move_vehicle(user, direction)
 	else
@@ -50,9 +51,11 @@
 		src.icon = I*/
 
 /datum/vehicle_controls/proc/move_vehicle(var/mob/user, var/direction)
+	//world << "/datum/vehicle_controls/proc/move_vehicle([user], [direction])"
 	//accelerate to 10% of max speed
 	var/accel = 0
 	if(move_mode_absolute)
+		//world << "	check1"
 		accel = vehicle.get_absolute_directional_thrust(direction)		//north = north on the map
 	else
 		accel = vehicle.get_relative_directional_thrust(direction)		//north = front of the shuttle
@@ -63,6 +66,7 @@
 
 	//check move mode
 	if(move_mode_absolute)
+		//world << "	check2"
 		target_pixel_transform.add_pixel_speed_direction(accel, direction)
 	else
 		target_pixel_transform.add_pixel_speed_direction_relative(accel, direction)

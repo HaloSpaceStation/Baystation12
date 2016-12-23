@@ -10,7 +10,10 @@
 	accel_duration = 50
 	sensor_icon_state = "longsword"
 	iff_faction_broadcast = "UNSC"
-	nosegun_enabled = 1
+	//nosegun_enabled = 1
+
+	hud_type = /datum/hud/vehicle
+
 
 /obj/machinery/overmap_vehicle/longsword/New()
 	..()
@@ -40,3 +43,82 @@
 
 	//let the parent proc handle damage processing
 	..()
+
+
+
+//INTERCEPTOR LOADOUT (default)
+//2 x wing mounted rotary cannons, 1 x ventral mounted ASGM-10 missile rack, chassis mounted flare and chaff launchers, 85 bonus hull
+
+/obj/machinery/overmap_vehicle/longsword
+	external_loadout = list(\
+		/datum/vehicle_mount/fourbyfour/nose = /obj/structure/vehicle_component/plating/hull/small,\
+		/datum/vehicle_mount/fourbyfour/centre/ventral = /obj/structure/vehicle_component/weapon/missilerack_asgm,\
+		/datum/vehicle_mount/fourbyfour/centre/dorsal = /obj/structure/vehicle_component/plating/hull,\
+		/datum/vehicle_mount/fourbyfour/centre/left = /obj/structure/vehicle_component/weapon/countermeasures/flare,\
+		/datum/vehicle_mount/fourbyfour/centre/right = /obj/structure/vehicle_component/weapon/countermeasures/chaff,\
+		/datum/vehicle_mount/fourbyfour/left = /obj/structure/vehicle_component/weapon/rotarycannon,\
+		/datum/vehicle_mount/fourbyfour/right = /obj/structure/vehicle_component/weapon/rotarycannon,\
+		/datum/vehicle_mount/fourbyfour/left/small = /obj/structure/vehicle_component/plating/hull/small,\
+		/datum/vehicle_mount/fourbyfour/right/small = /obj/structure/vehicle_component/plating/hull/small,\
+		/datum/vehicle_mount/fourbyfour/tail = /obj/structure/vehicle_component/plating/hull,\
+		)
+
+	internal_loadout = list(\
+	/*for testing only
+		/obj/structure/vehicle_component/weapon/countermeasures/flare,\
+		/obj/structure/vehicle_component/weapon/countermeasures/chaff,\
+		/obj/structure/vehicle_component/plating/stealth,\
+		*/
+		null,
+		null,
+		null,
+		)
+	crew_loadout = list(\
+	/*for testing only
+		/obj/structure/vehicle_component/weapon/missilerack_asgm,\
+		/obj/structure/vehicle_component/weapon/missilerack_asgm,\
+		/obj/structure/vehicle_component/plating/stealth,\
+		*/
+		null,
+		null,
+		null,
+		)
+
+
+
+//ATTACK-BOMBER LOADOUT
+//2 x wing mounted auto cannons, 1 x tail mounted Moray spacemine launcher, chassis mounted flare and chaff launchers, 85 bonus hull
+/obj/machinery/overmap_vehicle/longsword/attackbomber
+	external_loadout = list(\
+		/datum/vehicle_mount/fourbyfour/nose = /obj/structure/vehicle_component/plating/hull/small,\
+		/datum/vehicle_mount/fourbyfour/centre/ventral = /obj/structure/vehicle_component/plating/hull,\
+		/datum/vehicle_mount/fourbyfour/centre/dorsal = /obj/structure/vehicle_component/plating/hull,\
+		/datum/vehicle_mount/fourbyfour/centre/left = /obj/structure/vehicle_component/weapon/countermeasures/flare,\
+		/datum/vehicle_mount/fourbyfour/centre/right = /obj/structure/vehicle_component/weapon/countermeasures/chaff,\
+		/datum/vehicle_mount/fourbyfour/left = /obj/structure/vehicle_component/weapon/autocannon,\
+		/datum/vehicle_mount/fourbyfour/right = /obj/structure/vehicle_component/weapon/autocannon,\
+		/datum/vehicle_mount/fourbyfour/left/small = /obj/structure/vehicle_component/plating/hull/small,\
+		/datum/vehicle_mount/fourbyfour/right/small = /obj/structure/vehicle_component/plating/hull/small,\
+		/datum/vehicle_mount/fourbyfour/tail = /obj/structure/vehicle_component/weapon/minelayer,\
+		)
+
+	internal_loadout = list(\
+	/*for testing only
+		/obj/structure/vehicle_component/weapon/countermeasures/flare,\
+		/obj/structure/vehicle_component/weapon/countermeasures/chaff,\
+		/obj/structure/vehicle_component/plating/stealth,\
+		*/
+		null,
+		null,
+		null,
+		)
+	crew_loadout = list(\
+	/*for testing only
+		/obj/structure/vehicle_component/plating/hull,\
+		/obj/structure/vehicle_component/plating/hull,\
+		/obj/structure/vehicle_component/plating/stealth,\
+		*/
+		null,
+		null,
+		null,
+		)

@@ -31,10 +31,14 @@
 
 	if(is_cruising())
 		usr << "\icon[src] <span class='warning'>You must exit cruise before you can enable autobraking.</span>"
-	else
+	else if(!autobraking)
 		autobraking = 1
 		move_forward = 0
-		usr << "\icon[src] <span class='info'>Autobraking...</span>"
+		//usr << "\icon[src] <span class='info'>Autobraking...</span>"
+		autobrake_button.update_icon()
+	else
+		autobraking = 0
+		autobrake_button.update_icon()
 
 /obj/machinery/overmap_vehicle/verb/enter()
 	set name = "Enter vehicle"
@@ -49,7 +53,7 @@
 					//todo: check for active jetpacks and disable the ion trail
 					user.loc = src
 					if(user.client)
-						user.client.view = 14//double the default world.view which is 7, and dont go any larger than this
+						user.client.view = client_screen_size//double the default world.view which is 7, and dont go any larger than this
 						user << "<span class='info'><b>You enter [src].</b></span>"
 					user.set_machine(src)
 					check_eye(user)
@@ -80,6 +84,14 @@
 		pilot.unset_machine()
 		hud_waypoint_controller.remove_hud_from_mob(pilot)
 		overmap_object.hud_waypoint_controller.remove_hud_from_mob(pilot)
+
+		pilot.client.screen = null				//remove hud items just in case
+		if(pilot.hud_used)	qdel(pilot.hud_used)		//remove the hud objects
+
+		//reset the ordinary mob hud
+		pilot.hud_used = new /datum/hud(pilot)
+		pilot.update_hud()
+
 		pilot = null
 		disable_engines()
 		usr << "\icon[src] <span class='info'>You are no longer the pilot!</span>"

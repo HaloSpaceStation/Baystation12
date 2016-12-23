@@ -32,7 +32,10 @@
 
 	return "Unknown"
 
-/datum/waypoint/proc/get_spawn_loc()
+/datum/waypoint/proc/get_source()
+	if(source)
+		return source
+
 	return get_center_turf()
 
 /datum/waypoint/proc/get_center_turf()
@@ -52,6 +55,27 @@
 		return source.z
 
 	return coords_z
+
+/datum/waypoint/proc/get_heading()
+	if(source)
+		return dir2angle(source.dir)
+
+	return 0
+
+/datum/waypoint/proc/get_headingdir()
+	if(source)
+		return source.dir
+
+	return NORTH
+
+/datum/waypoint/proc/get_name()
+	if(source)
+		return source.name
+
+	if(overmapobj)
+		return overmapobj.name
+
+	return "Unknown"
 
 /*
 /datum/waypoint/proc/get_source_turf()

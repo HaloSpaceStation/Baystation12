@@ -18,9 +18,12 @@
 
 /datum/waypoint_controller/proc/add_overmap_vehicle(var/obj/effect/overmapobj/vehicle/overmap_vehicle_obj)
 
+	//actually yes, lets give ourselves a waypoint so we show up on megamap
+	/*
 	//dont create a waypoint on ourself!
 	if(overmap_vehicle_obj == owner)
 		return
+		*/
 
 	var/datum/waypoint/overmapobj_vehicle/new_waypoint = new()
 	new_waypoint.source = overmap_vehicle_obj.overmap_vehicle

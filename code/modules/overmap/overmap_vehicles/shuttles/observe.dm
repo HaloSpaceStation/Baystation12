@@ -20,7 +20,7 @@
 		user.set_machine(src)
 		user.reset_view(src, 0)
 		if(user.client)
-			user.client.view = 14
+			user.client.view = client_screen_size
 
 	return 1
 
@@ -38,7 +38,7 @@
 
 			if(user.client && user.client.eye != src)
 				user.reset_view(src, 0)
-				user.client.view = 14
+				user.client.view = client_screen_size
 
 			//todo: what effects should break them out of the observation mode?
 			return 0

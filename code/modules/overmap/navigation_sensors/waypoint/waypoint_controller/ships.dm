@@ -5,9 +5,11 @@
 
 /datum/waypoint_controller/proc/add_new_ship(var/obj/effect/overmapobj/ship/ship)
 
+	/*
 	//dont create a waypoint on ourself!
 	if(ship == owner)
 		return
+		*/
 
 	var/datum/waypoint/new_waypoint = new()
 	new_waypoint.overmapobj = ship

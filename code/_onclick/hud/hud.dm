@@ -136,6 +136,8 @@ var/list/global_huds = list(
 	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
 
+	var/refresh_contents = 1
+
 datum/hud/New(mob/owner)
 	mymob = owner
 	instantiate()

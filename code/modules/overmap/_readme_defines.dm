@@ -130,3 +130,124 @@ non-zlevel overmap objects
 #define BIGASTEROID_CAVES_APPLY 9
 #define BIGASTEROID_CAVES_VEINS 9
 #define BIGASTEROID_CAVES_FINISH 10
+
+#define HUD_CSS_STYLE "text-align:center;vertical-align:middle;font-family:sansserif;font-size:2;font-weight:bold;"
+#define HUD_CSS_STYLE_LESSER "text-align:center;vertical-align:middle;font-family:sansserif;font-size:1;font-weight:bold;"
+
+/*
+#define HUD_BAR_INTERNAL 0
+#define HUD_BAR_EXTERNAL 1
+#define HUD_BAR_CREW 2
+*/
+
+#define COMPONENT_GROUP_MIN 1
+#define COMPONENT_GROUP_MAX 6
+
+#define MOUNT_SMALL 0
+#define MOUNT_MEDIUM 1
+#define MOUNT_LARGE 2
+
+#define MOUNT_INT 0
+#define MOUNT_EXT 1
+#define MOUNT_CREW 2
+
+#define HUD_BAR_LEFT 0
+#define HUD_BAR_TOP 1
+#define HUD_BAR_RIGHT 2
+#define HUD_BAR_BOTTOM 3
+
+#define INSTALL_WELDED 1
+#define INSTALL_CABLED 2
+#define INSTALL_BOLTED 4
+#define INSTALL_SCREWED 8
+#define INSTALL_PIPED 16
+#define INSTALL_CROWBAR 32
+#define INSTALL_MAX 32
+
+//put crowbar here for convenience, to cut down on stuff passed to topic()
+var/global/list/tool_installs = list(\
+	"welder" = INSTALL_WELDED,\
+	"link" = INSTALL_CABLED,\
+	"wrench" = INSTALL_BOLTED,\
+	"pencil" = INSTALL_SCREWED,\
+	"pipe" = INSTALL_PIPED,\
+	"crowbar" = INSTALL_CROWBAR,\
+	)
+
+var/global/list/tool_installs_types = list(\
+	/obj/item/weapon/weldingtool = INSTALL_WELDED,\
+	/obj/item/stack/cable_coil = INSTALL_CABLED,\
+	/obj/item/weapon/wrench = INSTALL_BOLTED,\
+	/obj/item/weapon/screwdriver = INSTALL_SCREWED,\
+	/obj/item/pipe = INSTALL_PIPED,\
+	/obj/item/weapon/crowbar = INSTALL_CROWBAR,\
+	)
+
+var/global/list/tool_uninstalls = list(\
+	"welder" = INSTALL_WELDED,\
+	"scissors" = INSTALL_CABLED,\
+	"wrench" = INSTALL_BOLTED,\
+	"pencil" = INSTALL_SCREWED,\
+	"welder2" = INSTALL_PIPED,\
+	)
+
+var/global/list/tool_uninstalls_types = list(\
+	/obj/item/weapon/weldingtool = INSTALL_WELDED|INSTALL_PIPED,\
+	/obj/item/weapon/wirecutters = INSTALL_CABLED,\
+	/obj/item/weapon/wrench = INSTALL_BOLTED,\
+	/obj/item/weapon/screwdriver = INSTALL_SCREWED,\
+	/obj/item/weapon/crowbar = INSTALL_CROWBAR,\
+	)
+
+var/global/list/action_desc_tool = list(\
+	"welding" = INSTALL_WELDED,\
+	"wiring" = INSTALL_CABLED,\
+	"bolting" = INSTALL_BOLTED,\
+	"screwing" = INSTALL_SCREWED,\
+	"piping" = INSTALL_PIPED,\
+	)
+
+var/global/list/tooltype_action_desc = list(\
+	/obj/item/weapon/weldingtool = "welding",\
+	/obj/item/weapon/wirecutters = "wirecutting",\
+	/obj/item/weapon/wrench = "wrenching",\
+	/obj/item/weapon/screwdriver = "screwing",\
+	/obj/item/weapon/crowbar = "crowbarring",\
+	/obj/item/stack/cable_coil = "wiring",\
+	/obj/item/pipe = "piping",\
+	)
+
+/proc/vehicle_component_size_string(var/mount_size)
+	var/size_string = "small"
+	switch(mount_size)
+		if(MOUNT_MEDIUM)
+			size_string = "medium"
+		if(MOUNT_LARGE)
+			size_string = "large"
+	return size_string
+
+/proc/vehicle_component_type_string(var/mount_type)
+	var/type_string = "internal"
+	switch(mount_type)
+		if(MOUNT_CREW)
+			type_string = "crew compartment"
+		if(MOUNT_EXT)
+			type_string = "external"
+	return type_string
+
+/proc/get_tool_actionverb(var/install_type, var/install_direction = 0)
+	. = "ACTIONVERB"		//hooray for error testing
+	switch(install_type)
+		if(INSTALL_WELDED)
+			. = "weld"
+		if(INSTALL_CABLED)
+			. = "wire"
+		if(INSTALL_BOLTED)
+			. = "bolt"
+		if(INSTALL_SCREWED)
+			. = "screw"
+		if(INSTALL_PIPED)
+			. = "pipe"
+
+	if(install_direction)
+		. = "un" + .

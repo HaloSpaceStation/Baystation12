@@ -6,7 +6,9 @@
 	layer = 3.1
 	var/datum/pixel_transform/pixel_transform
 
-/obj/effect/overmapobj/vehicle/New()
+/obj/effect/overmapobj/vehicle/New(var/obj/machinery/overmap_vehicle/my_vehicle)
+	overmap_vehicle = my_vehicle
+
 	pixel_transform = init_pixel_transform(src)
 	//pixel_transform.my_observers = my_observers
 	pixel_transform.heading = dir2angle(dir)
@@ -14,7 +16,7 @@
 	//pixel_transform.max_pixel_speed = max_speed
 
 	hud_waypoint_controller = new(src)
-	hud_waypoint_controller.expected_screen_width = 14
+	hud_waypoint_controller.expected_screen_width = overmap_vehicle.client_screen_size
 	waypoint_controller = new(src)
 	waypoint_controller.add_listening_hud(hud_waypoint_controller)
 
