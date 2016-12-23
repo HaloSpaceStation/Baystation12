@@ -25,6 +25,7 @@
 	var/dynamic_lighting = 1    // Does the turf use dynamic lighting?
 
 	var/list/decals
+	var/list/entry_listeners = list()
 
 /turf/New()
 	..()
@@ -148,6 +149,12 @@ var/const/enterloopsanity = 100
 				A.HasProximity(thing, 1)
 				if ((thing && A) && (thing.flags & PROXMOVE))
 					thing.HasProximity(A, 1)
+
+	//quick hack to only trigger off bottom left corner of multitile atoms, otherwise i could use the inbuilt byond procs
+	//if(atom.loc == src)
+	for(var/atom/listening_atom in entry_listeners)
+		listening_atom.entry_triggered(src, atom)
+
 	return
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)

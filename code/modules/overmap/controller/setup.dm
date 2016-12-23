@@ -22,6 +22,9 @@ datum/controller/process/overmap/setup()
 	unused_common_ores_reference = unused_common_ores
 	all_rare_ores_reference = all_rare_ores
 	unused_rare_ores_reference = unused_rare_ores
+	//
+	all_datanets_reference = all_datanets
+	uninitialised_datanets_reference = uninitialised_datanets
 
 	asteroid_gen_config = new()
 
@@ -76,6 +79,9 @@ datum/controller/process/overmap/setup()
 
 	for(var/obj/effect/overmapobj/ship/S in world)
 		S.update_spaceturfs()
+
+	//Setup datanets
+	setup_datanets()
 
 	init_virtual_areas()
 

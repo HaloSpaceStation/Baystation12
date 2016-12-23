@@ -14,6 +14,8 @@
 	var/hovering_underlay = "hovering"
 	var/client_screen_size = 14
 
+	var/spawn_dir = 1
+
 	var/list/occupants = list()
 	var/occupants_max = 1
 	var/move_dir = 0
@@ -36,6 +38,8 @@
 
 	var/obj/effect/overmapobj/vehicle/overmap_object
 	var/obj/effect/virtual_area/transit_area
+
+	var/obj/effect/zlevelinfo/target_entry_level
 
 	var/armour = 100
 	var/hull_remaining = 100
@@ -121,6 +125,21 @@
 
 	//misc hud things
 	var/list/misc_hud_objects = list()
+	var/list/misc_hud_images = list()		//todo: try and integrate this into some other system
 	var/obj/vehicle_hud/autobrake/autobrake_button
 	var/fire_control_mode = 0	//0 = single shot, 1 = continuous firing
 	var/continue_firing = 0
+
+	hud_type = /datum/hud/vehicle
+
+	//ship select hud elements
+	//
+	var/obj/machinery/overmap_vehicle/selected_vehicle
+	var/obj/effect/overmapobj/selected_overmapobj
+	var/image/hud_overmap_select
+	var/image/hud_vehicle_select
+	//
+	var/obj/vehicle_hud/deselect/deselect_button
+	var/obj/vehicle_hud/autodock/autodock_button
+	var/obj/vehicle_hud/observe_overmap/observe_overmap_button
+	var/obj/vehicle_hud/floodlights/floodlights

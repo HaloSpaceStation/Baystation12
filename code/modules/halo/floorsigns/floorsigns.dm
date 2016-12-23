@@ -52,3 +52,40 @@
 	name = "floorsign (lifepods)"
 	desc = "A floor decal detailing the direction of a lifepod."
 	icon_state = "lifepods"
+
+/obj/structure/sign/deck1
+	name = "\improper Deck 1"
+	desc = "An informational sign informing the reader that they're currently on deck 1"
+	icon_state = "deck1"
+
+/obj/structure/sign/deck2
+	name = "\improper Deck 2"
+	desc = "An informational sign informing the reader that they're currently on deck 2"
+	icon_state = "deck2"
+
+/obj/structure/sign/deck3
+	name = "\improper Deck 3"
+	desc = "An informational sign informing the reader that they're currently on deck 3"
+	icon_state = "deck3"
+
+/obj/structure/sign/deck4
+	name = "\improper Deck 4"
+	desc = "An informational sign informing the reader that they're currently on deck 4"
+	icon_state = "deck4"
+
+/obj/structure/sign/deck5
+	name = "\improper Deck 5"
+	desc = "An informational sign informing the reader that they're currently on deck 5"
+	icon_state = "deck5"
+
+/obj/structure/sign/berth
+	var/berth_num = 1
+	var/berth_prefix = ""
+
+/obj/structure/sign/berth/New()
+	..()
+	if(berth_prefix)
+		name = "\improper [berth_prefix] Berth [berth_num]"
+	else
+		name = "\improper Berth [berth_num]"
+	icon_state = "deck[berth_num]"

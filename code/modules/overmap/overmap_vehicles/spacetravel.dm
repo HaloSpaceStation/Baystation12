@@ -31,6 +31,14 @@
 
 	//force an immediate update to prevent jitter
 	pixel_transform.update()
+
+	//reset this now
+	target_entry_level = null
+	//docking_approach = 1
+	autodock_button.icon_state = "docking"
+
+	//check if we are now running on autopilot
+	autopilot_begin_approach(newsector)
 /*
 /obj/machinery/overmap_vehicle/proc/enter_new_zlevel(var/obj/effect/zlevelinfo/entryz)
 	hud_waypoint_controller.enter_new_zlevel(entryz)

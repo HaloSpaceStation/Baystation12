@@ -1,5 +1,5 @@
 /datum/job/rd
-	title = "Chief Researcher"
+	title = "Research Director"
 	flag = RD
 	head_position = 1
 	department = "Science"
@@ -26,7 +26,7 @@
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/heads/rd(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), slot_shoes)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/science(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/research_director(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/rd(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/weapon/clipboard(H), slot_l_hand)
 		switch(H.backbag)
@@ -39,26 +39,26 @@
 
 
 /datum/job/scientist
-	title = "Researcher"
+	title = "Scientist"
 	flag = SCIENTIST
 	department = "Science"
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 2
+	total_positions = 5
+	spawn_positions = 3
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
 	economic_modifier = 7
 	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch)
 	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch)
-	//alt_titles = list("Xenoarcheologist", "Anomalist", "Phoron Researcher")
+	alt_titles = list("Xenoarcheologist", "Anomalist", "Phoron Researcher")
 
 	minimal_player_age = 14
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_sci(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/science(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/science(H), slot_belt)
 		switch(H.backbag)
@@ -67,7 +67,7 @@
 			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/toggle/labcoat/science(H), slot_wear_suit)
 		return 1
-/*
+
 /datum/job/xenobiologist
 	title = "Xenobiologist"
 	flag = XENOBIOLOGIST
@@ -97,7 +97,7 @@
 			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/toggle/labcoat/science(H), slot_wear_suit)
 		return 1
-*/
+
 /datum/job/roboticist
 	title = "Roboticist"
 	flag = ROBOTICIST
@@ -120,7 +120,7 @@
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_sci(H), slot_l_ear)
 		if(H.backbag == 2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack(H), slot_back)
 		if(H.backbag == 3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel_norm(H), slot_back)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/science(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/roboticist(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/roboticist(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/weapon/storage/toolbox/mechanical(H), slot_l_hand)

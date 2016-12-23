@@ -27,7 +27,7 @@
 			if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/medic(H), slot_back)
 			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel_med(H), slot_back)
 			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/science/biologist(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chief_medical_officer(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/cmo(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/weapon/storage/firstaid/adv(H), slot_l_hand)
@@ -89,14 +89,14 @@
 					else
 						H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/purple(H), slot_w_uniform)
 		else
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/science/biologist(H), slot_w_uniform)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), slot_w_uniform)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/toggle/labcoat(H), slot_wear_suit)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/medical(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/device/flashlight/pen(H), slot_s_store)
 		return 1
 
 
-/*
+
 //Chemist is a medical job damnit	//YEAH FUCK YOU SCIENCE	-Pete	//Guys, behave -Erro
 /datum/job/chemist
 	title = "Chemist"
@@ -191,22 +191,22 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/medical(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/toggle/labcoat(H), slot_wear_suit)
-*/
+
 
 /datum/job/Paramedic
-	title = "Medic"
+	title = "Paramedic"
 	flag = PARAMEDIC
 	department = "Medical"
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = 6
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	economic_modifier = 4
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
-	//alt_titles = list("Emergency Medical Technician")
+	alt_titles = list("Emergency Medical Technician")
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
@@ -226,7 +226,7 @@
 					H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/black(H), slot_w_uniform)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/toggle/fr_jacket(H), slot_wear_suit)
 		else
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/science/biologist(H), slot_w_uniform)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/weapon/storage/belt/medical/emt(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/medical(H), slot_l_store)
 		return 1

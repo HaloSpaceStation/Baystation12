@@ -24,10 +24,11 @@
 
 //don't just call this proc, it only turns the sprite on the sector map
 //make sure you are handling rotation of the other stuff (see proc/turn_towards_dir)
-/obj/machinery/overmap_vehicle/shuttle/proc/turn_towards_dir(var/targetdir)
+/obj/machinery/overmap_vehicle/shuttle/proc/turn_towards_dir(var/targetdir, var/ignore_blockers = 0)
+
 	//world << "turn_towards_dir([newdir])"
 	if(targetdir == dir)
-		return
+		return 0
 
 	//for some reason, positive angles in byond = ccw while negative angles = cw so invert this value below
 	var/turn_angle = -shortest_angle_to_dir(dir2angle(src.dir), targetdir, 90)
@@ -73,51 +74,52 @@
 	bound_height = new_bound_height
 
 	//loop over the covered turfs and see if there will be anything blocking the rotation
-	var/list/blockers = list()
-	for(var/turf/T in locs)
-		if(istype(T, /turf/unsimulated/blocker))
-			continue
-
-		//if a turf is dense, it will block our turning circle
-		if(T.density)
-			blockers.Add(T)
-			continue
-
-		//if there's something dense on the turf, just mark it as blocking then keep going
-		for(var/atom/movable/A in T)
-			if(A == src)
+	if(!ignore_blockers)
+		var/list/blockers = list()
+		for(var/turf/T in locs)
+			if(istype(T, /turf/unsimulated/blocker))
 				continue
-			if(A.density)
+
+			//if a turf is dense, it will block our turning circle
+			if(T.density)
 				blockers.Add(T)
-				break
+				continue
 
-	if(blockers.len)
-		//inform the player
-		usr << "<span class='info'>Some turfs indicated by arrows are blocking [src] from rotating in that direction.</span>"
+			//if there's something dense on the turf, just mark it as blocking then keep going
+			for(var/atom/movable/A in T)
+				if(A == src)
+					continue
+				if(A.density)
+					blockers.Add(T)
+					break
 
-		//helpful indicator arrows
-		var/list/arrows = list()
-		for(var/turf/T in blockers)
-			var/image/I = image('icons/mob/screen1.dmi', src.loc, "arrow", 11)
-			arrows.Add(I)
-			//I.color = "#FFCC00"		//light orange
-			I.pixel_x = (T.x - src.x) * 32
-			I.pixel_y = (T.y - src.y) * 32
-			usr << I
+		if(blockers.len)
+			//inform the player
+			usr << "<span class='info'>Some turfs indicated by arrows are blocking [src] from rotating in that direction.</span>"
 
-		//clear arrows out after a bit
-		spawn(20)
-			for(var/image/I in arrows)
-				qdel(I)
+			//helpful indicator arrows
+			var/list/arrows = list()
+			for(var/turf/T in blockers)
+				var/image/I = image('icons/mob/screen1.dmi', src.loc, "arrow", 11)
+				arrows.Add(I)
+				//I.color = "#FFCC00"		//light orange
+				I.pixel_x = (T.x - src.x) * 32
+				I.pixel_y = (T.y - src.y) * 32
+				usr << I
 
-		//if someone was blocking us, reset everything
-		//src.loc = old_loc
-		bound_width = old_bound_width
-		bound_height = old_bound_height
+			//clear arrows out after a bit
+			spawn(20)
+				for(var/image/I in arrows)
+					qdel(I)
 
-		//reset position and quit
-		src.loc = old_loc
-		return 0
+			//if someone was blocking us, reset everything
+			//src.loc = old_loc
+			bound_width = old_bound_width
+			bound_height = old_bound_height
+
+			//reset position and quit
+			src.loc = old_loc
+			return 0
 
 	//make sure there are no turfs blocking the way
 	/*for(var/xoffset = -new_turf_width/2, xoffset < new_turf_width/2, xoffset += 1)
@@ -184,12 +186,12 @@
 		src.move_dir = newdir
 
 	//testing
-	while(boundsmarkers.len <= locs.len)
+	/*while(boundsmarkers.len <= locs.len)
 		boundsmarkers.Add(new /obj/effect/boundsmarker(src))
 	for(var/i=1, i <= locs.len, i++)
 		var/obj/effect/boundsmarker/curmarker = boundsmarkers[i]
 		var/turf/T = locs[i]
-		curmarker.loc = T
+		curmarker.loc = T*/
 
 	return 1
 

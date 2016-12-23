@@ -22,6 +22,7 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 	var/last_world_time = 0
 
 /datum/event_container/proc/process()
+	/*
 	if(!next_event_time)
 		set_event_delay()
 
@@ -29,6 +30,7 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 		next_event_time += (world.time - last_world_time)
 	else if(world.time > next_event_time)
 		start_event()
+		*/
 
 	last_world_time = world.time
 

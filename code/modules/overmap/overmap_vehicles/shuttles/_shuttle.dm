@@ -10,7 +10,7 @@
 	bound_height = 384
 	max_speed = 10
 	iff_faction_broadcast = "UNSC"
-	var/layout_file = 'maps/shuttle_unscpersonnel1.dmm'
+	var/layout_file = 'maps/ships/shuttle_unscpersonnel1.dmm'
 	var/layout_x = 6
 	var/layout_y = 12
 	var/overmap_icon_state = "unsc_shuttle"
@@ -29,9 +29,19 @@
 	hull_default = 250
 
 	var/maglocked_at_spawn = 0
+	var/dir_after_init = NORTH
 
 /obj/machinery/overmap_vehicle/shuttle/New()
 	..()
+
+	overmap_object.icon_state = overmap_icon_state
+	layer = MOB_LAYER - 0.1
+
+	vehicle_controls.move_mode_absolute = 1
+
+	init_interior()
+
+/obj/machinery/overmap_vehicle/shuttle/proc/init_interior()
 
 	//grab a temp zlevel and use it to hold our "inside"
 	if(!interior)
@@ -42,52 +52,62 @@
 		interior.map_dimx = layout_x
 		interior.map_dimy = layout_y
 
-	overmap_object.icon_state = overmap_icon_state
-	layer = MOB_LAYER - 0.1
+		//create an area for the shuttle interior to make handling a lot of stuff easier
+		shuttle_area = new
+		shuttle_area.name = src.name
+		for(var/xoffset = 0, xoffset < overmap_controller.virtual_area_dims, xoffset++)
+			for(var/yoffset = 0, yoffset < overmap_controller.virtual_area_dims, yoffset++)
+				var/turf/curturf = locate(interior.x + xoffset, interior.y + yoffset, interior.z)
+				if(!istype(curturf, /turf/space) && !istype(curturf, /turf/unsimulated/blocker))
+					shuttle_area.contents.Add(curturf)
 
-	vehicle_controls.move_mode_absolute = 1
-
-	//create an area for the shuttle interior to make handling a lot of stuff easier
-	shuttle_area = new
-	shuttle_area.name = src.name
-	for(var/xoffset = 0, xoffset < overmap_controller.virtual_area_dims, xoffset++)
-		for(var/yoffset = 0, yoffset < overmap_controller.virtual_area_dims, yoffset++)
-			var/turf/curturf = locate(interior.x + xoffset, interior.y + yoffset, interior.z)
-			if(!istype(curturf, /turf/space) && !istype(curturf, /turf/unsimulated/blocker))
-				shuttle_area.contents.Add(curturf)
-
-				//the turfs need to know about the shuttle so they can handle stuff like interaction and explosions
-				if(istype(curturf, /turf/simulated/shuttle/hull))
-					var/turf/simulated/shuttle/hull/S = curturf
-					S.my_shuttle = src
-
-				//create lighting overlays
-				if(!curturf.lighting_overlay)
-					var/atom/movable/lighting_overlay/O = PoolOrNew(/atom/movable/lighting_overlay, curturf)
-					curturf.lighting_overlay = O
-
-				//do initializations for any atoms (should this be in load_onto_turf?)
-				for(var/atom/movable/A in curturf)
-					A.initialize()
-					//tell any helm computers about us
-					if(istype(A, /obj/machinery/computer/shuttle_helm))
-						var/obj/machinery/computer/shuttle_helm/S = A
+					//the turfs need to know about the shuttle so they can handle stuff like interaction and explosions
+					if(istype(curturf, /turf/simulated/shuttle/hull))
+						var/turf/simulated/shuttle/hull/S = curturf
 						S.my_shuttle = src
 
-					if(istype(A, /obj/machinery/door/airlock/external/shuttle))
-						var/obj/machinery/door/airlock/external/shuttle/S = A
-						S.my_shuttle = src
+					//create lighting overlays
+					if(!curturf.lighting_overlay)
+						var/atom/movable/lighting_overlay/O = PoolOrNew(/atom/movable/lighting_overlay, curturf)
+						curturf.lighting_overlay = O
 
-				//reset air levels on this turf because loading seems to loses a bit of air for some reason
-				//curturf.make_air()
+					//do initializations for any atoms (should this be in load_onto_turf?)
+					for(var/atom/movable/A in curturf)
+						A.initialize()
+						//tell any helm computers about us
+						if(istype(A, /obj/machinery/computer/shuttle_helm))
+							var/obj/machinery/computer/shuttle_helm/S = A
+							S.my_shuttle = src
 
-				//mark the turf to be updated for atmos later
-				air_master.mark_for_update(curturf)
+						if(istype(A, /obj/machinery/door/airlock/external/shuttle))
+							var/obj/machinery/door/airlock/external/shuttle/S = A
+							S.my_shuttle = src
 
-	//world << "shuttle map loaded with [num_new_lighting_overlays] new lighting overlays created"
+					//reset air levels on this turf because loading seems to loses a bit of air for some reason
+					//curturf.make_air()
 
-	//work out some final init stuff
-	calc_num_turfs()
+					//mark the turf to be updated for atmos later
+					air_master.mark_for_update(curturf)
+
+		//world << "shuttle map loaded with [num_new_lighting_overlays] new lighting overlays created"
+
+		//work out some final init stuff
+		calc_num_turfs()
+
+/obj/machinery/overmap_vehicle/shuttle/initialize()
+	..()
+
+	init_interior()
+
+	//there isn't an easy way to do multitile atom rotation in the map editor
+	//this handles it after server startup but before roundstart
+	var/turf/oldloc = src.loc
+	while(src.dir != dir_after_init)
+		turn_towards_dir(dir_after_init, 1)
+		sleep(1)
+
+	//reset our position so the "turning" in the map editor is based off the bottom left corner
+	src.loc = oldloc
 
 	if(maglocked_at_spawn)
 		init_maglock()
@@ -151,10 +171,6 @@
 	var/adjusted_direction = turn(direction, angle_offset)
 
 	return get_relative_directional_thrust(adjusted_direction)
-
-/obj/machinery/overmap_vehicle/shuttle/make_pilot(var/mob/living/H)
-	//handle piloting differently to other vehicle types
-	return
 
 //this proc doesn't safety check! make sure you pass it a turf in the virtual space only, and only when the shuttle is not maglocked
 /obj/machinery/overmap_vehicle/shuttle/proc/get_external_turf(var/turf/internal_turf)

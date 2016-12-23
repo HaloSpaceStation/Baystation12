@@ -20,7 +20,7 @@ var/obj/effect/overmapobj/innie_base
 	var/obj/effect/overmapobj/innie_base_reference
 	var/innie_base_discovered = 0
 	var/nuke_result = -1
-	var/minutes_to_detect_innie_base = 15
+	var/minutes_to_detect_innie_base = 0.5
 	var/time_autofind_innie_base = 0
 	var/announced_innie_base_loc = 0
 
@@ -155,6 +155,7 @@ var/obj/effect/overmapobj/innie_base
 				comm.messagetitle.Add("ONI Intelligence Report")
 				comm.messagetext.Add(report_text)
 		world << sound('sound/AI/commandreport.ogg')
+		world << "<span class='warning'>ONI has discovered the location of the hidden insurrection Base! The commanding officers of any UNSC warships in the area have surely been notified...</span>"
 		overmap_controller.overmap_scanner_manager.add_station(innie_base)
 
 /datum/game_mode/insurrection/handle_nuke_explosion()

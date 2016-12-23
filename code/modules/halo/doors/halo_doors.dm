@@ -44,3 +44,14 @@ obj/machinery/door/blast/regular/triple/New()
 		else
 			bound_width = world.icon_size
 			bound_height = 3 * world.icon_size*/
+
+obj/machinery/door/blast/regular/quadruple
+	icon = 'code/modules/halo/doors/Longer Blastdoor.dmi'
+	maxhealth = 2400
+
+obj/machinery/door/blast/regular/quadruple/New()
+	..()
+
+	//only east-west variant for now
+	bound_width = 4 * world.icon_size
+	bound_height = world.icon_size

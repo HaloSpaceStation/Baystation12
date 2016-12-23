@@ -109,6 +109,7 @@
 	var/sex = "\[UNSET\]"
 	var/icon/front
 	var/icon/side
+	var/unsc_rank = 0		//see code\modules\halo\jobs\UNSC_ship.dm
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
 	var/assignment = null	//can be alt title or the actual job
@@ -162,9 +163,14 @@
 /obj/item/weapon/card/id/proc/dat()
 	var/dat = ("<table><tr><td>")
 	dat += text("Name: []</A><BR>", registered_name)
+	dat += text("DNA Hash: []<BR><BR>\n", dna_hash)
 	dat += text("Sex: []</A><BR>\n", sex)
 	dat += text("Age: []</A><BR>\n", age)
-	dat += text("Rank: []</A><BR>\n", assignment)
+	if(src.unsc_rank)
+		dat += text("Rank: []</A><BR>\n", UNSC_ranks[src.unsc_rank])
+		dat += text("[capitalize(get_jobtypestring_from_rank(src.unsc_rank))]: []</A><BR>\n", assignment)
+	else
+		dat += text("Assignment: []</A><BR>\n", assignment)
 	dat += text("Fingerprint: []</A><BR>\n", fingerprint_hash)
 	dat += text("Blood Type: []<BR>\n", blood_type)
 	dat += text("DNA Hash: []<BR><BR>\n", dna_hash)
@@ -174,9 +180,14 @@
 	return dat
 
 /obj/item/weapon/card/id/attack_self(mob/user as mob)
-	user.visible_message("\The [user] shows you: \icon[src] [src.name]. The assignment on the card: [src.assignment]",\
-		"You flash your ID card: \icon[src] [src.name]. The assignment on the card: [src.assignment]")
+	var/outtext = "\icon[src] [src.name]."
+	if(src.unsc_rank)
+		outtext += " The [get_jobtypestring_from_rank(src.unsc_rank)] on the card: [src.assignment]."
+		outtext += " The rank on the card: [UNSC_ranks[src.unsc_rank]]."
+	else
+		outtext += " The assignment on the card: [src.assignment]"
 
+	user.visible_message("\The [user] shows you: [outtext]", "You flash your ID card: [outtext]")
 	src.add_fingerprint(user)
 	return
 
@@ -191,7 +202,9 @@
 	set category = "Object"
 	set src in usr
 
-	usr << text("\icon[] []: The current assignment on the card is [].", src, src.name, src.assignment)
+	usr << text("\icon[] []: The current [src.unsc_rank ? get_jobtypestring_from_rank(src.unsc_rank) : "assignment"] on the card is [].", src, src.name, src.assignment)
+	if(src.unsc_rank)
+		usr << "The rank on the card is [UNSC_ranks[src.unsc_rank]]."
 	usr << "The blood type on the card is [blood_type]."
 	usr << "The DNA hash on the card is [dna_hash]."
 	usr << "The fingerprint hash on the card is [fingerprint_hash]."

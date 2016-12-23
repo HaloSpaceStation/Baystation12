@@ -1,0 +1,32 @@
+"a" = (/turf/unsimulated/blocker,/area/space)
+"b" = (/turf/simulated/shuttle/hull{dir = 9; icon_state = "yellowwall"},/area/space)
+"c" = (/turf/simulated/shuttle/hull/window,/area/space)
+"d" = (/turf/simulated/shuttle/hull{dir = 5; icon_state = "yellowwall"},/area/space)
+"e" = (/obj/machinery/light_switch,/turf/simulated/shuttle/hull{icon_state = "yellowwall"},/area/space)
+"f" = (/obj/machinery/light{dir = 8},/obj/structure/bed/chair{dir = 4},/turf/simulated/shuttle/hull/floor{icon_state = "floor2"},/area/space)
+"g" = (/obj/machinery/computer/shuttle_helm,/turf/simulated/shuttle/hull/floor{icon_state = "floor2"},/area/space)
+"h" = (/turf/simulated/shuttle/hull{icon_state = "yellowwall"},/area/space)
+"i" = (/turf/simulated/shuttle/hull/floor{icon_state = "floor2"},/area/space)
+"j" = (/obj/machinery/power/apc/super/critical{dir = 1; is_critical = 1; name = "Shuttle Power Controller"; pixel_y = 24},/turf/simulated/shuttle/hull/floor{icon_state = "floor2"},/area/space)
+"k" = (/obj/machinery/door/airlock/external/shuttle{dir = 8},/turf/simulated/shuttle/hull/floor{icon_state = "floor2"},/area/space)
+"l" = (/obj/machinery/light{dir = 8},/turf/simulated/shuttle/hull/floor{icon_state = "floor2"},/area/space)
+"m" = (/obj/machinery/light{dir = 4},/turf/simulated/shuttle/hull/floor{icon_state = "floor2"},/area/space)
+"n" = (/obj/structure/shuttle/engine/heater,/obj/structure/window/reinforced{dir = 1},/turf/simulated/shuttle/hull/floor{icon_state = "floor2"},/area/space)
+"o" = (/turf/simulated/shuttle/hull{dir = 10; icon_state = "yellowwall"},/area/space)
+"p" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/shuttle/hull,/area/space)
+"q" = (/turf/simulated/shuttle/hull{dir = 6; icon_state = "yellowwall"},/area/space)
+
+(1,1,1) = {"
+abccda
+befghd
+ciiijc
+kiiiik
+hliimh
+hiiiih
+hiiiih
+ciiiic
+kiiiik
+hliimh
+hnnnnh
+oppppq
+"}

@@ -37,14 +37,31 @@
 			if(above)
 				for(var/obj/obstacle in above)
 					if(!obstacle.CanPass(O, above))
-						O << "<span class='notice'>Your way up is blocked by \the [obstacle].</span>"
+						O << "<span class='notice'>Your way up is blocked by \the [obstacle]. You can't get through from this angle.</span>"
 						return 0
 				if(istype(above, /turf/simulated/floor/open))
 					var/turf/target = get_step(above, dir)
 					for(var/obj/obstacle in target)
 						if(!obstacle.CanPass(O, target))
-							O << "<span class='notice'>The top of \the [src] is blocked by \the [obstacle].</span>"
-							return 0
+							//check if this is a door
+							var/door_result = 0
+							if(istype(obstacle, /obj/machinery/door))
+								var/obj/machinery/door/D = obstacle
+								door_result = D.Bumped(O)
+								if(door_result)
+									if(D.density)
+										O << "<span class='notice'>You open \the [obstacle] at the top of \the [src].</span>"
+										return 0
+									else
+										//we are walking through an open door
+										return 1
+								else
+									//we are blocked by an airlock either because it is still opening or because it is locked
+									return 0
+
+							if(!door_result)
+								O << "<span class='notice'>The top of \the [src] is blocked by \the [obstacle].</span>"
+								return 0
 
 					//if there's an open space next to the stairs, we'll stop short of going into it
 					if(istype(target, /turf/simulated/floor/open))

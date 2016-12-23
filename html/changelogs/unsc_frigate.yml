@@ -1,0 +1,9 @@
+author: Cael_Aislinn
+delete-after: True
+changes: 
+  - maptweak: "A new 4 deck UNSC frigate has been added that is feature complete. Includes medbay, dormitories, engineering areas, reactors, hangars, storerooms, barracks and more."
+  - bugfix: "Map spawns for new frigate should be working, and any latejoiners should now automatically spawn at the cryotubes. No more spawning in space."
+  - tweak: "Vehicle HUDs added to all vehicles. This is experimental and some stuff may be disabled or buggy."
+  - rscadd: "Added placeholders for the Warthog and Mongoose ground vehicles."
+  - wip: "Autopilot docking system is added but disabled for testing."
+  - experiment: "We are in alpha, so please report bugs on skype or the forums."

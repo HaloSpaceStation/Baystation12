@@ -13,7 +13,6 @@
 	var/next_beep_at = 0				//World time when we may next beep due to doors being blocked by mobs
 	var/spawnPowerRestoreRunning = 0
 	var/welded = null
-	var/locked = 0
 	var/lights = 1 // bolt lights show by default
 	var/aiDisabledIdScanner = 0
 	var/aiHacking = 0
@@ -969,7 +968,7 @@ About the new airlock wires panel:
 	..()
 	return
 
-/obj/machinery/door/airlock/proc/lock(var/forced=0)
+/obj/machinery/door/airlock/lock(var/forced=0)
 	if(locked)
 		return 0
 
@@ -981,7 +980,7 @@ About the new airlock wires panel:
 	update_icon()
 	return 1
 
-/obj/machinery/door/airlock/proc/unlock(var/forced=0)
+/obj/machinery/door/airlock/unlock(var/forced=0)
 	if(!src.locked)
 		return
 

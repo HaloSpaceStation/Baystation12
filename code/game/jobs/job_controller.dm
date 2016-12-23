@@ -13,7 +13,7 @@ var/global/datum/controller/occupations/job_master
 	var/list/job_debug = list()
 
 
-	proc/SetupOccupations(var/faction = "Station")
+	proc/SetupOccupations(var/faction = "UNSC_ship")
 		occupations = list()
 		var/list/all_jobs = typesof(/datum/job)
 		if(!all_jobs.len)
@@ -455,9 +455,9 @@ var/global/datum/controller/occupations/job_master
 					return H.Robotize()
 				if("AI")
 					return H
-				if("Captain")
+				/*if("Captain")
 					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
-					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
+					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)*/
 
 			//Deferred item spawning.
 			if(spawn_in_storage && spawn_in_storage.len)
@@ -533,6 +533,11 @@ var/global/datum/controller/occupations/job_master
 			C.rank = rank
 			C.assignment = title ? title : rank
 			H.set_id_info(C)
+			if(job.max_rank)
+				if(prob(50))
+					C.unsc_rank = job.default_rank
+				else
+					C.unsc_rank = rand(job.min_rank, job.max_rank)
 
 			//put the player's account number onto the ID
 			if(H.mind && H.mind.initial_account)
@@ -622,7 +627,9 @@ var/global/datum/controller/occupations/job_master
 	var/datum/spawnpoint/spawnpos
 
 	if(H.client.prefs.spawnpoint)
-		spawnpos = spawntypes[H.client.prefs.spawnpoint]
+		//force everyone to spawn from cryo for now. later make this round dependant
+		spawnpos = spawntypes["Cryogenic Storage"]
+		//spawnpos = spawntypes[H.client.prefs.spawnpoint]
 
 	if(spawnpos && istype(spawnpos))
 		if(spawnpos.check_job_spawning(rank))

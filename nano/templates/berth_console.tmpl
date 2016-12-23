@@ -1,0 +1,121 @@
+
+<h3>Datanet</h3> 
+<div class='block'>
+	<div class='item'>
+		<div class="itemLabel">
+			Network ID: 
+		</div>
+		<div class="itemContent">
+			{{:data.datanet_tag}}
+		</div>
+	</div>
+	
+	<div class='item'>
+		<div class="itemLabel">
+			Network Status: 
+		</div>
+		<div class="itemContent">
+			{{:data.netstat ? "Connected" : "Disconnected"}}
+		</div>
+	</div>
+	
+	<div class='item'>
+		<div class="itemLabel">
+			Airlock Status: 
+		</div>
+		<div class="itemContent">
+			{{:data.anetstat ? "Linked" : "Not Detected"}}
+		</div>
+	</div>
+	
+	<div class='item'>
+		<div class="itemLabel">
+			Berth Status: 
+		</div>
+		<div class="itemContent">
+			{{:data.bnetstat ? "Linked" : "Not Detected"}}
+		</div>
+	</div>
+</div>
+
+{{if data.bnetstat}}
+	<h3>Berth</h3> 
+	<div class='block'>
+		<div class='item'>
+			<div class="itemLabel">
+				Occupant: 
+			</div>
+			<div class="itemContent">
+				{{:data.occuname}}
+			</div>
+		</div>
+		<div class='item'>
+			<div class="itemLabel">
+				Description: 
+			</div>
+			<div class="itemContent">
+				{{:data.occudesc}}
+			</div>
+		</div>
+		<div class='item'>
+			<div class="itemContent">
+				{{:helper.link('Rescan for occupant', 'signal-diag', {'command' : 'refresh_vehicle'}, null, null)}}
+			</div>
+		</div>
+	</div>
+{{/if}}
+
+{{if data.anetstat}}
+	<h3>Airlock</h3> 
+	<div class='block'>
+		<div class='item'>
+			<div class="itemLabel">
+				Cycle State: 
+			</div>
+			<div class="itemContent">
+				{{:data.cyclestat}}
+			</div>
+		</div>
+		<div class='item'>
+			<div class="itemContent">
+				{{:helper.displayBar(data.pressure, 0, 200, (data.pressure < 80 || data.pressure > 120) ? 'bad' : (data.pressure < 95 || data.pressure > 110) ? 'average' : 'good')}}
+				<div class="statusValue">
+					{{:data.pressure}} kPa
+				</div>
+			</div>
+		</div>
+		<div class='item'>
+			<div class="itemLabel">
+				Interior door status:
+			</div>
+			<div class="itemContent">
+				{{:data.intclosed ? "Closed" : "Open"}}
+			</div>
+		</div>
+		<div class='item'>
+			<div class="itemContent">
+				{{:helper.link('Cycle to Interior', 'arrowthickstop-1-e', {'command' : 'cycle_int'}, data.airlockstat ? 'disabled' : null)}}
+				{{:helper.link('Force interior door', 'alert', {'command' : 'force_int'}, null, data.airlockstat ? 'yellowButton' : null)}}
+			</div>
+		</div>
+		<div class='item'>
+			<div class="itemLabel">
+				Exterior door status: 
+			</div>
+			<div class="itemContent">
+				{{:data.extclosed ? "Closed" : "Open"}}
+			</div>
+		<div class='item'>
+			<div class="itemContent">
+				{{:helper.link('Cycle to Exterior', 'arrowthickstop-1-w', {'command' : 'cycle_ext'}, data.airlockstat ? 'disabled' : null)}}
+				{{:helper.link('Force exterior door', 'alert', {'command' : 'force_ext'}, null, data.airlockstat ? 'yellowButton' : null)}}
+			</div>
+		</div>
+		<div class='item'>
+			<div class="itemContent">
+				{{:helper.link('Abort', 'cancel', {'command' : 'abort'}, data.cyclestat ? null : 'disabled', data.cyclestat ? 'redButton' : null)}}
+				{{:helper.link('Purge', 'refresh', {'command' : 'purge'}, data.cyclestat ? 'disabled' : null, data.purge ? 'linkOn' : null)}}
+			</div>
+		</div>
+	</div>
+{{/if}}

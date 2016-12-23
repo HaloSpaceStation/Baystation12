@@ -73,8 +73,6 @@
 		if(heat_energy > max_heat_energy)
 			overload_reactor()
 
-	updateUsrDialog()
-
 /obj/machinery/power/fusion_drive/attackby(var/obj/item/I, var/mob/living/user)
 	if(istype(I, /obj/item/fusion_fuel))
 		if(held_fuel)
@@ -86,9 +84,36 @@
 			icon_state = "reactor1"
 			update_overlays()
 
-/obj/machinery/power/fusion_drive/attack_hand(var/mob/living/user)
-	user.set_machine(src)
+/obj/machinery/power/fusion_drive/proc/can_use(var/mob/M)
+	if(M.stat || M.restrained() || M.lying || !istype(M, /mob/living) || get_dist(M, src) > 1)
+		return 0
+	return 1
 
+/obj/machinery/power/fusion_drive/attack_hand(var/mob/living/user)
+	add_fingerprint(user)
+	if(can_use(user))
+		user.set_machine(src)
+		ui_interact(user)
+
+/obj/machinery/power/fusion_drive/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+
+	if(!can_use(user))
+		if(ui)
+			ui.close()
+		return
+
+	var/data[0]
+	data["powerprod"] = fuel_consumption_rate * power_per_fuel
+	data["coretemp"] = heat_energy / internal_heat_capacity
+	data["coreoverload"] = 100 * heat_energy / max_heat_energy
+	data["held_fuel"] = held_fuel ? 1 : 0
+	data["fuelunits"] = held_fuel ? held_fuel.fuel_left : 0
+	data["fuelremain"] = held_fuel ? 100 * held_fuel.fuel_left / held_fuel.max_fuel : 0
+
+	data["fuel_rate"] = fuel_consumption_rate
+	data["fuel_rate_max"] = round(max_heat_energy / (60 * heat_per_fuel))
+
+	/*
 	var/text = "<b>Mark II Hanley-Messer Deuterium Fusion Drive</b><br>"
 	text += "<br>"
 	text += "Power production: [fuel_consumption_rate * power_per_fuel] W"
@@ -105,10 +130,18 @@
 
 	user << browse(text, "window=fusion_drive;size=450x300;can_resize=1;can_close=1;can_minimize=1")
 	onclose(user, "window=fusion_drive", src)
+	*/
+
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	if (!ui)
+		ui = new(user, src, ui_key, "fusion_reactor.tmpl", "Fusion Reactor", 550, 550)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
 
 /obj/machinery/power/fusion_drive/Topic(href, href_list)
 	if(href_list["modify_fuel_use"])
-		fuel_consumption_rate = input("Choose a new fuel consumption rate per second", "Fuel usage", 1)
+		fuel_consumption_rate = input("Choose a new fuel consumption rate per second", "Fuel usage", 0.5)
 		fuel_consumption_rate = min(fuel_consumption_rate, round(max_heat_energy / (10 * heat_per_fuel)))
 
 	if(href_list["eject_fuel"])
@@ -150,19 +183,12 @@
 			overload_reactor()
 
 /obj/machinery/power/fusion_drive/proc/overload_reactor()
-	var/max_damage = 14 * heat_energy / max_heat_energy
+	var/max_damage = 6// * heat_energy / max_heat_energy
 	if(held_fuel)
-		max_damage += 14 * held_fuel.fuel_left / held_fuel.max_fuel
+		max_damage += pick(1,2)// * held_fuel.fuel_left / held_fuel.max_fuel
 
 	log_admin("A fusion reactor overloaded at [src.x], [src.y], [src.z] with max damage [max_damage]")
 
-	spawn(0)
-		explosion(get_turf(src), max_damage - 5, max_damage - 3, max_damage - 1, max_damage + 1)
-
 	disconnect_from_network()
-
-	var/obj/item/stack/material/glass/reinforced/G = new(src.loc)
-	G.amount = 5
-	var/obj/item/stack/material/plasteel/S = new(src.loc)
-	S.amount = 5
-	qdel(src)
+	spawn(0)
+		explosion(get_turf(src), max_damage - 6, max_damage - 3, max_damage - 1, max_damage + 1)
