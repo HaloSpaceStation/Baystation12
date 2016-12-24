@@ -79,15 +79,16 @@
 		A.datanet_logic_linked(src)
 
 /datum/datanet_logic/airlock/process()
+	var/chamb_pressure = get_chamber_pressure()
 	switch(state)
 		if(STATE_PURGE)
-			if(chamber_sensor.previousPressure <= pressure_fuzz_factor * ONE_ATMOSPHERE)
+			if(chamb_pressure <= pressure_fuzz_factor * ONE_ATMOSPHERE)
 				state = STATE_IDLE
 				set_pumping(0)
 				process_stop()
 
 		if(STATE_CYCLEOUT)
-			if(chamber_sensor.previousPressure <= pressure_fuzz_factor * ONE_ATMOSPHERE)
+			if(chamb_pressure <= pressure_fuzz_factor * ONE_ATMOSPHERE)
 				state = STATE_IDLE
 				set_pumping(0)
 				process_stop()
@@ -100,7 +101,7 @@
 						external_beacon.airlock_cycled_ext()
 
 		if(STATE_CYCLEIN)
-			if(chamber_sensor.previousPressure >= (1 - pressure_fuzz_factor) * ONE_ATMOSPHERE)
+			if(chamb_pressure >= (1 - pressure_fuzz_factor) * ONE_ATMOSPHERE)
 				state = STATE_IDLE
 				set_pumping(0)
 				process_stop()
