@@ -86,8 +86,8 @@ Disposal pipes state value remains as 11 and 12 because they're not strictly ref
 			var/obj/effect/zlevelinfo/target_level = locate("zlevel[curz]")
 
 			if(target_level && cur_level.name == target_level.name)
-				if(testing)
-					testing("[cur_level.name]: z[cur_level.z] and z[target_level.z] are connected")
+				/*if(testing)
+					testing("[cur_level.name]: z[cur_level.z] and z[target_level.z] are connected")*/
 				return locate(base_turf.x, base_turf.y, target_level.z)
 
 			curz -= 1
