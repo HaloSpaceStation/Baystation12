@@ -39,8 +39,6 @@
 
 	vehicle_controls.move_mode_absolute = 1
 
-	init_interior()
-
 /obj/machinery/overmap_vehicle/shuttle/proc/init_interior()
 
 	//grab a temp zlevel and use it to hold our "inside"
