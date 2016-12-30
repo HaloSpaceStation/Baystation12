@@ -1,12 +1,13 @@
 #define HOLD_CASINGS	0 //do not do anything after firing. Manual action, like pump shotguns, or guns that want to define custom behaviour
 #define EJECT_CASINGS	1 //drop spent casings on the ground after firing
 #define CYCLE_CASINGS 	2 //experimental: cycle casings, like a revolver. Also works for multibarrelled guns
+#define CASELESS		3 //this gun uses a special ammo where the case distintegrates on firing
 
 /obj/item/weapon/gun/projectile
 	name = "gun"
 	desc = "A gun that fires bullets."
 	icon_state = "revolver"
-	origin_tech = "combat=2;materials=2"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = 3
 	matter = list(DEFAULT_WALL_MATERIAL = 1000)
 	recoil = 1
@@ -26,6 +27,7 @@
 	var/obj/item/ammo_magazine/ammo_magazine = null //stored magazine
 	var/auto_eject = 0			//if the magazine should automatically eject itself when empty.
 	var/auto_eject_sound = null
+	var/reload_sound = 'sound/weapons/flipblade.ogg'
 	//TODO generalize ammo icon states for guns
 	//var/magazine_states = 0
 	//var/list/icon_keys = list()		//keys
@@ -36,7 +38,7 @@
 	if(ispath(ammo_type) && (load_method & (SINGLE_CASING|SPEEDLOADER)))
 		for(var/i in 1 to max_shells)
 			loaded += new ammo_type(src)
-	if(ispath(magazine_type) && (load_method & MAGAZINE))
+	if(ispath(magazine_type) && (load_method & (MAGAZINE|BELT_FEED)))
 		ammo_magazine = new magazine_type(src)
 	update_icon()
 
@@ -68,6 +70,16 @@
 /obj/item/weapon/gun/projectile/proc/process_chambered()
 	if (!chambered) return
 
+	// Aurora forensics port, gunpowder residue.
+	if(chambered.leaves_residue)
+		var/mob/living/carbon/human/H = loc
+		if(istype(H))
+			if(!H.gloves)
+				H.gunshot_residue = chambered.caliber
+			else
+				var/obj/item/clothing/G = H.gloves
+				G.gunshot_residue = chambered.caliber
+
 	switch(handle_casings)
 		if(EJECT_CASINGS) //eject casing onto ground.
 			chambered.loc = get_turf(src)
@@ -76,6 +88,8 @@
 				ammo_magazine.stored_ammo += chambered
 			else
 				loaded += chambered
+		if(CASELESS)
+			qdel(chambered)
 
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
@@ -86,36 +100,40 @@
 /obj/item/weapon/gun/projectile/proc/load_ammo(var/obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
-		if(!(load_method & AM.mag_type) || caliber != AM.caliber)
+		if(!(load_method & AM.mag_type))
+			user << "<span class='warning'>That is the wrong type of magazine for [src].</span>"
+			return //incompatible
+		if(caliber != AM.caliber)
+			user << "<span class='warning'>That is the wrong calibre for [src].</span>"
 			return //incompatible
 
-		switch(AM.mag_type)
-			if(MAGAZINE)
-				if(ammo_magazine)
-					user << "<span class='warning'>[src] already has a magazine loaded.</span>" //already a magazine here
-					return
-				user.remove_from_mob(AM)
-				AM.loc = src
-				ammo_magazine = AM
-				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
-				playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
-			if(SPEEDLOADER)
+		if(AM.mag_type & (MAGAZINE|BELT_FEED))
+			if(ammo_magazine)
+				user << "<span class='warning'>[src] already has a magazine loaded.</span>" //already a magazine here
+				return
+			user.remove_from_mob(AM)
+			AM.loc = src
+			ammo_magazine = AM
+			user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
+			playsound(src.loc, reload_sound, 50, 1)
+		else if(AM.mag_type & SPEEDLOADER)
+			if(loaded.len >= max_shells)
+				user << "<span class='warning'>[src] is full!</span>"
+				return
+			var/count = 0
+			for(var/obj/item/ammo_casing/C in AM.stored_ammo)
 				if(loaded.len >= max_shells)
-					user << "<span class='warning'>[src] is full!</span>"
-					return
-				var/count = 0
-				for(var/obj/item/ammo_casing/C in AM.stored_ammo)
-					if(loaded.len >= max_shells)
-						break
-					if(C.caliber == caliber)
-						C.loc = src
-						loaded += C
-						AM.stored_ammo -= C //should probably go inside an ammo_magazine proc, but I guess less proc calls this way...
-						count++
-				if(count)
-					user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
-					playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+					break
+				if(C.caliber == caliber)
+					C.loc = src
+					loaded += C
+					AM.stored_ammo -= C //should probably go inside an ammo_magazine proc, but I guess less proc calls this way...
+					count++
+			if(count)
+				user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
+				playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 		AM.update_icon()
+		. = 1
 	else if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
 		if(!(load_method & SINGLE_CASING) || caliber != C.caliber)
@@ -129,6 +147,7 @@
 		loaded.Insert(1, C) //add to the head of the list
 		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+		. = 1
 
 	update_icon()
 
@@ -166,7 +185,9 @@
 
 /obj/item/weapon/gun/projectile/attack_self(mob/user as mob)
 	if(firemodes.len > 1)
-		switch_firemodes(user)
+		var/datum/firemode/new_mode = switch_firemodes(user)
+		if(new_mode)
+			user << "<span class='notice'>\The [src] is now set to [new_mode.name].</span>"
 	else
 		unload_ammo(user)
 

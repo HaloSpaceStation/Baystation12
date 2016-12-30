@@ -10,6 +10,7 @@
 	var/use = 200 // 200W light
 	var/unlocked = 0
 	var/open = 0
+	var/brightness_range = 20
 	var/brightness_on = 8		//can't remember what the maxed out value is
 
 /obj/machinery/floodlight/New()
@@ -32,10 +33,10 @@
 
 	// If the cell is almost empty rarely "flicker" the light. Aesthetic only.
 	if((cell.percent() < 10) && prob(5))
-		set_light(brightness_on/2, brightness_on/4)
+		set_light(brightness_on/2, brightness_range/4)
 		spawn(20)
 			if(on)
-				set_light(brightness_on, brightness_on/2)
+				set_light(brightness_on, brightness_range)
 
 	cell.use(use*CELLRATE)
 
@@ -48,7 +49,7 @@
 		return 0
 
 	on = 1
-	set_light(brightness_on, brightness_on / 2)
+	set_light(brightness_on, brightness_range)
 	update_icon()
 	if(loud)
 		visible_message("\The [src] turns on.")
@@ -85,6 +86,8 @@
 		cell.update_icon()
 
 		src.cell = null
+		on = 0
+		set_light(0)
 		user << "You remove the power cell"
 		update_icon()
 		return

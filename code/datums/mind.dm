@@ -50,7 +50,8 @@
 
 	var/has_been_rev = 0//Tracks if this mind has been a rev or not
 
-	var/datum/faction/faction 			//associated faction
+	//var/datum/faction/faction 			//associated faction
+	var/faction_text
 	var/datum/changeling/changeling		//changeling holder
 
 	var/rev_cooldown = 0
@@ -143,7 +144,7 @@
 
 	if(href_list["add_antagonist"])
 		var/datum/antagonist/antag = all_antag_types[href_list["add_antagonist"]]
-		if(antag) 
+		if(antag)
 			if(antag.add_antagonist(src, 1, 1, 0, 1, 1)) // Ignore equipment and role type for this.
 				log_admin("[key_name_admin(usr)] made [key_name(src)] into a [antag.role_text].")
 			else
@@ -318,10 +319,10 @@
 						if(I in organs.implants)
 							qdel(I)
 							break
-				H << "<span class='notice'><font size =3><B>Your loyalty implant has been deactivated.</font></span>"
+				H << "<span class='notice'><font size =3><B>Your loyalty implant has been deactivated.</B></font></span>"
 				log_admin("[key_name_admin(usr)] has de-loyalty implanted [current].")
 			if("add")
-				H << "<span class='danger'><font size =3>You somehow have become the recepient of a loyalty transplant, and it just activated!</font>"
+				H << "<span class='danger'><font size =3>You somehow have become the recepient of a loyalty transplant, and it just activated!</font></span>"
 				H.implant_loyalty(H, override = TRUE)
 				log_admin("[key_name_admin(usr)] has loyalty implanted [current].")
 			else
@@ -437,7 +438,7 @@
 	special_role =    null
 	role_alt_title =  null
 	assigned_job =    null
-	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
+	//faction       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
 	changeling =      null
 	initial_account = null
 	objectives =      list()

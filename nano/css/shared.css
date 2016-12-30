@@ -555,6 +555,12 @@ th.sci {
     color: #ffffff;
 }
 
+th.car {
+    background: #bb9040;
+    font-weight: bold;
+    color: #ffffff;
+}
+
 th.civ {
     background: #a32800;
     font-weight: bold;
@@ -588,4 +594,8 @@ th.misc {
 /* 75px width used in power monitoring console buttons */
 .width75btn {
     width: 75px;
+}
+
+.displayInline {
+	display: inline;
 }

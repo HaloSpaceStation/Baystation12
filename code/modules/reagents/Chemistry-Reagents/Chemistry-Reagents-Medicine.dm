@@ -116,38 +116,6 @@
 		M.heal_organ_damage(3 * removed, 3 * removed)
 		M.adjustToxLoss(-3 * removed)
 
-/datum/reagent/cryoxadone
-	name = "Cryoxadone"
-	id = "cryoxadone"
-	description = "A chemical mixture with almost magical healing powers. Its main limitation is that the targets body temperature must be under 170K for it to metabolise correctly."
-	reagent_state = LIQUID
-	color = "#8080FF"
-	metabolism = REM * 0.5
-	scannable = 1
-
-/datum/reagent/cryoxadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(M.bodytemperature < 170)
-		M.adjustCloneLoss(-10 * removed)
-		M.adjustOxyLoss(-10 * removed)
-		M.heal_organ_damage(10 * removed, 10 * removed)
-		M.adjustToxLoss(-10 * removed)
-
-/datum/reagent/clonexadone
-	name = "Clonexadone"
-	id = "clonexadone"
-	description = "A liquid compound similar to that used in the cloning process. Can be used to 'finish' the cloning process when used in conjunction with a cryo tube."
-	reagent_state = LIQUID
-	color = "#80BFFF"
-	metabolism = REM * 0.5
-	scannable = 1
-
-/datum/reagent/cryoxadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(M.bodytemperature < 170)
-		M.adjustCloneLoss(-30 * removed)
-		M.adjustOxyLoss(-30 * removed)
-		M.heal_organ_damage(30 * removed, 30 * removed)
-		M.adjustToxLoss(-30 * removed)
-
 /* Painkillers */
 
 /datum/reagent/paracetamol
@@ -344,7 +312,7 @@
 	scannable = 1
 
 /datum/reagent/hyronalin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.radiation = max(M.radiation - 30 * removed, 0)
+	M.apply_effect(max(M.radiation - 30 * removed, 0), IRRADIATE, check_protection = 0)
 
 /datum/reagent/arithrazine
 	name = "Arithrazine"
@@ -357,7 +325,7 @@
 	scannable = 1
 
 /datum/reagent/arithrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.radiation = max(M.radiation - 70 * removed, 0)
+	M.apply_effect(max(M.radiation - 70 * removed, 0), IRRADIATE, check_protection = 0)
 	M.adjustToxLoss(-10 * removed)
 	if(prob(60))
 		M.take_organ_damage(4 * removed, 0)
@@ -375,19 +343,27 @@
 /datum/reagent/sterilizine
 	name = "Sterilizine"
 	id = "sterilizine"
-	description = "Sterilizes wounds in preparation for surgery."
+	description = "Sterilizes wounds in preparation for surgery and thoroughly removes blood."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	touch_met = 5
 
 /datum/reagent/sterilizine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	M.germ_level -= min(removed*20, M.germ_level)
+	for(var/obj/item/I in M.contents)
+		I.was_bloodied = null
+	M.was_bloodied = null
 
 /datum/reagent/sterilizine/touch_obj(var/obj/O)
 	O.germ_level -= min(volume*20, O.germ_level)
+	O.was_bloodied = null
 
 /datum/reagent/sterilizine/touch_turf(var/turf/T)
 	T.germ_level -= min(volume*20, T.germ_level)
+	for(var/obj/item/I in T.contents)
+		I.was_bloodied = null
+	for(var/obj/effect/decal/cleanable/blood/B in T)
+		qdel(B)
 
 /datum/reagent/leporazine
 	name = "Leporazine"
@@ -491,3 +467,49 @@
 	if(dose > 10)
 		M.make_dizzy(5)
 		M.make_jittery(5)
+
+/datum/reagent/triadrenaline
+	name = "Tri-Adrenaline"
+	id = "triadrenaline"
+	description = "An extremely powerful synthetic stimulant. Capable of restarting the hearts of the dead."
+	reagent_state = LIQUID
+	color = "#00BFFF" //Same as inaprovaline because why not!
+	overdose = REAGENTS_OVERDOSE
+	scannable = 1
+	affects_dead = 1
+
+/datum/reagent/triadrenaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.adjustOxyLoss(-300 * removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/Ghost = 0
+		if (H.stat == DEAD)
+			H.visible_message("[H] begins to violently twitch", "You feel your muscles suddenly become tense")
+			//These few bits are a shameless rip from the defib code
+			for(var/mob/dead/observer/G in player_list)
+				if(G.mind == M)
+					G << "Return to your body to be revived!"
+					sleep(100)
+					if(G.mind == M)
+						H.visible_message("[H] falls limp", "Your muscles relax")
+						Ghost = 1
+					break
+			if(!Ghost)
+				H.visible_message("[H] suddenly gasps for air", "You suddenly feel air enter your lungs")
+				H.tod = null
+				H.timeofdeath = 0
+				H.stat = CONSCIOUS
+				H.regenerate_icons()
+				H.failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
+			//End shameless rip
+			holder.remove_reagent("triadrenaline", dose/2)
+		if(dose > overdose)
+			var/obj/item/organ/heart/O = H.internal_organs_by_name["heart"]
+			if(O && prob(15))
+				O.damage += 300 //Your heart exploded poor you
+				holder.remove_reagent("triadrenaline", dose)
+				H << "You feel a sudden stabbing pain in your chest"
+			else
+				if(prob(25))
+					H << "You feel your heart thundering in your chest"
+				H.pulse = PULSE_2FAST

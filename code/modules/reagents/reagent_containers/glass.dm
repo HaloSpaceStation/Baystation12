@@ -35,7 +35,6 @@
 		/obj/machinery/iv_drip,
 		/obj/machinery/disease2/incubator,
 		/obj/machinery/disposal,
-		/obj/machinery/apiary,
 		/mob/living/simple_animal/cow,
 		/mob/living/simple_animal/hostile/retaliate/goat,
 		/obj/machinery/computer/centrifuge,
@@ -195,12 +194,6 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25)
 	flags = OPENCONTAINER
-
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone
-	New()
-		..()
-		reagents.add_reagent("cryoxadone", 30)
-		update_icon()
 
 /obj/item/weapon/reagent_containers/glass/beaker/sulphuric
 	New()

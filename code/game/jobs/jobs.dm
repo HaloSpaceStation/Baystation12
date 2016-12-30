@@ -11,6 +11,8 @@ var/const/ENGINEER			=(1<<6)
 var/const/ATMOSTECH			=(1<<7)
 var/const/AI				=(1<<8)
 var/const/CYBORG			=(1<<9)
+var/const/MARINE			=(1<<10)
+var/const/MARINE_SGT		=(1<<11)
 
 
 var/const/MEDSCI			=(1<<1)
@@ -86,6 +88,12 @@ var/list/science_positions = list(
 )
 
 //BS12 EDIT
+var/list/cargo_positions = list(
+	"Quartermaster",
+	"Cargo Technician",
+	"Shaft Miner"
+)
+
 var/list/civilian_positions = list(
 	"Head of Personnel",
 	"Bartender",
@@ -93,9 +101,6 @@ var/list/civilian_positions = list(
 	"Chef",
 	"Janitor",
 	"Librarian",
-	"Quartermaster",
-	"Cargo Technician",
-	"Shaft Miner",
 	"Lawyer",
 	"Chaplain",
 	"Assistant"

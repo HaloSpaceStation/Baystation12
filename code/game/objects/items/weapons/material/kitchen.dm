@@ -34,6 +34,9 @@
 		else
 			return ..()
 
+	if(!M.can_eat(src))
+		return
+
 	if (reagents.total_volume > 0)
 		reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 		if(M == user)
@@ -77,14 +80,7 @@
 
 /obj/item/weapon/material/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
-		user << "\red You accidentally cut yourself with the [src]."
-		user.take_organ_damage(20)
-		return
-	return ..()
-
-/obj/item/weapon/material/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
-	if ((CLUMSY in user.mutations) && prob(50))
-		user << "\red You somehow managed to cut yourself with the [src]."
+		user << "<span class='warning'>You accidentally cut yourself with the [src].</span>"
 		user.take_organ_damage(20)
 		return
 	return ..()
@@ -107,7 +103,8 @@
 
 /obj/item/weapon/material/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
-		user << "\red The [src] slips out of your hand and hits your head."
+		user << "<span class='warning'>The [src] slips out of your hand and hits your head.</span>"
+		user.drop_from_inventory(src)
 		user.take_organ_damage(10)
 		user.Paralyse(2)
 		return

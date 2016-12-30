@@ -130,8 +130,7 @@
 
 /obj/item/weapon/storage/firstaid/surgery
 	name = "surgery kit"
-	desc = "Contains tools for surgery."
-	storage_slots = 10
+	desc = "Contains tools for surgery. Has precise foam fitting for safe transport."
 
 /obj/item/weapon/storage/firstaid/surgery/New()
 	..()
@@ -146,7 +145,8 @@
 	new /obj/item/weapon/bonegel(src)
 	new /obj/item/weapon/FixOVein(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	return
+
+	make_exact_fit()
 
 /*
  * Pill Bottles
@@ -191,6 +191,20 @@
     new /obj/item/weapon/reagent_containers/pill/bicaridine(src)
     new /obj/item/weapon/reagent_containers/pill/bicaridine(src)
     new /obj/item/weapon/reagent_containers/pill/bicaridine(src)
+
+/obj/item/weapon/storage/pill_bottle/dexalin
+	name = "bottle of Dexalin pills"
+	desc = "Contains pills used to treat cases of oxygen deprivation."
+
+/obj/item/weapon/storage/pill_bottle/dexalin/New()
+    ..()
+    new /obj/item/weapon/reagent_containers/pill/dexalin(src)
+    new /obj/item/weapon/reagent_containers/pill/dexalin(src)
+    new /obj/item/weapon/reagent_containers/pill/dexalin(src)
+    new /obj/item/weapon/reagent_containers/pill/dexalin(src)
+    new /obj/item/weapon/reagent_containers/pill/dexalin(src)
+    new /obj/item/weapon/reagent_containers/pill/dexalin(src)
+    new /obj/item/weapon/reagent_containers/pill/dexalin(src)
 
 /obj/item/weapon/storage/pill_bottle/dexalin_plus
 	name = "bottle of Dexalin Plus pills"

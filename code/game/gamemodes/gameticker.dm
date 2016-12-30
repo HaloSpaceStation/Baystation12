@@ -33,16 +33,18 @@ var/global/datum/controller/gameticker/ticker
 
 	var/round_end_announced = 0 // Spam Prevention. Announce round end only once.
 
+	var/list/gamemodes
+
 /datum/controller/gameticker/proc/pregame()
+	gamemodes = gamemode_cache
+
 	login_music = pick(\
-	/*'sound/music/halloween/skeletons.ogg',\
-	'sound/music/halloween/halloween.ogg',\
-	'sound/music/halloween/ghosts.ogg'*/
-	'sound/music/space.ogg',\
-	'sound/music/traitor.ogg',\
-	'sound/music/title2.ogg',\
-	'sound/music/clouds.s3m',\
-	'sound/music/space_oddity.ogg') //Ground Control to Major Tom, this song is cool, what's going on?
+	'sound/music/Halo 2 Anniversary OST - A Spartan Rises.ogg',\
+	'sound/music/Halo 3- never forget.ogg',\
+	'sound/music/Halo 3-One Final Effort.ogg',\
+	'sound/music/Halo Reach OST - Overture.ogg',\
+	'sound/music/SecondPrelude.ogg')
+
 	do
 		pregame_timeleft = 180
 		world << "<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>"
@@ -51,7 +53,7 @@ var/global/datum/controller/gameticker/ticker
 			for(var/i=0, i<10, i++)
 				sleep(1)
 				vote.process()
-			if(going)
+			if(round_progressing)
 				pregame_timeleft--
 			if(pregame_timeleft == config.vote_autogamemode_timeleft)
 				if(!vote.time_remaining)
@@ -69,34 +71,35 @@ var/global/datum/controller/gameticker/ticker
 	//Create and announce mode
 	if(master_mode=="secret")
 		src.hide_mode = 1
-	var/list/datum/game_mode/runnable_modes
-	var/mode_started
+
+	var/list/runnable_modes = config.get_runnable_modes()
 	if((master_mode=="random") || (master_mode=="secret"))
-		runnable_modes = config.get_runnable_modes()
-		if (runnable_modes.len==0)
+		if(!runnable_modes.len)
 			current_state = GAME_STATE_PREGAME
 			world << "<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby."
 			return 0
 		if(secret_force_mode != "secret")
-			var/datum/game_mode/M = config.pick_mode(secret_force_mode)
-			if(M.can_start())
-				mode_started = 1
-				src.mode = config.pick_mode(secret_force_mode)
-		job_master.ResetOccupations()
+			src.mode = config.pick_mode(secret_force_mode)
 		if(!src.mode)
-			src.mode = pickweight(runnable_modes)
-		if(src.mode)
-			var/mtype = src.mode.type
-			src.mode = new mtype
+			var/list/weighted_modes = list()
+			for(var/datum/game_mode/GM in runnable_modes)
+				weighted_modes[GM.config_tag] = config.probabilities[GM.config_tag]
+			src.mode = gamemode_cache[pickweight(weighted_modes)]
 	else
 		src.mode = config.pick_mode(master_mode)
 
-	src.mode.pre_setup()
+	if(!src.mode)
+		current_state = GAME_STATE_PREGAME
+		world << "<span class='danger'>Serious error in mode setup!</span> Reverting to pre-game lobby."
+		return 0
 
+	job_master.ResetOccupations()
+	src.mode.create_antagonists()
+	src.mode.pre_setup()
 	job_master.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
-	if(!mode_started && !src.mode.can_start())
-		world << "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby."
+	if(!src.mode.can_start())
+		world << "<B>Unable to start [mode.name].</B> [mode.required_players] players are required for this gamemode. Reverting to pre-game lobby."
 		current_state = GAME_STATE_PREGAME
 		mode.fail_setup()
 		mode = null
@@ -104,12 +107,14 @@ var/global/datum/controller/gameticker/ticker
 		return 0
 
 	if(hide_mode)
-		var/list/modes = new
-		for (var/datum/game_mode/M in runnable_modes)
-			modes+=M.name
-		modes = sortList(modes)
 		world << "<B>The current game mode is - Secret!</B>"
-		world << "<B>Possibilities:</B> [english_list(modes)]"
+		if(runnable_modes.len)
+			var/list/tmpmodes = new
+			for (var/datum/game_mode/M in runnable_modes)
+				tmpmodes+=M.name
+			tmpmodes = sortList(tmpmodes)
+			if(tmpmodes.len)
+				world << "<B>Possibilities:</B> [english_list(tmpmodes)]"
 	else
 		src.mode.announce()
 
@@ -136,6 +141,36 @@ var/global/datum/controller/gameticker/ticker
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
+		//if in lowpop mode, autpower the ship or station
+		if(config.enable_lowpop_autopower)
+			spawn(0)
+				//loop over all players and determine how many are not observing at roundstart
+				var/amount_active = 0
+				for(var/mob/M in player_list)
+					if(M.client && M.mind && M.mind.assigned_role) // longer than 10 minutes AFK counts them as inactive
+						amount_active++
+						if(amount_active > config.lowpop_autopower_threshold)
+							break
+
+				if(amount_active <= config.lowpop_autopower_threshold)
+					world << "<span class='info'>Due to low population, the server is automatically setting up all SMES and fusion reactors.</span>"
+					//enable all SMES on input and output
+					//don't do anything particularly fancy, this isn't mean to be an effective setup just an emergency one
+					for(var/obj/machinery/power/smes/smes in world)
+						smes.input_attempt = 1
+						smes.output_attempt = 1
+						smes.output_level = smes.output_level_max
+
+					//put aa fuel packet in all reactors which will automatically get them powering
+					for(var/obj/machinery/power/fusion_drive/drive in world)
+						var/obj/item/fusion_fuel/fuel = new(drive)
+						drive.held_fuel = fuel
+						drive.icon_state = "reactor1"
+						drive.update_overlays()
+
+						//a safe rate that wont overload
+						drive.fuel_consumption_rate = 0.5
+
 	//start_events() //handles random events and space dust.
 	//new random event system is handled from the MC.
 
@@ -153,10 +188,10 @@ var/global/datum/controller/gameticker/ticker
 
 	processScheduler.start()
 
-	for(var/obj/multiz/ladder/L in world) L.connect() //Lazy hackfix for ladders. TODO: move this to an actual controller. ~ Z
-
 	if(config.sql_enabled)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
+
+	world.update_status()
 
 	return 1
 
@@ -307,32 +342,38 @@ var/global/datum/controller/gameticker/ticker
 
 //		emergency_shuttle.process() //handled in scheduler
 
-		var/game_finished = 0
+		var/game_finished = mode.check_finished() || emergency_shuttle.returned() || universe_has_ended
+		/*
 		var/mode_finished = 0
 		if (config.continous_rounds)
-			game_finished = (emergency_shuttle.returned() || mode.station_was_nuked)
+			game_finished = (emergency_shuttle.returned() || mode.nuked_zlevel)
 			mode_finished = (!post_game && mode.check_finished())
 		else
 			game_finished = (mode.check_finished() || (emergency_shuttle.returned() && emergency_shuttle.evac == 1)) || universe_has_ended
 			mode_finished = game_finished
-
-		if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
+		*/
+		if(!mode.explosion_in_progress && game_finished)
 			current_state = GAME_STATE_FINISHED
 
 			spawn
+				callHook("roundend")
+
 				declare_completion()
 
 			spawn(50)
 				callHook("roundend")
 
-				if (mode.station_was_nuked)
-					feedback_set_details("end_proper","nuke")
+				if (universe_has_ended)
+					if(mode.nuked_zlevel)
+						feedback_set_details("end_proper","nuke")
+					else
+						feedback_set_details("end_proper","universe destroyed")
 					if(!delay_end)
-						world << "\blue <B>Rebooting due to destruction of station in [restart_timeout/10] seconds</B>"
+						world << "<span class='notice'><b>Rebooting due to detonation of nuclear device in [restart_timeout/10] seconds</b></span>"
 				else
 					feedback_set_details("end_proper","proper completion")
 					if(!delay_end)
-						world << "\blue <B>Restarting in [restart_timeout/10] seconds</B>"
+						world << "<span class='notice'><b>Restarting in [restart_timeout/10] seconds</b></span>"
 
 
 				if(blackbox)
@@ -343,10 +384,11 @@ var/global/datum/controller/gameticker/ticker
 					if(!delay_end)
 						world.Reboot()
 					else
-						world << "\blue <B>An admin has delayed the round end</B>"
+						world << "<span class='notice'><b>An admin has delayed the round end</b></span>"
 				else
-					world << "\blue <B>An admin has delayed the round end</B>"
+					world << "<span class='notice'><b>An admin has delayed the round end</b></span>"
 
+		/*
 		else if (mode_finished)
 			post_game = 1
 
@@ -355,9 +397,10 @@ var/global/datum/controller/gameticker/ticker
 			//call a transfer shuttle vote
 			spawn(50)
 				if(!round_end_announced) // Spam Prevention. Now it should announce only once.
-					world << "\red The round has ended!"
+					world << "<span class='danger'>The round has ended!</span>"
 					round_end_announced = 1
-				vote.autotransfer()
+					vote.autotransfer()
+					*/
 
 		return 1
 
@@ -366,18 +409,25 @@ var/global/datum/controller/gameticker/ticker
 	for(var/mob/Player in player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
-				var/turf/playerTurf = get_turf(Player)
-				if(emergency_shuttle.departed && emergency_shuttle.evac)
-					if(isNotAdminLevel(playerTurf.z))
-						Player << "<font color='blue'><b>You managed to survive, but were marooned on [station_name()] as [Player.real_name]...</b></font>"
-					else
-						Player << "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font>"
-				else if(isAdminLevel(playerTurf.z))
-					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font>"
+				//todo: check if we made it onto the evac ship
+				//var/turf/playerTurf = get_turf(Player)
+				//var/obj/effect/zlevelinfo/current_zlevel = locate("zlevel[Player.z]")
+				var/obj/effect/overmapobj/current_obj = map_sectors["[Player.z]"]
+				var/played_evacuated = 0
+				//if(emergency_shuttle.departed && emergency_shuttle.evac)
+				if(played_evacuated)
+					Player << "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font>"
 				else if(issilicon(Player))
+					//todo: the AI needs to be retrieved or destroyed in the event of evacuation
 					Player << "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>"
+				else if(current_obj)
+					Player << "<font color='blue'><b>You managed to survive, but were marooned in [current_obj.name] as [Player.real_name]...</b></font>"
+				/*else if(isAdminLevel(playerTurf.z))
+					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font>"*/
+				/*else
+					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>"*/
 				else
-					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>"
+					Player << "<font color='blue'><b>You managed to survive, but were marooned in Deep Space as [Player.real_name]...</b></font>"
 			else
 				if(istype(Player,/mob/dead/observer))
 					var/mob/dead/observer/O = Player

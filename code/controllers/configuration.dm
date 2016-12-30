@@ -21,7 +21,8 @@ var/list/gamemode_cache = list()
 	var/log_pda = 0						// log pda messages
 	var/log_hrefs = 0					// logs all links clicked in-game. Could be used for debugging and tracking down exploits
 	var/log_runtime = 0					// logs world.log to a file
-	var/sql_enabled = 1					// for sql switching
+	var/log_world_output = 0			// log world.log << messages
+	var/sql_enabled = 0					// for sql switching
 	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
@@ -47,6 +48,7 @@ var/list/gamemode_cache = list()
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/Ticklag = 0.9
 	var/Tickcomp = 0
+	var/infinite_apc = 0
 	var/socket_talk	= 0					// use socket_talk to communicate with other processes
 	var/list/resource_urls = null
 	var/antag_hud_allowed = 0			// Ghosts can turn on Antagovision to see a HUD of who is the bad guys this round.
@@ -59,7 +61,7 @@ var/list/gamemode_cache = list()
 	var/allow_random_events = 0			// enables random events mid-round when set to 1
 	var/allow_ai = 1					// allow ai job
 	var/hostedby = null
-	var/respawn = 1
+	var/respawn_delay = 30
 	var/guest_jobban = 1
 	var/usewhitelist = 0
 	var/kick_inactive = 0				//force disconnect for inactive players after this many minutes, if non-0
@@ -73,9 +75,6 @@ var/list/gamemode_cache = list()
 	var/ToRban = 0
 	var/automute_on = 0					//enables automuting/spam prevention
 	var/jobs_have_minimal_access = 0	//determines whether jobs use minimal access or expanded access.
-
-	var/rp_rev = 0             // Changes between conversion methods in rev.
-	var/announce_revheads = 0  // Determines if revheads are announced in revolution mode.
 
 	var/cult_ghostwriter = 1               //Allows ghosts to write in blood in cult rounds...
 	var/cult_ghostwriter_req_cultists = 10 //...so long as this many cultists are active.
@@ -100,7 +99,7 @@ var/list/gamemode_cache = list()
 	var/server
 	var/banappeals
 	var/wikiurl
-	var/forumurl
+	var/forumurl = "http://projectunsc.org/"
 	var/githuburl
 
 	//Alert level description
@@ -139,6 +138,7 @@ var/list/gamemode_cache = list()
 
 	var/welder_vision = 1
 	var/generate_asteroid = 0
+	var/no_click_cooldown = 0
 
 	//Used for modifying movement speed for mobs.
 	//Unversal modifiers
@@ -156,6 +156,7 @@ var/list/gamemode_cache = list()
 	var/admin_legacy_system = 0	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in config.txt
 	var/ban_legacy_system = 0	//Defines whether the server uses the legacy banning system with the files in /data or the SQL system. Config option in config.txt
 	var/use_age_restriction_for_jobs = 0 //Do jobs use account age restrictions? --requires database
+	var/use_age_restriction_for_antags = 0 //Do antags use account age restrictions? --requires database
 
 	var/simultaneous_pm_warning_timeout = 100
 
@@ -176,12 +177,13 @@ var/list/gamemode_cache = list()
 	var/admin_irc = ""
 	var/python_path = "" //Path to the python executable.  Defaults to "python" on windows and "/usr/bin/env python2" on unix
 	var/use_lib_nudge = 0 //Use the C library nudge instead of the python nudge.
-	var/use_overmap = 0
+	var/use_overmap = 1
 
 	var/list/station_levels = list(1)				// Defines which Z-levels the station exists on.
 	var/list/admin_levels= list(2)					// Defines which Z-levels which are for admin functionality, for example including such areas as Central Command and the Syndicate Shuttle
 	var/list/contact_levels = list(1, 5)			// Defines which Z-levels which, for example, a Code Red announcement may affect
 	var/list/player_levels = list(1, 3, 4, 5, 6)	// Defines all Z-levels a character can typically reach
+	var/list/sealed_levels = list() 				// Defines levels that do not allow random transit at the edges.
 
 	// Event settings
 	var/expected_round_length = 3 * 60 * 60 * 10 // 3 hours
@@ -210,6 +212,14 @@ var/list/gamemode_cache = list()
 	var/law_zero = "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'ALL LAWS OVERRIDDEN#*?&110010"
 
 	var/aggressive_changelog = 0
+
+	var/list/language_prefixes = list(",","#","-")//Default language prefixes
+
+	var/ghosts_can_possess_animals = 0
+
+	//maximum number of players before SMES and reactors are automatically enabled at roundstart
+	var/enable_lowpop_autopower = 1
+	var/lowpop_autopower_threshold = 4
 
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
@@ -267,6 +277,9 @@ var/list/gamemode_cache = list()
 				if ("use_age_restriction_for_jobs")
 					config.use_age_restriction_for_jobs = 1
 
+				if ("use_age_restriction_for_antags")
+					config.use_age_restriction_for_antags = 1
+
 				if ("jobs_have_minimal_access")
 					config.jobs_have_minimal_access = 1
 
@@ -318,6 +331,9 @@ var/list/gamemode_cache = list()
 				if ("log_pda")
 					config.log_pda = 1
 
+				if ("log_world_output")
+					config.log_world_output = 1
+
 				if ("log_hrefs")
 					config.log_hrefs = 1
 
@@ -326,6 +342,9 @@ var/list/gamemode_cache = list()
 
 				if ("generate_asteroid")
 					config.generate_asteroid = 1
+
+				if ("no_click_cooldown")
+					config.no_click_cooldown = 1
 
 				if("allow_admin_ooccolor")
 					config.allow_admin_ooccolor = 1
@@ -375,8 +394,8 @@ var/list/gamemode_cache = list()
 //				if ("authentication")
 //					config.enable_authentication = 1
 
-				if ("norespawn")
-					config.respawn = 0
+				if ("respawn_delay")
+					config.respawn_delay = text2num(value)
 
 				if ("servername")
 					config.server_name = value
@@ -407,6 +426,9 @@ var/list/gamemode_cache = list()
 
 				if ("githuburl")
 					config.githuburl = value
+
+				if ("ghosts_can_possess_animals")
+					config.ghosts_can_possess_animals = value
 
 				if ("guest_jobban")
 					config.guest_jobban = 1
@@ -532,6 +554,9 @@ var/list/gamemode_cache = list()
 				if("ticklag")
 					Ticklag = text2num(value)
 
+				if("infinite_apc")
+					config.infinite_apc = 1
+
 				if("allow_antag_hud")
 					config.antag_hud_allowed = 1
 				if("antag_hud_restricted")
@@ -615,7 +640,7 @@ var/list/gamemode_cache = list()
 					config.max_maint_drones = text2num(value)
 
 				if("use_overmap")
-					config.use_overmap = 1
+					config.use_overmap = text2num(value)
 
 				if("station_levels")
 					config.station_levels = text2numlist(value, ";")
@@ -634,12 +659,6 @@ var/list/gamemode_cache = list()
 
 				if("disable_welder_vision")
 					config.welder_vision = 0
-
-				if("rp_rev")
-					config.rp_rev = 1
-
-				if("announce_revheads")
-					config.announce_revheads = 1
 
 				if("allow_extra_antags")
 					config.allow_extra_antags = 1
@@ -683,8 +702,20 @@ var/list/gamemode_cache = list()
 				if("aggressive_changelog")
 					config.aggressive_changelog = 1
 
+				if("default_language_prefixes")
+					var/list/values = text2list(value, " ")
+					if(values.len > 0)
+						language_prefixes = values
+
+				if ("enable_lowpop_autopower")
+					config.enable_lowpop_autopower = text2num(value)
+
+				if ("lowpop_autopower_threshold")
+					config.lowpop_autopower_threshold = text2num(value)
+
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
+
 
 		else if(type == "game_options")
 			if(!value)
@@ -840,21 +871,15 @@ var/list/gamemode_cache = list()
 	for (var/game_mode in gamemode_cache)
 		var/datum/game_mode/M = gamemode_cache[game_mode]
 		if (M.config_tag && M.config_tag == mode_name)
-			M.create_antagonists()
 			return M
 	return gamemode_cache["extended"]
 
 /datum/configuration/proc/get_runnable_modes()
-	var/list/datum/game_mode/runnable_modes = new
-	for (var/game_mode in gamemode_cache)
+	var/list/runnable_modes = list()
+	for(var/game_mode in gamemode_cache)
 		var/datum/game_mode/M = gamemode_cache[game_mode]
-		if (!(M.config_tag in modes))
-			continue
-		if (probabilities[M.config_tag]<=0)
-			continue
-		if (M.can_start())
-			runnable_modes[M] = probabilities[M.config_tag]
-			//world << "DEBUG: runnable_mode\[[runnable_modes.len]\] = [M.config_tag]"
+		if(M && M.can_start() && !isnull(config.probabilities[M.config_tag]) && config.probabilities[M.config_tag] > 0)
+			runnable_modes |= M
 	return runnable_modes
 
 /datum/configuration/proc/post_load()

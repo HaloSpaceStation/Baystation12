@@ -1,0 +1,8 @@
+author: CaelAislinn
+delete-after: True
+
+changes: 
+  - experiment: "Job guides are now output to all players on round start, and can also be accessed with the Get Job Guides verb. This is a helpful blurb explaining what your job is meant to do but don't be afraid to LOOC or ahelp if you need help."
+  - bugfix: "Players should no longer be spawning with double PDAs."
+  - experiment: "All (most) light ranges have been significantly increased from standard SS13. The game should hopefully feel more moody and atmospheric now, instead of just dark."
+  

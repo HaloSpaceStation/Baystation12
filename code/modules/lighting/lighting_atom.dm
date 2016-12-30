@@ -7,11 +7,22 @@
 	var/list/light_sources
 
 /atom/proc/set_light(l_range, l_power, l_color)
-	if(l_power != null) light_power = l_power
-	if(l_range != null) light_range = l_range
-	if(l_color != null) light_color = l_color
+	. = 0 //make it less costly if nothing's changed
 
-	update_light()
+	if(l_power != null && l_power != light_power)
+		light_power = l_power
+		. = 1
+	if(l_range != null && l_range != light_range)
+		light_range = l_range
+		. = 1
+	if(l_color != null && l_color != light_color)
+		light_color = l_color
+		. = 1
+
+	if(.) update_light()
+
+/atom/proc/copy_light(atom/A)
+	set_light(A.light_range, A.light_power, A.light_color)
 
 /atom/proc/update_light()
 	if(!light_power || !light_range)
@@ -33,6 +44,10 @@
 	. = ..()
 	if(light_power && light_range)
 		update_light()
+
+	//see code\modules\maps\reader.dm line 308
+	if(_preloader && (src.type == _preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+		_preloader.load(src)
 
 /atom/Destroy()
 	if(light)

@@ -1,0 +1,30 @@
+"a" = (/turf/simulated/shuttle/hull{dir = 8; icon_state = "diagonalWall3"},/area/space)
+"b" = (/turf/simulated/shuttle/hull{icon_state = "wall3"},/area/space)
+"c" = (/turf/simulated/shuttle/hull/window{icon = 'icons/obj/structures.dmi'; icon_state = "r-wingrille"},/area/space)
+"d" = (/turf/simulated/shuttle/hull{dir = 1; icon_state = "diagonalWall3"},/area/space)
+"e" = (/obj/structure/bed/chair{tag = "icon-chair_preview (NORTH)"; icon_state = "chair_preview"; dir = 1},/turf/simulated/shuttle/hull/floor,/area/space)
+"f" = (/obj/machinery/computer/shuttle_helm,/turf/simulated/shuttle/hull/floor,/area/space)
+"g" = (/turf/simulated/shuttle/hull/floor,/area/space)
+"h" = (/obj/machinery/power/apc{dir = 1; pixel_y = 25},/turf/simulated/shuttle/hull/floor,/area/space)
+"i" = (/obj/structure/bed/chair{tag = "icon-chair_preview (EAST)"; icon_state = "chair_preview"; dir = 4},/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/simulated/shuttle/hull/floor,/area/space)
+"j" = (/obj/structure/bed/chair{tag = "icon-chair_preview (WEST)"; icon_state = "chair_preview"; dir = 8},/obj/machinery/light{dir = 4},/turf/simulated/shuttle/hull/floor,/area/space)
+"k" = (/obj/structure/bed/chair{tag = "icon-chair_preview (EAST)"; icon_state = "chair_preview"; dir = 4},/turf/simulated/shuttle/hull/floor,/area/space)
+"l" = (/obj/structure/bed/chair{tag = "icon-chair_preview (WEST)"; icon_state = "chair_preview"; dir = 8},/turf/simulated/shuttle/hull/floor,/area/space)
+"m" = (/obj/machinery/door/airlock/external/shuttle{dir = 8},/turf/simulated/shuttle/hull/floor,/area/space)
+"n" = (/obj/structure/window/reinforced,/obj/structure/closet,/turf/simulated/shuttle/hull/floor,/area/space)
+"o" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/shuttle/hull{icon_state = "wall3"},/area/space)
+
+(1,1,1) = {"
+abccbd
+bbeebb
+cfgghc
+biggjb
+bkgglb
+bkgglb
+ckgglc
+ckgglc
+biggjb
+mggggm
+bnnnnb
+boooob
+"}

@@ -1,17 +1,16 @@
 /obj/machinery/chemical_dispenser/full
 	spawn_cartridges = list(
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/hydrogen,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/hydrazine,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/lithium,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/carbon,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/nitrogen,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/oxygen,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/fluorine,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ammonia,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/acetone,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/sodium,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/aluminum,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/silicon,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/phosphorus,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/sulfur,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/chlorine,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/hclacid,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/potassium,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/iron,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/copper,
@@ -52,9 +51,7 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/spaceacillin,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ethylredox,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/sleeptox,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/chloral,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cryoxadone,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/clonexadone
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/chloral
 		)
 
 /obj/machinery/chemical_dispenser/bar_soft

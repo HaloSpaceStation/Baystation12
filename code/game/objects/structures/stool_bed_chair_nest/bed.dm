@@ -15,6 +15,7 @@
 	pressure_resistance = 15
 	anchored = 1
 	can_buckle = 1
+	buckle_dir = SOUTH
 	buckle_lying = 1
 	var/material/material
 	var/material/padding_material
@@ -85,11 +86,6 @@
 				qdel(src)
 				return
 
-/obj/structure/bed/blob_act()
-	if(prob(75))
-		material.place_sheet(get_turf(src))
-		qdel(src)
-
 /obj/structure/bed/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/wrench))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
@@ -131,14 +127,18 @@
 		remove_padding()
 
 	else if(istype(W, /obj/item/weapon/grab))
-		user.visible_message("<span class='notice'>[user] attempts to buckle [W:affecting] into \the [src]!</span>")
+		var/obj/item/weapon/grab/G = W
+		var/mob/living/affecting = G.affecting
+		user.visible_message("<span class='notice'>[user] attempts to buckle [affecting] into \the [src]!</span>")
 		if(do_after(user, 20))
-			W:affecting.loc = loc
-			if(buckle_mob(W:affecting))
-				W:affecting.visible_message(\
-					"<span class='danger'>[W:affecting.name] is buckled to [src] by [user.name]!</span>",\
-					"<span class='danger'>You are buckled to [src] by [user.name]!</span>",\
-					"<span class='notice'>You hear metal clanking.</span>")
+			affecting.loc = loc
+			spawn(0)
+				if(buckle_mob(affecting))
+					affecting.visible_message(\
+						"<span class='danger'>[affecting.name] is buckled to [src] by [user.name]!</span>",\
+						"<span class='danger'>You are buckled to [src] by [user.name]!</span>",\
+						"<span class='notice'>You hear metal clanking.</span>")
+			qdel(W)
 	else
 		..()
 
@@ -219,7 +219,7 @@
 	if(istype(W,/obj/item/roller_holder))
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
-			user << "\blue You collect the roller bed."
+			user << "<span class='notice'>You collect the roller bed.</span>"
 			src.loc = RH
 			RH.held = src
 			return
@@ -240,10 +240,10 @@
 /obj/item/roller_holder/attack_self(mob/user as mob)
 
 	if(!held)
-		user << "\blue The rack is empty."
+		user << "<span class='notice'>The rack is empty.</span>"
 		return
 
-	user << "\blue You deploy the roller bed."
+	user << "<span class='notice'>You deploy the roller bed.</span>"
 	var/obj/structure/bed/roller/R = new /obj/structure/bed/roller(user.loc)
 	R.add_fingerprint(user)
 	qdel(held)

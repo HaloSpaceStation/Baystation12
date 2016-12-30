@@ -12,7 +12,13 @@
 	..(newloc)
 	name = "[M.display_name] deposit"
 	ore_key = M.name
-	icon_state = "rock_[ore_key]"
+	if(M.vein_type)
+		icon = 'code/modules/overmap/starsystem/asteroid_big/mining.dmi'
+		icon_state = "vein[M.vein_type]"
+	else
+		icon_state = "rock_[ore_key]"
+	if(M.vein_colour)
+		color = M.vein_colour
 	var/turf/T = get_turf(src)
 	layer = T.layer+0.1
 

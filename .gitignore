@@ -8,4 +8,5 @@ Thumbs.db
 *.backup
 data/
 cfg/
+baystation12.int
 

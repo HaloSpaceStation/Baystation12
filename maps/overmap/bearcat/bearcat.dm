@@ -1,11 +1,11 @@
-/obj/effect/mapinfo/ship/bearcat
+/obj/effect/overmapinfo/ship/bearcat
 	name = "CSV Bearcat"
 	landing_area = /area/ship/scrap/shuttle/ingoing
-	obj_type = /obj/effect/map/ship/bearcat
+	obj_type = /obj/effect/overmapobj/ship/bearcat
 	mapx = 4
 	mapy = 4
 
-/obj/effect/map/ship/bearcat
+/obj/effect/overmapobj/ship/bearcat
 	name = "generic ship"
 	desc = "Space faring vessel."
 	icon = 'maps/overmap/bearcat/bearcat.dmi'

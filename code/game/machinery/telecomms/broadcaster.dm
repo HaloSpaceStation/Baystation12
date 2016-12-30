@@ -61,7 +61,8 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 							  signal.data["name"], signal.data["job"],
 							  signal.data["realname"], signal.data["vname"],,
 							  signal.data["compression"], signal.data["level"], signal.frequency,
-							  signal.data["verb"], signal.data["language"]	)
+							  signal.data["verb"], signal.data["language"],
+							  signal.data["sector"], signal.data["range"])
 
 
 	   /** #### - Simple Broadcast - #### **/
@@ -87,7 +88,8 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 							  signal.data["radio"], signal.data["message"],
 							  signal.data["name"], signal.data["job"],
 							  signal.data["realname"], signal.data["vname"], 4, signal.data["compression"], signal.data["level"], signal.frequency,
-							  signal.data["verb"], signal.data["language"])
+							  signal.data["verb"], signal.data["language"],
+							  signal.data["sector"], signal.data["range"])
 
 		if(!message_delay)
 			message_delay = 1
@@ -128,6 +130,9 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	if(!on) // has to be on to receive messages
 		return
 
+	if(!check_receive_level(signal))
+		return
+
 	if(is_freq_listening(signal)) // detect subspace signals
 
 		signal.data["done"] = 1 // mark the signal as being broadcasted
@@ -144,7 +149,17 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		/* ###### Broadcast a message using signal.data ###### */
 
 		var/datum/radio_frequency/connection = signal.data["connection"]
+		Broadcast_Message(signal.data["connection"], signal.data["mob"],
+						  signal.data["vmask"], signal.data["vmessage"],
+						  signal.data["radio"], signal.data["message"],
+						  signal.data["name"], signal.data["job"],
+						  signal.data["realname"], signal.data["vname"],, signal.data["compression"], list(0), connection.frequency,
+						  signal.data["verb"], signal.data["language"],
+						  signal.data["sector"], signal.data["range"])
 
+		return
+
+		/*
 		if(connection.frequency in ANTAG_FREQS) // if antag broadcast, just
 			Broadcast_Message(signal.data["connection"], signal.data["mob"],
 							  signal.data["vmask"], signal.data["vmessage"],
@@ -160,7 +175,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 							  signal.data["name"], signal.data["job"],
 							  signal.data["realname"], signal.data["vname"], 3, signal.data["compression"], list(0), connection.frequency,
 							  signal.data["verb"], signal.data["language"])
-
+*/
 
 
 /**
@@ -223,14 +238,38 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 /proc/Broadcast_Message(var/datum/radio_frequency/connection, var/mob/M,
 						var/vmask, var/vmessage, var/obj/item/device/radio/radio,
 						var/message, var/name, var/job, var/realname, var/vname,
-						var/data, var/compression, var/list/level, var/freq, var/verbage = "says", var/datum/language/speaking = null)
-
+						var/data, var/compression, var/list/level, var/freq, var/verbage = "says", var/datum/language/speaking = null,
+						var/obj/effect/overmapobj/source_sector, var/overmap_range)
 
   /* ###### Prepare the radio connection ###### */
 
 	var/display_freq = freq
-
 	var/list/obj/item/device/radio/radios = list()
+
+	if(source_sector)
+		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+			var/turf/radio_turf = get_turf(R)
+			if(!radio_turf)
+				//apparently some radios dont clear their radio listeners after being qdel'd
+				//testing("[R] ([R.x],[R.y],[R.z]) ([R.loc]) null turf loc")
+				continue
+
+			var/obj/effect/overmapobj/radio_sector = map_sectors["[radio_turf.z]"]
+			if(!radio_sector)
+				//testing("[R] z[R.z] null radio_sector")
+				continue
+
+			if(source_sector == radio_sector || source_sector.loc == radio_sector.loc)
+				radios += R
+				continue
+
+			if(get_dist(source_sector, radio_sector) <= overmap_range)
+				radios += R
+				continue
+	else
+		log_admin("ERROR: null source_sector in code/game/machinery/telecomms/broadcaster.dm with message \"[message]\" name/job/mob: [name]/[job]/[M]")
+
+	/*
 
 	// --- Broadcast only to intercom devices ---
 
@@ -268,6 +307,8 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
 			if(R.receive_range(display_freq, level) > -1)
 				radios += R
+
+	*/
 
 	// Get a list of mobs who can hear from the radios we collected.
 	var/list/receive = get_mobs_in_radio_ranges(radios)
@@ -526,7 +567,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	if (length(heard_normal) || length(heard_garbled) || length(heard_gibberish))
 
 	  /* --- Some miscellaneous variables to format the string output --- */
-		var/part_a = "<span class='radio'><span class='name'>" // goes in the actual output
+		var/part_a = "<span class='[frequency_span_class(display_freq)]'><span class='name'>" // goes in the actual output
 		var/freq_text = get_frequency_name(display_freq)
 
 		// --- Some more pre-message formatting ---
@@ -539,20 +580,10 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		var/obj/item/device/radio/headset/radio = new
 
 		var/part_b = "</span><b> \icon[radio]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
+		var/part_blackbox_b = "</span><b> \[[freq_text]\]</b> <span class='message'>" // Tweaked for security headsets -- TLE
 		var/part_c = "</span></span>"
 
-		if (display_freq in ANTAG_FREQS)
-			part_a = "<span class='syndradio'><span class='name'>"
-		else if (display_freq==COMM_FREQ)
-			part_a = "<span class='comradio'><span class='name'>"
-		else if (display_freq in DEPT_FREQS)
-			part_a = "<span class='deptradio'><span class='name'>"
-
-		// --- This following recording is intended for research and feedback in the use of department radio channels ---
-
-		var/part_blackbox_b = "</span><b> \[[freq_text]\]</b> <span class='message'>" // Tweaked for security headsets -- TLE
 		var/blackbox_msg = "[part_a][source][part_blackbox_b]\"[text]\"[part_c]"
-		//var/blackbox_admin_msg = "[part_a][M.name] (Real name: [M.real_name])[part_blackbox_b][quotedmsg][part_c]"
 
 		//BR.messages_admin += blackbox_admin_msg
 		if(istype(blackbox))

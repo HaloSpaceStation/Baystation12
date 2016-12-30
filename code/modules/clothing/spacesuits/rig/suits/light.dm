@@ -8,7 +8,7 @@
 	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
 	emp_protection = 10
 	slowdown = 0
-	flags = STOPPRESSUREDAMAGE | THICKMATERIAL
+	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL
 	offline_slowdown = 0
 	offline_vision_restriction = 0
 
@@ -40,7 +40,7 @@
 
 	airtight = 0
 	seal_delay = 5 //not being vaccum-proof has an upside I guess
-	
+
 	helm_type = /obj/item/clothing/head/lightrig/hacker
 	chest_type = /obj/item/clothing/suit/lightrig/hacker
 	glove_type = /obj/item/clothing/gloves/lightrig/hacker

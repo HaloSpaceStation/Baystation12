@@ -14,6 +14,12 @@
 	if(!target) return 0
 
 	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
+		if(src.z < target.z)
+			if(src.blocks_air_downwards)
+				return src
+		if(src.z > target.z)
+			if(target.blocks_air_downwards)
+				return target
 		return !density
 
 	else // Now, doing more detailed checks for air movement and air group formation
@@ -62,11 +68,10 @@ turf/c_airblock(turf/other)
 
 	//Z-level handling code. Always block if there isn't an open space.
 	#ifdef ZLEVELS
-	if(other.z != src.z)
-		if(other.z < src.z)
-			if(!istype(src, /turf/simulated/floor/open)) return BLOCKED
-		else
-			if(!istype(other, /turf/simulated/floor/open)) return BLOCKED
+	if(other.z < src.z)
+		if(other.blocks_air_downwards) return BLOCKED
+	else if(other.z > src.z)
+		if(src.blocks_air_downwards) return BLOCKED
 	#endif
 
 	var/result = 0

@@ -25,19 +25,20 @@
 //Moves gas from one gas_mixture to another and returns the amount of power needed (assuming 1 second), or -1 if no gas was pumped.
 //transfer_moles - Limits the amount of moles to transfer. The actual amount of gas moved may also be limited by available_power, if given.
 //available_power - the maximum amount of power that may be used when moving gas. If null then the transfer is not limited by power.
-/proc/pump_gas(var/obj/machinery/M, var/datum/gas_mixture/source, var/datum/gas_mixture/sink, var/transfer_moles = null, var/available_power = null)
+/proc/pump_gas(var/obj/machinery/M, var/datum/gas_mixture/source, var/datum/gas_mixture/sink, var/transfer_moles = null, var/available_power = null, var/pump_efficiency = ATMOS_PUMP_EFFICIENCY)
 	if (source.total_moles < MINIMUM_MOLES_TO_PUMP) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
 
 	if (isnull(transfer_moles))
 		transfer_moles = source.total_moles
 	else
-		transfer_moles = min(source.total_moles, transfer_moles)
+		transfer_moles = min(source.total_moles * source.group_multiplier, transfer_moles)
 
 	//Calculate the amount of energy required and limit transfer_moles based on available power
-	var/specific_power = calculate_specific_power(source, sink)/ATMOS_PUMP_EFFICIENCY //this has to be calculated before we modify any gas mixtures
+	var/specific_power = calculate_specific_power(source, sink)/pump_efficiency //this has to be calculated before we modify any gas mixtures
 	if (!isnull(available_power) && specific_power > 0)
 		transfer_moles = min(transfer_moles, available_power / specific_power)
+
 
 	if (transfer_moles < MINIMUM_MOLES_TO_PUMP) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
@@ -50,7 +51,7 @@
 		if (A.debug)
 			A.visible_message("[A]: source entropy: [round(source.specific_entropy(), 0.01)] J/Kmol --> sink entropy: [round(sink.specific_entropy(), 0.01)] J/Kmol")
 			A.visible_message("[A]: specific entropy change = [round(sink.specific_entropy() - source.specific_entropy(), 0.01)] J/Kmol")
-			A.visible_message("[A]: specific power = [round(specific_power, 0.1)] W/mol")
+			A.visible_message("[A]: specific power = [round(specific_power, 0.1)] W/mol (draw: [specific_power * transfer_moles])")
 			A.visible_message("[A]: moles transferred = [transfer_moles] mol")
 
 	if (istype(M, /obj/machinery/portable_atmospherics))
@@ -439,9 +440,9 @@
 		var/sink_heat_capacity = sink.heat_capacity()
 		var/transfer_heat_capacity = source.heat_capacity()*estimate_moles/source_total_moles
 		air_temperature = (sink.temperature*sink_heat_capacity  + source.temperature*transfer_heat_capacity) / (sink_heat_capacity + transfer_heat_capacity)
-	
+
 	//get the number of moles that would have to be transfered to bring sink to the target pressure
-	return pressure_delta*output_volume/(air_temperature * R_IDEAL_GAS_EQUATION)
+	return source.group_multiplier * pressure_delta*output_volume/(air_temperature * R_IDEAL_GAS_EQUATION)
 
 //Calculates the APPROXIMATE amount of moles that would need to be transferred to bring source and sink to the same pressure
 /proc/calculate_equalize_moles(datum/gas_mixture/source, datum/gas_mixture/sink)

@@ -1,0 +1,73 @@
+<h3>Vehicle Component Mountings</h3>
+<div class='block'>
+    {{for data.mount_strings}}
+		<div class='item'>
+			<div class="itemLabel" style="width:250px">
+				<span class='average'>{{:value}}</span>
+				{{if data.mount_sizes[index] == 0}}
+					 <span>(small, </span>
+				{{else data.mount_sizes[index] == 1}}
+					 <span>(medium, </span>
+				{{else data.mount_sizes[index] == 2}}
+					 <span>(large, </span>
+				{{/if}}
+				{{if data.mount_types[index] == 0}}
+					 <span>internal)</span>
+				{{else data.mount_types[index] == 1}}
+					 <span>external)</span>
+				{{else data.mount_types[index] == 2}}
+					 <span>cabin)</span>
+				{{/if}}
+			</div>
+			<div>
+				{{:helper.link('', 'search', { 'search' : 1, 'mount_index' : index, 'user' : data.user }, '', '')}}
+				{{if(data.comp_strings[index])}}
+					<span class='floatRight'>{{:data.comp_strings[index]}}</span>
+					{{:helper.link('', 'crowbar', { 'tool' : 'crowbar', 'mount_index' : index, 'user' : data.user }, '', 'selected')}}
+					
+					<!-- See code\modules\overmap\_readme_defines.dm for the numerical defines used here -->
+					{{if data.comp_status_req[index] & 1}}
+						{{if data.comp_status[index] & 1}}
+							{{:helper.link('', 'welder', { 'tool' : 'welder', 'install_direction' : 1, 'mount_index' : index, 'user' : data.user }, '', 'selected')}}
+						{{else}}
+							{{:helper.link('', 'welder', { 'tool' : 'welder', 'install_direction' : 0, 'mount_index' : index, 'user' : data.user }, '', 'redButton')}}
+						{{/if}}
+					{{/if}}
+					
+					{{if data.comp_status_req[index] & 2}}
+						{{if data.comp_status[index] & 2}}
+							{{:helper.link('', 'scissors', { 'tool' : 'scissors', 'install_direction' : 1, 'mount_index' : index, 'user' : data.user }, '', 'selected')}}
+						{{else}}
+							{{:helper.link('', 'link', { 'tool' : 'link', 'install_direction' : 0, 'mount_index' : index, 'user' : data.user }, '', 'redButton')}}
+						{{/if}}
+					{{/if}}
+					{{if data.comp_status_req[index] & 4}}
+						{{if data.comp_status[index] & 4}}
+							{{:helper.link('', 'wrench', { 'tool' : 'wrench', 'install_direction' : 1, 'mount_index' : index, 'user' : data.user }, '', 'selected')}}
+						{{else}}
+							{{:helper.link('', 'wrench', { 'tool' : 'wrench', 'install_direction' : 0, 'mount_index' : index, 'user' : data.user }, '', 'redButton')}}
+						{{/if}}
+					{{/if}}
+					{{if data.comp_status_req[index] & 8}}
+						{{if data.comp_status[index] & 8}}
+							{{:helper.link('', 'pencil', { 'tool' : 'pencil', 'install_direction' : 1, 'mount_index' : index, 'user' : data.user }, '', 'selected')}}
+						{{else}}
+							{{:helper.link('', 'pencil', { 'tool' : 'pencil', 'install_direction' : 0, 'mount_index' : index, 'user' : data.user }, '', 'redButton')}}
+						{{/if}}
+					{{/if}}
+					{{if data.comp_status_req[index] & 16}}
+						{{if data.comp_status[index] & 16}}
+							{{:helper.link('', 'welder', { 'tool' : 'welder2', 'install_direction' : 1, 'mount_index' : index, 'user' : data.user }, '', 'selected')}}
+						{{else}}
+							{{:helper.link('', 'pipe', { 'tool' : 'pipe', 'install_direction' : 0, 'mount_index' : index, 'user' : data.user }, '', 'redButton')}}
+						{{/if}}
+					{{/if}}
+
+				{{else}}
+					<span class='floatRight'>Empty</span>
+					{{:helper.link('Install component', 'eject', { 'install_comp' : index, 'user' : data.user }, '', 'selected')}}
+				{{/if}}
+			</div>
+		</div>
+	{{/for}}
+</div>

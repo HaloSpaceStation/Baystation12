@@ -10,6 +10,9 @@
 		return (!mover.density || !density || lying)
 	return
 
+/mob/proc/setMoveCooldown(var/timeout)
+	if(client)
+		client.move_delay = max(world.time + timeout, client.move_delay)
 
 /client/North()
 	..()
@@ -27,35 +30,56 @@
 	..()
 
 
+/client/proc/client_dir(input, direction=-1)
+	return turn(input, direction*dir2angle(dir))
+
 /client/Northeast()
-	swap_hand()
-	return
-
-
-/client/Southeast()
-	attack_self()
-	return
-
-
-/client/Southwest()
-	if(iscarbon(usr))
-		var/mob/living/carbon/C = usr
-		C.toggle_throw_mode()
-	else
-		usr << "\red This mob type cannot throw items."
-	return
-
-
+	diagonal_action(NORTHEAST)
 /client/Northwest()
-	if(iscarbon(usr))
-		var/mob/living/carbon/C = usr
-		if(!C.get_active_hand())
-			usr << "\red You have nothing to drop in your hand."
+	diagonal_action(NORTHWEST)
+/client/Southeast()
+	diagonal_action(SOUTHEAST)
+/client/Southwest()
+	diagonal_action(SOUTHWEST)
+
+/client/proc/diagonal_action(direction)
+
+	if(mob)
+
+		//if we're inside an object, pass it on
+		if(isobj(mob.loc) || ismob(mob.loc))
+			var/atom/O = mob.loc
+			return O.relaymove(mob, client_dir(direction))
+
+		//if we have a machine that accepts diagonal commands, pass it on
+		if(istype(mob.machine, /obj/machinery))
+			if(mob.machine.relaymove(mob, client_dir(direction)))
+				return
+
+	switch(client_dir(direction, 1))
+		if(NORTHEAST)
+			swap_hand()
 			return
-		drop_item()
-	else
-		usr << "\red This mob type cannot drop items."
-	return
+		if(SOUTHEAST)
+			attack_self()
+			return
+		if(SOUTHWEST)
+			if(iscarbon(usr))
+				var/mob/living/carbon/C = usr
+				C.toggle_throw_mode()
+			else
+				usr << "\red This mob type cannot throw items."
+			return
+		if(NORTHWEST)
+			if(iscarbon(usr))
+				var/mob/living/carbon/C = usr
+				if(!C.get_active_hand())
+					usr << "\red You have nothing to drop in your hand."
+					return
+				drop_item()
+			else
+				usr << "\red This mob type cannot drop items."
+			return
 
 //This gets called when you press the delete button.
 /client/verb/delete_key_pressed()
@@ -165,7 +189,7 @@
 			if(!mob.control_object)	return
 			mob.control_object.dir = direct
 		else
-			mob.control_object.loc = get_step(mob.control_object,direct)
+			mob.control_object.forceMove(get_step(mob.control_object,direct))
 	return
 
 
@@ -196,7 +220,7 @@
 	if(mob.eyeobj)
 		return mob.EyeMove(n,direct)
 
-	if(mob.monkeyizing)	return//This is sota the goto stop mobs from moving var
+	if(mob.transforming)	return//This is sota the goto stop mobs from moving var
 
 	if(isliving(mob))
 		var/mob/living/L = mob
@@ -222,7 +246,6 @@
 
 	if(Process_Grab())	return
 
-
 	if(!mob.canmove)
 		return
 
@@ -234,7 +257,6 @@
 
 	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
 		if(!mob.Process_Spacemove(0))	return 0
-
 
 	if(isobj(mob.loc) || ismob(mob.loc))//Inside an object, tell it we moved
 		var/atom/O = mob.loc
@@ -373,7 +395,7 @@
 				mob << "<span class='warning'>You cannot get past holy grounds while you are in this plane of existence!</span>"
 				return
 			else
-				mob.loc = get_step(mob, direct)
+				mob.forceMove(get_step(mob, direct))
 				mob.dir = direct
 		if(2)
 			if(prob(50))
@@ -402,7 +424,7 @@
 							return
 					else
 						return
-				mob.loc = locate(locx,locy,mobloc.z)
+				mob.forceMove(locate(locx,locy,mobloc.z))
 				spawn(0)
 					var/limit = 2//For only two trailing shadows.
 					for(var/turf/T in getline(mobloc, mob.loc))
@@ -413,7 +435,7 @@
 			else
 				spawn(0)
 					anim(mobloc,mob,'icons/mob/mob.dmi',,"shadow",,mob.dir)
-				mob.loc = get_step(mob, direct)
+				mob.forceMove(get_step(mob, direct))
 			mob.dir = direct
 	// Crossed is always a bit iffy
 	for(var/obj/S in mob.loc)
@@ -448,8 +470,8 @@
 		return 0
 
 	//Check to see if we slipped
-	if(prob(Process_Spaceslipping(5)))
-		src << "\blue <B>You slipped!</B>"
+	if(prob(slip_chance(5)) && !buckled)
+		src << "<span class='warning'>You slipped!</span>"
 		src.inertia_dir = src.last_move
 		step(src, src.inertia_dir)
 		return 0
@@ -459,46 +481,30 @@
 
 /mob/proc/Check_Dense_Object() //checks for anything to push off in the vicinity. also handles magboots on gravity-less floors tiles
 
-	var/dense_object = 0
-	var/shoegrip
+	var/shoegrip = Check_Shoegrip()
 
-	for(var/turf/turf in oview(1,src))
-		if(istype(turf,/turf/space))
-			continue
+	for(var/turf/simulated/T in trange(1,src)) //we only care for non-space turfs
+		if(T.density)	//walls work
+			return 1
+		else
+			var/area/A = T.loc
+			if(A.has_gravity || shoegrip)
+				return 1
 
-		if(istype(turf,/turf/simulated/floor)) // Floors don't count if they don't have gravity
-			var/area/A = turf.loc
-			if(istype(A) && A.has_gravity == 0)
-				if(shoegrip == null)
-					shoegrip = Check_Shoegrip() //Shoegrip is only ever checked when a zero-gravity floor is encountered to reduce load
-				if(!shoegrip)
-					continue
+	for(var/obj/O in orange(1, src))
+		if(istype(O, /obj/structure/lattice))
+			return 1
+		if(O && O.density && O.anchored)
+			return 1
 
-		dense_object++
-		break
-
-	if(!dense_object && (locate(/obj/structure/lattice) in oview(1, src)))
-		dense_object++
-
-	//Lastly attempt to locate any dense objects we could push off of
-	//TODO: If we implement objects drifing in space this needs to really push them
-	//Due to a few issues only anchored and dense objects will now work.
-	if(!dense_object)
-		for(var/obj/O in oview(1, src))
-			if((O) && (O.density) && (O.anchored))
-				dense_object++
-				break
-
-	return dense_object
+	return 0
 
 /mob/proc/Check_Shoegrip()
 	return 0
 
-/mob/proc/Process_Spaceslipping(var/prob_slip = 5)
-	//Setup slipage
-	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
+/mob/proc/slip_chance(var/prob_slip = 5)
 	if(stat)
-		prob_slip = 0  // Changing this to zero to make it line up with the comment.
-
-	prob_slip = round(prob_slip)
-	return(prob_slip)
+		return 0
+	if(Check_Shoegrip())
+		return 0
+	return prob_slip

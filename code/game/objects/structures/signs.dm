@@ -19,10 +19,6 @@
 		else
 	return
 
-/obj/structure/sign/blob_act()
-	qdel(src)
-	return
-
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
 	if(istype(tool, /obj/item/weapon/screwdriver) && !istype(src, /obj/structure/sign/double))
 		user << "You unfasten the sign with your [tool]."
@@ -199,3 +195,8 @@
 	name = "\improper Escape Arm"
 	desc = "A direction sign, pointing out which way the escape shuttle dock is."
 	icon_state = "direction_evac"
+
+/obj/structure/sign/directions/bdg
+	name = "\improper Bridge"
+	desc = "A direction sign, pointing out which way the Bridge is."
+	icon_state = "direction_bdg"

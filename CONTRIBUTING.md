@@ -1,3 +1,9 @@
+Development:
+
+Target your changes to alpha branch for now. The current live branch is alpha, and your working branch will change as we start making progress on the roadmap. If you're not an official part of the dev team feel free to contribute but don't get offended if your changes get looked over a little more carefully. 
+
+Licencing:
+
 Baystation12 is licensed under the GNU Affero General Public License version 3, which can be found in full in LICENSE-AGPL3.txt.
 
 Commits with a git authorship date prior to `1420675200 +0000` (2015/01/08 00:00) are licensed under the GNU General Public License version 3, which can be found in full in LICENSE-GPL3.txt.

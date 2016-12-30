@@ -187,10 +187,6 @@
 	update()
 	return
 
-// can breath normally in the disposal
-/obj/machinery/disposal/alter_health()
-	return get_turf(src)
-
 // attempt to move while inside
 /obj/machinery/disposal/relaymove(mob/user as mob)
 	if(user.stat || src.flushing)
@@ -717,7 +713,7 @@
 	// update the icon_state to reflect hidden status
 	proc/update()
 		var/turf/T = src.loc
-		hide(T.intact && !istype(T,/turf/space))	// space never hides pipes
+		hide(!T.is_plating() && !istype(T,/turf/space))	// space never hides pipes
 
 	// hide called by levelupdate if turf intact status changes
 	// change visibility status and force update of icon
@@ -750,14 +746,10 @@
 			H.active = 0
 			H.loc = src
 			return
-		if(T.intact && istype(T,/turf/simulated/floor)) //intact floor, pop the tile
+		if(!T.is_plating() && istype(T,/turf/simulated/floor)) //intact floor, pop the tile
 			var/turf/simulated/floor/F = T
-			//F.health	= 100
-			F.burnt	= 1
-			F.intact	= 0
-			F.levelupdate()
+			F.break_tile()
 			new /obj/item/stack/tile(H)	// add to holder so it will be thrown with other stuff
-			F.icon_state = "Floor[F.burnt ? "1" : ""]"
 
 		if(direction)		// direction is specified
 			if(istype(T, /turf/space)) // if ended in space, then range is unlimited
@@ -860,7 +852,7 @@
 	attackby(var/obj/item/I, var/mob/user)
 
 		var/turf/T = src.loc
-		if(T.intact)
+		if(!T.is_plating())
 			return		// prevent interaction with T-scanner revealed pipes
 		src.add_fingerprint(user)
 		if(istype(I, /obj/item/weapon/weldingtool))
@@ -979,34 +971,31 @@
 
 	nextdir(var/fromdir)
 		var/nextdir
-		if(fromdir == 11)
+		if(fromdir == DOWN)
 			nextdir = dir
 		else
-			nextdir = 12
+			nextdir = UP
 		return nextdir
 
 	transfer(var/obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir)
-		H.set_dir(nextdir)
+		H.dir = nextdir
 
-		var/turf/T
+		var/turf/T = get_turf(src)
 		var/obj/structure/disposalpipe/P
 
-		if(nextdir == 12)
-			var/turf/controllerlocation = locate(1, 1, src.z)
-			for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
-				if(controller.up)
-					T = locate(src.x, src.y, controller.up_target)
+		//assume we're going up
+		if(nextdir & (DOWN|UP))
+			T = GetAbove(src)
 			if(!T)
-				H.loc = src.loc
-				return
-			else
-				for(var/obj/structure/disposalpipe/down/F in T)
-					P = F
+				return null
 
+			//only traverse up if there isn't a turf in the way
+			if(T.blocks_air_downwards)
+				T = null
 		else
-			T = get_step(src.loc, H.dir)
-			P = H.findpipe(T)
+			T = get_step(src, nextdir)
+		P = H.findpipe(T)
 
 		if(P)
 			// find other holder in next loc, if inactive merge it with current
@@ -1032,34 +1021,27 @@
 
 	nextdir(var/fromdir)
 		var/nextdir
-		if(fromdir == 12)
+		if(fromdir == UP)
 			nextdir = dir
 		else
-			nextdir = 11
+			nextdir = DOWN
 		return nextdir
 
 	transfer(var/obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir)
 		H.dir = nextdir
 
-		var/turf/T
+		var/turf/T = get_turf(src)
 		var/obj/structure/disposalpipe/P
 
-		if(nextdir == 11)
-			var/turf/controllerlocation = locate(1, 1, src.z)
-			for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
-				if(controller.down)
-					T = locate(src.x, src.y, controller.down_target)
-			if(!T)
-				H.loc = src.loc
-				return
-			else
-				for(var/obj/structure/disposalpipe/up/F in T)
-					P = F
-
+		//assume we're going down
+		if(nextdir & (DOWN|UP))
+			//only traverse down if there isn't a turf in the way
+			if(!T.blocks_air_downwards)
+				T = GetBelow(src)
 		else
-			T = get_step(src.loc, H.dir)
-			P = H.findpipe(T)
+			T = get_step(src, nextdir)
+		P = H.findpipe(T)
 
 		if(P)
 			// find other holder in next loc, if inactive merge it with current
@@ -1343,7 +1325,7 @@
 		return
 
 	var/turf/T = src.loc
-	if(T.intact)
+	if(!T.is_plating())
 		return		// prevent interaction with T-scanner revealed pipes
 	src.add_fingerprint(user)
 	if(istype(I, /obj/item/weapon/weldingtool))

@@ -342,6 +342,79 @@
 	name = "Cell 6"
 	id = "Cell 6"
 
+/obj/machinery/door_timer/cell_7
+	name = "Cell 7"
+	id = "Cell 7"
+
+/obj/machinery/door_timer/cell_8
+	name = "Cell 8"
+	id = "Cell 8"
+
+/obj/machinery/door_timer/cell_9
+	name = "Cell 9"
+	id = "Cell 9"
+
+/obj/machinery/door_timer/cell_10
+	name = "Cell 10"
+	id = "Cell 10"
+
+/obj/machinery/door_timer/cell_11
+	name = "Cell 11"
+	id = "Cell 11"
+
+/obj/machinery/door_timer/cell_12
+	name = "Cell 12"
+	id = "Cell 12"
+
+/obj/machinery/door_timer/cell_13
+	name = "Cell 13"
+	id = "Cell 13"
+
+/obj/machinery/door_timer/cell_14
+	name = "Cell 14"
+	id = "Cell 14"
+
+/obj/machinery/door_timer/cell_15
+	name = "Cell 15"
+	id = "Cell 15"
+
+/obj/machinery/door_timer/cell_16
+	name = "Cell 16"
+	id = "Cell 16"
+
+/obj/machinery/door_timer/cell_17
+	name = "Cell 17"
+	id = "Cell 17"
+
+/obj/machinery/door_timer/cell_18
+	name = "Cell 18"
+	id = "Cell 18"
+
+/obj/machinery/door_timer/cell_19
+	name = "Cell 19"
+	id = "Cell 19"
+
+/obj/machinery/door_timer/cell_20
+	name = "Cell 20"
+	id = "Cell 20"
+
+/obj/machinery/door_timer/cell_21
+	name = "Cell 21"
+	id = "Cell 21"
+
+/obj/machinery/door_timer/cell_22
+	name = "Cell 22"
+	id = "Cell 22"
+
+/obj/machinery/door_timer/cell_23
+	name = "Cell 23"
+	id = "Cell 23"
+
+/obj/machinery/door_timer/cell_24
+	name = "Cell 24"
+	id = "Cell 24"
+
+
 #undef FONT_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE

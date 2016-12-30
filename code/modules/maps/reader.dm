@@ -60,11 +60,13 @@ var/global/dmm_suite/preloader/_preloader = null
 
 		//if exceeding the world max x or y, increase it
 		var/x_depth = length(copytext(zgrid,1,findtext(zgrid,"\n",2,0)))
-		if(world.maxx<x_depth)
+		if(world.maxx<(x_depth/key_len))
+			world << "<span class='danger'>Warning, mapfile has non-matching X dimension! Server will hang for some time while it makes corrections ([world.maxx] vs [x_depth])</span>"
 			world.maxx=x_depth
 
 		var/y_depth = z_depth / (x_depth+1)//x_depth + 1 because we're counting the '\n' characters in z_depth
 		if(world.maxy<y_depth)
+			world << "<span class='danger'>Warning, mapfile has non-matching Y dimension! Server will hang for some time while it makes corrections ([world.maxy] vs [y_depth])</span>"
 			world.maxy=y_depth
 
 		//then proceed it line by line, starting from top

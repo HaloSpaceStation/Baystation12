@@ -1,5 +1,44 @@
 var/global/list/ore_data = list()
 
+var/global/list/all_abundant_ores = list()
+var/global/list/all_common_ores = list()
+var/global/list/all_rare_ores = list()
+
+var/global/list/unused_abundant_ores = list()
+var/global/list/unused_common_ores = list()
+var/global/list/unused_rare_ores = list()
+
+/datum/controller/process/overmap/var/list/all_ores
+
+/datum/controller/process/overmap/var/list/all_abundant_ores
+/datum/controller/process/overmap/var/list/all_common_ores
+/datum/controller/process/overmap/var/list/all_rare_ores
+
+/datum/controller/process/overmap/var/list/unused_abundant_ores
+/datum/controller/process/overmap/var/list/unused_common_ores
+/datum/controller/process/overmap/var/list/unused_rare_ores
+
+/hook/startup/proc/init_ore_data()
+	if(!ore_data || !ore_data.len)
+		for(var/oretype in typesof(/ore)-/ore)
+			var/ore/OD = new oretype()
+			ore_data[OD.name] = OD
+
+			if(OD.vein_type)
+				switch(OD.vein_size)
+					if(3)
+						all_abundant_ores[OD.name] = OD
+					if(2)
+						all_common_ores[OD.name] = OD
+					if(1)
+						all_rare_ores[OD.name] = OD
+
+		unused_abundant_ores = all_abundant_ores.Copy()
+		unused_common_ores = all_common_ores.Copy()
+		unused_rare_ores = all_rare_ores.Copy()
+
+	return 1
+
 /ore
 	var/name
 	var/display_name
@@ -8,9 +47,9 @@ var/global/list/ore_data = list()
 	var/compresses_to
 	var/result_amount     // How much ore?
 	var/spread = 1	      // Does this type of deposit spread?
-	var/spread_chance     // Chance of spreading in any direction
+	var/spread_chance = 35// Chance of spreading in any direction
 	var/ore	              // Path to the ore produced when tile is mined.
-	var/scan_icon         // Overlay for ore scanners.
+	var/scan_icon = "mineral_common"         // Overlay for ore scanners.
 	// Xenoarch stuff. No idea what it's for, just refactored it to be less awful.
 	var/list/xarch_ages = list(
 		"thousand" = 999,
@@ -38,7 +77,7 @@ var/global/list/ore_data = list()
 	xarch_source_mineral = "potassium"
 
 /ore/hematite
-	name = "hematite"
+	name = "iron"
 	display_name = "hematite"
 	smelts_to = "iron"
 	alloy = 1
@@ -48,7 +87,7 @@ var/global/list/ore_data = list()
 	scan_icon = "mineral_common"
 
 /ore/coal
-	name = "carbon"
+	name = "coal"
 	display_name = "raw carbon"
 	smelts_to = "plastic"
 	alloy = 1

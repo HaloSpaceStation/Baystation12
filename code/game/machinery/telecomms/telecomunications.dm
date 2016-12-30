@@ -12,7 +12,7 @@
 
 	Look at radio.dm for the prequel to this code.
 */
-
+//see code\game\modules\overmap\telecomms for the overmap telecomms handling
 var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms
@@ -273,12 +273,40 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 			//Remove the level and then start adding levels that it is being broadcasted in.
 			signal.data["level"] = list()
 
+			var/obj/effect/overmapobj/sector = map_sectors["[src.z]"]
+			for(var/obj/effect/zlevelinfo/zlevelinfo in sector.linked_zlevelinfos)
+				signal.data["level"] |= zlevelinfo.z
+
 			var/can_send = relay_information(signal, "/obj/machinery/telecomms/hub") // ideally relay the copied information to relays
 			if(!can_send)
 				relay_information(signal, "/obj/machinery/telecomms/bus") // Send it to a bus instead, if it's linked to one
 
-/obj/machinery/telecomms/receiver/proc/check_receive_level(datum/signal/signal)
+/obj/machinery/telecomms/proc/check_receive_level(datum/signal/signal)
 
+	var/obj/effect/overmapobj/source_overmapobj = signal.data["sector"]
+	var/obj/effect/overmapobj/overmapobj = map_sectors["[src.z]"]
+
+	//disable radio on non-overmap zlevels
+	if(!source_overmapobj || !overmapobj)
+		return 0
+
+	//always recieve comms from the current sector
+	if(source_overmapobj == overmapobj)
+		return 1
+
+	//always get system wide broadcasts from a powerful enough transmitter
+	if(signal.data["system_wide"])
+		return 1
+
+	//check if we're in overmap range
+	if(get_dist(source_overmapobj, overmapobj) <= signal.data["range"])
+		return 1
+
+	//out of range
+	return 0
+
+	//automatically link all zlevels in an overmap sector without the need for relays
+	/*
 	if(signal.data["level"] != listening_level)
 		for(var/obj/machinery/telecomms/hub/H in links)
 			var/list/connected_levels = list()
@@ -289,7 +317,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 				return 1
 		return 0
 	return 1
-
+	*/
 
 /*
 	The HUB idles until it receives information. It then passes on that information
@@ -552,7 +580,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 					log.parameters["intelligible"] = 1
 				else if(M.isMonkey())
 					race = "Monkey"
-				else if(M.isSilicon())
+				else if(issilicon(M))
 					race = "Artificial Life"
 					log.parameters["intelligible"] = 1
 				else if(isslime(M))
