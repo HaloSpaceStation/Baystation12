@@ -72,6 +72,14 @@ macro "borghotkeymode"
 		command = ".south"
 		is-disabled = false
 	elem 
+		name = "INSERT"
+		command = "a-intent right"
+		is-disabled = false
+	elem 
+		name = "DELETE"
+		command = "delete-key-pressed"
+		is-disabled = false
+	elem 
 		name = "1"
 		command = "toggle-module 1"
 		is-disabled = false
@@ -102,14 +110,6 @@ macro "borghotkeymode"
 	elem 
 		name = "CTRL+4"
 		command = "a-intent left"
-		is-disabled = false
-	elem 
-		name = "INSERT"
-		command = "a-intent right"
-		is-disabled = false
-	elem 
-		name = "DELETE"
-		command = "delete-key-pressed"
 		is-disabled = false
 	elem 
 		name = "5"
@@ -263,6 +263,30 @@ macro "borghotkeymode"
 		name = "F12"
 		command = "F12"
 		is-disabled = false
+	elem 
+		name = "["
+		command = "Travel-Downwards"
+		is-disabled = false
+	elem 
+		name = "]"
+		command = "Travel-Upwards"
+		is-disabled = false
+	elem 
+		name = "NUMPAD2+REP"
+		command = ".southwest"
+		is-disabled = false
+	elem 
+		name = "NUMPAD4+REP"
+		command = ".northwest"
+		is-disabled = false
+	elem 
+		name = "NUMPAD6+REP"
+		command = ".southeast"
+		is-disabled = false
+	elem 
+		name = "NUMPAD8+REP"
+		command = ".northeast"
+		is-disabled = false
 
 macro "macro"
 	elem 
@@ -272,6 +296,10 @@ macro "macro"
 	elem 
 		name = "CENTER+REP"
 		command = ".center"
+		is-disabled = false
+	elem 
+		name = "SPACE+REP"
+		command = "vehicle-thrust"
 		is-disabled = false
 	elem 
 		name = "NORTHEAST"
@@ -359,7 +387,7 @@ macro "macro"
 		is-disabled = false
 	elem 
 		name = "CTRL+4"
-		command = "a-intent hurt"
+		command = "a-intent harm"
 		is-disabled = false
 	elem 
 		name = "CTRL+A+REP"
@@ -410,6 +438,42 @@ macro "macro"
 		command = "Activate-Held-Object"
 		is-disabled = false
 	elem 
+		name = "NUMPAD1+REP"
+		command = ".southwest"
+		is-disabled = false
+	elem 
+		name = "NUMPAD2+REP"
+		command = ".south"
+		is-disabled = false
+	elem 
+		name = "NUMPAD3+REP"
+		command = ".southeast"
+		is-disabled = false
+	elem 
+		name = "NUMPAD4+REP"
+		command = ".west"
+		is-disabled = false
+	elem 
+		name = "NUMPAD5"
+		command = "vehicle-thrust-toggle"
+		is-disabled = false
+	elem 
+		name = "NUMPAD6+REP"
+		command = ".east"
+		is-disabled = false
+	elem 
+		name = "NUMPAD7+REP"
+		command = ".northwest"
+		is-disabled = false
+	elem 
+		name = "NUMPAD8+REP"
+		command = ".north"
+		is-disabled = false
+	elem 
+		name = "NUMPAD9+REP"
+		command = ".northeast"
+		is-disabled = false
+	elem 
 		name = "F1"
 		command = "adminhelp"
 		is-disabled = false
@@ -456,6 +520,14 @@ macro "macro"
 	elem 
 		name = "F12"
 		command = "F12"
+		is-disabled = false
+	elem 
+		name = "["
+		command = "Travel-Downwards"
+		is-disabled = false
+	elem 
+		name = "]"
+		command = "Travel-Upwards"
 		is-disabled = false
 
 macro "hotkeymode"
@@ -739,6 +811,30 @@ macro "hotkeymode"
 		name = "F12"
 		command = "F12"
 		is-disabled = false
+	elem 
+		name = "["
+		command = "Travel-Downwards"
+		is-disabled = false
+	elem 
+		name = "]"
+		command = "Travel-Upwards"
+		is-disabled = false
+	elem 
+		name = "NUMPAD2+REP"
+		command = ".southwest"
+		is-disabled = false
+	elem 
+		name = "NUMPAD4+REP"
+		command = ".northwest"
+		is-disabled = false
+	elem 
+		name = "NUMPAD6+REP"
+		command = ".southeast"
+		is-disabled = false
+	elem 
+		name = "NUMPAD8+REP"
+		command = ".northeast"
+		is-disabled = false
 
 macro "borgmacro"
 	elem 
@@ -929,6 +1025,30 @@ macro "borgmacro"
 		name = "F12"
 		command = "F12"
 		is-disabled = false
+	elem 
+		name = "["
+		command = "Move Downwards"
+		is-disabled = false
+	elem 
+		name = "]"
+		command = "Move Upwards"
+		is-disabled = false
+	elem 
+		name = "NUMPAD2+REP"
+		command = ".southwest"
+		is-disabled = false
+	elem 
+		name = "NUMPAD4+REP"
+		command = ".northwest"
+		is-disabled = false
+	elem 
+		name = "NUMPAD6+REP"
+		command = ".southeast"
+		is-disabled = false
+	elem 
+		name = "NUMPAD8+REP"
+		command = ".northeast"
+		is-disabled = false
 
 
 menu "menu"
@@ -996,8 +1116,17 @@ menu "menu"
 		is-disabled = false
 		saved-params = "is-checked"
 	elem "icon64"
-		name = "&64x64 (2x)"
+		name = "&64x64"
 		command = ".winset \"mapwindow.map.icon-size=64\""
+		category = "&Icons"
+		is-checked = false
+		can-check = true
+		group = "size"
+		is-disabled = false
+		saved-params = "is-checked"
+	elem "icon48"
+		name = "&48x48"
+		command = ".winset \"mapwindow.map.icon-size=48\""
 		category = "&Icons"
 		is-checked = false
 		can-check = true
@@ -1357,6 +1486,8 @@ window "chemdispenser"
 		keep-aspect = false
 		align = center
 		text-wrap = false
+		allow-html = false
+		letterbox = true
 	elem "eject"
 		type = BUTTON
 		pos = 264,4
@@ -1523,6 +1654,8 @@ window "chemdispenser"
 		keep-aspect = false
 		align = center
 		text-wrap = false
+		allow-html = false
+		letterbox = true
 	elem "child1"
 		type = CHILD
 		pos = 0,40
@@ -1644,6 +1777,8 @@ window "chemdispenser_reagents"
 		keep-aspect = false
 		align = center
 		text-wrap = false
+		allow-html = false
+		letterbox = true
 
 window "mainwindow"
 	elem "mainwindow"

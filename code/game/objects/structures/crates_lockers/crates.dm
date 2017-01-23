@@ -35,7 +35,7 @@
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
 	for(var/obj/O in src)
-		O.loc = get_turf(src)
+		O.forceMove(get_turf(src))
 	icon_state = icon_opened
 	src.opened = 1
 
@@ -60,7 +60,7 @@
 			var/obj/structure/bed/B = O
 			if(B.buckled_mob)
 				continue
-		O.loc = src
+		O.forceMove(src)
 		itemcount++
 
 	icon_state = icon_closed
@@ -75,7 +75,7 @@
 			return
 		user.drop_item()
 		if(W)
-			W.loc = src.loc
+			W.forceMove(src.loc)
 	else if(istype(W, /obj/item/weapon/packageWrap))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
@@ -91,7 +91,7 @@
 		if(rigged)
 			user  << "<span class='notice'>You attach [W] to [src].</span>"
 			user.drop_item()
-			W.loc = src
+			W.forceMove(src)
 			return
 	else if(istype(W, /obj/item/weapon/wirecutters))
 		if(rigged)
@@ -160,7 +160,7 @@
 
 /obj/structure/closet/crate/secure/proc/set_locked(var/newlocked, mob/user = null)
 	if(locked == newlocked) return
-	
+
 	locked = newlocked
 	if(user)
 		for(var/mob/O in viewers(user, 3))
@@ -192,7 +192,15 @@
 /obj/structure/closet/crate/secure/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(is_type_in_list(W, list(/obj/item/weapon/packageWrap, /obj/item/stack/cable_coil, /obj/item/device/radio/electropack, /obj/item/weapon/wirecutters)))
 		return ..()
-	if(locked && (istype(W, /obj/item/weapon/card/emag)||istype(W, /obj/item/weapon/melee/energy/blade)))
+	if(istype(W, /obj/item/weapon/melee/energy/blade))
+		emag_act(INFINITY, user)
+	if(!opened)
+		src.togglelock(user)
+		return
+	return ..()
+
+/obj/structure/closet/crate/secure/emag_act(var/remaining_charges, var/mob/user)
+	if(!broken)
 		overlays.Cut()
 		overlays += emag
 		overlays += sparks
@@ -201,11 +209,7 @@
 		src.locked = 0
 		src.broken = 1
 		user << "<span class='notice'>You unlock \the [src].</span>"
-		return
-	if(!opened)
-		src.togglelock(user)
-		return
-	return ..()
+		return 1
 
 /obj/structure/closet/crate/secure/emp_act(severity)
 	for(var/obj/O in src)
@@ -227,7 +231,7 @@
 			open()
 		else
 			src.req_access = list()
-			src.req_access += pick(get_all_accesses())
+			src.req_access += pick(get_all_station_access())
 	..()
 
 /obj/structure/closet/crate/plastic
@@ -433,12 +437,12 @@
 				continue
 			if(!S.anchored)
 				found = 1
-				S.loc = src
+				S.forceMove(src)
 				break
 		if(!found)
 			for(var/obj/machinery/M in src.loc)
 				if(!M.anchored)
-					M.loc = src
+					M.forceMove(src)
 					break
 	return
 
@@ -461,12 +465,12 @@
 				continue
 			if(!S.anchored)
 				found = 1
-				S.loc = src
+				S.forceMove(src)
 				break
 		if(!found)
 			for(var/obj/machinery/M in src.loc)
 				if(!M.anchored)
-					M.loc = src
+					M.forceMove(src)
 					break
 	return
 

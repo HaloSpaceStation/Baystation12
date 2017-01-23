@@ -1,3 +1,14 @@
+
+/*
+	The initialization of the game happens roughly like this:
+
+	1. All global variables are initialized (including the global_init instance).
+	2. The map is initialized, and map objects are created.
+	3. world/New() runs, creating the process scheduler (and the old master controller) and spawning their setup.
+	4. processScheduler/setup() runs, creating all the processes. game_controller/setup() runs, calling initialize() on all movable atoms in the world.
+	5. The gameticker is created.
+
+*/
 var/global/datum/global_init/init = new ()
 
 /*
@@ -8,7 +19,10 @@ var/global/datum/global_init/init = new ()
 	makeDatumRefLists()
 	load_configuration()
 
-	qdel(src)
+	initialize_chemical_reagents()
+	initialize_chemical_reactions()
+
+	qdel(src) //we're done
 
 
 /world
@@ -58,9 +72,20 @@ var/global/datum/global_init/init = new ()
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
 
-	//Create the asteroid Z-level.
 	if(config.generate_asteroid)
-		new /datum/random_map(null,13,32,5,217,223)
+		// These values determine the specific area that the map is applied to.
+		// If you do not use the official Baycode moonbase map, you will need to change them.
+		//Create the mining Z-level.
+		new /datum/random_map/automata/cave_system(null,1,1,5,255,255)
+		//new /datum/random_map/noise/volcanism(null,1,1,5,255,255) // Not done yet! Pretty, though.
+		// Create the mining ore distribution map.
+		new /datum/random_map/noise/ore(null, 1, 1, 5, 64, 64)
+		// Update all turfs to ensure everything looks good post-generation. Yes,
+		// it's brute-forcey, but frankly the alternative is a mine turf rewrite.
+		for(var/turf/simulated/mineral/M in world) // Ugh.
+			M.updateMineralOverlays()
+		for(var/turf/simulated/floor/asteroid/M in world) // Uuuuuugh.
+			M.updateMineralOverlays()
 
 	// Create autolathe recipes, as above.
 	populate_lathe_recipes()
@@ -183,6 +208,69 @@ var/world_topic_spam_protect_time = world.timeofday
 			positions[k] = list2params(positions[k]) // converts positions["heads"] = list("Bob"="Captain", "Bill"="CMO") into positions["heads"] = "Bob=Captain&Bill=CMO"
 
 		return list2params(positions)
+
+	else if(copytext(T,1,5) == "info")
+		var/input[] = params2list(T)
+		if(input["key"] != config.comms_password)
+			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
+
+				spawn(50)
+					world_topic_spam_protect_time = world.time
+					return "Bad Key (Throttled)"
+
+			world_topic_spam_protect_time = world.time
+			world_topic_spam_protect_ip = addr
+
+			return "Bad Key"
+
+		var/search = input["info"]
+		var/ckey = ckey(search)
+
+		var/list/match = list()
+
+		for(var/mob/M in mob_list)
+			if(findtext(M.name, search))
+				match += M
+			else if(M.ckey == ckey)
+				match += M
+			else if(M.mind && findtext(M.mind.assigned_role, search))
+				match += M
+
+		if(!match.len)
+			return "No matches"
+		else if(match.len == 1)
+			var/mob/M = match[1]
+			var/info = list()
+			info["key"] = M.key
+			info["name"] = M.name == M.real_name ? M.name : "[M.name] ([M.real_name])"
+			info["role"] = M.mind ? (M.mind.assigned_role ? M.mind.assigned_role : "No role") : "No mind"
+			var/turf/MT = get_turf(M)
+			info["loc"] = M.loc ? "[M.loc]" : "null"
+			info["turf"] = MT ? "[MT] @ [MT.x], [MT.y], [MT.z]" : "null"
+			info["area"] = MT ? "[MT.loc]" : "null"
+			info["antag"] = M.mind ? (M.mind.special_role ? M.mind.special_role : "Not antag") : "No mind"
+			info["hasbeenrev"] = M.mind ? M.mind.has_been_rev : "No mind"
+			info["stat"] = M.stat
+			info["type"] = M.type
+			if(isliving(M))
+				var/mob/living/L = M
+				info["damage"] = list2params(list(
+							oxy = L.getOxyLoss(),
+							tox = L.getToxLoss(),
+							fire = L.getFireLoss(),
+							brute = L.getBruteLoss(),
+							clone = L.getCloneLoss(),
+							brain = L.getBrainLoss()
+						))
+			else
+				info["damage"] = "non-living"
+			info["gender"] = M.gender
+			return list2params(info)
+		else
+			var/list/ret = list()
+			for(var/mob/M in match)
+				ret[M.key] = M.name
+			return list2params(ret)
 
 	else if(copytext(T,1,9) == "adminmsg")
 		/*
@@ -375,57 +463,31 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/update_status()
 	var/s = ""
 
-	if (config && config.server_name)
-		s += "<b>[config.server_name]</b> &#8212; "
+	/*if (config && config.server_name)
+		s += "<b>[config.server_name]</b> &#8212; "*/
 
-	s += "<b>[station_name()]</b>";
-	s += " ("
-	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
-//	s += "[game_version]"
-	s += "Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
-	s += "</a>"
-	s += ")"
+	s += "<a href=\"http://projectunsc.com/\">"
+	s += "<b>Halo Spacestation Evolved Alpha</b>"
+	s += "</a>\]"
+	s += "<br><br>"
+	if(ticker && ticker.mode)
+		var/hub_ship_name = station_name()
+		var/hub_round_desc = round_description()
+		var/hub_system_name = system_name()
 
-	var/list/features = list()
-
-	if(ticker)
-		if(master_mode)
-			features += master_mode
+		if(hub_ship_name)
+			s += " \[Players are onboard the <i>[hub_ship_name]</i>"
+			if(hub_round_desc)
+				s += " [hub_round_desc]"
+			if(hub_system_name)
+				s += " in the <b>[hub_system_name]</b> system"
+		s += "<br>"
+		s += "<br>"
 	else
-		features += "<b>STARTING</b>"
-
-	if (!config.enter_allowed)
-		features += "closed"
-
-	features += config.abandon_allowed ? "respawn" : "no respawn"
-
-	if (config && config.allow_vote_mode)
-		features += "vote"
-
-	if (config && config.allow_ai)
-		features += "AI allowed"
-
-	var/n = 0
-	for (var/mob/M in player_list)
-		if (M.client)
-			n++
-
-	if (n > 1)
-		features += "~[n] players"
-	else if (n > 0)
-		features += "~[n] player"
-
-	/*
-	is there a reason for this? the byond site shows 'hosted by X' when there is a proper host already.
-	if (host)
-		features += "hosted by <b>[host]</b>"
-	*/
-
-	if (!host && config && config.hostedby)
-		features += "hosted by <b>[config.hostedby]</b>"
-
-	if (features)
-		s += ": [list2text(features, ", ")]"
+		s += "<br>"
+		s += "<br>"
+		s += "\[<b>ROUND CURRENTLY STARTING</b>"
+		//&#8212;
 
 	/* does this help? I do not know */
 	if (src.status != s)

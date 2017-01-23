@@ -12,10 +12,12 @@
 
 	var/arrive_time = 0	//the time at which the shuttle arrives when long jumping
 
+	var/announce_errors = 0
+
 /datum/shuttle/proc/init_docking_controllers()
 	if(docking_controller_tag)
 		docking_controller = locate(docking_controller_tag)
-		if(!istype(docking_controller))
+		if(!istype(docking_controller) && announce_errors)
 			world << "<span class='danger'>warning: shuttle with docking tag [docking_controller_tag] could not find it's controller!</span>"
 
 /datum/shuttle/proc/short_jump(var/area/origin,var/area/destination)

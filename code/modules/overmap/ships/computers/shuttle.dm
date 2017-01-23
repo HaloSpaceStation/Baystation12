@@ -1,12 +1,12 @@
 //Shuttle controller computer for shuttles going between sectors
-/datum/shuttle/ferry/var/range = 0	//how many overmap tiles can shuttle go, for picking destinatiosn and returning.
+/datum/shuttle/ferry/var/range = 5	//how many overmap tiles can shuttle go, for picking destinatiosn and returning.
 /obj/machinery/computer/shuttle_control/explore
 	name = "exploration shuttle console"
 	shuttle_tag = "Exploration"
 	req_access = list()
 	var/landing_type	//area for shuttle ship-side
-	var/obj/effect/map/destination //current destination
-	var/obj/effect/map/home //current destination
+	var/obj/effect/overmapobj/destination //current destination
+	var/obj/effect/overmapobj/home //current destination
 
 /obj/machinery/computer/shuttle_control/explore/initialize()
 	..()
@@ -22,7 +22,7 @@
 		testing("Exploration shuttle '[shuttle_tag]' at zlevel [z] successfully added.")
 
 //Sets destination to new sector. Can be null.
-/obj/machinery/computer/shuttle_control/explore/proc/update_destination(var/obj/effect/map/D)
+/obj/machinery/computer/shuttle_control/explore/proc/update_destination(var/obj/effect/overmapobj/D)
 	destination = D
 	if(destination && shuttle_controller.shuttles[shuttle_tag])
 		var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
@@ -34,7 +34,7 @@
 /obj/machinery/computer/shuttle_control/explore/proc/get_possible_destinations()
 	var/list/res = list()
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	for (var/obj/effect/map/S in orange(shuttle.range, home))
+	for (var/obj/effect/overmapobj/S in orange(shuttle.range, home))
 		if(S.shuttle_landing)
 			res += S
 	return res
@@ -61,7 +61,7 @@
 	if(shuttle.location)
 		current_destination = "Return"
 		var/area/offsite = shuttle.area_offsite
-		var/obj/effect/map/cur_loc = map_sectors["[offsite.z]"]
+		var/obj/effect/overmapobj/cur_loc = map_sectors["[offsite.z]"]
 		can_go = (get_dist(home,cur_loc) <= shuttle.range)
 
 	//disable picking locations if there are none, or shuttle is already off-site
@@ -123,10 +123,10 @@
 		return
 
 	if(href_list["pick"])
-		var/obj/effect/map/self = map_sectors["[z]"]
+		var/obj/effect/overmapobj/self = map_sectors["[z]"]
 		if(self)
 			var/list/possible_d = get_possible_destinations()
-			var/obj/effect/map/D
+			var/obj/effect/overmapobj/D
 			if(possible_d.len)
 				D = input("Choose shuttle destination", "Shuttle Destination") as null|anything in possible_d
 			update_destination(D)

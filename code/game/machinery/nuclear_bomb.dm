@@ -1,5 +1,7 @@
 var/bomb_set
 
+var/list/nuke_disks = list()
+
 /obj/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
 	desc = "Uh oh. RUN!!!!"
@@ -102,7 +104,7 @@ var/bomb_set
 					var/obj/item/weapon/weldingtool/WT = O
 					if(!WT.isOn()) return
 					if (WT.get_fuel() < 5) // uses up 5 fuel.
-						user << "\red You need more fuel to complete this task."
+						user << "<span class='warning'>You need more fuel to complete this task.</span>"
 						return
 
 					user.visible_message("[user] starts cutting loose the anchoring bolt covers on [src].", "You start cutting loose the anchoring bolt covers with [O]...")
@@ -129,7 +131,7 @@ var/bomb_set
 					var/obj/item/weapon/weldingtool/WT = O
 					if(!WT.isOn()) return
 					if (WT.get_fuel() < 5) // uses up 5 fuel.
-						user << "\red You need more fuel to complete this task."
+						user << "<span class='warning'>You need more fuel to complete this task.</span>"
 						return
 
 					user.visible_message("[user] starts cutting apart the anchoring system sealant on [src].", "You start cutting apart the anchoring system's sealant with [O]...")
@@ -167,12 +169,9 @@ var/bomb_set
 /obj/machinery/nuclearbomb/attack_hand(mob/user as mob)
 	if (src.extended)
 		if (!ishuman(user))
-			usr << "\red You don't have the dexterity to do this!"
+			usr << "<span class='warning'>You don't have the dexterity to do this!</span>"
 			return 1
 
-		if (!ishuman(user))
-			usr << "\red You don't have the dexterity to do this!"
-			return 1
 		user.set_machine(src)
 		var/dat = text("<TT><B>Nuclear Fission Explosive</B><BR>\nAuth. Disk: <A href='?src=\ref[];auth=1'>[]</A><HR>", src, (src.auth ? "++++++++++" : "----------"))
 		if (src.auth)
@@ -196,9 +195,9 @@ var/bomb_set
 	else if (src.deployable)
 		if(removal_stage < 5)
 			src.anchored = 1
-			visible_message("\red With a steely snap, bolts slide out of [src] and anchor it to the flooring!")
+			visible_message("<span class='warning'>With a steely snap, bolts slide out of [src] and anchor it to the flooring!</span>")
 		else
-			visible_message("\red \The [src] makes a highly unpleasant crunching noise. It looks like the anchoring bolts have been cut.")
+			visible_message("<span class='warning'>\The [src] makes a highly unpleasant crunching noise. It looks like the anchoring bolts have been cut.</span>")
 		if(!src.lighthack)
 			flick("nuclearbombc", src)
 			src.icon_state = "nuclearbomb1"
@@ -224,14 +223,14 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 	if (!usr.canmove || usr.stat || usr.restrained())
 		return
 	if (!ishuman(usr))
-		usr << "\red You don't have the dexterity to do this!"
+		usr << "<span class='warning'>You don't have the dexterity to do this!</span>"
 		return 1
 
 	if (src.deployable)
-		usr << "\red You close several panels to make [src] undeployable."
+		usr << "<span class='warning'>You close several panels to make [src] undeployable.</span>"
 		src.deployable = 0
 	else
-		usr << "\red You adjust some panels to make [src] deployable."
+		usr << "<span class='warning'>You adjust some panels to make [src] deployable.</span>"
 		src.deployable = 1
 	return
 
@@ -261,12 +260,12 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 							src.safety = !src.safety
 							spawn(100) src.safety = !src.safety
 							if(src.safety == 1)
-								visible_message("\blue The [src] quiets down.")
+								visible_message("<span class='notice'>The [src] quiets down.</span>")
 								if(!src.lighthack)
 									if (src.icon_state == "nuclearbomb2")
 										src.icon_state = "nuclearbomb1"
 							else
-								visible_message("\blue The [src] emits a quiet whirling noise!")
+								visible_message("<span class='notice'>The [src] emits a quiet whirling noise!</span>")
 			if(href_list["act"] == "wire")
 				if (!istype(usr.get_active_hand(), /obj/item/weapon/wirecutters))
 					usr << "You need wirecutters!"
@@ -320,7 +319,7 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 					if (src.timing == -1.0)
 						return
 					if (src.safety)
-						usr << "\red The safety is still on."
+						usr << "<span class='warning'>The safety is still on.</span>"
 						return
 					src.timing = !( src.timing )
 					if (src.timing)
@@ -343,14 +342,14 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 
 					if(removal_stage == 5)
 						src.anchored = 0
-						visible_message("\red \The [src] makes a highly unpleasant crunching noise. It looks like the anchoring bolts have been cut.")
+						visible_message("<span class='warning'>\The [src] makes a highly unpleasant crunching noise. It looks like the anchoring bolts have been cut.</span>")
 						return
 
 					src.anchored = !( src.anchored )
 					if(src.anchored)
-						visible_message("\red With a steely snap, bolts slide out of [src] and anchor it to the flooring.")
+						visible_message("<span class='warning'>With a steely snap, bolts slide out of [src] and anchor it to the flooring.</span>")
 					else
-						visible_message("\red The anchoring bolts slide back into the depths of [src].")
+						visible_message("<span class='warning'>The anchoring bolts slide back into the depths of [src].</span>")
 
 		src.add_fingerprint(usr)
 		for(var/mob/M in viewers(1, src))
@@ -363,13 +362,6 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 
 
 /obj/machinery/nuclearbomb/ex_act(severity)
-	return
-
-/obj/machinery/nuclearbomb/blob_act()
-	if (src.timing == -1.0)
-		return
-	else
-		return ..()
 	return
 
 
@@ -386,46 +378,90 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 	playsound(src,'sound/machines/Alarm.ogg',100,0,5)
 	if (ticker && ticker.mode)
 		ticker.mode.explosion_in_progress = 1
-	sleep(100)
+	spawn(100)
 
-	var/off_station = 0
-	var/turf/bomb_location = get_turf(src)
-	if(bomb_location && (bomb_location.z in config.station_levels))
-		if( (bomb_location.x < (128-NUKERANGE)) || (bomb_location.x > (128+NUKERANGE)) || (bomb_location.y < (128-NUKERANGE)) || (bomb_location.y > (128+NUKERANGE)) )
-			off_station = 1
-	else
-		off_station = 2
+		/*
+		var/off_station = 0
+		var/turf/bomb_location = get_turf(src)
+		if(bomb_location && (bomb_location.z in config.station_levels))
+			if( (bomb_location.x < (128-NUKERANGE)) || (bomb_location.x > (128+NUKERANGE)) || (bomb_location.y < (128-NUKERANGE)) || (bomb_location.y > (128+NUKERANGE)) )
+				off_station = 1
+		else
+			off_station = 2
+			*/
 
-	if(ticker)
-		if(ticker.mode && ticker.mode.name == "Mercenary")
-			var/obj/machinery/computer/shuttle_control/multi/syndicate/syndie_location = locate(/obj/machinery/computer/shuttle_control/multi/syndicate)
-			if(syndie_location)
-				ticker.mode:syndies_didnt_escape = (syndie_location.z > 1 ? 0 : 1)	//muskets will make me change this, but it will do for now
-			ticker.mode:nuke_off_station = off_station
-		ticker.station_explosion_cinematic(off_station,null)
-		if(ticker.mode)
-			ticker.mode.explosion_in_progress = 0
-			world << "<B>The station was destoyed by the nuclear blast!</B>"
+		if(ticker)
+			/*
+			if(ticker.mode && (ticker.mode.name == "Mercenary" || ticker.mode.name == "Insurrection"))
+				var/obj/machinery/computer/shuttle_control/multi/syndicate/syndie_location = locate(/obj/machinery/computer/shuttle_control/multi/syndicate)
+				if(syndie_location)
+					ticker.mode:syndies_didnt_escape = (syndie_location.z > 1 ? 0 : 1)	//muskets will make me change this, but it will do for now
+				ticker.mode:nuke_off_station = off_station
+				*/
+			if(ticker.mode)
+				var/list/nuked_zlevels = list()
+				ticker.mode.nuked_zlevel = locate("zlevel[z]")
+				if(ticker.mode.nuked_zlevel)
+					var/obj/effect/overmapobj/nuked_object = map_sectors[ticker.mode.nuked_zlevel]
+					if(nuked_object)
+						for(var/obj/effect/zlevelinfo/linked_zlevel in nuked_object.linked_zlevelinfos)
+							nuked_zlevels.Add(linked_zlevel.z)
+					else
+						nuked_zlevels.Add(ticker.mode.nuked_zlevel.z)
+				else
+					log_admin("Error: nuke detonated in unknown zlevel, gamemode will be unable to detect it.")
+					nuked_zlevels.Add(src.z)
+				kill_mobs_on_zlevel(nuked_zlevels)
 
-			ticker.mode.station_was_nuked = (off_station<2)	//offstation==1 is a draw. the station becomes irradiated and needs to be evacuated.
-															//kinda shit but I couldn't  get permission to do what I wanted to do.
+				if(!ticker.mode.handle_nuke_explosion())
+					ticker.station_explosion_cinematic(1,null)		//generic space explosion
 
-			if(!ticker.mode.check_finished())//If the mode does not deal with the nuke going off so just reboot because everyone is stuck as is
-				world << "<B>Resetting in 30 seconds!</B>"
+				//kill everyone nearby
+				ticker.mode.explosion_in_progress = 0
+				/*
+				world << "<B>The station was destoyed by the nuclear blast!</B>"
+				ticker.mode.station_was_nuked = (off_station<2)	//offstation==1 is a draw. the station becomes irradiated and needs to be evacuated.
+																//kinda shit but I couldn't  get permission to do what I wanted to do.
+				*/
+				if(!ticker.mode.check_finished())//If the mode does not deal with the nuke going off so just reboot because everyone is stuck as is
+					world << "<B>Resetting in 30 seconds!</B>"
 
-				feedback_set_details("end_error","nuke - unhandled ending")
+					feedback_set_details("end_error","nuke - unhandled ending")
 
-				if(blackbox)
-					blackbox.save_all_data_to_sql()
-				sleep(300)
-				log_game("Rebooting due to nuclear detonation")
-				world.Reboot()
-				return
-	return
+					if(blackbox)
+						blackbox.save_all_data_to_sql()
+					spawn(300)
+						log_game("Rebooting due to nuclear detonation")
+						world.Reboot()
+		return
+
+/obj/machinery/nuclearbomb/proc/kill_mobs_on_zlevel(var/list/zlevels)
+
+	if(zlevels && zlevels.len)
+		log_admin("Nuke has killed all mobs on zlevels [list2text(zlevels)]")
+
+		for(var/mob/living/L in living_mob_list)
+			if(L.z in zlevels)
+				L.apply_damage(10000, BURN)
+
+/obj/item/weapon/disk/nuclear/New()
+	..()
+	nuke_disks |= src
 
 /obj/item/weapon/disk/nuclear/Destroy()
-	if(blobstart.len > 0)
-		var/obj/D = new /obj/item/weapon/disk/nuclear(pick(blobstart))
-		message_admins("[src] has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
-		log_game("[src] has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
+	nuke_disks -= src
+/*
+	if(!nuke_disks.len)
+		var/turf/T = pick_area_turf(/area/maintenance, list(/proc/is_station_turf, /proc/not_turf_contains_dense_objects))
+		if(T)
+			var/obj/D = new /obj/item/weapon/disk/nuclear(T)
+			log_and_message_admins_with_location("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).", T.x, T.y, T.z)
+		else
+			log_and_message_admins("[src], the last authentication disk, has been destroyed. Failed to respawn disc!")
 	..()
+*/
+
+/*
+/obj/item/weapon/disk/nuclear/touch_map_edge()
+	qdel(src)
+*/

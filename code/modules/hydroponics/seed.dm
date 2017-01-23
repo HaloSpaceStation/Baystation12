@@ -22,6 +22,7 @@
 	var/trash_type                 // Garbage item produced when eaten.
 	var/splat_type = /obj/effect/decal/cleanable/fruit_smudge // Graffiti decal.
 	var/has_mob_product
+	var/force_layer
 
 /datum/seed/New()
 
@@ -411,7 +412,9 @@
 			"slimejelly",
 			"cyanide",
 			"mindbreaker",
-			"stoxin"
+			"stoxin",
+			"acetone",
+			"hydrazine"
 			)
 
 		for(var/x=1;x<=additional_chems;x++)
@@ -681,7 +684,6 @@
 					total_yield = get_trait(TRAIT_YIELD) + rand(yield_mod)
 				total_yield = max(1,total_yield)
 
-		currently_querying = list()
 		for(var/i = 0;i<total_yield;i++)
 			var/obj/item/product
 			if(has_mob_product)

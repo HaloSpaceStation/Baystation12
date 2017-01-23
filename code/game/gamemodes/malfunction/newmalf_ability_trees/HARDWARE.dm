@@ -108,6 +108,8 @@
 	if(ticker)
 		ticker.station_explosion_cinematic(0,null)
 		if(ticker.mode)
-			ticker.mode:station_was_nuked = 1
+			ticker.mode.nuked_zlevel = locate("zlevel[user]")
+			if(!ticker.mode.nuked_zlevel)
+				log_admin("Error: nonexistent AI to detonate station OR unable to find station zlevel")
 
 

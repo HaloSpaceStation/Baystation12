@@ -6,7 +6,6 @@
 	name = "Memetic Anomaly"
 	config_tag = "meme"
 	required_players = 3
-	required_players_secret = 10
 	restricted_jobs = list("AI", "Cyborg")
 	recommended_enemies = 2 // need at least a meme and a host
 	votable = 0 // temporarily disable this mode for voting
@@ -126,7 +125,7 @@
 
 /datum/game_mode/proc/greet_meme(var/datum/mind/meme, var/you_are=1)
 	if (you_are)
-		meme.current << "<B>\red You are a meme!</B>"
+		meme.current << "<span class='danger'>You are a meme!</span>"
 	show_objectives(meme)
 	return
 

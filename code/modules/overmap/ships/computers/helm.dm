@@ -1,25 +1,39 @@
 /obj/machinery/computer/helm
 	name = "helm control console"
-	icon_state = "id"
+	icon_keyboard = "med_key"
+	icon_screen = "steering"
 	var/state = "status"
-	var/obj/effect/map/ship/linked			//connected overmap object
+	var/obj/effect/overmapobj/ship/linked			//connected overmap object
 	var/autopilot = 0
 	var/manual_control = 0
 	var/list/known_sectors = list()
 	var/dx		//desitnation
 	var/dy		//coordinates
 
+	var/set_autobrake = 0
+
 /obj/machinery/computer/helm/initialize()
 	linked = map_sectors["[z]"]
 	if (linked)
-		if(!linked.nav_control)
-			linked.nav_control = src
+		/*if(!linked.nav_control)
+			linked.nav_control = src*/
 		testing("Helm console at level [z] found a corresponding overmap object '[linked.name]'.")
 	else
 		testing("Helm console at level [z] was unable to find a corresponding overmap object.")
-
+	known_sectors = list()
 	for(var/level in map_sectors)
-		var/obj/effect/map/sector/S = map_sectors["[level]"]
+		var/obj/effect/overmapobj/sector/S = map_sectors["[level]"]
+		if (istype(S) && S.always_known)
+			var/datum/data/record/R = new()
+			R.fields["name"] = S.name
+			R.fields["x"] = S.x
+			R.fields["y"] = S.y
+			known_sectors += R
+
+/obj/machinery/computer/helm/proc/reinit()
+	known_sectors = list()
+	for(var/level in map_sectors)
+		var/obj/effect/overmapobj/sector/S = map_sectors["[level]"]
 		if (istype(S) && S.always_known)
 			var/datum/data/record/R = new()
 			R.fields["name"] = S.name
@@ -29,7 +43,11 @@
 
 /obj/machinery/computer/helm/process()
 	..()
-	if (autopilot && dx && dy)
+
+	/*if(linked && set_autobrake != linked.autobraking)
+		linked.toggle_autobrake()*/
+
+/*	if (autopilot && dx && dy)
 		var/turf/T = locate(dx,dy,1)
 		if(linked.loc == T)
 			if(linked.is_still())
@@ -44,19 +62,56 @@
 		else
 			linked.decelerate()
 
-		return
+		return*/
 
 /obj/machinery/computer/helm/relaymove(var/mob/user, direction)
 	if(manual_control && linked)
 		linked.relaymove(user,direction)
 		return 1
 
+/obj/machinery/computer/helm/proc/thrust_forward()
+	if(manual_control && linked)
+		linked.thrust_forward()
+		return 1
+
 /obj/machinery/computer/helm/check_eye(var/mob/user as mob)
-	if (!manual_control)
-		return -1
-	if (!get_dist(user, src) > 1 || user.blinded || !linked )
-		return -1
-	return 0
+
+	. = 0
+
+	//a player is trying to manually fly the ship
+	if(manual_control)
+		//if it's a player we already know about, and we have a ship for them to control...
+		if(manual_control == user && linked)
+			//...but somehow they can't see where the ship is flying, let's reset their view for them
+			if(user.client && user.client.eye != linked)
+				user.reset_view(linked, 0)
+				linked.my_observers.Remove(user)		//so we can avoid doubleups
+				linked.my_observers.Add(user)
+
+		//here are various fail conditions to check if the player needs to be looking via their own mob
+		else
+			. = -1
+		if(get_dist(user, src) > 1 && !issilicon(user))
+			. = -1
+		if(user.blinded)
+			. = -1
+		if(!linked)
+			. = -1
+		if(user.stat)
+			. = -1
+	else
+		if(!user)
+			. = -1
+		else if(user.client && user.client.eye == linked)
+			. = -1
+
+	//reset some custom view settings for ship control before resetting the view entirely
+	if(. < 0 && user)
+		if(linked)
+			linked.my_observers.Remove(user)
+		if(user.client)
+			user.client.pixel_x = 0
+			user.client.pixel_y = 0
 
 /obj/machinery/computer/helm/attack_hand(var/mob/user as mob)
 	if(..())
@@ -66,8 +121,6 @@
 
 	if(!isAI(user))
 		user.set_machine(src)
-		if(linked)
-			user.reset_view(linked)
 
 	ui_interact(user)
 
@@ -78,6 +131,7 @@
 	var/data[0]
 	data["state"] = state
 
+	data["shipname"] = linked.ship_name		//currently unused
 	data["sector"] = linked.current_sector ? linked.current_sector.name : "Deep Space"
 	data["sector_info"] = linked.current_sector ? linked.current_sector.desc : "Not Available"
 	data["s_x"] = linked.x
@@ -85,11 +139,12 @@
 	data["dest"] = dy && dx
 	data["d_x"] = dx
 	data["d_y"] = dy
-	data["speed"] = linked.get_speed()
+	data["speed"] = linked.get_speed() * 10
 	data["accel"] = round(linked.get_acceleration())
-	data["heading"] = linked.get_heading() ? dir2angle(linked.get_heading()) : 0
+	data["heading"] = linked.get_heading()
 	data["autopilot"] = autopilot
 	data["manual_control"] = manual_control
+	data["autobraking"] = linked.autobraking
 
 	var/list/locations[0]
 	for (var/datum/data/record/R in known_sectors)
@@ -104,7 +159,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "helm.tmpl", "[linked.name] Helm Control", 380, 530)
+		ui = new(user, src, ui_key, "helm.tmpl", "[linked.name] Helm Control", 380, 560)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
@@ -159,17 +214,29 @@
 		var/ndir = text2num(href_list["move"])
 		linked.relaymove(usr, ndir)
 
-	if (href_list["brake"])
-		linked.decelerate()
+	/*if (href_list["brake"])
+		linked.decelerate()*/
 
 	if (href_list["apilot"])
 		autopilot = !autopilot
 
+	if (href_list["abrake"])
+		if(linked)
+			linked.toggle_autobrake()
+
 	if (href_list["manual"])
-		manual_control = !manual_control
+		if(manual_control)
+			manual_control = null
+			check_eye(manual_control)
+		else if(ismob(usr))
+			manual_control = usr
+			check_eye(manual_control)
 
 	if (href_list["state"])
 		state = href_list["state"]
 	add_fingerprint(usr)
 	updateUsrDialog()
 
+/obj/machinery/computer/helm/proc/thrust_forward_toggle()
+	if(linked)
+		linked.thrust_forward_toggle()
