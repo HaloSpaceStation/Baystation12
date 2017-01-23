@@ -1,0 +1,5 @@
+author: Cael_Aislinn
+delete-after: False
+changes: 
+  - rscadd: Added a sensor tracking HUD and floodlights for fighters and dropships. 
+  - bugfix: Fixes a lot of bugs with looking out to space and fighters flight model. 

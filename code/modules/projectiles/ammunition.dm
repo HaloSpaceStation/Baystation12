@@ -7,6 +7,8 @@
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throwforce = 1
 	w_class = 1
+
+	var/leaves_residue = 1
 	var/caliber = ""					//Which kind of guns it can be loaded into
 	var/projectile_type					//The bullet type to create when New() is called
 	var/obj/item/projectile/BB = null	//The loaded bullet - make it so that the projectiles are created only when needed?
@@ -55,7 +57,8 @@
 //Gun loading types
 #define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
 #define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
-#define MAGAZINE 		4	//The magazine item itself goes inside the gun
+#define MAGAZINE 		4	//The magazine item itself goes inside the gun (note: this excludes box mags who feed on the side)
+#define BELT_FEED		8	//LMGs can use ammo belts or box mags which have much higher capacity than ordinary mags
 
 //An item that holds casings and can be used to put them inside guns
 /obj/item/ammo_magazine

@@ -65,7 +65,7 @@
 		<div class="itemContent">
 			<div class='item'>
 				<span class='white'>Direct control</span>
-				{{:helper.link(data.manual_control ? 'Engaged' : 'Disengaged', 'shuffle', { 'manual' : 1 }, data.manual_control ? 'selected' : null, null)}}
+				{{:helper.link(data.manual_control ? 'Engaged' : 'Disengaged', 'shuffle', { 'manual' : 1 }, null, data.manual_control ? 'selected' : null)}}
 			</div>
 		</div>
 	</div>
@@ -89,6 +89,15 @@
 		{{else}}
 			{{:helper.link('None', null, { 'sety' : 1, 'setx' : 1 }, null, null)}}
 		{{/if}}
+	</div>
+</div> 
+
+<div class='item'>
+	<div class="itemLabel">
+		<h3>Autobrake</h3>
+	</div>
+	<div class="itemContent" style="padding-top: 10px;">
+		{{:helper.link(data.autobraking ? 'Engaged' : 'Disengaged', 'shuffle', { 'abrake' : 1 }, null, data.autobraking ? 'selected' : null)}}
 	</div>
 </div> 
 

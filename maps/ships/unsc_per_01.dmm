@@ -1,0 +1,28 @@
+"a" = (/turf/space,/turf/simulated/shuttle/wall{dir = 8; icon_state = "diagonalWall3"},/area/space)
+"b" = (/turf/simulated/wall,/area/space)
+"c" = (/obj/effect/wingrille_spawn/reinforced,/turf/simulated/floor/plating,/area/space)
+"d" = (/turf/space,/turf/simulated/shuttle/wall{dir = 1; icon_state = "diagonalWall3"},/area/space)
+"e" = (/obj/structure/bed/chair{tag = "icon-chair_preview (NORTH)"; icon_state = "chair_preview"; dir = 1},/turf/simulated/shuttle/floor,/area/space)
+"f" = (/obj/machinery/computer/shuttle_control,/turf/simulated/shuttle/floor,/area/space)
+"g" = (/turf/simulated/shuttle/floor,/area/space)
+"h" = (/obj/machinery/power/apc{dir = 1; pixel_y = 25},/turf/simulated/shuttle/floor,/area/space)
+"i" = (/obj/structure/bed/chair{tag = "icon-chair_preview (EAST)"; icon_state = "chair_preview"; dir = 4},/turf/simulated/shuttle/floor,/area/space)
+"j" = (/obj/structure/bed/chair{tag = "icon-chair_preview (WEST)"; icon_state = "chair_preview"; dir = 8},/turf/simulated/shuttle/floor,/area/space)
+"k" = (/obj/machinery/door/airlock/external,/turf/simulated/shuttle/floor,/area/space)
+"l" = (/obj/structure/window/reinforced,/obj/structure/closet,/turf/simulated/shuttle/floor,/area/space)
+"m" = (/obj/structure/shuttle/engine/propulsion,/turf/space,/area/space)
+
+(1,1,1) = {"
+abccbd
+bbeebb
+cfgghc
+biggjb
+biggjb
+biggjb
+ciggjc
+ciggjc
+biggjb
+kggggk
+bllllb
+bmmmmb
+"}

@@ -17,11 +17,11 @@
 /datum/shuttle/ferry/multidock/init_docking_controllers()
 	if(docking_controller_tag_station)
 		docking_controller_station = locate(docking_controller_tag_station)
-		if(!istype(docking_controller_station))
+		if(!istype(docking_controller_station) && announce_errors)
 			world << "<span class='danger'>warning: shuttle with docking tag [docking_controller_station] could not find it's controller!</span>"
 	if(docking_controller_tag_offsite)
 		docking_controller_offsite = locate(docking_controller_tag_offsite)
-		if(!istype(docking_controller_offsite))
+		if(!istype(docking_controller_offsite) && announce_errors)
 			world << "<span class='danger'>warning: shuttle with docking tag [docking_controller_offsite] could not find it's controller!</span>"
 	if (!location)
 		docking_controller = docking_controller_station
@@ -62,7 +62,7 @@
 		var/obj/machinery/computer/C = user
 
 		if(world.time <= reset_time)
-			C.visible_message("\blue Central Command will not allow the Special Operations shuttle to launch yet.")
+			C.visible_message("\blue [boss_name] will not allow the Special Operations shuttle to launch yet.")
 			if (((world.time - reset_time)/10) > 60)
 				C.visible_message("\blue [-((world.time - reset_time)/10)/60] minutes remain!")
 			else
@@ -93,12 +93,12 @@
 		if (!location)	//just arrived home
 			for(var/turf/T in get_area_turfs(destination))
 				var/mob/M = locate(/mob) in T
-				M << "\red You have arrived at Central Command. Operation has ended!"
+				M << "<span class='danger'>You have arrived at [boss_name]. Operation has ended!</span>"
 		else	//just left for the station
 			launch_mauraders()
 			for(var/turf/T in get_area_turfs(destination))
 				var/mob/M = locate(/mob) in T
-				M << "\red You have arrived at [station_name]. Commence operation!"
+				M << "<span class='danger'>You have arrived at [station_name]. Commence operation!</span>"
 				
 				var/obj/machinery/light/small/readylight/light = locate() in T
 				if(light) light.set_state(1)

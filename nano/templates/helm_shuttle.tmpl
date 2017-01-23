@@ -1,0 +1,115 @@
+
+<h3>Flight data</h3> 
+<div class='block'>
+	<div class='item'>
+		<div class="itemLabel">
+			<span class='average'>Speed:</span>
+		</div>
+		<div style="float:right">
+			{{:data.speed}}
+		</div>
+	</div>
+	<div class='item'>
+		<div class="itemLabel">
+			<span class='average'>Acceleration:</span>
+		</div>
+		<div style="float:right">
+			{{:data.accel}}
+		</div>
+	</div>
+	<div class='item'>
+		<div class="itemLabel">
+			<span class='average'>Heading:</span>
+		</div>
+		<div style="float:right">
+			{{:data.heading}}
+		</div>
+	</div> 
+	<div class='item'>
+		<div class="itemLabel">
+			<span class='average'>Sector:</span>
+		</div>
+		<div style="float:right">
+			{{:data.s_x}} : {{:data.s_y}}
+		</div>
+	</div> 
+</div>
+
+<h3>Manual control</h3>
+<div class='block'>
+	<div class='item'>
+		<div class="itemLabel">
+			<div class='item'>
+				{{:helper.link('', 'arrowreturn-1-w', { 'yaw' : 8, 'user' : data.user }, null, data.maglocked ? 'disabled' : (data.turn_dir == 8 ? 'selected' : null) )}}
+				{{:helper.link('', data.move_dir == 1 ? 'arrowthick-1-n' : 'arrow-1-n', { 'move' : 1, 'user' : data.user }, null, (data.maglocked || data.cruising) ? 'disabled' : (data.move_dir == 1 ? 'selected' : null ) )}}
+				{{:helper.link('', 'arrowreturn-1-n', { 'yaw' : 1, 'user' : data.user }, null, data.maglocked ? 'disabled' : (data.turn_dir == 1 ? 'selected' : null) )}}
+			</div>
+			<div class='item'>
+				{{:helper.link('', data.move_dir == 8 ? 'arrowthick-1-w' : 'arrow-1-w', { 'move' : 8, 'user' : data.user }, null, (data.maglocked || data.cruising) ? 'disabled' : (data.move_dir == 8 ? 'selected' : null ) )}}
+				{{:helper.link('', 'circle-close', { 'brake' : data.user }, null, data.cruising ? 'disabled' : data.autobraking ? 'selected' : (data.brake_disabled ? 'disabled' : null ) ) }}
+				{{:helper.link('', data.move_dir == 4 ? 'arrowthick-1-e' : 'arrow-1-e', { 'move' : 4, 'user' : data.user }, null, (data.maglocked || data.cruising) ? 'disabled' : (data.move_dir == 4 ? 'selected' : null ) )}}
+			</div>
+			<div class='item'>
+				{{:helper.link('', 'arrowreturn-1-s', { 'yaw' : 2, 'user' : data.user }, null, data.maglocked ? 'disabled' : (data.turn_dir == 2 ? 'selected' : null) )}}
+				{{:helper.link('', data.move_dir == 2 ? 'arrowthick-1-s' : 'arrow-1-s', { 'move' : 2, 'user' : data.user }, null, (data.maglocked || data.cruising) ? 'disabled' : (data.move_dir == 2 ? 'selected' : null) )}}
+				{{:helper.link('', 'arrowreturn-1-e', { 'yaw' : 4, 'user' : data.user }, null, data.maglocked ? 'disabled' : (data.turn_dir == 4 ? 'selected' : null) )}}
+			</div>
+		</div>
+
+		<div class="itemContent">
+			<div class='item'>
+				<div class="itemLabel">
+					<span class='average'>View:</span>
+				</div>
+				<div class="itemContent">
+					<div style="float:right">
+						{{:helper.link('Shuttle interior', 'search', { 'view_shuttle' : data.user }, null, data.view_shuttle ? 'selected' : null)}}
+					</div>
+					<div style="float:right">
+						{{:helper.link('External camera', 'search', { 'view_external' : data.user }, null, data.view_external ? 'selected' : null)}}
+					</div>
+					<div style="float:right">
+						{{:helper.link('Overmap camera', 'search', { 'view_overmap' : data.user }, null, data.view_overmap ? 'selected' : null)}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class='item'>
+	<div class="itemLabel">
+		<h3>Autobrake</h3>
+	</div>
+	<div class="itemContent" style="padding-top: 10px; float:right">
+		{{:helper.link(data.autobraking ? 'Engaged' : 'Disengaged', 'gear', { 'brake' : data.user }, null, data.autobraking ? 'selected' : (data.brake_disabled ? 'disabled' : null) )}}
+	</div>
+</div>
+
+<div class='item'>
+	<div class="itemLabel">
+		<h3>Cruise Mode</h3>
+	</div>
+	<div class="itemContent" style="padding-top: 10px; float:right">
+		{{:helper.link(data.cruising ? 'Engaged' : 'Disengaged', 'power', { 'cruise' : data.user }, null, data.maglocked ? 'disabled' : (data.cruising ? 'selected' : null) )}}
+	</div>
+</div>
+
+<div class='item'>
+	<div class="itemLabel">
+		<h3>Maglock</h3>
+	</div>
+	<div class="itemContent" style="padding-top: 10px; float:right">
+		{{:helper.link(data.maglocked ? 'Disengage maglock' : 'Engage maglock', 'shuffle', { 'maglock' : data.user }, null, data.cruising ? 'disabled' : (data.maglocked ? 'selected' : null) )}}
+	</div>
+</div>
+
+<div class='item'>
+	<div class="itemLabel">
+		<h3>ZLevels</h3>
+	</div>
+	<div class="itemContent" style="padding-top: 10px; float:right">
+		{{:helper.link('Move up level', 'arrowreturn-1-n', { 'z_up' : data.user }, null, data.maglocked ? 'disabled' : (data.z_up > 0 ? 'selected' : (data.z_up < 0 ? 'disabled' : null) ) )}}
+		{{:helper.link('Move down level', 'arrowreturn-1-s', { 'z_down' : data.user }, null, data.maglocked ? 'disabled' : (data.z_down > 0 ? 'selected' : (data.z_down < 0 ? 'disabled' : null) ) )}}
+	</div>
+</div>

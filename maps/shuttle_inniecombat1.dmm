@@ -1,0 +1,150 @@
+"aa" = (/turf/unsimulated/blocker,/area/space)
+"ab" = (/turf/simulated/shuttle/hull{tag = "icon-wall3 (NORTHWEST)"; icon_state = "wall3"; dir = 9},/area/space)
+"ac" = (/turf/simulated/shuttle/hull/window,/area/space)
+"ad" = (/turf/simulated/shuttle/hull{tag = "icon-wall3 (NORTHEAST)"; icon_state = "wall3"; dir = 5},/area/space)
+"ae" = (/turf/simulated/shuttle/hull{tag = "icon-wall3"; icon_state = "wall3"},/area/space)
+"af" = (/obj/machinery/recharger,/obj/structure/table/reinforced,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ag" = (/obj/structure/computerframe,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ah" = (/obj/machinery/computer/shuttle_helm,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ai" = (/obj/machinery/button/remote/blast_door{id = "syndieshutters"; name = "remote shutter control"; req_access = list(150)},/obj/structure/table/reinforced,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aj" = (/obj/machinery/microwave{pixel_x = -1; pixel_y = 2},/obj/structure/table/reinforced,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ak" = (/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"al" = (/obj/structure/bed/chair{dir = 1},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"am" = (/obj/item/weapon/storage/box/donkpockets{pixel_x = 2; pixel_y = 3},/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/obj/structure/table/reinforced,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"an" = (/obj/structure/bed/chair{dir = 4},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ao" = (/obj/machinery/light{dir = 4},/obj/machinery/computer/security/nuclear,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ap" = (/obj/item/stack/material/glass{amount = 15},/obj/item/weapon/cell{charge = 100; maxcharge = 15000},/obj/structure/table/reinforced,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aq" = (/obj/machinery/light,/obj/item/device/radio/intercom/syndicate{pixel_y = -22},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ar" = (/obj/item/weapon/paper_bin{pixel_x = -3; pixel_y = 8},/obj/item/weapon/pen{pixel_y = 4},/obj/structure/table/reinforced,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"as" = (/turf/simulated/shuttle/hull{tag = "icon-wall3 (SOUTHWEST)"; icon_state = "wall3"; dir = 10},/area/space)
+"at" = (/obj/machinery/door/window/northright{name = "Flight Deck"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"au" = (/turf/simulated/shuttle/hull{tag = "icon-wall3 (SOUTHEAST)"; icon_state = "wall3"; dir = 6},/area/space)
+"av" = (/obj/structure/closet/secure_closet/medical_wall{pixel_x = -32; pixel_y = 0; req_access = list(150)},/obj/item/stack/medical/splint,/obj/item/stack/medical/ointment,/obj/item/stack/medical/ointment,/obj/item/stack/medical/bruise_pack,/obj/item/stack/medical/bruise_pack,/obj/item/stack/medical/bruise_pack,/obj/item/weapon/storage/belt/medical,/obj/item/weapon/storage/belt/medical,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aw" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ax" = (/obj/structure/bed/chair{dir = 4},/obj/machinery/light{dir = 1},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ay" = (/obj/structure/closet/hydrant{pixel_y = 32},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"az" = (/obj/structure/table/rack,/obj/item/weapon/storage/belt/security,/obj/item/weapon/storage/belt/security,/obj/item/ammo_magazine/mc9mm/flash,/obj/item/weapon/gun/projectile/pistol/flash,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aA" = (/obj/machinery/recharger/wallcharger{pixel_x = -25},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aB" = (/obj/structure/bed/chair{dir = 8},/obj/structure/bed/chair{dir = 8},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aC" = (/obj/structure/closet,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aD" = (/obj/machinery/recharger/wallcharger{pixel_x = -25},/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aE" = (/obj/structure/closet,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/machinery/light{dir = 4},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aF" = (/obj/structure/sign/poster{poster_type = "/datum/poster/bay_50"; pixel_x = -32},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aG" = (/obj/structure/closet,/obj/item/weapon/reagent_containers/food/snacks/tastybread,/obj/item/weapon/reagent_containers/food/snacks/tastybread,/obj/item/weapon/reagent_containers/food/snacks/tastybread,/obj/item/weapon/reagent_containers/food/snacks/tastybread,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aH" = (/obj/structure/toilet{dir = 4},/turf/simulated/shuttle/hull/floor{tag = "icon-floor7"; icon_state = "floor7"},/area/space)
+"aI" = (/turf/simulated/shuttle/hull/floor{tag = "icon-floor7"; icon_state = "floor7"},/area/space)
+"aJ" = (/obj/machinery/flasher{id = "syndieflash"; pixel_x = 0; pixel_y = 28},/obj/machinery/light/small{dir = 1},/turf/simulated/shuttle/hull/floor{tag = "icon-floor7"; icon_state = "floor7"},/area/space)
+"aK" = (/obj/item/device/radio/electropack,/turf/simulated/shuttle/hull/floor{tag = "icon-floor7"; icon_state = "floor7"},/area/space)
+"aL" = (/obj/item/device/radio/intercom/syndicate{pixel_y = -22},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aM" = (/obj/structure/closet/walllocker/emerglocker{pixel_x = 28},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aN" = (/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 4; frequency = 1331; id_tag = "merc_shuttle_pump"},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aO" = (/obj/machinery/atmospherics/pipe/manifold/visible{dir = 1},/obj/machinery/airlock_sensor{frequency = 1331; id_tag = "merc_shuttle_sensor"; pixel_x = 8; pixel_y = 25},/obj/machinery/light/small{dir = 1},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aP" = (/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 8; frequency = 1331; id_tag = "merc_shuttle_pump"},/obj/machinery/embedded_controller/radio/airlock/docking_port{frequency = 1331; id_tag = "merc_shuttle"; pixel_x = -8; pixel_y = 25; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aQ" = (/obj/machinery/door/blast/regular{density = 0; icon_state = "pdoor0"; id = "smindicate"; name = "Outer Airlock"; opacity = 0},/obj/machinery/door/airlock/external/shuttle,/turf/simulated/shuttle/plating,/area/space)
+"aR" = (/obj/item/weapon/cigbutt,/turf/simulated/shuttle/hull/floor{tag = "icon-floor7"; icon_state = "floor7"},/area/space)
+"aS" = (/turf/simulated/shuttle/wall{icon_state = "wall3"},/area/space)
+"aT" = (/obj/machinery/door/window{dir = 2; name = "Seating"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aU" = (/obj/structure/table/standard,/obj/machinery/computer/pod/old/syndicate{id = "smindicate"},/obj/machinery/door/window{dir = 4; name = "Blast Door Control"; req_access = list(150)},/turf/simulated/shuttle/floor{icon_state = "floor6"},/area/space)
+"aV" = (/obj/machinery/atmospherics/pipe/manifold4w/visible,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aW" = (/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 8; frequency = 1331; id_tag = "merc_shuttle_pump"},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aX" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aY" = (/obj/machinery/door/window{dir = 1; name = "Cell"; req_access = list(150)},/obj/item/device/radio/intercom/syndicate{dir = 4; pixel_x = 22},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"aZ" = (/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ba" = (/obj/machinery/vending/assist{contraband = null; name = "AntagCorpVend"; products = list(/obj/item/device/assembly/prox_sensor = 5, /obj/item/device/assembly/signaler = 4, /obj/item/device/assembly/infra = 4, /obj/item/device/assembly/prox_sensor = 4, /obj/item/weapon/handcuffs = 8, /obj/item/device/flash = 4, /obj/item/weapon/cartridge/signal = 4, /obj/item/clothing/glasses/sunglasses = 4)},/obj/machinery/light{dir = 4},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bb" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bc" = (/obj/machinery/door/airlock/external{frequency = 1331; id_tag = "merc_shuttle_inner"; name = "Ship External Access"; req_access = list(0)},/obj/machinery/atmospherics/pipe/simple/visible,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bd" = (/obj/machinery/vending/cigarette{name = "hacked cigarette machine"; prices = list(); products = list(/obj/item/weapon/storage/fancy/cigarettes = 10, /obj/item/weapon/storage/box/matches = 10, /obj/item/weapon/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"be" = (/obj/structure/bed/chair{dir = 8},/obj/machinery/button/flasher{id = "syndieflash"; name = "Flasher"; pixel_x = 27; pixel_y = 0; tag = "permflash"},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bf" = (/obj/machinery/atmospherics/pipe/tank/air{dir = 4; start_pressure = 740.5},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bg" = (/obj/machinery/atmospherics/pipe/simple/visible{dir = 4},/obj/machinery/meter,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bh" = (/obj/machinery/access_button{command = "cycle_interior"; frequency = 1331; master_tag = "merc_shuttle"; name = "interior access button"; pixel_x = 25; pixel_y = 25; req_access = list(150)},/obj/machinery/atmospherics/pipe/simple/visible{tag = "icon-intact (NORTHWEST)"; icon_state = "intact"; dir = 9},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bi" = (/obj/machinery/suit_cycler/syndicate{locked = 0},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bj" = (/obj/item/weapon/material/kitchen/utensil/knife{pixel_x = -6},/obj/item/weapon/reagent_containers/syringe/drugs{pixel_x = 3; pixel_y = -1},/obj/item/weapon/reagent_containers/syringe/drugs{pixel_x = 3; pixel_y = 4},/obj/item/weapon/reagent_containers/syringe/drugs{pixel_x = 3; pixel_y = 9},/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/obj/structure/table/glass,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bk" = (/obj/machinery/door/window{dir = 4; name = "Brig"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bl" = (/obj/machinery/door/window{base_state = "right"; dir = 8; icon_state = "right"; name = "Preparation"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bm" = (/obj/structure/closet/syndicate/suit{name = "suit closet"},/obj/machinery/light{dir = 4},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bn" = (/obj/structure/closet{name = "custodial"},/obj/item/weapon/reagent_containers/glass/bucket,/obj/item/weapon/mop,/obj/item/weapon/reagent_containers/spray/cleaner,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bo" = (/obj/machinery/door/window{base_state = "right"; dir = 4; icon_state = "right"; name = "Brig"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bp" = (/obj/machinery/door/window{base_state = "left"; dir = 8; icon_state = "left"; name = "Preparation"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bq" = (/obj/structure/table/standard,/obj/item/weapon/storage/toolbox/syndicate{pixel_x = -1; pixel_y = 3},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"br" = (/obj/machinery/sleeper,/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bs" = (/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bt" = (/obj/machinery/portable_atmospherics/canister/oxygen,/obj/structure/sign/nosmoking_1{pixel_y = 32},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bu" = (/obj/structure/table/standard,/obj/item/roller{pixel_y = 8},/obj/item/weapon/reagent_containers/blood/OMinus,/obj/item/weapon/reagent_containers/blood/OMinus,/obj/item/weapon/reagent_containers/syringe/antiviral,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bv" = (/obj/structure/table/standard,/obj/structure/closet/secure_closet/medical_wall{pixel_y = 32; req_access = list(150)},/obj/item/bodybag,/obj/item/weapon/reagent_containers/glass/bottle/antitoxin{pixel_x = -4; pixel_y = 8},/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline{pixel_x = 4; pixel_y = 7},/obj/item/weapon/reagent_containers/syringe,/obj/machinery/light{dir = 4},/obj/item/weapon/reagent_containers/syringe/antiviral,/obj/item/weapon/reagent_containers/syringe/antiviral,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bw" = (/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/obj/item/device/radio/intercom/syndicate{dir = 8; pixel_x = -22},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bx" = (/obj/machinery/light{dir = 4},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"by" = (/obj/item/clothing/gloves/yellow,/obj/item/device/assembly/signaler{pixel_y = 2},/obj/item/clothing/glasses/night,/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/obj/structure/table/steel,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bz" = (/obj/item/clothing/gloves/yellow,/obj/item/device/assembly/signaler{pixel_y = 2},/obj/item/clothing/glasses/night,/obj/structure/table/steel,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bA" = (/obj/item/clothing/gloves/yellow,/obj/item/device/assembly/prox_sensor{pixel_x = -8; pixel_y = 4},/obj/item/clothing/glasses/night,/obj/structure/table/steel,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bB" = (/obj/item/clothing/gloves/yellow,/obj/item/device/assembly/prox_sensor{pixel_x = -8; pixel_y = 4},/obj/item/clothing/glasses/night,/obj/machinery/light{dir = 4},/obj/structure/table/steel,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bC" = (/obj/item/device/radio/intercom/syndicate{dir = 8; pixel_x = -22},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bD" = (/obj/item/weapon/screwdriver,/obj/effect/spawner/newbomb/timer/syndicate,/obj/structure/table/steel,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bE" = (/obj/machinery/bodyscanner,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bF" = (/obj/machinery/body_scanconsole,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bG" = (/obj/machinery/door/window{dir = 4; name = "Infirmary"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bH" = (/obj/machinery/door/window/westright{name = "Tool Storage"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bI" = (/obj/item/weapon/stool/padded,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bJ" = (/obj/effect/spawner/newbomb/timer/syndicate,/obj/structure/table/steel,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bK" = (/obj/machinery/door/window{base_state = "right"; dir = 4; icon_state = "right"; name = "Infirmary"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bL" = (/obj/machinery/door/window{dir = 8; name = "Tool Storage"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bM" = (/obj/item/device/aicard,/obj/effect/spawner/newbomb/timer/syndicate,/obj/structure/table/steel,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bN" = (/obj/machinery/button/remote/blast_door{id = "syndieshutters_infirmary"; name = "remote shutter control"; pixel_x = -25},/obj/structure/mopbucket,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bO" = (/obj/machinery/light{dir = 4},/obj/item/device/radio/intercom/syndicate{dir = 4; pixel_x = 22},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bP" = (/obj/machinery/door/window{dir = 1; name = "Secure Storage"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bQ" = (/obj/structure/table/rack,/obj/item/weapon/storage/belt/utility/full,/obj/item/device/multitool,/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bR" = (/obj/structure/table/rack,/obj/item/weapon/storage/belt/utility/full,/obj/item/device/multitool,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bS" = (/obj/machinery/button/remote/blast_door{id = "syndieshutters_workshop"; name = "remote shutter control"; pixel_x = 25},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bT" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/table/standard,/obj/item/weapon/bonesetter,/obj/item/weapon/bonegel,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bU" = (/obj/machinery/door/window{dir = 1; name = "Surgery"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bV" = (/obj/structure/window/reinforced{dir = 1},/obj/machinery/iv_drip,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bW" = (/obj/structure/table/standard,/obj/structure/window/reinforced{dir = 8},/obj/item/weapon/storage/firstaid/toxin{pixel_x = 3; pixel_y = 3},/obj/item/weapon/storage/firstaid/adv{pixel_x = 1},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bX" = (/obj/structure/table/standard,/obj/item/weapon/storage/firstaid/o2{pixel_x = 3; pixel_y = 3},/obj/item/weapon/storage/firstaid/fire{pixel_x = 1},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"bY" = (/obj/item/weapon/weldingtool,/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"bZ" = (/obj/structure/sign/securearea{name = "\improper CAUTION"; pixel_x = 32},/obj/machinery/light{dir = 4},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ca" = (/obj/machinery/telecomms/allinone{intercept = 1},/obj/machinery/door/window/northright{name = "Telecoms Mainframe"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"cb" = (/obj/machinery/door/window{dir = 1; name = "Cell"; req_access = list(150)},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"cc" = (/obj/structure/table/standard,/obj/item/weapon/scalpel,/obj/item/weapon/circular_saw{pixel_y = 8},/obj/machinery/light/small{dir = 8},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"cd" = (/obj/structure/sink{dir = 4; icon_state = "sink"; pixel_x = 11; pixel_y = 0},/obj/item/weapon/reagent_containers/glass/bottle/stoxin,/obj/item/weapon/reagent_containers/glass/bottle/stoxin,/obj/item/weapon/reagent_containers/syringe,/obj/item/clothing/mask/surgical,/obj/item/clothing/gloves/latex,/obj/item/weapon/surgicaldrill,/obj/structure/closet/secure_closet/medical_wall{pixel_x = 32; pixel_y = 0; req_access = list(150)},/obj/item/weapon/reagent_containers/syringe/antiviral,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"ce" = (/obj/effect/landmark{name = "Nuclear-Bomb"},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"cf" = (/obj/item/weapon/crowbar,/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"cg" = (/obj/machinery/light/small{dir = 8},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ch" = (/obj/structure/sign/nosmoking_2{pixel_x = 32},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"ci" = (/obj/structure/table/standard,/obj/item/weapon/cautery,/obj/item/weapon/hemostat,/obj/item/weapon/FixOVein,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"cj" = (/obj/machinery/optable,/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"ck" = (/obj/structure/table/standard,/obj/item/stack/medical/advanced/bruise_pack,/obj/item/weapon/retractor,/obj/item/device/radio/intercom/syndicate{dir = 4; pixel_x = 22},/turf/simulated/shuttle/hull/floor{tag = "icon-floor3"; icon_state = "floor3"},/area/space)
+"cl" = (/obj/structure/shuttle/engine/heater,/obj/structure/window/reinforced{dir = 1},/turf/simulated/shuttle/hull/floor{icon_state = "floor"; tag = "icon-floor6"},/area/space)
+"cm" = (/obj/machinery/power/apc/super/critical{dir = 8; is_critical = 1; name = "Shuttle Power Controller"; pixel_x = -24; pixel_y = 0},/turf/simulated/shuttle/hull/floor{tag = "icon-floor6"; icon_state = "floor6"},/area/space)
+"cn" = (/obj/structure/shuttle/engine/propulsion{icon_state = "propulsion_l"},/turf/simulated/shuttle/hull{tag = "icon-wall3"; icon_state = "wall3"},/area/space)
+"co" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/shuttle/hull{tag = "icon-wall3"; icon_state = "wall3"},/area/space)
+"cp" = (/obj/structure/shuttle/engine/propulsion{icon_state = "propulsion_r"},/turf/simulated/shuttle/hull{tag = "icon-wall3"; icon_state = "wall3"},/area/space)
+
+(1,1,1) = {"
+aaaaaaaaaaabacacacacacadaaaaaaaaaa
+aaaaaaaaabaeafagahagaiaeadaaaaaaaa
+aaaaaaaaaeajakakalakakagaeaaaaaaaa
+aaaaaaaaaeamakakakakanaoaeaaaaaaaa
+aaaaaaaaaeapakakaqakakaraeaaaaaaaa
+aaaaaaaaasaeataeaeaeaeaeauaaaaaaaa
+aaaaaaaaaaaeavawaxayazaeaaaaaaaaaa
+aaaaaaaaaaaeaAaBanakaCaeaaaaaaaaaa
+aaaaaaaaabaeaDawanakaEaeadaaaaaaaa
+abaeaeaeaeaeaFawanakaGaeaeaeaeaead
+aeaHaIaJaKaeakaLakaMaeaeaNaOaPakaQ
+acaIaIaRaIaeaeaSaTaeaeaUaNaVaWakaQ
+asaeaeaXaYaeaeaZakbaaeaebbbcbbaeau
+aaaebdakakbeaeakakakaebfbgbhbiaeaa
+aaaebjakakakbkakakakblakakakbmaeaa
+aaaebnakakakboakakakbpakakakbqaeaa
+abaeaeaeaeaeaeakakakaeaeaeaeaeaead
+aSbrbsbtbubvaebwakbxaebybzbzbAbBae
+acbsbsbsbsbsaeakakakaebCakakakbDac
+acbEbFbsbsbsbGakakakbHakakakbIbJac
+acbsbsbsbsbsbKakakakbLakakakakbMac
+aebNbsbsbsbOaebbbPbbaebQbRakakbSae
+aebTbUbVbWbXaebYakbZaecaaeaecbaeae
+aeccbscdaeaeaeakcecfaeaeaecgakchae
+aecicjckaeaaaeclclclaeaaaecmakakae
+aeclclclaeaaascncocpauaaaeclclclae
+ascncocpauaaaaaaaaaaaaaaascncocpau
+"}

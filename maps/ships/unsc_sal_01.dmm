@@ -1,0 +1,86 @@
+"aa" = (/turf/space,/area/space)
+"ab" = (/turf/space,/turf/simulated/shuttle/wall{dir = 8; icon_state = "diagonalWall3"},/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ac" = (/obj/effect/wingrille_spawn/reinforced,/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ad" = (/turf/space,/turf/simulated/shuttle/wall{dir = 1; icon_state = "diagonalWall3"},/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ae" = (/obj/machinery/computer,/obj/effect/floor_decal/corner/brown/full{dir = 8},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"af" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHEAST)"; icon_state = "corner_white"; dir = 5},/obj/item/weapon/paper_bin,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ag" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHEAST)"; icon_state = "corner_white"; dir = 5},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ah" = (/obj/machinery/computer,/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white_full (NORTH)"; icon_state = "corner_white_full"; dir = 1},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ai" = (/obj/structure/bed/chair{dir = 1},/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHWEST)"; icon_state = "corner_white"; dir = 9},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aj" = (/obj/structure/table/reinforced,/obj/item/weapon/folder,/obj/item/weapon/pen,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ak" = (/obj/structure/table/reinforced,/obj/item/weapon/reagent_containers/food/drinks/coffee,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"al" = (/obj/structure/bed/chair{dir = 1},/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (SOUTHEAST)"; icon_state = "corner_white"; dir = 6},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"am" = (/turf/simulated/wall,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"an" = (/obj/effect/floor_decal/corner/brown/full,/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ao" = (/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ap" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white_full (EAST)"; icon_state = "corner_white_full"; dir = 4},/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aq" = (/obj/structure/turret/gun_turret,/turf/simulated/wall,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ar" = (/obj/machinery/door/airlock/multi_tile/glass,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"as" = (/obj/effect/floor_decal/corner/brown/full{dir = 8},/obj/structure/bed/chair,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"at" = (/obj/structure/bed/chair,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"au" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHEAST)"; icon_state = "corner_white"; dir = 5},/obj/structure/bed/chair,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"av" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white_full (NORTH)"; icon_state = "corner_white_full"; dir = 1},/obj/structure/bed/chair,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aw" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white_full (WEST)"; icon_state = "corner_white_full"; dir = 8},/obj/machinery/portable_atmospherics/canister/air,/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ax" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHEAST)"; icon_state = "corner_white"; dir = 5},/obj/structure/sign/nosmoking_2{pixel_y = 32},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ay" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHEAST)"; icon_state = "corner_white"; dir = 5},/obj/machinery/alarm{pixel_y = 25},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"az" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTH)"; icon_state = "corner_white"; dir = 1},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aA" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (EAST)"; icon_state = "corner_white"; dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aB" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHEAST)"; icon_state = "corner_white"; dir = 5},/obj/machinery/power/apc{dir = 1; pixel_y = 25},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aC" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHEAST)"; icon_state = "corner_white"; dir = 5},/obj/machinery/recharger/wallcharger{pixel_y = 25},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aD" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white_full (NORTH)"; icon_state = "corner_white_full"; dir = 1},/obj/structure/table/rack,/obj/item/weapon/pickaxe,/obj/structure/sign/nosmoking_2{pixel_y = 32},/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aE" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHWEST)"; icon_state = "corner_white"; dir = 9},/obj/machinery/portable_atmospherics/canister/empty/oxygen,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aF" = (/obj/structure/table/reinforced,/obj/item/weapon/pickaxe,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aG" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aH" = (/obj/structure/table/reinforced,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aI" = (/obj/structure/bed/chair{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aJ" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/toolbox/mechanical,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aK" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (SOUTHEAST)"; icon_state = "corner_white"; dir = 6},/obj/structure/table/rack,/obj/item/weapon/pickaxe/plasmacutter,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aL" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHWEST)"; icon_state = "corner_white"; dir = 9},/obj/structure/dispenser/oxygen,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aM" = (/obj/structure/table/reinforced,/obj/random/tool,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aN" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (SOUTHEAST)"; icon_state = "corner_white"; dir = 6},/obj/structure/table/rack,/obj/item/weapon/mining_scanner,/obj/item/weapon/mining_scanner,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aO" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (NORTHWEST)"; icon_state = "corner_white"; dir = 9},/obj/structure/table/rack,/obj/item/clothing/mask/breath,/obj/item/clothing/suit/space/void/salvage,/obj/item/clothing/head/helmet/space/void/salvage,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aP" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/firstaid,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aQ" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (SOUTHEAST)"; icon_state = "corner_white"; dir = 6},/obj/structure/table/rack,/obj/item/weapon/storage/bag/ore,/obj/item/weapon/storage/bag/ore,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aR" = (/obj/machinery/atmospherics/pipe/simple/hidden{dir = 6},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aS" = (/obj/machinery/access_button{pixel_y = -32},/obj/machinery/atmospherics/pipe/simple/hidden{dir = 4},/obj/machinery/light,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aT" = (/obj/machinery/atmospherics/pipe/simple/hidden{dir = 10; icon_state = "intact"},/obj/effect/floor_decal/industrial/hatch/yellow,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aU" = (/obj/effect/floor_decal/industrial/hatch/yellow,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aV" = (/obj/machinery/light,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aW" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (SOUTHEAST)"; icon_state = "corner_white"; dir = 6},/obj/structure/table/rack,/obj/item/weapon/storage/toolbox/mechanical,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aX" = (/obj/effect/floor_decal/corner/brown/full{dir = 10; icon_state = "corner_white_full"; tag = "icon-corner_white_full (NORTH)"},/obj/structure/table/rack,/obj/item/clothing/mask/breath,/obj/item/clothing/suit/space/void/salvage,/obj/item/clothing/head/helmet/space/void/salvage,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aY" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (SOUTHWEST)"; icon_state = "corner_white"; dir = 10},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"aZ" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (SOUTHWEST)"; icon_state = "corner_white"; dir = 10},/obj/machinery/space_heater,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"ba" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white_full (EAST)"; icon_state = "corner_white_full"; dir = 4},/obj/machinery/atmospherics/portables_connector{dir = 1},/obj/machinery/portable_atmospherics/canister/air/airlock,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bb" = (/obj/machinery/door/airlock/external,/obj/machinery/atmospherics/pipe/simple/hidden,/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bc" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bd" = (/obj/effect/floor_decal/corner/brown/full,/obj/structure/closet/crate,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"be" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white (SOUTHWEST)"; icon_state = "corner_white"; dir = 10},/obj/structure/closet/crate,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bf" = (/obj/effect/floor_decal/corner/brown/full{tag = "icon-corner_white_full (EAST)"; icon_state = "corner_white_full"; dir = 4},/obj/structure/closet/crate,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bg" = (/obj/structure/shuttle/engine/heater,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bh" = (/obj/effect/floor_decal/industrial/warning{icon_state = "warning"; dir = 1},/obj/machinery/atmospherics/pipe/manifold/hidden{dir = 8; icon_state = "map"; tag = "icon-manifold-f (WEST)"},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bi" = (/obj/effect/floor_decal/industrial/warning{icon_state = "warning"; dir = 1},/obj/machinery/airlock_sensor{pixel_x = 25},/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 8; frequency = 1331; id_tag = "vox_west_vent"},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bj" = (/turf/space,/turf/simulated/shuttle/wall{icon_state = "diagonalWall3"},/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bk" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bl" = (/obj/structure/sign/vacuum,/turf/simulated/wall,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bm" = (/obj/effect/floor_decal/industrial/warning,/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 1; frequency = 1379; id_tag = "virology_pump"},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bn" = (/obj/effect/floor_decal/industrial/warning,/obj/machinery/embedded_controller/radio/airlock/docking_port{pixel_x = 25},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bo" = (/turf/space,/turf/simulated/shuttle/wall{dir = 4; icon_state = "diagonalWall3"},/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+"bp" = (/obj/machinery/door/airlock/external,/obj/machinery/access_button{pixel_x = 25; pixel_y = 10},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Salvaging Shuttle"})
+
+(1,1,1) = {"
+aaaaaaaaabacacacacadaaaaaaaa
+aaaaaaaaacaeafagahacaaaaaaaa
+aaaaaaaaacaiajakalacaaaaaaaa
+aaaaabamamanaoaoapamamadaaaa
+abaqamamamamaraoamamamamaqad
+amamamamasataoaoauavamamamam
+acawaxayazaoaoaoaoaAaBaCaDac
+acaEaoaFaGaoaHaHaoaIaJaoaKac
+acaLaoaMaGaoaMaHaoaIaMaoaNac
+acaOaoaJaGaoaoaoaoaIaPaoaQac
+acaOaoaoaRaSaTaUaVaoaoaoaWac
+amaXaYaZbaambbbcambdbebebfam
+ambgbgbgbgambhbiambgbgbgbgam
+bjbkbkbkbkblbmbnambkbkbkbkbo
+aaaaaaaaaabjbcbpboaaaaaaaaaa
+"}

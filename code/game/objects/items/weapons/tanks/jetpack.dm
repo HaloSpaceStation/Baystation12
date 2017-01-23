@@ -4,6 +4,7 @@
 	name = "jetpack (empty)"
 	desc = "A tank of compressed gas for use as propulsion in zero-gravity areas. Use with caution."
 	icon_state = "jetpack"
+	gauge_icon = null
 	w_class = 4.0
 	item_state = "jetpack"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
@@ -11,19 +12,21 @@
 	var/on = 0.0
 	var/stabilization_on = 0
 	var/volume_rate = 500              //Needed for borg jetpack transfer
-	icon_action_button = "action_jetpack"
+	action_button_name = "Toggle Jetpack"
 
 /obj/item/weapon/tank/jetpack/New()
 	..()
 	src.ion_trail = new /datum/effect/effect/system/ion_trail_follow()
 	src.ion_trail.set_up(src)
 
-/obj/item/weapon/tank/jetpack/examine(mob/user)
-	if(!..(user, 0))
-		return
+/obj/item/weapon/tank/jetpack/Destroy()
+	qdel(ion_trail)
+	..()
 
-	if(air_contents.gas["oxygen"] < 10)
-		user << text("\red <B>The meter on the [src.name] indicates you are almost out of air!</B>")
+/obj/item/weapon/tank/jetpack/examine(mob/user)
+	. = ..()
+	if(air_contents.total_moles < 5)
+		user << "<span class='danger'>The meter on \the [src] indicates you are almost out of gas!</span>"
 		playsound(user, 'sound/effects/alert.ogg', 50, 1)
 
 /obj/item/weapon/tank/jetpack/verb/toggle_rockets()
@@ -47,6 +50,7 @@
 	if (ismob(usr))
 		var/mob/M = usr
 		M.update_inv_back()
+		M.update_action_buttons()
 
 	usr << "You toggle the thrusters [on? "on":"off"]."
 
@@ -101,19 +105,7 @@
 
 /obj/item/weapon/tank/jetpack/carbondioxide/New()
 	..()
-	src.ion_trail = new /datum/effect/effect/system/ion_trail_follow()
-	src.ion_trail.set_up(src)
-	//src.air_contents.carbon_dioxide = (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	air_contents.adjust_gas("carbon_dioxide", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
-
-/obj/item/weapon/tank/jetpack/carbondioxide/examine(mob/user)
-	if(!..(0))
-		return
-
-	if(air_contents.gas["carbon_dioxide"] < 10)
-		user << text("\red <B>The meter on the [src.name] indicates you are almost out of carbon dioxide!</B>")
-		playsound(user, 'sound/effects/alert.ogg', 50, 1)
 	return
 
 /obj/item/weapon/tank/jetpack/rig

@@ -74,9 +74,11 @@ h1.alert, h2.alert		{color: #000000;}
 .warning				{color: #ff0000; font-style: italic;}
 .rose					{color: #ff5050;}
 .info					{color: #0000CC;}
+.infobold				{color: #0000CC; font-weight: bold;}
 .notice					{color: #000099;}
 .alium					{color: #00ff00;}
 .cult					{color: #800080; font-weight: bold; font-style: italic;}
+.khaki					{color: #605c38;}
 
 .reflex_shoot			{color: #000099; font-style: italic;}
 

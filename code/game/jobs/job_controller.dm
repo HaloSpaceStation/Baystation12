@@ -17,7 +17,7 @@ var/global/datum/controller/occupations/job_master
 		occupations = list()
 		var/list/all_jobs = typesof(/datum/job)
 		if(!all_jobs.len)
-			world << "\red \b Error setting up jobs, no job datums found"
+			world << "<span class='warning'>Error setting up jobs, no job datums found!</span>"
 			return 0
 		for(var/J in all_jobs)
 			var/datum/job/job = new J()
@@ -59,6 +59,7 @@ var/global/datum/controller/occupations/job_master
 				Debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JPL:[position_limit]")
 				player.mind.assigned_role = rank
 				player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
+				player.mind.faction_text = job.faction
 				unassigned -= player
 				job.current_positions++
 				return 1
@@ -245,7 +246,7 @@ var/global/datum/controller/occupations/job_master
 		HandleFeedbackGathering()
 
 		//People who wants to be assistants, sure, go on.
-		Debug("DO, Running Assistant Check 1")
+		/*Debug("DO, Running Assistant Check 1")
 		var/datum/job/assist = new DEFAULT_JOB_TYPE ()
 		var/list/assistant_candidates = FindOccupationCandidates(assist, 3)
 		Debug("AC1, Candidates: [assistant_candidates.len]")
@@ -253,7 +254,7 @@ var/global/datum/controller/occupations/job_master
 			Debug("AC1 pass, Player: [player]")
 			AssignRole(player, "Assistant")
 			assistant_candidates -= player
-		Debug("DO, AC1 end")
+		Debug("DO, AC1 end")*/
 
 		//Select one head
 		Debug("DO, Running Head Check")
@@ -375,7 +376,7 @@ var/global/datum/controller/occupations/job_master
 							permitted = 0
 
 						if(!permitted)
-							H << "\red Your current job or whitelist status does not permit you to spawn with [thing]!"
+							H << "<span class='warning'>Your current job or whitelist status does not permit you to spawn with [thing]!</span>"
 							continue
 
 						if(G.slot && !(G.slot in custom_equip_slots))
@@ -384,7 +385,7 @@ var/global/datum/controller/occupations/job_master
 							if(G.slot == slot_wear_mask || G.slot == slot_wear_suit || G.slot == slot_head)
 								custom_equip_leftovers += thing
 							else if(H.equip_to_slot_or_del(new G.path(H), G.slot))
-								H << "\blue Equipping you with [thing]!"
+								H << "<span class='notice'>Equipping you with [thing]!</span>"
 								custom_equip_slots.Add(G.slot)
 							else
 								custom_equip_leftovers.Add(thing)
@@ -392,6 +393,7 @@ var/global/datum/controller/occupations/job_master
 							spawn_in_storage += thing
 			//Equip job items.
 			job.equip(H)
+			job.setup_account(H)
 			job.equip_backpack(H)
 			job.equip_survival(H)
 			job.apply_fingerprints(H)
@@ -403,7 +405,7 @@ var/global/datum/controller/occupations/job_master
 					spawn_in_storage += thing
 				else
 					if(H.equip_to_slot_or_del(new G.path(H), G.slot))
-						H << "\blue Equipping you with [thing]!"
+						H << "<span class='notice'>Equipping you with [thing]!</span>"
 						custom_equip_slots.Add(G.slot)
 					else
 						spawn_in_storage += thing
@@ -423,25 +425,13 @@ var/global/datum/controller/occupations/job_master
 				S = locate("start*[rank]") // use old stype
 			if(istype(S, /obj/effect/landmark/start) && istype(S.loc, /turf))
 				H.loc = S.loc
+			else
+				LateSpawn(H, rank)
+
 			// Moving wheelchair if they have one
 			if(H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
 				H.buckled.loc = H.loc
 				H.buckled.set_dir(H.dir)
-
-		//give them an account in the station database
-		var/datum/money_account/M = create_account(H.real_name, rand(50,500)*10, null)
-		if(H.mind)
-			var/remembered_info = ""
-			remembered_info += "<b>Your account number is:</b> #[M.account_number]<br>"
-			remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
-			remembered_info += "<b>Your account funds are:</b> $[M.money]<br>"
-
-			if(M.transaction_log.len)
-				var/datum/transaction/T = M.transaction_log[1]
-				remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
-			H.mind.store_memory(remembered_info)
-
-			H.mind.initial_account = M
 
 		// If they're head, give them the account info for their department
 		if(H.mind && job.head_position)
@@ -454,9 +444,6 @@ var/global/datum/controller/occupations/job_master
 				remembered_info += "<b>Your department's account funds are:</b> $[department_account.money]<br>"
 
 			H.mind.store_memory(remembered_info)
-
-		spawn(0)
-			H << "\blue<b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b>"
 
 		var/alt_title = null
 		if(H.mind)
@@ -481,11 +468,11 @@ var/global/datum/controller/occupations/job_master
 
 				if(!isnull(B))
 					for(var/thing in spawn_in_storage)
-						H << "\blue Placing [thing] in your [B]!"
+						H << "<span class='notice'>Placing [thing] in your [B]!</span>"
 						var/datum/gear/G = gear_datums[thing]
 						new G.path(B)
 				else
-					H << "\red Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug."
+					H << "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug.</span>"
 
 		if(istype(H)) //give humans wheelchairs, if they need them.
 			var/obj/item/organ/external/l_foot = H.get_organ("l_foot")
@@ -543,10 +530,9 @@ var/global/datum/controller/occupations/job_master
 		else
 			C = new /obj/item/weapon/card/id(H)
 		if(C)
-			C.registered_name = H.real_name
 			C.rank = rank
 			C.assignment = title ? title : rank
-			C.name = "[C.registered_name]'s ID Card ([C.assignment])"
+			H.set_id_info(C)
 
 			//put the player's account number onto the ID
 			if(H.mind && H.mind.initial_account)
@@ -629,3 +615,23 @@ var/global/datum/controller/occupations/job_master
 
 			tmp_str += "HIGH=[level1]|MEDIUM=[level2]|LOW=[level3]|NEVER=[level4]|BANNED=[level5]|YOUNG=[level6]|-"
 			feedback_add_details("job_preferences",tmp_str)
+
+/datum/controller/occupations/proc/LateSpawn(var/mob/living/carbon/human/H, var/rank)
+	//spawn at one of the latespawn locations
+
+	var/datum/spawnpoint/spawnpos
+
+	if(H.client.prefs.spawnpoint)
+		spawnpos = spawntypes[H.client.prefs.spawnpoint]
+
+	if(spawnpos && istype(spawnpos))
+		if(spawnpos.check_job_spawning(rank))
+			H.loc = pick(spawnpos.turfs)
+			. = spawnpos.msg
+		else
+			H << "Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead."
+			H.loc = pick(latejoin)
+			. = "has arrived on the station"
+	else
+		H.loc = pick(latejoin)
+		. = "has arrived on the station"

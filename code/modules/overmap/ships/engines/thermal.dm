@@ -7,6 +7,12 @@
 	var/obj/machinery/atmospherics/unary/engine/E = engine
 	return "Fuel pressure: [E.air_contents.return_pressure()]"
 
+/datum/ship_engine/thermal/verb/check_thrust()
+	set category = "Engine debugging"
+	set src in view(8)
+
+	usr << "Current thrust: [get_thrust()]"
+
 /datum/ship_engine/thermal/get_thrust()
 	..()
 	var/obj/machinery/atmospherics/unary/engine/E = engine
@@ -57,7 +63,7 @@
 	..()
 	controller = new(src)
 
-/obj/machinery/atmospherics/unary/engine/Destroy()
+/obj/machinery/atmospherics/unary/engine/Del()
 	..()
 	controller.die()
 

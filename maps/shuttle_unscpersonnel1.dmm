@@ -1,0 +1,34 @@
+"a" = (/turf/unsimulated/blocker,/area/space)
+"b" = (/turf/simulated/shuttle/hull{dir = 8; icon_state = "diagonalWall"; tag = "icon-diagonalWall"},/area/space)
+"c" = (/turf/simulated/shuttle/hull/window,/area/space)
+"d" = (/turf/simulated/shuttle/hull{dir = 1; icon_state = "diagonalWall"; tag = "icon-diagonalWall"},/area/space)
+"e" = (/turf/simulated/shuttle/hull,/area/space)
+"f" = (/obj/machinery/light{dir = 8},/turf/simulated/shuttle/hull/floor,/area/space)
+"g" = (/obj/machinery/computer/shuttle_helm,/turf/simulated/shuttle/hull/floor,/area/space)
+"h" = (/turf/simulated/shuttle/hull/floor,/area/space)
+"i" = (/obj/structure/bed/chair{dir = 1},/turf/simulated/shuttle/hull/floor,/area/space)
+"j" = (/obj/machinery/door/airlock/glass,/turf/simulated/shuttle/hull/floor,/area/space)
+"k" = (/obj/machinery/light_switch{pixel_x = 12; pixel_y = 25},/obj/machinery/power/apc/super/critical{dir = 1; is_critical = 1; name = "Shuttle Power Controller"; pixel_y = 24},/turf/simulated/shuttle/hull/floor,/area/space)
+"l" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/obj/structure/closet/wardrobe/grey,/turf/simulated/shuttle/hull/floor,/area/space)
+"m" = (/obj/machinery/door/airlock/external/shuttle{dir = 8},/turf/simulated/shuttle/hull/floor,/area/space)
+"n" = (/obj/structure/closet/wardrobe/mixed,/turf/simulated/shuttle/hull/floor,/area/space)
+"o" = (/obj/structure/closet/wardrobe/black,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/shuttle/hull/floor,/area/space)
+"p" = (/obj/structure/shuttle/engine/heater,/obj/structure/window/reinforced{dir = 1},/turf/simulated/shuttle/hull/floor,/area/space)
+"q" = (/turf/simulated/shuttle/hull{tag = "icon-diagonalWall"; icon_state = "diagonalWall"},/area/space)
+"r" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/shuttle/hull,/area/space)
+"s" = (/turf/simulated/shuttle/hull{dir = 4; icon_state = "diagonalWall"; tag = "icon-diagonalWall"},/area/space)
+
+(1,1,1) = {"
+abccda
+aefgea
+aehiea
+bejeed
+chhkhc
+efiile
+mhhhne
+efiioe
+ehhhhm
+chiihc
+eppppe
+qrrrrs
+"}

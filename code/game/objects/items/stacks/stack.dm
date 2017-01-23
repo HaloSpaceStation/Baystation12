@@ -11,7 +11,7 @@
 
 /obj/item/stack
 	gender = PLURAL
-	origin_tech = "materials=1"
+	origin_tech = list(TECH_MATERIAL = 1)
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
@@ -107,21 +107,21 @@
 
 	if (!can_use(required))
 		if (produced>1)
-			user << "\red You haven't got enough [src] to build \the [produced] [recipe.title]\s!"
+			user << "<span class='warning'>You haven't got enough [src] to build \the [produced] [recipe.title]\s!</span>"
 		else
-			user << "\red You haven't got enough [src] to build \the [recipe.title]!"
+			user << "<span class='warning'>You haven't got enough [src] to build \the [recipe.title]!</span>"
 		return
 
 	if (recipe.one_per_turf && (locate(recipe.result_type) in user.loc))
-		user << "\red There is another [recipe.title] here!"
+		user << "<span class='warning'>There is another [recipe.title] here!</span>"
 		return
 
 	if (recipe.on_floor && !isfloor(user.loc))
-		user << "\red \The [recipe.title] must be constructed on the floor!"
+		user << "<span class='warning'>\The [recipe.title] must be constructed on the floor!</span>"
 		return
 
 	if (recipe.time)
-		user << "\blue Building [recipe.title] ..."
+		user << "<span class='notice'>Building [recipe.title] ...</span>"
 		if (!do_after(user, recipe.time))
 			return
 
@@ -137,6 +137,7 @@
 		if (istype(O, /obj/item/stack))
 			var/obj/item/stack/S = O
 			S.amount = produced
+			S.add_to_stacks(user)
 
 		if (istype(O, /obj/item/weapon/storage)) //BubbleWrap - so newly formed boxes are empty
 			for (var/obj/item/I in O)
@@ -191,7 +192,7 @@
 	else
 		if(get_amount() < used)
 			return 0
-		for(var/i = 1 to uses_charge)
+		for(var/i = 1 to charge_costs.len)
 			var/datum/matter_synth/S = synths[i]
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
 		return 1
@@ -264,8 +265,8 @@
 			return 0
 		var/datum/matter_synth/S = synths[1]
 		. = round(S.get_charge() / charge_costs[1])
-		if(uses_charge > 1)
-			for(var/i = 2 to uses_charge)
+		if(charge_costs.len > 1)
+			for(var/i = 2 to charge_costs.len)
 				S = synths[i]
 				. = min(., round(S.get_charge() / charge_costs[i]))
 		return
@@ -284,13 +285,13 @@
 		return
 	return max_amount
 
-/obj/item/stack/proc/add_to_stacks(mob/usr as mob)
-	for (var/obj/item/stack/item in usr.loc)
+/obj/item/stack/proc/add_to_stacks(mob/user as mob)
+	for (var/obj/item/stack/item in user.loc)
 		if (item==src)
 			continue
 		var/transfer = src.transfer_to(item)
 		if (transfer)
-			usr << "You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."
+			user << "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>"
 		if(!amount)
 			break
 

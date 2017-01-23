@@ -16,7 +16,8 @@
 	create_objectives(target)
 	update_icons_added(target)
 	greet(target)
-	announce_antagonist_spawn()
+	if(!gag_announcement)
+		announce_antagonist_spawn()
 
 /datum/antagonist/proc/create_default(var/mob/source)
 	var/mob/living/M
@@ -34,10 +35,9 @@
 
 	var/obj/item/weapon/card/id/W = new id_type(player)
 	if(!W) return
-	W.name = "[player.real_name]'s ID Card"
 	W.access |= default_access
 	W.assignment = "[assignment]"
-	W.registered_name = player.real_name
+	player.set_id_info(W)
 	if(equip) player.equip_to_slot_or_del(W, slot_wear_id)
 	return W
 

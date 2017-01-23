@@ -1,0 +1,88 @@
+"aa" = (/turf/space,/area/space)
+"ab" = (/turf/space,/turf/simulated/shuttle/wall{dir = 8; icon_state = "diagonalWall3"},/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ac" = (/obj/effect/wingrille_spawn/reinforced,/obj/machinery/door/blast/regular/open{dir = 4},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ad" = (/turf/space,/turf/simulated/shuttle/wall{dir = 1; icon_state = "diagonalWall3"},/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ae" = (/obj/effect/wingrille_spawn/reinforced,/obj/machinery/door/blast/regular/open,/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"af" = (/obj/machinery/computer,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ag" = (/obj/structure/table/reinforced,/obj/item/weapon/paper_bin,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ah" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ai" = (/obj/structure/bed/chair{dir = 1},/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aj" = (/obj/structure/table/reinforced,/obj/item/weapon/folder,/obj/item/weapon/pen,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ak" = (/obj/structure/table/reinforced,/obj/item/weapon/reagent_containers/food/drinks/coffee,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"al" = (/turf/simulated/wall,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"am" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/obj/machinery/vending/wallmed2{pixel_x = -30},/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"an" = (/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ao" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/obj/machinery/alarm{dir = 8; icon_state = "alarm0"; pixel_x = 24},/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/obj/machinery/button/remote/blast_door{pixel_y = -25},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ap" = (/obj/machinery/door/airlock/multi_tile/glass,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aq" = (/obj/machinery/vending/medical,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/machinery/alarm{dir = 4; icon_state = "alarm0"; pixel_x = -22; pixel_y = 0},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ar" = (/obj/machinery/light{dir = 1},/obj/machinery/vending/medical,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"as" = (/obj/structure/table/rack,/obj/item/clothing/suit/space/void/medical,/obj/item/clothing/mask/breath,/obj/item/clothing/head/helmet/space/void/medical,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/structure/sign/nosmoking_1{pixel_y = 30},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"at" = (/obj/structure/table/rack,/obj/item/clothing/suit/space/void/medical,/obj/item/clothing/mask/breath,/obj/item/clothing/head/helmet/space/void/medical,/obj/machinery/power/apc{dir = 1; name = "north bump"; pixel_x = 0; pixel_y = 24},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"au" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"av" = (/obj/structure/table/standard,/obj/item/weapon/storage/firstaid/adv,/obj/item/weapon/storage/firstaid/adv,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aw" = (/obj/structure/table/standard,/obj/item/weapon/storage/firstaid/regular,/obj/item/weapon/storage/firstaid/regular,/obj/machinery/light{dir = 1},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/structure/sign/nosmoking_1{pixel_y = 30},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ax" = (/obj/structure/table/standard,/obj/item/weapon/storage/firstaid/toxin,/obj/item/weapon/storage/firstaid/toxin,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ay" = (/obj/machinery/sleeper{tag = "icon-sleeper_0 (EAST)"; icon_state = "sleeper_0"; dir = 4},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"az" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/structure/bed/chair,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aA" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/machinery/button/remote/blast_door{pixel_x = 25},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aB" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/machinery/button/remote/blast_door{pixel_x = -25},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aC" = (/obj/machinery/dna_scannernew,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aD" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/structure/table/standard,/obj/random/medical,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aE" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/structure/bed/chair{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aF" = (/obj/structure/table/standard,/obj/item/weapon/storage/box/beakers,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aG" = (/obj/structure/table/standard,/obj/random/medical,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aH" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aI" = (/obj/machinery/computer/cloning,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aJ" = (/obj/structure/table/standard,/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aK" = (/obj/structure/table/standard,/obj/item/weapon/storage/box/bodybags,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aL" = (/obj/machinery/door/airlock/multi_tile/glass{tag = "icon-door_closed"; icon_state = "door_closed"; dir = 2},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aM" = (/obj/machinery/clonepod,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aN" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/structure/bed/chair{dir = 1},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aO" = (/obj/machinery/vending/wallmed2{pixel_x = -30},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aP" = (/obj/structure/table/standard,/obj/random/medical,/obj/random/medical,/obj/random/medical,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aQ" = (/obj/machinery/atmospherics/pipe/simple/visible/cyan{tag = "icon-intact (SOUTHEAST)"; icon_state = "intact"; dir = 6},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aR" = (/obj/machinery/atmospherics/pipe/manifold/visible/cyan{tag = "icon-map (NORTH)"; icon_state = "map"; dir = 1},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aS" = (/obj/machinery/atmospherics/pipe/simple/visible/cyan{tag = "icon-intact (SOUTHWEST)"; icon_state = "intact"; dir = 10},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aT" = (/obj/machinery/atmospherics/pipe/simple/hidden{dir = 6},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aU" = (/obj/machinery/access_button{pixel_y = -32},/obj/machinery/atmospherics/pipe/simple/hidden{dir = 4},/obj/machinery/light,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aV" = (/obj/machinery/atmospherics/pipe/simple/hidden{dir = 10; icon_state = "intact"},/obj/effect/floor_decal/industrial/hatch/yellow,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aW" = (/obj/effect/floor_decal/industrial/hatch/yellow,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aX" = (/obj/structure/table/standard,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/item/weapon/reagent_containers/spray/cleaner,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aY" = (/obj/machinery/atmospherics/unary/cryo_cell{dir = 1},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"aZ" = (/obj/machinery/atmospherics/unary/freezer{tag = "icon-freezer_0 (NORTH)"; icon_state = "freezer_0"; dir = 1},/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"ba" = (/obj/machinery/atmospherics/portables_connector{dir = 1},/obj/machinery/portable_atmospherics/canister/oxygen,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/item/weapon/wrench,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bb" = (/obj/machinery/atmospherics/portables_connector{dir = 1},/obj/machinery/portable_atmospherics/canister/air/airlock,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bc" = (/obj/machinery/door/airlock/external,/obj/machinery/atmospherics/pipe/simple/hidden,/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bd" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"be" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/machinery/computer/operating,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bf" = (/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/machinery/optable,/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bg" = (/obj/structure/table/standard,/obj/item/weapon/storage/firstaid/surgery,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bh" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/obj/structure/table/standard,/obj/effect/floor_decal/corner/blue/diagonal,/obj/effect/floor_decal/corner/white/diagonal{dir = 4},/obj/machinery/alarm{dir = 8; icon_state = "alarm0"; pixel_x = 24},/turf/simulated/floor/tiled,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bi" = (/obj/structure/shuttle/engine/heater,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bj" = (/obj/effect/floor_decal/industrial/warning{icon_state = "warning"; dir = 1},/obj/machinery/atmospherics/pipe/manifold/hidden{dir = 8; icon_state = "map"; tag = "icon-manifold-f (WEST)"},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bk" = (/obj/effect/floor_decal/industrial/warning{icon_state = "warning"; dir = 1},/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 8; frequency = 1331; id_tag = "vox_west_vent"},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bl" = (/turf/space,/turf/simulated/shuttle/wall{icon_state = "diagonalWall3"},/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bm" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bn" = (/obj/structure/sign/vacuum,/turf/simulated/wall,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bo" = (/obj/effect/floor_decal/industrial/warning,/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 1; frequency = 1379; id_tag = "virology_pump"},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bp" = (/obj/effect/floor_decal/industrial/warning,/obj/machinery/embedded_controller/radio/airlock/docking_port{pixel_x = 25},/obj/machinery/airlock_sensor{pixel_x = 25; pixel_y = 10},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"bq" = (/turf/space,/turf/simulated/shuttle/wall{dir = 4; icon_state = "diagonalWall3"},/area/shuttle/mining{name = "\improper Medical Shuttle"})
+"br" = (/obj/machinery/door/airlock/external,/obj/machinery/access_button{pixel_x = 25; pixel_y = 10},/turf/simulated/floor/plating,/area/shuttle/mining{name = "\improper Medical Shuttle"})
+
+(1,1,1) = {"
+aaaaaaaaabacacacacadaaaaaaaa
+aaaaaaaaaeafagahafaeaaaaaaaa
+aaaaaaaaaeaiajakaiaeaaaaaaaa
+aaaaabalalamananaoalaladaaaa
+abalalalalalapanalalalalalad
+alalaqarasatauaualavawaxalal
+aeayauauazazauaAalaBauauaCae
+aeaDauaEaFaGaHauauauauauaIae
+aeayauaEaJaKaHauaLauauauaMae
+aeaEauauaNaNauaualaOauaEaPae
+aeaQaRaSaTaUaVaWalauauauaXae
+alaYaZbabbalbcbdalbebfbgbhal
+albibibibialbjbkalbibibibial
+blbmbmbmbmbnbobpalbmbmbmbmbq
+aaaaaaaaaablbdbrbqaaaaaaaaaa
+"}

@@ -1,0 +1,50 @@
+"a" = (/turf/space,/area/space)
+"b" = (/turf/space,/turf/simulated/shuttle/wall{dir = 8; icon_state = "diagonalWall3"},/area/shuttle{name = "\improper Personnel Shuttle"})
+"c" = (/obj/effect/wingrille_spawn/reinforced,/turf/simulated/floor/plating,/area/shuttle{name = "\improper Personnel Shuttle"})
+"d" = (/turf/space,/turf/simulated/shuttle/wall{dir = 1; icon_state = "diagonalWall3"},/area/shuttle{name = "\improper Personnel Shuttle"})
+"e" = (/obj/structure/table/standard,/obj/effect/floor_decal/industrial/warning{dir = 9},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"f" = (/obj/machinery/computer,/obj/effect/floor_decal/industrial/warning{icon_state = "warning"; dir = 1},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"g" = (/obj/structure/table/standard,/obj/effect/floor_decal/industrial/warning{dir = 5},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"h" = (/turf/simulated/wall,/area/shuttle{name = "\improper Personnel Shuttle"})
+"i" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"j" = (/obj/structure/bed/chair{dir = 1},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"k" = (/obj/structure/table/standard,/obj/effect/floor_decal/industrial/warning{dir = 4},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"l" = (/obj/machinery/light/small,/obj/effect/floor_decal/industrial/warning{dir = 10},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"m" = (/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"n" = (/obj/machinery/light/small,/obj/machinery/alarm{dir = 8; icon_state = "alarm0"; pixel_x = 24},/obj/effect/floor_decal/industrial/warning{dir = 6},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"o" = (/obj/machinery/door/airlock,/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"p" = (/obj/structure/bed/chair,/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"q" = (/obj/structure/bed/chair,/obj/effect/floor_decal/industrial/warning{dir = 6},/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"r" = (/obj/structure/bed/chair,/obj/effect/floor_decal/industrial/warning{dir = 10},/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"s" = (/obj/machinery/power/apc{dir = 2; name = "south bump"; pixel_y = -24},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"t" = (/obj/structure/bed/chair{dir = 8},/obj/machinery/light{dir = 4; icon_state = "tube1"},/obj/effect/floor_decal/industrial/warning{dir = 9},/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"u" = (/obj/structure/bed/chair{dir = 4},/obj/machinery/light{icon_state = "tube1"; dir = 8},/obj/effect/floor_decal/industrial/warning{dir = 5},/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"v" = (/obj/machinery/alarm{dir = 8; icon_state = "alarm0"; pixel_x = 24},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"w" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/plating,/area/shuttle{name = "\improper Personnel Shuttle"})
+"x" = (/obj/structure/bed/chair{dir = 8},/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"y" = (/obj/structure/bed/chair{dir = 4},/obj/effect/floor_decal/industrial/warning{dir = 4},/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"z" = (/obj/structure/bed/chair{dir = 4},/obj/effect/floor_decal/industrial/warning{dir = 5},/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"A" = (/obj/structure/bed/chair{dir = 8},/obj/effect/floor_decal/industrial/warning{dir = 9},/turf/simulated/floor/holofloor/tiled,/area/shuttle{name = "\improper Personnel Shuttle"})
+"B" = (/obj/machinery/light,/turf/simulated/floor/tiled/dark,/area/shuttle{name = "\improper Personnel Shuttle"})
+"C" = (/obj/structure/shuttle/engine/heater,/turf/simulated/floor/plating,/area/shuttle{name = "\improper Personnel Shuttle"})
+"D" = (/turf/space,/turf/simulated/shuttle/wall{icon_state = "diagonalWall3"},/area/shuttle{name = "\improper Personnel Shuttle"})
+"E" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/floor/plating,/area/shuttle{name = "\improper Personnel Shuttle"})
+"F" = (/turf/space,/turf/simulated/shuttle/wall{dir = 4; icon_state = "diagonalWall3"},/area/shuttle{name = "\improper Personnel Shuttle"})
+
+(1,1,1) = {"
+aabcccdaa
+aacefgcaa
+abhijkhda
+bhhlmnhhd
+hhhhohhhh
+cpqmmmrpc
+cmmmsmmmc
+hmmthumvh
+wmmxcymmw
+hzmxcymAh
+cymxcymxc
+cyBxhyBxc
+hhhhhhhhh
+hCCCCCCCh
+DEEEEEEEF
+"}

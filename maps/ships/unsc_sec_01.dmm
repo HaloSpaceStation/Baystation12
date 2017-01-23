@@ -1,0 +1,66 @@
+"a" = (/turf/space,/area/space)
+"b" = (/turf/space,/turf/simulated/shuttle/wall{dir = 8; icon_state = "diagonalWall3"},/area/shuttle{name = "Security Shuttle"})
+"c" = (/obj/effect/wingrille_spawn/reinforced,/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"d" = (/turf/space,/turf/simulated/shuttle/wall{dir = 1; icon_state = "diagonalWall3"},/area/shuttle{name = "Security Shuttle"})
+"e" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/red/full{dir = 8},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"f" = (/obj/machinery/computer,/obj/effect/floor_decal/corner/red{dir = 5},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"g" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/red/full{dir = 1},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"h" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/red{dir = 9},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"i" = (/obj/structure/bed/chair/comfy/black{dir = 1},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"j" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/red{dir = 6},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"k" = (/turf/simulated/wall,/area/shuttle{name = "Security Shuttle"})
+"l" = (/obj/effect/floor_decal/corner/red/full,/obj/machinery/alarm{dir = 4; icon_state = "alarm0"; pixel_x = -22; pixel_y = 0},/obj/machinery/light/small{brightness_color = "#DA0205"; brightness_power = 1; brightness_range = 5},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"m" = (/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"n" = (/obj/effect/floor_decal/corner/red/full{dir = 4},/obj/machinery/recharger/wallcharger{pixel_x = 30},/obj/machinery/light/small{brightness_color = "#DA0205"; brightness_power = 1; brightness_range = 5},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"o" = (/obj/structure/turret/gun_turret{dir = 1; pixel_y = -32},/turf/space,/area/shuttle{name = "Security Shuttle"})
+"p" = (/obj/machinery/door/airlock/glass_security{name = "Airlock"; req_access = list(150)},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"q" = (/obj/structure/turret/gun_turret{dir = 1; pixel_y = -32},/turf/space,/area/shuttle)
+"r" = (/obj/effect/floor_decal/corner/red/full{dir = 8},/obj/machinery/power/apc{dir = 1; name = "north bump"; pixel_x = 0; pixel_y = 24},/obj/structure/table/standard,/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"s" = (/obj/effect/floor_decal/corner/red/full{dir = 1},/obj/machinery/recharger/wallcharger{pixel_y = 25},/obj/structure/table/standard,/obj/item/weapon/storage/toolbox/mechanical,/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"t" = (/obj/structure/bed/chair{dir = 4},/obj/effect/floor_decal/corner/red/full{dir = 8},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"u" = (/obj/machinery/light{dir = 1},/obj/machinery/recharger/wallcharger{pixel_y = 25},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"v" = (/obj/structure/bed/chair{dir = 8},/obj/effect/floor_decal/corner/red/full{dir = 1},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"w" = (/obj/effect/floor_decal/corner/red{dir = 9},/obj/structure/table/standard,/obj/item/weapon/gun/energy/taser,/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"x" = (/obj/effect/floor_decal/corner/red{dir = 6},/obj/structure/table/standard,/obj/item/weapon/storage/toolbox/electrical,/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"y" = (/obj/structure/bed/chair{dir = 4},/obj/effect/floor_decal/corner/red{dir = 9},/obj/machinery/flasher{id = "IAflash"; pixel_x = -30; pixel_y = 0},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"z" = (/obj/structure/bed/chair{dir = 8},/obj/effect/floor_decal/corner/red{dir = 6},/obj/machinery/button/flasher{bound_x = 0; pixel_x = 25},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"A" = (/obj/effect/floor_decal/corner/red{dir = 9},/obj/structure/table/standard,/obj/item/weapon/handcuffs,/obj/item/weapon/handcuffs,/obj/machinery/light/small{dir = 8},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"B" = (/obj/effect/floor_decal/corner/red{dir = 6},/obj/structure/table/standard,/obj/machinery/light/small{dir = 4; pixel_y = 8},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"C" = (/obj/structure/bed/chair{dir = 4},/obj/effect/floor_decal/corner/red{dir = 9},/obj/machinery/button/flasher{pixel_x = -25},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"D" = (/obj/structure/bed/chair{dir = 8},/obj/effect/floor_decal/corner/red{dir = 6},/obj/machinery/flasher{id = "IAflash"; pixel_x = 30; pixel_y = 0},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"E" = (/obj/structure/bed/chair{dir = 4},/obj/effect/floor_decal/corner/red{dir = 9},/obj/machinery/alarm{dir = 4; icon_state = "alarm0"; pixel_x = -22; pixel_y = 0},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"F" = (/obj/structure/bed/chair{dir = 8},/obj/effect/floor_decal/corner/red{dir = 6},/obj/machinery/alarm{dir = 8; icon_state = "alarm0"; pixel_x = 24},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"G" = (/obj/structure/bed/chair{dir = 4},/obj/effect/floor_decal/corner/red/full,/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"H" = (/obj/machinery/light,/obj/effect/floor_decal/corner/red{dir = 10},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"I" = (/obj/structure/bed/chair{dir = 8},/obj/effect/floor_decal/corner/red/full{dir = 4},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"J" = (/obj/effect/floor_decal/corner/red{dir = 10},/turf/simulated/floor/tiled/dark,/area/shuttle{name = "Security Shuttle"})
+"K" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"L" = (/obj/machinery/access_button,/turf/simulated/wall,/area/shuttle{name = "Security Shuttle"})
+"M" = (/obj/structure/shuttle/engine/heater,/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"N" = (/obj/machinery/atmospherics/portables_connector{dir = 4},/obj/structure/window/alon{tag = "icon-window (EAST)"; icon_state = "window"; dir = 4},/obj/machinery/portable_atmospherics/canister/air/airlock,/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"O" = (/obj/machinery/atmospherics/pipe/manifold/visible{dir = 1},/obj/effect/floor_decal/industrial/warning{icon_state = "warning"; dir = 1},/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"P" = (/obj/machinery/atmospherics/pipe/simple/visible{dir = 4},/obj/machinery/light/small{dir = 1},/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"Q" = (/obj/machinery/atmospherics/portables_connector{dir = 8},/obj/structure/window/alon{tag = "icon-window (WEST)"; icon_state = "window"; dir = 8},/obj/machinery/portable_atmospherics/canister/air/airlock,/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"R" = (/turf/space,/turf/simulated/shuttle/wall{icon_state = "diagonalWall3"},/area/shuttle{name = "Security Shuttle"})
+"S" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"T" = (/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 1; frequency = 1379; id_tag = "virology_pump"},/obj/structure/sign/vacuum{pixel_x = -32},/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"U" = (/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"V" = (/obj/machinery/airlock_sensor{pixel_x = 25; pixel_y = 10},/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 1; frequency = 1379; id_tag = "virology_pump"},/obj/effect/floor_decal/industrial/warning,/obj/machinery/embedded_controller/radio/airlock/docking_port_multi{pixel_x = 25},/turf/simulated/floor/plating,/area/shuttle{name = "Security Shuttle"})
+"W" = (/turf/space,/turf/simulated/shuttle/wall{dir = 4; icon_state = "diagonalWall3"},/area/shuttle{name = "Security Shuttle"})
+
+(1,1,1) = {"
+aaaabcccdaaaa
+aaaacefgcaaaa
+aaaachijcaaaa
+aaaaklmnkaaaa
+aoabkkpkkdaqa
+bkkkkrmskkkkd
+ktuvcwmxctuvk
+kymzkAmBkCmDk
+kEmmpmmmpmmFk
+kGHIkmJmkGHIk
+kkkkkKLKkkkkk
+kMMkNOPOQkMMk
+RSSkkTUVkkSSW
+aaaaRKLKWaaaa
+"}

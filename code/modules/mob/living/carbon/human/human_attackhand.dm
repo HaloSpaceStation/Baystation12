@@ -19,8 +19,7 @@
 
 	// Should this all be in Touch()?
 	if(istype(H))
-		if((H != src) && check_shields(0, H.name))
-			visible_message("\red <B>[H] attempted to touch [src]!</B>")
+		if(H != src && check_shields(0, null, H, H.zone_sel.selecting, H.name))
 			H.do_attack_animation(src)
 			return 0
 
@@ -54,10 +53,16 @@
 	switch(M.a_intent)
 		if(I_HELP)
 			if(istype(H) && health < config.health_threshold_crit && health > config.health_threshold_dead)
-				if((H.head && (H.head.flags & HEADCOVERSMOUTH)) || (H.wear_mask && (H.wear_mask.flags & MASKCOVERSMOUTH)))
+				if(!H.check_has_mouth())
+					H << "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>"
+					return
+				if(!check_has_mouth())
+					H << "<span class='danger'>They don't have a mouth, you cannot perform CPR!</span>"
+					return
+				if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
 					H << "<span class='notice'>Remove your mask!</span>"
 					return 0
-				if((head && (head.flags & HEADCOVERSMOUTH)) || (wear_mask && (wear_mask.flags & MASKCOVERSMOUTH)))
+				if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
 					H << "<span class='notice'>Remove [src]'s mask!</span>"
 					return 0
 
@@ -284,29 +289,12 @@
 	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
 	user.do_attack_animation(src)
 
-	var/dam_zone = pick("head", "chest", "l_arm", "r_arm", "l_leg", "r_leg", "groin")
+	var/dam_zone = pick(organs_by_name)
 	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))
 	var/armor_block = run_armor_check(affecting, "melee")
 	apply_damage(damage, BRUTE, affecting, armor_block)
 	updatehealth()
 	return 1
-
-/mob/living/carbon/human/proc/attack_joint(var/obj/item/W, var/mob/living/user, var/def_zone)
-	if(!def_zone) def_zone = user.zone_sel.selecting
-	var/target_zone = get_zone_with_miss_chance(check_zone(def_zone), src)
-
-	if(user == src) // Attacking yourself can't miss
-		target_zone = user.zone_sel.selecting
-	if(!target_zone)
-		return null
-	var/obj/item/organ/external/organ = get_organ(check_zone(target_zone))
-	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1))
-		return null
-	var/dislocation_str
-	if(prob(W.force))
-		dislocation_str = "[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!"
-		organ.dislocate(1)
-	return dislocation_str
 
 //Used to attack a joint through grabbing
 /mob/living/carbon/human/proc/grab_joint(var/mob/living/user, var/def_zone)

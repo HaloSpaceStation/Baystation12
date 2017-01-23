@@ -171,6 +171,11 @@
 	brightness_power = 2
 	brightness_color = "#da0205"
 
+/obj/machinery/light/small/red
+	brightness_range = 5
+	brightness_power = 1
+	brightness_color = "#da0205"
+
 /obj/machinery/light/spot
 	name = "spotlight"
 	fitting = "large tube"
@@ -394,8 +399,8 @@
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
-	var/area/A = src.loc.loc
-	return A.lightswitch && (!A.requires_power || A.power_light)
+	var/area/A = get_area(src)
+	return A && A.lightswitch && (!A.requires_power || A.power_light)
 
 /obj/machinery/light/proc/flicker(var/amount = rand(10, 20))
 	if(flickering) return
@@ -547,10 +552,6 @@
 	return
 
 //blob effect
-
-/obj/machinery/light/blob_act()
-	if(prob(75))
-		broken()
 
 
 // timed process

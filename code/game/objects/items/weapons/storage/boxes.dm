@@ -161,6 +161,7 @@
 /obj/item/weapon/storage/box/blanks
 	name = "box of blank shells"
 	desc = "It has a picture of a gun and several warning symbols on the front."
+	icon_state = "bullet"
 
 	New()
 		..()
@@ -175,6 +176,7 @@
 /obj/item/weapon/storage/box/beanbags
 	name = "box of beanbag shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
+	icon_state = "shell"
 
 	New()
 		..()
@@ -189,6 +191,7 @@
 /obj/item/weapon/storage/box/shotgunammo
 	name = "box of shotgun slugs"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
+	icon_state = "shell"
 
 	New()
 		..()
@@ -203,6 +206,7 @@
 /obj/item/weapon/storage/box/shotgunshells
 	name = "box of shotgun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
+	icon_state = "shell"
 
 	New()
 		..()
@@ -217,6 +221,7 @@
 /obj/item/weapon/storage/box/flashshells
 	name = "box of illumination shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
+	icon_state = "shell"
 
 	New()
 		..()
@@ -231,6 +236,7 @@
 /obj/item/weapon/storage/box/stunshells
 	name = "box of stun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
+	icon_state = "shell"
 
 	New()
 		..()
@@ -245,6 +251,7 @@
 /obj/item/weapon/storage/box/practiceshells
 	name = "box of practice shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
+	icon_state = "shell"
 
 	New()
 		..()
@@ -259,6 +266,7 @@
 /obj/item/weapon/storage/box/sniperammo
 	name = "box of 14.5mm shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
+	icon_state = "bullet"
 
 	New()
 		..()
@@ -298,6 +306,31 @@
 		new /obj/item/weapon/grenade/empgrenade(src)
 		new /obj/item/weapon/grenade/empgrenade(src)
 
+/obj/item/weapon/storage/box/smokes
+	name = "box of smoke bombs"
+	desc = "A box containing 5 smoke bombs."
+	icon_state = "flashbang"
+
+/obj/item/weapon/storage/box/smokes/New()
+		..()
+		new /obj/item/weapon/grenade/smokebomb(src)
+		new /obj/item/weapon/grenade/smokebomb(src)
+		new /obj/item/weapon/grenade/smokebomb(src)
+		new /obj/item/weapon/grenade/smokebomb(src)
+		new /obj/item/weapon/grenade/smokebomb(src)
+
+/obj/item/weapon/storage/box/anti_photons
+	name = "box of anti-photon grenades"
+	desc = "A box containing 5 experimental photon disruption grenades."
+	icon_state = "flashbang"
+
+/obj/item/weapon/storage/box/anti_photons/New()
+		..()
+		new /obj/item/weapon/grenade/anti_photon(src)
+		new /obj/item/weapon/grenade/anti_photon(src)
+		new /obj/item/weapon/grenade/anti_photon(src)
+		new /obj/item/weapon/grenade/anti_photon(src)
+		new /obj/item/weapon/grenade/anti_photon(src)
 
 /obj/item/weapon/storage/box/trackimp
 	name = "boxed tracking implant kit"
@@ -598,32 +631,45 @@
 	icon_state = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
 	item_state = "syringe_kit"
-	storage_slots=21
-	can_hold = list(/obj/item/weapon/light/tube, /obj/item/weapon/light/bulb)
-	max_storage_space = 42	//holds 21 items of w_class 2
 	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
 
-/obj/item/weapon/storage/box/lights/bulbs/New()
+/obj/item/weapon/storage/box/lights/New()
 	..()
+	make_exact_fit()
+
+/obj/item/weapon/storage/box/lights/bulbs/New()
 	for(var/i = 0; i < 21; i++)
 		new /obj/item/weapon/light/bulb(src)
+	..()
 
 /obj/item/weapon/storage/box/lights/tubes
 	name = "box of replacement tubes"
 	icon_state = "lighttube"
 
 /obj/item/weapon/storage/box/lights/tubes/New()
-	..()
 	for(var/i = 0; i < 21; i++)
 		new /obj/item/weapon/light/tube(src)
+	..()
 
 /obj/item/weapon/storage/box/lights/mixed
 	name = "box of replacement lights"
 	icon_state = "lightmixed"
 
 /obj/item/weapon/storage/box/lights/mixed/New()
-	..()
 	for(var/i = 0; i < 14; i++)
 		new /obj/item/weapon/light/tube(src)
 	for(var/i = 0; i < 7; i++)
 		new /obj/item/weapon/light/bulb(src)
+	..()
+
+/obj/item/weapon/storage/box/freezer
+	name = "portable freezer"
+	desc = "This nifty shock-resistant device will keep your 'groceries' nice and non-spoiled."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "portafreezer"
+	item_state = "medicalpack"
+	storage_slots=7
+	max_w_class = 3
+	can_hold = list(/obj/item/organ, /obj/item/weapon/reagent_containers/food, /obj/item/weapon/reagent_containers/glass)
+	max_storage_space = 21
+	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
