@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/engineering_chief
 	name = "chief engineer's locker"
-	req_access = list(access_ce)
+	req_access = list(access_unsc_tech,access_unsc_bridge) // Bridge access too. Emulates head access
 	icon_state = "securece1"
 	icon_closed = "securece"
 	icon_locked = "securece1"
