@@ -966,3 +966,23 @@
 					/obj/item/weapon/screwdriver = 5,/obj/item/weapon/crowbar = 5)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 
+
+/obj/machinery/vending/armory/hybrid // Both ammo, and guns!
+	name = "UNSC Weapon and Ammunition Rack"
+	desc = "Storage for basic weapons and ammunition"
+	icon_state ="" // SPRITES
+	icon_deny = ""
+	req_access = list(access_unsc_marine)
+	products = list(/obj/item/ammo_magazine/m127_saph =20,/obj/item/ammo_magazine/m127_saphp =20,/obj/item/ammo_magazine/m762_ap =20
+					,/obj/item/ammo_magazine/m95_sap = 20,/obj/item/ammo_magazine/m5 = 20,/obj/item/weapon/melee/combat_knife
+					,/obj/item/weapon/gun/projectile/m6d_magnum,/obj/item/weapon/gun/projectile/ma5b_ar,/obj/item/weapon/gun/projectile/br55
+					,/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts,/obj/item/weapon/gun/projectile/m7_smg,/obj/item/weapon/gun/projectile/m392_dmr ) // append = num to each one, need to specify number.(15-20)
+
+/obj/machinery/vending/armory/heavy // HEAVY WEAPONS
+	name = "UNSC Heavy Weapons Rack"
+	desc = "Storage for advanced weapons and ammunition"
+	icon_state = "" //SPRITES
+	icon_deny = ""
+	req_access = list(access_unsc_armory)
+	products = list(/obj/item/ammo_magazine/m145_ap = 10,/obj/item/ammo_magazine/a762_box_ap = 10,/obj/item/weapon/gun/projectile/m739_lmg
+	,/obj/item/weapon/gun/projectile/srs99_sniper,)//ADD QUANTITIES, move special ammo over!
