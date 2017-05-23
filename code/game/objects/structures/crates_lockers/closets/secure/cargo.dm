@@ -20,7 +20,7 @@
 
 /obj/structure/closet/secure_closet/quartermaster
 	name = "quartermaster's locker"
-	req_access = list(access_qm) // Limit to those with bridge access too.
+	req_access = list(access_qm)
 	icon_state = "secureqm1"
 	icon_closed = "secureqm"
 	icon_locked = "secureqm1"
