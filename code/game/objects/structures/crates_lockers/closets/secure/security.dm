@@ -166,7 +166,7 @@
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
-	req_access = list(access_brig)
+	req_access = list(access_unsc_navsec)
 	icon_state = "sec1"
 	icon_closed = "sec"
 	icon_locked = "sec1"
@@ -280,7 +280,7 @@
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections locker"
-	req_access = list(access_captain)
+	req_access = list(access_unsc_bridge,access_unsc_navsec)
 
 
 	New()
@@ -293,7 +293,7 @@
 
 /obj/structure/closet/secure_closet/brig
 	name = "brig locker"
-	req_access = list(access_brig)
+	req_access = list(access_unsc_navsec)
 	anchored = 1
 	var/id = null
 
@@ -323,7 +323,7 @@
 
 /obj/structure/closet/secure_closet/wall
 	name = "wall locker"
-	req_access = list(access_security)
+	req_access = list(access_unsc_navsec)
 	icon_state = "wall-locker1"
 	density = 1
 	icon_closed = "wall-locker"
