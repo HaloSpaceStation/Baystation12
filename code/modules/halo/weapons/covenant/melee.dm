@@ -13,12 +13,11 @@
 
 /obj/item/weapon/melee/energysword/attack_self(var/mob/living/user)
 	if(!deployed)
-		//playsound(src.loc,'code/modules/halo/sounds/Energysworddeploy.ogg')
+		playsound(src.loc,'code/modules/halo/sounds/Energysworddeploy.ogg')
 		icon_state = "T1EW-deployed"
 		force = 50
 		throwforce = 25
 		w_class = 4
-		damtype = "burn"
 		deployed = 1
 		visible_message("<span class='notice'>[usr] activates the [src]</span>")
 		return
@@ -27,7 +26,6 @@
 		force = 1
 		throwforce = 1
 		w_class = 1
-		damtype = "brute"
 		deployed = 0
 		visible_message("<span class='notice'>[src] deactivates [src]</span>")
 		return
