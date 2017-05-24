@@ -1,4 +1,5 @@
-
+ // make unweildy to use for marines.
+ //Ideas: Half damage, make two handed.
 /obj/item/weapon/melee/energysword
 	name = "Energy Sword"
 	desc = "Type 1 Energy Weapon"

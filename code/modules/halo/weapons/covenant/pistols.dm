@@ -10,7 +10,12 @@
 	charge_meter = 0
 	self_recharge = 1
 	max_shots = 20
+	var/overcharge = 0
 	projectile_type = /obj/item/projectile/covenant/plasmapistol
+
+/obj/item/weapon/gun/energy/plasmapistol/attack_self()
+	if(overcharge) //tell user overcharge deactivated, reset stats.
+		return
 
 
 /obj/item/weapon/gun/projectile/needler // Uses "magazines" to reload rather than inbuild cells.
@@ -20,4 +25,4 @@
 	icon_state = "Needler"
 	slot_flags = SLOT_BELT||SLOT_HOLSTER
 	fire_sound = null // no sound
-	magazine_type = /obj/item/ammo_magazine/needles
+	magazine_type = /obj/item/ammo_magazine/needles // No ammo for some reason, fix this!
