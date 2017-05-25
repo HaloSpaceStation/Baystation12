@@ -4,6 +4,7 @@
 	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
 	icon_state = "Plasma Rifle"
 	slot_flags = SLOT_BACK
+	//fire_sound = null // need fire sound
 	charge_meter = 0
 	self_recharge = 1
 	max_shots = 20

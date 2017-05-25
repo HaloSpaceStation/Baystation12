@@ -7,6 +7,9 @@
 	damage = 25
 	accuracy = -1
 
+/obj/item/projectile/covenant/plasmapistol/overcharge
+	damage = 75
+
 /obj/item/projectile/covenant/plasmarifle
 	damage = 30
 	accuracy = 1
@@ -14,11 +17,21 @@
 /obj/item/ammo_magazine/needles
 	name = "Needles"
 	desc = "A small pack of crystalline needles."
-	icon = null
-	max_ammo = 20
-	ammo_type = /obj/item/projectile/covenant/needles
+	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
+	icon_state = "needlermag"
+	max_ammo = 30
+	ammo_type = /obj/item/ammo_casing/needles
+	caliber = "needler"
+	mag_type = MAGAZINE
 
-/obj/item/projectile/covenant/needles
+/obj/item/ammo_casing/needles
+	desc = "Small crystalline needles"
+	caliber = "needler"
+	projectile_type = /obj/item/projectile/bullet/covenant/needles
+	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
+	icon_state = "needlerammo"
+
+/obj/item/projectile/bullet/covenant/needles
 	name = "Needle"
 	desc = "A sharp, pink crystalline shard"
 	damage = 20

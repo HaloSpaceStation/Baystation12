@@ -14,7 +14,7 @@
 
 /obj/item/weapon/melee/energysword/attack_self(var/mob/living/user)
 	if(!deployed)
-		playsound(src.loc,'code/modules/halo/sounds/Energysworddeploy.ogg')
+		playsound(src.loc,'code/modules/halo/sounds/Energysworddeploy.ogg',75)
 		icon_state = "T1EW-deployed"
 		force = 50
 		throwforce = 25
