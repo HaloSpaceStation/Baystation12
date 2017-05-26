@@ -6,6 +6,8 @@
 /obj/item/projectile/covenant/plasmapistol
 	damage = 25
 	accuracy = -1
+	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
+	icon_state = "PlasmapistolProj"
 
 /obj/item/projectile/covenant/plasmapistol/overcharge
 	damage = 75
@@ -13,6 +15,8 @@
 /obj/item/projectile/covenant/plasmarifle
 	damage = 30
 	accuracy = 1
+	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
+	icon_state = "PlasmarifleProj"
 
 /obj/item/ammo_magazine/needles
 	name = "Needles"
@@ -36,3 +40,5 @@
 	desc = "A sharp, pink crystalline shard"
 	damage = 20
 	accuracy = 0
+	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
+	icon_state = "needlerammo"
