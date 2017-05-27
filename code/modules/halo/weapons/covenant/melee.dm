@@ -9,7 +9,6 @@
 	force = 1
 	throwforce = 1
 	w_class = 1
-	embed = 0
 
 /obj/item/weapon/melee/energysword/attack_self(var/mob/living/user)
 	if(!deployed)
