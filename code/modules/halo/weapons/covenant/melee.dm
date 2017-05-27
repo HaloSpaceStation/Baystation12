@@ -9,6 +9,7 @@
 	force = 1
 	throwforce = 1
 	w_class = 1
+	embed = 0
 
 /obj/item/weapon/melee/energysword/attack_self(var/mob/living/user)
 	if(!deployed)
@@ -27,6 +28,7 @@
 		slot_r_hand_str = "Energy sword_inhand Human r" )
 		hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
 		visible_message("<span class='notice'>[usr] activates the [src]</span>")
+		clean_blood()
 		return
 	else
 		icon_state = "T1EW Handle"
