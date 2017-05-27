@@ -9,7 +9,6 @@
 	force = 1
 	throwforce = 1
 	w_class = 1
-	embed = 0
 
 
 
@@ -21,7 +20,6 @@
 		throwforce = 25
 		w_class = 4
 		deployed = 1
-		sharp = 1
 		edge = 1
 		hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
 		visible_message("<span class='notice'>[usr] activates the [src]</span>")
@@ -33,7 +31,6 @@
 		throwforce = 1
 		w_class = 1
 		deployed = 0
-		sharp = 0
 		edge = 0
 		hitsound = initial(hitsound)
 		visible_message("<span class='notice'>[src] deactivates [src]</span>")
