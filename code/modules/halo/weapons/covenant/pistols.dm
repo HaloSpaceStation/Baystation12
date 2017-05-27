@@ -28,6 +28,14 @@
 		max_shots = 2
 		return
 
+/obj/item/weapon/gun/energy/plasmapistol/Fire()
+	..()
+	if(!istype(usr,/mob/living/carbon/covenant)&&prob(1)&&power_supply.charge>=charge_cost)
+		var/mob/living/user = usr
+		user.apply_effect(10,IRRADIATE)
+		visible_message("<span class ='danger'>The [src] glows green, radioactive haze escaping from it's frame</span>")
+
+
 
 /obj/item/weapon/gun/projectile/needler // Uses "magazines" to reload rather than inbuilt cells.
 	name = "Needler"

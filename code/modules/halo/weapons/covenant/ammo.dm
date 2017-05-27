@@ -12,6 +12,10 @@
 /obj/item/projectile/covenant/plasmapistol/overcharge
 	damage = 75
 
+/obj/item/projectile/covenant/plasmapistol/overcharge/on_impact()
+	..()
+	empulse(src.loc,2,4)
+
 /obj/item/projectile/covenant/plasmarifle
 	damage = 30
 	accuracy = 1
