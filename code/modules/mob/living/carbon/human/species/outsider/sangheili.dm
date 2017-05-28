@@ -3,7 +3,7 @@
 	name_plural = "sangheili"
 	blurb = "Shouldn't be seeing this." // Doesn't appear in chargen
 	flesh_color = "#4A4A64"
-	blood_color = "4A4A64"
+	blood_color = "#4A4A64"
 	icobase = 'code/modules/halo/icons/r_elite.dmi' //The DMI need modification to fit the usual format (see other species' dmis)
 	deform = 'code/modules/halo/icons/r_elite.dmi'
 	default_language = "Sol Common"
