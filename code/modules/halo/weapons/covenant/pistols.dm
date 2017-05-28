@@ -30,7 +30,7 @@
 
 /obj/item/weapon/gun/energy/plasmapistol/Fire()
 	..()
-	if(!istype(usr,/mob/living/carbon/covenant)&&prob(1)&&power_supply.charge>=charge_cost)
+	if(!istype(usr,/mob/living/carbon/human/covenant)&&prob(1)&&power_supply.charge>=charge_cost)
 		var/mob/living/user = usr
 		user.apply_effect(10,IRRADIATE)
 		visible_message("<span class ='danger'>The [src] glows green, radioactive haze escaping from it's frame</span>")
