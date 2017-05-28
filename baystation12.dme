@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "sanghelli.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\hub.dm"
@@ -1153,6 +1154,7 @@
 #include "code\modules\halo\misc\atmos_machinery.dm"
 #include "code\modules\halo\misc\blast_door_control.dm"
 #include "code\modules\halo\misc\closets.dm"
+#include "code\modules\halo\misc\covieorgans.dm"
 #include "code\modules\halo\misc\cryopod.dm"
 #include "code\modules\halo\misc\gunvendors.dm"
 #include "code\modules\halo\misc\supersmes.dm"
@@ -1367,6 +1369,7 @@
 #include "code\modules\mob\living\carbon\human\species\species.dm"
 #include "code\modules\mob\living\carbon\human\species\species_attack.dm"
 #include "code\modules\mob\living\carbon\human\species\species_hud.dm"
+#include "code\modules\mob\living\carbon\human\species\outsider\sangheili.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\shadow.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\vox.dm"
 #include "code\modules\mob\living\carbon\human\species\station\golem.dm"
