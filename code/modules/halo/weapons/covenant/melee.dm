@@ -16,10 +16,12 @@
 	if(!deployed)
 		playsound(src.loc,'code/modules/halo/sounds/Energysworddeploy.ogg',75)
 		icon_state = "T1EW-deployed"
-		force = 50
-		throwforce = 25
+		force = 25
+		throwforce = 12
 		w_class = 4
 		deployed = 1
+		edge = 1
+		sharp = 1
 		visible_message("<span class='notice'>[usr] activates the [src]</span>")
 		return
 	else
@@ -28,5 +30,7 @@
 		throwforce = 1
 		w_class = 1
 		deployed = 0
+		edge = 0
+		sharp = 0
 		visible_message("<span class='notice'>[src] deactivates [src]</span>")
 		return
