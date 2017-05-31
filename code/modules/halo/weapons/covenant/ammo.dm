@@ -17,7 +17,7 @@
 	empulse(src.loc,1,2)
 
 /obj/item/projectile/covenant/plasmarifle
-	damage = 30
+	damage = 40 // more damage than MA5B.
 	accuracy = 1
 	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
 	icon_state = "PlasmarifleProj"
@@ -42,7 +42,7 @@
 /obj/item/projectile/bullet/covenant/needles
 	name = "Needle"
 	desc = "A sharp, pink crystalline shard"
-	damage = 20
+	damage = 20 // Low damage, special effect would do the most damage.
 	accuracy = 0
 	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
 	icon_state = "needlerammo"
