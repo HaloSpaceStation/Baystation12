@@ -22,6 +22,11 @@
 		deployed = 1
 		edge = 1
 		hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
+		item_icons = list(slot_l_hand_str ='code/modules/halo/icons/Energy Sword_inhand Human.dmi')
+		item_state_slots = list(
+		slot_l_hand_str = "Energy sword_inhand Human l",
+		slot_r_hand_str = "Energy sword_inhand Human r" )
+		hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
 		visible_message("<span class='notice'>[usr] activates the [src]</span>")
 		return
 	else
@@ -32,5 +37,11 @@
 		deployed = 0
 		edge = 0
 		hitsound = initial(hitsound)
+		item_icons = list(slot_l_hand_str = null)
+		item_state_slots = list(
+		slot_l_hand_str = null,
+		slot_r_hand_str - null)
+		clean_blood()
+		hitsound = "swing_hit"
 		visible_message("<span class='notice'>[src] deactivates [src]</span>")
 		return

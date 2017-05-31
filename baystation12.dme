@@ -10,7 +10,6 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
-#include "sanghelli.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\hub.dm"
@@ -1151,12 +1150,13 @@
 #include "code\modules\halo\maps\unsc_frigate2.dm"
 #include "code\modules\halo\maps\unsc_frigate3.dm"
 #include "code\modules\halo\maps\unsc_frigate4.dm"
+#include "code\modules\halo\misc\armourspecials.dm"
 #include "code\modules\halo\misc\atmos_machinery.dm"
 #include "code\modules\halo\misc\blast_door_control.dm"
 #include "code\modules\halo\misc\closets.dm"
-#include "code\modules\halo\misc\covieorgans.dm"
 #include "code\modules\halo\misc\cryopod.dm"
 #include "code\modules\halo\misc\gunvendors.dm"
+#include "code\modules\halo\misc\sangheili.dm"
 #include "code\modules\halo\misc\supersmes.dm"
 #include "code\modules\halo\misc\tools_items_gear.dm"
 #include "code\modules\halo\power\cooling_manifold.dm"
