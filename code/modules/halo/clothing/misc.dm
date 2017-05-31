@@ -63,9 +63,7 @@
 	siemens_coefficient = 1
 	icon = 'code/modules/halo/icons/Mrk V Spartan Helmet.dmi'
 	icon_state = "Mk V Helm"
-	item_state = "Mk V Helm Icon"
 	armor = list(melee = 50,bullet = 15,laser = 50,energy = 10,bomb = 25,bio = 0,rad = 0)
-	species_restricted = "Human"
 
 /obj/item/clothing/suit/armor/spartan
 	name = "MJOLNIR Powered Assault Armor Mark V"
@@ -74,4 +72,3 @@
 	item_state = "spartan5"
 	blood_overlay_type = "armor"
 	armor = list(melee = 80, bullet = 95, laser = 50, energy = 50, bomb = 60, bio = 25, rad = 25)
-	species_restricted = "Human"
