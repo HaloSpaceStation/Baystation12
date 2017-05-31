@@ -64,7 +64,6 @@
 	siemens_coefficient = 1
 	icon = 'code/modules/halo/icons/Mrk V Spartan Helmet.dmi'
 	icon_state = "Mk V Helm"
-	item_state = "Mk V Helm Icon"
 	armor = list(melee = 50,bullet = 15,laser = 50,energy = 10,bomb = 25,bio = 0,rad = 0)
 
 /obj/item/clothing/suit/armor/spartan
