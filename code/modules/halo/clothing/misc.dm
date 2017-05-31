@@ -55,6 +55,18 @@
 	blood_overlay_type = "armor"
 	armor = list(melee = 50, bullet = 95, laser = 4, energy = 4, bomb = 60, bio = 0, rad = 0)
 
+/obj/item/clothing/head/helmet/spartan
+	name = "MJOLNIR Powered Assault Armor Helmet"
+	desc = "Ave, Imperator, morituri te salutant."
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
+	body_parts_covered = HEAD|FACE
+	siemens_coefficient = 1
+	icon = 'code/modules/halo/icons/Mrk V Spartan Helmet.dmi'
+	icon_state = "Mk V Helm"
+	item_state = "Mk V Helm Icon"
+	armor = list(melee = 50,bullet = 15,laser = 50,energy = 10,bomb = 25,bio = 0,rad = 0)
+	species_restricted = "Human"
+
 /obj/item/clothing/suit/armor/spartan
 	name = "MJOLNIR Powered Assault Armor Mark V"
 	desc = "a technologically-advanced combat exoskeleton system designed to vastly improve the strength, speed, agility, reflexes and durability of a SPARTAN-II, supersolider in the field of combat."
@@ -62,3 +74,4 @@
 	item_state = "spartan5"
 	blood_overlay_type = "armor"
 	armor = list(melee = 80, bullet = 95, laser = 50, energy = 50, bomb = 60, bio = 25, rad = 25)
+	species_restricted = "Human"
