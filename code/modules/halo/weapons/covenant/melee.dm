@@ -27,7 +27,6 @@
 		slot_r_hand_str = "Energy sword_inhand Human r" )
 		hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
 		visible_message("<span class='notice'>[usr] activates the [src]</span>")
-		clean_blood()
 		return
 	else
 		icon_state = "T1EW Handle"
