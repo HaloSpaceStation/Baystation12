@@ -55,6 +55,7 @@
 	blood_overlay_type = "armor"
 	armor = list(melee = 50, bullet = 95, laser = 4, energy = 4, bomb = 60, bio = 0, rad = 0)
 
+
 /obj/item/clothing/head/helmet/spartan
 	name = "MJOLNIR Powered Assault Armor Helmet"
 	desc = "Ave, Imperator, morituri te salutant."
@@ -63,6 +64,7 @@
 	siemens_coefficient = 1
 	icon = 'code/modules/halo/icons/Mrk V Spartan Helmet.dmi'
 	icon_state = "Mk V Helm"
+	item_state = "Mk V Helm Icon"
 	armor = list(melee = 50,bullet = 15,laser = 50,energy = 10,bomb = 25,bio = 0,rad = 0)
 
 /obj/item/clothing/suit/armor/spartan

@@ -20,6 +20,7 @@
 		deployed = 1
 		edge = 1
 		hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
+		visible_message("<span class='notice'>[usr] activates the [src]</span>")
 		flags = NOBLOODY
 		item_icons = list(slot_l_hand_str ='code/modules/halo/icons/Energy Sword_inhand Human.dmi')
 		item_state_slots = list(
