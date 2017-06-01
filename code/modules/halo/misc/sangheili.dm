@@ -51,7 +51,7 @@
 	..()
 	for(var/i in specials)
 		specials -= i
-		if(i == /datum/harnessspecials/shields) //Needed to set the shield capacity. I've tried using something other than the type path, sheild
+		if(i == /datum/harnessspecials/shields) //Needed to set the shield capacity. I've tried using something other than the type path.Couldn't get it to work.
 			sh = new i(totalshields,src)
 		else
 			specials += new i
@@ -89,15 +89,17 @@
 	name = "Secondary Heart"
 	parent_organ = "chest"
 	icon_state = "heart-on"
-	var/used = 0
+	min_broken_damage = 30
 
 /obj/item/organ/heart_secondary/process()
-	if(used)
+	if(damage>=min_broken_damage)
 		return
 	var/obj/item/organ/heart = owner.internal_organs_by_name["heart"]
 	var/mob/living/carbon/human/m = owner
 	if(heart && heart.damage >=heart.min_broken_damage)
-		heart.damage = 0;src.name = "Used Secondary Heart";used = 1
+		var/useheart = (world.time += 50)
+		if(world.time >= useheart) //They still feel the effect.
+			damage = heart.damage;heart.damage = 0
 		return
 	m.vessel.add_reagent("blood",30) // 30 blood should be enough to resist a shallow cut at max damage for that type.
 
