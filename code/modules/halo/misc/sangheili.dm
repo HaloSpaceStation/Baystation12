@@ -1,11 +1,9 @@
 //Put other elite stuff here
 /mob/living/carbon/human/covenant/sangheili/New(var/new_loc) //Species definition in code/modules/mob/living/human/species/outsider.
 	..(new_loc,"Sangheili")							//Code breaks if not placed in species folder,
-	name = pick("Gryra","Bavo","N'thag","Aka","Tasze","Mrapo","Ytan","Gruze","Bykan","Isan","Sero","Bota","Grevu", \
-	"Xus","Graze","Khoro","Sypo","Thytan","Zato")
+	name = pick(first_names_sangheili)
 	name += " "
-	name += pick("'Nudum","'Regram","'Kohom","'Lasam","'Mozumee","'Vulkamai","'Kosum","'Hakam","'Wavumee","'Dasumai","'Morum","'Vontakai", \
-	"'Zusov","'Srangam","'Wakam","'Hantakee","'Muramai","'Haham","'Waram","'Ronam")
+	name += pick(last_names_sangheili)
 	real_name = name
 
 
@@ -13,11 +11,7 @@
 	name = "Sangheili"
 	desc = "The language of the Sangheili"
 	native = 1
-	syllables = list("nnse","nee","kooree","keeoh","cheenoh","rehmah","nnteh","hahdeh","nnrah","kahwah","ee","hoo","roh","usoh","ahnee","ruh","eerayrah","sohruh","eesah")
-
-/obj/effect/overlay/shields
-	icon = 'code/modules/halo/icons/elitearmour.dmi'
-	icon_state = "shield"
+	syllables = list("wort","nnse","nee","kooree","keeoh","cheenoh","rehmah","nnteh","hahdeh","nnrah","kahwah","ee","hoo","roh","usoh","ahnee","ruh","eerayrah","sohruh","eesah")
 
 /obj/item/clothing/head/sangheili/minor
 	name = "Sangheili Combat Harness Head Armour"
@@ -25,6 +19,7 @@
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "minor_helm"
 	sprite_sheets = list("Sangheili" = 'code/modules/halo/icons/elitearmour.dmi')
+	species_restricted = list("Sangheili")
 	item_flags = THICKMATERIAL
 	armor = list(melee = 40,bullet = 20,laser = 40,energy = 5,bomb = 25,bio = 0,rad = 0) //Slightly higher bullet resist than Spartan helmets. Lower laser, energy and melee.
 
@@ -34,6 +29,7 @@
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "minor_legs"
 	sprite_sheets = list("Sangheili" = 'code/modules/halo/icons/elitearmour.dmi')
+	species_restricted = list("Sangheili")
 	item_flags = NOSLIP // Because marines get it.
 	armor = list(melee = 40, bullet = 60, laser = 5, energy = 4, bomb = 40, bio = 0, rad = 0)
 
@@ -48,45 +44,36 @@
 //	armor = list(melee = 95, bullet = 80, laser = 30, energy = 30, bomb = 60, bio = 25, rad = 25) //Close to spartan armour. Lower bullet,higher melee. Lower energy.
 	var/specials = list()
 	var/totalshields
-	var/obj/effect/overlay/shields/s = new /obj/effect/overlay/shields
 	var/datum/harnessspecials/shields/sh
 	var/mob/living/m
 
 /obj/item/clothing/suit/armor/combatharness/New()
 	..()
-	processing_objects += src // Needed for the shield recharge.
-	if(/datum/harnessspecials/shields in specials) //Needed to set the shield capacity.
-		sh = new /datum/harnessspecials/shields
-		sh.totalshields = totalshields
+	for(var/i in specials)
+		specials -= i
+		if(i == /datum/harnessspecials/shields) //Needed to set the shield capacity. I've tried using something other than the type path, sheild
+			sh = new i(totalshields,src)
+		else
+			specials += new i
 
 
 /obj/item/clothing/suit/armor/combatharness/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(/datum/harnessspecials/shields in specials)
-		sh.user = user
-		if(sh.checkshields(damage) == 1)
-			user.overlays += s
-			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0) //This is needed because shields don't work if armour absorbs the blow instead.
-			return 1
-		else
-			user.overlays -= s
-			armor = list(melee = 95, bullet = 80, laser = 30, energy = 30, bomb = 60, bio = 25, rad = 25)
-			return 0
+	if(sh)
+		return sh.handle_shield(m,damage,damage_source)
+
 
 /obj/item/clothing/suit/armor/combatharness/equipped(mob/user)
 	m = user
 	return
 
 /obj/item/clothing/suit/armor/combatharness/process()
-	if(/datum/harnessspecials/shields in specials)
+	if(sh)
 		sh.tryrecharge(m)
 
 /obj/item/clothing/suit/armor/combatharness/emp_act(severity)
-	if(/datum/harnessspecials/shields in specials)
-		switch(severity)
-			if(1)
-				sh.shieldstrength = sh.totalshields /4
-			if(2)
-				sh.shieldstrength = sh.totalshields/2
+	if(sh)
+		sh.tryemp(severity)
+
 
 /obj/item/clothing/suit/armor/combatharness/Destroy()
 	..()
@@ -112,7 +99,6 @@
 	if(heart && heart.damage >=heart.min_broken_damage)
 		heart.damage = 0;src.name = "Used Secondary Heart";used = 1
 		return
-	if(m.vessel.get_reagent_amount("blood") < m.vessel.total_volume)
-		m.vessel.add_reagent("blood",30) // 30 blood should be enough to resist a shallow cut at max damage for that type.
-		return
+	m.vessel.add_reagent("blood",30) // 30 blood should be enough to resist a shallow cut at max damage for that type.
+
 
