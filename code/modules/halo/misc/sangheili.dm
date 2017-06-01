@@ -97,7 +97,7 @@
 	var/obj/item/organ/heart = owner.internal_organs_by_name["heart"]
 	var/mob/living/carbon/human/m = owner
 	if(heart && heart.damage >=heart.min_broken_damage)
-		var/useheart = (world.time += 50)
+		var/useheart = world.time + 50
 		if(world.time >= useheart) //They still feel the effect.
 			damage = heart.damage;heart.damage = 0
 		return
