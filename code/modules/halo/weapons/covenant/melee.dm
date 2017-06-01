@@ -39,8 +39,6 @@
 		hitsound = initial(hitsound)
 		flags = null
 		item_icons = list(slot_l_hand_str = null)
-		slot_r_hand_str - null)
-		item_state_slots = null
-		hitsound = "swing_hit"
+		slot_r_hand_str - null)		hitsound = "swing_hit"
 		visible_message("<span class='notice'>[src] deactivates [src]</span>")
 		return

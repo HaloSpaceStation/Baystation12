@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'Nudumee
 'Regramee
 'Kohomee
@@ -18,3 +19,25 @@
 'Hahamee
 'Waramee
 'Ronamee
+=======
+'Nudum
+'Regram
+'Kohom
+'Lasam
+'Mozumee
+'Vulkamai
+'Kosum
+'Hakam
+'Wavumee
+'Dasumai
+'Morum
+'Vontakai
+'Zusov
+'Srangam
+'Wakam
+'Hantakee
+'Muramai
+'Haham
+'Waram
+'Ronam
+>>>>>>> fixes and changes

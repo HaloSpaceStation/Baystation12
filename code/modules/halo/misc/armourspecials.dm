@@ -1,22 +1,16 @@
 
-<<<<<<< HEAD
 /obj/effect/overlay/shields
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "shield"
-	plane = -6
-	layer = 0
 
-=======
->>>>>>> Lots of stuff, holy shit
 /datum/harnessspecials/shields
 	var/shieldstrength
 	var/totalshields
 	var/nextcharge
 	var/mob/living/user
 	var/warned
-<<<<<<< HEAD
 	var/s = new /obj/effect/overlay/shields
-	var/obj/item/clothing/suit/armor/combatharness/connectedarmour
+	var/obj/item/clothing/suit/armor/connectedarmour
 
 /datum/harnessspecials/proc/tryemp(var/severity)
 
@@ -45,12 +39,19 @@
 		processing_objects += src
 		return 0
 
-=======
 
-/datum/harnessspecials/shields/New()
-	shieldstrength = totalshields
+/datum/harnessspecials/shields/handle_shield(mob/m,damage,atom/damage_source)
+	user = m
+	if(checkshields(damage) == 1)
+		user.overlays += s
+		connectedarmour.armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0) //This is needed because shields don't work if armour absorbs the blow instead.
+		return 1
+	else
+		user.overlays -= s
+		connectedarmour.armor = list(melee = 95, bullet = 80, laser = 30, energy = 30, bomb = 60, bio = 25, rad = 25)
+		processing_objects += connectedarmour
+		return 0
 
->>>>>>> Lots of stuff, holy shit
 /datum/harnessspecials/shields/proc/checkshields(var/damage,var/damage_source)
 	if(shieldstrength> 0)
 		shieldstrength -= damage
@@ -63,26 +64,17 @@
 		nextcharge = world.time + 30 // 3 seconds
 		return 0
 
-<<<<<<< HEAD
-/datum/harnessspecials/shields/tryrecharge(var/mob/living/m)
-	if(shieldstrength >= totalshields)
-		shieldstrength = totalshields
-		processing_objects -= src
-		return 0
-=======
 /datum/harnessspecials/shields/proc/tryrecharge(var/mob/living/m)
 	if(shieldstrength >= totalshields)
 		shieldstrength = totalshields
+		processing_objects -= connectedarmour
 		return
->>>>>>> Lots of stuff, holy shit
 	if(world.time > nextcharge)
 		shieldstrength += 10
 		if(prob(25)&& !isnull(m)) //Stops runtime when no mob to display message to.
 			m.visible_message("<span class = 'notice'>A faint ping emanates from [m.name]'s armour.</span>","<span class ='notice'>Current shield level: [(shieldstrength/totalshields)*100]</span>")
 		nextcharge = world.time + 20 // 2 seconds.
 		warned = 0
-<<<<<<< HEAD
-		return 1
 
 /datum/harnessspecials/shields/tryemp(severity)
 	switch(severity)
@@ -93,13 +85,6 @@
 
 /datum/harnessspecials/shields/proc/process()
 	tryrecharge(user)
-	return
-
 /datum/harnessspecials/cloaking // Placeholders for later stuff.
-=======
-		return
-
-/datum/harnessspecials/cloaking
->>>>>>> Lots of stuff, holy shit
 
 /datum/harnessspecials/thrusters
