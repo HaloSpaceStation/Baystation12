@@ -8,7 +8,8 @@ var/list/first_names_male = file2list("config/names/first_male.txt")
 var/list/first_names_female = file2list("config/names/first_female.txt")
 var/list/last_names = file2list("config/names/last.txt")
 var/list/clown_names = file2list("config/names/clown.txt")
-
+var/list/first_names_sangheili = file2list("code/modules/halo/misc/first_sangheili.txt")
+var/list/last_names_sangheili = file2list("code/modules/halo/misc/last_sangheili.txt")
 
 var/list/verbs = file2list("config/names/verbs.txt")
 var/list/adjectives = file2list("config/names/adjectives.txt")

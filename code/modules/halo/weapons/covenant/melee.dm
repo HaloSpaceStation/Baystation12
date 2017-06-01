@@ -10,19 +10,17 @@
 	throwforce = 1
 	w_class = 1
 
-
-
 /obj/item/weapon/melee/energysword/attack_self(var/mob/living/user)
 	if(!deployed)
 		playsound(src.loc,'code/modules/halo/sounds/Energysworddeploy.ogg',75)
 		icon_state = "T1EW-deployed"
-		clean_blood()
 		force = 25
 		throwforce = 12
 		w_class = 4
 		deployed = 1
 		edge = 1
 		sharp = 1
+		flags = NOBLOODY
 		item_icons = list(slot_l_hand_str ='code/modules/halo/icons/Energy Sword_inhand Human.dmi')
 		item_state_slots = list(
 		slot_l_hand_str = "Energy sword_inhand Human l",
@@ -38,11 +36,9 @@
 		deployed = 0
 		edge = 0
 		sharp = 0
+		flags = null
 		item_icons = list(slot_l_hand_str = null)
-		item_state_slots = list(
-		slot_l_hand_str = null,
-		slot_r_hand_str - null)
-		clean_blood()
+		item_state_slots = null
 		hitsound = "swing_hit"
 		visible_message("<span class='notice'>[src] deactivates [src]</span>")
 		return
