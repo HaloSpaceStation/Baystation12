@@ -2,6 +2,8 @@
 /obj/effect/overlay/shields
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "shield"
+	plane = -6
+	layer = 0
 
 /datum/harnessspecials/shields
 	var/shieldstrength
@@ -10,10 +12,7 @@
 	var/mob/living/user
 	var/warned
 	var/s = new /obj/effect/overlay/shields
-	var/obj/item/clothing/suit/armor/connectedarmour
-
-
-/datum/harnessspecials/proc/createspecial()
+	var/obj/item/clothing/suit/armor/combatharness/connectedarmour
 
 /datum/harnessspecials/proc/tryemp(var/severity)
 
@@ -22,22 +21,24 @@
 /datum/harnessspecials/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	return 0
 
-/datum/harnessspecials/shields/New(var/maxshields,var/connected)
-	totalshields = maxshields
+/datum/harnessspecials/proc/tryrecharge(var/mob/living/m)
+
+/datum/harnessspecials/shields/New(var/obj/item/clothing/suit/armor/combatharness/c) //Needed the type path for typecasting to use the totalshields var.
+	connectedarmour = c
+	totalshields = connectedarmour.totalshields
 	shieldstrength = totalshields
-	connectedarmour = connected
 
 
 /datum/harnessspecials/shields/handle_shield(mob/m,damage,atom/damage_source)
 	user = m
-	if(checkshields(damage) == 1)
+	if(checkshields(damage))
 		user.overlays += s
 		connectedarmour.armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0) //This is needed because shields don't work if armour absorbs the blow instead.
 		return 1
 	else
 		user.overlays -= s
 		connectedarmour.armor = list(melee = 95, bullet = 80, laser = 30, energy = 30, bomb = 60, bio = 25, rad = 25)
-		processing_objects += connectedarmour
+		processing_objects += src
 		return 0
 
 /datum/harnessspecials/shields/proc/checkshields(var/damage,var/damage_source)
@@ -52,25 +53,29 @@
 		nextcharge = world.time + 30 // 3 seconds
 		return 0
 
-/datum/harnessspecials/shields/proc/tryrecharge(var/mob/living/m)
+/datum/harnessspecials/shields/tryrecharge(var/mob/living/m)
 	if(shieldstrength >= totalshields)
 		shieldstrength = totalshields
-		processing_objects -= connectedarmour
-		return
+		processing_objects -= src
+		return 0
 	if(world.time > nextcharge)
 		shieldstrength += 10
 		if(prob(25)&& !isnull(m)) //Stops runtime when no mob to display message to.
 			m.visible_message("<span class = 'notice'>A faint ping emanates from [m.name]'s armour.</span>","<span class ='notice'>Current shield level: [(shieldstrength/totalshields)*100]</span>")
 		nextcharge = world.time + 20 // 2 seconds.
 		warned = 0
-		return
+		return 1
 
 /datum/harnessspecials/shields/tryemp(severity)
 	switch(severity)
 		if(1)
-			shieldstrength = totalshields /4
+			shieldstrength -= totalshields /4
 		if(2)
-			shieldstrength = totalshields/2
+			shieldstrength -= totalshields/2
+
+/datum/harnessspecials/shields/proc/process()
+	tryrecharge(user)
+	return
 
 /datum/harnessspecials/cloaking // Placeholders for later stuff.
 
