@@ -108,6 +108,20 @@
 	secondstoexplode = 300
 	secondstodisarm = 60
 
+/obj/item/weapon/pinpointer/advpinpointer/bombplantlocator
+	name = "Optimal Ordinance Yield Locator"
+	desc = "A locator device that points towards an optimal location that maximises the yield of a bomb."
+	mode = 2
+	var/bomblocation = list()
+
+/obj/item/weapon/pinpointer/advpinpointer/bombplantlocator/New()
+	for(var/obj/effect/bomblocation/b in world)
+		bomblocation += b.loc
+	target = pick(bomblocation)
+
+/obj/item/weapon/pinpointer/advpinpointer/bombplantlocator/toggle_mode()
+	visible_message("<span class = 'notice'>The locator announces 'TARGET LOCKED: MODE CHANGE UNAVAILABLE'</span>")
+	return
 
 /datum/nuclearexplosion/New(var/obj/b)
 	explosion(b.loc,20,30,40,50)
