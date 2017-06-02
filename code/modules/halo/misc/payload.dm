@@ -6,39 +6,39 @@
 	icon_state = "MFDD"
 	anchored = 0
 	density = 1
-	var/handlename = "handles" //Different bombs, eg. Covie antimatter bombs. "Spikes"
 	var/explodetype = /datum/nuclearexplosion
 	var/exploding
 	var/explode_at
-	var/secondsdisarm = 60
-	var/mob/living/carbon/u = null
+	var/secondstoexplode = 2400
+	var/disarm_at
+	var/secondstodisarm = 60
+	var/mob/living/u = null
 	var/disarming
+	var/explodedesc = "A spraypainted image of a skull adorns this slowly ticking bomb."
 
 /obj/payload/attack_hand(var/mob/living/user)
 	if(!exploding)
 		if(!checkturf())
 			if(!u)
-				visible_message("<span class='danger'>[user.name] grasps the [handlename] of the [src]</span>","<span class ='notice'>You grab the [handlename] of the [src]</span>")
-				processing_objects += src
-				u = user
-				pulledby = u
+				visible_message("<span class='danger'>The [src] beeps a warning:'OPTIMAL LOCATION NOT REACHED'</span>")
 		else
-			visible_message("<span class = 'userdanger'>[user.name] primes the [src] for detonation</span>","<span class ='notice'>You prime the [src] for detonation</span>")
-			explode_at = world.time + 2400 // 4 minutes
+			u = user
+			u.visible_message("<span class = 'userdanger'>[user.name] primes the [src] for detonation</span>","<span class ='notice'>You prime the [src] for detonation</span>")
+			explode_at = world.time + secondstoexplode
 			exploding = 1
 			processing_objects += src
 			anchored = 1
 	else
 		if(!disarming)
-			visible_message("<span class = 'danger'>[user.name] starts disarming the [src]</span>","<span class ='notice'>You start disarming the [src]. You estimate it'll take [secondsdisarm] seconds</span>")
-			secondsdisarm += world.time
 			u = user
+			u.visible_message("<span class = 'danger'>[user.name] starts disarming the [src]</span>","<span class ='notice'>You start disarming the [src]. You estimate it'll take [secondstodisarm/10] seconds</span>")
+			disarm_at = world.time + secondstodisarm
 			disarming = 1
 		else
 			user << "<span class ='notice'>Someone else is already disarming the [src]</span>"
 
 /obj/payload/proc/checkturf()
-	for(var/obj/effect/bomblocation/b in world)
+	for(var/obj/bomblocation/b in world)
 		if(b.loc == src.loc)
 			return 1
 		else
@@ -60,7 +60,7 @@
 
 /obj/payload/proc/checkexplode()
 	if(exploding)
-		desc = "A spraypainted image of a skull adorns this slowly ticking bomb. [explode_at - world.time] seconds remain."
+		desc = explodedesc + " [(explode_at - world.time)/10] seconds remain."
 	if(exploding && world.time >= explode_at)
 		processing_objects -= src
 		new explodetype(src)
@@ -71,31 +71,39 @@
 	if(!checknextto() || !checkalive() || !disarming)
 		disarming = 0
 		return
-	if(world.time >= secondsdisarm)
-		visible_message("<span class = 'danger'>[usr] disarms the [src]</span>","<span class = 'notice'>You disarm the [src]</span>")
+	if(world.time >= disarm_at)
+		u.visible_message("<span class = 'danger'>[u] disarms the [src]</span>","<span class = 'notice'>You disarm the [src]</span>")
 		exploding = 0
 		disarming = 0
+		anchored = 0
+		desc = initial(desc)
 		processing_objects -= src
 
 /obj/payload/process()
-	if(u)
-		pulledby = u
-	else
-		pulledby = null
 	checkexplode()
 	checkdisarm()
 
-/obj/effect/bomblocation
+/obj/bomblocation
 	name = "Bomb Delivery Point"
 	desc = "Marks the location for the delivery of a bomb."
 	icon = 'icons/misc/mark.dmi'
 	icon_state = "rup"
 	anchored = 1
-	//invisibility = 100 //Don't want this to be seen at all.
+	invisibility = 101 //Don't want this to be seen at all.
+
+/obj/payload/covenant
+	name = "Antimatter Bomb"
+	desc = "Menacing spikes jut out from this device's frame."
+	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
+	icon_state ="Antimatter"
+	explodedesc = "Spikes conceal a countdown timer."
+	secondstoexplode = 3000
+	secondstodisarm = 600
+
 
 /datum/nuclearexplosion/New(var/obj/b)
-	explosion(b.loc,25,30,20,100)
+	explosion(b.loc,20,20,20,20)
 	for(var/mob/living/m in world)
 		m << "<span class = 'userdanger'>A shockwave slams into you! You feel yourself falling apart...</span>"
-		m.health = m.maxHealth * -2 // OVERKILL
+		m.gib() // Game over, all die.
 	qdel(src)
