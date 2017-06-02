@@ -42,28 +42,23 @@
 //	armor = list(melee = 95, bullet = 80, laser = 30, energy = 30, bomb = 60, bio = 25, rad = 25) //Close to spartan armour. Lower bullet,higher melee. Lower energy.
 	var/specials = list()
 	var/totalshields
-	var/obj/effect/overlay/shields/s = new /obj/effect/overlay/shields	var/datum/harnessspecials/shields/sh
 	var/mob/living/m
 
 /obj/item/clothing/suit/armor/combatharness/New()
 	..()
 	for(var/i in specials)
 		specials -= i
-		if(i == /datum/harnessspecials/shields) //Needed to set the shield capacity. I've tried using something other than the type path.Couldn't get it to work.
-			sh = new i(totalshields,src)
-		else
-			specials += new i
+		specials += new i (src)
 
 
 /obj/item/clothing/suit/armor/combatharness/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(sh)
-		return sh.handle_shield(m,damage,damage_source)
+	for(var/datum/harnessspecials/i in specials)
+		return i.handle_shield(m,damage,damage_source)
 
 
 /obj/item/clothing/suit/armor/combatharness/equipped(mob/user)
 	m = user
 	return
-
 /obj/item/clothing/suit/armor/combatharness/emp_act(severity)
 	for(var/datum/harnessspecials/i in specials)
 		i.tryemp(severity)
@@ -74,19 +69,6 @@
 	for(var/item in specials)
 		qdel(item)
 	..()
-/obj/item/clothing/suit/armor/combatharness/process()
-	if(sh)
-		sh.tryrecharge(m)
-
-/obj/item/clothing/suit/armor/combatharness/emp_act(severity)
-	if(sh)
-		sh.tryemp(severity)
-
-
-/obj/item/clothing/suit/armor/combatharness/Destroy()
-	..()
-	processing_objects -= src
-	qdel(sh)
 
 /obj/item/clothing/suit/armor/combatharness/minor
 	icon_state = "minor"
@@ -110,4 +92,9 @@
 			damage = heart.damage;heart.damage = 0
 			return
 		m.vessel.add_reagent("blood",30) // 30 blood should be enough to resist a shallow cut at max damage for that type.
+
+/obj/effect/SangheiliMinorSet/New()
+	new /obj/item/clothing/suit/armor/combatharness/minor (src.loc)
+	new /obj/item/clothing/shoes/sangheili/minor (src.loc)
+	new /obj/item/clothing/head/sangheili/minor (src.loc)
 
