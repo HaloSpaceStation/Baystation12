@@ -19,12 +19,8 @@
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "minor_helm"
 	sprite_sheets = list("Sangheili" = 'code/modules/halo/icons/elitearmour.dmi')
-<<<<<<< HEAD
-	species_restricted = list("Sangheili")	item_flags = THICKMATERIAL
-=======
 	species_restricted = list("Sangheili")
 	item_flags = THICKMATERIAL
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 	armor = list(melee = 40,bullet = 20,laser = 40,energy = 5,bomb = 25,bio = 0,rad = 0) //Slightly higher bullet resist than Spartan helmets. Lower laser, energy and melee.
 
 /obj/item/clothing/shoes/sangheili/minor
@@ -33,12 +29,8 @@
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "minor_legs"
 	sprite_sheets = list("Sangheili" = 'code/modules/halo/icons/elitearmour.dmi')
-<<<<<<< HEAD
-	species_restricted = list("Sangheili")	item_flags = NOSLIP // Because marines get it.
-=======
 	species_restricted = list("Sangheili")
 	item_flags = NOSLIP // Because marines get it.
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 	armor = list(melee = 40, bullet = 60, laser = 5, energy = 4, bomb = 40, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/combatharness
@@ -53,10 +45,6 @@
 	var/specials = list()
 	var/totalshields
 	var/mob/living/m
-<<<<<<< HEAD
-=======
-	var/testvar
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 
 /obj/item/clothing/suit/armor/combatharness/New()
 	..()
@@ -67,20 +55,13 @@
 
 /obj/item/clothing/suit/armor/combatharness/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	for(var/datum/harnessspecials/i in specials)
-<<<<<<< HEAD
-=======
-		testvar = "true"
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 		return i.handle_shield(m,damage,damage_source)
 
 
 /obj/item/clothing/suit/armor/combatharness/equipped(mob/user)
 	m = user
 	return
-<<<<<<< HEAD
-=======
 
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 /obj/item/clothing/suit/armor/combatharness/emp_act(severity)
 	for(var/datum/harnessspecials/i in specials)
 		i.tryemp(severity)
@@ -112,13 +93,8 @@
 		var/useheart = world.time + 50
 		if(world.time >= useheart) //They still feel the effect.
 			damage = heart.damage;heart.damage = 0
-<<<<<<< HEAD
 			return
 		m.vessel.add_reagent("blood",30) // 30 blood should be enough to resist a shallow cut at max damage for that type.
-=======
-		return
-	m.vessel.add_reagent("blood",30) // 30 blood should be enough to resist a shallow cut at max damage for that type.
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 
 /obj/effect/SangheiliMinorSet/New()
 	new /obj/item/clothing/suit/armor/combatharness/minor (src.loc)

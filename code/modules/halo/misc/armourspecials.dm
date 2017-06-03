@@ -2,10 +2,7 @@
 /obj/effect/overlay/shields
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "shield"
-<<<<<<< HEAD
-=======
 	plane = -6
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 	layer = 0
 
 /datum/harnessspecials/shields
@@ -24,37 +21,25 @@
 /datum/harnessspecials/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	return 0
 
-<<<<<<< HEAD
-=======
+
 /datum/harnessspecials/proc/tryrecharge(var/mob/living/m)
 
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 /datum/harnessspecials/shields/New(var/obj/item/clothing/suit/armor/combatharness/c) //Needed the type path for typecasting to use the totalshields var.
 	connectedarmour = c
 	totalshields = connectedarmour.totalshields
 	shieldstrength = totalshields
 
-<<<<<<< HEAD
-/datum/harnessspecials/shields/handle_shield(mob/m,damage,atom/damage_source)
-	user = m
-	if(checkshields(damage))		user.overlays += s
-=======
-
 /datum/harnessspecials/shields/handle_shield(mob/m,damage,atom/damage_source)
 	user = m
 	if(checkshields(damage))
 		user.overlays += s
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 		connectedarmour.armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0) //This is needed because shields don't work if armour absorbs the blow instead.
+		processing_objects += src
 		return 1
 	else
 		user.overlays -= s
 		connectedarmour.armor = list(melee = 95, bullet = 80, laser = 30, energy = 30, bomb = 60, bio = 25, rad = 25)
-<<<<<<< HEAD
-		processing_objects += connectedarmour
-=======
-		processing_objects += src
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
+		processing_objects -= src
 		return 0
 
 /datum/harnessspecials/shields/proc/checkshields(var/damage,var/damage_source)
@@ -69,11 +54,7 @@
 		nextcharge = world.time + 30 // 3 seconds
 		return 0
 
-<<<<<<< HEAD
-/datum/harnessspecials/shields/proc/tryrecharge(var/mob/living/m)
-=======
 /datum/harnessspecials/shields/tryrecharge(var/mob/living/m)
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 	if(shieldstrength >= totalshields)
 		shieldstrength = totalshields
 		processing_objects -= src
@@ -84,12 +65,8 @@
 			m.visible_message("<span class = 'notice'>A faint ping emanates from [m.name]'s armour.</span>","<span class ='notice'>Current shield level: [(shieldstrength/totalshields)*100]</span>")
 		nextcharge = world.time + 20 // 2 seconds.
 		warned = 0
-<<<<<<< HEAD
-		return
-=======
 		return 1
 
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 /datum/harnessspecials/shields/tryemp(severity)
 	switch(severity)
 		if(1)
@@ -98,13 +75,8 @@
 			shieldstrength -= totalshields/2
 
 /datum/harnessspecials/shields/proc/process()
-<<<<<<< HEAD
-	tryrecharge(user)/datum/harnessspecials/cloaking // Placeholders for later stuff.
-=======
 	tryrecharge(user)
-	return
 
 /datum/harnessspecials/cloaking // Placeholders for later stuff.
->>>>>>> e275679420a3a2b5e8de71bf5556ecdfaf29e294
 
 /datum/harnessspecials/thrusters
