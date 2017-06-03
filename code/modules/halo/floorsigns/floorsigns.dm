@@ -5,6 +5,7 @@
 	icon_state = "bridge"
 	icon = 'code/modules/halo/floorsigns/Hallwaymarkers.dmi'
 	anchored = 1
+	layer = 2
 
 /obj/structure/sign/halo_floorsign/bridge
 
