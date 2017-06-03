@@ -15,4 +15,4 @@
 			return 0
 
 /obj/machinery/deathmatch/process()
-	//for(var/mob/living/carbon/c
+	world.time + 30
