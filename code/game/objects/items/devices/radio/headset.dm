@@ -21,12 +21,12 @@
 
 /obj/item/device/radio/headset/New()
 	..()
-	internal_channels.Cut()
+	/*internal_channels.Cut()
 	if(ks1type)
 		keyslot1 = new ks1type(src)
 	if(ks2type)
 		keyslot2 = new ks2type(src)
-	recalculateChannels(1)
+	recalculateChannels(1)*/
 
 /obj/item/device/radio/headset/Destroy()
 	qdel(keyslot1)
@@ -46,6 +46,7 @@
 	user << radio_desc
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
+	/*
 	if (channel == "special")
 		if (translate_binary)
 			var/datum/language/binary = all_languages["Robot Talk"]
@@ -54,6 +55,7 @@
 			var/datum/language/hivemind = all_languages["Hivemind"]
 			hivemind.broadcast(M, message)
 		return null
+		*/
 
 	return ..()
 
@@ -263,68 +265,3 @@
 		recalculateChannels()
 
 	return
-
-
-/obj/item/device/radio/headset/proc/recalculateChannels(var/setDescription = 0)
-	src.channels = list()
-	src.translate_binary = 0
-	src.translate_hive = 0
-	//src.syndie = 0
-
-	if(keyslot1)
-		for(var/ch_name in keyslot1.channels)
-			if(ch_name in src.channels)
-				continue
-			src.channels += ch_name
-			src.channels[ch_name] = keyslot1.channels[ch_name]
-
-		if(keyslot1.translate_binary)
-			src.translate_binary = 1
-
-		if(keyslot1.translate_hive)
-			src.translate_hive = 1
-
-		/*if(keyslot1.syndie)
-			src.syndie = 1*/
-
-	if(keyslot2)
-		for(var/ch_name in keyslot2.channels)
-			if(ch_name in src.channels)
-				continue
-			src.channels += ch_name
-			src.channels[ch_name] = keyslot2.channels[ch_name]
-
-		if(keyslot2.translate_binary)
-			src.translate_binary = 1
-
-		if(keyslot2.translate_hive)
-			src.translate_hive = 1
-
-		/*if(keyslot2.syndie)
-			src.syndie = 1*/
-
-
-	for (var/ch_name in channels)
-		if(!radio_controller)
-			sleep(30) // Waiting for the radio_controller to be created.
-		if(!radio_controller)
-			src.name = "broken radio headset"
-			return
-
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
-
-	if(setDescription)
-		setupRadioDescription()
-
-	return
-
-/obj/item/device/radio/headset/proc/setupRadioDescription()
-	var/radio_text = ""
-	for(var/i = 1 to channels.len)
-		var/channel = channels[i]
-		var/key = get_radio_key_from_channel(channel)
-		radio_text += "[key] - [channel]"
-		if(i != channels.len)
-			radio_text += ", "
-
-	radio_desc = radio_text

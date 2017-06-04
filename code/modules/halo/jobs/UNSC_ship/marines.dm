@@ -18,7 +18,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/marine(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/marine_fatigues(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), slot_l_hand)
@@ -44,7 +44,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/marine(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/marine_fatigues(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), slot_l_hand)
@@ -69,7 +69,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/marine(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/marine_fatigues(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), slot_head)
@@ -106,7 +106,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/marine(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/marine_fatigues(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), slot_head)
@@ -139,9 +139,9 @@
 	..()
 	new /obj/item/clothing/under/unsc/marine_fatigues(src)
 	new /obj/item/clothing/shoes/marine(src)
-	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset/unsc/marine(src)
 	new /obj/item/clothing/under/unsc/marine_fatigues(src)
 	new /obj/item/clothing/shoes/marine(src)
-	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset/unsc/marine(src)
 	new /obj/item/clothing/head/helmet/marine(src)
 	new /obj/item/clothing/suit/armor/marine(src)

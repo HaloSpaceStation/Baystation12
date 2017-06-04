@@ -9,7 +9,10 @@
 	interests, rampant cyber and bio-augmentation and secretive factions make life on most human \
 	worlds tumultous at best."
 	num_alternate_languages = 2
-	secondary_langs = list("Sol Common")
+	default_language = "English"
+	language = "English"
+	name_language = "English"
+	secondary_langs = list("English")
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 
 	spawn_flags = CAN_JOIN

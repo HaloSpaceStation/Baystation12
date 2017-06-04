@@ -11,9 +11,14 @@
 	var/translate_hive = 0
 	var/syndie = 0
 	var/list/channels = list()
+	var/channel_name
+	var/frequency_num = 0
+	var/datum/radio_frequency/channel_frequency
+	var/spoof_rating = -1	//-1 = authentic
+	var/encryption_key
+	var/message_css		//css span class for the radio message
 
-
-/obj/item/device/encryptionkey/New()
+///obj/item/device/encryptionkey/New()
 
 /obj/item/device/encryptionkey/attackby(obj/item/weapon/W as obj, mob/user as mob)
 

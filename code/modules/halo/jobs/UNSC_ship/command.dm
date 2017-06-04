@@ -21,7 +21,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/heads/captain(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/commander(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/command(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/captain(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), slot_shoes)
@@ -48,7 +48,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/heads/captain(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/commander(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/command(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/captain(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), slot_shoes)
@@ -73,7 +73,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/commander(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/command(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), slot_shoes)
@@ -98,7 +98,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/commander(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/command(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), slot_shoes)
@@ -114,7 +114,7 @@
 	..()
 	new /obj/item/clothing/under/unsc/command(src)
 	new /obj/item/clothing/shoes/brown(src)
-	new /obj/item/device/radio/headset/heads/captain(src)
+	new /obj/item/device/radio/headset/unsc/commander(src)
 	new /obj/item/clothing/under/unsc/command(src)
 	new /obj/item/clothing/shoes/brown(src)
-	new /obj/item/device/radio/headset/heads/captain(src)
+	new /obj/item/device/radio/headset/unsc/commander(src)

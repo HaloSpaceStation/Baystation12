@@ -108,7 +108,7 @@
 /////////////////////
 //todo: check for the actual define and the headets used
 
-
+/*
 /obj/machinery/telecomms/hub/preset_innie
 	id = "Hub"
 	network = "innie_base"
@@ -177,13 +177,13 @@
 	id = "Broadcaster"
 	network = "innie_base"
 	autolinkers = list("broadcaster_innie")
-
+*/
 
 ///////////////////
 //TELECOMMS COMPS//
 ///////////////////
 
-
+/*
 /obj/machinery/computer/telecomms/traffic/innie
 	network = "innie_base"
 	req_access = list(access_innie_boss)
@@ -195,7 +195,7 @@
 /obj/machinery/computer/telecomms/server/innie
 	network = "innie_base"
 	req_access = list(access_innie)
-
+*/
 
 ///////////////////
 //RANDOM SPAWNERS//

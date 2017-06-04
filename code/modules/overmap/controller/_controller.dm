@@ -53,6 +53,8 @@ var/global/list/cached_zlevels = list()		//unused and empty zlevels in case they
 	var/obj/effect/zlevelinfo/bigasteroid/asteroid_zlevel_loading
 	var/list/asteroid_zlevels_ready = list()
 
+	var/datum/halo_frequencies/halo_frequencies_reference
+
 /datum/controller/process/overmap/doWork()
 	//see temporary_sector.dm
 	process_temp_sectors()

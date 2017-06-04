@@ -329,8 +329,8 @@
 			qdel(src)
 			return
 
-		//Find our spawning point.
-		var/join_message = job_master.LateSpawn(character, rank)
+		//Find our spawning point. Arrival announcement is now in the job controller
+		/*var/join_message = */job_master.LateSpawn(character, rank)
 
 		character.lastarea = get_area(loc)
 		// Moving wheelchair if they have one
