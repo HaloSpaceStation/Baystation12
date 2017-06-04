@@ -8,7 +8,6 @@
 	end_on_protag_death = 0
 	deny_respawn = 1 //We'll do that ourselves.
 	protagonist_faction = null
-	var/players = list()
 	var/scores = list()
 	var/obj/effects/spawnpoint/spwnpts = list()
 	var/slayer_maps = list()
@@ -18,42 +17,39 @@
 
 
 /datum/game_mode/slayer/post_setup()
-	sleep(30) //Wait 2 seconds for everything else to start.
-	respawnwhen = world.time + time_to_next_respawn
-	for(var/mob/m in world)
-		players += m
+	sleep(100) //Wait 10 seconds, then start doing things
+	respawnwhen = world.time + time_to_next_respawn*10
 	for(var/obj/effects/spawnpoint/s in world)
 		spwnpts += s.loc
 		if(/mob/living in s.loc.contents)
 			return 0
 		else
-			for(var/mob/living/carbon/human/h in players)
+			for(var/mob/living/carbon/human/h in world)
 				h.ghostize() // We don't want any players right now.
 			sleep(10)
 			for(var/mob/dead/observer/o in world)
 				o.loc = pick(spwnpts) //Move all the ghosts to a spawnpoint.
 
 /datum/game_mode/slayer/proc/newplayer(var/obj/effects/spawnpoint/location,var/mob/living/carbon/human/h)
-	var/mob/living/carbon/human/p = h
-	var/mob/living/carbon/human/m = new /mob/living/carbon/human(location)
-	p.real_name = m.real_name
-	p.name = p.real_name
-	p.ckey = m.ckey
+	var/mob/living/carbon/human/p = new /mob/living/carbon/human(location)
 	var/l = pick(loadouts)
 	new l (p)
+	p.real_name = h.real_name
+	p.name = p.real_name
+	p.ckey = h.ckey
 
 
-/datum/game_mode/slayer/process()
+
+/datum/game_mode/slayer/process() // This code would be for auto-respawn. Currently not functional.
+/*
 	if(world.time >= respawnwhen)
-		world << "RESPAWNING"
-		respawnwhen = world.time + time_to_next_respawn
+		respawnwhen = world.time + time_to_next_respawn*10
 		for(var/obj/i in spwnpts)
 			if(/mob/living in range(5))
 				return
 			else
-				for(var/mob/dead/observer/o in range(0))
+				for(var/mob/dead/observer/o in range(0,i)) //This doesn't seem to work.
 					newplayer(i,o)
-					return
 		for(var/mob/living/carbon/human/m in world)
 			if(m.ckey == null) // So we don't create new mobs for ckeyless people
 				return
@@ -62,20 +58,21 @@
 				newplayer(spawnpoint.loc,m)
 
 	else
-		return
+		return */
 
 
 /obj/effects/spawnpoint
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"
-	var/nextspawn //Time to next spawn
+	var/nextspawn = 0
 
 /obj/effects/spawnpoint/New()
 	invisibility = 61
 
 /obj/effects/spawnpoint/attack_ghost(var/mob/dead/observer/o)
 	var/i = input(o,"Spawn?","Slayer Spawn","No")in list("Yes","No")
-	if(i == "Yes")
+	if(i == "Yes" && world.time >= nextspawn)
+		nextspawn += world.time +300 //Respawn's avaliable every 30 seconds.
 		var/mob/living/carbon/human/h = new /mob/living/carbon/human(loc)
 		new /datum/slayernormal(h)
 		h.real_name = o.real_name
@@ -96,6 +93,7 @@
 	h.equip_to_slot_or_del(new /obj/item/weapon/tank/emergency_oxygen/unsc(h),slot_r_store)
 	h.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/ma5b_ar(h),slot_back)
 	h.equip_to_slot_or_del(new /obj/item/ammo_magazine/m762_ap(h),slot_l_store)
+	h.equip_to_slot_or_del(new /obj/item/weapon/grenade/frag/m9_hedp(h),slot_belt)
 	h.equip_to_slot_or_del(m,slot_s_store)
 	del(src)//Not needed anymore.
 
