@@ -11,7 +11,7 @@
 	name = "Sangheili"
 	desc = "The language of the Sangheili"
 	native = 1
-	syllables = list("ree","wort","nnse","nee","kooree","keeoh","cheenoh","rehmah","nnteh","hahdeh","nnrah","kahwah","ee","hoo","roh","usoh","ahnee","ruh","eerayrah","sohruh","eesah")
+	syllables = list("ree","wortwortwort","wort","nnse","nee","kooree","keeoh","cheenoh","rehmah","nnteh","hahdeh","nnrah","kahwah","ee","hoo","roh","usoh","ahnee","ruh","eerayrah","sohruh","eesah")
 
 /obj/item/clothing/head/sangheili/minor
 	name = "Sangheili Combat Harness Head Armour"
@@ -90,7 +90,7 @@
 		return
 	var/obj/item/organ/heart = owner.internal_organs_by_name["heart"]
 	var/mob/living/carbon/human/m = owner
-	if(heart && heart.damage >=heart.min_broken_damage)
+	if(heart && heart.is_broken())
 		var/useheart = world.time + 50
 		if(world.time >= useheart) //They still feel the effect.
 			damage = heart.damage;heart.damage = 0

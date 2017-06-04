@@ -58,11 +58,16 @@
 /obj/item/clothing/head/helmet/spartan
 	name = "MJOLNIR Powered Assault Armor Helmet"
 	desc = "Ave, Imperator, morituri te salutant."
+	icon = 'code/modules/halo/icons/Mrk V Spartan Helmet.dmi' // Tried having the helmet in hats.dmi. Didn't work.
+	icon_state = "helm"
+	icon_override = 'code/modules/halo/icons/Mrk V Spartan Helmet.dmi' // This seems to make it work. Dunno why.
+	item_state_slots = list(
+		slot_l_hand_str = "spartan5",
+		slot_r_hand_str = "spartan5",
+		)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
 	body_parts_covered = HEAD|FACE
 	siemens_coefficient = 1
-	icon = 'code/modules/halo/icons/Mrk V Spartan Helmet.dmi'
-	icon_state = "Mk V Helm"
 	armor = list(melee = 50,bullet = 15,laser = 50,energy = 10,bomb = 25,bio = 0,rad = 0)
 
 /obj/item/clothing/suit/armor/spartan
