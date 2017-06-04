@@ -626,12 +626,11 @@ var/global/datum/controller/occupations/job_master
 /datum/controller/occupations/proc/LateSpawn(var/mob/living/carbon/human/H, var/rank)
 	//spawn at one of the latespawn locations
 
-	var/datum/spawnpoint/spawnpos
+	//force everyone to spawn from cryo for now. later make this round dependant
+	var/datum/spawnpoint/spawnpos = spawntypes["Cryogenic Storage"]
 
-	if(H.client.prefs.spawnpoint)
-		//force everyone to spawn from cryo for now. later make this round dependant
-		spawnpos = spawntypes["Cryogenic Storage"]
-		//spawnpos = spawntypes[H.client.prefs.spawnpoint]
+	/*if(H.client.prefs.spawnpoint)
+		spawnpos = spawntypes[H.client.prefs.spawnpoint]*/
 
 	if(spawnpos && istype(spawnpos))
 		if(spawnpos.check_job_spawning(rank))
@@ -644,3 +643,26 @@ var/global/datum/controller/occupations/job_master
 	else
 		H.loc = pick(latejoin)
 		. = "has arrived on the station"
+
+	//reset radios
+	for(var/obj/item/device/radio/R in H)
+		R.reset_listening_sector()
+
+	//fake an arrival announcement radio signal
+	spawn(0)
+		var/datum/signal/signal = new()
+		//signal.data["speakerjob"] = jobname
+		signal.data["real_name"] = "Cryogenics Revival Computer"
+		signal.data["message"] =  "[H.name], [rank] [.]"
+		signal.data["speakerjob"] =  "automated"
+		signal.transmit_sector = get_overmap_sector(H)
+		signal.frequency = radio_controller.return_frequency(halo_frequencies.shipcom_freq)
+		signal.transmit_strength = 1
+		signal.language = all_languages["English"]
+		//
+		signal.data["channel"] = "SHIPCOM"
+		//signal.data["spoof_rating"] = key.spoof_rating
+		signal.data["encryption_key"] = "SHIPCOM"
+		signal.data["message_css"] = "comradio"
+
+		Broadcast_Message(signal.frequency, signal)

@@ -210,6 +210,10 @@ var/global/datum/controller/radio/radio_controller
 /obj/proc/receive_signal(datum/signal/signal, receive_method, receive_param)
 	return null
 
+//check whether and how we can recieve the signal
+/obj/proc/get_signal_receive_status(datum/signal/signal)
+	return 0
+
 //The global radio controller
 /datum/controller/radio
 	var/list/datum/radio_frequency/frequencies = list()

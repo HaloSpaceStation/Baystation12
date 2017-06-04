@@ -32,7 +32,7 @@
 		user << "<span class='warning'>You are not the pilot of [src]!</span>"
 
 /obj/machinery/overmap_vehicle/proc/make_pilot(var/mob/living/H)
-	if(pilot && pilot.machine == src)
+	if(pilot)
 		if(pilot == H)
 			H << "\icon[src] <span class='info'>You already control [src].</span>"
 		else

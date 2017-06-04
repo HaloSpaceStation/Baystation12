@@ -263,8 +263,8 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 		return
 	if(!signal)
 		return
-	if(!check_receive_level(signal))
-		return
+	/*if(!check_receive_level(signal))
+		return*/
 
 	if(signal.transmission_method == 2)
 
@@ -281,6 +281,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 			if(!can_send)
 				relay_information(signal, "/obj/machinery/telecomms/bus") // Send it to a bus instead, if it's linked to one
 
+/*
 /obj/machinery/telecomms/proc/check_receive_level(datum/signal/signal)
 
 	var/obj/effect/overmapobj/source_overmapobj = signal.data["sector"]
@@ -318,7 +319,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 		return 0
 	return 1
 	*/
-
+*/
 /*
 	The HUB idles until it receives information. It then passes on that information
 	depending on where it came from.

@@ -22,7 +22,7 @@ var/global/list/default_medbay_channels = list(
 
 /obj/item/device/radio
 	icon = 'icons/obj/radio.dmi'
-	name = "station bounced radio"
+	name = "handheld radio"
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "walkietalkie"
@@ -44,43 +44,65 @@ var/global/list/default_medbay_channels = list(
 	throw_speed = 2
 	throw_range = 9
 	w_class = 2
+	var/transmit_strength = 1
+	var/receive_strength = 1
+	var/transmit_channel = 1	//if 1, always default to a preset channel (as opposed to using a custom frequency)
 
 	matter = list("glass" = 25,DEFAULT_WALL_MATERIAL = 75)
 	var/const/FREQ_LISTENING = 1
 	var/list/internal_channels
 
-/obj/item/device/radio
+	var/show_trace_signals = 1
+
+	var/list/channelkeys_spawn = list()
+	var/list/channelkeys = list()
+	var/list/channels_keys = list()
+	var/list/channels_freqs = list()
+
 	var/datum/radio_frequency/radio_connection
 	var/list/datum/radio_frequency/secure_radio_connections = new
+	var/obj/effect/overmapobj/listening_sector
 
-	proc/set_frequency(new_frequency)
-		radio_controller.remove_object(src, frequency)
-		frequency = new_frequency
-		radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
+/obj/item/device/radio/proc/set_frequency(new_frequency)
+	radio_controller.remove_object(src, frequency)
+	frequency = new_frequency
+	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
+
+/obj/item/device/radio/proc/reset_listening_sector()
+	listening_sector = get_overmap_sector(src)
 
 /obj/item/device/radio/New()
 	..()
 	wires = new(src)
-	internal_channels = default_internal_channels.Copy()
+	//internal_channels = default_internal_channels.Copy()
 
 /obj/item/device/radio/Destroy()
 	qdel(wires)
 	wires = null
 	if(radio_controller)
 		radio_controller.remove_object(src, frequency)
-		for (var/ch_name in channels)
-			radio_controller.remove_object(src, radiochannels[ch_name])
+		for (var/channel_name in channels_freqs)
+			radio_controller.remove_object(src, channel_name)
+
 	return ..()
 
-
 /obj/item/device/radio/initialize()
+	..()
 
-	if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
+	/*if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
 		frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
-	set_frequency(frequency)
+	set_frequency(frequency)*/
+	for(var/keytype in channelkeys_spawn)
+		var/key = new keytype(src)
+		channelkeys.Add(key)
+		enableKey(key)
 
+	/*
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		*/
+
+	reset_listening_sector()
 
 /obj/item/device/radio/attack_self(mob/user as mob)
 	user.set_machine(src)
@@ -199,9 +221,9 @@ var/global/list/default_medbay_channels = list(
 		if ((new_frequency < PUBLIC_LOW_FREQ || new_frequency > PUBLIC_HIGH_FREQ))
 			new_frequency = sanitize_frequency(new_frequency)
 		set_frequency(new_frequency)
-		if(hidden_uplink)
+		/*if(hidden_uplink)
 			if(hidden_uplink.check_trigger(usr, frequency, traitor_frequency))
-				usr << browse(null, "window=radio")
+				usr << browse(null, "window=radio")*/
 		. = 1
 	else if (href_list["talk"])
 		ToggleBroadcast()
@@ -251,12 +273,44 @@ var/global/list/default_medbay_channels = list(
 	qdel(A)
 	return
 
+	/*if(channel)
+		var/obj/item/device/encryptionkey/key = encryption_keys[channel]
+		if(key)
+			signal.data["channel"] = key*/
+
+/obj/item/device/radio/proc/get_channel_key(var/message_mode)
+	//world << "/obj/item/device/radio/proc/get_channel_key([message_mode])"
+	//headset mode will automatically choose the default channel preset
+	var/channel = null
+	if(message_mode == "headset" || (!message_mode && transmit_channel))
+		if(channels_freqs.len)
+			channel = channels_keys[1]
+	else
+		channel = message_mode
+
+	//world << "channel: [channel], retval: [channels_keys[channel]]"
+	return channels_keys[channel]
+
 // Interprets the message mode when talking into a radio, possibly returning a connection datum
 /obj/item/device/radio/proc/handle_message_mode(mob/living/M as mob, message, message_mode)
+	//headset mode will automatically choose the default channel preset
+	if(message_mode == "headset")
+		if(channels_freqs.len)
+			message_mode = channels_freqs[1]
+		else
+			//just use our custom frequency
+			message_mode = null
+
+	//are we using a channel preset?
+	if(transmit_channel || message_mode)
+		//if the target message_mode is not enabled on this headset, it will return null
+		return channels_freqs[message_mode]
+
 	// If a channel isn't specified, send to common.
-	if(!message_mode || message_mode == "headset")
+	if(!message_mode)
 		return radio_connection
 
+	/*
 	// Otherwise, if a channel is specified, look for it.
 	if(channels && channels.len > 0)
 		if (message_mode == "department") // Department radio shortcut
@@ -264,6 +318,7 @@ var/global/list/default_medbay_channels = list(
 
 		if (channels[message_mode]) // only broadcast if the channel is set on
 			return secure_radio_connections[message_mode]
+	*/
 
 	// If we were to send to a channel we don't have, drop it.
 	return null
@@ -278,10 +333,15 @@ var/global/list/default_medbay_channels = list(
 	if(wires.IsIndexCut(WIRE_TRANSMIT)) // The device has to have all its wires and shit intact
 		return 0
 
+	if(!src.transmit_strength)
+		return 0
+
 	M.last_target_radio = world.time // For the projectile targeting system
 
 	if(!radio_connection)
 		set_frequency(frequency)
+	if(!listening_sector)
+		reset_listening_sector()
 
 	/* Quick introduction:
 		This new radio system uses a very robust FTL signaling technology unoriginally
@@ -295,23 +355,29 @@ var/global/list/default_medbay_channels = list(
 	*/
 
 	//#### Grab the connection datum ####//
-	var/datum/radio_frequency/connection = handle_message_mode(M, message, channel)
+	var/obj/item/device/encryptionkey/key = get_channel_key(channel)
+	var/datum/radio_frequency/connection// = handle_message_mode(M, message, channel)
+	if(key)
+		connection = key.channel_frequency
+	else if(!channel)
+		connection = radio_connection
 	if (!istype(connection))
 		return 0
 	if (!connection)
 		return 0
 
-	var/turf/position = get_turf(src)
+	//var/turf/position = get_turf(src)
 
 	//#### Tagging the signal with all appropriate identity values ####//
 
 	// ||-- The mob's name identity --||
-	var/displayname = M.name	// grab the display name (name you get when you hover over someone's icon)
+	//var/displayname = M.name	// grab the display name (name you get when you hover over someone's icon)
 	var/real_name = M.real_name // mob's real name
-	var/mobkey = "none" // player key associated with mob
-	var/voicemask = 0 // the speaker is wearing a voice mask
-	if(M.client)
+	//var/mobkey = "none" // player key associated with mob
+	//var/voicemask = 0 // the speaker is wearing a voice mask
+	/*if(M.client)
 		mobkey = M.key // assign the mob's key
+		*/
 
 
 	var/jobname // the mob's "job"
@@ -345,10 +411,12 @@ var/global/list/default_medbay_channels = list(
 	// --- Modifications to the mob's identity ---
 
 	// The mob is disguising their identity:
+	/*
 	if (ishuman(M) && M.GetVoice() != real_name)
 		displayname = M.GetVoice()
 		jobname = "Unknown"
 		voicemask = 1
+		*/
 
 
 
@@ -356,11 +424,33 @@ var/global/list/default_medbay_channels = list(
 
 	if(1)//always use subspace_transmission for now
 		// First, we want to generate a new radio signal
-		var/datum/signal/signal = new
+		var/datum/signal/signal = new()
+		signal.data["speakerjob"] = jobname
+		signal.data["real_name"] = real_name
+		signal.data["message"] = message
+		signal.transmit_sector = listening_sector
+		signal.frequency = connection.frequency // Quick frequency set
+		signal.transmit_strength = src.transmit_strength
+		signal.language = speaking
+		/*
 		signal.transmission_method = 2 // 2 would be a subspace transmission.
 									   // transmission_method could probably be enumerated through #define. Would be neater.
+									   */
+
+		//channel authorisation
+		if(key)
+			signal.data["channel"] = key.channel_name
+			signal.data["spoof_rating"] = key.spoof_rating
+			signal.data["encryption_key"] = key.encryption_key
+			signal.data["message_css"] = key.message_css
+
+		//grab the sector we are currently in... we can set this up so it doesnt need updating every time someome speaks
+
+		/*if(!listening_sector)
+			reset_listening_sector()*/
 
 		// --- Finally, tag the actual signal with the appropriate values ---
+		/*
 		signal.data = list(
 		  // Identity-associated tags:
 			"mob" = M, // store a reference to the mob
@@ -377,7 +467,7 @@ var/global/list/default_medbay_channels = list(
 			// so that they can be logged even AFTER the mob is deleted or something
 
 		  // Other tags:
-			"compression" = rand(45,50), // compressed radio signal
+			"compression" = 0,//rand(45,50), // compressed radio signal
 			"message" = message, // the actual sent message
 			"connection" = connection, // the radio connection to use
 			"radio" = src, // stores the radio used for transmission
@@ -386,92 +476,69 @@ var/global/list/default_medbay_channels = list(
 			"type" = 0, // determines what type of radio input it is: normal broadcast
 			"server" = null, // the last server to log this signal
 			"reject" = 0,	// if nonzero, the signal will not be accepted by any broadcasting machinery
-			"level" = position.z, // The source's z level
-			"sector" = map_sectors["[position.z]"],		//the source's overmap sector
-			"range" = 0,								//0 means current sector only, each number above that is an extra tile distance on the overmap
-			"system_wide" = 0,							//all recievers get system_wide broadcasts regardless of range
+			"sector" = listening_sector,		//the source's overmap sector
+			"range" = overmap_range,			//0 means current sector only, each number above that is an extra tile distance on the overmap
+			"system_wide" = 0,					//all recievers get system_wide broadcasts regardless of range
 			"language" = speaking,
 			"verb" = verb
 		)
-		signal.frequency = connection.frequency // Quick frequency set
+		*/
 
-	  //#### Sending the signal to all subspace receivers ####//
-
-		for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
-			R.receive_signal(signal)
-
-		// Allinone can act as receivers.
-		for(var/obj/machinery/telecomms/allinone/R in telecomms_list)
-			R.receive_signal(signal)
+		//see code/modules/overmap/overmapobj/radio_comms.dm
+		//world << "/obj/item/device/radio/talk_into()"
+		//listening_sector.distribute_radio_signal(signal)
+		//radio_connection.post_signal(src, signal, RADIO_CHAT)
+		Broadcast_Message(connection, signal)
 
 		// Receiving code can be located in Telecommunications.dm
-		return signal.data["done"] && position.z in signal.data["level"]
+		return 1//signal.data["done"] && position.z in signal.data["level"]
 
-	/*
+/obj/item/device/radio/get_signal_receive_status(datum/signal/signal)
+	if(signal && receive_strength)
+		var/obj/effect/overmapobj/transmit_sector = signal.transmit_sector
+		var/overmap_dist = get_dist(listening_sector, transmit_sector)
 
-  /* ###### Intercoms and station-bounced radios ###### */
+		//Check reception strength
+		var/total_signal_strength = signal.transmit_strength + receive_strength
+		var/falloff_dist = overmap_dist - total_signal_strength
 
-	var/filter_type = 2
+		//Rubbish trace signal
+		if(falloff_dist > total_signal_strength)
+			return SIGNAL_TRACE
 
-	/* --- Intercoms can only broadcast to other intercoms, but bounced radios can broadcast to bounced radios and intercoms --- */
-	if(istype(src, /obj/item/device/radio/intercom))
-		filter_type = 1
+		//Check encryption status
+		var/signal_encryption_key = signal.data["encryption_key"]
+		if(signal_encryption_key)
+			var/obj/item/device/encryptionkey/channel_auth = channels_keys[signal.data["channel"]]
+			var/channel_decryption_key
+			if(channel_auth)
+				channel_decryption_key = channel_auth.encryption_key
+			if(signal_encryption_key != channel_decryption_key)
+				//indecipherable gibberish
+				return SIGNAL_ENCRYPT
 
+		/*
+		//Always allow perfect transmission in the same sector
+		if(listening_sector == transmit_sector)
+			return SIGNAL_4BAR_MOD
+		*/
 
-	var/datum/signal/signal = new
-	signal.transmission_method = 2
+		//Perfect 4 bars of reception if we're within signal range
+		if(falloff_dist < 0)
+			return SIGNAL_4BAR_MOD
 
+		//always have a minimum of 4 tiles falloff
+		falloff_dist = min(falloff_dist, 4)
 
-	/* --- Try to send a normal subspace broadcast first */
-
-	signal.data = list(
-
-		"mob" = M, // store a reference to the mob
-		"mobtype" = M.type, 	// the mob's type
-		"realname" = real_name, // the mob's real name
-		"name" = displayname,	// the mob's display name
-		"job" = jobname,		// the mob's job
-		"key" = mobkey,			// the mob's key
-		"vmessage" = pick(M.speak_emote), // the message to display if the voice wasn't understood
-		"vname" = M.voice_name, // the name to display if the voice wasn't understood
-		"vmask" = voicemask,	// 1 if the mob is using a voice gas mas
-
-		"compression" = 0, // uncompressed radio signal
-		"message" = message, // the actual sent message
-		"connection" = connection, // the radio connection to use
-		"radio" = src, // stores the radio used for transmission
-		"slow" = 0,
-		"traffic" = 0,
-		"type" = 0,
-		"server" = null,
-		"reject" = 0,
-		"level" = position.z,
-		"language" = speaking,
-		"verb" = verb
-	)
-	signal.frequency = connection.frequency // Quick frequency set
-
-	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
-		R.receive_signal(signal)
-
-
-	sleep(rand(10,25)) // wait a little...
-
-	if(signal.data["done"] && position.z in signal.data["level"])
-		// we're done here.
-		return 1
-
-	// Oh my god; the comms are down or something because the signal hasn't been broadcasted yet in our level.
-	// Send a mundane broadcast with limited targets:
-
-	//THIS IS TEMPORARY. YEAH RIGHT
-	if(!connection)	return 0	//~Carn
-
-	return Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
-					  src, message, displayname, jobname, real_name, M.voice_name,
-					  filter_type, signal.data["compression"], list(position.z), connection.frequency,verb,speaking)
-
-	*/
+		//Three bars of reception
+		if(falloff_dist < total_signal_strength * SIGNAL_3BAR_MOD)
+			return SIGNAL_3BAR_MOD
+		//Two bars of reception
+		if(falloff_dist < total_signal_strength * SIGNAL_2BAR_MOD)
+			return SIGNAL_2BAR_MOD
+		//One bar of reception (nearly indecipherable)
+		if(falloff_dist < total_signal_strength * SIGNAL_1BAR_MOD)
+			return SIGNAL_1BAR_MOD
 
 
 /obj/item/device/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
@@ -561,11 +628,95 @@ var/global/list/default_medbay_channels = list(
 	else return
 
 /obj/item/device/radio/emp_act(severity)
+	/*
 	broadcasting = 0
 	listening = 0
 	for (var/ch_name in channels)
 		channels[ch_name] = 0
+	*/
 	..()
+
+/obj/item/device/radio/proc/disableKey(var/obj/item/device/encryptionkey/key)
+	if(key.channel_frequency)
+		. = radio_controller.remove_object(src, key.channel_frequency.frequency)
+		channels_freqs -= key.channel_name
+
+/obj/item/device/radio/proc/enableKey(var/obj/item/device/encryptionkey/key)
+	if(key && radio_controller)
+		key.channel_frequency = radio_controller.add_object(src, key.frequency_num,  RADIO_CHAT)
+		channels_freqs[key.channel_name] = key.channel_frequency
+		channels_keys[key.channel_name] = key
+		return key.channel_frequency
+
+/obj/item/device/radio/proc/recalculateChannels(var/setDescription = 0)
+	//src.channels = list()
+	//radio_controller.remove_object(src, radiochannels[ch_name])
+	//src.translate_binary = 0
+	//src.translate_hive = 0
+	//src.syndie = 0
+	/*
+	if(keyslot1)
+		for(var/ch_name in keyslot1.channels)
+			if(ch_name in src.channels)
+				continue
+			src.channels += ch_name
+			src.channels[ch_name] = keyslot1.channels[ch_name]
+
+		/*if(keyslot1.translate_binary)
+			src.translate_binary = 1
+
+		if(keyslot1.translate_hive)
+			src.translate_hive = 1*/
+
+		/*if(keyslot1.syndie)
+			src.syndie = 1*/
+
+	if(keyslot2)
+		for(var/ch_name in keyslot2.channels)
+			if(ch_name in src.channels)
+				continue
+			src.channels += ch_name
+			src.channels[ch_name] = keyslot2.channels[ch_name]
+
+		/*if(keyslot2.translate_binary)
+			src.translate_binary = 1
+
+		if(keyslot2.translate_hive)
+			src.translate_hive = 1*/
+
+		/*if(keyslot2.syndie)
+			src.syndie = 1*/
+	*/
+
+	/*
+	for (var/ch_name in channels)
+		if(!radio_controller)
+			sleep(30) // Waiting for the radio_controller to be created.
+		if(!radio_controller)
+			src.name = "broken radio headset"
+			return
+
+		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		//datum/controller/radio/proc/add_object(obj/device as obj, var/new_frequency as num, var/filter = null as text|null)
+		*/
+
+	/*if(setDescription)
+		setupRadioDescription()*/
+
+	return
+
+/obj/item/device/radio/proc/setupRadioDescription()
+/*
+	var/radio_text = ""
+	for(var/i = 1 to channels.len)
+		var/channel = channels[i]
+		var/key = get_radio_key_from_channel(channel)
+		radio_text += "[key] - [channel]"
+		if(i != channels.len)
+			radio_text += ", "
+
+	radio_desc = radio_text
+	*/
 
 ///////////////////////////////
 //////////Borg Radios//////////
@@ -636,7 +787,7 @@ var/global/list/default_medbay_channels = list(
 
 	return
 
-/obj/item/device/radio/borg/proc/recalculateChannels()
+/obj/item/device/radio/borg/recalculateChannels()
 	src.channels = list()
 	//src.syndie = 0
 

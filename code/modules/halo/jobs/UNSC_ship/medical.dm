@@ -17,7 +17,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/heads/cmo(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/medical(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/cmo(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), slot_shoes)
@@ -40,7 +40,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_med(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/medical(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/medical(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), slot_shoes)
@@ -57,7 +57,7 @@
 	..()
 	new /obj/item/clothing/under/unsc/medical(src)
 	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/device/radio/headset/headset_med(src)
+	new /obj/item/device/radio/headset/unsc(src)
 	new /obj/item/clothing/under/unsc/medical(src)
 	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/device/radio/headset/headset_med(src)
+	new /obj/item/device/radio/headset/unsc(src)

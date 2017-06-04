@@ -261,6 +261,16 @@
 	for(var/i = 1; i <= player_list.len; i++)
 		var/mob/M = player_list[i]
 		if(M)
+			if (M.client)
+				if(M.client.prefs)
+					if(!(M.client.prefs.toggles & CHAT_RADIO)) //Adminning with 80 people on can be fun when you're trying to talk and all you can hear is radios.
+						continue
+				else
+					log_debug("Client prefs found to be null in /proc/Broadcast_Message() for mob [M] and client [M.ckey], this should be investigated.")
+
+			if(istype(M, /mob/new_player)) // we don't want new players to hear messages. rare but generates runtimes.
+				continue
+
 			var/turf/ear = get_turf(M)
 			if(ear)
 				// Ghostship is magic: Ghosts can hear radio chatter from anywhere

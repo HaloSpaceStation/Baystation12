@@ -18,7 +18,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/heads/ce(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/technician(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/ce(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/workboots(H), slot_shoes)
@@ -43,7 +43,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_eng(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/technician(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/engineering(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/workboots(H), slot_shoes)
@@ -60,7 +60,7 @@
 	..()
 	new /obj/item/clothing/under/unsc/technician(src)
 	new /obj/item/clothing/shoes/workboots(src)
-	new /obj/item/device/radio/headset/headset_eng(src)
+	new /obj/item/device/radio/headset/unsc(src)
 	new /obj/item/clothing/under/unsc/technician(src)
 	new /obj/item/clothing/shoes/workboots(src)
-	new /obj/item/device/radio/headset/headset_eng(src)
+	new /obj/item/device/radio/headset/unsc(src)

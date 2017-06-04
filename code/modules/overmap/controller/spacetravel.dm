@@ -175,6 +175,14 @@ var/list/delete_on_spacetravel = list(\
 
 		V.enter_new_sector(target_sector, entry_level)
 
+		//update any radios
+		for(var/mob/M in V)
+			for(var/obj/item/device/radio/R in M)
+				R.reset_listening_sector()
+	else
+		for(var/obj/item/device/radio/R in A)
+			R.reset_listening_sector()
+
 	return 1
 
 //return a valid destination sector for an overmap turf

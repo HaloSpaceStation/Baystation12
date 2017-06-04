@@ -61,6 +61,14 @@
 	floodlights.screen_loc = "[client_screen_size * 2 - 5],1"
 	misc_hud_objects += floodlights
 
+	//airlock cycle
+	cycle_airlock_ext = new(src)
+	cycle_airlock_ext.screen_loc = "[client_screen_size * 2 - 7],1"
+	misc_hud_objects += cycle_airlock_ext
+	cycle_airlock_int = new(src)
+	cycle_airlock_int.screen_loc = "[client_screen_size * 2 - 6],1"
+	misc_hud_objects += cycle_airlock_int
+
 /obj/machinery/overmap_vehicle/proc/get_misc_hud_objects()
 	return misc_hud_objects
 

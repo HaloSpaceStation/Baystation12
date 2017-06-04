@@ -26,3 +26,22 @@
 
 #define TICKS_IN_DAY 		24*60*60*10
 #define TICKS_IN_SECOND 	10
+
+
+//Radio Communications defines
+/*
+#define SHORT_RANGE_RADIO 7
+#define LONG_RANGE_RADIO 255
+#define MAX_ANTENNA_STRENGTH 50
+*/
+
+//Signal loss over distance
+//Apply these multipliers to the reception strength (broadcast transmission power + hearer's reception power) to get the distance for each tier
+
+#define SIGNAL_4BAR_MOD 0
+#define SIGNAL_3BAR_MOD 0.25
+#define SIGNAL_2BAR_MOD 0.5
+#define SIGNAL_1BAR_MOD 0.75
+#define SIGNAL_TRACE 2
+#define SIGNAL_ENCRYPT 3
+#define SIGNAL_RUBBISH 4

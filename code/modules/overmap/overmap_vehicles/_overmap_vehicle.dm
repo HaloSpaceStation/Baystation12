@@ -143,3 +143,5 @@
 	var/obj/vehicle_hud/autodock/autodock_button
 	var/obj/vehicle_hud/observe_overmap/observe_overmap_button
 	var/obj/vehicle_hud/floodlights/floodlights
+	var/obj/vehicle_hud/cycle_airlock_ext/cycle_airlock_ext
+	var/obj/vehicle_hud/cycle_airlock_int/cycle_airlock_int

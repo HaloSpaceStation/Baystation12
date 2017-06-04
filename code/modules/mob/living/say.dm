@@ -2,6 +2,13 @@ var/list/department_radio_keys = list(
 	  ":r" = "right ear",	".r" = "right ear",
 	  ":l" = "left ear",	".l" = "left ear",
 	  ":i" = "intercom",	".i" = "intercom",
+	  ":s" = "SHIPCOM",		".s" = "SHIPCOM",
+	  ":f" = "FLEETCOM",	".f" = "FLEETCOM",
+	  ":t" = "TEAMCOM",		".t" = "TEAMCOM",
+	  ":q" = "SQDCOM",		".q" = "SQDCOM",
+	  ":p" = "Public COM",	".p" = "Public COM",
+	  ":e" = "E-BAND",		".e" = "E-BAND",
+	  /*
 	  ":h" = "department",	".h" = "department",
 	  ":+" = "special",		".+" = "special", //activate radio-specific special functions
 	  ":c" = "Command",		".c" = "Command",
@@ -14,10 +21,18 @@ var/list/department_radio_keys = list(
 	  ":u" = "Supply",		".u" = "Supply",
 	  ":v" = "Service",		".v" = "Service",
 	  ":p" = "AI Private",	".p" = "AI Private",
+	  */
 
 	  ":R" = "right ear",	".R" = "right ear",
 	  ":L" = "left ear",	".L" = "left ear",
 	  ":I" = "intercom",	".I" = "intercom",
+	  ":S" = "SHIPCOM",		".S" = "SHIPCOM",
+	  ":F" = "FLEETCOM",	".F" = "FLEETCOM",
+	  ":T" = "TEAMCOM",		".T" = "TEAMCOM",
+	  ":Q" = "SQDCOM",		".Q" = "SQDCOM",
+	  ":P" = "Public COM",	".P" = "Public COM",
+	  ":E" = "E-BAND",		".E" = "E-BAND",
+	  /*
 	  ":H" = "department",	".H" = "department",
 	  ":C" = "Command",		".C" = "Command",
 	  ":N" = "Science",		".N" = "Science",
@@ -29,9 +44,11 @@ var/list/department_radio_keys = list(
 	  ":U" = "Supply",		".U" = "Supply",
 	  ":V" = "Service",		".V" = "Service",
 	  ":P" = "AI Private",	".P" = "AI Private",
+	  */
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
+	  /*
 	  ":ê" = "right ear",	".ê" = "right ear",
 	  ":ä" = "left ear",	".ä" = "left ear",
 	  ":ø" = "intercom",	".ø" = "intercom",
@@ -44,6 +61,7 @@ var/list/department_radio_keys = list(
 	  ":ö" = "whisper",		".ö" = "whisper",
 	  ":å" = "Mercenary",	".å" = "Mercenary",
 	  ":é" = "Supply",		".é" = "Supply",
+	  */
 )
 
 
