@@ -1166,6 +1166,7 @@
 #include "code\modules\halo\power\cooling_manifold.dm"
 #include "code\modules\halo\power\fuel_packet.dm"
 #include "code\modules\halo\power\reactor.dm"
+#include "code\modules\halo\sanghelli\sanghelli.dm"
 #include "code\modules\halo\weapons\ammo.dm"
 #include "code\modules\halo\weapons\grenades.dm"
 #include "code\modules\halo\weapons\launchers.dm"
