@@ -1,4 +1,7 @@
 
+/datum/harnessspecials
+	var/mob/living/user
+
 /obj/effect/overlay/shields
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "shield"
@@ -9,7 +12,6 @@
 	var/shieldstrength
 	var/totalshields
 	var/nextcharge
-	var/mob/living/user
 	var/warned
 	var/s = new /obj/effect/overlay/shields
 	var/obj/item/clothing/suit/armor/combatharness/connectedarmour
@@ -30,7 +32,6 @@
 
 
 /datum/harnessspecials/shields/handle_shield(mob/m,damage,atom/damage_source)
-	user = m
 	if(checkshields(damage))
 		user.overlays += s
 		connectedarmour.armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0) //This is needed because shields don't work if armour absorbs the blow instead.

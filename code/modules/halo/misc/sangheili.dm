@@ -45,7 +45,6 @@
 	var/specials = list()
 	var/totalshields
 	var/mob/living/m
-	var/testvar
 
 /obj/item/clothing/suit/armor/combatharness/New()
 	..()
@@ -56,13 +55,13 @@
 
 /obj/item/clothing/suit/armor/combatharness/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	for(var/datum/harnessspecials/i in specials)
-		testvar = "true"
 		return i.handle_shield(m,damage,damage_source)
 
 
 /obj/item/clothing/suit/armor/combatharness/equipped(mob/user)
-	m = user
-	return
+	for(var/datum/harnessspecials/i in specials)
+		i.user = user
+		return
 
 /obj/item/clothing/suit/armor/combatharness/emp_act(severity)
 	for(var/datum/harnessspecials/i in specials)
