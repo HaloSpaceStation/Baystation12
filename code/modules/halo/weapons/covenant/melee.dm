@@ -20,7 +20,10 @@
 		throwforce = 25
 		w_class = 4
 		deployed = 1
+		edge = 1
+		hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
 		visible_message("<span class='notice'>[usr] activates the [src]</span>")
+		clean_blood()
 		return
 	else
 		icon_state = "T1EW Handle"
@@ -28,5 +31,8 @@
 		throwforce = 1
 		w_class = 1
 		deployed = 0
+		edge = 0
+		hitsound = initial(hitsound)
 		visible_message("<span class='notice'>[src] deactivates [src]</span>")
+		clean_blood()
 		return

@@ -12,6 +12,10 @@
 /obj/item/projectile/covenant/plasmapistol/overcharge
 	damage = 75
 
+/obj/item/projectile/covenant/plasmapistol/overcharge/on_impact()
+	..()
+	empulse(src.loc,1,2)
+
 /obj/item/projectile/covenant/plasmarifle
 	damage = 30
 	accuracy = 1
@@ -42,3 +46,16 @@
 	accuracy = 0
 	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
 	icon_state = "needlerammo"
+	embed = 1
+	sharp = 1
+
+/obj/item/projectile/bullet/covenant/needles/attack_mob(var/mob/living/L)
+	var explode
+	for(var/obj/item/weapon/material/shard in L.contents )
+		if (shard.name == "Needle shrapnel")
+			explode += 1
+		if(explode >=5)
+			explosion(L.loc,0,1,2,5)
+			del(shard)
+			return
+	..()
