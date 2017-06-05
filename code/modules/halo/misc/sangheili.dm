@@ -86,9 +86,9 @@
 	min_broken_damage = 30
 
 /obj/item/organ/heart_secondary/process()
-	if(damage>=min_broken_damage)
-		return
 	var/obj/item/organ/heart = owner.internal_organs_by_name["heart"]
+	if(heart.is_broken())
+		return
 	var/mob/living/carbon/human/m = owner
 	if(heart && heart.is_broken())
 		var/useheart = world.time + 50
