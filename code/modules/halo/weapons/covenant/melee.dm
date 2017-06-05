@@ -12,6 +12,15 @@
 
 /obj/item/weapon/melee/energysword/attack_self(var/mob/living/user)
 	if(!deployed)
+		activate()
+		visible_message("<span class='notice'>[usr] activates the [src]</span>")
+		return
+	else
+		deactivate()
+		visible_message("<span class='notice'>[src] deactivates [src]</span>")
+		return
+
+/obj/item/weapon/melee/energysword/proc/activate()
 		playsound(src.loc,'code/modules/halo/sounds/Energysworddeploy.ogg',75)
 		icon_state = "T1EW-deployed"
 		force = 25
@@ -26,9 +35,8 @@
 		slot_l_hand_str = "Energy sword_inhand Human l",
 		slot_r_hand_str = "Energy sword_inhand Human r" )
 		hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
-		visible_message("<span class='notice'>[usr] activates the [src]</span>")
-		return
-	else
+
+/obj/item/weapon/melee/energysword/proc/deactivate()
 		icon_state = "T1EW Handle"
 		force = 1
 		throwforce = 1
@@ -40,5 +48,9 @@
 		item_icons = list(slot_l_hand_str = null)
 		item_state_slots = null
 		hitsound = "swing_hit"
-		visible_message("<span class='notice'>[src] deactivates [src]</span>")
+
+/obj/item/weapon/melee/energysword/dropped()
+	if(deployed)
+		deactivate()
+		visible_message("The [src] deactivates.")
 		return

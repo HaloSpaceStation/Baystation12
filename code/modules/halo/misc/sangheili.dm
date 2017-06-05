@@ -44,7 +44,6 @@
 //	armor = list(melee = 95, bullet = 80, laser = 30, energy = 30, bomb = 60, bio = 25, rad = 25) //Close to spartan armour. Lower bullet,higher melee. Lower energy.
 	var/specials = list()
 	var/totalshields
-	var/mob/living/m
 
 /obj/item/clothing/suit/armor/combatharness/New()
 	..()
@@ -55,7 +54,7 @@
 
 /obj/item/clothing/suit/armor/combatharness/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	for(var/datum/harnessspecials/i in specials)
-		return i.handle_shield(m,damage,damage_source)
+		return i.handle_shield(user,damage,damage_source)
 
 
 /obj/item/clothing/suit/armor/combatharness/equipped(mob/user)
@@ -67,6 +66,10 @@
 	for(var/datum/harnessspecials/i in specials)
 		i.tryemp(severity)
 
+/obj/item/clothing/suit/armor/combatharness/dropped()
+	for(var/datum/harnessspecials/i in specials)
+		i.user = null
+		return
 
 /obj/item/clothing/suit/armor/combatharness/Destroy()
 	processing_objects -= src
@@ -87,13 +90,13 @@
 
 /obj/item/organ/heart_secondary/process()
 	var/obj/item/organ/heart = owner.internal_organs_by_name["heart"]
-	if(heart.is_broken())
-		return
 	var/mob/living/carbon/human/m = owner
 	if(heart && heart.is_broken())
 		var/useheart = world.time + 50
 		if(world.time >= useheart) //They still feel the effect.
 			damage = heart.damage;heart.damage = 0
+		return
+	if(heart.is_broken())
 		return
 	m.vessel.add_reagent("blood",30) // 30 blood should be enough to resist a shallow cut at max damage for that type.
 
