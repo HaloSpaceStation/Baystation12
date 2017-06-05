@@ -19,9 +19,7 @@
 /obj/item/clothing/head/helmet/spartan
 	name = "MJOLNIR Powered Assault Armor Helmet"
 	desc = "Ave, Imperator, morituri te salutant."
-	icon = 'code/modules/halo/icons/Mrk V Spartan Helmet.dmi' // Tried having the helmet in hats.dmi. Didn't work.
-	icon_state = "helm"
-	icon_override = 'code/modules/halo/icons/Mrk V Spartan Helmet.dmi' // This seems to make it work. Dunno why.
+	icon_state = "spartan5"
 	item_state_slots = list(
 		slot_l_hand_str = "spartan5",
 		slot_r_hand_str = "spartan5",
