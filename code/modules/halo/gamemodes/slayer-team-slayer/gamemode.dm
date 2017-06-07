@@ -30,8 +30,11 @@
 /datum/game_mode/slayer/proc/newplayer(var/mob/living/carbon/human/h)
 	var/spwn = spwnpts
 	for(var/obj/effect/spawnpoint/i in spwnpts)
-		if(/mob/living/carbon/human in view(5,i))
-			break
+		for(var/mob/living/carbon/human/m in view(5,i))
+			if(m.stat == DEAD || m.stat == UNCONSCIOUS)
+				continue
+			else
+				break
 		if(i.faction == h.faction)
 			spwn += i
 	var/location = pick(spwn)
@@ -44,6 +47,8 @@
 	p.ckey = h.ckey
 
 /datum/game_mode/slayer/proc/promptspawn(var/mob/m)
+	if(m.ckey in nospawn) // Used for people who said 'not for this round'
+		return
 	var/i = input(m,"Spawn as a Slayer Participant?","Slayer Spawn","No") in list("Yes","No","Not for this round")
 	if(i == "Yes")
 		players += m.ckey
@@ -65,15 +70,13 @@
 		world << "RESPAWNING"
 		respawnwhen += world.time + time_to_next_respawn
 		for(var/mob/m in world)
-			if(m.type == /mob/dead/observer) // This is checked first so people can quit playing and observe.
-				spawn(0)
-					promptspawn(m)
-			if(m.type == /mob/new_player) //So we don't ask anyone in the lobby.
-				break
 			if(m.ckey)
-				if(m.ckey in nospawn) // Used for people who said 'not for this round'
+				if(m.type == /mob/dead/observer) // This is checked first so people can quit playing and observe.
+					spawn(0)
+						promptspawn(m)
+				if(m.type == /mob/new_player) //So we don't ask anyone in the lobby.
 					break
-				if(m.stat == 2 && m.ckey in players) //Autorespawn for dead players
+				if(m.stat == DEAD && m.ckey in players) //Autorespawn for dead players
 					newplayer(m)
 					break
 
