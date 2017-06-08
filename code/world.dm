@@ -72,6 +72,7 @@ var/global/datum/global_init/init = new ()
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
 
+	/*
 	if(config.generate_asteroid)
 		// These values determine the specific area that the map is applied to.
 		// If you do not use the official Baycode moonbase map, you will need to change them.
@@ -86,6 +87,7 @@ var/global/datum/global_init/init = new ()
 			M.updateMineralOverlays()
 		for(var/turf/simulated/floor/asteroid/M in world) // Uuuuuugh.
 			M.updateMineralOverlays()
+			*/
 
 	// Create autolathe recipes, as above.
 	populate_lathe_recipes()
@@ -480,8 +482,8 @@ var/world_topic_spam_protect_time = world.timeofday
 	/*if (config && config.server_name)
 		s += "<b>[config.server_name]</b> &#8212; "*/
 
-	s += "<a href=\"http://projectunsc.com/\">"
-	s += "<b>Halo Spacestation Evolved Alpha</b>"
+	s += "<a href=\"http://projectunsc.org/\">"
+	s += "<b>Halo Spacestation Evolved Pre Alpha Test</b>"
 	s += "</a>\]"
 	s += "<br><br>"
 	if(ticker && ticker.mode)
@@ -498,8 +500,6 @@ var/world_topic_spam_protect_time = world.timeofday
 		s += "<br>"
 		s += "<br>"
 	else
-		s += "<br>"
-		s += "<br>"
 		s += "\[<b>ROUND CURRENTLY STARTING</b>"
 		//&#8212;
 

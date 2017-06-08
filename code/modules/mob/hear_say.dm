@@ -81,7 +81,8 @@
 	var/time = say_timestamp()
 	src << "[time] [message]"
 
-/mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
+/mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/message_css, var/freq_text, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="",\
+		var/prob_stars = 0, var/prob_gibberish = 0, language_message = "wah wah wah")
 
 	if(!client)
 		return
@@ -92,11 +93,13 @@
 
 	var/track = null
 
+	/* Disable this for now because the speaker in view(src) check is messing with radios
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
 	if (language && (language.flags & NONVERBAL))
 		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
-
+	*/
+	/* Innate languages shouldn't need a snowflake check
 	if(!(language && (language.flags & INNATE))) // skip understanding checks for INNATE languages
 		if(!say_understands(speaker,language))
 			if(istype(speaker,/mob/living/simple_animal))
@@ -113,9 +116,11 @@
 
 		if(hard_to_hear)
 			message = stars(message)
+	*/
 
-	var/speaker_name = speaker.name
+	var/speaker_name = vname//speaker.name
 
+	/* Voice changer fuckery
 	if(vname)
 		speaker_name = vname
 
@@ -126,9 +131,12 @@
 
 	if(hard_to_hear)
 		speaker_name = "unknown"
+		*/
 
+	/* Voice changer and mob tracking fuckery. Can't be bothered disentangling the useful code and fixing this up
 	var/changed_voice
 
+	//speaking mob is null... mob tracking (AI and ghosts) will need to be redone to restrict to only local sector mobs (for AI)
 	if(istype(src, /mob/living/silicon/ai) && !hard_to_hear)
 		var/jobname // the mob's "job"
 		var/mob/living/carbon/human/impersonating //The crew member being impersonated, if any.
@@ -181,26 +189,49 @@
 		if(speaker_name != speaker.real_name && !isAI(speaker)) //Announce computer and various stuff that broadcasts doesn't use it's real name but AI's can't pretend to be other mobs.
 			speaker_name = "[speaker.real_name] ([speaker_name])"
 		track = "[speaker_name] ([ghost_follow_link(speaker, src)])"
+		*/
 
+	//process the chat message through text filters depending on conditions
+	if(language)
+		var/understands = 0
+		for(var/datum/language/L in src.languages)
+			if(language.name == L.name)
+				understands = 1
+				break
+		if(!understands && !src.universal_speak)
+			message = language_message//language.scramble(message)
+
+	if(prob_stars)
+		message = stars(message, max(100 - prob_stars, 1))
+	if(prob_gibberish)
+		message = Gibberish(message, prob_gibberish)
+
+	//format the chat message for the player
 	var/formatted
 	if(language)
 		formatted = language.format_message_radio(message, verb)
 	else
-		formatted = "[verb], <span class=\"body\">\"[message]\"</span>"
+		formatted = "[verb], \"[message]\""
+
+	//language name
+	message = " ([language.name]) " + message
+
 	if(sdisabilities & DEAF || ear_deaf)
 		if(prob(20))
 			src << "<span class='warning'>You feel your headset vibrate but can hear nothing from it!</span>"
 	else
-		on_hear_radio(part_a, speaker_name, track, part_b, formatted)
+		on_hear_radio(message_css, freq_text, speaker_name, track, formatted)
 
 /proc/say_timestamp()
 	return "<span class='say_quote'>\[[worldtime2text()]\]</span>"
 
-/mob/proc/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
-	src << "[part_a][speaker_name][part_b][formatted]"
-
+/mob/var/last_radio
+/mob/proc/on_hear_radio(message_css, freq_text, speaker_name, track, formatted)
+	last_radio = "<span class='[message_css]'><b>[freq_text]</b> <span class='name'>[speaker_name]</span> <span class='message'>[formatted]</span></span>"
+	src << last_radio
+/*
 /mob/dead/observer/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
-	src << "[part_a][track][part_b][formatted]"
+	src << "[part_a][speaker_name][part_b][formatted]"	//formerly used var/track in place of speaker_name
 
 /mob/living/silicon/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/time = say_timestamp()
@@ -209,7 +240,7 @@
 /mob/living/silicon/ai/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/time = say_timestamp()
 	src << "[time][part_a][track][part_b][formatted]"
-
+*/
 /mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)
 	if(!client)
 		return

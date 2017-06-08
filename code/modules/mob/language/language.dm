@@ -17,6 +17,7 @@
 	var/flags = 0                    // Various language flags.
 	var/native                       // If set, non-native speakers will have trouble speaking.
 	var/list/syllables               // Used when scrambling text for a non-speaker.
+	var/list/ending_syllables = list()
 	var/list/space_chance = 55       // Likelihood of getting a space in the random scramble string
 
 /datum/language/proc/get_random_name(var/gender, name_count=2, syllable_count=4, syllable_divisor=2)
@@ -67,6 +68,8 @@
 			scrambled_text += ". "
 			capitalize = 1
 		else if(chance > 5 && chance <= space_chance)
+			if(ending_syllables.len && prob(50))
+				scrambled_text += pick(ending_syllables)
 			scrambled_text += " "
 
 	scrambled_text = trim(scrambled_text)

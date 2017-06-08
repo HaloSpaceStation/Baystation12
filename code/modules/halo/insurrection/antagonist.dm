@@ -40,6 +40,7 @@
 	if(player.backbag == 4) player.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(player), slot_back)
 	player.equip_to_slot_or_del(new /obj/item/weapon/storage/box/engineer(player.back), slot_in_backpack)
 	player.equip_to_slot_or_del(new /obj/item/weapon/reagent_containers/pill/cyanide(player), slot_in_backpack)
+	player.equip_to_slot_or_del(new /obj/item/device/radio/headset/insurrection(player), slot_l_ear)
 
 	/*if (player.mind == leader)
 		var/obj/item/device/radio/uplink/U = new(player.loc, player.mind, 40)
@@ -51,7 +52,7 @@
 		create_leader_id(player)
 	else
 		create_id("Insurrectionist", player)
-	create_radio(SYND_FREQ, player)
+	//create_radio(SYND_FREQ, player)
 	return 1
 
 /datum/antagonist/insurrectionist/proc/create_leader_id(var/mob/living/carbon/human/player)

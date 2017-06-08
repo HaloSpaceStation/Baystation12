@@ -74,3 +74,8 @@
 //override in children
 /obj/effect/overmapobj/vehicle/machineClickOn(var/atom/A, var/params)
 	return overmap_vehicle.machineClickOn(A, params)
+
+/obj/machinery/overmap_vehicle/proc/get_sector()
+	if(is_cruising())
+		return overmap_object
+	return map_sectors["[src.z]"]

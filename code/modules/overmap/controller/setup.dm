@@ -10,7 +10,8 @@ datum/controller/process/overmap/setup()
 
 	overmap_controller = src
 
-	testing("Building overmap...")
+	//testing("Building overmap...")
+	admin_notice("<span class='danger'>Building overmap...</span>", R_DEBUG)
 
 	//to enable debugging
 	map_sectors_reference = map_sectors
@@ -22,6 +23,8 @@ datum/controller/process/overmap/setup()
 	unused_common_ores_reference = unused_common_ores
 	all_rare_ores_reference = all_rare_ores
 	unused_rare_ores_reference = unused_rare_ores
+	//
+	halo_frequencies_reference = halo_frequencies
 	//
 	all_datanets_reference = all_datanets
 	uninitialised_datanets_reference = uninitialised_datanets

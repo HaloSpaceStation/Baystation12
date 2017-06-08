@@ -1,6 +1,12 @@
 
 /obj/machinery/overmap_vehicle/proc/observe_space(var/mob/user)
-	overmap_object.observe_space(user)
+	var/obj/effect/overmapobj/target_observing_from = overmap_object
+	if(overmap_object.loc == src)
+		//user << "<span class='warning'>Cannot observe space right now!</span>"
+		target_observing_from = get_overmap_sector(src)
+	target_observing_from.observe_space(user)
+	if(user.client)
+		user.client.view = client_screen_size
 
 /obj/machinery/overmap_vehicle/cancel_camera(var/mob/user)
 	//if the player is inside a fighter and calls cancel_camera() verb

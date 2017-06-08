@@ -19,10 +19,11 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/mechanic(H), slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/workboots(H), slot_shoes)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/ce(H), slot_belt)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/pilot(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/pilot(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
+		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/pilot(H), slot_head)
+		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_belt)
 		return 1
 
 /datum/job/UNSC_ship/cmdr_sqr
@@ -44,10 +45,11 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/mechanic(H), slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/workboots(H), slot_shoes)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/ce(H), slot_belt)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/pilot(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/pilot(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
+		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/pilot(H), slot_head)
+		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_belt)
 		return 1
 
 /datum/job/UNSC_ship/pilot
@@ -68,10 +70,11 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/mechanic(H), slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/engineering(H), slot_l_store)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/workboots(H), slot_shoes)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc/pilot(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/pilot(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_l_store)
+		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/pilot(H), slot_head)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
 		return 1
 
 /obj/structure/closet/unsc_wardrobe/pilot
@@ -82,9 +85,11 @@
 
 /obj/structure/closet/unsc_wardrobe/pilot/New()
 	..()
-	new /obj/item/clothing/under/unsc/mechanic(src)
-	new /obj/item/clothing/shoes/workboots(src)
-	new /obj/item/device/radio/headset/headset_cargo(src)
-	new /obj/item/clothing/under/unsc/mechanic(src)
-	new /obj/item/clothing/shoes/workboots(src)
-	new /obj/item/device/radio/headset/headset_cargo(src)
+	new /obj/item/clothing/head/helmet/pilot(src)
+	new /obj/item/clothing/under/unsc/pilot(src)
+	new /obj/item/clothing/shoes/black(src)
+	new /obj/item/device/radio/headset/unsc/pilot(src)
+	new /obj/item/clothing/head/helmet/pilot(src)
+	new /obj/item/clothing/under/unsc/pilot(src)
+	new /obj/item/clothing/shoes/black(src)
+	new /obj/item/device/radio/headset/unsc/pilot(src)

@@ -10,6 +10,7 @@
 	anchored = 1
 	density = 0
 	wall_mounted = 1
+	store_mobs = 0
 
 /obj/structure/closet/wall_emergency/New()
 	..()
@@ -32,6 +33,7 @@
 	anchored = 1
 	density = 0
 	wall_mounted = 1
+	store_mobs = 0
 
 /obj/structure/closet/wall_medical/New()
 	..()

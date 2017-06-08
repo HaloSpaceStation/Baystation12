@@ -17,7 +17,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/operations(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
@@ -41,7 +41,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/unsc(H), slot_l_ear)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/operations(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
@@ -57,10 +57,10 @@
 	..()
 	new /obj/item/clothing/under/unsc/operations(src)
 	new /obj/item/clothing/shoes/black(src)
-	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset/unsc(src)
 	new /obj/item/clothing/under/unsc/operations(src)
 	new /obj/item/clothing/shoes/black(src)
-	new /obj/item/device/radio/headset(src)
+	new /obj/item/device/radio/headset/unsc(src)
 
 /*
 //coordinates fighter and shuttle traffic around the ship, including docking and departing

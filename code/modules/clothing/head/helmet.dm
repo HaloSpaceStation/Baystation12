@@ -53,18 +53,6 @@
 	body_parts_covered = HEAD|FACE
 	siemens_coefficient = 1
 
-/obj/item/clothing/head/helmet/spartan
-	name = "MJOLNIR Powered Assault Armor Helmet"
-	desc = "Ave, Imperator, morituri te salutant."
-	icon_state = "spartan5"
-	item_state_slots = list(
-		slot_l_hand_str = "spartan5",
-		slot_r_hand_str = "spartan5",
-		)
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
-	body_parts_covered = HEAD|FACE
-	siemens_coefficient = 1
-
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
 	desc = "An armored helmet capable of being fitted with a multitude of attachments."
