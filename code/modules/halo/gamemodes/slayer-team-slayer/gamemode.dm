@@ -11,7 +11,7 @@
 	votable = 1
 	var/obj/effect/spawnpoint/spwnpts = list()
 	var/slayer_maps = list()
-	var/time_to_next_respawn = 300 //30 //Time in deciseconds.
+	var/time_to_next_respawn = 200 //Still having issues with the timer. It seems to continually increase the amount of time it takes to respawn
 	var/respawnwhen
 	var/loadouts = list(/datum/slayernormal/)
 	var/players = list()
@@ -24,23 +24,25 @@
 		spwnpts += s.loc
 
 /datum/game_mode/slayer/post_setup()
-	respawnwhen = world.time + time_to_next_respawn
 	processing_objects += src // Doesn't seem to normally process. Suggestions for a better way to do this would be appreciated.
 
-/datum/game_mode/slayer/proc/newplayer(var/mob/living/carbon/human/h)
+/datum/game_mode/slayer/proc/newplayer(var/mob/living/carbon/human/h,var/team_overlay)
 	var/spwn = spwnpts
 	for(var/obj/effect/spawnpoint/i in spwnpts)
-		for(var/mob/living/carbon/human/m in view(5,i))
-			if(m.stat == DEAD || m.stat == UNCONSCIOUS)
+		var/mob/living/carbon/human/m = locate() in view(5,i)
+		if(m)
+			if(m.stat != DEAD || m.stat != UNCONSCIOUS)
 				continue
-			else
-				break
-		if(i.faction == h.faction)
-			spwn += i
+		else
+			if(i.faction == h.faction) //TODO: Fix this. Seems to spawn people without taking spawnpoint faction into consideration
+				spwn += i
 	var/location = pick(spwn)
 	var/mob/living/carbon/human/p = new /mob/living/carbon/human(location)
 	var/l = pick(loadouts)
 	new l (p)
+	if(team_overlay)
+		p.overlays += team_overlay
+		world << "OVERLAY ADDED"
 	p.faction = h.faction
 	p.real_name = h.real_name
 	p.name = p.real_name
@@ -50,6 +52,8 @@
 	if(m.ckey in nospawn) // Used for people who said 'not for this round'
 		return
 	var/i = input(m,"Spawn as a Slayer Participant?","Slayer Spawn","No") in list("Yes","No","Not for this round")
+	if(!m.ckey)
+		return
 	if(i == "Yes")
 		players += m.ckey
 		newplayer(m,m.faction)
@@ -105,6 +109,7 @@
 	h.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/ma5b_ar(h),slot_back)
 	h.equip_to_slot_or_del(new /obj/item/ammo_magazine/m762_ap(h),slot_l_store)
 	h.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/m6d_magnum(h),slot_s_store)
+	h.equip_to_slot_or_del(new /obj/item/weapon/grenade/frag/m9_hedp,slot_belt)
 	qdel(src)//Not needed anymore.
 
 //Notes: Look at insurrection's gamemode to see how to spawn maps not usually included in the dm.
@@ -115,19 +120,50 @@
 	extended_round_description = "Free for all: fight to the death."
 	config_tag = "Slayer TDM"
 	votable = 1
-	var/team1[0]
-	var/team2[0]
+	var/teams[0]
 
-/datum/game_mode/slayer/team/newplayer(var/mob/living/carbon/human/h)
-	if(h.faction == "neutral")
-		if(team1.len >= team2.len) // Team assignments.
-			h.faction = "Red Team"
-			team2 += h.ckey
-			team1 -= h.ckey
-			h <<"Assigned To Red Team"
-		else
-			h.faction = "Blue Team"
-			team1 += h.ckey
-			team2 -= h.ckey
-			h <<"Assigned To Blue Team"
+/datum/game_mode/slayer/team/pre_setup()
+	teams += new /datum/slayer/team/red //Team 1
+	teams += new /datum/slayer/team/blue // Team 2
 	..()
+
+/datum/game_mode/slayer/team/newplayer(var/mob/living/carbon/human/h,var/team_overlay)
+	if(h.faction == "neutral")
+		var/datum/slayer/team/team1 = teams[1] // TODO: FIX TEAM ASSIGNS
+		var/datum/slayer/team/team2 = teams[2]
+		if(team1.members.len >= team2.members.len)
+			h.faction = team2.name
+			team2.members += h.ckey
+			team_overlay = team2.team_overlay
+		else
+			h.faction = team1.name
+			team1.members += h.ckey
+			team_overlay = team1.team_overlay
+	..()
+
+/datum/slayer/team
+	var/name = "neutral" //Will also be the faction name.
+	var/members[0]
+	var/team_overlay
+
+/obj/effect/overlay/slayer
+	name = "Slayer Team Marker"
+	icon = 'icons/mob/hud.dmi'
+	plane = 4
+	layer = 3
+
+/datum/slayer/team/red
+	name = "Red Team"
+	team_overlay = /obj/effect/overlay/slayer/redteam
+
+/obj/effect/overlay/slayer/redteam
+	name = "Red Team"
+	icon_state = "hudinnie"
+
+/datum/slayer/team/blue
+	name = "Blue Team"
+	team_overlay = /obj/effect/overlay/slayer/redteam
+
+/obj/effect/overlay/slayer/blueteam
+	name = "Blue Team"
+	icon_state = "hudheadrevolutionary"
