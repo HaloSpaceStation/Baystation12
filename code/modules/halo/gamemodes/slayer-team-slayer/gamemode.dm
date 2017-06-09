@@ -34,8 +34,10 @@
 			if(m.stat != DEAD || m.stat != UNCONSCIOUS)
 				continue
 		else
-			if(i.faction == h.faction) //TODO: Fix this. Seems to spawn people without taking spawnpoint faction into consideration
-				spwn += i
+			if(i.faction != h.faction) //TODO: Fix this. Spawns people without regard to the spawnpoint's factions.
+				spwn -= i
+				continue
+
 	var/location = pick(spwn)
 	var/mob/living/carbon/human/p = new /mob/living/carbon/human(location)
 	var/l = pick(loadouts)
@@ -79,10 +81,9 @@
 					spawn(0)
 						promptspawn(m)
 				if(m.type == /mob/new_player) //So we don't ask anyone in the lobby.
-					break
+					continue
 				if(m.stat == DEAD && m.ckey in players) //Autorespawn for dead players
 					newplayer(m)
-					break
 
 /obj/effect/spawnpoint
 	icon = 'icons/mob/screen1.dmi'
