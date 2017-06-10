@@ -21,22 +21,27 @@
 /datum/game_mode/slayer/pre_setup()
 	respawnwhen = world.time + time_to_next_respawn
 	for(var/obj/effect/spawnpoint/s in world)
-		spwnpts += s.loc
+		spwnpts += s
 
 /datum/game_mode/slayer/post_setup()
 	processing_objects += src // Doesn't seem to normally process. Suggestions for a better way to do this would be appreciated.
 
 /datum/game_mode/slayer/proc/newplayer(var/mob/living/carbon/human/h,var/team_overlay)
-	var/spwn = spwnpts
-	for(var/obj/effect/spawnpoint/i in spwnpts)
+	var/spwn = list()
+	for(var/obj/i in spwnpts)
 		var/mob/living/carbon/human/m = locate() in view(5,i)
 		if(m)
 			if(m.stat != DEAD || m.stat != UNCONSCIOUS)
 				continue
 		else
-			if(i.faction != h.faction) //TODO: Fix this. Spawns people without regard to the spawnpoint's factions.
-				spwn -= i
+			if(i.name == h.faction) //TODO: Fix this. Spawns people without regard to the spawnpoint's factions.
+				spwn += i.loc
+				world <<"WEGOTONE"//Just test
 				continue
+		if(!spwn) // So we don't get an empty spawnlist. Used as a fallback for FFA
+			world << "No Team Spawnpoints found. Falling back to Free For All spawns."
+			spwn += i.loc
+			continue
 
 	var/location = pick(spwn)
 	var/mob/living/carbon/human/p = new /mob/living/carbon/human(location)
@@ -58,7 +63,7 @@
 		return
 	if(i == "Yes")
 		players += m.ckey
-		newplayer(m,m.faction)
+		newplayer(m)
 	if(i == "No")
 		if(m.ckey in players)
 			players -=m.ckey
@@ -88,13 +93,13 @@
 /obj/effect/spawnpoint
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"
-	var/faction = "neutral"//For use by Team Deathmatch spawners. Faction corresponds to team faction eg. "Blue Team","Red Team".
+	name = "neutral"//For use by Team Deathmatch spawners. Faction corresponds to team faction eg. "Blue Team","Red Team".
 
 /obj/effect/spawnpoint/red
-	faction = "Red Team"
+	name = "Red Team"
 
 /obj/effect/spawnpoint/blue
-	faction = "Blue Team"
+	name = "Blue Team"
 
 /obj/effect/spawnpoint/New()
 	invisibility = 100
