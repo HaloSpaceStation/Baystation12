@@ -100,8 +100,9 @@
 		return
 	m.vessel.add_reagent("blood",30) // 30 blood should be enough to resist a shallow cut at max damage for that type.
 
-/obj/effect/SangheiliMinorSet/New()
+/obj/effect/armoursets/SangheiliMinorSet/New()
 	new /obj/item/clothing/suit/armor/combatharness/minor (src.loc)
 	new /obj/item/clothing/shoes/sangheili/minor (src.loc)
 	new /obj/item/clothing/head/sangheili/minor (src.loc)
+	qdel(src)
 

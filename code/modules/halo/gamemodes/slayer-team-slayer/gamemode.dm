@@ -11,7 +11,7 @@
 	votable = 1
 	var/obj/effect/spawnpoint/spwnpts = list()
 	var/slayer_maps = list()
-	var/time_to_next_respawn = 200 //Still having issues with the timer. It seems to continually increase the amount of time it takes to respawn
+	var/time_to_next_respawn = 300 //Deciseconds.
 	var/respawnwhen
 	var/loadouts = list(/datum/slayernormal/)
 	var/players = list()
@@ -19,24 +19,25 @@
 
 
 /datum/game_mode/slayer/pre_setup()
+	. = ..()
 	respawnwhen = world.time + time_to_next_respawn
 	for(var/obj/effect/spawnpoint/s in world)
 		spwnpts += s
 
 /datum/game_mode/slayer/post_setup()
-	processing_objects += src // Doesn't seem to normally process. Suggestions for a better way to do this would be appreciated.
+	. = ..()
+	processing_objects += src
 
-/datum/game_mode/slayer/proc/newplayer(var/mob/living/carbon/human/h,var/team_overlay)
+/datum/game_mode/slayer/proc/newplayer(var/mob/living/carbon/human/h,var/obj/team_overlay)
 	var/spwn = list()
 	for(var/obj/i in spwnpts)
 		var/mob/living/carbon/human/m = locate() in view(5,i)
 		if(m)
-			if(m.stat != DEAD || m.stat != UNCONSCIOUS)
+			if(m.stat != DEAD)
 				continue
 		else
-			if(i.name == h.faction) //TODO: Fix this. Spawns people without regard to the spawnpoint's factions.
+			if(i.name == h.faction)
 				spwn += i.loc
-				world <<"WEGOTONE"//Just test
 				continue
 		if(!spwn) // So we don't get an empty spawnlist. Used as a fallback for FFA
 			world << "No Team Spawnpoints found. Falling back to Free For All spawns."
@@ -47,9 +48,9 @@
 	var/mob/living/carbon/human/p = new /mob/living/carbon/human(location)
 	var/l = pick(loadouts)
 	new l (p)
-	if(team_overlay)
-		p.overlays += team_overlay
-		world << "OVERLAY ADDED"
+	if(team_overlay) // Team overlays don't seem to function.
+		p.overlays.Add(team_overlay)
+		p.regenerate_icons()
 	p.faction = h.faction
 	p.real_name = h.real_name
 	p.name = p.real_name
@@ -79,7 +80,7 @@
 /datum/game_mode/slayer/process()
 	if(world.time >= respawnwhen)
 		world << "RESPAWNING"
-		respawnwhen += world.time + time_to_next_respawn
+		respawnwhen = world.time + time_to_next_respawn
 		for(var/mob/m in world)
 			if(m.ckey)
 				if(m.type == /mob/dead/observer) // This is checked first so people can quit playing and observe.
@@ -149,18 +150,18 @@
 
 /datum/slayer/team
 	var/name = "neutral" //Will also be the faction name.
+	var/score = 0
 	var/members[0]
 	var/team_overlay
 
 /obj/effect/overlay/slayer
 	name = "Slayer Team Marker"
 	icon = 'icons/mob/hud.dmi'
-	plane = 4
 	layer = 3
 
 /datum/slayer/team/red
 	name = "Red Team"
-	team_overlay = /obj/effect/overlay/slayer/redteam
+	team_overlay = new /obj/effect/overlay/slayer/redteam
 
 /obj/effect/overlay/slayer/redteam
 	name = "Red Team"
@@ -168,7 +169,7 @@
 
 /datum/slayer/team/blue
 	name = "Blue Team"
-	team_overlay = /obj/effect/overlay/slayer/redteam
+	team_overlay = new /obj/effect/overlay/slayer/redteam
 
 /obj/effect/overlay/slayer/blueteam
 	name = "Blue Team"

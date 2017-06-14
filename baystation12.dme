@@ -2090,6 +2090,7 @@
 #include "maps\__overmap.dmm"
 #include "maps\innie_base1.dmm"
 #include "maps\innie_base2.dmm"
+#include "maps\TeamSlayer1.dmm"
 #include "maps\unsc_frigate-1.dmm"
 #include "maps\unsc_frigate-2.dmm"
 #include "maps\unsc_frigate-3.dmm"
