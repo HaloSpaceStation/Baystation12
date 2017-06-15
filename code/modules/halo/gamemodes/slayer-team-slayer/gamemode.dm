@@ -26,7 +26,6 @@
 
 /datum/game_mode/slayer/post_setup()
 	. = ..()
-	processing_objects += src
 
 /datum/game_mode/slayer/proc/newplayer(var/mob/living/carbon/human/h,var/obj/team_overlay)
 	var/spwn = list()
@@ -49,12 +48,14 @@
 	var/l = pick(loadouts)
 	new l (p)
 	if(team_overlay) // Team overlays don't seem to function.
-		p.overlays.Add(team_overlay)
+		var/image/o = p.hud_list[SPECIALROLE_HUD]
+		o.icon_state = team_overlay.icon_state
 		p.regenerate_icons()
 	p.faction = h.faction
 	p.real_name = h.real_name
 	p.name = p.real_name
 	p.ckey = h.ckey
+	p.mind.special_role = h.mind.special_role
 
 /datum/game_mode/slayer/proc/promptspawn(var/mob/m)
 	if(m.ckey in nospawn) // Used for people who said 'not for this round'
@@ -157,7 +158,7 @@
 /obj/effect/overlay/slayer
 	name = "Slayer Team Marker"
 	icon = 'icons/mob/hud.dmi'
-	layer = 3
+	layer = 5
 
 /datum/slayer/team/red
 	name = "Red Team"
