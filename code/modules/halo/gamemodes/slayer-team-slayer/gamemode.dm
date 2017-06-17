@@ -8,7 +8,7 @@
 	end_on_protag_death = 0
 	deny_respawn = 1 //We'll do that ourselves.
 	protagonist_faction = null
-	votable = 1
+	votable = 0
 	var/obj/effect/spawnpoint/spwnpts = list()
 	var/slayer_maps = list()
 	var/time_to_next_respawn = 300 //Deciseconds.
@@ -18,44 +18,33 @@
 	var/nospawn = list()
 
 
-/datum/game_mode/slayer/pre_setup()
+/datum/game_mode/slayer/post_setup()
 	. = ..()
 	respawnwhen = world.time + time_to_next_respawn
 	for(var/obj/effect/spawnpoint/s in world)
 		spwnpts += s
 
-/datum/game_mode/slayer/post_setup()
-	. = ..()
-
-/datum/game_mode/slayer/proc/newplayer(var/mob/living/carbon/human/h,var/obj/team_overlay)
+/datum/game_mode/slayer/proc/newplayer(var/mob/living/carbon/human/h,var/datum/antagonist/antag,var/teamfaction)
 	var/spwn = list()
-	for(var/obj/i in spwnpts)
-		var/mob/living/carbon/human/m = locate() in view(5,i)
-		if(m)
-			if(m.stat != DEAD)
-				continue
-		else
-			if(i.name == h.faction)
-				spwn += i.loc
-				continue
-		if(!spwn) // So we don't get an empty spawnlist. Used as a fallback for FFA
-			world << "No Team Spawnpoints found. Falling back to Free For All spawns."
+	for(var/obj/i in spwnpts) //Removed the check for mobs in view because it could easily lead to spawncamping.
+		if(i.name == h.faction)
 			spwn += i.loc
 			continue
 
-	var/location = pick(spwn)
+	if(!spwn) // So we don't get an empty spawnlist. Used as a fallback for FFA
+		world << "No Team Spawnpoints found. Falling back to Free For All spawns."
+		spwn = spwnpts
+	var/location = pick(spwn) // I get a runtime here whilst testing, Don't see why.
 	var/mob/living/carbon/human/p = new /mob/living/carbon/human(location)
 	var/l = pick(loadouts)
 	new l (p)
-	if(team_overlay) // Team overlays don't seem to function.
-		var/image/o = p.hud_list[SPECIALROLE_HUD]
-		o.icon_state = team_overlay.icon_state
-		p.regenerate_icons()
 	p.faction = h.faction
 	p.real_name = h.real_name
 	p.name = p.real_name
 	p.ckey = h.ckey
-	p.mind.special_role = h.mind.special_role
+	if(antag)
+		antag.add_antagonist_mind(p.mind,1)
+	p.faction = teamfaction //Only here until actual antagonists are created for the slayer GM. Needs to reset the faction so spawning works.
 
 /datum/game_mode/slayer/proc/promptspawn(var/mob/m)
 	if(m.ckey in nospawn) // Used for people who said 'not for this round'
@@ -131,47 +120,39 @@
 	var/teams[0]
 
 /datum/game_mode/slayer/team/pre_setup()
+	. = ..()
 	teams += new /datum/slayer/team/red //Team 1
 	teams += new /datum/slayer/team/blue // Team 2
-	..()
 
-/datum/game_mode/slayer/team/newplayer(var/mob/living/carbon/human/h,var/team_overlay)
-	if(h.faction == "neutral")
-		var/datum/slayer/team/team1 = teams[1] // TODO: FIX TEAM ASSIGNS
-		var/datum/slayer/team/team2 = teams[2]
+/datum/game_mode/slayer/team/newplayer(var/mob/living/carbon/human/h,var/team_antag,var/teamfaction)
+	var/datum/slayer/team/team1 = teams[1]
+	var/datum/slayer/team/team2 = teams[2]
+	if(!(h.ckey in team1.members) || !(h.ckey in team2.members))
 		if(team1.members.len >= team2.members.len)
 			h.faction = team2.name
 			team2.members += h.ckey
-			team_overlay = team2.team_overlay
+			team1.members -= h.ckey
+			team_antag = team2.antag
+			teamfaction = team2.name //Only needed as a workaround due to the lack of custom slayer antags.
 		else
 			h.faction = team1.name
 			team1.members += h.ckey
-			team_overlay = team1.team_overlay
-	..()
+			team2.members -= h.ckey
+			team_antag = team1.antag
+			teamfaction = team1.name
+	return ..(h,team_antag,teamfaction)
 
 /datum/slayer/team
 	var/name = "neutral" //Will also be the faction name.
 	var/score = 0
 	var/members[0]
-	var/team_overlay
-
-/obj/effect/overlay/slayer
-	name = "Slayer Team Marker"
-	icon = 'icons/mob/hud.dmi'
-	layer = 5
+	var/team_ident
+	var/antag
 
 /datum/slayer/team/red
 	name = "Red Team"
-	team_overlay = new /obj/effect/overlay/slayer/redteam
-
-/obj/effect/overlay/slayer/redteam
-	name = "Red Team"
-	icon_state = "hudinnie"
+	antag = /datum/antagonist/insurrectionist //These can be changed later into slayer specific antags.
 
 /datum/slayer/team/blue
 	name = "Blue Team"
-	team_overlay = new /obj/effect/overlay/slayer/redteam
-
-/obj/effect/overlay/slayer/blueteam
-	name = "Blue Team"
-	icon_state = "hudheadrevolutionary"
+	antag = /datum/antagonist/revolutionary
