@@ -1,10 +1,14 @@
 //Put other elite stuff here
+/mob/living/carbon/human/covenant/sangheili
+	var/linked_squad
+
 /mob/living/carbon/human/covenant/sangheili/New(var/new_loc) //Species definition in code/modules/mob/living/human/species/outsider.
 	..(new_loc,"Sangheili")							//Code breaks if not placed in species folder,
 	name = pick(first_names_sangheili)
 	name += " "
 	name += pick(last_names_sangheili)
 	real_name = name
+	faction = "Covenant"
 
 
 /datum/language/sangheili

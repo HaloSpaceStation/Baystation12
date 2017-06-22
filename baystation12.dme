@@ -1155,6 +1155,7 @@
 #include "code\modules\halo\maps\unsc_frigate2.dm"
 #include "code\modules\halo\maps\unsc_frigate3.dm"
 #include "code\modules\halo\maps\unsc_frigate4.dm"
+#include "code\modules\halo\misc\ai-squads.dm"
 #include "code\modules\halo\misc\armourspecials.dm"
 #include "code\modules\halo\misc\atmos_machinery.dm"
 #include "code\modules\halo\misc\blast_door_control.dm"
