@@ -1,0 +1,28 @@
+/datum/species/augmented-human
+	name = "Augmented-Human"
+	name_plural = "augmented-humans"
+	blurb = "Shouldn't be seeing this." // Doesn't appear in chargen
+	icobase = 'code/modules/halo/icons/Augmented-Human.dmi' //The DMI needed modification to fit the usual format (see other species' dmis)
+	deform = 'code/modules/halo/icons/r_Augmented-Human.dmi'
+	default_language = "English"
+	language = "English"
+	total_health = 135 
+	slowdown = -0.8 
+  darksight = 6
+  
+  /datum/unarmed_attack/punch
+  damage = 10
+  
+  /datum/unarmed_attack/stomp
+  damage = 10
+  
+  /datum/unarmed_attack/kick
+  damage = 10
+  
+  /datum/unarmed_attack/bite
+  damage = 10
+  
+  
+	
+  
+	spawn_flags = IS_WHITELISTED
