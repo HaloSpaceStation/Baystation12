@@ -37,13 +37,13 @@
 	var/location = pick(spwn) // I get a runtime here whilst testing, Don't see why.
 	var/mob/living/carbon/human/p = new /mob/living/carbon/human(location)
 	var/l = pick(loadouts)
-	new l (p)
-	p.faction = h.faction
 	p.real_name = h.real_name
 	p.name = p.real_name
 	p.ckey = h.ckey
 	if(antag)
-		antag.add_antagonist_mind(p.mind,1)
+		antag = get_antag_data(antag)
+		antag.add_antagonist(p.mind,1,1)
+	new l (p)
 	p.faction = teamfaction //Only here until actual antagonists are created for the slayer GM. Needs to reset the faction so spawning works.
 
 /datum/game_mode/slayer/proc/promptspawn(var/mob/m)
@@ -98,8 +98,8 @@
 /datum/slayernormal/New(var/mob/living/carbon/human/h) // I did have a single grenade in here, but I think it broke the respawning. Don't know why.
 	h.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(h),slot_shoes)
 	h.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/odst(h),slot_w_uniform)
-	h.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/spartan(h),slot_wear_suit)
 	h.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(h),slot_gloves)
+	h.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/spartan(h),slot_wear_suit)
 	h.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/syndicate(h),slot_wear_mask)
 	h.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/spartan(h),slot_head)
 	h.equip_to_slot_or_del(new /obj/item/weapon/tank/emergency_oxygen/unsc(h),slot_r_store)
@@ -147,12 +147,12 @@
 	var/score = 0
 	var/members[0]
 	var/team_ident
-	var/antag
+	var/datum/antagonist/antag
 
 /datum/slayer/team/red
 	name = "Red Team"
-	antag = /datum/antagonist/insurrectionist //These can be changed later into slayer specific antags.
+	antag = MODE_INNIE
 
 /datum/slayer/team/blue
 	name = "Blue Team"
-	antag = /datum/antagonist/revolutionary
+	antag = MODE_REVOLUTIONARY
