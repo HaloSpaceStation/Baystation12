@@ -8,7 +8,7 @@
 	end_on_protag_death = 0
 	deny_respawn = 1 //We'll do that ourselves.
 	protagonist_faction = null
-	votable = 0
+	votable = 1
 	var/obj/effect/spawnpoint/spwnpts = list()
 	var/slayer_maps = list()
 	var/time_to_next_respawn = 300 //Deciseconds.
