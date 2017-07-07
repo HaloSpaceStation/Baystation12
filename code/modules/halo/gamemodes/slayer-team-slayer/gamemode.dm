@@ -181,7 +181,7 @@
 	h.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(h),slot_shoes)
 	h.equip_to_slot_or_del(new /obj/item/clothing/under/unsc/odst(h),slot_w_uniform)
 	h.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(h),slot_gloves)
-	h.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/spartan(h),slot_wear_suit)
+	h.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/special/spartan(h),slot_wear_suit)
 	h.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/syndicate(h),slot_wear_mask)
 	h.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/spartan(h),slot_head)
 	h.equip_to_slot_or_del(new /obj/item/weapon/tank/emergency_oxygen/unsc(h),slot_r_store)

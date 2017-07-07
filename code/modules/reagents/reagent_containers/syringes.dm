@@ -346,17 +346,3 @@
 		reagents.add_reagent("chloralhydrate", 50)
 		mode = SYRINGE_INJECT
 		update_icon()
-
-/obj/item/weapon/reagent_containers/syringe/ld50_syringe/triadrenaline
-	name = "Tri-Adrenaline Syringe"
-	desc = "A spring-loaded syringe of tri-adrenaline. Used for resuscitation"
-	amount_per_transfer_from_this = 15
-	volume = 15
-	visible_name = "a giant syringe"
-	time = 30
-
-	New()
-		..()
-		reagents.add_reagent("triadrenaline", 15)
-		mode = SYRINGE_INJECT
-		update_icon()
