@@ -17,6 +17,7 @@
 		reagents.add_reagent("tricordrazine",5)
 		reagents.add_reagent("tramadol",5)
 		mode = SYRINGE_INJECT
+		update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/ld50_syringe/triadrenaline
 	name = "Tri-Adrenaline Syringe"

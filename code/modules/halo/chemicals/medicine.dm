@@ -47,7 +47,7 @@
 				H.pulse = PULSE_2FAST
 
 /datum/reagent/biofoam
-	name = "Bio Foam"
+	name = "Bio-Foam"
 	id = "biofoam"
 	description = "A regenerative foaming agent which is capable of fixing bones and stopping bleeding"
 	reagent_state = LIQUID
@@ -85,10 +85,11 @@
 	for(var/obj/item/organ/external/o in H.organs)
 		for(var/wounds in o.wounds)
 			var/datum/wound/W = wounds
-			o.owner << "<span class = 'notice'>You feel the bleeding in your [o.name] slow.</span>"
-			W.bandaged = 1
-			W.salved = 1
-			o.update_damages()
+			if(W.bleed_timer > 0)
+				o.owner << "<span class = 'notice'>You feel the bleeding in your [o.name] slow.</span>"
+				W.bandaged = 1
+				W.salved = 1
+				o.update_damages()
 
 /datum/reagent/biofoam/affect_blood(var/mob/living/carbon/M,var/alien,var/removed) //Biofoam stops internal and external bleeding, heals organs and fixes bones.
 	if(istype(M,/mob/living/carbon/human))

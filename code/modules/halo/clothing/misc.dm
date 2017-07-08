@@ -47,7 +47,7 @@
 	action_button_name = "Dispense Medical Supplies."
 	specials = list(/datum/armourspecials/dispensemeds/spartan)
 
-/obj/item/clothing/suit/armor/special/spartan/ui_action_click()
+/obj/item/clothing/suit/armor/special/spartan/ui_action_click() //Currently not functioning.
 	for(var/datum/armourspecials/I in specials)
 		I.try_item_action()
 
