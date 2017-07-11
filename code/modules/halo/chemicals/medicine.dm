@@ -34,17 +34,17 @@
 				H.regenerate_icons()
 				H.failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 			//End shameless rip
-			holder.remove_reagent("triadrenaline", dose/2)
-		if(dose > overdose) //TODO: MOVE TO OVERDOSE PROC.
-			var/obj/item/organ/heart/O = H.internal_organs_by_name["heart"]
-			if(O && prob(15))
-				O.damage += 300 //Your heart exploded poor you
-				holder.remove_reagent("triadrenaline", dose)
-				H << "You feel a sudden stabbing pain in your chest"
-			else
-				if(prob(25))
-					H << "You feel your heart thundering in your chest"
-				H.pulse = PULSE_2FAST
+			holder.remove_reagent("triadrenaline", dose)
+
+/datum/reagent/triadrenaline/overdose(var/mob/living/carbon/human/H)
+	var/obj/item/organ/heart/O = H.internal_organs_by_name["heart"]
+	if(O && prob(15))
+		O.damage += 300 //Your heart exploded poor you
+		holder.remove_reagent("triadrenaline", dose/2)
+		H << "You feel a sudden stabbing pain in your chest"
+	else if(prob(25))
+		H << "You feel your heart thundering in your chest"
+		H.pulse = PULSE_2FAST
 
 /datum/reagent/biofoam
 	name = "Bio-Foam"
@@ -80,12 +80,15 @@
 		check_and_stop_bleeding(I)
 		if(I.damage >= I.min_bruised_damage)
 			I.damage -= I.min_bruised_damage
+			if(prob(20))
+				H <<"<span class = 'notice'>You feel your [I.name] knitting itself back together</span>"
 
 /datum/reagent/biofoam/proc/fix_wounds(var/mob/living/carbon/human/H)
 	for(var/obj/item/organ/external/o in H.organs)
 		for(var/wounds in o.wounds)
 			var/datum/wound/W = wounds
 			if(W.bleed_timer > 0)
+				W.bleed_timer = 0
 				o.owner << "<span class = 'notice'>You feel the bleeding in your [o.name] slow.</span>"
 				W.bandaged = 1
 				W.salved = 1
@@ -99,3 +102,21 @@
 		fix_wounds(H)
 		mend_external(H)
 		mend_internal(H)
+
+/datum/reagent/biofoam/overdose(var/mob/living/carbon/M)
+	if(istype(M,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = M
+		if(prob(20))
+			for(var/o in H.internal_organs)
+				var/obj/item/organ/O = o
+				var/dam = rand(10,50)
+				O.damage += dam
+				if(dam >= 20)
+					dam = 0
+				else
+					dam = 1
+				M <<"<span class ='userdanger'>You feel [dam ? "your [O.name] collapse" : "immense pressure on your [O.name]" ].</span>"
+			holder.remove_reagent("biofoam",volume)
+		else if (prob(35))
+			var/obj/item/organ/O = pick(H.internal_organs)
+			M <<"<span class ='danger'>You feel your [O.name] being crushed.</span>"

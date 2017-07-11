@@ -21,8 +21,6 @@
 /datum/armourspecials/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	return 0
 
-/datum/armourspecials/proc/tryshields(var/mob/living/m)
-
 /datum/armourspecials/proc/try_item_action()
 
 /datum/armourspecials/shields/New(var/obj/item/clothing/suit/armor/special/c) //Needed the type path for typecasting to use the totalshields var.
@@ -49,12 +47,12 @@
 		return 1
 	if(shieldstrength<= 0)
 		if(!warned) //Stops spam and constant resetting
-			user.visible_message("<span class ='warning'>[usr]'s shield collapses!</span>","<span class ='userdanger'>Your shields fizzle and spark, losing their protective ability!</span>")
+			user.visible_message("<span class ='warning'>[user]'s shield collapses!</span>","<span class ='userdanger'>Your shields fizzle and spark, losing their protective ability!</span>")
 		warned = 1
 		nextcharge = world.time + 30 // 3 seconds
 		return 0
 
-/datum/armourspecials/shields/tryshields(var/mob/living/m)
+/datum/armourspecials/shields/proc/tryshields(var/mob/living/m)
 	if(shieldstrength >= totalshields)
 		shieldstrength = totalshields
 		processing_objects -= src
@@ -78,23 +76,36 @@
 	tryshields(user)
 	return
 
-/datum/armourspecials/dispensemeds
-	var/stored_meds[0]
+/datum/armourspecials/dispenseitems
+	var/stored_items[0]
+	var/expendedmessage //String for the message displayed when no items are left in the suit.
+	var/dispensemessage //String to display when dispensing items.
+	var/failmessage //String to display when dispensing fails.
 
-/datum/armourspecials/dispensemeds/try_item_action()
-	if(stored_meds.len <= 0)
-		return user << "<span class = 'notice'>Emergency medical supplies exhausted.</span>"
-	if(user.put_in_active_hand(stored_meds[stored_meds.len]))
-		stored_meds.Cut(stored_meds.len)
-		return user << "<span class ='notice'>[stored_meds.len] </span>"
-	else if(user.put_in_inactive_hand(stored_meds[stored_meds.len]))
-		stored_meds.Cut(stored_meds.len)
-		return user << "<span class ='notice'>[stored_meds.len] </span>"
+/datum/armourspecials/dispenseitems/try_item_action()
+	var/nextitem = pick(stored_items)
+	if(stored_items.len == 0)
+		user << "<span class = 'notice'>[expendedmessage]</span>"
+		return 0
 	else
-		return user << "<span class ='notice'>No space in user's hands availiable for medical support.</span>"
+		if(user.put_in_active_hand(new nextitem))
+			stored_items.Remove(nextitem)
+			user << "<span class ='notice'>[dispensemessage] [stored_items.len] left.</span>"
+			return 1
+		else if(user.put_in_inactive_hand(new nextitem))
+			stored_items.Remove(nextitem)
+			user << "<span class ='notice'>[dispensemessage] [stored_items.len] left.</span>"
+			return 1
+		else
+			user << "<span class ='notice'>[failmessage]</span>"
+			return 0
+	world << stored_items.len
 
-/datum/armourspecials/dispensemeds/spartan
-	stored_meds = list(/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,
+/datum/armourspecials/dispenseitems/spartanmeds
+	expendedmessage = "Emergency medical supplies exhausted."
+	dispensemessage = "Dispensing medical supplies..."
+	failmessage = "No space in user's hands available for medical support."
+	stored_items = list(/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,
 	/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,
 	/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,
 	/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,

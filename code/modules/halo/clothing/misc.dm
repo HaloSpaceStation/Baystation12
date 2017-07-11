@@ -45,9 +45,8 @@
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	action_button_name = "Dispense Medical Supplies."
-	specials = list(/datum/armourspecials/dispensemeds/spartan)
+	specials = list(/datum/armourspecials/dispenseitems/spartanmeds)
 
 /obj/item/clothing/suit/armor/special/spartan/ui_action_click() //Currently not functioning.
 	for(var/datum/armourspecials/I in specials)
 		I.try_item_action()
-
