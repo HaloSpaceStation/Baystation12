@@ -83,11 +83,8 @@
 	var/failmessage //String to display when dispensing fails.
 
 /datum/armourspecials/dispenseitems/try_item_action()
-	var/nextitem = pick(stored_items)
-	if(stored_items.len == 0)
-		user << "<span class = 'notice'>[expendedmessage]</span>"
-		return 0
-	else
+	if(stored_items.len > 0)
+		var/nextitem = pick(stored_items)
 		if(user.put_in_active_hand(new nextitem))
 			stored_items.Remove(nextitem)
 			user << "<span class ='notice'>[dispensemessage] [stored_items.len] left.</span>"
@@ -99,7 +96,9 @@
 		else
 			user << "<span class ='notice'>[failmessage]</span>"
 			return 0
-	world << stored_items.len
+	else
+		user << "<span class = 'notice'>[expendedmessage]</span>"
+		return 0
 
 /datum/armourspecials/dispenseitems/spartanmeds
 	expendedmessage = "Emergency medical supplies exhausted."
