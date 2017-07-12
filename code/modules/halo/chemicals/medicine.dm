@@ -111,7 +111,7 @@
 				var/obj/item/organ/O = o
 				var/dam = rand(10,50)
 				O.damage += dam
-				if(dam >= 20)
+				if(dam >= O.min_broken_damage)
 					dam = 0
 				else
 					dam = 1
