@@ -10,5 +10,5 @@
 	name = "Bio-Foam"
 	id = "biofoam"
 	result = "biofoam"
-	required_reagents = list()
+	required_reagents = list("foaming_agent" = 1, "tricordrazine" = 1, "bicaridine" = 1)
 	result_amount = 2
