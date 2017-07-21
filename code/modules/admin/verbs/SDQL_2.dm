@@ -65,7 +65,8 @@
 	switch(query_tree[1])
 		if("delete")
 			for(var/datum/d in objs)
-				qdel(d)
+				if(!datum_is_forbidden(d)) //Port from paracode to fix exploit
+					qdel(d)
 
 		if("select")
 			var/text = ""
@@ -91,6 +92,9 @@
 			if("set" in query_tree)
 				var/list/set_list = query_tree["set"]
 				for(var/datum/d in objs)
+					//Port from paracode to prevent editing an admin's variables
+					if(datum_is_forbidden(d))
+						return
 					var/list/vals = list()
 					for(var/v in set_list)
 						if(v in d.vars)
@@ -101,6 +105,8 @@
 						for(var/v in vals)
 							if(v == "x" || v == "y" || v == "z")
 								continue
+							if(!datum_is_forbidden(vals[v]))
+								return
 
 							d.vars[v] = vals[v]
 
