@@ -1,6 +1,6 @@
 /datum/species/sangheili
 	name = "Sangheili"
-	name_plural = "sangheili"
+	name_plural = "Sangheili"
 	blurb = "Shouldn't be seeing this." // Doesn't appear in chargen
 	flesh_color = "#4A4A64"
 	blood_color = "#4A4A64"
@@ -9,6 +9,8 @@
 	icon_template = 'code/modules/halo/icons/species/r_elite_template.dmi'
 	default_language = "Sangheili"
 	language = "Sangheili"
+	eyes = null
+	//prone_icon = 'code/modules/halo/icons/species/r_elite_prone.dmi'
 	total_health = 150 // Stronger than humans at base health.
 	radiation_mod = 0.6 //Covie weapons emit beta radiation. Resistant to 1/3 types of radiation.
 	spawn_flags = IS_WHITELISTED

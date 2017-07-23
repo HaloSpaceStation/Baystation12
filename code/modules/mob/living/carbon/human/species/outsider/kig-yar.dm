@@ -9,7 +9,9 @@
 	default_language = "Sangheili" //Just for now, no special language just yet
 	language = "Sangheili"
 	radiation_mod = 0.6 //Covie weapons emit beta radiation. Resistant to 1/3 types of radiation.
+	inherent_verbs = list(/mob/living/carbon/human/proc/focus_view)
 	spawn_flags = IS_WHITELISTED
+	darksight = 6
 	brute_mod = 1.1
 
 	has_limbs = list(
@@ -25,27 +27,3 @@
 		"l_foot" = list("path" = /obj/item/organ/external/foot/hollow_bones),
 		"r_foot" = list("path" = /obj/item/organ/external/foot/right/hollow_bones)
 		)
-
-/obj/item/organ/external/arm/hollow_bones
-	min_broken_damage = 20 //Needs 10 less damage to break
-
-/obj/item/organ/external/arm/right/hollow_bones
-	min_broken_damage = 20
-
-/obj/item/organ/external/leg/hollow_bones
-	min_broken_damage = 20
-
-/obj/item/organ/external/leg/right/hollow_bones
-	min_broken_damage = 20
-
-/obj/item/organ/external/hand/hollow_bones
-	min_broken_damage = 20
-
-/obj/item/organ/external/hand/right/hollow_bones
-	min_broken_damage = 20
-
-/obj/item/organ/external/foot/hollow_bones
-	min_broken_damage = 20
-
-/obj/item/organ/external/foot/right/hollow_bones
-	min_broken_damage = 20
