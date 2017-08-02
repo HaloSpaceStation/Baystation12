@@ -10,6 +10,7 @@
 	default_language = "Sangheili"
 	language = "Sangheili"
 	eyes = null
-	total_health = 130 //Slightly lower base health increase than sangheilli
+	total_health = 200 //Slightly lower base health increase than sangheilli
+	radiation_mod = 0.6
 	spawn_flags = IS_WHITELISTED
 	brute_mod = 0.9

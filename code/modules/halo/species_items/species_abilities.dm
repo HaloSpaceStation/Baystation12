@@ -1,3 +1,4 @@
+#define ONETILE 32 //A single normal tile in pixels
 
 /mob/living/carbon/human/proc/focus_view()
 	set category = "Abilities"
@@ -14,10 +15,12 @@
 
 	switch(src.dir)
 		if(NORTH)
-			src.client.pixel_y = 320
+			src.client.pixel_y = ONETILE * 10
 		if(SOUTH)
-			src.client.pixel_y = -320
+			src.client.pixel_y = ONETILE * -10
 		if(EAST)
-			src.client.pixel_x = 320
+			src.client.pixel_x = ONETILE * 10
 		if(WEST)
-			src.client.pixel_x = -320
+			src.client.pixel_x = ONETILE * -10
+
+#undef ONETILE

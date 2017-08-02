@@ -17,10 +17,10 @@
 	var/linked_glasses
 	var/mob/living/carbon/human/u
 
-/obj/item/clothing/head/helmet/kigyar/proc/tryequipNV()
+/obj/item/clothing/head/helmet/kigyar/proc/try_equip_NV()
 	if(u.equip_to_slot_if_possible(new /obj/item/clothing/glasses/kigyarNV,slot_glasses))
 		linked_glasses = u.glasses
-		u <<"<span class ='notice'>Night Vision Active.</span>"
+		u <<"<span class ='notice'>Night Vision active.</span>"
 	else
 		u <<"<span class='notice'>NV activation error. Eyes Blocked.</span>"
 
@@ -35,7 +35,7 @@
 	if(u.head != src)
 		return
 	if(!linked_glasses)
-		tryequipNV()
+		try_equip_NV()
 	else
 		del(linked_glasses)
 		u <<"<span class = 'notice'>Night Vision deactivated.</span>"
