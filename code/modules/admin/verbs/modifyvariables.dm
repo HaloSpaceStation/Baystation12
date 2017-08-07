@@ -17,6 +17,14 @@ var/list/VVckey_edit = list("key", "ckey")
 	feedback_add_details("admin_verb","EDITV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 */
 
+//Port from paracode. https://github.com/ParadiseSS13/Paradise/pull/7841
+/proc/datum_is_forbidden(type)
+	for(var/p in forbidden_varedit_object_types)
+		if(istype(type, p))
+			usr << "<span class='warning'>It is forbidden to tamper with this object.</span>"
+			return FALSE
+	return TRUE
+
 /client/proc/cmd_modify_ticker_variables()
 	set category = "Debug"
 	set name = "Edit Ticker Variables"

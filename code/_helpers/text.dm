@@ -330,3 +330,8 @@ proc/TextPreview(var/string,var/len=40)
 			if(48 to 57)			//Numbers
 				return 1
 	return 0
+
+//Ripped from Paracode with a few changes of my own see https://github.com/ParadiseSS13/Paradise/pull/7841. Credit to Crazylemon64
+/proc/paranoid_sanitize(var/t)
+	var/regex/paranoid_sanitization_regex = regex("\[^a-zA-Z0-9# .!?']", "g")
+	return paranoid_sanitization_regex.Replace(t, "#")

@@ -40,6 +40,7 @@ var/going = 1.0
 var/round_progressing = 1
 var/master_mode       = "extended" // "extended"
 var/secret_force_mode = "secret"   // if this is anything but "secret", the secret rotation will forceably choose this mode.
+/var/global/python_path = "" //Global to make this harder to edit to prevent an exploit. Path to the python executable.  Defaults to "python" on windows and "/usr/bin/env python2" on unix
 
 var/host = null //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
 
