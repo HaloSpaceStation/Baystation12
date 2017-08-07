@@ -6,11 +6,12 @@
 /obj/item/projectile/covenant/plasmapistol
 	damage = 25
 	accuracy = -1
-	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
-	icon_state = "PlasmapistolProj"
+	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
+	icon_state = "Plasmapistol Shot"
 
 /obj/item/projectile/covenant/plasmapistol/overcharge
 	damage = 75
+	icon_state = "Overcharged_Plasmapistol shot"
 
 /obj/item/projectile/covenant/plasmapistol/overcharge/on_impact()
 	..()
@@ -19,8 +20,8 @@
 /obj/item/projectile/covenant/plasmarifle
 	damage = 40 // more damage than MA5B.
 	accuracy = 1
-	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
-	icon_state = "PlasmarifleProj"
+	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
+	icon_state = "Plasmarifle Shot"
 
 /obj/item/ammo_magazine/needles
 	name = "Needles"
@@ -44,8 +45,8 @@
 	desc = "A sharp, pink crystalline shard"
 	damage = 20 // Low damage, special effect would do the most damage.
 	accuracy = 0
-	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
-	icon_state = "needlerammo"
+	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
+	icon_state = "Needler Shot"
 	embed = 1
 	sharp = 1
 

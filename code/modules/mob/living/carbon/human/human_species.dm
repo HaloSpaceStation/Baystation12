@@ -37,5 +37,3 @@
 /mob/living/carbon/human/stok/New(var/new_loc)
 	..(new_loc, "Stok")
 
-/mob/living/carbon/human/elite/New(var/new_loc)
-	..(new_loc, "Elite")
