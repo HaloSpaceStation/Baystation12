@@ -1,37 +1,35 @@
 
-/datum/harnessspecials
-	var/mob/living/user
+/datum/armourspecials
+	var/mob/living/carbon/human/user
 
 /obj/effect/overlay/shields
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "shield"
-	plane = -6
-	layer = 0
 
-/datum/harnessspecials/shields
+/datum/armourspecials/shields
 	var/shieldstrength
 	var/totalshields
 	var/nextcharge
 	var/warned
 	var/s = new /obj/effect/overlay/shields
-	var/obj/item/clothing/suit/armor/combatharness/connectedarmour
+	var/obj/item/clothing/suit/armor/special/connectedarmour
 
-/datum/harnessspecials/proc/tryemp(var/severity)
+/datum/armourspecials/proc/tryemp(var/severity)
 
-/datum/harnessspecials/proc/tryexplosion(var/severity)
+/datum/armourspecials/proc/tryexplosion(var/severity)
 
-/datum/harnessspecials/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/datum/armourspecials/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	return 0
 
-/datum/harnessspecials/proc/tryrecharge(var/mob/living/m)
+/datum/armourspecials/proc/try_item_action()
 
-/datum/harnessspecials/shields/New(var/obj/item/clothing/suit/armor/combatharness/c) //Needed the type path for typecasting to use the totalshields var.
+/datum/armourspecials/shields/New(var/obj/item/clothing/suit/armor/special/c) //Needed the type path for typecasting to use the totalshields var.
 	connectedarmour = c
 	totalshields = connectedarmour.totalshields
 	shieldstrength = totalshields
 
 
-/datum/harnessspecials/shields/handle_shield(mob/m,damage,atom/damage_source)
+/datum/armourspecials/shields/handle_shield(mob/m,damage,atom/damage_source)
 	if(checkshields(damage))
 		user.overlays += s
 		connectedarmour.armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0) //This is needed because shields don't work if armour absorbs the blow instead.
@@ -42,19 +40,19 @@
 		processing_objects += src
 		return 0
 
-/datum/harnessspecials/shields/proc/checkshields(var/damage,var/damage_source)
+/datum/armourspecials/shields/proc/checkshields(var/damage,var/damage_source)
 	if(shieldstrength> 0)
 		shieldstrength -= damage
 		user.visible_message("<span class='warning'>[user]'s shields absorbs the force of the impact</span>","<span class = 'notice'>Your shields absorbs the force of the impact</span>")
 		return 1
 	if(shieldstrength<= 0)
 		if(!warned) //Stops spam and constant resetting
-			user.visible_message("<span class ='warning'>[usr]'s shield collapses!</span>","<span class ='userdanger'>Your shields fizzle and spark, losing their protective ability!</span>")
+			user.visible_message("<span class ='warning'>[user]'s shield collapses!</span>","<span class ='userdanger'>Your shields fizzle and spark, losing their protective ability!</span>")
 		warned = 1
 		nextcharge = world.time + 30 // 3 seconds
 		return 0
 
-/datum/harnessspecials/shields/tryrecharge(var/mob/living/m)
+/datum/armourspecials/shields/proc/tryshields(var/mob/living/m)
 	if(shieldstrength >= totalshields)
 		shieldstrength = totalshields
 		processing_objects -= src
@@ -67,17 +65,52 @@
 		warned = 0
 		return 1
 
-/datum/harnessspecials/shields/tryemp(severity)
+/datum/armourspecials/shields/tryemp(severity)
 	switch(severity)
 		if(1)
 			shieldstrength -= totalshields /4
 		if(2)
 			shieldstrength -= totalshields/2
 
-/datum/harnessspecials/shields/proc/process()
-	tryrecharge(user)
+/datum/armourspecials/shields/proc/process()
+	tryshields(user)
 	return
 
-/datum/harnessspecials/cloaking // Placeholders for later stuff.
+/datum/armourspecials/dispenseitems
+	var/stored_items[0]
+	var/expendedmessage //String for the message displayed when no items are left in the suit.
+	var/dispensemessage //String to display when dispensing items.
+	var/failmessage //String to display when dispensing fails.
 
-/datum/harnessspecials/thrusters
+/datum/armourspecials/dispenseitems/try_item_action()
+	if(stored_items.len > 0)
+		var/nextitem = pick(stored_items)
+		if(user.put_in_active_hand(new nextitem))
+			stored_items.Remove(nextitem)
+			user << "<span class ='notice'>[dispensemessage] [stored_items.len] left.</span>"
+			return 1
+		else if(user.put_in_inactive_hand(new nextitem))
+			stored_items.Remove(nextitem)
+			user << "<span class ='notice'>[dispensemessage] [stored_items.len] left.</span>"
+			return 1
+		else
+			user << "<span class ='notice'>[failmessage]</span>"
+			return 0
+	else
+		user << "<span class = 'notice'>[expendedmessage]</span>"
+		return 0
+
+/datum/armourspecials/dispenseitems/spartanmeds
+	expendedmessage = "Emergency medical supplies exhausted."
+	dispensemessage = "Dispensing medical supplies..."
+	failmessage = "No space in user's hands available for medical support."
+	stored_items = list(/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,
+	/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,
+	/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,
+	/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,
+	/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan,
+	/obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan)
+
+/datum/armourspecials/cloaking // Placeholders for later stuff.
+
+/datum/armourspecials/thrusters

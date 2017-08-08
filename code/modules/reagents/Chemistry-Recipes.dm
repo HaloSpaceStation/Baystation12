@@ -153,13 +153,6 @@
 	required_reagents = list("acetone" = 1, "carbon" = 1, "sugar" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/triadrenaline
-	name = "Tri-Adrenaline"
-	id = "triadrenaline"
-	result = "triadrenaline"
-	required_reagents = list("inaprovaline" = 1, "dexalin" = 1, "tramadol" = 1)
-	result_amount = 3
-
 /datum/chemical_reaction/dylovene
 	name = "Dylovene"
 	id = "anti_toxin"

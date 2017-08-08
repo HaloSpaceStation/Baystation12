@@ -27,6 +27,9 @@
 		handle_random_events()
 
 		. = 1
+	else if(timeofdeath && (world.time - timeofdeath < 5MINUTES))
+		handle_chemicals_in_body()
+		. = 1
 
 	//Handle temperature/pressure differences between body and environment
 	if(environment)

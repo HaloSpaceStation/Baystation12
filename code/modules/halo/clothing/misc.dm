@@ -32,7 +32,7 @@
 	siemens_coefficient = 1
 	armor = list(melee = 50,bullet = 15,laser = 50,energy = 10,bomb = 25,bio = 0,rad = 0)
 
-/obj/item/clothing/suit/armor/spartan
+/obj/item/clothing/suit/armor/special/spartan
 	name = "MJOLNIR Powered Assault Armor Mark V"
 	desc = "a technologically-advanced combat exoskeleton system designed to vastly improve the strength, speed, agility, reflexes and durability of a SPARTAN-II, supersoldier in the field of combat."
 	icon_state = "spartan5"
@@ -44,3 +44,9 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	action_button_name = "Dispense Medical Supplies."
+	specials = list(/datum/armourspecials/dispenseitems/spartanmeds)
+
+/obj/item/clothing/suit/armor/special/spartan/ui_action_click() //Currently not functioning.
+	for(var/datum/armourspecials/I in specials)
+		I.try_item_action()

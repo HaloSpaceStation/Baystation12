@@ -37,7 +37,7 @@
 	item_flags = NOSLIP // Because marines get it.
 	armor = list(melee = 40, bullet = 60, laser = 5, energy = 4, bomb = 40, bio = 0, rad = 0)
 
-/obj/item/clothing/suit/armor/combatharness
+/obj/item/clothing/suit/armor/special/combatharness
 	name = "Sangheili Combat Harness"
 	desc = "A Sangheili Combat Harness."
 	species_restricted = list("Sangheili")
@@ -46,45 +46,10 @@
 	sprite_sheets = list("Sangheili" = 'code/modules/halo/icons/elitearmour.dmi')
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 //	armor = list(melee = 95, bullet = 80, laser = 30, energy = 30, bomb = 60, bio = 25, rad = 25) //Close to spartan armour. Lower bullet,higher melee. Lower energy.
-	var/specials = list()
-	var/totalshields
-
-/obj/item/clothing/suit/armor/combatharness/New()
-	..()
-	for(var/i in specials)
-		specials -= i
-		specials += new i (src)
-
-
-/obj/item/clothing/suit/armor/combatharness/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	for(var/datum/harnessspecials/i in specials)
-		return i.handle_shield(user,damage,damage_source)
-
-
-/obj/item/clothing/suit/armor/combatharness/equipped(mob/user)
-	for(var/datum/harnessspecials/i in specials)
-		i.user = user
-		return
-
-/obj/item/clothing/suit/armor/combatharness/emp_act(severity)
-	for(var/datum/harnessspecials/i in specials)
-		i.tryemp(severity)
-
-/obj/item/clothing/suit/armor/combatharness/dropped()
-	for(var/datum/harnessspecials/i in specials)
-		i.user = null
-		return
-
-/obj/item/clothing/suit/armor/combatharness/Destroy()
-	processing_objects -= src
-	for(var/item in specials)
-		qdel(item)
-	..()
-
-/obj/item/clothing/suit/armor/combatharness/minor
+/obj/item/clothing/suit/armor/special/combatharness/minor
 	icon_state = "minor"
 	totalshields = 100
-	specials = list(/datum/harnessspecials/shields)
+	specials = list(/datum/armourspecials/shields)
 
 /obj/item/organ/heart_secondary
 	name = "Secondary Heart"
@@ -105,7 +70,7 @@
 	m.vessel.add_reagent("blood",30) // 30 blood should be enough to resist a shallow cut at max damage for that type.
 
 /obj/effect/armoursets/SangheiliMinorSet/New()
-	new /obj/item/clothing/suit/armor/combatharness/minor (src.loc)
+	new /obj/item/clothing/suit/armor/special/combatharness/minor (src.loc)
 	new /obj/item/clothing/shoes/sangheili/minor (src.loc)
 	new /obj/item/clothing/head/sangheili/minor (src.loc)
 	qdel(src)
