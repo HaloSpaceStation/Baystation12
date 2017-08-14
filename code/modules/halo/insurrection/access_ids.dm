@@ -3,11 +3,13 @@
 /datum/access/innie
 	id = access_innie
 	access_type = ACCESS_TYPE_SYNDICATE
+	desc = "Insurrectionist"
 
 /var/const/access_innie_boss = 251
 /datum/access/innie_boss
 	id = access_innie_boss
 	access_type = ACCESS_TYPE_SYNDICATE
+	desc = "Insurrectionist Leader"
 
 /obj/item/weapon/card/id/insurrectionist
 	name = "Insurrection ID card"

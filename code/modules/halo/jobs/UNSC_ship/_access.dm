@@ -2,7 +2,7 @@
 /var/const/access_unsc_bridge = 300
 /datum/access/unsc_bridge
 	id = access_unsc_bridge
-	desc = "Bridge"
+	desc = "Bridge Area"
 
 /var/const/access_unsc_tech = 301
 /datum/access/unsc_tech
@@ -37,7 +37,7 @@
 /var/const/access_unsc_medical = 307
 /datum/access/unsc_medical
 	id = access_unsc_medical
-	desc = "Medical"
+	desc = "Medical Ward"
 
 /var/const/access_unsc_armoury = 308
 /datum/access/unsc_armoury
@@ -67,4 +67,4 @@
 /var/const/access_unsc_ids = 313
 /datum/access/unsc_ids
 	id = access_unsc_ids
-	desc = "ID Computer"
+	desc = "ID Machine"

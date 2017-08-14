@@ -15,6 +15,7 @@ GLOBAL_LIST_INIT(last_names_sangheili, world.file2list('code/modules/halo/specie
 	desc = "The language of the Sangheili"
 	native = 1
 	syllables = list("ree","wortwortwort","wort","nnse","nee","kooree","keeoh","cheenoh","rehmah","nnteh","hahdeh","nnrah","kahwah","ee","hoo","roh","usoh","ahnee","ruh","eerayrah","sohruh","eesah")
+	key = "S"
 
 /obj/item/clothing/under/covenant/sangheili
 	name = "Sangheili Body-suit"

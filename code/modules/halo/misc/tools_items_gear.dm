@@ -11,9 +11,11 @@
 
 /obj/item/weapon/storage/firstaid/erk
 	name = "emergency response kit"
-	desc = "A hull breach kit for UNSC first responders."
+	desc = "A hull breach kit for UNSC first responders. It appears to be bulkier than general medical kits."
 	icon_state = "emergency_response_kit"
 	item_state = "firstaid-o2"
+	max_w_class = ITEM_SIZE_NORMAL
+	max_storage_space = DEFAULT_LARGEBOX_STORAGE
 
 	startswith = list(
 		/obj/item/weapon/storage/pill_bottle/dexalin,
