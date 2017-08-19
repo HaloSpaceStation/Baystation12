@@ -1406,6 +1406,7 @@
 #include "code\modules\halo\insurrection\access_ids.dm"
 #include "code\modules\halo\insurrection\antagonist.dm"
 #include "code\modules\halo\insurrection\objectives.dm"
+#include "code\modules\halo\jobs\jobs.dm"
 #include "code\modules\halo\jobs\UNSC_ship\_access.dm"
 #include "code\modules\halo\jobs\UNSC_ship\_defines.dm"
 #include "code\modules\halo\jobs\UNSC_ship\_UNSC_ship.dm"
