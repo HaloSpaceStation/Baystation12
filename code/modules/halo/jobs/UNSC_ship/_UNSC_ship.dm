@@ -116,6 +116,6 @@ var/list/UNSC_ranks = list(\
 	"Colonel")
 
 /datum/job/UNSC_ship
-	title = "blank"
+	title = "unknown" //For travis
 	faction = "UNSC_ship"
 
