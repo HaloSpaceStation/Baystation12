@@ -13,4 +13,4 @@
 
 /obj/item/fusion_fuel/examine(mob/user, var/distance = -1, var/infix = "", var/suffix = "")
 	..()
-	user << "It has [fuel_left] out [max_fuel] units of fuel left ([100 * fuel_left/max_fuel]%)."
+	to_chat(user,"It has [fuel_left] out [max_fuel] units of fuel left ([100 * fuel_left/max_fuel]%).")

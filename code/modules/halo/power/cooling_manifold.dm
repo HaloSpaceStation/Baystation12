@@ -116,10 +116,10 @@
 		target_reactor.cooled_last_cycle = energy_transfer
 
 		if(debug)
-			world << "coolant flow modified reactor heat by [energy_transfer]"
-			world << "	[transfer_moles] moles flowing through"
-			world << "	coolant heat capacity of [coolant_flow.heat_capacity()]"
-			world << "	new reactor heat of [target_reactor.heat_energy]"
+			to_world("coolant flow modified reactor heat by [energy_transfer]")
+			to_world("	[transfer_moles] moles flowing through")
+			to_world("	coolant heat capacity of [coolant_flow.heat_capacity()]")
+			to_world("	new reactor heat of [target_reactor.heat_energy]")
 
 	air2.merge(coolant_flow)
 
@@ -167,7 +167,7 @@ one standard breathable tile's atmosphere has 2060 heat capacity
 	set src in view(1)
 
 	if(anchored)
-		usr << "<span class='notice'>You cannot rotate [src] as it is bolted down.</span>"
+		to_chat(usr,"<span class='notice'>You cannot rotate [src] as it is bolted down.</span>")
 		return
 
 	dir = turn(dir, 90)

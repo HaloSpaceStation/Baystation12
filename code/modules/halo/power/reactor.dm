@@ -76,7 +76,7 @@
 /obj/machinery/power/fusion_drive/attackby(var/obj/item/I, var/mob/living/user)
 	if(istype(I, /obj/item/fusion_fuel))
 		if(held_fuel)
-			user << "<span class='warning'>There is already a fuel packet in there.</span>"
+			to_chat(user,"<span class='warning'>There is already a fuel packet in there.</span>")
 		else
 			user.drop_item()
 			I.loc = src
@@ -128,7 +128,7 @@
 	text += "Fuel consumption rate: [fuel_consumption_rate] units/sec <a href='?src=\ref[src];modify_fuel_use=1'>\[Modify\]</a><br>"
 	text += "Warning! Recommended not to exceed [round(max_heat_energy / (60 * heat_per_fuel))] due to excessive heat production.<br>"
 
-	user << browse(text, "window=fusion_drive;size=450x300;can_resize=1;can_close=1;can_minimize=1")
+	to_chat(user,browse(text, "window=fusion_drive;size=450x300;can_resize=1;can_close=1;can_minimize=1"))
 	onclose(user, "window=fusion_drive", src)
 	*/
 

@@ -13,11 +13,11 @@
 /obj/item/weapon/melee/energysword/attack_self(var/mob/living/user)
 	if(!deployed)
 		activate()
-		visible_message("<span class='notice'>[usr] activates the [src]</span>")
+		visible_message("<span class='notice'>[user] activates the [src]</span>")
 		return
 	else
 		deactivate()
-		visible_message("<span class='notice'>[usr] deactivates [src]</span>")
+		visible_message("<span class='notice'>[user] deactivates [src]</span>")
 		return
 
 /obj/item/weapon/melee/energysword/proc/activate()

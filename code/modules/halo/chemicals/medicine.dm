@@ -20,7 +20,7 @@
 			//These few bits are a shameless rip from the defib code
 			for(var/mob/observer/ghost/G in world)
 				if(G.mind == M.mind)
-					G << "Return to your body to be revived!"
+					to_chat(G,"Return to your body to be revived!")
 					sleep(100)
 					if(G.mind == M)
 						H.visible_message("[H] falls limp", "Your muscles relax")
@@ -40,9 +40,9 @@
 	if(O && prob(15))
 		O.damage += 300 //Your heart exploded poor you
 		holder.remove_reagent("triadrenaline", dose/2)
-		H << "You feel a sudden stabbing pain in your chest"
+		to_chat(H,"You feel a sudden stabbing pain in your chest")
 	else if(prob(25))
-		H << "You feel your heart thundering in your chest"
+		to_chat(H,"You feel your heart thundering in your chest")
 		O.pulse = PULSE_2FAST
 
 /datum/reagent/biofoam
@@ -59,7 +59,7 @@
 /datum/reagent/biofoam/proc/check_and_stop_bleeding(var/obj/item/organ/o)
 	if(o.status & ORGAN_BLEEDING)
 		o.status &= ~ORGAN_BLEEDING
-		o.owner << "<span class = 'notice'>You feel the biofoam stop the bleeding in your [o.name]</span>"
+		to_chat(o.owner,"<span class = 'notice'>You feel the biofoam stop the bleeding in your [o.name]</span>")
 
 /datum/reagent/biofoam/proc/mend_external(var/mob/living/carbon/human/H)
 	for(var/obj/item/organ/external/o in H.organs)
@@ -67,7 +67,7 @@
 			o.brute_dam -= o.min_bruised_damage
 			o.burn_dam -= o.min_bruised_damage
 			if(prob(20))
-				H <<"<span class = 'notice'>You feel your [o.name] knitting itself back together</span>"
+				to_chat(H,"<span class = 'notice'>You feel your [o.name] knitting itself back together</span>")
 		if(o.status & ORGAN_BROKEN)
 			o.status &= ~ORGAN_BROKEN
 			H.next_pain_time = world.time //Overrides the next pain timer
@@ -80,7 +80,7 @@
 		if(I.damage >= I.min_bruised_damage)
 			I.damage -= I.min_bruised_damage
 			if(prob(20))
-				H <<"<span class = 'notice'>You feel your [I.name] knitting itself back together</span>"
+				to_chat(H,"<span class = 'notice'>You feel your [I.name] knitting itself back together</span>")
 
 /datum/reagent/biofoam/proc/fix_wounds(var/mob/living/carbon/human/H)
 	for(var/obj/item/organ/external/o in H.organs)
@@ -88,7 +88,7 @@
 			var/datum/wound/W = wounds
 			if(W.bleed_timer > 0)
 				W.bleed_timer = 0
-				o.owner << "<span class = 'notice'>You feel the bleeding in your [o.name] slow.</span>"
+				to_chat(o.owner,"<span class = 'notice'>You feel the bleeding in your [o.name] slow.</span>")
 				W.bandaged = 1
 				W.salved = 1
 				o.update_damages()
@@ -112,8 +112,8 @@
 					dam = 0
 				else
 					dam = 1
-				M <<"<span class ='userdanger'>You feel [dam ? "your [O.name] collapse" : "immense pressure on your [O.name]" ].</span>"
+				to_chat(M,"<span class ='userdanger'>You feel [dam ? "your [O.name] collapse" : "immense pressure on your [O.name]" ].</span>")
 			holder.remove_reagent("biofoam",volume)
 		else if (prob(35))
 			var/obj/item/organ/O = pick(H.internal_organs)
-			M <<"<span class ='danger'>You feel your [O.name] being crushed.</span>"
+			to_chat(M,"<span class ='danger'>You feel your [O.name] being crushed.</span>")

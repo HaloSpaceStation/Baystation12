@@ -33,7 +33,7 @@
 				spwn += i
 				continue
 	if(!spwn) // So we don't get an empty spawnlist
-		world << "No Team Spawnpoints found. Falling back to Free For All spawns."
+		to_world("No Team Spawnpoints found. Falling back to Free For All spawns.")
 		spwn = spwnpts
 	var/obj/location = pick(spwn)
 	var/mob/living/carbon/human/p = new /mob/living/carbon/human(location.loc)
@@ -71,7 +71,7 @@
 	announce_score(h)
 
 /datum/game_mode/slayer/proc/announce_score(var/mob/h)
-	world <<"<span class = 'danger'>[h.ckey] has died. \n Current deaths: [players[h.ckey]]</span>"
+	to_world("<span class = 'danger'>[h.ckey] has died. \n Current deaths: [players[h.ckey]]</span>")
 
 /datum/game_mode/slayer/process()
 	if(world.time >= respawnwhen)
@@ -126,7 +126,7 @@
 		return
 
 /datum/game_mode/slayer/team/announce_score(var/datum/slayer/team/team1 , var/datum/slayer/team/team2)
-	world <<"<span classs = 'danger'>Scores: \n [team1.name] : [team1.score] \n [team2.name] : [team2.score]</span>"
+	to_world("<span classs = 'danger'>Scores: \n [team1.name] : [team1.score] \n [team2.name] : [team2.score]</span>")
 
 /datum/game_mode/slayer/team/newplayer(var/mob/living/carbon/human/h,var/team_antag)
 	var/datum/slayer/team/team1 = teams[1]
@@ -180,7 +180,7 @@
 	h.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/spartan(h),slot_wear_suit)
 	h.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/syndicate(h),slot_wear_mask)
 	h.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/spartan(h),slot_head)
-	h.equip_to_slot_or_del(new /obj/item/weapon/tank/emergency_oxygen/unsc(h),slot_r_store)
+	h.equip_to_slot_or_del(new /obj/item/weapon/tank/emergency/oxygen/unsc(h),slot_r_store)
 	h.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/ma5b_ar(h),slot_back)
 	h.equip_to_slot_or_del(new /obj/item/ammo_magazine/m762_ap(h),slot_l_store)
 	h.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/m6d_magnum(h),slot_s_store)

@@ -22,9 +22,9 @@ GLOBAL_LIST_INIT(first_names_kig_yar, world.file2list('code/modules/halo/species
 /obj/item/clothing/head/helmet/kigyar/proc/try_equip_NV()
 	if(u.equip_to_slot_if_possible(new /obj/item/clothing/glasses/kigyarNV,slot_glasses))
 		linked_glasses = u.glasses
-		u <<"<span class ='notice'>Night Vision active.</span>"
+		to_chat(u,"<span class ='notice'>Night Vision active.</span>")
 	else
-		u <<"<span class='notice'>NV activation error. Eyes Blocked.</span>"
+		to_chat(u,"<span class='notice'>NV activation error. Eyes Blocked.</span>")
 
 /obj/item/clothing/head/helmet/kigyar/equipped(mob/user)
 	u = user
@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(first_names_kig_yar, world.file2list('code/modules/halo/species
 		try_equip_NV()
 	else
 		del(linked_glasses)
-		u <<"<span class = 'notice'>Night Vision deactivated.</span>"
+		to_chat(u,"<span class = 'notice'>Night Vision deactivated.</span>")
 
 /obj/item/clothing/glasses/kigyarNV
 	name = "Kig-Yar Scout Helmet Night Vision"

@@ -2,7 +2,7 @@
 /obj/item/weapon/tank/oxygen/unsc
 	icon_state = "unsc"
 
-/obj/item/weapon/tank/emergency_oxygen/unsc
+/obj/item/weapon/tank/emergency/oxygen/unsc
 	icon_state = "unsc_em"
 
 /obj/item/clothing/mask/gas/unsc
@@ -15,11 +15,11 @@
 	icon_state = "emergency_response_kit"
 	item_state = "firstaid-o2"
 	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = DEFAULT_LARGEBOX_STORAGE
+	//max_storage_space = DEFAULT_LARGEBOX_STORAGE
 
 	startswith = list(
 		/obj/item/weapon/storage/pill_bottle/dexalin,
-		/obj/item/weapon/tank/emergency_oxygen/unsc,
+		/obj/item/weapon/tank/emergency/oxygen/unsc,
 		/obj/item/clothing/mask/gas/unsc
 		)
 
