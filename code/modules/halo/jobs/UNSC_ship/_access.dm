@@ -2,7 +2,7 @@
 /var/const/access_unsc_bridge = 300
 /datum/access/unsc_bridge
 	id = access_unsc_bridge
-	desc = "Bridge Area"
+	desc = "Bridge Area" //Added "area" so Travis doesn't flag duplicate description
 
 /var/const/access_unsc_tech = 301
 /datum/access/unsc_tech
@@ -62,9 +62,9 @@
 /var/const/access_unsc_gunnery = 312
 /datum/access/unsc_gunnery
 	id = access_unsc_gunnery
-	desc = "Gunnery"
+	desc = "Gunnery Area" //Added "area" so Travis doesn't flag duplicate description
 
 /var/const/access_unsc_ids = 313
 /datum/access/unsc_ids
 	id = access_unsc_ids
-	desc = "ID Machine"
+	desc = "ID Machine" //ID Computer -> ID Machine so Travis doesn't flag duplicate description
