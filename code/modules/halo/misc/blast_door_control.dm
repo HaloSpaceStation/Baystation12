@@ -19,22 +19,22 @@ obj/machinery/door/blast/receive_signal(datum/signal/signal)
 	/*var/debug = 0
 	if(signal.data["tag"] != "_pump" && (id_tag == "port_pelicanhangar_inner" || id_tag == "port_pelicanhangar_outer"))
 		debug = 1
-		world << "	receive_signal()"
+		to_world("receive_signal()")
 		for(var/entry in signal.data)
-			world << "signal.data\[[entry]\]: [signal.data[entry]]"*/
+			to_world("signal.data\[[entry]\]: [signal.data[entry]]")*/
 
 	if (!arePowerSystemsOn()) return //no power
-	//if(debug) world << "check1"
+	//if(debug) to_world("check1")
 
 	if(!signal || signal.encryption) return
-	//if(debug) world << "check2"
+	//if(debug) to_world("check2")
 
 	if(id_tag != signal.data["tag"] || !signal.data["command"]) return
-	//if(debug) world << "check3"
+	//if(debug) to_world("check3")
 
 	cur_command = signal.data["command"]
 	spawn()
-		//if(debug) world << "check4"
+		//if(debug) to_world("check4")
 		execute_current_command()
 
 obj/machinery/door/blast/proc/execute_current_command()
@@ -43,14 +43,14 @@ obj/machinery/door/blast/proc/execute_current_command()
 
 	if (!cur_command)
 		return
-	//world << "execute_current_command()"
+	//to_world("execute_current_command()")
 
 	do_command(cur_command)
 	if (command_completed(cur_command))
 		cur_command = null
 
 obj/machinery/door/blast/proc/do_command(var/command)
-	//world << "obj/machinery/door/blast/proc/do_command([command])"
+	//to_world("obj/machinery/door/blast/proc/do_command([command])")
 	switch(command)
 		if("open")
 			open()
@@ -276,7 +276,7 @@ obj/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
 obj/machinery/access_button/attack_hand(mob/user)
 	add_fingerprint(usr)
 	if(!allowed(user))
-		user << "<span class='warning'>Access Denied</span>"
+		to_chat(user,"<span class='warning'>Access Denied</span>")
 
 	else if(radio_connection)
 		var/datum/signal/signal = new
@@ -324,7 +324,7 @@ obj/machinery/access_button/airlock_exterior
 //todo: move this all up to /door so it isnt duplicated
 obj/machinery/door/blast/proc/arePowerSystemsOn()
 	if (stat & (NOPOWER|BROKEN))
-		//world << "arePowerSystemsOn() returned 0"
+		//to_world("arePowerSystemsOn() returned 0")
 		return 0
 
 	return 1

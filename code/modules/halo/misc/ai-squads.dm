@@ -45,7 +45,7 @@
 		var/mob/living/simple_animal/hostile/covenant/h = new m (leader)
 		h.loc = leader.loc
 		h.leader = src.leader
-		leader << "GRUNTS SUMMONED"
+		to_chat(leader,"GRUNTS SUMMONED")
 
 /datum/squads/grunt
 	insquad = list(

@@ -87,17 +87,17 @@
 		var/nextitem = pick(stored_items)
 		if(user.put_in_active_hand(new nextitem))
 			stored_items.Remove(nextitem)
-			user << "<span class ='notice'>[dispensemessage] [stored_items.len] left.</span>"
+			to_chat(user,"<span class ='notice'>[dispensemessage] [stored_items.len] left.</span>")
 			return 1
 		else if(user.put_in_inactive_hand(new nextitem))
 			stored_items.Remove(nextitem)
-			user << "<span class ='notice'>[dispensemessage] [stored_items.len] left.</span>"
+			to_chat(user,"<span class ='notice'>[dispensemessage] [stored_items.len] left.</span>")
 			return 1
 		else
-			user << "<span class ='notice'>[failmessage]</span>"
+			to_chat(user,"<span class ='notice'>[failmessage]</span>")
 			return 0
 	else
-		user << "<span class = 'notice'>[expendedmessage]</span>"
+		to_chat(user,"<span class = 'notice'>[expendedmessage]</span>")
 		return 0
 
 /datum/armourspecials/dispenseitems/spartanmeds

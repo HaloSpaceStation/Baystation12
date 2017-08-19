@@ -37,7 +37,7 @@
 			disarm_at = world.time + secondstodisarm*10
 			disarming = 1
 		else
-			user << "<span class ='notice'>Someone else is already disarming the [src]</span>"
+			to_chat(user,"<span class ='notice'>Someone else is already disarming the [src]</span>")
 
 /obj/payload/proc/checkoverlay(var/on)
 	if(!activeoverlay)
@@ -128,6 +128,6 @@
 /datum/nuclearexplosion/New(var/obj/b)
 	explosion(b.loc,20,30,40,50)
 	for(var/mob/living/m in range(50,b.loc))
-		m << "<span class = 'userdanger'>A shockwave slams into you! You feel yourself falling apart...</span>"
+		to_chat(m,"<span class = 'userdanger'>A shockwave slams into you! You feel yourself falling apart...</span>")
 		m.gib() // Game over.
 	qdel(src)

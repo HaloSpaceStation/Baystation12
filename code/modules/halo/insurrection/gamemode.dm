@@ -46,7 +46,7 @@ var/obj/effect/overmapobj/innie_base
 
 	if(!innie_base)
 		//automatically load the map from file and prepare it for the round
-		world << "<span class='danger'>Loading Insurrectionist base, please stand by...</span>"
+		to_world("<span class='danger'>Loading Insurrectionist base, please stand by...</span>")
 		var/starttime = world.time
 		for(var/level_path in innie_base_paths)
 
@@ -72,7 +72,7 @@ var/obj/effect/overmapobj/innie_base
 				data.name = innie_base.tag
 				map_sectors["[data.z]"] = innie_base
 
-			world << "<span class='danger'>Done ([(world.time - starttime)/10]s).</span>"
+			to_world("<span class='danger'>Done ([(world.time - starttime)/10]s).</span>")
 
 	//grab a rantom antag datum and reload the antagonist spawn locations
 	//this is a really odd way of doing things
@@ -86,7 +86,7 @@ var/obj/effect/overmapobj/innie_base
 		innie_base_reference = innie_base
 
 	else
-		world << "<span class='danger'>Could not load Insurrectionist base!</span>"
+		to_world("<span class='danger'>Could not load Insurrectionist base!</span>")
 		return 0
 
 	return ..()
@@ -95,7 +95,7 @@ var/obj/effect/overmapobj/innie_base
 	time_autofind_innie_base = world.time + minutes_to_detect_innie_base * 60 * 10
 	//overmap_controller.current_starsystem.name = pick(insurrection_systems)
 
-	world << "<span class='danger'>Spawning random Insurrectionist shuttles...</span>"
+	to_world("<span class='danger'>Spawning random Insurrectionist shuttles...</span>")
 	var/starttime = world.time
 	sleep(1)
 
@@ -117,13 +117,13 @@ var/obj/effect/overmapobj/innie_base
 		var/list/spawnlist = berths[berthtag]
 		var/obj/effect/roundstart_innie_shuttle_spawner/S = pick(spawnlist)
 		S.spawnme()
-		//world << "[spawnlist.len] spawners with berthtag \"[berthtag]\", one chosen had dir:[S.dir]"
+		//to_world("[spawnlist.len] spawners with berthtag \"[berthtag]\", one chosen had dir:[S.dir]")
 
 		//delete the remaining spawners
 		for(S in spawnlist)
 			qdel(S)
 
-	world << "<span class='danger'>	Done spawning innie shuttles ([(world.time - starttime)/10]).</span>"
+	to_world("<span class='danger'>	Done spawning innie shuttles ([(world.time - starttime)/10]).</span>")
 
 	return ..()
 
@@ -154,8 +154,8 @@ var/obj/effect/overmapobj/innie_base
 
 				comm.messagetitle.Add("ONI Intelligence Report")
 				comm.messagetext.Add(report_text)
-		world << sound('sound/AI/commandreport.ogg')
-		world << "<span class='warning'>ONI has discovered the location of the hidden insurrection Base! The commanding officers of any UNSC warships in the area have surely been notified...</span>"
+		to_world(sound('sound/AI/commandreport.ogg'))
+		to_world("<span class='warning'>ONI has discovered the location of the hidden insurrection Base! The commanding officers of any UNSC warships in the area have surely been notified...</span>")
 		overmap_controller.overmap_scanner_manager.add_station(innie_base)
 
 /datum/game_mode/insurrection/handle_nuke_explosion()
@@ -185,7 +185,7 @@ var/obj/effect/overmapobj/innie_base
 /datum/game_mode/insurrection/can_start()
 	//fail and return to lobby
 	if(!innie_base)
-		world << "<span class='danger'>[innie_base_paths[1]] not loaded</span>"
+		to_world("<span class='danger'>[innie_base_paths[1]] not loaded</span>")
 
 	return ..()
 	*/
@@ -252,10 +252,10 @@ var/obj/effect/overmapobj/innie_base
 		win_type = "Minor Victory!"
 
 	feedback_set_details("round_end_result","[win_faction][win_type] - score: [winning_score]")
-	world << "<span class='info'>UNSC score: [unsc_score] points, Insurrection score: [innie_score] points</span>"
-	world << "<span class='infobold'>Result is: [win_faction][win_type]</span>"
+	to_world("<span class='info'>UNSC score: [unsc_score] points, Insurrection score: [innie_score] points</span>")
+	to_world("<span class='infobold'>Result is: [win_faction][win_type]</span>")
 	for(var/entry in result_text)
-		world << entry
+		to_world(entry)
 
 	//get rid of the innie base
 	overmap_controller.recycle_omapobj(innie_base)
