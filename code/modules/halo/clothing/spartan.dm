@@ -23,20 +23,71 @@
 	light_overlay = "helmet_light"
 	brightness_on = 4
 	on = 0
-/*
+
+/obj/item/clothing/head/helmet/spartan/proc/check_shields_equipped(var/mob/living/carbon/human/L)
+	var/obj/item/clothing/suit/armor/special/suit = L.wear_suit
+	if(L.wear_suit && istype(L.wear_suit,/obj/item/clothing/suit/armor/special))
+		var/datum/armourspecials/shields/shield_datum = get_shield_datum(L,suit)
+		return shield_datum
+
+/obj/item/clothing/head/helmet/spartan/proc/get_shield_datum(var/mob/living/L,var/obj/item/clothing/suit/armor/special/suit)
+	var/s_d
+	for(var/datum/armourspecials/I in suit.specials)
+		if(istype(I,/datum/armourspecials/shields))
+			s_d = I
+			return s_d
+
+/obj/item/clothing/head/helmet/spartan/proc/create_shieldbar(var/iconstate)
+	var/obj/bar = new /obj/screen/shieldbar
+	bar.icon_state = (iconstate ? iconstate : "shield_base")
+	return bar
+
+
+/obj/item/clothing/head/helmet/spartan/proc/initialise_shieldbar(var/datum/armourspecials/shields/shield_datum,var/mob/living/L)
+	if(isnull(L.client)) return
+	var/current = (shield_datum.shieldstrength / shield_datum.totalshields)*100
+	world <<"SHIELD: [current]"
+	var/bar
+	var/client_screen = L.client.screen
+	world << "CHECK1"
+	if(current <= 100)
+		world << "CHECK2"
+		bar = create_shieldbar("shield_100")
+	else if(current <= 50)
+		bar = create_shieldbar("shield_50")
+	else if(current <= 10)
+		bar = create_shieldbar("shield_10")
+	else if(current <= 5)
+		bar = create_shieldbar("shield_5")
+	else if(current == 1)
+		bar = create_shieldbar("shield_1")
+	client_screen += bar
+	hud_elements += bar
+
 /obj/item/clothing/head/helmet/spartan/equipped(var/mob/living/L) //Just a little testing to see if I can make a shield bar function.
-	var/obj/screen/I = new
+	var/shield = check_shields_equipped(L)
+	if(isnull(shield)) return
+	initialise_shieldbar(shield,L)
+
+	/*var/obj/screen/I = new
 	hud_elements += I
-	I.icon = 'code/modules/halo/icons/ground.dmi'
-	I.icon_state = "moon"
-	I.screen_loc = "NORTH,CENTER"
-	L.client.screen += I
+	I.icon = 'code/modules/halo/clothing/spartanhud.dmi'
+	I.icon_state = "shieldbar"
+	I.screen_loc = "NORTH,CENTER-1"
+	L.client.screen += I*/
 
 /obj/item/clothing/head/helmet/spartan/dropped(var/mob/living/L)
 	for(var/I in hud_elements)
 		L.client.screen -= I
 		qdel(I)
-*/
+	hud_elements.Cut()
+
+/obj/screen/shieldbar
+	name = "Shield Bar"
+	icon = 'code/modules/halo/clothing/spartanhud.dmi'
+	icon_state = "shield_base"
+	screen_loc = "NORTH,CENTER-1"
+
 /obj/item/clothing/head/helmet/spartan/blue
 	icon_state = "helmet_blue"
 

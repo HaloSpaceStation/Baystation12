@@ -58,7 +58,6 @@
 			continue
 		if (shard.name == "Needle shrapnel")
 			embedded_shards += shard
-			world << embedded_shards.len
 		if(embedded_shards.len >5)
 			explosion(L.loc,0,1,2,5)
 			for(var/I in embedded_shards)
