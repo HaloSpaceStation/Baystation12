@@ -46,12 +46,9 @@
 /obj/item/clothing/head/helmet/spartan/proc/initialise_shieldbar(var/datum/armourspecials/shields/shield_datum,var/mob/living/L)
 	if(isnull(L.client)) return
 	var/current = (shield_datum.shieldstrength / shield_datum.totalshields)*100
-	world <<"SHIELD: [current]"
 	var/bar
 	var/client_screen = L.client.screen
-	world << "CHECK1"
 	if(current <= 100)
-		world << "CHECK2"
 		bar = create_shieldbar("shield_100")
 	else if(current <= 50)
 		bar = create_shieldbar("shield_50")
