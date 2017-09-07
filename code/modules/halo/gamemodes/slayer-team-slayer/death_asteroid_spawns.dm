@@ -1,3 +1,4 @@
+
 /datum/map/teamslayer_asteroid
 	allowed_spawns = list("Red Spawn","Blue Spawn","Neutral Spawn")
 	default_spawn = "Neutral Spawn"

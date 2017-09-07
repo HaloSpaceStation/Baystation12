@@ -11,6 +11,7 @@
 	#include "mode_slayer.dm"
 	#include "slayer_jobs.dm"
 	#include "slayer_outfits.dm"
+	#include "slayer_mob_verbs.dm"
 
 	#define using_map_DATUM /datum/map/teamslayer_asteroid
 
