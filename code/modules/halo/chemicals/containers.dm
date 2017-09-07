@@ -6,16 +6,16 @@
 /obj/item/weapon/reagent_containers/syringe/ld50_syringe/spartan
 	name = "Field Medical Syringe"
 	desc = "A potent cocktail of chemicals which allows for increased survivability in the field."
-	amount_per_transfer_from_this = 20
-	volume = 20
+	amount_per_transfer_from_this = 15
+	volume = 15
 	time = 30
 
 	New()
 		..()
 		reagents.add_reagent(/datum/reagent/triadrenaline,5)
 		reagents.add_reagent(/datum/reagent/biofoam,5)
-		reagents.add_reagent(/datum/reagent/tricordrazine,5)
-		reagents.add_reagent(/datum/reagent/tramadol,5)
+		reagents.add_reagent(/datum/reagent/tricordrazine,2.5)
+		reagents.add_reagent(/datum/reagent/tramadol,2.5)
 		mode = SYRINGE_INJECT
 		update_icon()
 

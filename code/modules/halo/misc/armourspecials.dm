@@ -6,13 +6,18 @@
 	icon = 'code/modules/halo/icons/elitearmour.dmi'
 	icon_state = "shield"
 
+/obj/effect/overlay/shields/spartan
+	icon = 'code/modules/halo/icons/Spartan MrkV Armour Shield.dmi'
+	icon_state = "Shield_hit"
+
 /datum/armourspecials/shields
 	var/shieldstrength
 	var/totalshields
 	var/nextcharge
 	var/warned
-	var/s = new /obj/effect/overlay/shields
+	var/shieldoverlay = new /obj/effect/overlay/shields
 	var/obj/item/clothing/suit/armor/special/connectedarmour
+	var/list/armourvalue
 
 /datum/armourspecials/proc/tryemp(var/severity)
 
@@ -27,16 +32,17 @@
 	connectedarmour = c
 	totalshields = connectedarmour.totalshields
 	shieldstrength = totalshields
+	armourvalue = connectedarmour.armor
 
 
 /datum/armourspecials/shields/handle_shield(mob/m,damage,atom/damage_source)
 	if(checkshields(damage))
-		user.overlays += s
+		user.overlays += shieldoverlay
 		connectedarmour.armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0) //This is needed because shields don't work if armour absorbs the blow instead.
 		return 1
 	else
-		user.overlays -= s
-		connectedarmour.armor = list(melee = 95, bullet = 80, laser = 30, energy = 30, bomb = 60, bio = 25, rad = 25)
+		user.overlays -= shieldoverlay
+		connectedarmour.armor =  armourvalue
 		GLOB.processing_objects += src
 		return 0
 
@@ -75,6 +81,9 @@
 /datum/armourspecials/shields/proc/process()
 	tryshields(user)
 	return
+
+/datum/armourspecials/shields/spartan
+	shieldoverlay = new /obj/effect/overlay/shields/spartan
 
 /datum/armourspecials/dispenseitems
 	var/stored_items[0]

@@ -1,4 +1,6 @@
 
+#define RESPAWN_TIME 300
+
 /datum/game_mode/slayer
 	name = "Free For All Slayer"
 	round_description = "Fight to the death with everyone you come across."
@@ -8,8 +10,10 @@
 	probability = 0
 	var/list/mode_teams = list("Spartan Slayer")		//jobs are used to represent "teams"
 	var/list/team_scores_unsorted = list()
+	var/list/scores_with_names = list()
 	var/round_end_time = 0
 	var/round_length = 6000
+	var/nextrespawn
 	disabled_jobs = list(/datum/job/team_slayer_red, /datum/job/team_slayer_blue)
 
 /datum/game_mode/slayer/pre_setup()
@@ -22,6 +26,15 @@
 	if(world.time > round_end_time)
 		return 1
 	return 0
+
+/datum/game_mode/slayer/process() //Used to allow respawns after few minutes.
+	if(world.time >= nextrespawn)
+		for(var/mob/observer/ghost/G in GLOB.ghost_mob_list)
+			if(G.client)
+				if(G.can_reenter_corpse != CORPSE_CAN_REENTER_AND_RESPAWN)
+					to_chat(G,"<span class = 'danger'>You may now respawn.</span>")
+					G.can_reenter_corpse = CORPSE_CAN_REENTER_AND_RESPAWN
+					nextrespawn = world.time + RESPAWN_TIME
 
 /datum/game_mode/slayer/declare_completion()
 	var/out_message = "<h1>The round is over! The scores were:</h1>"
@@ -46,4 +59,8 @@
 		if(!team_scores_unsorted[team_name])
 			team_scores_unsorted[team_name] = 0
 		team_scores_unsorted[team_name] += 1
+		/*if(!scores_with_names[killer.name])
+			scores_with_names.Add(killer.name)
+			scores_with_names[killer.name] = 1
+		scores_with_names[killer.name] += 1 */
 		to_world("<h1>[victim.real_name] has been killed by [killer.name]: [team_name] ([team_scores_unsorted[team_name]] kills)</h1>")
