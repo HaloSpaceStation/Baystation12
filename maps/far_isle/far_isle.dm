@@ -1,6 +1,7 @@
 
 #if !defined(using_map_DATUM)
 
+	#include "far_isle_turfs.dm"
 	#include "far_isle_unit_tests.dm"
 	#include "far_isle_areas.dm"
 
