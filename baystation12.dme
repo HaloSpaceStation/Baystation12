@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "Desodone-ODST-Start.dmm"
 #include "code\_macros.dm"
 #include "code\client_macros.dm"
 #include "code\hub.dm"
@@ -2507,8 +2508,14 @@
 #include "maps\far_isle\far_isle.dm"
 #include "maps\far_isle\far_isle_map.dm"
 #include "maps\far_isle\far_isle_turfs.dm"
+#include "maps\insurrection\innie_base_areas.dm"
 #include "maps\insurrection\innie_base_map.dm"
+#include "maps\insurrection\innie_unit_test.dm"
 #include "maps\insurrection\insurrection.dm"
+#include "maps\insurrection\insurrection_gm.dm"
+#include "maps\insurrection\insurrection_items.dm"
+#include "maps\insurrection\insurrection_jobs.dm"
+#include "maps\insurrection\insurrection_outfits.dm"
 #include "maps\overmap_example\overmap_example_define.dm"
 #include "maps\slayer\__death_asteroid_map.dm"
 #include "maps\slayer\slayer.dm"
