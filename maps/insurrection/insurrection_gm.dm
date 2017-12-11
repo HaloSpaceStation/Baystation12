@@ -65,17 +65,9 @@
 	message_faction("Insurrection","<span class = 'danger'>UNSC Strike Craft retreating! Eliminate the remaining UNSC forces.</span>")
 
 /datum/game_mode/insurrection/proc/last_assault()
-	var/area/staging_area
-	for(var/area/UNSC_Staging/s in world)
-		staging_area = s
-		break
-	if(!staging_area)
-		return
-	for(var/obj/machinery/door/airlock/a in staging_area.contents)
-		a.close()
-		a.locked = TRUE
 	last_assault = TRUE
 	deny_respawn = 1 //No more respawn
+	modify_pod_launch(1)
 	warned = 1
 
 /datum/game_mode/insurrection/proc/check_pods_left()
@@ -85,6 +77,8 @@
 	var/list/live_players = list()
 	var/list/allowed_roles = get_roles_from_faction(faction)
 	for(var/mob/living/player in GLOB.player_list)
+		if(player.z in GLOB.using_map.admin_levels)
+			continue
 		if(player.mind.assigned_role in allowed_roles)
 			if(player.stat == CONSCIOUS)
 				live_players += player
@@ -113,6 +107,8 @@
 	for(var/obj/payload/b in bombs)
 		if(b.exploding == 1)
 			last_assault = BOMB_ACTIVE
+		if(!b.explode_at)
+			return 0
 		if((((b.explode_at - world.time)/10) <b.seconds_to_disarm) && (!warned))
 			message_faction("UNSC","<span class = 'danger'>Insurrectionist self destruct nearing time of detonation. Exfiltration craft arriving at evacuation wing.</span>")
 			message_faction("Insurrection","<span class='danger'>Integrated self destruct device reports nearing time of detonation. Relocate all personnel to the evacuation wing.</span>")
