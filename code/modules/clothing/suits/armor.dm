@@ -78,7 +78,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
 	w_class = ITEM_SIZE_LARGE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	armor = list(melee = 42, bullet = 75, laser = 42, energy = 10, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 10, bullet = 20, laser = 5, energy = 5, bomb = 20, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/bulletproof/New()
@@ -341,6 +341,7 @@
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
+	var/slots = 3
 
 /obj/item/clothing/suit/storage/vest/nt
 	name = "corporate security heavy armored vest"
@@ -383,6 +384,7 @@
 	icon_state = "tacwebvest"
 	item_state = "tacwebvest"
 	armor = list(melee = 45, bullet = 40, laser = 40, energy = 40, bomb = 40, bio = 20, rad = 15)
+	slots = 3
 
 /obj/item/clothing/suit/storage/vest/merc
 	name = "heavy combat armor"
