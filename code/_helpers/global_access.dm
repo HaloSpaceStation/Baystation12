@@ -869,8 +869,6 @@
 			return global.processScheduler;
 		if("processing_turfs")
 			return global.processing_turfs;
-		if("prometheans")
-			return global.prometheans;
 		if("protected_objects")
 			return global.protected_objects;
 		if("punch_sound")
@@ -1219,7 +1217,7 @@
 			return global.z_levels;
 		if("zone_blocked")
 			return global.zone_blocked;
-		
+
 /proc/writeglobal(which, newval)
 	switch(which)
 		if("ALL_ANTIGENS")
@@ -2090,8 +2088,6 @@
 			global.processScheduler=newval;
 		if("processing_turfs")
 			global.processing_turfs=newval;
-		if("prometheans")
-			global.prometheans=newval;
 		if("protected_objects")
 			global.protected_objects=newval;
 		if("punch_sound")
@@ -2440,7 +2436,7 @@
 			global.z_levels=newval;
 		if("zone_blocked")
 			global.zone_blocked=newval;
-		
+
 /var/list/_all_globals=list(
 	"ALL_ANTIGENS",
 	"ANTAG_FREQS",

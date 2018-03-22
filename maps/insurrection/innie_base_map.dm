@@ -1,5 +1,8 @@
 
 /datum/map/innie_base
+	base_turf_by_z = list("1" = /turf/simulated/floor/plating)
+
+/datum/map/innie_base
 	name = "Innie Base"
 	full_name = "Insurrection Base"
 	path = "innie"
