@@ -3,3 +3,5 @@
 Joe4444=ODST Rifleman
 Winterume=ODST Rifleman
 EchoCassius=ODST Rifleman
+Aeleto=ODST Rifleman
+Liam Gallagher=ODST Rifleman
