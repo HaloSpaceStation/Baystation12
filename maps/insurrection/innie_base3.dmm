@@ -214,7 +214,7 @@
 "ef" = (/obj/structure/table/standard,/obj/effect/decal/cleanable/generic,/obj/item/stack/material/glass/ten,/obj/item/stack/material/glass/ten,/turf/simulated/floor/tiled,/area/asteroid_base/central_hallway_1)
 "eg" = (/turf/simulated/floor/tiled/dark,/area/asteroid_base/central_hallway_1)
 "eh" = (/obj/structure/table/standard,/obj/item/weapon/storage/lunchbox/syndicate,/turf/simulated/floor/tiled,/area/asteroid_base/central_hallway_1)
-"ei" = (/obj/structure/table/standard,/obj/item/weapon/paper_bin,/obj/item/weapon/pen/red,/turf/simulated/floor/tiled,/area/asteroid_base/central_hallway_1)
+"ei" = (/obj/structure/table/standard,/obj/item/weapon/paper_bin,/obj/item/weapon/pen/red,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/turf/simulated/floor/tiled,/area/asteroid_base/central_hallway_1)
 "ej" = (/obj/structure/sign/directions/medical{tag = "icon-direction_med (NORTH)"; icon_state = "direction_med"; dir = 1},/turf/unsimulated/wall,/area/asteroid_base/mess_hall)
 "ek" = (/obj/structure/janitorialcart,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/plating,/area/asteroid_base/mess_hall)
 "el" = (/obj/structure/table/standard,/obj/item/weapon/reagent_containers/glass/bucket,/obj/machinery/light/small{dir = 1},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/asteroid_base/mess_hall)
