@@ -388,9 +388,6 @@ var/list/mining_floors = list()
 				for(var/i=0, i<quantity, i++)
 					new /obj/item/weapon/material/shard/phoron(src)
 
-			//if(7)
-			//	var/obj/item/stack/material/uranium/R = new(src)
-			//	R.amount = rand(5,25)
 
 /turf/simulated/mineral/random
 	name = "Mineral deposit"
