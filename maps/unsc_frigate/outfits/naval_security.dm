@@ -5,6 +5,7 @@
 	l_ear = /obj/item/device/radio/headset/unsc
 	uniform = /obj/item/clothing/under/unsc/tactical
 	shoes = /obj/item/clothing/shoes/jackboots
+	starting_accessories = list(/obj/item/clothing/accessory/rank/fleet/enlisted/e7)
 
 	flags = 0
 
@@ -14,5 +15,6 @@
 	l_ear = /obj/item/device/radio/headset/unsc
 	uniform = /obj/item/clothing/under/unsc/tactical
 	shoes = /obj/item/clothing/shoes/jackboots
+	starting_accessories = list(/obj/item/clothing/accessory/rank/fleet/enlisted/e5)
 
 	flags = 0
