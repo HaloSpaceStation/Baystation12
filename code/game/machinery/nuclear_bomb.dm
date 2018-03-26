@@ -455,9 +455,9 @@ var/bomb_set
 	1) Order the enlisted men to secure the terminal, evacuate the Officers.<br>\
 	2) Notify your Executive officer about the Emergency Priority Order.<br>\
 	3) Proceed to the self-destruct chamber with your Executive Officer, located on Deck Three by the medbay.<br>\
-	4) Unbolt the door and enter the chamber.<br>\
+	4) Open the shutters and enter the chamber.<br>\
 	5) You and your Executive Officer should stand in front of each Keycard Authentication Device. On the KAD interface, select \
-	Activate Protocol 098831A-1. Then swipe your ID cards simultaneously.<br>\
+	Activate Protocol 098831A1. Then swipe your ID cards simultaneously.<br>\
 	6) The KAD will now display the Authentication Code. Memorize this code.<br>\
 	7) Insert the authentication disk into the self-destruct terminal.<br>\
 	8) Enter the code into the self-destruct terminal.<br>\

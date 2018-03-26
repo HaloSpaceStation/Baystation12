@@ -1,6 +1,6 @@
 
 /decl/hierarchy/outfit/job/UNSC_ship/marine_co
-	name = "Marine Commanding Officer"
+	name = "Marine Company Officer"
 
 	l_ear = /obj/item/device/radio/headset/unsc/marine
 	l_hand = /obj/item/squad_manager
@@ -15,7 +15,7 @@
 	flags = 0
 
 /decl/hierarchy/outfit/job/UNSC_ship/marine_xo
-	name = "Marine Executive Officer"
+	name = "Marine Company Sergeant"
 
 	l_ear = /obj/item/device/radio/headset/unsc/marine
 	l_hand = /obj/item/squad_manager
