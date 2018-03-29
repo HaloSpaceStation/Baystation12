@@ -869,8 +869,6 @@
 			return global.processScheduler;
 		if("processing_turfs")
 			return global.processing_turfs;
-		if("prometheans")
-			return global.prometheans;
 		if("protected_objects")
 			return global.protected_objects;
 		if("punch_sound")
@@ -2090,8 +2088,6 @@
 			global.processScheduler=newval;
 		if("processing_turfs")
 			global.processing_turfs=newval;
-		if("prometheans")
-			global.prometheans=newval;
 		if("protected_objects")
 			global.protected_objects=newval;
 		if("punch_sound")
@@ -2876,7 +2872,6 @@
 	"priv_syndicate_access",
 	"processScheduler",
 	"processing_turfs",
-	"prometheans",
 	"protected_objects",
 	"punch_sound",
 	"rad_collectors",
