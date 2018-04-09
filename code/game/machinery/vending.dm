@@ -1114,7 +1114,10 @@
 	/obj/item/clothing/suit/armor/odst = 4,
 	/obj/item/clothing/head/helmet/odst/engineer = 4,
 	/obj/item/clothing/suit/armor/odst/engineer = 4,
+<<<<<<< HEAD
 	/obj/item/clothing/accessory/storage/odst = 4,
+=======
+>>>>>>> 73785fc2bcc05e3755a04617822072cabcfd652d
 	/obj/item/clothing/suit/armor/odst/cqb = 4,
 	/obj/item/clothing/head/helmet/odst/cqb = 4,
 	/obj/item/clothing/suit/armor/odst/sharpshooter = 4,
@@ -1125,6 +1128,11 @@
 	/obj/item/weapon/storage/belt/marine_ammo = 4,
 	/obj/item/weapon/storage/belt/marine_medic = 4,
 	/obj/item/clothing/accessory/storage/odst = 4,
+<<<<<<< HEAD
+=======
+	/obj/item/weapon/storage/backpack/satchel_eng = 4,
+	/obj/item/weapon/storage/backpack/satchel_black = 4,
+>>>>>>> 73785fc2bcc05e3755a04617822072cabcfd652d
 	/obj/item/weapon/material/knife/combat_knife = 4,
 	/obj/item/weapon/gun/projectile/m7_smg/silenced = 4,
 	/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts = 4,
