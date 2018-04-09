@@ -39,7 +39,7 @@
 
 /obj/item/clothing/suit/armor/odst
 	name = "ODST Armour"
-	desc = "Lightweight, durable armour issued to Orbital Drop Shock Troopers for increased survivability in the field."
+	desc = "Lightweight, durable vacuum-sealed armour issued to Orbital Drop Shock Troopers for increased survivability in the field."
 	icon = ITEM_INHAND
 	icon_state = "Odst Armour"
 	icon_override = ODST_OVERRIDE
