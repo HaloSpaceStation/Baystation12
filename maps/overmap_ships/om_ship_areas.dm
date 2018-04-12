@@ -46,3 +46,7 @@
 
 /area/om_ships/unscpatrol
 	name = "UNSC Patrol Vessel"
+
+
+/area/om_ships/sanlorenzo
+	name = "CCV San Lorenzo"
