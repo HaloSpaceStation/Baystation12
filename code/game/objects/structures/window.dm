@@ -427,7 +427,7 @@
 
 /obj/structure/window/phoronreinforced/full
 	dir = 5
-	icon_state = "phoronwindow0"
+	icon_state = "phoronwindowfull"
 
 /obj/structure/window/reinforced
 	name = "reinforced window"

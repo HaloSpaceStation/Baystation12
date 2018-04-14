@@ -10,6 +10,10 @@
 	var/dx		//desitnation
 	var/dy		//coordinates
 
+obj/machinery/computer/helm/covie
+	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
+	icon_state = "Large Covie Holo"
+
 /obj/machinery/computer/helm/Initialize()
 	. = ..()
 	linked = map_sectors["[z]"]
@@ -186,6 +190,10 @@
 	var/obj/effect/overmap/ship/linked
 	icon_keyboard = "generic_key"
 	icon_screen = "helm"
+
+/obj/machinery/computer/navigation/covie
+	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
+	icon_state = "Large Covie Holo"
 
 /obj/machinery/computer/navigation/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!linked)

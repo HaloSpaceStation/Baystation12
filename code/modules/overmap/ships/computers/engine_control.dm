@@ -99,3 +99,7 @@
 
 	add_fingerprint(usr)
 	updateUsrDialog()
+
+/obj/machinery/computer/engines/covie
+	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
+	icon_state = "Covie Monitor"
