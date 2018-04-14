@@ -100,7 +100,7 @@
 	fire_delay = 2
 	accuracy = 1
 	w_class = ITEM_SIZE_LARGE
-	dispersion=list(0.0, 0.6, 0.6)
+	dispersion=list(0.0, 0.2, 0.4)
 	item_icons = list(
 		slot_l_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_left.dmi',
 		slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',
