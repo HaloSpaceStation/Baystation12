@@ -8,8 +8,8 @@
 /obj/item/weapon_attachment/barrel/suppressor
 	name = "Suppressor"
 	desc = "An attachment designed to dampen the firing sound of your weapon, with a minimal impact on shot-grouping."
-	icon = 'code/modules/halo/icons/attachments/barrel.dmi'
-	icon_state = "suppressor"
+	icon = 'icons/obj/gun.dmi'
+	icon_state = "silencer"
 	weapon_slot = "barrel"
 
 /obj/item/weapon_attachment/barrel/suppressor/apply_attachment_effects(var/obj/item/weapon/gun/gun)

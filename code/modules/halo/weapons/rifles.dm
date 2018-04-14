@@ -18,7 +18,7 @@
 	magazine_type = /obj/item/ammo_magazine/m762_ap/MA5B
 	allowed_magazines = list(/obj/item/ammo_magazine/m762_ap/MA5B) //Disallows loading LMG boxmags into the MA5B
 	burst = 3
-	burst_delay = 2
+	fire_delay = 2
 	one_hand_penalty = -1
 	dispersion = list(2)//This gun spawns with a stock that counteracts this issue.
 	var/on = 0

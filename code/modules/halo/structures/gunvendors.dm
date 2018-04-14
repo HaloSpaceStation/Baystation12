@@ -49,4 +49,4 @@
 	icon_state ="ironhammer"
 	icon_deny = "ironhammer-deny"
 	req_access = list(308)
-	products = list(/obj/item/weapon_attachment/sight/acog = 2, /obj/item/weapon_attachment/sight/rds = 6, /obj/item/weapon_attachment/stock/ma5b = 10, /obj/item/weapon_attachment/stock/skeletal = 8)
+	products = list(/obj/item/weapon_attachment/sight/acog = 2, /obj/item/weapon_attachment/sight/rds = 6,/obj/item/weapon_attachment/barrel/suppressor = 4, /obj/item/weapon_attachment/stock/ma5b = 10, /obj/item/weapon_attachment/stock/skeletal = 8)
