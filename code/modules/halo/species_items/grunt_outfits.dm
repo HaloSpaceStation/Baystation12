@@ -20,10 +20,7 @@
 
 	suit = /obj/item/clothing/suit/armor/special/unggoy_combat_harness/major
 	suit_store = /obj/item/weapon/gun/energy/plasmapistol
-	belt = /obj/item/weapon/gun/energy/plasmapistol
 	mask = /obj/item/clothing/mask/rebreather
-	l_pocket = /obj/item/weapon/grenade/plasma
-	r_pocket = /obj/item/weapon/grenade/plasma
 
 	hierarchy_type = /decl/hierarchy/outfit/unggoy/major
 
@@ -32,10 +29,7 @@
 
 	suit = /obj/item/clothing/suit/armor/special/unggoy_combat_harness/ultra
 	suit_store = /obj/item/weapon/gun/energy/plasmapistol
-	belt = /obj/item/weapon/gun/energy/plasmapistol
 	mask = /obj/item/clothing/mask/rebreather
-	l_pocket = /obj/item/weapon/grenade/plasma
-	r_pocket = /obj/item/weapon/grenade/plasma
 
 	hierarchy_type = /decl/hierarchy/outfit/unggoy/ultra
 
@@ -44,7 +38,6 @@
 
 	suit = /obj/item/clothing/suit/armor/special/unggoy_combat_harness/specops
 	suit_store = /obj/item/weapon/gun/projectile/type51carbine
-	belt = /obj/item/weapon/gun/energy/plasmapistol
 	mask = /obj/item/clothing/mask/rebreather/unggoy_spec_ops
 	l_pocket = /obj/item/ammo_magazine/type51mag
 	r_pocket = /obj/item/ammo_magazine/type51mag
