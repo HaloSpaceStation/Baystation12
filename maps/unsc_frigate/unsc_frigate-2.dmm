@@ -1285,7 +1285,7 @@
 "yK" = (/obj/structure/sign/halo_floorsign/hangar{dir = 4},/turf/simulated/floor/tiled,/area/unscfrigate/hangar_starb)
 "yL" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled,/area/unscfrigate/hangar_starb)
 "yM" = (/turf/simulated/floor/tiled,/area/unscfrigate/hangar_starb)
-"yN" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/obj/machinery/alarm,/turf/simulated/floor/tiled,/area/space)
+"yN" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/obj/machinery/alarm,/turf/simulated/floor/tiled,/area/unscfrigate/hangar_starb)
 "yO" = (/obj/effect/floor_decal/industrial/hatch/yellow,/obj/effect/floor_decal/industrial/warning/corner{tag = "icon-warningcorner (NORTH)"; icon_state = "warningcorner"; dir = 1},/turf/simulated/floor/tiled/dark,/area/unscfrigate/hangar_starb)
 "yP" = (/obj/effect/floor_decal/industrial/hatch/yellow,/turf/simulated/floor/tiled/dark,/area/unscfrigate/hangar_starb)
 "yQ" = (/obj/effect/floor_decal/industrial/warning/corner{tag = "icon-warningcorner (EAST)"; icon_state = "warningcorner"; dir = 4},/obj/effect/floor_decal/industrial/hatch/yellow,/turf/simulated/floor/tiled/dark,/area/unscfrigate/hangar_starb)
