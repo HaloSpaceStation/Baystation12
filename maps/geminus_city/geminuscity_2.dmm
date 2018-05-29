@@ -1789,7 +1789,7 @@
 "aIu" = (/obj/effect/landmark/start{name = "Prosecutor"},/turf/simulated/floor/tiled,/area/planets/Geminus/indoor/courtroom)
 "aIv" = (/obj/item/weapon/storage/secure/safe{pixel_x = 32},/turf/simulated/floor/tiled,/area/planets/Geminus/indoor/courtroom)
 "aIw" = (/obj/effect/landmark/start{name = "Defense Attorney"},/turf/simulated/floor/tiled,/area/planets/Geminus/indoor/courtroom)
-"aIx" = (/obj/machinery/door/airlock/sol{name = "Recharging Station"},/turf/simulated/floor/decor{tag = "icon-old_tile_black_dirt"; icon_state = "old_tile_black_dirt"},/area/planets/Geminus/outdoor/central)
+"aIx" = (/obj/machinery/door/airlock/sol,/turf/simulated/floor/decor{tag = "icon-old_tile_black_dirt"; icon_state = "old_tile_black_dirt"},/area/planets/Geminus/outdoor/central)
 "aIy" = (/turf/simulated/floor/pavement/empty,/area/planets/Geminus/indoor/backroom)
 "aIz" = (/turf/simulated/floor/decor{color = "#cccccc"; icon_state = "square_grey"; tag = "icon-tiled1"},/area/planets/Geminus/indoor/backroom)
 "aIA" = (/obj/effect/landmark{name = "blobstart"},/turf/simulated/floor/decor,/area/planets/Geminus/indoor/backroom)
