@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(kigyar_pirate_spawns)
 
 /datum/spawnpoint/kigyar_pirate
 	display_name =  "Kig-Yar Pirate Spawn"
-	restrict_job = list("Kig-Yar Ship - Pirate","Kig-Yar Ship - Captain","Kig-Yar Ship - Unggoy Crewmember")
+	restrict_job = list("Kig-Yar Ship - Pirate","Kig-Yar Ship - Captain")
 
 /datum/spawnpoint/kigyar_pirate/New()
 	..()
@@ -14,6 +14,23 @@ GLOBAL_LIST_EMPTY(kigyar_pirate_spawns)
 /obj/effect/landmark/start/kigyar_pirate/New()
 	..()
 	GLOB.kigyar_pirate_spawns += loc
+
+GLOBAL_LIST_EMPTY(unggoy_pirate_spawns)
+
+/datum/spawnpoint/unggoy_pirate
+	display_name =  "Unggoy Pirate Spawn"
+	restrict_job = list("Kig-Yar Ship - Unggoy Crewmember",)
+
+/datum/spawnpoint/unggoy_pirate/New()
+	..()
+	turfs = GLOB.unggoy_pirate_spawns
+
+/obj/effect/landmark/start/unggoy_pirate
+	name = "Unggoy Pirate Spawn"
+
+/obj/effect/landmark/start/unggoy_pirate/New()
+	..()
+	GLOB.unggoy_pirate_spawns += loc
 
 //GALCOMM LANGUAGE LEARN OBJECT//
 /obj/item/language_learner
@@ -55,9 +72,9 @@ GLOBAL_LIST_EMPTY(kigyar_pirate_spawns)
 	head = null
 	suit = null
 
-	hierarchy_type = /decl/hierarchy/outfit/kigyarpirate
-
 	flags = 0
+
+	hierarchy_type = /decl/hierarchy/outfit/job
 
 /decl/hierarchy/outfit/kigyarpirate/captain
 	name = "Kig-Yar Ship-captain"
@@ -76,7 +93,9 @@ GLOBAL_LIST_EMPTY(kigyar_pirate_spawns)
 
 	flags = 0
 
-/decl/hierarchy/outfit/unggoy_deacon_observer
+	hierarchy_type = /decl/hierarchy/outfit/job
+
+/decl/hierarchy/outfit/unggoy
 	name = "Unggoy (Deacon)"
 
 	l_ear = /obj/item/device/radio/headset/covenant
@@ -88,26 +107,33 @@ GLOBAL_LIST_EMPTY(kigyar_pirate_spawns)
 	r_pocket = /obj/item/weapon/grenade/plasma
 	l_hand = /obj/item/language_learner/unggoy_to_common
 
-	hierarchy_type = /decl/hierarchy/outfit/unggoy
+	flags = 0
+
+	hierarchy_type = /decl/hierarchy/outfit/job
 
 /datum/job/covenant/kigyarpirate
 	title = "Kig-Yar Ship - Pirate"
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 7
+	spawn_positions = 7
+	selection_color = "#800080"
 	outfit_type = /decl/hierarchy/outfit/kigyarpirate
-	selection_color = "#667700"
+	access = list(240,250)
 	spawnpoint_override = "Kig-Yar Pirate Spawn"
 
 /datum/job/covenant/kigyarpirate/captain
 	title = "Kig-Yar Ship - Captain"
 	total_positions = 1
 	spawn_positions = 1
+	selection_color = "#800080"
 	outfit_type = /decl/hierarchy/outfit/kigyarpirate/captain
+	access = list(240,250)
 	spawnpoint_override = "Kig-Yar Pirate Spawn"
 
 /datum/job/covenant/unggoy_deacon
 	title = "Kig-Yar Ship - Unggoy Crewmember"
-	total_positions = 2
-	spawn_positions = 2
-	outfit_type = /decl/hierarchy/outfit/unggoy_deacon_observer
-	spawnpoint_override = "Kig-Yar Pirate Spawn"
+	total_positions = 5
+	spawn_positions = 5
+	selection_color = "#800080"
+	outfit_type = /decl/hierarchy/outfit/unggoy
+	access = list(230,250)
+	spawnpoint_override = "Unggoy Pirate Spawn"
