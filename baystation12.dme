@@ -2665,6 +2665,7 @@
 #include "maps\unsc_frigate\unsc_frigate_map.dm"
 #include "maps\unsc_frigate\unsc_frigate_overmap.dm"
 #include "maps\unsc_frigate\jobs\unsc_jobs_includes.dm"
+#include "maps\unsc_frigate\outfits\unsc_outfit_includes.dm"
 #include "maps\~mapsystem\map_preferences.dm"
 #include "maps\~mapsystem\map_ranks.dm"
 #include "maps\~mapsystem\maps.dm"
