@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(facil_security_spawn)
 
 /datum/spawnpoint/facil_security_spawn
 	display_name = "Research Facility Security Spawn"
-	restrict_job = list("ODST Rifleman","ODST Squad Leader")
+	restrict_job = list("ODST Squad Leader")
 
 /datum/spawnpoint/facil_security_spawn/New()
 	..()
@@ -61,7 +61,7 @@ GLOBAL_LIST_EMPTY(facil_comms_spawn)
 
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-/decl/hierarchy/outfit/job/facil_ODST
+//decl/hierarchy/outfit/job/facil_ODST
 	name = "ODST Rifleman"
 	l_ear = /obj/item/device/radio/headset/unsc/odst
 	glasses = /obj/item/clothing/glasses/hud/tactical
@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(facil_comms_spawn)
 	access = list(309)
 	spawnpoint_override = "Research Facility Spawn"
 
-/datum/job/ODST
+//datum/job/ODST
 	title = "ODST Rifleman"
 	total_positions = 4
 	spawn_positions = 4
