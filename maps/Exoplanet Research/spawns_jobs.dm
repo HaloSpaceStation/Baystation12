@@ -61,20 +61,6 @@ GLOBAL_LIST_EMPTY(facil_comms_spawn)
 
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-//decl/hierarchy/outfit/job/facil_ODST
-	name = "ODST Rifleman"
-	l_ear = /obj/item/device/radio/headset/unsc/odst
-	glasses = /obj/item/clothing/glasses/hud/tactical
-	uniform = /obj/item/clothing/under/unsc/odst_jumpsuit
-	gloves = /obj/item/clothing/gloves/tactical
-	shoes = /obj/item/clothing/shoes/jungleboots
-	gloves = /obj/item/clothing/gloves/thick/unsc
-	belt = /obj/item/weapon/gun/projectile/m6c_magnum_s
-	starting_accessories = list (/obj/item/clothing/accessory/rank/marine/enlisted/e4, /obj/item/clothing/accessory/holster/thigh, /obj/item/clothing/accessory/badge/tags)
-
-	flags = 0
-
-	hierarchy_type = /decl/hierarchy/outfit/job
 
 /decl/hierarchy/outfit/job/facil_ODSTO
 	name = "ODST Squad Leader"
@@ -117,14 +103,15 @@ GLOBAL_LIST_EMPTY(facil_comms_spawn)
 	access = list(309)
 	spawnpoint_override = "Research Facility Spawn"
 
-//datum/job/ODST
+/datum/job/ODST
 	title = "ODST Rifleman"
 	total_positions = 4
 	spawn_positions = 4
-	outfit_type = /decl/hierarchy/outfit/job/facil_ODST
+	outfit_type = /decl/hierarchy/outfit/job/UNSC_ship/odst
 	alt_titles = list("ODST Medic","ODST CQC Specialist","ODST Sharpshooter","ODST Combat Engineer")
 	selection_color = "#008000"
 	access = list(142,110,309,311)
+	latejoin_at_spawnpoints = TRUE
 	spawnpoint_override = "Research Facility Security Spawn"
 	is_whitelisted = 1
 
@@ -135,6 +122,7 @@ GLOBAL_LIST_EMPTY(facil_comms_spawn)
 	outfit_type = /decl/hierarchy/outfit/job/facil_ODSTO
 	selection_color = "#008000"
 	access = list(142,110,309,310,311)
+	latejoin_at_spawnpoints = TRUE
 	spawnpoint_override = "Research Facility Security Spawn"
 	is_whitelisted = 1
 
