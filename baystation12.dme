@@ -2661,7 +2661,6 @@
 #include "maps\insurrection\innie_base_map.dm"
 #include "maps\insurrection\innie_base_overmap.dm"
 #include "maps\odst_prowler\odst_ship_overmap.dm"
-#include "maps\odst_prowler\ODST_Ship.dmm"
 #include "maps\overmap_example\overmap_example_define.dm"
 #include "maps\overmap_ships\nh_overmap.dm"
 #include "maps\overmap_ships\om_ship_areas.dm"
