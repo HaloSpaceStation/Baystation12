@@ -16,8 +16,8 @@ GLOBAL_LIST_EMPTY(mining_asteroid_spawns)
 	GLOB.mining_asteroid_spawns += loc
 
 
-/decl/hierarchy/outfit/job/Outer_Colomist
-	name = "Outer_Colomist"
+/decl/hierarchy/outfit/job/Outer_Colonist
+	name = "Outer_Colonist"
 
 	head = null
 	uniform = null
@@ -27,19 +27,19 @@ GLOBAL_LIST_EMPTY(mining_asteroid_spawns)
 
 	flags = 0
 
-/decl/hierarchy/outfit/job/Outer_Colomist/equip_id(mob/living/carbon/human/H)
+/decl/hierarchy/outfit/job/Outer_Colonist/equip_id(mob/living/carbon/human/H)
 	var/obj/item/weapon/card/id/C = ..()
-	C.assignment = "Outer_Colomist"
+	C.assignment = "Outer_Colonist"
 	H.set_id_info(C)
 
-/decl/hierarchy/outfit/job/Outer_Colomist/proc/equip_special(mob/living/carbon/human/H)
+/decl/hierarchy/outfit/job/Outer_Colonist/proc/equip_special(mob/living/carbon/human/H)
 	if(prob(30))
 		var/obj/item/weapon/gun/projectile/G = new /obj/item/weapon/gun/projectile/colt
 		G.ammo_magazine = new /obj/item/ammo_magazine/c45m
 		H.equip_to_slot_or_del(G,slot_belt)
 
 
-/decl/hierarchy/outfit/job/Outer_Colomist/equip_base(mob/living/carbon/human/H)
+/decl/hierarchy/outfit/job/Outer_Colonist/equip_base(mob/living/carbon/human/H)
 
 	var/random_uniform = pick(/obj/item/clothing/under/serviceoveralls,\
 		/obj/item/clothing/under/frontier,\
@@ -58,11 +58,11 @@ GLOBAL_LIST_EMPTY(mining_asteroid_spawns)
 
 
 
-/datum/job/Outer_Colomist
-	title = "Outer_Colomist"
+/datum/job/Outer_Colonist
+	title = "Outer_Colonist"
 	total_positions = 10
 	spawn_positions = 10
-	outfit_type = /decl/hierarchy/outfit/job/Outer_Colomist
+	outfit_type = /decl/hierarchy/outfit/job/Outer_Colonist
 	selection_color = "#000000"
 	spawnpoint_override = "Mining Asteroid Spawn"
 	alt_titles = list("Miner","Doctor","Nurse","Warehouse Worker","Sushi Cook","Surgeon","Bartender")
