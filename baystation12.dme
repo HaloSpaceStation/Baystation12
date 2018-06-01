@@ -2618,7 +2618,6 @@
 #include "maps\desert_outpost\__desert_outpost_map.dm"
 #include "maps\example\example_define.dm"
 #include "maps\geminus_city\geminus_city.dm"
-#include "maps\geminus_city\geminus_city_jobs.dm"
 #include "maps\geminus_city\geminus_city_map.dm"
 #include "maps\geminus_city\geminus_city_outfits.dm"
 #include "maps\geminus_city\unit_tests.dm"
