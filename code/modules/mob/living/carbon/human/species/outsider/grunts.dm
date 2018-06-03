@@ -15,11 +15,8 @@
 	slowdown = -1 //-1 to negate noshoes
 
 	breath_type = "methane"
-	poison_type = "phoron"
+	poison_type = "oxygen"
 	exhale_type = "carbon_dioxide"
-
-	warning_low_pressure = 25
-	hazard_low_pressure = -1
 
 /datum/species/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 1)
 	H.backbag = 0
