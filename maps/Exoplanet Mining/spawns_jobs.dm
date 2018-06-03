@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(mining_asteroid_spawns)
 
 /datum/spawnpoint/mining_asteroid
 	display_name =  "Mining Asteroid Spawn"
-	restrict_job = list("Outer Colomist")
+	restrict_job = list("Outer Colonist")
 
 /datum/spawnpoint/mining_asteroid/New()
 	..()
