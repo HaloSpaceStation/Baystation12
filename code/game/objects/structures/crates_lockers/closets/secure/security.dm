@@ -22,7 +22,6 @@
 		/obj/item/clothing/shoes/brown,
 		/obj/item/device/radio/headset/heads/captain,
 		/obj/item/clothing/gloves/captain,
-		/obj/item/weapon/gun/energy/gun,
 		/obj/item/clothing/suit/armor/captain,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/clothing/under/dress/dress_cap,
@@ -137,7 +136,6 @@
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/humbler,
-		/obj/item/weapon/gun/energy/gun,
 		/obj/item/weapon/storage/box/holobadge,
 		/obj/item/clothing/head/beret/sec/corporate/warden,
 		/obj/item/device/holowarrant

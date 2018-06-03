@@ -302,13 +302,13 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
 
 /obj/item/clothing/suit/armor/vest/nt
-	name = "\improper NanoTrasen armored vest"
-	desc = "A synthetic armor vest. This one is marked with the crest of NanoTrasen."
+	name = "\improper Misriah Armories armored vest"
+	desc = "A synthetic armor vest. This one is marked with the crest of Misriah Armory"
 	icon_state = "ntvest"
 
 
 /obj/item/clothing/suit/armor/vest/solgov
-	name = "\improper Sol Central Government armored vest"
+	name = "\improper United Earth Government armored vest"
 	desc = "A synthetic armor vest. This one is marked with the crest of the United Earth Government"
 	icon_state = "solvest"
 
@@ -401,7 +401,7 @@
 
 
 /obj/item/clothing/suit/armor/centcomm
-	name = "\improper Cent. Com. armor"
+	name = "\improper UNSC High Command Vest"
 	desc = "A suit that protects against some damage."
 	icon_state = "centcom"
 	item_state = "centcom"
