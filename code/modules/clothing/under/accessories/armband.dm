@@ -7,8 +7,8 @@
 	sprite_sheets = list(SPECIES_NABBER = 'icons/mob/species/nabber/ties.dmi')
 
 /obj/item/clothing/accessory/armband/cargo
-	name = "cargo armband"
-	desc = "An armband, worn by the crew to display which department they're assigned to. This one is brown."
+	name = "brown armband"
+	desc = "A brown armband."
 	icon_state = "cargo"
 
 /obj/item/clothing/accessory/armband/engine

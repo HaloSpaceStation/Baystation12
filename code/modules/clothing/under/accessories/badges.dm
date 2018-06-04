@@ -154,3 +154,9 @@
 	icon_state = "solbadge"
 	slot_flags = SLOT_TIE
 	badge_string = "Geminus City Police Department"
+
+/obj/item/clothing/accessory/badge/oniba
+	name = "agent's badge"
+	desc = "A synthleather holographic badge bearing the crest of the Office of Naval Intelligence"
+	icon_state = "onibadge"
+	slot_flags = SLOT_TIE
