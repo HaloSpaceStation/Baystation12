@@ -33,8 +33,8 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  -maptweak: "Remodeled frigate deck 4 to facilitate readding ODST's."
-  -rscdel: "Removed ODST spawns on prowler."
-  -rscadd: "Added ODST spawns to frigate."
-  -rscadd: "Added all First Contact jobs and spawns to colony gamemode."
-  -rscadd: "Changed ONI Bridge Officer to ODST Officer."
+  - maptweak: "Remodeled frigate deck 4 to facilitate readding ODST's."
+  - rscdel: "Removed ODST spawns on prowler."
+  - rscadd: "Added ODST spawns to frigate."
+  - rscadd: "Added all First Contact jobs and spawns to colony gamemode."
+  - rscadd: "Changed ONI Bridge Officer to ODST Officer."
