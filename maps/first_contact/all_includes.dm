@@ -11,6 +11,8 @@
 
 	#include "../Exoplanet Mining/includes.dm"
 
+	#include "../Niflheim/includes.dm"
+
 	#include "maps/corvette_spawns.dm"
 	#include "maps/UNSC_Corvette.dmm"
 

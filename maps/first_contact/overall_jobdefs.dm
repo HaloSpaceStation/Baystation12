@@ -76,10 +76,10 @@
 	is_whitelisted = 1
 
 /datum/map/first_contact
-	allowed_jobs = list(/datum/job/researcher,/datum/job/ONIGUARD,/datum/job/ONIGUARDS,/datum/job/COMMO,/datum/job/IGUARD,/datum/job/LISTENG,/datum/job/colonist,/datum/job/ship_crew_civ,/datum/job/ship_cap_civ,/datum/job/ship_crew_innie,/datum/job/ship_cap_innie,/datum/job/unsc_ship_crew,/datum/job/unsc_ship_cap,/datum/job/ODST,/datum/job/ODSTO,/datum/job/covenant/kigyarpirate/captain,/datum/job/covenant/kigyarpirate,/datum/job/covenant/unggoy_deacon)
-	allowed_spawns = list("Innie Crew","Corvette Crew","Corvette Crew Captain","Civilian Ship Crew","Civ Ship Cap Crew","Kig-Yar Pirate Spawn","Unggoy Pirate Spawn","Research Facility Spawn","Research Facility Security Spawn","Research Facility Comms Spawn","Depot Guard Spawn","Listening Post Spawn","Mining Asteroid Spawn","ODST Rifleman Spawn","ODST Squad Leader Spawn")
+	allowed_jobs = list(/datum/job/researcher,/datum/job/ONIGUARD,/datum/job/ONIGUARDS,/datum/job/COMMO,/datum/job/IGUARD,/datum/job/LISTENG,/datum/job/ship_crew_civ,/datum/job/ship_cap_civ,/datum/job/ship_crew_innie,/datum/job/ship_cap_innie,/datum/job/unsc_ship_crew,/datum/job/unsc_ship_cap,/datum/job/ODST,/datum/job/ODSTO,/datum/job/covenant/kigyarpirate/captain,/datum/job/covenant/kigyarpirate,/datum/job/covenant/unggoy_deacon,/datum/job/dblock,/datum/job/cblock,/datum/job/xblock,/datum/job/nmp,/datum/job/nmpo,/datum/job/nw,/datum/job/ne)
+	allowed_spawns = list("Innie Crew","Corvette Crew","Corvette Crew Captain","Civilian Ship Crew","Civ Ship Cap Crew","Kig-Yar Pirate Spawn","Unggoy Pirate Spawn","Research Facility Spawn","Research Facility Security Spawn","Research Facility Comms Spawn","Depot Guard Spawn","Listening Post Spawn","ODST Rifleman Spawn","ODST Squad Leader Spawn", "Niflheim D-Block Prisoner Spawn","Niflheim C-Block Prisoner Spawn","Niflheim X-Block Prisoner Spawn","Niflheim Prison Guard Spawn","Niflheim Chief MP Spawn","Niflheim Warden Spawn","Niflheim Employee Spawn",)
 
-	species_to_job_whitelist = list(/datum/species/kig_yar = list(/datum/job/covenant/kigyarpirate,/datum/job/covenant/kigyarpirate/captain),/datum/species/unggoy = list(/datum/job/covenant/unggoy_deacon))
+	species_to_job_whitelist = list(/datum/species/kig_yar = list(/datum/job/covenant/kigyarpirate,/datum/job/xblock,/datum/job/covenant/kigyarpirate/captain),/datum/species/unggoy = list(/datum/job/covenant/unggoy_deacon))
 
-	species_to_job_blacklist = list(/datum/species/human = list(/datum/job/covenant/kigyarpirate,/datum/job/covenant/kigyarpirate/captain,/datum/job/covenant/unggoy_deacon))
+	species_to_job_blacklist = list(/datum/species/human = list(/datum/job/covenant/kigyarpirate,/datum/job/xblock,/datum/job/covenant/kigyarpirate/captain,/datum/job/covenant/unggoy_deacon))
 
