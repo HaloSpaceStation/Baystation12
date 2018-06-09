@@ -195,6 +195,6 @@
 /area/planets/Geminus/outdoor/MAC
 	name = "\improper Geminus MAC"
 
-/area/planets/gauntlet
+/area/planets/Geminus/outdoor/gauntlet
 	name = "\improper Gauntlet Zone"
 	base_turf = /turf/simulated/floor/exoplanet/desert
