@@ -10,8 +10,6 @@
 	name += pick(GLOB.last_names_theta)
 	real_name = name
 
-
-
 /obj/item/clothing/shoes/swat/theta
 	name = "Theta Boots"
 	desc = "These boots have been inlaced with armor plates to provide far better protection then your normal set of boots. Meant to be worn by the subject of the Project Theta Program."
