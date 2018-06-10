@@ -100,6 +100,8 @@
 /obj/vehicles/air/pelican/innie
 	desc = "A versatile aircraft used by the UNSC for medium-lift operations of personnel, vehicles and equipment. This one has a red fist painted onto the armor. A 40mm Chain-Gun is mounted on the nose."
 	faction = "innie"
+	icon = 'code/modules/halo/shuttles/pelican.dmi'
+	icon_state = "inni-base"
 	occupants = list(13,1)
 
 	comp_prof = /datum/component_profile/pelican/innie

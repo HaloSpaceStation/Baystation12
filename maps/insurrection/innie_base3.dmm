@@ -356,7 +356,7 @@
 "gR" = (/obj/structure/bed,/obj/item/weapon/bedsheet/green,/turf/simulated/floor/tiled,/area/asteroid_base/central_hallway_1)
 "gS" = (/obj/structure/bed,/obj/item/weapon/bedsheet/blue,/turf/simulated/floor/tiled,/area/asteroid_base/central_hallway_1)
 "gT" = (/obj/effect/decal/cleanable/blood/oil,/turf/simulated/floor/plating,/area/asteroid_base/central_hallway_1)
-"gU" = (/obj/vehicles/air/pelican/innie,/obj/effect/landmark/dropship_land_point/insurrection_hangar,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
+"gU" = (/obj/vehicles/air/pelican/innie{tag = "icon-inni-base"; icon_state = "inni-base"},/obj/effect/landmark/dropship_land_point/innie,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
 "gV" = (/obj/effect/decal/cleanable/liquid_fuel,/turf/simulated/floor/plating,/area/asteroid_base/central_hallway_1)
 "gW" = (/obj/item/weapon/caution/cone,/obj/effect/floor_decal/industrial/warning/dust/corner{tag = "icon-warningcorner_dust (EAST)"; icon_state = "warningcorner_dust"; dir = 4},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
 "gX" = (/obj/effect/floor_decal/industrial/warning/dust{tag = "icon-warning_dust (NORTH)"; icon_state = "warning_dust"; dir = 1},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
@@ -369,9 +369,9 @@
 "he" = (/obj/machinery/door/airlock/halo_maint,/turf/simulated/floor/plating,/area/asteroid_base/central_hallway_1)
 "hf" = (/obj/effect/floor_decal/sign/m,/turf/simulated/floor/plating,/area/asteroid_base/central_hallway_1)
 "hg" = (/obj/effect/decal/cleanable/liquid_fuel,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
-"hh" = (/obj/machinery/light/spot,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
-"hi" = (/obj/vehicles/air/pelican/innie{tag = "icon-base (EAST)"; icon_state = "base"; dir = 4},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
-"hj" = (/obj/vehicles/air/pelican/innie{tag = "icon-base (WEST)"; icon_state = "base"; dir = 8},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
+"hh" = (/obj/machinery/light/spot,/obj/vehicles/air/pelican/innie{tag = "icon-inni-base (EAST)"; icon_state = "inni-base"; dir = 4},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
+"hi" = (/obj/vehicles/air/pelican/innie{tag = "icon-inni-base (WEST)"; icon_state = "inni-base"; dir = 8},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
+"hj" = (/obj/machinery/light/spot,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
 "hk" = (/obj/machinery/vending/wallmed1,/turf/unsimulated/wall,/area/asteroid_base/north_airlock_1)
 
 (1,1,1) = {"
@@ -423,6 +423,6 @@ dYdYdYdYdZerdZdYdYdYdZdZdZdZdZdYdYdYebeaeaeaeaeaeTgWgXgXgXgXgXgXgXgYeTeTeTgZgXgX
 dYdYdYdYdZerdZdZdZdZdZeahahbdZdZdZhcebeaeaeaeaeaeTeTeTeTeDeDeTeTeTeTeTeTeTeDeDeTeTeTeTeTeTeTeTeTexeM
 dYdYdYdYdZeaeaeaeaeaerhdeNgweaeaeaeahehfeaeaeaeaeCeTeDeDeTeTeTeTeTeTeTeTeTeTeDeTeTeTeCeTeDgehgeDexeM
 dYdYdYdYdZdZdZdZdZdZdZeaeaerdZdZdZdZebeagTeaeaeaeTeDeDeTeTeTeTeTeTeTeTgkeTeTeTeTeTeTeTeTeDeTeTeDexeM
-dYdYdYdYdYdYdYdYdYdYdZdZdZdZdZdYdYdYebeaeaeaeaeaeTeTeTeTeThhhieTeTeTeDeDeDeThjeTeThheTeTeDeTeDeDexeM
+dYdYdYdYdYdYdYdYdYdYdZdZdZdZdZdYdYdYebeaeaeaeaeaeTeTeTeTeThheTeTeTeTeDeDeDeThieTeThjeTeTeDeTeDeDexeM
 dYdYdYdYdYdYdYdYdYdYdYdYdYdYdYdYdYdYebebebebebebexexexgEexexexexexexexexexexexhkexexexexexexexexexeM
 "}

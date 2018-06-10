@@ -387,7 +387,7 @@
 "hw" = (/turf/simulated/mineral/random/high_chance,/area/exoplanet/desert{dynamic_lighting = 0; luminosity = 1; requires_power = 0})
 "hx" = (/obj/docking_umbilical/north{name = "VT9-042 Space Elevator 1"},/turf/simulated/floor/exoplanet/desert,/area/exoplanet/desert{dynamic_lighting = 0; luminosity = 1; requires_power = 0})
 "hy" = (/obj/effect/floor_decal/asteroid,/turf/simulated/floor/asteroid/planet,/area/exoplanet/desert{dynamic_lighting = 0; luminosity = 1; requires_power = 0})
-"hz" = (/obj/effect/landmark/dropship_land_point{name = "Research Compound LZ"},/turf/simulated/floor/exoplanet/desert,/area/exoplanet/desert{dynamic_lighting = 0; luminosity = 1; requires_power = 0})
+"hz" = (/obj/effect/landmark/dropship_land_point/unsc{name = "Research Compound LZ"},/turf/simulated/floor/exoplanet/desert,/area/exoplanet/desert{dynamic_lighting = 0; luminosity = 1; requires_power = 0})
 "hA" = (/obj/effect/landmark/dropship_land_point/covenant,/turf/simulated/floor/exoplanet/desert,/area/exoplanet/desert{dynamic_lighting = 0; luminosity = 1; requires_power = 0})
 "hB" = (/obj/docking_umbilical/north{name = "VT9-042 Space Elevator 2"},/turf/simulated/floor/exoplanet/desert,/area/exoplanet/desert{dynamic_lighting = 0; luminosity = 1; requires_power = 0})
 "hC" = (/obj/structure/flora/ausbushes/fullgrass,/turf/unsimulated/floor/rock2{density = 1; opacity = 1},/area/exo_research_facility/outer{base_turf = /turf/simulated/floor/exoplanet/desert})
