@@ -167,6 +167,7 @@
 	icon = 'icons/obj/doors/Doorhatchele.dmi'
 	explosion_resistance = 20
 	opacity = 1
+	req_access = list(311)
 	assembly_type = /obj/structure/door_assembly/door_assembly_hatch
 
 /obj/machinery/door/airlock/maintenance_hatch

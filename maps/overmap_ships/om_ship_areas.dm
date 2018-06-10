@@ -25,28 +25,6 @@
 	name = "CCV Slow But Steady"
 	has_gravity = 0
 
-/area/om_ships/Niflheim
-	name = "Niflheim"
-
-/area/om_ships/NiflheimCommand
-	name = "Niflheim Command"
-	icon_state = "blue"
-
-/area/om_ships/NiflheimDBlock
-	name = "Niflheim D-Block"
-	icon_state = "yellow"
-
-/area/om_ships/NiflheimCBlock
-	name = "Niflheim C-Block"
-	icon_state = "yellow"
-
-/area/om_ships/NiflheimXBlock
-	name = "Niflheim X-Block"
-	icon_state = "yellow"
-
-/area/om_ships/Elivagar
-	name = "CMV Elivagar"
-
 /area/om_ships/unscpatrol
 	name = "UNSC Patrol Vessel"
 
