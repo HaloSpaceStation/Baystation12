@@ -25,10 +25,11 @@
 "y" = (/turf/simulated/wall/wood,/area/planets/Geminus/outdoor/gauntlet)
 "z" = (/obj/machinery/door/unpowered/simple/wood,/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
 "A" = (/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
-"B" = (/obj/structure/window/framed,/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
-"C" = (/obj/machinery/light/invis,/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
-"D" = (/obj/machinery/vending/armory/attachment{req_access = list()},/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
-"E" = (/obj/machinery/vending/odstvend{req_access = list()},/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
+"B" = (/mob/living/carbon/human{l_ear = /obj/item/device/radio/headset/unsc/odst; w_uniform = /obj/item/clothing/under/unsc/odst_jumpsuit},/turf/simulated/floor/exoplanet/desert,/area/planets/Geminus/outdoor/gauntlet)
+"C" = (/obj/structure/window/framed,/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
+"D" = (/obj/machinery/light/invis,/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
+"E" = (/obj/machinery/vending/armory/attachment{req_access = list()},/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
+"F" = (/obj/machinery/vending/odstvend{req_access = list()},/turf/simulated/floor/wood,/area/planets/Geminus/outdoor/gauntlet)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -96,9 +97,9 @@ abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyyzyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyAAAybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
-abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbBACABbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
-abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbBAAABbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
-abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbBDCEBbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
+abbbbbbbbbbbbbbbbbbbbbbbbbbbBbbbCADACbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
+abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbCAAACbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
+abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbCEDFCbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyyyyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
