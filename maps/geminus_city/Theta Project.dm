@@ -74,7 +74,7 @@
 
 //Testing out New Gun for Theta Project, may not end up using this.
 /obj/item/weapon/gun/projectile/automatic/z8/theta
-	name = "Prototype - MA9"
+	name = "MA9"
 	desc = "This weapon was designed and funded by anti-UNSC factions as their reaction to the standard MA5B assault rifle. Designed with high accuracy and easy maneuverability in combat situations, it was quickly discontinued because of it's high price range. It is highly versatile being capable of utilizing any and all 7.62 magazines found in the field. If attachments can be found, this carbine is capable of using them. It can be fired one handed with an accuracy penalty."
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "MA9"
