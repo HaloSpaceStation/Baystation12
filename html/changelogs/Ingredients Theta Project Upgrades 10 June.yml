@@ -35,8 +35,8 @@ delete-after: True
 changes: 
   - tweak: "Added in Txt files for Theta First and Last Names."
   - tweak: "In Names.dm added Global list Init for txt files."
-  - tweak: "Added in code to Theta.dm create a new race called Theta Subject."
+  - tweak: "Added in code to Theta Race.dm create a new race called Theta Subject."
   - tweak: "Removed Code to deflect bullets from armor and helmet as it wasn't working."
-  - tweak: "Added a modded Icon, MA9 gun into Weapon sprites.dm, changed the Theta Project Icon to use the MA9."
-  - tweak: "Added in code for all Theta Armor to species restrict armor."
+  - tweak: "Added a modded Icon, MA9 gun into Weapon sprites.dm, changed the Theta Project gun Icon to use the MA9."
+  - tweak: "Added in code for all Theta Armor to species restrict armor to Theta race. Admins will now have to change a players race to theta when they recieve implanted organs."
   - tweak: "Changed MA9 W_class to normal from huge."
