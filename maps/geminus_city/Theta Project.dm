@@ -80,6 +80,7 @@
 	icon_state = "MA9"
 	item_state = "ma5b"
 	caliber = "a762"
+	w_class = ITEM_SIZE_NORMAL
 	burst_delay = 0.5
 	wielded_item_state = "ma5b"
 	fire_sound = 'code/modules/halo/sounds/MA3firefix.ogg'
