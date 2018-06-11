@@ -106,7 +106,7 @@
 		var/chan_stat = channels[ch_name]
 		var/listening = !!(chan_stat & FREQ_LISTENING) != 0
 
-		dat.Add(list(list("chan" = ch_name, "display_name" = ch_name, "secure_channel" = 1, "sec_channel_listen" = !listening, "chan_span" = frequency_span_class(radiochannels[ch_name]))))
+		dat.Add(list(list("chan" = ch_name, "display_name" = ch_name, "secure_channel" = 1, "sec_channel_listen" = !listening, "chan_span" = halo_frequency_span_class(radiochannels[ch_name]))))
 
 	return dat
 
@@ -114,7 +114,7 @@
 	var/dat[0]
 	for(var/internal_chan in internal_channels)
 		if(has_channel_access(user, internal_chan))
-			dat.Add(list(list("chan" = internal_chan, "display_name" = get_frequency_name(text2num(internal_chan)), "chan_span" = frequency_span_class(text2num(internal_chan)))))
+			dat.Add(list(list("chan" = internal_chan, "display_name" = get_frequency_name(text2num(internal_chan)), "chan_span" = halo_frequency_span_class(text2num(internal_chan)))))
 
 	return dat
 
@@ -360,16 +360,7 @@
 		signal.frequency = connection.frequency // Quick frequency set
 
 	  //#### Sending the signal to all subspace receivers ####//
-
-		for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
-			R.receive_signal(signal)
-
-		// Allinone can act as receivers.
-		for(var/obj/machinery/telecomms/allinone/R in telecomms_list)
-			R.receive_signal(signal)
-
-		for(var/obj/item/device/mobilecomms/R in telecomms_list)
-			R.receive_signal(signal)
+		connection.post_signal(src,signal)
 
 		// Receiving code can be located in Telecommunications.dm
 		return signal.data["done"] && position.z in signal.data["level"]
@@ -420,7 +411,6 @@
 	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
 		R.receive_signal(signal)
 
-
 	sleep(rand(10,25)) // wait a little...
 
 	if(signal.data["done"] && position.z in signal.data["level"])
@@ -468,7 +458,7 @@
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
-		if(!position || !(position.z in level))
+		if(!position || !("[position.z]" in level))
 			return -1
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys

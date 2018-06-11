@@ -21,7 +21,7 @@
 	messages_on_death = ON_DEATH_MESSAGES
 
 	var/next_fireat = 0
-	var/list/projectiles_to_fire = list(/obj/item/projectile/overmap/mac = 10 SECONDS) //Associated list: [projectile type]=[fire_delay]
+	var/list/projectiles_to_fire = list(/obj/item/projectile/overmap/deck_gun_proj = 0.05 SECONDS,/obj/item/projectile/overmap/deck_gun_proj = 0.1 SECONDS,/obj/item/projectile/overmap/deck_gun_proj = 0.35 SECONDS) //Associated list: [projectile type]=[fire_delay]
 
 /obj/effect/overmap/ship/npc_ship/combat/proc/fire_at_target()
 	var/obj/item/projectile/to_fire = pick(projectiles_to_fire)
@@ -31,6 +31,8 @@
 	next_fireat = world.time + fire_delay
 
 /obj/effect/overmap/ship/npc_ship/combat/process()
+	if(hull <= initial(hull)/4)
+		return
 	if(target && (target in view(7,src)))
 		if(world.time > next_fireat)
 			var/obj/effect/overmap/ship/npc_ship/targ_ship = target
@@ -56,11 +58,17 @@
 				target = object
 	. = ..()
 
+/obj/effect/overmap/ship/npc_ship/combat/unsc
+	ship_datums = list(/datum/npc_ship/unsc_patrol)
+
 /obj/effect/overmap/ship/npc_ship/combat/unsc/get_requestable_actions(var/auth_level)
 	var/list/requestable_actions = list()
 	if(auth_level >= AUTHORITY_LEVEL_UNSC)
 		requestable_actions += "Fire on target"
 	. = ..() + requestable_actions
+
+/obj/effect/overmap/ship/npc_ship/combat/innie
+	ship_datums = list(/datum/npc_ship/ccv_comet)
 
 /obj/effect/overmap/ship/npc_ship/combat/innie/get_requestable_actions(var/auth_level)
 	var/list/requestable_actions = list()

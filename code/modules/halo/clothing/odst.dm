@@ -44,9 +44,9 @@
 	icon_state = "Odst Armour"
 	icon_override = ODST_OVERRIDE
 	blood_overlay_type = "armor"
-	armor = list(melee = 55, bullet = 45, laser = 55, energy = 55, bomb = 45, bio = 30, rad = 25)
+	armor = list(melee = 55, bullet = 45, laser = 55, energy = 45, bomb = 45, bio = 30, rad = 25)
 	item_flags = STOPPRESSUREDAMAGE|THICKMATERIAL
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -158,6 +158,54 @@
 /obj/item/clothing/accessory/storage/odst
 	name = "Tactical Webbing"
 	icon_state = "Tactical Webbing"
+
+/obj/item/weapon/storage/backpack/odst/regular
+	icon = ITEM_INHAND
+	icon_override = ODST_OVERRIDE
+	name = "Odst Backpack"
+	item_state = "odst_b"
+	icon_state = "odst_ba"
+
+
+/obj/item/weapon/storage/backpack/odst/cqb
+	icon = ITEM_INHAND
+	icon_override = ODST_OVERRIDE
+	name = "Odst Backpack CQB"
+	item_state = "odst_c"
+	icon_state = "odst_ca"
+
+
+/obj/item/weapon/storage/backpack/odst/medic
+	icon = ITEM_INHAND
+	icon_override = ODST_OVERRIDE
+	name = "Odst Backpack Medic"
+	item_state = "odst_m"
+	icon_state = "odst_ma"
+
+
+/obj/item/weapon/storage/backpack/odst/sharpshooter
+	icon = ITEM_INHAND
+	icon_override = ODST_OVERRIDE
+	name = "Odst Backpack Sharpshooter"
+	item_state = "odst_s"
+	icon_state = "odst_sa"
+
+
+/obj/item/weapon/storage/backpack/odst/engineer
+	icon = ITEM_INHAND
+	icon_override = ODST_OVERRIDE
+	name = "Odst Backpack Engineer"
+	item_state = "odst_e"
+	icon_state = "odst_ea"
+
+
+/obj/item/weapon/storage/backpack/odst/squadlead
+	icon = ITEM_INHAND
+	icon_override = ODST_OVERRIDE
+	name = "Odst Backpack Squad Leader"
+	item_state = "odst_sl"
+	icon_state = "odst_sla"
+
 
 #undef ODST_OVERRIDE
 #undef ITEM_INHAND

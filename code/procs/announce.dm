@@ -41,7 +41,7 @@
 
 	var/msg = FormMessage(message, message_title)
 	for(var/mob/M in GLOB.player_list)
-		if((M.z in GLOB.using_map.contact_levels) && !istype(M,/mob/new_player) && !isdeaf(M))
+		if(!istype(M,/mob/new_player) && !isdeaf(M))
 			to_chat(M, msg)
 			if(message_sound)
 				sound_to(M, message_sound)
@@ -119,6 +119,8 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 /proc/get_announcement_frequency(var/datum/job/job)
 	if(job.faction_flag & UNSC)
 		return "SHIPCOM"
+	if(job.faction_flag & ODST)
+		return "TACCOM"
 	if(job.faction_flag & INNIE)
 		return "INNIECOM"
 	if(job.faction_flag & COLONY)
