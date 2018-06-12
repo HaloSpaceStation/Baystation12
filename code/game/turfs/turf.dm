@@ -29,13 +29,11 @@
 
 /turf/New()
 	..()
-	/*
 	for(var/atom/movable/AM as mob|obj in src)
 		spawn( 0 )
 			src.Entered(AM)
 			return
 	turfs |= src
-	*/
 
 	if(dynamic_lighting)
 		luminosity = 0
@@ -43,7 +41,7 @@
 		luminosity = 1
 
 /turf/Destroy()
-	//turfs -= src
+	turfs -= src
 	remove_cleanables()
 	..()
 	return QDEL_HINT_IWILLGC
