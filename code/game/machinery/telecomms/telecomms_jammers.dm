@@ -7,7 +7,3 @@
 /obj/machinery/telecomms_jammers/New()
 	. = ..()
 	telecomms_list += src
-
-/obj/machinery/telecomms_jammers/Destroy()
-	telecomms_list -= src
-	. = ..()
