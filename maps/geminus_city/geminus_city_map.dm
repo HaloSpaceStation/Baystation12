@@ -3,7 +3,7 @@
 	name = "Geminus"
 	full_name = "Geminus City"
 	path = "geminus_city"
-	station_levels = list(1)
+	station_levels = list(1,2,3)
 	admin_levels = list()
 	accessible_z_levels = list()
 	//lobby_icon = 'maps/example/example_lobby.dmi'
