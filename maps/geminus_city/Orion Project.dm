@@ -31,60 +31,12 @@
 	breach_threshold = 100
 	flags_inv = HIDESHOES
 
-/obj/item/clothing/suit/space/void/swat/theta/New()
-	..()
-	slowdown_per_slot[slot_wear_suit] = 0
-
-/obj/item/clothing/suit/space/void/swat/theta/handle_shield(mob/user, atom/damage_source = null, var/damage, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-
-	if(istype(damage_source, /obj/item/projectile/bullet))
-		var/obj/item/projectile/P = damage_source
-
-		var/reflectchance = 35 - round(damage/3)
-		if(!(def_zone)) //Should cause the chest to reflect bullets,to punish people aiming center mass.
-			reflectchance /= 2
-		if(P.starting && prob(reflectchance))
-			visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text] off of the Theta Armor's metal plates!</span>")
-
-			// Find a turf near or on the original location to bounce to
-			var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/turf/curloc = get_turf(user)
-
-			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, user)
-
-			return PROJECTILE_CONTINUE // complete projectile permutation
-
 /obj/item/clothing/head/helmet/space/deathsquad/theta
 	name = "Orion Helmet"
 	desc = "A prototype Helmet made from flexible high grade metals meant to mimic the spartan armor and for use by the Theta Project subject. Any common soldier should fear the person who is seen wearing this helmet."
 	armor = list("melee" = 55, "bullet" = 55, "laser" = 45, "energy" = 30, "bomb" = 50, "bio" = 0, "rad" = 0)
 	armor_thickness = 40
 	species_restricted = list("Orion")
-
-/obj/item/clothing/head/helmet/space/deathsquad/theta/New()
-	..()
-	slowdown_per_slot[slot_wear_suit] = 0
-
-/obj/item/clothing/head/helmet/space/deathsquad/theta/handle_shield (mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = BP_HEAD, var/attack_text = "the attack")
-
-	if(istype(damage_source, /obj/item/projectile/bullet))
-		var/obj/item/projectile/P = damage_source
-
-		var/reflectchance = 20 - round(damage/3)
-		if(P.starting && prob(reflectchance))
-			visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text] off of the Theta Helmet's metal plates!</span>")
-
-			// Find a turf near or on the original location to bounce to
-			var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/turf/curloc = get_turf(user)
-
-			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, user)
-
-			return PROJECTILE_CONTINUE // complete projectile permutation
 
 /obj/item/organ/internal/heart/spartan/theta
 	name = "Augmented Heart"
@@ -117,6 +69,7 @@
 	item_state = "ma5b"
 	caliber = "a762"
 	burst_delay = 0.5
+	w_class = ITEM_SIZE_LARGE
 	wielded_item_state = "ma5b"
 	fire_sound = 'code/modules/halo/sounds/MA3firefix.ogg'
 	reload_sound = 'code/modules/halo/sounds/MA3reload.ogg'
