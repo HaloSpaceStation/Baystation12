@@ -33,10 +33,10 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - tweak: "Added in Txt files for Theta First and Last Names."
-  - tweak: "In Names.dm added Global list Init for txt files."
-  - tweak: "Added in code to Theta.dm create a new race called Theta Subject."
+  - tweak: "Added in new surgery room at Exoresearch for Project Orion. Changed Theta project names to Project Orion for guns and armor."
+  - tweak: "Armor thickness is now only on helmet and armor pieces. Undersuit no longer provides armor values. All armor values were decreased so that max is 65 for two values on main armor piece."
+  - tweak: "Added in Orion Project Race called Orion which Admins will have to manually set once proper RP is done ICly to create project Orion. Added in armor race restrictions so it can only be worn once race is set by an admin."
   - tweak: "Removed Code to deflect bullets from armor and helmet as it wasn't working."
-  - tweak: "Added a modded Icon, MA9 gun into Weapon sprites.dm, changed the Theta Project Icon to use the MA9."
+  - tweak: "Added a modded Icon, MA9 gun into Weapon sprites.dm, changed the Orion Project Icon gun to use the MA9. Changed weight class from huge to large."
   - tweak: "Added in code for all Theta Armor to species restrict armor."
-  - tweak: "Changed MA9 W_class to normal from huge."
+  - tweak: "Changed Theta Project .DM file name to Orion Project. Changed Project Theta evelope to reflect Project Orion's needs."
