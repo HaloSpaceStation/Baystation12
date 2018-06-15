@@ -1,26 +1,30 @@
+//Should add in Orion Project Race
+/mob/living/carbon/human/Orion/New(var/new_loc)
+	..(new_loc,"Orion")
+
 /obj/item/clothing/shoes/swat/theta
 	name = "Orion Boots"
 	desc = "These boots have been inlaced with armor plates to provide far better protection then your normal set of boots. Meant to be worn by the subject of the Project Theta Program."
-	armor = list("melee" = 20, "bullet" = 20, "laser" = 30, "energy" = 25, "bomb" = 50, "bio" = 0, "rad" = 0)
-	armor_thickness = 5
+	armor = list("melee" = 10, "bullet" = 10, "laser" = 10, "energy" = 15, "bomb" = 10, "bio" = 0, "rad" = 0)
+	species_restricted = list("Orion")
 
 /obj/item/clothing/gloves/guards/theta
 	desc = "A prototype pair of synthetic gloves and arm pads reinforced with armor plating. Meant to be worn by the subject of the Project Theta Program."
 	name = "Orion Arm Guards"
-	armor = list("melee" = 20, "bullet" = 20, "laser" = 20, "energy" = 10, "bomb" = 20, "bio" = 0, "rad" = 0)
-	armor_thickness = 5
+	armor = list("melee" = 10, "bullet" = 10, "laser" = 10, "energy" = 10, "bomb" = 20, "bio" = 0, "rad" = 0)
+	species_restricted = list("Orion")
 
 /obj/item/clothing/under/psysuit/theta
 	name = "Orion Undersuit"
 	desc = "A prototype thick, layered grey undersuit lined with power cables and flexible nano composite plates. This might be the only piece of equipment which is actually better made then what the spartan program has."
-	armor = list("melee" = 10, "bullet" = 10, "laser" = 10, "energy" = 10, "bomb" = 10, "bio" = 0, "rad" = 0)
-	armor_thickness = 10
+	species_restricted = list("Orion")
 
 /obj/item/clothing/suit/space/void/swat/theta
 	name = "Orion Armor"
 	desc = "A prototype heavily armored suit of flexible nano composite materials. It is intended to be worn by the subject of project Theta. Any common soldier should fear the person who wears this armor."
 	allowed = list(/obj/item/weapon/gun/energy,/obj/item/device/radio,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/gun/magnetic)
-	armor = list("melee" = 65, "bullet" = 65, "laser" = 55, "energy" = 45, "bomb" = 60, "bio" = 0, "rad" = 0)
+	armor = list("melee" = 55, "bullet" = 55, "laser" = 45, "energy" = 45, "bomb" = 50, "bio" = 0, "rad" = 0)
+	species_restricted = list("Orion")
 	armor_thickness = 50
 	flags_inv = 29
 	slowdown_general = -1
@@ -55,8 +59,9 @@
 /obj/item/clothing/head/helmet/space/deathsquad/theta
 	name = "Orion Helmet"
 	desc = "A prototype Helmet made from flexible high grade metals meant to mimic the spartan armor and for use by the Theta Project subject. Any common soldier should fear the person who is seen wearing this helmet."
-	armor = list("melee" = 70, "bullet" = 65, "laser" = 45, "energy" = 30, "bomb" = 50, "bio" = 0, "rad" = 0)
+	armor = list("melee" = 55, "bullet" = 55, "laser" = 45, "energy" = 30, "bomb" = 50, "bio" = 0, "rad" = 0)
 	armor_thickness = 40
+	species_restricted = list("Orion")
 
 /obj/item/clothing/head/helmet/space/deathsquad/theta/New()
 	..()
