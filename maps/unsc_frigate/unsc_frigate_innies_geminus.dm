@@ -16,6 +16,8 @@
 	#include "../geminus_city/geminus_city_spawns.dm"
 
 	#include "../geminus_city/geminuscity_2.dmm"
+	#include "../geminus_city/geminuscity_3.dmm"
+	#include "../geminus_city/geminuscity_4.dmm"
 
 	#include "../insurrection/insurrection_items.dm"
 	#include "../insurrection/insurrection_outfits.dm"
