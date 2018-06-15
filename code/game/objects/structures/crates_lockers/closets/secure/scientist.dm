@@ -67,7 +67,6 @@
 		/obj/item/clothing/mask/gas,
 		/obj/item/device/flash,
 		/obj/item/weapon/clipboard,
-		/obj/item/weapon/folder/envelope/blanks,
 		/obj/item/clothing/suit/storage/toggle/labcoat/rd
 	)
 

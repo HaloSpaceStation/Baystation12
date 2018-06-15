@@ -110,10 +110,10 @@
 
 //Testing out New Gun for Theta Project, may not end up using this.
 /obj/item/weapon/gun/projectile/automatic/z8/theta
-	name = "MA3 All Purpose Carbine"
+	name = "MA9 All Purpose Carbine"
 	desc = "This weapon was designed and funded by anti-UNSC factions as their reaction to the standard MA5B assault rifle. Designed with high accuracy and easy maneuverability in combat situations, it was quickly discontinued because of it's high price range. It is highly versatile being capable of utilizing any and all 7.62 magazines found in the field. If attachments can be found, this carbine is capable of using them. It can be fired one handed with an accuracy penalty."
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
-	icon_state = "MA3"
+	icon_state = "MA9"
 	item_state = "ma5b"
 	caliber = "a762"
 	burst_delay = 0.5
@@ -139,6 +139,13 @@
 /obj/item/weapon/gun/projectile/automatic/z8/theta/update_icon()
 	. = ..()
 	if(ammo_magazine)
-		icon_state = "MA3"
+		icon_state = "MA9"
 	else
-		icon_state = "MA3_unloaded"
+		icon_state = "MA9_unloaded"
+
+/obj/structure/closet/syndicate/orioncloset
+	name = "Orion Armory Closet"
+	desc = "Looks High Tech even for a closet..."
+	icon_state = "syndicate"
+	icon_closed = "syndicate"
+	icon_opened = "syndicateopen"

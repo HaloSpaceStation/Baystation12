@@ -476,27 +476,69 @@ var/bomb_set
 
 /obj/item/weapon/folder/nt/rd
 
-/obj/item/weapon/folder/envelope/blanks
-	desc = "A thick envelope. The Nanotrasen logo is stamped in the corner, along with 'CONFIDENTIAL'."
+/obj/item/weapon/folder/envelope/project_orion
+	name= "Top-Secret Project"
+	desc = "A thick envelope. The UNSC logo is stamped in the corner, along with 'TOP-SECRET'."
 
-/obj/item/weapon/folder/envelope/blanks/Initialize()
+//Project Orion Envelope for researchers
+/obj/item/weapon/folder/envelope/project_orion/Initialize()
 	. = ..()
-	new/obj/item/weapon/paper/blanks(src)
+	var/obj/item/weapon/paper/projectorion = new(src)
+	projectorion.set_content("<tt><center><b><font color='red'>CONFIDENTIAL: HEAD RESEARCHER ONLY</font></b>\
+	<h3>Office of Naval Intelligence</h3>\
+	<img src = ntlogo.png>\
+	</center>\
+	<b>FROM:</b> I.N.G. <br>\
+	<b>TO:</b> Research Director of Exo-Research Outpost<br>\
+	<b>SUBJECT:</b>Project Orion<br>\
+	<hr>\
+	We have determined to institute Project Orion and attempt to create genetically modified supersoldiers to aid in UNSC operations.<br>\
+	Seeing as how your research station is relatively remote and little to nothing happens there we have decided it best you spearhead this project at this current time. This may change at a later date however.<br>\
+	Due to the nature of Project Orion, you will be required to requisition voltuneers from the stationed infantry forces in the area, or 'borrow' a subject you deem to be capable as test subjects for the augmentation process. We advise you only pick subjects with a military background who are especially gifted or talented in the use of a wide range of weaponry, and are capable and willing to follow orders. The confidentialy of this Project is paramount to your continued employment, and life.<br>\
+	We have placed the required assets into a surgery room located west of the weapons testing lab. We feel this is sufficient as the final product will be considered a living weapon and is likely to be highly lethal to whomever they engage with.<br>\
+	We are expecting great results from this project and it will bolster our military assets, when you are done reading this burn this paper to eliminate any trace of this project. You have full authority to destroy the Project Orion Laboratory should it be discovered, as well as any assets attached to Project Orion. Do not disappoint us.<br>\
+	If you are successful in enabling Project Orion then you will be tasked with testing Project Theta in live military operations. You will have limited authority to request transport for Project Orion from local military vessels via clearance 'Omega-Romeo-India-Oscar-November'.<br>\
+	Any high command aboard local military vessels should be directed towards documents kept in their personal quarters to verify this code and should allow Project Orion limited use of their facilites and armory during active operations.<br>\
+	If the Project Orion subject is designate as AWOL, Unstable, Unusable, or a threat to UNSC or ONI personel you are granted the authority to initate a man hunt or order the execution of the Project Orion Subject. In these cases all Project Orion assets should be reclaimed if possible, or destroyed on-site.<br>\
+	<i>I.N.G.</i></tt>")
 
-/obj/item/weapon/paper/blanks
-	name = "Project Theta"
-	info = {"
-	<tt><center><b><font color='red'>CONFIDENTIAL: UPPER MANAGEMENT ONLY</font></b>
-	<h3>MISRIAH ARMORY RESEARCH DIVISION</h3>
-	<img src = ntlogo.png>
-	</center>
-	<b>FROM:</b> J.P <br>
-	<b>TO:</b> Research Director of Geminus City<br>
-	<b>SUBJECT:</b>Project Theta<br>
-	<hr>
-	We have determined to institute Project Theta and attempt to replicate the SPARTAN program.<br>
-	Seeing as how your colony is relatively remote and little to nothing happens there we have decided it best you spearhead this project at this current time. This may change at a later date however.<br>
-	Due to the nature of Project Theta, we have "borrowed" a few residents from other colonies, given them codenames, and placed them in stasis bags to use as test subjects for the augmentation process, this is as you probably guessed, highly illegal. Therefore the confidentialy of this Project is paramount to your continued employment, and life.<br>
-	We have placed them in the building behind the main science wing, in a room labeled "STORAGE" there is a bookcase, this bookcase is a holographic projection walk through it and enter Project Theta's Main Laboratory. This is where you will begin your testing procedures. As previously mentioned this location should be kept confidential and may not be revealed to anyone but you and the scientists you require to help you with this project.<br>
-	We are expecting great results from this project and it will bolster our company assets, when you are done reading this burn the paper. You have full authority to destroy the Project Theta Laboratory should it be discovered Do not disappoint us.<br>
-	<i>J.P</i></tt>"}
+	//stamp the paper
+	var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
+	stampoverlay.icon_state = "paper_stamp-hos"
+	projectorion.stamped += /obj/item/weapon/stamp
+	projectorion.overlays += stampoverlay
+	projectorion.stamps += "<HR><i>This paper has been stamped as 'Top Secret'.</i>"
+
+
+	//Project Orion Envelope for Naval High Command
+/obj/item/weapon/folder/envelope/orion_code
+	name= "Top-Secret Code"
+	desc = "A thick envelope. The UNSC logo is stamped in the corner, along with 'TOP-SECRET'."
+
+/obj/item/weapon/folder/envelope/orion_code/Initialize()
+	. = ..()
+	var/obj/item/weapon/paper/orioncode = new(src)
+	orioncode.set_content("<tt><center><b><font color='red'>CONFIDENTIAL: Naval High Command ONLY</font></b>\
+	<h3>Office of Naval Intelligence</h3>\
+	<img src = ntlogo.png>\
+	</center>\
+	b>FROM:</b> I.N.G. <br>\
+	<b>TO:</b> Research Director of Exo-Research Outpost<br>\
+	<b>SUBJECT:</b>Orion Code<br>\
+	We have tasked our Exo-Research station with a special project who's details are only revealed on a need-to-know basis. This document exists solely to inform you of the following pass-phrase.<br>\
+	'Omega-Romeo-India-Oscar-November'<br>\
+	When you are given this phrase by a certified member of the Exo-Research outpost you are to comply with their requests to a reasonable level of accountability. Any persons or equipment which may be transferred to your vessel after the reception of this phrase are <font color='red'> NOT </font>to be considered under your command or in any way under your jurisdiction.<br>\
+	The scientist who has provided this Pass-Phrase will advise you on what to do should extenuating circumstances arise, and if any equipment or remains should be secured or destroyed by military personnel under your command.<br>\
+	<i>I.N.G.</i></tt>")
+
+	//stamp the paper
+	var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
+	stampoverlay.icon_state = "paper_stamp-hos"
+	orioncode.stamped += /obj/item/weapon/stamp
+	orioncode.overlays += stampoverlay
+	orioncode.stamps += "<HR><i>This paper has been stamped as 'Top Secret'.</i>"
+
+//Gives the blank envelope a place to exist.
+/obj/item/weapon/folder/envelope/blanks
+	name= "Blank Envelope"
+	desc = "A thick envelope."
