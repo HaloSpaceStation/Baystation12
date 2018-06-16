@@ -477,7 +477,7 @@ var/bomb_set
 /obj/item/weapon/folder/nt/rd
 
 /obj/item/weapon/folder/envelope/project_orion
-	name= "Top-Secret Project"
+	name= "Top-Secret"
 	desc = "A thick envelope. The UNSC logo is stamped in the corner, along with 'TOP-SECRET'."
 
 //Project Orion Envelope for researchers
@@ -494,12 +494,15 @@ var/bomb_set
 	<hr>\
 	We have determined to institute Project Orion and attempt to create genetically modified supersoldiers to aid in UNSC operations.<br>\
 	Seeing as how your research station is relatively remote and little to nothing happens there we have decided it best you spearhead this project at this current time. This may change at a later date however.<br><br>\
-	Due to the nature of Project Orion, you will be required to requisition voltuneers from the stationed infantry forces in the area, or 'borrow' a subject you deem to be capable as test subjects for the augmentation process. We advise you only pick subjects with a military background who are especially gifted or talented in the use of a wide range of weaponry, and are capable and willing to follow orders. The confidentialy of this Project is paramount to your continued employment, and life.<br><br>\
-	We have placed the required assets into a surgery room located west of the weapons testing lab. We feel this is sufficient as the final product will be considered a living weapon and is likely to be highly lethal to whomever they engage with.<br><br>\
-	We are expecting great results from this project and it will bolster our military assets, when you are done reading this burn this paper to eliminate any trace of this project. You have full authority to destroy the Project Orion Laboratory should it be discovered, as well as any assets attached to Project Orion. Do not disappoint us.<br><br>\
-	If you are successful in enabling Project Orion then you will be tasked with testing Project Theta in live military operations. You will have limited authority to request transport for Project Orion from local military vessels via clearance 'Omega-Romeo-India-Oscar-November'.<br><br>\
-	Any high command aboard local military vessels should be directed towards documents kept in their personal quarters to verify this code and should allow Project Orion limited use of their facilites and armory during active operations.<br><br>\
-	If the Project Orion subject is designate as AWOL, Unstable, Unusable, or a threat to UNSC or ONI personel you are granted the authority to initate a man hunt or order the execution of the Project Orion Subject. In these cases all Project Orion assets should be reclaimed if possible, or destroyed on-site.<br><br><br>\
+	Due to the nature of Project Orion, you will be required to requisition volunteers from stationed infantry forces in the system, or if necessary, 'borrow' a specimen you deem to be capable from a nearby colony as a test subject for the augmentation process. We advise you only pick subjects with a military background who are especially gifted or talented in the use of a wide range of weaponry, and are capable and willing to follow orders. The confidentialy of this Project is paramount to your continued employment, and life expectancy within the ONI research division.<br><br>\
+	We have placed the required assets into a surgery room located west of the Weapons Testing Lab. We feel these items will be sufficient as the final product will be considered a living weapon and is likely to be a highly lethal and decisive utlility on the battlefield.<br><br>\
+	We are expecting great results from this project as it's succesful implementation will immensely bolster our military assets on the ground, when you are done reading this document be sure to burn it in order to eliminate any trace of this project's paper trail. You have full authority to destroy the Project Orion Laboratory should it be discovered, as well as any assets attached to Project Orion.<br><br>\
+	If you are successful in enabling Project Orion then you will be tasked with procedurally testing Project Orion in live military operations at your descretion.<br><br>\
+	You will have limited authority to request transport for Project Orion utilizing local military vessels in the system via the following clearance phrase.<br><br>\
+	'Omega-Romeo-India-Oscar-November'.<br><br>\
+	Any high command aboard local military vessels within the sector should be directed towards documents kept in their personal quarters to verify this code and should allow Project Orion limited use of their facilites and armory during active operations.<br><br>\
+	If the Project Orion subject is designate as AWOL, Unstable, Unusable, or a threat to UNSC or ONI personel you are granted the authority to initate a man hunt or order the execution of the Project Orion Specimen. In these cases all Project Orion assets should be reclaimed if possible, or destroyed on-site ASAP.<br><br>\
+	Do not disappoint us.<br><br><br>\
 	<i>I.N.G.</i></tt>")
 
 	//stamp the paper
@@ -512,7 +515,7 @@ var/bomb_set
 
 	//Project Orion Envelope for Naval High Command
 /obj/item/weapon/folder/envelope/orion_code
-	name= "Top-Secret Code"
+	name= "Top-Secret - Orion Code"
 	desc = "A thick envelope. The UNSC logo is stamped in the corner, along with 'TOP-SECRET'."
 
 /obj/item/weapon/folder/envelope/orion_code/Initialize()
@@ -525,10 +528,11 @@ var/bomb_set
 	b>FROM:</b> I.N.G. <br>\
 	<b>TO:</b> Research Director of Exo-Research Outpost<br>\
 	<b>SUBJECT:</b>Orion Code<br>\
-	We have tasked our Exo-Research station with a special project who's details are only revealed on a need-to-know basis. This document exists solely to inform you of the following pass-phrase.<br><br>\
+	We have tasked our Exo-Research station with a special project the details of which are only revealed on a need-to-know basis. This document exists solely to inform you of the following pass-phrase.<br><br>\
 	'Omega-Romeo-India-Oscar-November'<br><br>\
-	When you are given this phrase by a certified member of the Exo-Research outpost you are to comply with their requests to a reasonable level of accountability. Any persons or equipment which may be transferred to your vessel after the reception of this phrase are <font color='red'> NOT </font>to be considered under your command or in any way under your jurisdiction.<br><br>\
-	The scientist who has provided this Pass-Phrase will advise you on what to do should extenuating circumstances arise, and if any equipment or remains should be secured or destroyed by military personnel under your command.<br><br><br>\
+	When you are given this phrase by a certified member of the Exo-Research outpost you are to comply with their requests to a reasonable level of accountability. Any persons or equipment which may be transferred to your vessel after the reception of this pass-phrase are <font color='red'> NOT </font>to be considered under your command or in any way under your jurisdiction or a part of your vessels property.<br><br>\
+	The lead scientist who has provided this pass-phrase will advise you on what to do should extenuating circumstances arise, and if any equipment or remains are required to be secured or destroyed by military personnel under your command.<br><br><br>\
+	Do not disappoint us.<br><br><br>\
 	<i>I.N.G.</i></tt>")
 
 	//stamp the paper
