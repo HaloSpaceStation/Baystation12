@@ -525,7 +525,7 @@ var/bomb_set
 	<h3>Office of Naval Intelligence</h3>\
 	<img src = ntlogo.png>\
 	</center>\
-	b>FROM:</b> I.N.G. <br>\
+	<b>FROM:</b> I.N.G. <br>\
 	<b>TO:</b> Research Director of Exo-Research Outpost<br>\
 	<b>SUBJECT:</b>Orion Code<br>\
 	We have tasked our Exo-Research station with a special project the details of which are only revealed on a need-to-know basis. This document exists solely to inform you of the following pass-phrase.<br><br>\
