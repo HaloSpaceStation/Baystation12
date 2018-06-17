@@ -5,3 +5,4 @@
 
 #include "ExoResearch_1.dmm"
 #include "ExoResearch_2.dmm"
+#include "ExoResearch_3.dmm"
