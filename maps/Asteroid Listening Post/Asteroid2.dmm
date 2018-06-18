@@ -117,7 +117,60 @@
 "cm" = (/obj/machinery/light/spot{tag = "icon-tube1 (EAST)"; icon_state = "tube1"; dir = 4},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel1{tag = "icon-anosample"; icon_state = "anosample"; requires_power = 0})
 "cn" = (/obj/machinery/door/blast/regular,/turf/simulated/floor,/area/asteroid_listening/Interiorlevel1{tag = "icon-anosample"; icon_state = "anosample"; requires_power = 0})
 "co" = (/obj/effect/overmap/sector/exo_listen,/turf/simulated/floor/holofloor/space,/area/space)
-"cp" = (/obj/effect/landmark/map_data{desc = "Listening Post"; height = 2},/turf/simulated/floor/holofloor/space,/area/space)
+"cp" = (/obj/effect/landmark/map_data{height = 2; name = "Map Data Asteroid"},/turf/simulated/floor/holofloor/space,/area/space)
+"cq" = (/turf/unsimulated/floor/rock2{density = 1; opacity = 1},/area/asteroid_listening/Interiorlevel2)
+"cr" = (/turf/simulated/wall{icon = 'code/modules/halo/icons/turfs/walls.dmi'; icon_state = "riveted"; tag = "icon-cult"},/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cs" = (/obj/item/modular_computer/telescreen,/turf/simulated/wall{icon = 'code/modules/halo/icons/turfs/walls.dmi'; icon_state = "riveted"; tag = "icon-cult"},/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"ct" = (/obj/structure/filingcabinet,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cu" = (/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cv" = (/obj/structure/closet{name = "Sandbags Closet"},/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/weapon/shovel,/obj/item/weapon/shovel,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/obj/item/empty_sandbags,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cw" = (/obj/structure/closet{name = "Barbed Wire Closet"},/obj/item/stack/barbedwire,/obj/item/stack/barbedwire,/obj/item/stack/barbedwire,/obj/item/stack/barbedwire,/obj/item/stack/barbedwire,/obj/item/stack/barbedwire,/obj/item/stack/barbedwire,/obj/item/stack/barbedwire,/obj/item/stack/barbedwire,/obj/item/stack/barbedwire,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cx" = (/obj/structure/closet/crate/large{icon_opened = "densecrate"; icon_state = "densecrate"; name = "Marine Armor"; tag = "icon-densecrate"},/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/suit/storage/marine,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cy" = (/obj/structure/closet/crate/large{icon_opened = "densecrate"; icon_state = "densecrate"; name = "Marine Boots"; tag = "icon-densecrate"},/obj/item/clothing/shoes/marine,/obj/item/clothing/shoes/marine,/obj/item/clothing/shoes/marine,/obj/item/clothing/shoes/marine,/obj/item/clothing/shoes/marine,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cz" = (/obj/structure/table/steel_reinforced,/obj/machinery/photocopier/faxmachine{department = "UEG Listening Post Sierra Golf Charlie 048"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cA" = (/obj/machinery/computer/telecomms/server,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cB" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/clipboard,/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cC" = (/obj/structure/bed/chair/office/light,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cD" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cE" = (/obj/machinery/overmap_weapon_console/npc_comms_console/unsc,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cF" = (/obj/structure/table/steel_reinforced,/obj/item/modular_computer/laptop/preset/custom_loadout/advanced{tag = "icon-laptop-closed"; icon_state = "laptop-closed"},/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cG" = (/obj/structure/filingcabinet,/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cH" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cI" = (/obj/machinery/light{dir = 8},/obj/item/weapon/storage/firstaid/unsc,/obj/item/weapon/storage/firstaid/unsc,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cJ" = (/obj/structure/closet/crate/freezer{desc = "A Portable freezer."; icon_opened = "phoroncrateopen"; icon_state = "phoroncrate"; name = "UNSC MRE Packs"; tag = "icon-phoroncrate"},/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cK" = (/obj/structure/table/steel_reinforced,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cL" = (/obj/structure/table/steel_reinforced,/obj/item/modular_computer/laptop/preset/custom_loadout/advanced{tag = "icon-laptop-closed"; icon_state = "laptop-closed"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cM" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/folder{tag = "icon-folder_blue"; icon_state = "folder_blue"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cN" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/clipboard,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cO" = (/obj/structure/closet/crate/large{icon_state = "secgearcrate"; name = "Glass Crate"; tag = "icon-secgearcrate"},/obj/item/stack/material/glass/fifty,/obj/item/stack/material/glass/fifty,/obj/item/stack/material/glass/fifty,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cP" = (/obj/structure/closet/crate/freezer{desc = "A Portable freezer."; icon_opened = "phoroncrateopen"; icon_state = "phoroncrate"; name = "UNSC MRE Packs"; tag = "icon-phoroncrate"},/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cQ" = (/obj/machinery/photocopier,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cR" = (/obj/machinery/light,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cS" = (/obj/structure/closet/crate/large{icon_state = "secgearcrate"; name = "Replacment Lights Crate"; tag = "icon-secgearcrate"},/obj/item/device/lightreplacer,/obj/item/weapon/storage/box/lights,/obj/item/weapon/storage/box/lights,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cT" = (/obj/structure/closet/crate/large{icon_state = "secgearcrate"; name = "Metal Crate"; tag = "icon-secgearcrate"},/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cU" = (/obj/machinery/door/airlock/multi_tile/halo/blast{name = "Communications Center"; req_access = list(110)},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cV" = (/obj/machinery/door/airlock/halo{name = "Archive"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cW" = (/obj/machinery/door/airlock/halo{name = "Storage"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cX" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cY" = (/obj/machinery/door/airlock/multi_tile/halo/blast{dir = 1; icon_state = "door_closed"; name = "Communications Center Acces"; req_access = list(110); tag = "icon-door_closed (NORTH)"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"cZ" = (/obj/machinery/door/airlock/multi_tile/halo/blast{dir = 1; icon_state = "door_closed"; name = "Hangar"; req_access = list(110); tag = "icon-door_closed (NORTH)"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"da" = (/obj/machinery/door/airlock/multi_tile/halo/blast{name = "Server Room"; req_access = list(110)},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"db" = (/obj/machinery/door/airlock/halo{name = "Weapons Locker"; req_access = list(110)},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dc" = (/obj/machinery/door/airlock/halo{name = "Acces Ladder"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dd" = (/obj/machinery/telecomms/bus,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"de" = (/obj/machinery/telecomms/hub,/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"df" = (/obj/machinery/telecomms/receiver,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dg" = (/obj/structure/table/rack{dir = 8; layer = 2.9},/obj/item/weapon/gun/projectile/m6d_magnum,/obj/item/weapon/gun/projectile/m6d_magnum,/obj/item/weapon/gun/projectile/m6d_magnum,/obj/item/weapon/gun/projectile/m6d_magnum,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dh" = (/obj/structure/table/rack{dir = 8; layer = 2.9},/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/helmet/marine,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"di" = (/obj/structure/ladder/up,/obj/machinery/light{tag = "icon-bulb0 (EAST)"; icon_state = "bulb0"; dir = 4},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dj" = (/obj/machinery/telecomms/server,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dk" = (/obj/structure/table/rack{dir = 8; layer = 2.9},/obj/item/weapon/gun/projectile/ma5b_ar,/obj/item/weapon/gun/projectile/ma5b_ar,/obj/item/weapon/gun/projectile/ma5b_ar,/obj/item/weapon/gun/projectile/ma5b_ar,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dl" = (/obj/structure/table/rack{dir = 8; layer = 2.9},/obj/item/clothing/shoes/marine,/obj/item/clothing/shoes/marine,/obj/item/clothing/shoes/marine,/obj/item/clothing/shoes/marine,/obj/item/clothing/gloves/thick/unsc,/obj/item/clothing/gloves/thick/unsc,/obj/item/clothing/gloves/thick/unsc,/obj/item/clothing/gloves/thick/unsc,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dm" = (/obj/machinery/telecomms/relay/ship_relay{name = "Signal Relay"},/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dn" = (/obj/machinery/telecomms/processor,/obj/machinery/light,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"do" = (/obj/machinery/telecomms/broadcaster,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dp" = (/obj/structure/table/rack{dir = 8; layer = 2.9},/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/obj/item/ammo_magazine/m762_ap/MA5B,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
+"dq" = (/obj/structure/table/rack{dir = 8; layer = 2.9},/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/obj/item/ammo_magazine/m127_saphe,/turf/simulated/floor/tiled/dark,/area/asteroid_listening/Interiorlevel2{tag = "icon-anomaly"; icon_state = "anomaly"; requires_power = 0})
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -170,4 +223,57 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 coaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 cpaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
+
+(1,1,2) = {"
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcrcscscscscscscscrcrcrcrcrcrctctctcucrcvcwcxcycrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrczcucucucAcucucuczcrcrcrcrcrcucucucucrcucucucucrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcBcCcDcucucucEcCcFcrcrcrcrcrcGctctcHcrcIcucucJcrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcKcLcMcucucucKcMcNcrcrcrcrcrcucucucucrcOcucucPcrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcQcucRcucucucucRcQcrcrcrcrcrctctctcucrcScucucTcrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcrcrcrcrcUcucrcrcrcrcrcrcrcrcrcrcrcVcrcrcrcWcrcrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcucucucXcucucXcucucucucXcucucucXcucucucXcucucXcrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcucucucucucucucucucYcucucucZcucucucucucucucucucrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcrcrcrcrdacucrcrcrcrcrcrcrcrcrdbcrcrcrdccrcrcrcrcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcKdddedfcucucucXcucrcrcrcrcrdgcudhcrcrdicrcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrdjcucucucucucucucucrcrcrcrcrdkcudlcrcrcrcrcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcKdmdndocucucucRcucrcrcrcrcrdpcRdqcrcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcrcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
+cqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcq
 "}
