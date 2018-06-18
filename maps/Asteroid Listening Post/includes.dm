@@ -4,3 +4,4 @@
 #include "spawns_jobs.dm"
 
 #include "Asteroid2.dmm"
+#include "Asteroid1.dmm"
