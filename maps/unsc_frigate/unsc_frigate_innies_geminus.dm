@@ -32,6 +32,8 @@
 
 	#include "unsc_frigate_spawndefs_innies_geminus.dm"
 
+	#include "../Asteroid Listening Post/includes.dm"
+
 	#include "../odst_prowler/ODST_Ship.dmm"
 
 	#include "../first_contact/overall_overmap.dm"
@@ -41,8 +43,6 @@
 	#include "../Exoplanet Research/includes.dm"
 
 	#include "../Exoplanet Icy/includes.dm"
-
-	#include "../Asteroid Listening Post/includes.dm"
 
 	#include "../first_contact/maps/corvette_spawns.dm"
 
