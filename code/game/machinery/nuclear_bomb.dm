@@ -1,4 +1,20 @@
 var/bomb_set
+//Code to pick a random pass-phrase for Project Orion
+var/orion_pass = null
+/proc/orion_pass()
+	if (orion_pass)
+		return orion_pass
+
+	var/name = ""
+
+	name += pick("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Gamma", "Zulu")
+	name += "-" + pick("Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Yankee")
+	name += "-" + pick("Oscar", "Papa", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "Xray")
+	name += "-" + rand(0,9)
+	name += rand(0,9)
+	name += rand(0,9)
+
+	return name
 
 /obj/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
@@ -479,7 +495,6 @@ var/bomb_set
 /obj/item/weapon/folder/envelope/project_orion
 	name= "Top-Secret"
 	desc = "A thick envelope. The UNSC logo is stamped in the corner, along with 'TOP-SECRET'."
-
 //Project Orion Envelope for researchers
 /obj/item/weapon/folder/envelope/project_orion/Initialize()
 	. = ..()
@@ -496,12 +511,12 @@ var/bomb_set
 	Seeing as how your research station is relatively remote and little to nothing happens there we have decided it best you spearhead this project at this current time. This may change at a later date however.<br><br>\
 	Due to the nature of Project Orion, you will be required to requisition volunteers from stationed infantry forces in the system, or if necessary, 'borrow' a specimen you deem to be capable from a nearby colony as a test subject for the augmentation process. We advise you only pick subjects with a military background who are especially gifted or talented in the use of a wide range of weaponry, and are capable and willing to follow orders. The confidentialy of this Project is paramount to your continued employment, and life expectancy within the ONI research division.<br><br>\
 	We have placed the required assets into a surgery room located west of the Weapons Testing Lab. We feel these items will be sufficient as the final product will be considered a living weapon and is likely to be a highly lethal and decisive utlility on the battlefield.<br><br>\
-	We are expecting great results from this project as it's succesful implementation will immensely bolster our military assets on the ground, when you are done reading this document be sure to burn it in order to eliminate any trace of this project's paper trail. You have full authority to destroy the Project Orion Laboratory should it be discovered, as well as any assets attached to Project Orion.<br><br>\
+	We are expecting great results from this project as it's successful implementation will immensely bolster our military assets on the ground, when you are done reading this document be sure to burn it in order to eliminate any trace of this project's paper trail. You have full authority to destroy the Project Orion Laboratory should it be discovered, as well as any assets attached to Project Orion.<br><br>\
 	If you are successful in enabling Project Orion then you will be tasked with procedurally testing Project Orion in live military operations at your descretion.<br><br>\
 	You will have limited authority to request transport for Project Orion utilizing local military vessels in the system via the following clearance phrase.<br><br>\
-	'Omega-Romeo-India-Oscar-November'.<br><br>\
+	'[orion_pass()]'<br><br>\
 	Any high command aboard local military vessels within the sector should be directed towards documents kept in their personal quarters to verify this code and should allow Project Orion limited use of their facilites and armory during active operations.<br><br>\
-	If the Project Orion subject is designate as AWOL, Unstable, Unusable, or a threat to UNSC or ONI personel you are granted the authority to initate a man hunt or order the execution of the Project Orion Specimen. In these cases all Project Orion assets should be reclaimed if possible, or destroyed on-site ASAP.<br><br>\
+	If the Project Orion subject is designate as AWOL, Unstable, Unusable, or a threat to UNSC or ONI personel you are granted the authority to initate a man hunt or, if needed, order the execution of the Project Orion Specimen. In these cases all Project Orion assets should be reclaimed if possible, or destroyed on-site ASAP.<br><br>\
 	Do not disappoint us.<br><br><br>\
 	<i>I.N.G.</i></tt>")
 
@@ -529,7 +544,7 @@ var/bomb_set
 	<b>TO:</b> Research Director of Exo-Research Outpost<br>\
 	<b>SUBJECT:</b>Orion Code<br>\
 	We have tasked our Exo-Research station with a special project the details of which are only revealed on a need-to-know basis. This document exists solely to inform you of the following pass-phrase.<br><br>\
-	'Omega-Romeo-India-Oscar-November'<br><br>\
+	'[orion_pass()]'<br><br>\
 	When you are given this phrase by a certified member of the Exo-Research outpost you are to comply with their requests to a reasonable level of accountability. Any persons or equipment which may be transferred to your vessel after the reception of this pass-phrase are <font color='red'> NOT </font>to be considered under your command or in any way under your jurisdiction or a part of your vessels property.<br><br>\
 	The lead scientist who has provided this pass-phrase will advise you on what to do should extenuating circumstances arise, and if any equipment or remains are required to be secured or destroyed by military personnel under your command.<br><br><br>\
 	Do not disappoint us.<br><br><br>\
