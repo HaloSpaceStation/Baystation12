@@ -12,7 +12,6 @@ var/bomb_set
 	for(var/round=1, round<=3, round = round + 1)
 		orion_pass += orion_pass + rand(0,9) //Adds three numbers to the end of the phrase
 
-
 /obj/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
 	desc = "Uh oh. RUN!!!!"
