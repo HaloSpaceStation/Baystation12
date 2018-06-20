@@ -6,11 +6,11 @@ var/bomb_set
 	var/orion_pass = "" //Creates a blank variable to store the password into
 	for(var/round=1, round<=3, round = round + 1) //loops Code below it
 		var/word = pick(available_letters) // Picks a random phonetic letter
-		orion_pass += orion_pass + word //Adds random Phonetic letter to the variable
-		orion_pass += orion_pass + "-" //Adds Formattting
+		orion_pass = orion_pass + word //Adds random Phonetic letter to the variable
+		orion_pass = orion_pass + "-" //Adds Formattting
 		available_letters -= word //Removes the last chosen word from the available_letters
 	for(var/round=1, round<=3, round = round + 1)
-		orion_pass += orion_pass + rand(0,9) //Adds three numbers to the end of the phrase
+		orion_pass = orion_pass + rand(0,9) //Adds three numbers to the end of the phrase
 
 /obj/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
