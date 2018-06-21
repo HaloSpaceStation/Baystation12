@@ -2,6 +2,8 @@ var/bomb_set
 
 //Code to pick a random pass-phrase (Or anything) for Project Orion
 /proc/get_orion_password()
+	if (church_name)
+		return church_name
 	var/list/available_letters = GLOB.phonetic_alphabet.Copy() //Makes a copy of phonetic alphabet called available_letters
 	var/orion_pass = "" //Creates a blank variable to store the password into
 	for(var/round=1, round<=3, round = round + 1) //loops Code below it
