@@ -1,18 +1,21 @@
 var/bomb_set
 
-//Code to pick a random pass-phrase (Or anything) for Project Orion
+//Code to pick a random pass-phrase for Project Orion
+var/get_orion_password = null
 /proc/get_orion_password()
-	if (church_name)
-		return church_name
-	var/list/available_letters = GLOB.phonetic_alphabet.Copy() //Makes a copy of phonetic alphabet called available_letters
-	var/orion_pass = "" //Creates a blank variable to store the password into
-	for(var/round=1, round<=3, round = round + 1) //loops Code below it
-		var/word = pick(available_letters) // Picks a random phonetic letter
-		orion_pass = orion_pass + word //Adds random Phonetic letter to the variable
-		orion_pass = orion_pass + "-" //Adds Formattting
-		available_letters -= word //Removes the last chosen word from the available_letters
-	for(var/round=1, round<=3, round = round + 1)
-		orion_pass = orion_pass + rand(0,9) //Adds three numbers to the end of the phrase
+	if (get_orion_password)
+		return get_orion_password
+
+	var/name = ""
+
+	name += pick("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Gamma", "Zulu")
+	name += "-" + pick("Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Yankee")
+	name += "-" + pick("Oscar", "Papa", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "Xray")
+	name += "-" + rand(0,9)
+	name += rand(0,9)
+	name += rand(0,9)
+
+	return name
 
 /obj/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
