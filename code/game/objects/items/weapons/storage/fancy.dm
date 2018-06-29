@@ -229,6 +229,13 @@
 	item_state = "Dpacket"
 	startswith = list(/obj/item/clothing/mask/smokable/cigarette/professionals = 6)
 
+/obj/item/weapon/storage/fancy/cigarettes/cmosmokes
+	name = "pack of CMO Smokes"
+	desc = "These cigarettes were designed to look stylish while also providing a small amount of tricordazine to the user."
+	icon_state = "cmosmokes"
+	item_state = "cigpacket"
+	startswith = list(/obj/item/clothing/mask/smokable/cigarette/cmo = 6)
+
 /obj/item/weapon/storage/fancy/cigar
 	name = "cigar case"
 	desc = "A case for holding your cigars when you are not smoking them."
