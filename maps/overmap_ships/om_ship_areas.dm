@@ -61,3 +61,6 @@
 
 /area/om_ships/unscpatrol/starboardrockets
  	name = "UNSC Corvette Starboard Rocket Pods"
+
+/area/om_ships/Midway
+	name = "Midway Medical"
