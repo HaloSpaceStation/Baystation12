@@ -26,3 +26,15 @@
 	opacity = 0
 	glass = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
+
+/obj/machinery/door/airlock/multi_tile/glass/midwaysurgery
+	name = "Surgery Airlock"
+
+/obj/machinery/door/airlock/multi_tile/glass/midwaybridge
+	name = "Bridge Airlock"
+
+/obj/machinery/door/airlock/multi_tile/glass/midwaychemistry
+	name = "Chemistry Airlock"
+
+/obj/machinery/door/airlock/multi_tile/glass/midwayrecovery
+	name = "Recovery Airlock"

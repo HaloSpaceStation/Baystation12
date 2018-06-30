@@ -38,6 +38,16 @@
 
 	map_bounds = list(7,70,53,31)
 
+/obj/effect/overmap/ship/Midway_Medical_Ship
+	name = "Civilian Vessel"
+	desc = "A Civilian vessel with a custom design geared towards medical treatment."
+
+	icon = 'maps/first_contact/midwaymedical.dmi'
+	icon_state = "ship"
+	fore_dir = WEST
+
+	map_bounds = list(102,160,154,117)
+
 //Overmap Weapon Console Defines//
 /obj/machinery/overmap_weapon_console/deck_gun_control/local/corvetteport
 	deck_gun_area = /area/om_ships/unscpatrol/portbattery

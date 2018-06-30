@@ -23,12 +23,18 @@
 	icon = 'code/modules/halo/doors/Airlockdouble.dmi'
 	assembly_type = /obj/structure/door_assembly/multi_tile
 
+/obj/machinery/door/airlock/multi_tile/halo/midwaycmo
+	name = "Midway CMO Quarters"
+
 /obj/machinery/door/airlock/multi_tile/halo/blast
 	name = "Blast doors"
 	icon = 'code/modules/halo/doors/Airlockblastdouble.dmi'
 	opacity = 0
 	glass = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
+
+/obj/machinery/door/airlock/multi_tile/halo/blast/midwayairlock
+	name = "Midway Umbilical Airlock"
 
 /obj/machinery/door/airlock/multi_tile/secure
 	name = "Secure Airlock"

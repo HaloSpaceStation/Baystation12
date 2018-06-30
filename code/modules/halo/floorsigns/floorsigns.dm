@@ -54,6 +54,11 @@
 	desc = "A floor decal detailing the direction of a lifepod."
 	icon_state = "lifepods"
 
+/obj/structure/sign/halo_floorsign/medbay
+	name = "floorsign (medbay)"
+	desc = "A floor decal detailing the direction of medbay."
+	icon_state = "medbay"
+
 /obj/structure/sign/deck1
 	name = "\improper Deck 1"
 	desc = "An informational sign informing the reader that they're currently on deck 1"
