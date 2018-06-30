@@ -38,7 +38,7 @@
 
 	map_bounds = list(7,70,53,31)
 
-/obj/effect/overmap/ship/Midway_Medical_Ship
+/obj/effect/overmap/ship/midway_medical_mhip
 	name = "Civilian Vessel"
 	desc = "A Civilian vessel with a custom design geared towards medical treatment."
 
