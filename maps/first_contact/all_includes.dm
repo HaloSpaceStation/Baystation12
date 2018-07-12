@@ -28,6 +28,7 @@
 
 	#include "maps\first_contact\midway_jobdefs_spawnpoints.dm"
 	#include "maps\first_contact\mmedical_overmap.dm"
+	#include "code\modules\mob\living\carbon\human\species\station\orion.dm"
 
 	#define using_map_DATUM /datum/map/first_contact
 
