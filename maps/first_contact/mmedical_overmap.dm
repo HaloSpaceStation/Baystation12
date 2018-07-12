@@ -1,6 +1,6 @@
 /obj/effect/overmap/ship/midway_medical
 	name = "Civilian Vessel"
-	desc = "A standard contruction-model corvette."
+	desc = "A custom model medical ship by the looks of it."
 
 	icon = 'maps/first_contact/midwaymedical.dmi'
 	icon_state = "ship"
