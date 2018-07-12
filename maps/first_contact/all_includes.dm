@@ -26,6 +26,9 @@
 	#include "overall_outfits.dm"
 	#include "overall_jobdefs.dm"
 
+	#include "maps\first_contact\midway_jobdefs_spawnpoints.dm"
+	#include "maps\first_contact\mmedical_overmap.dm"
+
 	#define using_map_DATUM /datum/map/first_contact
 
 #elif !defined(MAP_OVERRIDE)
