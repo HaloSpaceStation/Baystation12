@@ -1,7 +1,7 @@
-/datum/species/human/orion
+/datum/species/orion
 	name = "Orion"
 	name_plural = "Orion Subjects"
-	spawn_flags = SPECIES_IS_RESTRICTED
+	spawn_flags = SPECIES_IS_WHITELISTED
 	pain_mod = 0.9 //Slight reduction in pain recieved
 	total_health = 220 //Slightly more health then a normal human
 	metabolism_mod = 1.15 //Slightly faster metabolism
@@ -21,7 +21,7 @@
 	cold_level_3 = 114 //-159C
 	blood_volume = 600 // Normal Human has 560
 	//Custom Defines for the race as follows
-	unarmed_types = list(/datum/unarmed_attack/orionpunch, /datum/unarmed_attack/orionkick)
+	unarmed_types = list(/datum/unarmed_attack/orionpunch, /datum/unarmed_attack/orionkick, /datum/unarmed_attack, /datum/unarmed_attack/bite)
 
 //Orion Attack Datums
 /datum/unarmed_attack/orionpunch
