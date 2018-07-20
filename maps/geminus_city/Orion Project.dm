@@ -1,5 +1,5 @@
 //Should add in Orion Project Race
-/mob/living/carbon/human/orion/New(var/new_loc)
+/mob/living/carbon/human/Orion/New(var/new_loc)
 	..(new_loc,"Orion")
 
 /obj/item/clothing/shoes/swat/theta
