@@ -143,5 +143,12 @@
  	name = "UNSC Thorin Port Rocket Pods"
 
 /area/om_ships/unscpatrol/starboardrockets
+<<<<<<< HEAD
+ 	name = "UNSC Corvette Starboard Rocket Pods"
+
+/area/om_ships/Midway
+	name = "Midway Medical"
+=======
  	name = "UNSC Thorin Starboard Rocket Pods"
 
+>>>>>>> alpha

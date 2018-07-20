@@ -285,6 +285,18 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable/cigarette/dromedaryco
 	brand = "\improper Dromedary Co. cigarette"
 
+/obj/item/clothing/mask/smokable/cigarette/cmo
+	name = "healthy cigarette"
+	brand = "\improper CMO Smoke"
+	icon_state = "cigmentol"
+	type_butt = /obj/item/weapon/cigbutt/menthol
+
+/obj/item/clothing/mask/smokable/cigarette/cmo/New()
+	..()
+	reagents.add_reagent(/datum/reagent/nicotine, 1)
+	reagents.add_reagent(/datum/reagent/iron, 1)
+	reagents.add_reagent(/datum/reagent/tricordrazine, 3)
+
 /obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 

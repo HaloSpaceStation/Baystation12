@@ -226,6 +226,10 @@
 	icon_dead = "kitten_dead"
 	gender = NEUTER
 
+/mob/living/simple_animal/cat/kitten/midwaykitten
+	name = "KitCat the Kitten"
+	desc = "D'aaawwww"
+
 // Leaving this here for now.
 /obj/item/weapon/holder/cat/fluff/bones
 	name = "Bones"

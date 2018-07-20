@@ -97,3 +97,19 @@
 	flags = 0
 
 	hierarchy_type = /decl/hierarchy/outfit/job
+
+/decl/hierarchy/outfit/job/mm_crewmember
+	name = "Midway Medical Ship Crewmember"
+
+	pda_slot = null
+	gloves = /obj/item/clothing/gloves/latex
+
+	flags = 0
+
+/decl/hierarchy/outfit/job/mm_captain
+	name = "Midway Medical Ship Captain"
+
+	pda_slot = null
+	gloves = /obj/item/clothing/gloves/latex/nitrile
+
+	flags = 0
