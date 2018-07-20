@@ -548,7 +548,7 @@ var/global/orion_password = null
 	<b>SUBJECT:</b>Orion Code<br>\
 	We have tasked our Exo-Research station with a special project the details of which are only revealed on a need-to-know basis. This document exists solely to inform you of the following pass-phrase.<br><br>\
 	'[get_orion_password()]'<br><br>\
-	When you are given this phrase by a certified member of the Exo-Research outpost you are to comply with their requests to a reasonable level of accountability. Any persons or equipment which may be transferred to your vessel after the reception of this pass-phrase are <font color='red'> NOT </font>to be considered under your command or in any way under your jurisdiction or a part of your vessels property.<br><br>\
+	When you are given this phrase by a certified and self identified member of the Exo-Research outpost you are to comply with their requests to a reasonable level of accountability. Any persons or equipment which may be transferred to your vessel after the reception of this pass-phrase are <font color='red'> NOT </font>to be considered under your command or in any way under your jurisdiction or a part of your vessels property.<br><br>\
 	The lead scientist who has provided this pass-phrase will advise you on what to do should extenuating circumstances arise, and if any equipment or remains are required to be secured or destroyed by military personnel under your command.<br><br><br>\
 	Do not disappoint us.<br><br><br>\
 	<i>I.N.G.</i></tt>")
