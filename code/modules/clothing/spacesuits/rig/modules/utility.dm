@@ -5,7 +5,7 @@
  * /obj/item/rig_module/device/drill
  * /obj/item/rig_module/device/orescanner
  * /obj/item/rig_module/device/rcd
- * /obj/item/rig_module/device/anomaly_sanner
+ * /obj/item/rig_module/device/anomaly_scanner
  * /obj/item/rig_module/maneuvering_jets
  * /obj/item/rig_module/foam_sprayer
  * /obj/item/rig_module/device/broadcaster
