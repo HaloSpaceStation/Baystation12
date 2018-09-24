@@ -377,6 +377,31 @@
 
 	icon_state = "Odst Armor Maxattacker"
 
+/obj/item/clothing/head/helmet/odst/donator/titanfield
+	name = "TitanField's ODST Helmet"
+
+	item_state = "Odst Helmet TitanField"
+	icon_state = "Odst Helmet TitanField"
+
+/obj/item/clothing/head/helmet/odst/donator/titanfield/verb/Toggle_VISR01()
+	set category = "Helmet"
+	set name = "Toggle VISR"
+	on = !on
+	update_icon()
+	if (on)
+		item_state = "Odst Helmet TitanField Transparent"
+		icon_state = "Odst Helmet TitanField Transparent"
+	else
+		item_state = "Odst Helmet TitanField"
+		icon_state = "Odst Helmet TitanField"
+		update_clothing_icon()
+	. = ..()
+
+/obj/item/clothing/suit/armor/special/odst/donator/titanfield
+	name = "TitanField's ODST Armour"
+
+	icon_state = "Odst Armor TitanField"
+
 
 //END DONATOR GEAR
 
