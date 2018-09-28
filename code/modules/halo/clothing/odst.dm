@@ -255,6 +255,32 @@
 
 //DONATOR GEAR
 
+/obj/item/clothing/head/helmet/odst/donator/liam_gallagher
+	name = "ODST EOD Helmet"
+
+	item_state = "osama-helmet_obj"
+	icon_state = "osama-helmet_worn"
+		
+/obj/item/clothing/head/helmet/odst/donator/liam_gallagher/verb/Toggle_VISR01()
+set category = "Helmet"
+set name = "Toggle VISR"
+on = !on
+update_icon()
+if (on)
+	item_state = "osama-helmet_obj"
+	icon_state = "osama-helmet-open_worn"
+else
+	item_state = "osama-helmet_obj"
+	icon_state = "osama-helmet_worn"
+	update_clothing_icon()
+. = ..()
+	
+/obj/item/clothing/suit/armor/special/odst/donator/liam_gallagher
+	name = "ODST EOD Suit"
+
+	icon_state = "osama-armor_worn"	
+	
+
 /obj/item/clothing/head/helmet/odst/donator/flaksim
 	name = "Kashada's ODST Helmet"
 
