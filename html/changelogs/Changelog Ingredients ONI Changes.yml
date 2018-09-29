@@ -36,3 +36,4 @@ changes:
   - maptweak: "Created a Cash Vault full of money for ONI to utilize if possible."
   - tweak: "More money is now available in the briefcases found inside ONI for commercial use."
   - maptweak: "Added in a single ATM into Exo research 1 barracks for Researcher and Soldier use if needed."
+  - tweak: "Deleted second set of surgery toold in Autopsy lab, added in a sink in an open spot instead as it is needed for surgery."
