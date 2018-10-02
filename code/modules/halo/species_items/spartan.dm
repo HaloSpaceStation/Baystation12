@@ -88,7 +88,7 @@
 	uniform = /obj/item/clothing/under/spartan_internal
 	suit = /obj/item/clothing/suit/armor/special/spartan
 	l_pocket = /obj/item/weapon/gun/projectile/m6d_magnum
-	belt = /obj/item/weapon/storage/belt/marine_ammo
+	belt = /obj/item/weapon/storage/belt/marine_ammo/spartan
 	head = /obj/item/clothing/head/helmet/spartan
 	l_hand = /obj/item/weapon/gun/projectile/ma5b_ar
 	l_ear = /obj/item/device/radio/headset/spartan

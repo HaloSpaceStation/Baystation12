@@ -52,3 +52,4 @@
 
 //todo
 /obj/item/device/radio/headset/spartan
+	ks2type = /obj/item/device/encryptionkey/taccomo

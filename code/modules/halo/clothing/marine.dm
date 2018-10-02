@@ -100,6 +100,24 @@
 
 	can_hold = list(/obj/item/ammo_magazine,/obj/item/ammo_box,/obj/item/weapon/grenade/frag/m9_hedp,/obj/item/weapon/grenade/smokebomb,/obj/item/weapon/grenade/chem_grenade/incendiary)
 
+/obj/item/weapon/storage/belt/marine_ammo/spartan
+	name = "Ammunition Storage Belt"
+	desc = "A belt with many various pouches to hold ammunition"
+	icon = 'code/modules/halo/clothing/marine_items.dmi'
+	icon_state = "UNSC Marine Ammo Belt item"
+	item_state = "UNSC Marine Ammo Belt"
+	storage_slots = 6
+
+	can_hold = list(/obj/item/weapon/plastique,/obj/item/ammo_magazine,/obj/item/ammo_box,/obj/item/weapon/grenade/frag/m9_hedp,/obj/item/weapon/grenade/smokebomb,/obj/item/weapon/grenade/chem_grenade/incendiary)
+	startswith = list(
+		/obj/item/ammo_magazine/m762_ap/MA5B,
+		/obj/item/ammo_magazine/m762_ap/MA5B,
+		/obj/item/ammo_magazine/m762_ap/MA5B,
+		/obj/item/ammo_magazine/m762_ap/MA5B,
+		/obj/item/weapon/grenade/frag/m9_hedp,
+		/obj/item/weapon/plastique,
+		)
+
 /obj/item/weapon/storage/belt/marine_medic
 	name = "Medical Supplies Storage Belt"
 	desc = "A belt with multiple hooks to hold medical kits, alongside a few small ammunition pouches"
