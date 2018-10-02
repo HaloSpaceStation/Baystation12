@@ -14,7 +14,10 @@
 	company_name  = "Covenant"
 	company_short = "Covenant"
 	system_name = "Uncharted System"
-	overmap_size= 60
+	overmap_size= 5
+
+	use_overmap = 1
+
 	allowed_jobs = list(\
 		/datum/job/opredflag_elite,\
 		/datum/job/opredflag_elite/major,\
@@ -42,3 +45,14 @@
 	. = ..()
 	name = pick(GLOB.covenant_ship_names)
 	full_name = "CCS Battlecruiser \"[name]\""
+
+
+/obj/effect/overmap/ship/Cov_CCS
+	name = "CCS Battlecruiser"
+	desc = "A large covenant warship of unknown design."
+
+	icon = 'maps/first_contact/maps/Covenant Corvette/corvette2.dmi'
+	icon_state = "ship"
+	fore_dir = WEST
+
+	map_bounds = list(1,2,2,3)

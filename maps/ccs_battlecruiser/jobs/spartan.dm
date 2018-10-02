@@ -24,7 +24,7 @@
 	name = "Spartan II"
 	uniform = /obj/item/clothing/under/spartan_internal
 	suit = /obj/item/clothing/suit/armor/special/spartan
-	belt = /obj/item/weapon/storage/belt/marine_ammo
+	belt = /obj/item/weapon/storage/belt/marine_ammo/spartan
 	shoes = /obj/item/clothing/shoes/magboots/spartan
 	gloves = /obj/item/clothing/gloves/spartan
 	head = /obj/item/clothing/head/helmet/spartan
