@@ -1,7 +1,7 @@
 
 /obj/effect/overmap/ship/covenant_corvette
 	name = "SDV Vindicative Infraction"
-	desc = "The sillhouette of this ship matches no known ship signatures"
+	desc = "The silhouette of this ship matches no known ship signature"
 
 	icon = 'maps/first_contact/maps/Covenant Corvette/Corvette2.dmi'
 	icon_state = "ship"
