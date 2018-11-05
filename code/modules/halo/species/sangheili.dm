@@ -12,11 +12,12 @@
 	flags = NO_MINOR_CUT
 	total_health = 250 // Stronger than humans at base health.
 	radiation_mod = 0.6 //Covie weapons emit beta radiation. Resistant to 1/3 types of radiation.
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
+	spawn_flags = SPECIES_CAN_JOIN
 	brute_mod = 0.9
 	pain_mod = 0.5 //Pain has half an effect on them.
 	slowdown = -1 //negates noshoes
-	item_icon_offsets = list(-1,2)
+	pixel_offset_x = -8
+	item_icon_offsets = list(0,2)
 
 	has_organ = list(
 	BP_HEART =    /obj/item/organ/internal/heart,
