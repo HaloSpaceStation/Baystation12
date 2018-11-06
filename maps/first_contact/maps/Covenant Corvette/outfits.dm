@@ -61,7 +61,7 @@
 
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-/decl/hierarchy/outfit/sangheilicorvette/sangheili_ultra
+/decl/hierarchy/outfit/kigyarcorvette/sangheili_ultra
 	name = "Sangheili - Ultra"
 
 	l_ear = /obj/item/device/radio/headset/covenant
@@ -70,7 +70,7 @@
 	suit_store = /obj/item/weapon/gun/energy/plasmarifle
 	back = /obj/item/weapon/gun/energy/plasmarifle
 	l_pocket = /obj/item/weapon/grenade/plasma
-	r_pocket = 	/obj/item/weapon/melee/energy/elite_sword/dagger
+	r_pocket = 	/obj/item/weapon/melee/energy/sword/pirate
 	belt = /obj/item/weapon/gun/energy/plasmapistol
 	gloves = /obj/item/clothing/gloves/thick/sangheili/ultra
 	head = /obj/item/clothing/head/helmet/sangheili/ultra
@@ -80,7 +80,7 @@
 
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-/decl/hierarchy/outfit/sangheilicorvette/sangheili_major
+/decl/hierarchy/outfit/kigyarcorvette/sangheili_major
 	name = "Sangheili - Major"
 
 	l_ear = /obj/item/device/radio/headset/covenant
@@ -98,7 +98,7 @@
 
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-/decl/hierarchy/outfit/sangheilicorvette/sangheili_minor
+/decl/hierarchy/outfit/kigyarcorvette/sangheili_minor
 	name = "Sangheili - Minor"
 
 	l_ear = /obj/item/device/radio/headset/covenant
@@ -106,7 +106,7 @@
 	suit = /obj/item/clothing/suit/armor/special/combatharness/minor
 	suit_store = /obj/item/weapon/gun/energy/plasmarifle
 	l_pocket = /obj/item/weapon/grenade/plasma
-	r_pocket = 	/obj/item/weapon/grenade/plasma
+	r_pocket = 	/obj/item/weapon/melee/energy/sword/pirate
 	belt = /obj/item/weapon/gun/energy/plasmapistol
 	gloves = /obj/item/clothing/gloves/thick/sangheili/minor
 	head = /obj/item/clothing/head/helmet/sangheili/minor

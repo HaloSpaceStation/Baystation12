@@ -142,7 +142,7 @@
 
 /obj/item/weapon/gauntlet_shield/proc/get_allowed_attack_dirs()
 	var/list/allowed_attack_dirs = list()
-	switch(loc.dir)
+	switch(dir)
 		if(NORTH)
 			allowed_attack_dirs = list(SOUTH,SOUTHEAST,SOUTHWEST)
 		if(SOUTH)
