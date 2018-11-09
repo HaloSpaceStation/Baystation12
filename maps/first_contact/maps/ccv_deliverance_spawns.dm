@@ -10,7 +10,6 @@ GLOBAL_LIST_EMPTY(medic_crew_spawns)
 
 /obj/effect/landmark/start/medic_crew
 	name = "Medic Ship Crew"
-
 /obj/effect/landmark/start/medic_crew/New()
 	..()
 	GLOB.medic_crew_spawns += loc

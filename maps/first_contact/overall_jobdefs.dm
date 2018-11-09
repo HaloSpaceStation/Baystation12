@@ -20,6 +20,22 @@
 		for(var/obj/effect/landmark/start/ship_cap_civ/spawnpos in T.contents)
 			GLOB.ship_cap_civ_spawns -= spawnpos.loc
 
+/datum/job/ship_crew_med
+	title = "Medic Ship Crew"
+	total_positions = 3
+	spawn_positions = 3
+	outfit_type = /decl/hierarchy/outfit/job/civ_crewmember
+	selection_color = "#000000"
+	spawnpoint_override = "Medic Ship Crew"
+
+/datum/job/ship_cap_med
+	title = "Medic Ship Captain"
+	total_positions = 1
+	spawn_positions = 1
+	outfit_type = /decl/hierarchy/outfit/job/civ_captain
+	selection_color = "#000000"
+	spawnpoint_override = "Meidc Ship Cap"
+
 /datum/job/ship_crew_innie
 	title = "Insurrectionist Ship Crew"
 	total_positions = 6
