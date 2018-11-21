@@ -7,13 +7,13 @@
 	item_state_slots = list(slot_l_hand_str = "commando_uniform", slot_r_hand_str = "commando_uniform")
 
 /obj/item/clothing/suit/armor/special/urfc/commander
-	name = "URFC Commander Armour"
+	name = "URFC Officer Armour"
 
 	item_state = "commander_armour"
 	icon_state = "commander_armour_obj"
 
 /obj/item/clothing/head/helmet/urfc/commander
-	name = "URFC CQB Helmet"
+	name = "URFC Officer Helmet"
 
 	item_state = "cqc_worn"
 	icon_state = "cqc_helmet"

@@ -2,11 +2,14 @@
 /obj/effect/urfc_armour_set
 	var/helmet = /obj/item/clothing/head/helmet/urfc
 	var/armour = /obj/item/clothing/suit/armor/special/urfc
+	var/jumpsuit = /obj/item/clothing/under/urfc_jumpsuit
+	var/gloves = /obj/item/clothing/gloves/thick/swat
+	var/shoes = /obj/item/clothing/shoes/magboots/urfc
 
 /obj/effect/urfc_armour_set/New()
-	new /obj/item/clothing/under/urfc_jumpsuit(src.loc)
-	new /obj/item/clothing/shoes/magboots/urfc(src.loc)
-	new /obj/item/clothing/gloves/thick/swat(src.loc)
+	new jumpsuit(src.loc)
+	new gloves(src.loc)
+	new shoes(src.loc)
 	new helmet(src.loc)
 	new armour(src.loc)
 	.=..()
@@ -38,3 +41,8 @@
 /obj/effect/urfc_armour_set/cqb
 	helmet = /obj/item/clothing/head/helmet/urfc/cqb
 	armour = /obj/item/clothing/suit/armor/special/urfc/cqb
+
+/obj/effect/urfc_armour_set/commander
+	helmet = /obj/item/clothing/head/helmet/urfc/commander
+	armour = /obj/item/clothing/suit/armor/special/urfc/commander
+	var/jumpsuit = /obj/item/clothing/under/urfc_jumpsuit/commander
