@@ -45,4 +45,4 @@
 /obj/effect/urfc_armour_set/commander
 	helmet = /obj/item/clothing/head/helmet/urfc/commander
 	armour = /obj/item/clothing/suit/armor/special/urfc/commander
-	var/jumpsuit = /obj/item/clothing/under/urfc_jumpsuit/commander
+	jumpsuit = /obj/item/clothing/under/urfc_jumpsuit/commander
