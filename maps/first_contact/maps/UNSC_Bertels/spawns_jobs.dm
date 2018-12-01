@@ -112,7 +112,7 @@ GLOBAL_LIST_EMPTY(corvetteodst_odst_spawns)
 
 /datum/spawnpoint/corvetteodst_odst
 	display_name = "UNSC Bertels ODST Spawn"
-	restrict_job = list("Orbital Drop Shock Trooper")
+	restrict_job = list()
 
 /datum/spawnpoint/corvetteodst_odst/New()
 	..()
@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY(corvetteodst_officer_spawns)
 
 /datum/spawnpoint/corvetteodst_officer
 	display_name = "UNSC Bertels ODST Officer Spawn"
-	restrict_job = list("Orbital Drop Shock Trooper Officer")
+	restrict_job = list()
 
 /datum/spawnpoint/corvetteodst_officer/New()
 	..()

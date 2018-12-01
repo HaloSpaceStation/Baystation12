@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(prowlerodst_odst_spawns)
 
 /datum/spawnpoint/prowlerodst_odst
 	display_name = "UNSC Aegis ODST Spawn"
-	restrict_job = list("''ONI'' Orbital Drop Shock Trooper")
+	restrict_job = list("''ONI'' Orbital Drop Shock Trooper","Orbital Drop Shock Trooper")
 
 /datum/spawnpoint/prowlerodst_odst/New()
 	..()
@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(prowlerodst_officer_spawns)
 
 /datum/spawnpoint/prowlerodst_officer
 	display_name = "UNSC Aegis ODST Officer Spawn"
-	restrict_job = list("''ONI'' Orbital Drop Shock Trooper Officer")
+	restrict_job = list("''ONI'' Orbital Drop Shock Trooper Officer","Orbital Drop Shock Trooper Officer")
 
 /datum/spawnpoint/prowlerodst_officer/New()
 	..()
