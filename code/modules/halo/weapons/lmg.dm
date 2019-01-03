@@ -42,7 +42,7 @@
 	name = "\improper .30 Caliber Light Machine Gun"
 	desc = "A light machine gun."
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
-	icon_state = "30cal_lmg"
+	icon_state = "Innie 30cal LMG - Full Closed"
 	item_state = "SAW"
 	caliber = "a762"
 	slot_flags = 0	//too unwieldy to carry on your back
@@ -62,24 +62,24 @@
 		)
 
 	firemodes = list(
-		list(mode_name="short bursts",	burst=5, move_delay=6, burst_accuracy = list(0,-1,-1,-2,-2),          dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2)),
-		list(mode_name="long bursts",	burst=8, move_delay=8, burst_accuracy = list(0,-1,-1,-2,-2,-2,-3,-3), dispersion = list(1.0, 1.0, 1.0, 1.0, 1.2)),
+		list(mode_name="short bursts",	burst=5, move_delay=6, burst_accuracy = list(0,-1,-1,-2,-2),          dispersion = list(0.6, 1.2, 1.2, 1.2, 1.4)),
+		list(mode_name="long bursts",	burst=8, move_delay=8, burst_accuracy = list(0,-1,-1,-2,-2,-2,-3,-3), dispersion = list(1.0, 1.2, 1.2, 1.4, 1.4)),
 		)
 
 /obj/item/weapon/gun/projectile/m739_lmg/lmg30cal/update_icon()
 	. = ..()
 	if(ammo_magazine)
-		icon_state = "30cal_lmg"
+		icon_state = "Innie 30cal LMG - Full Closed"
 	else
-		icon_state = "30cal_lmg_unloaded"
+		icon_state = "Innie 30cal LMG - Empty Open"
 
 //Bit of handling for the loading states.
 /obj/item/weapon/gun/projectile/m739_lmg/lmg30cal/load_ammo(var/item/I,var/mob/user)
-	icon_state = "30cal_lmg_empty_open"
+	icon_state = "Innie 30cal LMG - Empty Open"
 	sleep(2)
 	. = ..()
 
 /obj/item/weapon/gun/projectile/m739_lmg/lmg30cal/unload_ammo(var/mob/user,var/allow_dump = 0)
-	icon_state = "30cal_lmg_full_open"
+	icon_state = "Innie 30cal LMG - Full Open"
 	sleep(2)
 	. = ..()
