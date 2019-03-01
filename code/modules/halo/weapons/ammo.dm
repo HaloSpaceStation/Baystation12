@@ -138,6 +138,14 @@
 	agony = 10
 	damage_type = PAIN
 	penetrating = 0
+	
+/obj/item/projectile/bullet/trainingshot
+	armor_penetration = 1
+	nodamage = 1
+	agony = 10
+	damage_type = PAIN
+	penetrating = 0
+	icon_state = "Trainingpistol Shot"
 
 /obj/item/projectile/bullet/a762_M392
 	damage = 35
@@ -212,7 +220,7 @@
 
 /obj/item/ammo_magazine/m145_ap
 	name = "magazine (14.5mm) M112 AP-FS-DS"
-	desc = "14.5×114mm M112 armor piercing, fin-stabilized, discarding sabot magazine containing 4 rounds. Not much this won't penetrate"
+	desc = "14.5Ã—114mm M112 armor piercing, fin-stabilized, discarding sabot magazine containing 4 rounds. Not much this won't penetrate"
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "SRS99mag"
 	mag_type = MAGAZINE
