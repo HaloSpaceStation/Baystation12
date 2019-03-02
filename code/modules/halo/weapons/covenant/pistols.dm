@@ -61,7 +61,7 @@
 /obj/item/weapon/gun/energy/plasmapistol/disabled/attack_self(var/mob/user)
 	return
 	
-/obj/item/weapon/gun/energy/trainingpistol/new()
+/obj/item/weapon/gun/energy/trainingpistol/New()
 	name = "Type-25B Directed Energy Pistol"
 	desc = "A dual funtionality pistol: It fires bolts of plasma, and when overcharged is capable of emitting a small emp burst at the point of impact. This one appears to be modified to fire very weak bolts of energy."
 	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
