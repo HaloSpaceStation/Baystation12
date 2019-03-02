@@ -88,7 +88,7 @@
 		set_overcharge(!overcharge, user)
 
 
-/obj/item/weapon/gun/energy/trainingpistol/proc/cov_plasma_recharge_tick()
+/obj/item/weapon/gun/energy/trainingpistol
 	if(max_shots > 0)
 		if(power_supply.charge < power_supply.maxcharge)
 			power_supply.give(charge_cost/3)
