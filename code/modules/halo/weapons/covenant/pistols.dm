@@ -83,7 +83,7 @@
 	overcharge_cost = initial(charge_cost)*(max_shots/2)
 
 
-/obj/item/weapon/gun/energy/trainingpistol/attack_self(var/mob/user)
+/obj/item/weapon/gun/energy/trainingpistol
 	if(power_supply.charge >= overcharge_cost)
 		set_overcharge(!overcharge, user)
 
