@@ -36,7 +36,7 @@
 		set_overcharge(0)
 
 /obj/item/weapon/gun/energy/plasmapistol/proc/set_overcharge(var/new_overcharge = 1, var/mob/user = null)
-	if(new_overcharge != overcharge)
+	if(new_overcharge != overcharge)/New()
 		if(new_overcharge)
 			if(user)
 				visible_message("<span class='notice'>[user.name]'s [src]'s lights brighten</span>","<span class='notice'>You activate your [src]'s overcharge</span>")
@@ -104,11 +104,6 @@
 
 /obj/item/weapon/gun/energy/trainingpistol/proc/set_overcharge(var/new_overcharge = 1, var/mob/user = null)
 	if(new_overcharge != overcharge)
-
-
-/obj/item/weapon/gun/energy/trainingpistol/disabled/attack_self(var/mob/user)
-	desc = "A dual funtionality pistol: It fires bolts of plasma, and when overcharged is capable of emitting a small emp burst at the point of impact. This one appears to be modified to fire very weak bolts of energy. It is disabled"
-	max_shots = 0
 
 /obj/item/weapon/gun/projectile/needler // Uses "magazines" to reload rather than inbuilt cells.
 	name = "Type-33 Guided Munitions Launcher"
