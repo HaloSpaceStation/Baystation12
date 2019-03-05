@@ -1,4 +1,3 @@
-
 /obj/item/weapon/gun/energy/plasmapistol
 	name = "Type-25 Directed Energy Pistol"
 	desc = "A dual funtionality pistol: It fires bolts of plasma, and when overcharged is capable of emitting a small emp burst at the point of impact."
@@ -36,8 +35,7 @@
 		set_overcharge(0)
 
 /obj/item/weapon/gun/energy/plasmapistol/proc/set_overcharge(var/new_overcharge = 1, var/mob/user = null)
-	if(new_overcharge != overcharge)/New()
-		if(new_overcharge)
+		if (new_overcharge != overcharge)
 			if(user)
 				visible_message("<span class='notice'>[user.name]'s [src]'s lights brighten</span>","<span class='notice'>You activate your [src]'s overcharge</span>")
 			projectile_type = /obj/item/projectile/covenant/plasmapistol/overcharge
@@ -54,14 +52,7 @@
 			overlays -= "overcharge"
 			set_light(0, 0, "66FF00")
 
-/obj/item/weapon/gun/energy/plasmapistol/disabled
-	desc = "A dual funtionality pistol: It fires bolts of plasma, and when overcharged is capable of emitting a small emp burst at the point of impact. This one appears to be disabled"
-	max_shots = 0
-
-/obj/item/weapon/gun/energy/plasmapistol/disabled/attack_self(var/mob/user)
-	return
-	
-/obj/item/weapon/gun/energy/trainingpistol/New()
+/obj/item/weapon/gun/energy/trainingpistol
 	name = "Type-25B Directed Energy Pistol"
 	desc = "A dual funtionality pistol: It fires bolts of plasma, and when overcharged is capable of emitting a small emp burst at the point of impact. This one appears to be modified to fire very weak bolts of energy."
 	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
@@ -75,39 +66,23 @@
 	projectile_type = /obj/item/projectile/bullet/trainingshot
 	screen_shake = 0
 	irradiate_non_cov = 2
-	var/overcharge_cost = 1
-
 
 /obj/item/weapon/gun/energy/trainingpistol
 	. = ..()
-	overcharge_cost = initial(charge_cost)*(max_shots/2)
 
-
-/obj/item/weapon/gun/energy/trainingpistol
+/obj/item/weapon/gun/energy/trainingpistol/attack_self(var/mob/user)
 	if(power_supply.charge >= overcharge_cost)
-		set_overcharge(!overcharge, user)
 
-
-/obj/item/weapon/gun/energy/trainingpistol
+/obj/item/weapon/gun/energy/trainingpistol/proc/cov_plasma_recharge_tick()
 	if(max_shots > 0)
 		if(power_supply.charge < power_supply.maxcharge)
 			power_supply.give(charge_cost/3)
 			update_icon()
 			return 1
-
-
-/obj/item/weapon/gun/energy/trainingpistol/consume_next_projectile()
-	.  = ..()
-	if(overcharge)
-		set_overcharge(0)
-
-
-/obj/item/weapon/gun/energy/trainingpistol/proc/set_overcharge(var/new_overcharge = 1, var/mob/user = null)
-	if(new_overcharge != overcharge)
-
+	
 /obj/item/weapon/gun/projectile/needler // Uses "magazines" to reload rather than inbuilt cells.
 	name = "Type-33 Guided Munitions Launcher"
-	desc = "This weapon fire razor-sharp crystalline shards which can explode violently when embedded into targets."
+	desc = "This weapon fire razor-sharp crystalline shards which can explode violently when embedded into targets"
 	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
 	icon_state = "Needler"
 	item_state = "needler"
