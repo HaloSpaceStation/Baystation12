@@ -285,6 +285,7 @@ GLOBAL_LIST_EMPTY(live_flood_simplemobs)
 /mob/living/simple_animal/hostile/flood/combat_form
 	var/next_infestor_spawn = 0
 	var/our_infestor
+	var/can_spawn_infestor = 1
 
 	var/obj/item/weapon/gun/our_gun
 
@@ -364,7 +365,9 @@ GLOBAL_LIST_EMPTY(live_flood_simplemobs)
 		return
 	if(ckey || client)
 		return
-	if(locate(/mob/living/carbon/human) in view(1,src) && isnull(our_infestor))
+	if(can_spawn_infestor == 0)
+		return
+	else(locate(/mob/living/carbon/human) in view(1,src) && isnull(our_infestor))
 		spawn_infestor()
 	if(!our_gun)
 		for(var/obj/item/weapon/gun/G in view(1,src))
@@ -481,31 +484,20 @@ GLOBAL_LIST_EMPTY(live_flood_simplemobs)
 //these flood are gamemode specific and shouldn't be used elsewhere as they're crafted
 //specifically for the achlys gamemode. you've been warned.
 
-/mob/living/simple_animal/hostile/flood/combat_form/prisoner/spawn_infestor()
-	return
-
-/mob/living/simple_animal/hostile/flood/combat_form/prisoner/Move()
-	. = ..()
-	if(ckey || client)
-		return
-	if(!our_gun)
-		for(var/obj/item/weapon/gun/G in view(1,src))
-			pickup_gun(G)
-			return
-
 /mob/living/simple_animal/hostile/flood/combat_form/prisoner
 	name = "infected prisoner"
 	desc = "Some sort of creature that clearly used to be human, wearing an orange jumpsuit."
 	icon = 'code/modules/halo/flood/flood_combat_human.dmi'
-	icon_state = "prisoner_infected2"
-	icon_dead = "prisoner_infected2_dead"
-	icon_living = "prisoner_infected2"
+	icon_state = "elite_m"
+	icon_dead = "elite_m"
+	icon_living = "dead"
 	move_to_delay = 4
 	health = 50 //intentionally squishy to give melee combat a chance
 	maxHealth = 75
 	melee_damage_lower = 15
 	melee_damage_upper = 25 //damage is scaled on the basis that there will be a lot of these and players will need to live after encounters
 	attacktext = "stabs at"
+	can_spawn_infestor = 0
 
 /mob/living/simple_animal/hostile/flood/combat_form/prisoner/mutated
 	name = "lumpy creature"
