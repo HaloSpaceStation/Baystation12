@@ -218,3 +218,7 @@
 //COLONY MAC//
 /area/planets/Geminus/outdoor/MAC
 	name = "\improper Geminus MAC"
+
+//COLONY SEWER//
+/area/planets/Geminus/underground/sewer
+	name = "\improper Geminus Sewer"
