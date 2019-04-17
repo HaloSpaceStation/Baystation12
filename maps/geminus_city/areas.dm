@@ -222,3 +222,5 @@
 //COLONY SEWER//
 /area/planets/Geminus/underground/sewer
 	name = "\improper Geminus Sewer"
+	luminosity = 0
+
