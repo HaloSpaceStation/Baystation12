@@ -73,6 +73,7 @@
 	if(target_mob in ListTargets(10))
 		if(ranged)
 			if(get_dist(src, target_mob) <= 6)
+				walk(src, 0)
 				OpenFire(target_mob)
 			else
 				walk_to(src, target_mob, 1, move_to_delay)
@@ -169,6 +170,7 @@
 
 /mob/living/simple_animal/hostile/death(gibbed, deathmessage, show_dead_message)
 	..(gibbed, deathmessage, show_dead_message)
+	stop_automated_movement = 0
 	walk(src, 0)
 
 /mob/living/simple_animal/hostile/Life()
@@ -208,20 +210,26 @@
 	. = ..()
 	if(health < oldhealth && !incapacitated(INCAPACITATION_KNOCKOUT))
 		target_mob = user
-		MoveToTarget()
+		//MoveToTarget()
+		stance = HOSTILE_STANCE_ATTACK
+		Life()
 
 /mob/living/simple_animal/hostile/attack_hand(mob/living/carbon/human/M)
 	. = ..()
 	if(M.a_intent == I_HURT && !incapacitated(INCAPACITATION_KNOCKOUT))
 		target_mob = M
-		MoveToTarget()
+		//MoveToTarget()
+		stance = HOSTILE_STANCE_ATTACK
+		Life()
 
 /mob/living/simple_animal/hostile/bullet_act(var/obj/item/projectile/Proj)
 	var/oldhealth = health
 	. = ..()
 	if(!target_mob && health < oldhealth && !incapacitated(INCAPACITATION_KNOCKOUT))
 		target_mob = Proj.firer
-		MoveToTarget()
+		//MoveToTarget()
+		stance = HOSTILE_STANCE_ATTACK
+		Life()
 
 /mob/living/simple_animal/hostile/proc/OpenFire(target_mob)
 	RangedAttack(target_mob)

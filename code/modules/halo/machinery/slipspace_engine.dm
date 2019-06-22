@@ -79,7 +79,7 @@
 	if(jump_charging == -1)
 		return 0
 	for(var/obj/effect/overmap/om in range(SLIPSPACE_GRAV_WELL_RANGE,location))
-		if(istype(om,/obj/effect/overmap/sector) || istype(om,/obj/effect/overmap/ship/faction_base))
+		if(om.block_slipspace)
 			return 0
 	return 1
 
@@ -268,8 +268,7 @@
 /datum/explosion/slipspace_core/New(var/obj/payload/b)
 	if(config.oni_discord)
 		message2discord(config.oni_discord, "Alert: slipspace core detonation detected. [b.name] @ ([b.loc.x],[b.loc.y],[b.loc.z])")
-	explosion(100, -1, -1, -1, 255)
-	qdel(src)
+	explosion(100, -1, -1, -1, 0)
 
 /obj/payload/slipspace_core/cov
 	icon = 'code/modules/halo/icons/machinery/covenant/slipspace_drive.dmi'
