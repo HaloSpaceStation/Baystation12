@@ -5,7 +5,7 @@
 	var/list/sight_blockers = list()
 
 /obj/machinery/door/airlock/multi_tile/New()
-	..()
+	. = ..()
 	SetBounds()
 
 /obj/machinery/door/airlock/multi_tile/Initialize()
@@ -14,7 +14,7 @@
 		var/atom/movable/A = new(T)
 		A.opacity = 1
 		A.name = "sight blocker"
-		//A.invisibility  = 101
+		A.invisibility  = 101
 		sight_blockers.Add(A)
 
 /obj/machinery/door/airlock/multi_tile/set_opacity(new_opacity)
@@ -27,6 +27,11 @@
 	. = ..()
 	SetBounds()
 
+/obj/machinery/door/airlock/multi_tile/Destroy()
+	for(var/atom/movable/A in sight_blockers)
+		qdel(A)
+
+	. = ..()
 
 /obj/machinery/door/airlock/multi_tile/proc/SetBounds()
 	if(dir in list(NORTH, SOUTH))
@@ -42,3 +47,7 @@
 	opacity = 0
 	glass = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
+
+/obj/machinery/door/airlock/multi_tile/set_broken()
+	. = ..()
+	set_opacity(0)

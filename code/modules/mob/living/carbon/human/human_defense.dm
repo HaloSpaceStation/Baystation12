@@ -133,7 +133,7 @@ cloak disrupt override
 	return null
 
 /mob/living/carbon/human/proc/check_shields(var/damage = 0, var/atom/damage_source = null, var/mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	for(var/obj/item/shield in list(l_hand, r_hand, wear_suit))
+	for(var/obj/item/shield in list(l_hand, r_hand, gloves, wear_suit))
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
 		if(.) return
@@ -498,6 +498,8 @@ cloak disrupt override
 	else if(seconds_since_supression > 10)
 		if(prob(40))
 			visible_message("<span class = 'danger'>The [P.name] whizzes past [src]!</span>")
+	if(prob(SUPRESSION_SCREAM_CHANCE))
+		emote("painscream",AUDIBLE_MESSAGE)
 	time_last_supressed = world.time
 
 /mob/living/carbon/human/attack_generic(var/mob/user, var/damage, var/attack_message,environment_smash)

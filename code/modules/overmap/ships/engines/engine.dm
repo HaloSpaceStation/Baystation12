@@ -6,12 +6,16 @@ var/list/ship_engines = list()
 	var/obj/machinery/holder	//actual engine object
 
 /datum/ship_engine/New(var/obj/machinery/_holder)
-	..()
+	. = ..()
 	holder = _holder
+	GLOB.processing_objects += src
+
+/datum/ship_engine/proc/process()
 	ship_engines += src
 	var/obj/effect/overmap/ship/S = map_sectors["[holder.z]"]
 	if(istype(S))
 		S.engines |= src
+		GLOB.processing_objects -= src
 
 /datum/ship_engine/proc/can_burn()
 	return 0
@@ -41,7 +45,7 @@ var/list/ship_engines = list()
 	return 1
 
 /datum/ship_engine/Destroy()
-	..()
+	. = ..()
 	ship_engines -= src
 	var/obj/effect/overmap/ship/S = map_sectors["[holder.z]"]
 	if(istype(S))

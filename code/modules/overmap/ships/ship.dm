@@ -10,6 +10,7 @@
 	var/fore_dir = NORTH				//what dir ship flies towards for purpose of moving stars effect procs
 
 	var/obj/machinery/computer/helm/nav_control
+	var/obj/machinery/nav_computer/nav_comp
 	var/list/engines = list()
 	var/engines_state = 1 //global on/off toggle for all engines
 	var/thrust_limit = 1 //global thrust limit for all engines, 0..1
@@ -34,6 +35,42 @@
 			N.linked = src
 			testing("Navigation console at level [N.z] linked to overmap object '[name]'.")
 	GLOB.processing_objects.Add(src)
+
+/obj/effect/overmap/ship/generate_targetable_areas()
+	if(isnull(parent_area_type))
+		return
+	var/list/areas_scanthrough = typesof(parent_area_type) - parent_area_type
+	if(areas_scanthrough.len == 0)
+		return
+	for(var/a in areas_scanthrough)
+		var/area/located_area = locate(a)
+		if(isnull(located_area))
+			continue
+		var/low_x = 255
+		var/upper_x = 0
+		var/low_y = 255
+		var/upper_y = 0
+		for(var/turf/t in located_area.contents)
+			if(t.x < low_x)
+				low_x = t.x
+			if(t.y < low_y)
+				low_y = t.y
+			if(t.x > upper_x)
+				upper_x = t.x
+			if(t.y > upper_y)
+				upper_y = t.x
+		var/list/co_ords_assign = list(0,0,255,255) //Default list, if anything else fails.
+		if(fore_dir == EAST || WEST)
+			co_ords_assign = list(low_x,map_bounds[2],upper_x,map_bounds[4])
+		else
+			co_ords_assign = list(map_bounds[1],upper_y,map_bounds[3],low_y)
+		targeting_locations["[located_area.name]"] = co_ords_assign
+
+/obj/effect/overmap/ship/get_faction()
+	if(nav_comp)
+		return nav_comp.get_faction()
+	else
+		return null
 
 /obj/effect/overmap/ship/relaymove(mob/user, direction)
 	accelerate(direction)
@@ -103,6 +140,7 @@
 			adjust_speed(0, -get_burn_acceleration())
 
 /obj/effect/overmap/ship/process()
+	. = ..()
 	if(!is_still())
 		var/list/deltas = list(0,0)
 		for(var/i=1, i<=2, i++)

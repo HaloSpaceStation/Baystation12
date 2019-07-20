@@ -22,6 +22,7 @@ var/list/gamemode_cache = list()
 	var/log_hrefs = 0					// logs all links clicked in-game. Could be used for debugging and tracking down exploits
 	var/log_runtime = 0					// logs world.log to a file
 	var/log_world_output = 0			// log world.log << messages
+	var/ignore_npc_chatter = 1			// ignore talk or or emotes from mobs without a client
 	var/sql_enabled = 1					// for sql switching
 	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
 	var/allow_vote_restart = 0 			// allow votes to restart
@@ -180,7 +181,9 @@ var/list/gamemode_cache = list()
 	var/python_path = "" //Path to the python executable.  Defaults to "python" on windows and "/usr/bin/env python2" on unix
 	var/use_lib_nudge = 0 //Use the C library nudge instead of the python nudge.
 
+	var/use_discord_bot = 0 //Should the discord bot be used?
 	var/discord_bot_address = "" //The address to push info to the discord bot
+	var/oni_discord = "" //The channel for ONI messages
 
 	// Event settings
 	var/expected_round_length = 3 * 60 * 60 * 10 // 3 hours
@@ -219,6 +222,7 @@ var/list/gamemode_cache = list()
 
 	var/allow_map_switching = 0 // Whether map switching is allowed
 	var/auto_map_vote = 0 // Automatically call a map vote at end of round and switch to the selected map
+	var/allow_extended_vote = 1
 	var/wait_for_sigusr1_reboot = 0 // Don't allow reboot unless it was caused by SIGUSR1
 
 	var/radiation_decay_rate = 1 //How much radiation is reduced by each tick
@@ -310,6 +314,9 @@ var/list/gamemode_cache = list()
 				if ("sql_enabled")
 					config.sql_enabled = text2num(value)
 
+				if ("allow_extended_vote")
+					config.allow_extended_vote = text2num(value)
+
 				if ("log_say")
 					config.log_say = 1
 
@@ -358,6 +365,9 @@ var/list/gamemode_cache = list()
 					if(runtime_diary != newlog)
 						to_world_log("Now logging runtimes to data/logs/runtimes/runtime-[time2text(world.realtime, "YYYY-MM-DD")].log")
 						runtime_diary = newlog
+
+				if ("ignore_npc_chatter")
+					config.ignore_npc_chatter = text2num(value)
 
 				if ("generate_asteroid")
 					config.generate_map = 1
@@ -586,8 +596,14 @@ var/list/gamemode_cache = list()
 				if("irc_bot_export")
 					irc_bot_export = 1
 
+				if("use_discord_bot")
+					use_discord_bot = 1
+
 				if("discord_bot_address")
 					discord_bot_address = value
+
+				if("oni_discord")
+					oni_discord = value
 
 				if("ticklag")
 					var/ticklag = text2num(value)

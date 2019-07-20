@@ -9,14 +9,22 @@
 	damtype = BURN
 	return ..()
 
+/obj/item/projectile/covenant/trainingpistol
+	armor_penetration = 1
+	nodamage = 1
+	agony = 10
+	damage_type = PAIN
+	penetrating = 0
+	icon_state = "Trainingpistol Shot"
+
 /obj/item/projectile/covenant/plasmapistol
-	damage = 25
+	damage = 45
 	accuracy = 1
 	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
 	icon_state = "Plasmapistol Shot"
 
 /obj/item/projectile/covenant/plasmapistol/overcharge
-	damage = 75
+	damage = 60
 	icon_state = "Overcharged_Plasmapistol shot"
 
 /obj/item/projectile/covenant/plasmapistol/overcharge/on_impact()
@@ -24,22 +32,36 @@
 	empulse(src.loc,1,2)
 
 /obj/item/projectile/covenant/plasmarifle
-	damage = 40 // more damage than MA5B.
+	damage = 35 // more damage than MA5B.
 	accuracy = 1
 	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
 	icon_state = "Plasmarifle Shot"
+
+/obj/item/projectile/covenant/plasmarifle/brute
+	damage = 33
+	accuracy = 0.5
+	icon_state = "heavy_plas_cannon"
 
 /obj/item/projectile/covenant/beamrifle
 	name = "energy beam"
 	desc = ""
 	damage = 75
 	accuracy = 3
+	armor_penetration = 70
 	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
 	icon_state = "carbine_casing"
-	step_delay = 0.1
+	step_delay = 0
 	tracer_type = /obj/effect/projectile/beam_rifle
 	tracer_delay_time = 1 SECOND
+	penetrating = 2
 	invisibility = 101
+
+/obj/item/projectile/bullet/covenant/beamrifle/attack_mob(var/mob/living/carbon/human/L)
+	if(!istype(L))
+		. = ..()
+		return
+	L.radiation += 10
+	. = ..()
 
 /obj/effect/projectile/beam_rifle
 	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
@@ -74,6 +96,8 @@
 	icon_state = "Needler Shot"
 	embed = 1
 	sharp = 1
+	var/shards_to_explode = 6
+	var/shard_name = "Needle shrapnel"
 	var/mob/locked_target
 
 /obj/item/projectile/bullet/covenant/needles/attack_mob(var/mob/living/carbon/human/L)
@@ -84,16 +108,16 @@
 	for(var/obj/shard in L.contents )
 		if(!istype(shard,/obj/item/weapon/material/shard))
 			continue
-		if (shard.name == "Needle shrapnel")
+		if (shard.name == shard_name)
 			embedded_shards += shard
-		if(embedded_shards.len >5)
-			explosion(L.loc,0,1,2,5)
+		if(embedded_shards.len >=shards_to_explode)
+			explosion(L.loc,-1,1,2,5)
 			for(var/I in embedded_shards)
 				qdel(I)
 	if(prob(30)) //Most of the weapon's damage comes from embedding. This is here to make it more common.
 		var/obj/shard = new /obj/item/weapon/material/shard/shrapnel
 		var/obj/item/organ/external/embed_organ = pick(L.organs)
-		shard.name = "Needle shrapnel"
+		shard.name = shard_name
 		embed_organ.embed(shard)
 	..()
 
@@ -110,9 +134,12 @@
 	. = ..()
 	locked_target = null //No more homing if we miss.
 
-/obj/item/projectile/bullet/covenant/needles/before_move()
+/obj/item/projectile/bullet/covenant/needles/Move()
+	. = ..()
+	if(kill_count % 2 == 0)
+		return
 	if(locked_target)
-		launch(locate(locked_target.x,locked_target.y,locked_target.z))
+		redirect(locked_target.x, locked_target.y, loc)
 
 /obj/item/ammo_magazine/type51mag
 	name = "Type-51 Carbine magazine"
@@ -135,7 +162,7 @@
 /obj/item/projectile/bullet/covenant/type51carbine
 	name = "Glowing Projectile"
 	desc = "This projectile leaves a green trail in its wake."
-	damage = 40
+	damage = 45
 	accuracy = 2
 	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
 	icon_state = "carbine_casing"
@@ -144,6 +171,89 @@
 	tracer_delay_time = 1.5 SECONDS
 	invisibility = 101
 
+/obj/item/projectile/bullet/covenant/type51carbine/attack_mob(var/mob/living/carbon/human/L)
+	if(!istype(L))
+		. = ..()
+		return
+	L.radiation += 7
+	. = ..()
+
 /obj/effect/projectile/type51carbine
 	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
 	icon_state = "carbine_trail"
+
+/obj/item/ammo_magazine/rifleneedlepack
+	name = "Rifle Needles"
+	desc = "A pack of fewer, larger crystalline needles. For T-31 rifle."
+	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
+	icon_state = "needlerpack"
+	max_ammo = 21
+	ammo_type = /obj/item/ammo_casing/rifleneedle
+	caliber = "needle_rifle"
+	mag_type = MAGAZINE
+
+/obj/item/ammo_casing/rifleneedle
+	name = "Rifle Needle"
+	desc = "A large crystalline needle"
+	caliber = "needle_rifle"
+	projectile_type = /obj/item/projectile/bullet/covenant/needles/rifleneedle
+	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
+	icon_state = "needle"
+
+#define RIFLENEEDLE_TRACK_DIST 5
+
+/obj/item/projectile/bullet/covenant/needles/rifleneedle
+	name = "Rifle Needle"
+	damage = 30
+	accuracy = 2
+	shards_to_explode = 3
+	shard_name = "Rifle Needle shrapnel"
+	tracer_type = /obj/effect/projectile/bullet/covenant/needles/rifleneedle
+	tracer_delay_time = 0.5 SECONDS
+	invisibility = 101
+
+/obj/item/projectile/bullet/covenant/needles/rifleneedle/Move()
+	if(kill_count - initial(kill_count) > RIFLENEEDLE_TRACK_DIST)
+		locked_target = null
+	. = ..()
+
+/obj/effect/projectile/bullet/covenant/needles/rifleneedle
+	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
+	icon_state = "needlerifle_trail"
+
+#undef RIFLENEEDLE_TRACK_DIST
+#define FUEL_ROD_IRRADIATE_RANGE 2
+#define FUEL_ROD_IRRADIATE_AMOUNT 15
+
+/obj/item/ammo_magazine/fuel_rod
+	name = "Type-33 Light Anti-Armor Weapon Magazine"
+	desc = "Contains a maximum of 5 fuel rods."
+	icon = 'code/modules/halo/icons/fuel_rod_cannon.dmi'
+	icon_state = "fuel_rod_magazine"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/fuel_rod
+	caliber = "fuel rod"
+	max_ammo = 5
+	w_class = ITEM_SIZE_NORMAL
+
+/obj/item/ammo_casing/fuel_rod
+	icon = 'code/modules/halo/icons/fuel_rod_cannon.dmi'
+	icon_state = "fuel_rod_casing"
+	caliber = "fuel rod"
+	projectile_type = /obj/item/projectile/bullet/fuel_rod
+
+/obj/item/projectile/bullet/fuel_rod
+	name = "fuel rod"
+	check_armour = "bomb"
+	step_delay = 1.2
+	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
+	icon_state = "Overcharged_Plasmapistol shot"
+
+/obj/item/projectile/bullet/fuel_rod/on_impact(var/atom/A)
+	. = ..()
+	explosion(A,-1,1,2,4,guaranteed_damage = 30, guaranteed_damage_range = 2)
+	for(var/mob/living/l in range(FUEL_ROD_IRRADIATE_RANGE,loc))
+		l.rad_act(FUEL_ROD_IRRADIATE_AMOUNT)
+
+#undef FUEL_ROD_IRRADIATE_RANGE
+#undef FUEL_ROD_IRRADIATE_AMOUNT

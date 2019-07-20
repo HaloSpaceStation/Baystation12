@@ -31,7 +31,7 @@
 	var/taser_effect = 0 //If set then the projectile will apply it's agony damage using stun_effect_act() to mobs it hits, and other damage will be ignored
 	var/check_armour = "bullet" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb	//Cael - bio and rad are also valid
 	var/projectile_type = /obj/item/projectile
-	var/penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
+	var/penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate(). If 999, always penetrates.
 	var/kill_count = 50 //This will de-increment every process(). When 0, it will delete the projectile.
 		//Effects
 	var/stun = 0
@@ -191,10 +191,12 @@
 		return 0
 
 	//hit messages
+	var/mob_target_zone = target_mob.get_equivalent_body_part(def_zone)
+	mob_target_zone = parse_zone(mob_target_zone)
 	if(silenced)
-		to_chat(target_mob, "<span class='danger'>You've been hit in the [parse_zone(def_zone)] by \the [src]!</span>")
+		to_chat(target_mob, "<span class='danger'>You've been hit in the [mob_target_zone] by \the [src]!</span>")
 	else
-		target_mob.visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!</span>")//X has fired Y is now given by the guns so you cant tell who shot you if you could not see the shooter
+		target_mob.visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [mob_target_zone]!</span>")//X has fired Y is now given by the guns so you cant tell who shot you if you could not see the shooter
 
 	//admin logs
 	if(!no_attack_log)
@@ -256,9 +258,13 @@
 
 	//penetrating projectiles can pass through things that otherwise would not let them
 	if(!passthrough && penetrating > 0)
-		if(check_penetrate(A))
+		if(penetrating == 999)
+			check_penetrate(A) //We'll still do the check, we just don't care about it's results.
 			passthrough = 1
-		penetrating--
+		else
+			if(check_penetrate(A))
+				passthrough = 1
+			penetrating--
 
 	//the bullet passes through a dense object!
 	if(passthrough)
@@ -266,6 +272,7 @@
 		if(A)
 			if(istype(A, /turf))
 				loc = A
+				A.bullet_act(src, def_zone) //We're burrowing through the turf, let's damage it again.
 			else
 				loc = A.loc
 			permutated.Add(A)
@@ -313,7 +320,7 @@
 			return
 
 		//Deals with moving a projectile up / down to hit targets on the ground or in air
-		if(elevation != original.elevation)
+		if(original  && elevation != original.elevation)
 			var/elevation_mod = original.elevation - elevation
 			change_elevation(elevation_mod)
 		before_move()
@@ -323,7 +330,7 @@
 			spawn()
 				do_supression_aoe(loc)
 
-		if(!bumped && !isturf(original))
+		if(!bumped && original && !isturf(original))
 			if(loc == get_turf(original))
 				if(!(original in permutated))
 					if(Bump(original))

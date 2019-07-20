@@ -11,6 +11,12 @@ var/list/department_radio_keys = list(
 	  ":g" = "GCPD",		".g" = "GCPD",
 	  ":t" = "TACCOM",		".t" = "TACCOM",
 	  ":b" = "INNIECOM",	".b" = "INNIECOM",
+	  ":c" = "BattleNet",	".c" = "BattleNet",
+	  ":d" = "BoulderNet",	".d" = "BoulderNet",
+	  ":u" = "RamNet",		".u" = "RamNet",
+	  ":m" = "MEDCOM",		".m" = "MEDCOM",
+	  ":o" = "ONICOM",		".o" = "ONICOM",
+	  ":v" = "CMDOCOM",		".v" = "CMDOCOM",
 
 	  ":R" = "right ear",	".R" = "right ear",
 	  ":L" = "left ear",	".L" = "left ear",
@@ -24,7 +30,12 @@ var/list/department_radio_keys = list(
 	  ":G" = "GCPD",		".G" = "GCPD",
 	  ":T" = "TACCOM",		".T" = "TACCOM",
 	  ":B" = "INNIECOM",	".B" = "INNIECOM",
-
+	  ":C" = "BattleNet",	".C" = "BattleNet",
+	  ":D" = "BoulderNet",	".D" = "BoulderNet",
+	  ":U" = "RamNet",		".U" = "RamNet",
+	  ":M" = "MEDCOM",		".M" = "MEDCOM",
+	  ":O" = "ONICOM",		".O" = "ONICOM",
+	  ":V" = "CMDOCOM",		".V" = "CMDOCOM",
 	/*
 	  ":r" = "right ear",	".r" = "right ear",
 	  ":l" = "left ear",	".l" = "left ear",
@@ -257,7 +268,8 @@ proc/get_radio_key_from_channel(var/channel)
 				src.custom_emote(1, "[pick(speaking.signlang_verb)].")
 
 		if (speaking.flags & SIGNLANG)
-			log_say("[name]/[key] : SIGN: [message]")
+			if(src.client || !config.ignore_npc_chatter)
+				log_say("[name]/[key] : SIGN: [message]")
 			return say_signlang(message, pick(speaking.signlang_verb), speaking)
 
 	if(T)

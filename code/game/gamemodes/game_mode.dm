@@ -17,6 +17,7 @@ var/global/list/additional_antag_types = list()
 	var/deny_respawn = 0	                 // Disable respawn during this round.
 
 	var/list/disabled_jobs = list()           // Mostly used for Malf.  This check is performed in job_controller so it doesn't spawn a regular AI.
+	var/list/disabled_jobs_types = list()
 
 	var/shuttle_delay = 1                    // Shuttle transit time is multiplied by this.
 	var/auto_recall_shuttle = 0              // Will the shuttle automatically be recalled?
@@ -451,6 +452,7 @@ var/global/list/additional_antag_types = list()
 /datum/game_mode/proc/check_victory()
 	return
 
+//This can be overriden in case a game mode needs to do stuff but just remember to do . = ..()
 /datum/game_mode/proc/handle_mob_death(var/mob/M, var/list/args = list())
 	if(M.mind)
 		var/assigned_role = M.mind.assigned_role
@@ -464,8 +466,17 @@ var/global/list/additional_antag_types = list()
 /datum/game_mode/proc/get_respawn_time()
 	return config.respawn_delay
 
+/datum/game_mode/proc/AnnounceLateArrival(var/mob/living/carbon/human/character, var/datum/job/job, var/join_message)
+	var/rank = job.title
+	if(character.mind.role_alt_title)
+		rank = character.mind.role_alt_title
+	AnnounceArrivalSimple(character.real_name, rank, join_message, get_announcement_frequency(job),character.default_language)
+
 /hook/death/proc/mode_on_mob_death(var/mob/living/carbon/human/H, var/list/args = list())
-	return ticker.mode.handle_mob_death(H, args)
+	//there is no mode if something dies before round start
+	if(ticker.mode)
+		return ticker.mode.handle_mob_death(H, args)
+	return 1
 
 //////////////////////////
 //Reports player logouts//

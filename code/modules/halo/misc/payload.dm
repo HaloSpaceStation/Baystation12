@@ -6,7 +6,7 @@
 	icon_state = "MFDD"
 	anchored = 0
 	density = 1
-	var/explodetype = /datum/nuclearexplosion
+	var/explodetype = /datum/explosion/nuclearexplosion
 	var/exploding
 	var/explode_at
 	var/seconds_to_explode = 240
@@ -17,18 +17,25 @@
 	var/disarming
 	var/explodedesc = "A spraypainted image of a skull adorns this slowly ticking bomb."
 	var/activeoverlay = "MFDD Armed Screen"
+	var/strength=1 //The size of the explosion
+	var/free_explode = 0
+	var/list/blocked_species = COVENANT_SPECIES_AND_MOBS
 
-/obj/payload/attack_hand(var/mob/living/user)
+/obj/payload/attack_hand(var/mob/living/carbon/human/user)
 	if(!exploding)
+		if(blocked_species.len && user.species in blocked_species)
+			to_chat(user,"<span class='warning'>Your species does not know how to use that!</span>")
 		if(!checkturf())
 			src.visible_message("<span class='danger'>The [src] beeps a warning:'OPTIMAL LOCATION NOT REACHED'</span>")
 		else
 			if(do_after(user,arm_time SECONDS,src,1,1,,1))
 				u = user
 				u.visible_message("<span class = 'userdanger'>[user.name] primes the [src] for detonation</span>","<span class ='notice'>You prime the [src] for detonation</span>")
-				explode_at = world.time + seconds_to_explode*10
+				admin_attack_log("([user.name]) primed a nuke/anti-matter charge.")
+				explode_at = world.time + seconds_to_explode SECONDS
 				exploding = 1
 				GLOB.processing_objects += src
+				message2discord(config.oni_discord, "Alert! Payload device armed by [user.real_name] ([user.ckey]) @ ([loc.x],[loc.y],[loc.z])")
 				set_anchor(1)
 				checkoverlay(1)
 	else
@@ -49,9 +56,12 @@
 		overlays -= activeoverlay
 
 /obj/payload/proc/checkturf()
+  if(free_explode)
+    return 1
   for(var/obj/effect/bomblocation/b in range(0,src))
     return 1
   return 0
+
 
 /obj/payload/proc/checknextto()
 	if(u)
@@ -72,7 +82,9 @@
 		desc = explodedesc + " [(explode_at - world.time)/10] seconds remain."
 	if(exploding && world.time >= explode_at)
 		GLOB.processing_objects -= src
-		new explodetype(src)
+		var/explode_datum = new explodetype(src)
+		loc = null
+		qdel(explode_datum)
 		qdel(src)
 		return
 
@@ -113,6 +125,9 @@
 	explodedesc = "Spikes conceal a countdown timer."
 	seconds_to_explode = 300
 	seconds_to_disarm = 60
+	strength=1.5
+	explodetype = /datum/explosion
+	blocked_species = list(/datum/species/human)
 
 /obj/item/weapon/pinpointer/advpinpointer/bombplantlocator
 	name = "Optimal Ordinance Yield Locator"
@@ -131,9 +146,16 @@
 	visible_message("<span class = 'notice'>The locator announces 'TARGET LOCKED: MODE CHANGE UNAVAILABLE'</span>")
 	return
 
-/datum/nuclearexplosion/New(var/obj/b)
-	explosion(b.loc,40,60,70,75)
+/datum/explosion/New(var/obj/payload/b)
+	if(config.oni_discord)
+		message2discord(config.oni_discord, "Nuclear detonation detected. [b.name] @ ([b.loc.x],[b.loc.y],[b.loc.z])")
+	explosion(b.loc,b.strength*50,b.strength*70,b.strength*80,b.strength*80)
 	for(var/mob/living/m in range(50,b.loc))
 		to_chat(m,"<span class = 'userdanger'>A shockwave slams into you! You feel yourself falling apart...</span>")
 		m.gib() // Game over.
-	qdel(src)
+
+/datum/explosion/nuclearexplosion/New(var/obj/payload/b)
+	radiation_repository.radiate(b.loc,1000,10000)
+	..()
+	var/obj/effect/overmap/OM = map_sectors["[b.z]"]
+	OM.nuked = 1

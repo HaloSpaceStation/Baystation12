@@ -2,6 +2,7 @@
 #define CLEAR_CASINGS	1 //clear chambered so that the next round will be automatically loaded and fired, but don't drop anything on the floor
 #define EJECT_CASINGS	2 //drop spent casings on the ground after firing
 #define CYCLE_CASINGS	3 //cycle casings, like a revolver. Also works for multibarrelled guns
+#define CASELESS		4 //leaves no casings
 
 /obj/item/weapon/gun/projectile
 	name = "gun"
@@ -49,6 +50,22 @@
 			ammo_magazine = new magazine_type(src)
 	update_icon()
 
+/obj/item/weapon/gun/projectile/proc/load_from_box(var/obj/item/ammo_box/box,var/mob/user)
+	if(box.contents.len == 0 || isnull(box.contents.len))
+		to_chat(user,"<span class ='notice'>The [box.name] is empty!</span>")
+		return
+	if(!(loaded.len <= max_shells))
+		to_chat(user,"<span class = 'notice'>The [name] is full!</span>")
+		return
+	to_chat(user,"<span class ='notice'>You start loading the [name] from the [box.name]</span>")
+	for(var/ammo in box.contents)
+		if(do_after(user,box.load_time SECONDS,box, same_direction = 1))
+			load_ammo(ammo,user)
+			continue
+		break
+
+	box.update_icon()
+
 /obj/item/weapon/gun/projectile/consume_next_projectile()
 	if(!is_jammed && prob(jam_chance))
 		src.visible_message("<span class='danger'>\The [src] jams!</span>")
@@ -90,6 +107,8 @@
 				ammo_magazine.stored_ammo += chambered
 			else
 				loaded += chambered
+		if(CASELESS)
+			qdel(chambered)
 
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
@@ -98,6 +117,18 @@
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
 /obj/item/weapon/gun/projectile/proc/load_ammo(var/obj/item/A, mob/user)
+	var/list/attachments = get_attachments()
+	if(attachments.len > 0)
+		var/load_success = 0
+		for(var/obj/item/weapon_attachment/secondary_weapon/attachment in get_attachments())
+			if(!istype(A,attachment.alt_fire_ammo_typepath))
+				continue
+			var/load_succeed = attachment.load_attachment(A,user)
+			if(load_succeed == 1)
+				load_success = 1
+		if(load_success)
+			return //if one of our attachments have fired, let's not fire normally.
+
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method & AM.mag_type) || caliber != AM.caliber)
@@ -186,6 +217,8 @@
 	update_icon()
 
 /obj/item/weapon/gun/projectile/attackby(var/obj/item/A as obj, mob/user as mob)
+	if(istype(A,/obj/item/ammo_box))
+		load_from_box(A,user)
 	. = ..()
 	load_ammo(A, user)
 

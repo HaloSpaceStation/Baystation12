@@ -4,8 +4,17 @@
 	desc = "When activated, the coating of this grenade becomes a powerful adhesive, sticking to anyone it is thrown at."
 	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
 	icon_state = "plasmagrenade"
-	var/alt_explosion_damage_max = 70 //The amount of damage done when grenade is stuck inside someone
-	var/alt_explosion_range = 3
+	throw_speed = 1.2
+	throw_range = 4
+	var/alt_explosion_damage_max = 100 //The amount of damage done when grenade is stuck inside someone
+	var/alt_explosion_range = 2
+	arm_sound = 'code/modules/halo/sounds/Plasmanadethrow.ogg'
+
+/obj/item/weapon/grenade/plasma/activate(var/mob/living/carbon/human/h)
+	if(istype(h) && istype(h.species,/datum/species/unggoy) && prob(1))
+		playsound(h.loc, 'code/modules/halo/sounds/unggoy_grenade_throw.ogg', 100, 1)
+	. = ..()
+
 
 /obj/item/weapon/grenade/plasma/throw_impact(var/atom/A)
 	. = ..()
@@ -22,12 +31,29 @@
 	if(istype(mob_containing))
 		mob_containing.adjustFireLoss(alt_explosion_damage_max)
 		to_chat(mob_containing,"<span class = 'danger'>[src] explodes! The immense heat burns through your flesh...</span>")
+
+		for(var/obj/item/organ/external/o in mob_containing.bad_external_organs)
+			for(var/datum/wound/w in o.wounds)
+				for(var/obj/embedded in w.embedded_objects)
+					if(embedded == src)
+						w.embedded_objects -= embedded //Removing the embedded item from the wound
 	else
 		for(var/mob/living/hit_mob in range(alt_explosion_range,src))
 			hit_mob.adjustFireLoss(alt_explosion_damage_max/2)
 			to_chat(hit_mob,"<span class = 'danger'>[src] explodes! Heat from the explosion washes over your body...</span>")
-	explosion(src.loc, -1, -1, 3, 5, 0)
-	loc.contents -= src
+
+	var/turf/epicenter = get_turf(src)
+	//the custom sfx itself
+	for(var/mob/M in GLOB.player_list)
+		if(M.z == epicenter.z)
+			var/turf/M_turf = get_turf(M)
+			var/dist = get_dist(M_turf, epicenter)
+			// If inside the blast radius + world.view - 2
+			if(dist <= round(alt_explosion_range + world.view - 2, 1))
+				M.playsound_local(epicenter, 'code/modules/halo/sounds/Plasmanadedetonate.ogg', 100, 1)
+
+	mob_containing.contents -= src
+	loc = null
 	qdel(src)
 
 /obj/item/weapon/grenade/plasma/heavy_plasma
@@ -37,5 +63,5 @@
 
 	throw_range = 1
 
-	alt_explosion_damage_max = 100
-	alt_explosion_range = 2
+	alt_explosion_damage_max = 150
+	alt_explosion_range = 1

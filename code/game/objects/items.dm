@@ -705,7 +705,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	damage *= (current_thickness_percentile/100)/10 //The lower the thickness of the armor, the harder it gets to damage it further. Divided by 10 to keep loss-per-shot sane.
 	var/thickness_dam_cap = (initial(armor_thickness)/10)
 	if(damage_type in armor_thickness_modifiers)
-		thickness_dam_cap /= armor_thickness_modifiers[type]
+		thickness_dam_cap /= armor_thickness_modifiers[damage_type]
 	if(damage > thickness_dam_cap)
 		damage = thickness_dam_cap
 	var/new_thickness = (armor_thickness - damage)
@@ -732,3 +732,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(armor_thickness <= 0)
 		desc_addition_to_apply = "<span class = 'warning'> It has [damage_type == BURN ? "melted away" : "become scarred and deformed"].</span>"
 	desc = initial(desc) + desc_addition_to_apply
+
+/obj/item/proc/can_use_when_prone()
+	return (w_class <= ITEM_SIZE_NORMAL)

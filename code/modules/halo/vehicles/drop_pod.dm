@@ -1,7 +1,8 @@
+#define POD_FAIL_CHANCE 1 //This is the chance a drop-pod will fail on impact and auto-eject the user + exploding.
 
 /obj/vehicles/drop_pod
-	name = "Drop Pod"
-	desc = "A drop pod of unknown make, model and manufacturer."
+	name = "SOEIV Drop Pod"
+	desc = "A Single Occupant Exoatmospheric Insertion Vehicle for deployment of personnel or equipment from high orbit insertion onto a planet."
 	icon = 'code/modules/halo/structures/ODST_Droppod.dmi'
 	icon_state = "SOEIV" //Icon state should be set to the closed version of the pod.
 
@@ -16,6 +17,8 @@
 
 	comp_prof =/datum/component_profile/drop_pod
 
+	exposed_positions = list()
+
 	var/list/species_offsets = list("Human" = "0,7")
 
 	var/launched = 0
@@ -24,7 +27,10 @@
 
 	var/launch_arm_time = 5 SECONDS
 
-	var/pod_range = 3 //Range of pod in overmap tiles
+	var/pod_range = 8 //Range of pod in overmap tiles
+
+/obj/vehicles/drop_pod/on_death()
+	return
 
 /obj/vehicles/drop_pod/update_object_sprites()
 	overlays.Cut()
@@ -59,10 +65,17 @@
 		visible_message("<span class = 'warning'>[src] blurts a warning: ERROR: NO AVAILABLE DROP-TARGETS.</span>")
 		return
 	var/list/valid_points = list()
+	for(var/turf/l in range(drop_point,drop_accuracy))
+		if(istype(l,/turf/simulated/floor))
+			valid_points += l
+		if(istype(l,/turf/unsimulated/floor))
+			valid_points += l
 	for(var/turf/t in view(drop_point,drop_accuracy))
 		if(istype(t,/turf/simulated/wall))
 			continue
 		if(istype(t,/turf/unsimulated/wall))
+			continue
+		if(istype(t,/turf/unsimulated/floor/rock2)) //No spawning in rock walls, even if they are subtypes of /floor/
 			continue
 		valid_points += t
 	if(isnull(valid_points))
@@ -72,8 +85,16 @@
 
 /obj/vehicles/drop_pod/proc/get_drop_point()
 	var/list/valid_points = list()
+	var/beacons_present = 0
 	for(var/obj/effect/landmark/drop_pod_landing/l in world)
 		valid_points += l
+	for(var/obj/item/drop_pod_beacon/b in world)
+		if(b.is_active == 1)
+			if(!beacons_present) //If we've not already realised we have beacons, remove all normal drop-pod markers from pick-choice.
+				valid_points.Cut()
+				visible_message("<span class = 'notice'>Electronic Locator beacon detected. Overriding landing systems.</span>")
+			beacons_present = 1
+			valid_points += b.loc
 	if(isnull(valid_points) || valid_points.len == 0)
 		log_error("ERROR: Drop pods placed on map but no /obj/effect/drop_pod_landing markers present!")
 		return
@@ -115,9 +136,12 @@
 			post_drop_effects(drop_turf)
 
 /obj/vehicles/drop_pod/proc/post_drop_effects(var/turf/drop_turf)
+	if(prob(POD_FAIL_CHANCE))
+		on_death()//do death effects
+		return
 	explosion(drop_turf,0,0,2,5)
 
-/obj/vehicles/drop_pod/Move() //We're a drop pod, we don't move normally.
+/obj/vehicles/drop_pod/relaymove() //We're a drop pod, we don't move normally.
 	return
 
 /obj/vehicles/drop_pod/overmap/launch_pod()
@@ -154,12 +178,31 @@
 /obj/vehicles/drop_pod/overmap/get_drop_point(var/list/om_targ_zs)
 	var/list/valid_points = list()
 	for(var/obj/effect/landmark/drop_pod_landing/l in world)
-		if(l.z in om_targ_zs)
+		if(l.loc.z in om_targ_zs)
 			valid_points += l
+	var/beacons_present = 0
+	for(var/obj/item/drop_pod_beacon/b in world)
+		if(!(b.loc.z  in om_targ_zs))
+			continue
+		if(b.is_active == 1)
+			if(!beacons_present) //If we've not already realised we have beacons, remove all normal drop-pod markers from pick-choice.
+				valid_points.Cut()
+				visible_message("<span class = 'notice'>Electronic Locator beacon detected. Overriding landing systems.</span>")
+			beacons_present = 1
+			valid_points += b.loc
 	if(isnull(valid_points) || valid_points.len == 0)
 		return null
 	else
 		return pick(valid_points)
+
+/obj/vehicles/drop_pod/overmap/post_drop_effects(var/turf/drop_turf)
+	var/obj/effect/overmap/our_om_obj = map_sectors["[drop_turf.z]"]
+	if(!isnull(our_om_obj))
+		var/landing_depth = our_om_obj.map_z.Find(drop_turf.z)
+		if(prob(POD_FAIL_CHANCE * landing_depth))
+			on_death()//do death effects
+			return
+	. = ..()
 
 /datum/component_profile/drop_pod
 
@@ -171,7 +214,10 @@
 /obj/item/vehicle_component/health_manager/drop_pod
 	integrity = 100
 	coverage = 100
-	resistances = list("brute"= 100.0,"burn"= 100.0,"emp"= 100.0,"explosion" = 100.0) //Negates all damage. Let's pretend drop-pods are invincible.
+	resistances = list("brute"= 100.0,"burn"= 100.0,"emp"= 100.0,"bomb" = 100.0) //Negates all damage. Let's pretend drop-pods are invincible.
+
+/obj/item/vehicle_component/health_manager/drop_pod/damage_integrity()
+	return
 
 /obj/structure/drop_pod_launchbay
 	name = "Drop Pod Launch Bay"

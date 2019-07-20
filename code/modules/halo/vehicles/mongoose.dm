@@ -12,7 +12,7 @@
 
 	comp_prof = /datum/component_profile/mongoose
 
-	vehicle_move_delay = 1
+	vehicle_move_delay = 0.5
 
 	occupants = list(1,0)
 	exposed_positions = list("driver" = 10,"passenger" = 25)
@@ -21,12 +21,24 @@
 
 	vehicle_size = 16
 
+	light_color = "#E1FDFF"
+
 /obj/vehicles/mongoose/update_object_sprites()
 	. = ..()
 	update_occupant_weight()
-	var/list/passengers = get_occupants_in_position("passenger")
 	var/list/offsets_to_use = sprite_offsets["[dir]"]
+	var/list/drivers = get_occupants_in_position("driver")
+	if(!(isnull(offsets_to_use) || isnull(drivers) || drivers.len == 0))
+		var/image/driver_image = image(pick(drivers))
+		driver_image.pixel_x = offsets_to_use[1]
+		driver_image.pixel_y = offsets_to_use[2]
+		if(dir == SOUTH || NORTH)
+			underlays += driver_image
+		else
+			overlays += driver_image
+	var/list/passengers = get_occupants_in_position("passenger")
 	var/list/passenger_offset = MONGOOSE_BASE_PASSENGER_OFFSETS["[dir]"]
+
 	if(isnull(passengers) || passengers.len == 0 || isnull(offsets_to_use))
 		return
 	for(var/mob/passenger in passengers)
@@ -45,13 +57,16 @@
 		for(var/slot = slot_first to slot_last)
 			var/obj/item/I = occupant.get_equipped_item(slot)
 			if(I)
-				slowdown_amount += I.slowdown_general
-				slowdown_amount += I.slowdown_per_slot[slot]
+				if(I.slowdown_general > 0)
+					slowdown_amount += I.slowdown_general
+				if(I.slowdown_per_slot[slot] > 0)
+					slowdown_amount += I.slowdown_per_slot[slot]
 	vehicle_move_delay = initial(vehicle_move_delay) + slowdown_amount
 
 #undef MONGOOSE_BASE_PASSENGER_OFFSETS
 //Mongoose component profile define//
 /obj/item/vehicle_component/health_manager/mongoose
+	integrity = 250
 	resistances = list("brute"=30,"burn"=25,"emp"=15)
 
 /datum/component_profile/mongoose

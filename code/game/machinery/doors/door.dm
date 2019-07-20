@@ -329,14 +329,14 @@
 			if(prob(25))
 				qdel(src)
 			else
-				take_damage(300)
+				take_damage(maxhealth)
 		if(3.0)
 			if(prob(80))
 				var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 				s.set_up(2, 1, src)
 				s.start()
 			else
-				take_damage(150)
+				take_damage(maxhealth/2)
 	return
 
 
@@ -371,9 +371,10 @@
 	return
 
 
-/obj/machinery/door/proc/open(var/forced = 0)
-	if(!can_open(forced))
-		return
+/obj/machinery/door/proc/open(var/forced = 0,var/no_checks = 0)
+	if(!no_checks)
+		if(!can_open(forced))
+			return
 	operating = 1
 
 	do_animate("opening")

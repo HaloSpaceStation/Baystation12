@@ -1,4 +1,3 @@
-
 #define BIOFOAM_PROB_REMOVE_EMBEDDED 30
 #define BIOFOAM_PROB_OVERDOSE_DAMAGING 35
 #define BIOFOAM_PROB_OVERDOSE_WARNING 50
@@ -49,14 +48,16 @@
 	flags = AFFECTS_DEAD
 
 /datum/reagent/biofoam/proc/check_and_stop_bleeding(var/obj/item/organ/external/o)
-	if(o.status & ORGAN_BLEEDING)
-		if(istype(o))
-			o.clamp()
-			o.update_damages()
-			to_chat(o.owner,"<span class = 'notice'>You feel the biofoam stop the bleeding in your [o.name]</span>")
+	if(o.status & ORGAN_BLEEDING || o.status & ORGAN_ARTERY_CUT && istype(o))
+		o.status &= ~ORGAN_ARTERY_CUT
+		o.status &= ~ORGAN_BLEEDING
+		o.clamp()
+		o.update_damages()
+		to_chat(o.owner,"<span class = 'notice'>You feel the biofoam stop the bleeding in your [o.name]</span>")
 
 /datum/reagent/biofoam/proc/mend_external(var/mob/living/carbon/human/H)
 	for(var/obj/item/organ/external/o in H.organs)
+		check_and_stop_bleeding(o)
 		if(o.brute_dam + o.burn_dam >= o.min_bruised_damage)
 			o.brute_dam -= o.min_bruised_damage
 			o.burn_dam -= o.min_bruised_damage
@@ -66,7 +67,6 @@
 			o.status &= ~ORGAN_BROKEN
 			H.next_pain_time = world.time //Overrides the next pain timer
 			H.custom_pain("<span class = 'userdanger'>You feel the bones in your [o.name] being pushed into place.</span>",10)
-			check_and_stop_bleeding(o)
 
 /datum/reagent/biofoam/proc/mend_internal(var/mob/living/carbon/human/H)
 	for(var/obj/item/organ/I in H.internal_organs)
@@ -94,6 +94,7 @@
 				if(!prob(BIOFOAM_PROB_REMOVE_EMBEDDED))
 					continue
 				w.embedded_objects -= embedded //Removing the embedded item from the wound
+				M.contents -= embedded
 				embedded.loc = M.loc //And placing it on the ground below
 				to_chat(M,"<span class = 'notice'>The [embedded.name] is pushed out of the [w.desc] in your [o.name].</span>")
 
@@ -126,3 +127,97 @@
 		else if (prob(BIOFOAM_PROB_OVERDOSE_WARNING))
 			var/obj/item/organ/O = pick(H.internal_organs)
 			to_chat(M,"<span class ='danger'>You feel your [O.name] being crushed.</span>")
+
+/datum/reagent/hyperzine_concentrated
+	name = "Concentrated Hyperzine"
+	description = "A long-lasting, powerful muscle stimulant. A concentrated version of Hyperzine, forgoing safety to provide a considerable boost the the user's speed and reaction time."
+	taste_description = "acid"
+	reagent_state = LIQUID
+	color = "#FF3300"
+	metabolism = REM * 0.15
+	overdose = REAGENTS_OVERDOSE * 0.5
+
+/datum/reagent/hyperzine_concentrated/affect_blood(var/mob/living/carbon/human/H, var/alien, var/removed)
+	if(H.internal_organs_by_name[BP_LIVER])
+		var/obj/item/organ/user_liver = H.internal_organs_by_name[BP_LIVER]
+		user_liver.take_damage(1,1)
+	H.adjustToxLoss(1)
+	if(prob(10))
+		H.emote(pick("twitch", "blink_r", "shiver"))
+	H.add_chemical_effect(CE_SPEEDBOOST, 1)
+	H.add_chemical_effect(CE_PULSE, 2)
+
+/datum/reagent/cryoprethaline
+	name = "Cryoprethaline"
+	description = "A cellular ice crystal formation inhibitor. Protects from the extreme cold of cryostasis"
+	taste_description = "lemon-lime"
+	reagent_state = LIQUID
+	color = "#DCD9CD"
+	overdose = 5 //Extremely toxic
+	scannable = 1
+
+/datum/reagent/cryoprethaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(istype(M, /mob/living/carbon/human))
+		M.add_chemical_effect(CE_CRYO, 3)
+
+/datum/reagent/cryoprethaline/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	if(istype(M, /mob/living/carbon/human))
+		M.adjustFireLoss(removed)
+		if(prob(5))
+			to_chat(M,"<span class='userdanger'>Your skin feels like it's on fire!</span>")
+
+/datum/reagent/cryoprethaline/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	if(istype(M, /mob/living/carbon/human))
+		M.adjustToxLoss(5 * removed)
+		M.emote("vomit")
+
+/datum/reagent/cryoprethaline/overdose(var/mob/living/carbon/M)
+	if(istype(M, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = M
+		var/obj/item/organ/L = H.internal_organs_by_name[BP_LUNGS]
+		if(L)
+			if(prob(90))
+				L.take_damage(2)
+				if(prob(15))
+					H.emote("cough")
+		H.adjustToxLoss(5)
+
+/datum/reagent/hexaline
+	name = "Hexaline Glycol"
+	description = "A slighly less toxic, but less effective, cryoprotectant."
+	taste_description = "sweetness"
+	reagent_state = LIQUID
+	color = "#DCD9CD"
+	overdose = 5 //Same overdose as cryoprethaline, but does less harm
+	scannable = 1
+
+/datum/reagent/hexaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(istype(M, /mob/living/carbon/human))
+		M.add_chemical_effect(CE_CRYO, 1)
+
+/datum/reagent/hexaline/overdose(var/mob/living/carbon/M)
+	if(istype(M, /mob/living/carbon/human))
+		M.adjustToxLoss(1)
+
+/datum/reagent/ketoprofen
+	name = "Ketoprofen"
+	description = "An anti-pyretic and painkiller"
+	taste_description = "chalk"
+	reagent_state = LIQUID
+	color = "#C8A5DC"
+	scannable = 1
+	metabolism = 0.02
+	flags = IGNORE_MOB_SIZE
+
+/datum/reagent/ketoprofen/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.add_chemical_effect(CE_PAINKILLER, 40)
+	M.add_chemical_effect(CE_CRYO, -1)
+
+	var/target = 310 //Target body temperature
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.species.body_temperature)
+			target = H.species.body_temperature //Target the species optimal body temperature - if one exists
+
+	if(M.bodytemperature > target)
+		M.bodytemperature = max(target, M.bodytemperature - (50 * TEMPERATURE_DAMAGE_COEFFICIENT)) //A bit better than leporazine

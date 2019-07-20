@@ -1,7 +1,9 @@
 
 /mob/living/simple_animal/npc
 	name = "NPC"
-	desc = "Does what he wants cause a pirate is free."
+	desc = "Surprisingly, this one is neither wearing a red shirt nor called Bob."
+	icon = 'code/modules/halo/NPC/npc.dmi'
+	icon_state = "Human_m"
 	var/npc_job_title
 	speak_chance = 0
 	turns_per_move = 5
@@ -16,10 +18,17 @@
 	var/list/shoes = list()
 	var/list/hats = list()
 	var/hat_chance = 33
+	var/list/masks = list()
+	var/mask_chance = 50
 	var/list/gloves = list()
 	var/glove_chance = 10
 	var/list/suits = list()
 	var/suit_chance = 25
+	var/list/glasses = list()
+	var/glasses_chance = 25
+
+	var/species_type = /datum/species/human
+	var/datum/species/my_species
 
 	unsuitable_atoms_damage = 15
 	var/corpse = /obj/effect/landmark/mobcorpse/pirate
@@ -29,6 +38,7 @@
 
 	var/icon/interact_icon
 	var/mob/interacting_mob
+	var/in_use = 0
 
 	var/list/trade_items = list()
 	var/list/trade_items_by_type = list()
@@ -37,8 +47,36 @@
 	var/list/trade_items_inventory_by_name = list()
 	var/list/trade_categories_by_name = list()
 	var/total_trade_weight = 0
+	var/starting_trade_items = 6
 	//
 	var/list/interact_inventory = list()
+	var/accepted_currency = "credits"
+	//
+	var/interact_screen = 1
+	var/list/greetings = list(\
+		"Hello.",\
+		"How are you going?",\
+		"How can I help?",\
+		"Good day.",\
+		"What can I do for you?")
+	var/list/goodbyes = list(\
+		"See you.",\
+		"See you later.",\
+		"Have a good one.",\
+		"Take it easy.",\
+		"Later.",\
+		"Bye.",\
+		"Goodbye.",\
+		"Bye for now.")
+	var/current_greeting_index = 1
+	var/list/confused_responses = list(\
+		"I don't know anything about that.",\
+		"Not sure.",\
+		"No idea.",\
+		"Can't help.",\
+		"Never heard of it.")
+	var/say_time = 0
+	var/say_next = 0
 
 	var/datum/controller/process/trade_controller/trade_controller_debug
 
@@ -46,3 +84,11 @@
 	if(M.stat || M.restrained() || M.lying || !istype(M, /mob/living) || get_dist(M, src) > 1)
 		return 0
 	return 1
+
+/mob/living/simple_animal/npc/Life()
+	. = ..()
+
+	if(stat == CONSCIOUS)
+		if(say_time && world.time >= say_time)
+			say_time = 0
+			say(say_next)

@@ -1,13 +1,25 @@
 
-//this one is nonfunctional
-/obj/structure/grav_elevator
+//nonfunctional
+/obj/structure/grav_elevator_external
+	name = "Covenant Gravity Elevator"
+	desc = "A large anti-gravity lift for ferrying troops, supplies and vehicles between the ship and the surface."
+	density = 0
+	anchored = 1
+	icon = 'grav128.dmi'
+	icon_state = "elevator_animated"
+
+//nonfunctional
+/obj/structure/grav_elevator_internal
 	name = "Gravity Elevator"
 	desc = "A large anti-gravity lift for ferrying troops, supplies and vehicles down to the surface. Also anchors the vessel when in use."
 	density = 0
 	anchored = 1
 	icon = 'grav128.dmi'
-	icon_state = "elevator"
+	icon_state = "lift_disabled"
 
+
+
+//move up and down between zlevels
 /obj/structure/grav_lift
 	name = "Gravity lift pad"
 	desc = "A mysterious antigravity field that enables vertical travel through the air."
@@ -38,7 +50,7 @@
 			my_area = G.my_area
 	if(!my_area)
 		my_area = new()
-		my_area.name = "Gravity lift chute"
+		//my_area.name = "Gravity lift chute"
 		my_area.has_gravity = 0
 
 	for(var/turf/T in base_turfs)
@@ -68,6 +80,7 @@
 	icon = 'grav128.dmi'
 	bound_width = 128
 	bound_height = 128
+	icon_state = "lift_animated"
 
 
 /obj/effect/antigrav

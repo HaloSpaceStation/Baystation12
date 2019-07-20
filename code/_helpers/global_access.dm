@@ -95,6 +95,8 @@
 			return global.SSgarbage;
 		if("SSlegacy")
 			return global.SSlegacy;
+		if("SSvote")
+			return global.SSvote;
 		if("TELEBLOCK")
 			return global.TELEBLOCK;
 		if("TWITCHBLOCK")
@@ -283,6 +285,8 @@
 			return global.button_sound;
 		if("cable_list")
 			return global.cable_list;
+		if("cable_list_late_init")
+			return global.cable_list_late_init;
 		if("cached_icons")
 			return global.cached_icons;
 		if("cached_space")
@@ -479,6 +483,8 @@
 			return global.fire_alarm;
 		if("flesh_hud_colours")
 			return global.flesh_hud_colours;
+		if("flood_overmind")
+			return global.flood_overmind;
 		if("floorIsLava")
 			return global.floorIsLava;
 		if("floor_decals")
@@ -521,8 +527,6 @@
 			return global.gear_tweak_free_color_choice_;
 		if("gender_datums")
 			return global.gender_datums;
-		if("orion_password")
-			return global.orion_password;
 		if("ghost_darkness_images")
 			return global.ghost_darkness_images;
 		if("ghost_role_manager")
@@ -579,8 +583,6 @@
 			return global.init;
 		if("initialization_stage")
 			return global.initialization_stage;
-		if("insurrection_objectives")
-			return global.insurrection_objectives;
 		if("integrated_circuit_blacklist")
 			return global.integrated_circuit_blacklist;
 		if("intents")
@@ -653,6 +655,8 @@
 			return global.lobby_image;
 		if("log_end")
 			return global.log_end;
+		if("loot_distributor")
+			return global.loot_distributor;
 		if("loyalists")
 			return global.loyalists;
 		if("lunchables_drink_reagents_")
@@ -679,6 +683,8 @@
 			return global.mannequins_;
 		if("map_count")
 			return global.map_count;
+		if("map_datas")
+			return global.map_datas;
 		if("map_sectors")
 			return global.map_sectors;
 		if("maploader")
@@ -797,6 +803,8 @@
 			return global.organ_cache;
 		if("organ_rel_size")
 			return global.organ_rel_size;
+		if("orion_password")
+			return global.orion_password;
 		if("outfits_decls_")
 			return global.outfits_decls_;
 		if("outfits_decls_by_type_")
@@ -1149,8 +1157,6 @@
 			return global.total_lighting_sources;
 		if("total_unit_tests")
 			return global.total_unit_tests;
-		if("trade_controller")
-			return global.trade_controller;
 		if("traitors")
 			return global.traitors;
 		if("transfer_controller")
@@ -1219,11 +1225,9 @@
 			return global.wrapped_species_by_ref;
 		if("xenomorphs")
 			return global.xenomorphs;
-		if("z_levels")
-			return global.z_levels;
 		if("zone_blocked")
 			return global.zone_blocked;
-
+		
 /proc/writeglobal(which, newval)
 	switch(which)
 		if("ALL_ANTIGENS")
@@ -1320,6 +1324,8 @@
 			global.SSgarbage=newval;
 		if("SSlegacy")
 			global.SSlegacy=newval;
+		if("SSvote")
+			global.SSvote=newval;
 		if("TELEBLOCK")
 			global.TELEBLOCK=newval;
 		if("TWITCHBLOCK")
@@ -1508,6 +1514,8 @@
 			global.button_sound=newval;
 		if("cable_list")
 			global.cable_list=newval;
+		if("cable_list_late_init")
+			global.cable_list_late_init=newval;
 		if("cached_icons")
 			global.cached_icons=newval;
 		if("cached_space")
@@ -1704,6 +1712,8 @@
 			global.fire_alarm=newval;
 		if("flesh_hud_colours")
 			global.flesh_hud_colours=newval;
+		if("flood_overmind")
+			global.flood_overmind=newval;
 		if("floorIsLava")
 			global.floorIsLava=newval;
 		if("floor_decals")
@@ -1746,8 +1756,6 @@
 			global.gear_tweak_free_color_choice_=newval;
 		if("gender_datums")
 			global.gender_datums=newval;
-		if("orion_password")
-			global.orion_password=newval;
 		if("ghost_darkness_images")
 			global.ghost_darkness_images=newval;
 		if("ghost_role_manager")
@@ -1804,8 +1812,6 @@
 			global.init=newval;
 		if("initialization_stage")
 			global.initialization_stage=newval;
-		if("insurrection_objectives")
-			global.insurrection_objectives=newval;
 		if("integrated_circuit_blacklist")
 			global.integrated_circuit_blacklist=newval;
 		if("intents")
@@ -1878,6 +1884,8 @@
 			global.lobby_image=newval;
 		if("log_end")
 			global.log_end=newval;
+		if("loot_distributor")
+			global.loot_distributor=newval;
 		if("loyalists")
 			global.loyalists=newval;
 		if("lunchables_drink_reagents_")
@@ -1904,6 +1912,8 @@
 			global.mannequins_=newval;
 		if("map_count")
 			global.map_count=newval;
+		if("map_datas")
+			global.map_datas=newval;
 		if("map_sectors")
 			global.map_sectors=newval;
 		if("maploader")
@@ -2022,6 +2032,8 @@
 			global.organ_cache=newval;
 		if("organ_rel_size")
 			global.organ_rel_size=newval;
+		if("orion_password")
+			global.orion_password=newval;
 		if("outfits_decls_")
 			global.outfits_decls_=newval;
 		if("outfits_decls_by_type_")
@@ -2374,8 +2386,6 @@
 			global.total_lighting_sources=newval;
 		if("total_unit_tests")
 			global.total_unit_tests=newval;
-		if("trade_controller")
-			global.trade_controller=newval;
 		if("traitors")
 			global.traitors=newval;
 		if("transfer_controller")
@@ -2444,11 +2454,9 @@
 			global.wrapped_species_by_ref=newval;
 		if("xenomorphs")
 			global.xenomorphs=newval;
-		if("z_levels")
-			global.z_levels=newval;
 		if("zone_blocked")
 			global.zone_blocked=newval;
-
+		
 /var/list/_all_globals=list(
 	"ALL_ANTIGENS",
 	"ANTAG_FREQS",
@@ -2497,6 +2505,7 @@
 	"SSatoms",
 	"SSgarbage",
 	"SSlegacy",
+	"SSvote",
 	"TELEBLOCK",
 	"TWITCHBLOCK",
 	"Tier1Runes",
@@ -2591,6 +2600,7 @@
 	"breach_burn_descriptors",
 	"button_sound",
 	"cable_list",
+	"cable_list_late_init",
 	"cached_icons",
 	"cached_space",
 	"camera_alarm",
@@ -2689,6 +2699,7 @@
 	"finds_as_strings",
 	"fire_alarm",
 	"flesh_hud_colours",
+	"flood_overmind",
 	"floorIsLava",
 	"floor_decals",
 	"floor_light_cache",
@@ -2710,7 +2721,6 @@
 	"gear_datums",
 	"gear_tweak_free_color_choice_",
 	"gender_datums",
-	"orion_password",
 	"ghost_darkness_images",
 	"ghost_role_manager",
 	"ghost_sightless_images",
@@ -2739,7 +2749,6 @@
 	"inactive_keys",
 	"init",
 	"initialization_stage",
-	"insurrection_objectives",
 	"integrated_circuit_blacklist",
 	"intents",
 	"intercom_range_display_status",
@@ -2776,6 +2785,7 @@
 	"loadout_categories",
 	"lobby_image",
 	"log_end",
+	"loot_distributor",
 	"loyalists",
 	"lunchables_drink_reagents_",
 	"lunchables_drinks_",
@@ -2789,6 +2799,7 @@
 	"malf",
 	"mannequins_",
 	"map_count",
+	"map_datas",
 	"map_sectors",
 	"maploader",
 	"mark",
@@ -2848,6 +2859,7 @@
 	"ores_by_type",
 	"organ_cache",
 	"organ_rel_size",
+	"orion_password",
 	"outfits_decls_",
 	"outfits_decls_by_type_",
 	"outfits_decls_root_",
@@ -3024,7 +3036,6 @@
 	"total_lighting_overlays",
 	"total_lighting_sources",
 	"total_unit_tests",
-	"trade_controller",
 	"traitors",
 	"transfer_controller",
 	"turbolift_controller",
@@ -3059,5 +3070,4 @@
 	"worths",
 	"wrapped_species_by_ref",
 	"xenomorphs",
-	"z_levels",
 	"zone_blocked")

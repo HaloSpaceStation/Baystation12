@@ -35,6 +35,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /atom/movable/attackby(obj/item/W, mob/user)
 	if(!(W.flags & NOBLUDGEON))
 		visible_message("<span class='danger'>[src] has been hit by [user] with [W].</span>")
+		playsound(loc,W.hitsound,75)
 
 /mob/living/attackby(obj/item/I, mob/user)
 	if(!ismob(user))
@@ -88,5 +89,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	var/power = force
 	if(HULK in user.mutations)
 		power *= 2
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		power *= H.species.melee_force_multiplier
 	return target.hit_with_weapon(src, user, power, hit_zone)
 

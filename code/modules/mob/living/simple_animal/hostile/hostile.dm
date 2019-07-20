@@ -23,16 +23,35 @@
 	var/damtype = BRUTE
 	var/defense = "melee" //what armor protects against its attacks
 
-	var/turf/assault_target
-	var/target_margin = 0
 	var/feral = 0
+
+	var/datum/npc_overmind/our_overmind
+
+/mob/living/simple_animal/hostile/New()
+	. = ..()
+	if(our_overmind)
+		if(our_overmind.overmind_active)
+			assault_target_type = null //Sorted troops are now soley under overmind command, if the overmind is currently active.
+		var/sorted = 0
+		if(our_overmind.is_type_list(src,our_overmind.constructor_types))
+			our_overmind.constructor_troops += src
+			sorted = 1
+		if(our_overmind.is_type_list(src,our_overmind.combat_types))
+			our_overmind.combat_troops += src
+			sorted = 1
+		if(our_overmind.is_type_list(src,our_overmind.support_types))
+			our_overmind.support_troops += src
+			sorted = 1
+		if(!sorted)
+			our_overmind.other_troops += src
+
 
 /mob/living/simple_animal/hostile/proc/FindTarget()
 	if(!faction) //No faction, no reason to attack anybody.
 		return null
 	var/atom/T = null
 	//stop_automated_movement = 0
-	for(var/atom/A in ListTargets(10))
+	for(var/atom/A in ListTargets(7))
 
 		if(A == src)
 			continue
@@ -60,6 +79,10 @@
 				stance = HOSTILE_STANCE_ATTACK
 				T = M
 				break
+
+	if(our_overmind && !isnull(T))
+		var/list/targlist = ListTargets(7)
+		our_overmind.create_report(1,src,null,targlist.len,assault_target,loc)
 	return T
 
 
@@ -70,22 +93,25 @@
 	stop_automated_movement = 1
 	if(!target_mob || SA_attackable(target_mob))
 		stance = HOSTILE_STANCE_IDLE
-	if(target_mob in ListTargets(10))
+	if(target_mob in ListTargets(7))
 		if(ranged)
 			if(get_dist(src, target_mob) <= 6)
+				walk(src, 0)
 				OpenFire(target_mob)
 			else
 				walk_to(src, target_mob, 1, move_to_delay)
 		else
 			stance = HOSTILE_STANCE_ATTACKING
 			walk_to(src, target_mob, 1, move_to_delay)
+			spawn(get_dist(src,target_mob)*move_to_delay) //If the target is within range after our original move, we attack them.
+				AttackTarget()
 
 /mob/living/simple_animal/hostile/proc/AttackTarget()
 	stop_automated_movement = 1
 	if(!target_mob || SA_attackable(target_mob))
 		LoseTarget()
 		return 0
-	if(!(target_mob in ListTargets(10)))
+	if(!(target_mob in ListTargets(7)))
 		LostTarget()
 		return 0
 	if(next_move >= world.time)
@@ -117,6 +143,10 @@
 		var/obj/mecha/M = attacked
 		M.attack_generic(src,rand(melee_damage_lower,melee_damage_upper),attacktext)
 		return M
+
+	if(istype(attacked,/obj/structure))
+		var/obj/structure/attacked_obj = attacked
+		attacked_obj.attack_generic(src,rand(melee_damage_lower,melee_damage_upper),attacktext)
 
 /mob/living/simple_animal/hostile/RangedAttack(var/atom/attacked)
 	if(!ranged)
@@ -162,7 +192,11 @@
 	return L
 
 /mob/living/simple_animal/hostile/death(gibbed, deathmessage, show_dead_message)
+	if(our_overmind)
+		var/list/targlist = ListTargets(7)
+		our_overmind.create_report(5,src,null,targlist.len,assault_target,loc)
 	..(gibbed, deathmessage, show_dead_message)
+	stop_automated_movement = 0
 	walk(src, 0)
 
 /mob/living/simple_animal/hostile/Life()
@@ -178,6 +212,9 @@
 			switch(stance)
 				if(HOSTILE_STANCE_IDLE)
 					target_mob = FindTarget()
+
+					if(!target_mob)
+						handle_assault_pathing()
 
 				if(HOSTILE_STANCE_ATTACK)
 					if(destroy_surroundings)
@@ -202,20 +239,26 @@
 	. = ..()
 	if(health < oldhealth && !incapacitated(INCAPACITATION_KNOCKOUT))
 		target_mob = user
-		MoveToTarget()
+		//MoveToTarget()
+		stance = HOSTILE_STANCE_ATTACK
+		Life()
 
 /mob/living/simple_animal/hostile/attack_hand(mob/living/carbon/human/M)
 	. = ..()
 	if(M.a_intent == I_HURT && !incapacitated(INCAPACITATION_KNOCKOUT))
 		target_mob = M
-		MoveToTarget()
+		//MoveToTarget()
+		stance = HOSTILE_STANCE_ATTACK
+		Life()
 
 /mob/living/simple_animal/hostile/bullet_act(var/obj/item/projectile/Proj)
 	var/oldhealth = health
 	. = ..()
 	if(!target_mob && health < oldhealth && !incapacitated(INCAPACITATION_KNOCKOUT))
 		target_mob = Proj.firer
-		MoveToTarget()
+		//MoveToTarget()
+		stance = HOSTILE_STANCE_ATTACK
+		Life()
 
 /mob/living/simple_animal/hostile/proc/OpenFire(target_mob)
 	RangedAttack(target_mob)
@@ -237,7 +280,11 @@ GLOBAL_LIST_INIT(hostile_attackables, list(\
 	/obj/structure/closet,\
 	/obj/structure/table,\
 	/obj/structure/grille,\
-	/obj/structure/barricade
+	/obj/structure/girder,\
+	/obj/structure/tanktrap,\
+	/obj/structure/barricade,\
+	/obj/structure/barricadeunsc,\
+	/obj/structure/sandbag
 ))
 
 /mob/living/simple_animal/hostile/proc/DestroySurroundings()

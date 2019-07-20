@@ -305,6 +305,10 @@ This saves us from having to call add_fingerprint() any time something is put in
 				update_inv_gloves(0)
 			if(wear_suit.flags_inv & HIDEJUMPSUIT)
 				update_inv_w_uniform(0)
+			if(wear_suit.flags_inv & HIDEBACK)
+				update_inv_back(0)
+			if(wear_suit.flags_inv & HIDESUITSTORAGE)
+				update_inv_s_store(0)
 			W.equipped(src, slot)
 			update_inv_wear_suit(redraw_mob)
 		if(slot_w_uniform)
@@ -363,7 +367,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_glasses)
 			covering = src.head
 			check_flags = EYES
-		if(slot_gloves, slot_w_uniform)
+		if(slot_shoes, slot_gloves, slot_w_uniform)
 			covering = src.wear_suit
 
 	if(covering && (covering.body_parts_covered & (I.body_parts_covered|check_flags)))

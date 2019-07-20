@@ -1,3 +1,4 @@
+#define SIMPLE_ANIMAL_SCREAM_COOLDOWN 1 SECOND
 /mob/living/simple_animal
 	name = "animal"
 	icon = 'icons/mob/animal.dmi'
@@ -24,6 +25,7 @@
 	universal_speak = 0		//No, just no.
 	var/meat_amount = 0
 	var/meat_type
+	var/list/harvest_products = list()
 	var/stop_automated_movement = 0 //Use this to temporarely stop random movement or to if you write special movement code for animals.
 	var/wander = 1	// Does the mob wander around when idle?
 	var/stop_automated_movement_when_pulled = 1 //When set to 1 this stops the animal from moving when someone is pulling it.
@@ -60,6 +62,17 @@
 	var/supernatural = 0
 	var/purge = 0
 
+	var/list/pain_scream_sounds = list()
+	var/list/death_sounds = list()
+
+	var/respawning = 0
+	var/respawn_timer = 3 MINUTES
+	var/turf/spawn_turf
+
+/mob/living/simple_animal/New()
+	. = ..()
+	spawn_turf = get_turf(src)
+
 /mob/living/simple_animal/Life()
 	..()
 
@@ -70,6 +83,10 @@
 			switch_from_dead_to_living_mob_list()
 			set_stat(CONSCIOUS)
 			set_density(1)
+		else if(respawning)
+			if(world.time > timeofdeath + respawn_timer)
+				health = maxHealth
+				src.forceMove(spawn_turf)
 		return 0
 
 
@@ -92,7 +109,15 @@
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled
 					var/moving_to = 0 // otherwise it always picks 4, fuck if I know.   Did I mention fuck BYOND
-					moving_to = pick(GLOB.cardinal)
+					var/list/dirs_pickfrom = GLOB.cardinal
+					var/allow_move = 0
+					while(!allow_move)
+						if(dirs_pickfrom.len == 0)
+							allow_move = 1
+							break
+						moving_to = pick(dirs_pickfrom)
+						if(!istype(get_step(src,moving_to),/turf/simulated/open))
+							allow_move = 1
 					set_dir(moving_to)			//How about we turn them the direction they are moving, yay.
 					Move(get_step(src,moving_to))
 					turns_since_move = 0
@@ -161,11 +186,27 @@
 /mob/living/simple_animal/proc/audible_emote(var/act_desc)
 	custom_emote(2, act_desc)
 
+/mob/living/simple_animal/proc/do_pain_scream()
+	if(health <= 0)
+		return
+	if(world.time < next_scream_at)
+		return
+	if(isnull(pain_scream_sounds) || pain_scream_sounds.len == 0)
+		return
+
+	var/scream_sound = pick(pain_scream_sounds)
+
+	playsound(loc, scream_sound,50,0,7)
+	next_scream_at = world.time + SIMPLE_ANIMAL_SCREAM_COOLDOWN
+
 /mob/living/simple_animal/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj || Proj.nodamage)
 		return
-
-	adjustBruteLoss(Proj.damage)
+	if(Proj.damtype == BURN)
+		adjustFireLoss(Proj.damage)
+	else
+		adjustBruteLoss(Proj.damage)
+	do_pain_scream()
 	return 0
 
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/M as mob)
@@ -186,6 +227,7 @@
 			adjustBruteLoss(harm_intent_damage)
 			M.visible_message("<span class='warning'>[M] [response_harm] \the [src]</span>")
 			M.do_attack_animation(src)
+			do_pain_scream()
 
 	return
 
@@ -208,7 +250,7 @@
 		else
 			to_chat(user, "<span class='notice'>\The [src] is dead, medical items won't bring \him back to life.</span>")
 		return
-	if(meat_type && (stat == DEAD))	//if the animal has a meat, and if it is dead.
+	if((meat_type || harvest_products.len) && (stat == DEAD))	//if the animal has a meat, and if it is dead.
 		if(istype(O, /obj/item/weapon/material/knife) || istype(O, /obj/item/weapon/material/knife/butch))
 			harvest(user)
 	else
@@ -232,8 +274,7 @@
 		damage *= 2
 		purge = 3
 	adjustBruteLoss(damage)
-
-	return 0
+	do_pain_scream()
 
 /mob/living/simple_animal/movement_delay()
 	var/tally = ..() //Incase I need to add stuff other than "speed" later
@@ -252,11 +293,14 @@
 	if(statpanel("Status") && show_stat_health)
 		stat(null, "Health: [round((health / maxHealth) * 100)]%")
 
-/mob/living/simple_animal/death(gibbed, deathmessage = "dies!", show_dead_message)
+/mob/living/simple_animal/death(gibbed, deathmessage = "dies!", show_dead_message = 1)
+	timeofdeath = world.time
 	icon_state = icon_dead
 	density = 0
-	adjustBruteLoss(maxHealth) //Make sure dey dead.
+	//adjustBruteLoss(maxHealth) //Make sure dey dead.
 	walk_to(src,0)
+	if(death_sounds.len > 0)
+		playsound(loc, pick(death_sounds),75,0,7)
 	return ..(gibbed,deathmessage,show_dead_message)
 
 /mob/living/simple_animal/ex_act(severity)
@@ -312,7 +356,7 @@
 
 	message = sanitize(message)
 
-	..(message, null, verb)
+	..(message, species_language, verb)
 
 /mob/living/simple_animal/get_speech_ending(verb, var/ending)
 	return verb
@@ -323,6 +367,10 @@
 
 // Harvest an animal's delicious byproducts
 /mob/living/simple_animal/proc/harvest(var/mob/user)
+
+	for(var/harvest_type in harvest_products)
+		new harvest_type(get_turf(src))
+
 	var/actual_meat_amount = max(1,(meat_amount/2))
 	if(meat_type && actual_meat_amount>0 && (stat == DEAD))
 		for(var/i=0;i<actual_meat_amount;i++)
@@ -345,3 +393,9 @@
 	return
 /mob/living/simple_animal/ExtinguishMob()
 	return
+
+/mob/living/simple_animal/updatehealth()
+	. = ..()
+	if(health <= 0 && stat != DEAD)
+		death()
+		return

@@ -117,7 +117,7 @@
 /obj/item/weapon/melee/baton/attack(mob/M, mob/user)
 	if(status && (CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
-		user.Weaken(30)
+		user.confused += 20
 		deductcharge(hitcost)
 		return
 	return ..()
@@ -159,7 +159,8 @@
 
 	//stun effects
 	if(status)
-		target.stun_effect_act(stun, agony, hit_zone, src)
+		target.stun_effect_act(stun/2, agony, hit_zone, src)
+		target.confused += stun
 		msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
 
 		deductcharge(hitcost)
@@ -241,29 +242,3 @@
 	hitcost = 25
 	attack_verb = list("poked")
 	slot_flags = null
-
-//Humbler Baton
-/obj/item/weapon/melee/baton/humbler
-	name = "humbler stun device"
-	desc = "A retractable baton capable of inducing a large amount of pain via electrical shocks."
-	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
-	icon_state = "humbler stun device"
-	item_state = "telebaton_0"
-	force = 15
-	sharp = 0
-	edge = 0
-	throwforce = 7
-	w_class = ITEM_SIZE_NORMAL
-	origin_tech = list(TECH_COMBAT = 2)
-	attack_verb = list("beaten")
-	stunforce = 0
-	agonyforce = 60
-	status = 0		//whether the thing is on or not
-	hitcost = 10
-
-
-/obj/item/weapon/melee/baton/humbler/New()
-	..()
-	bcell = new/obj/item/weapon/cell/high(src)
-	update_icon()
-	return

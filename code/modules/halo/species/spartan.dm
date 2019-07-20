@@ -1,18 +1,23 @@
 /datum/species/spartan
 	name = "Spartan"
 	name_plural = "Spartans"
-	blurb = ""//Not in chargen
 	blood_color = "#A10808"
 	flesh_color = "#FFC896"
+	blurb = "The SPARTAN-II Program, originally known as the ORION Project Generation II,\
+		 was part of the SPARTAN Program, an effort to produce elite soldiers through \
+		 mechanical and biological augmentation. The Spartans would be combined with advanced\
+		 MJOLNIR armour containing energy shielding and augmenting their physical abilities."
 	icobase = 'code/modules/halo/icons/species/r_Augmented_Human.dmi' //The DMI needed modification to fit the usual format (see other species' dmis)
 	deform = 'code/modules/halo/icons/species/r_Augmented_Human.dmi'
 	icon_template = 'code/modules/halo/icons/species/r_Augmented_Human_template.dmi'
 	flags = NO_MINOR_CUT
 	total_health = 250 //Same base health as sangheili
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
+	spawn_flags = SPECIES_CAN_JOIN
 	brute_mod = 0.8 //Lower amount of brute damage taken than sangheili
-	pain_mod = 0.75 //But they also feel pain a bit more.
+	pain_mod = 0.40 //Lower pain damage taken than sangheili
 	item_icon_offsets = list(-1,3)
+	slowdown = -1
+	inherent_verbs = list(/mob/living/carbon/human/proc/dual_wield_weapons)
 
 	metabolism_mod = 1.25 //Faster metabolism
 	breath_pressure = 14.5 //Better lungs!
@@ -58,6 +63,9 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/augmented)
 		)
 
+	equipment_slowdown_multiplier = 0.5
+	ignore_equipment_threshold = 3
+
 /datum/species/spartan/get_random_name(var/gender)
 	var/name = ""
 	if(gender == FEMALE)
@@ -72,3 +80,6 @@
 		name += "0"
 	name += "[spartan_number]"
 	return name
+
+/datum/species/spartan/sanitize_name(name)
+	return sanitizeName(name, allow_numbers=TRUE)

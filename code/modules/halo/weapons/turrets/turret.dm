@@ -61,8 +61,6 @@
 	return 1
 
 /obj/structure/turret/proc/handle_dir()
-	if(isnull(mob_manning))
-		return
 	mob_manning.pixel_y = initial(mob_manning.pixel_y)
 	mob_manning.pixel_x = initial(mob_manning.pixel_x)
 	switch(mob_manning.dir)
@@ -89,8 +87,10 @@
 
 /obj/structure/turret/proc/remove_manning_gun()
 	if(mob_manning.l_hand && (mob_manning.l_hand.type == turret_gun))
+		mob_manning.drop_from_inventory(mob_manning.l_hand)
 		qdel(mob_manning.l_hand)
 	if(mob_manning.r_hand && (mob_manning.r_hand.type == turret_gun))
+		mob_manning.drop_from_inventory(mob_manning.r_hand)
 		qdel(mob_manning.r_hand)
 
 
@@ -126,21 +126,24 @@
 		gun.load_ammo(new gun.magazine_type,user)
 
 /obj/structure/turret/proc/check_user_has_gun()
+	var/unman = 0
 	if(isnull(mob_manning))
-		return
-	var/tmp/unman
-	if(!mob_manning.l_hand && !mob_manning.r_hand)
 		unman = 1
-	if(mob_manning.l_hand && (mob_manning.l_hand.type != turret_gun) && (mob_manning.r_hand && (mob_manning.r_hand.type != turret_gun)))
+	else if(!mob_manning.l_hand && !mob_manning.r_hand)
 		unman = 1
+	else if(mob_manning.l_hand && (mob_manning.l_hand.type != turret_gun) && (mob_manning.r_hand && (mob_manning.r_hand.type != turret_gun)))
+		unman = 1
+	else if(mob_manning.incapacitated())
+		unman = 1
+	else if(!mob_manning.Adjacent(src))
+		unman = 1
+
 	if(unman)
 		unman_turret()
 
 /obj/structure/turret/process()
 	check_user_has_gun()
 	handle_dir()
-	if(mob_manning && mob_manning.incapacitated())
-		unman_turret()
 
 /obj/structure/turret/verb/remove_turret()
 	set name = "Remove Turret"
@@ -174,7 +177,7 @@
 	one_hand_penalty = -1
 
 	slowdown_general = 7
-	w_class = 5
+	w_class = ITEM_SIZE_HUGE
 	can_rename = 0
 	item_icons = list( //Null here due to this version being used only when manning the turret, Every turret requires a /detached define with the item_icons set.
 		slot_l_hand_str = null,
@@ -218,8 +221,6 @@
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]_unloaded"
-
-
 
 //Detached Turret Gun Define// Every detachable turret gun needs this.
 /obj/item/weapon/gun/projectile/turret/detached

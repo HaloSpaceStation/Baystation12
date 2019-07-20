@@ -93,7 +93,8 @@
 	var/reagent_tag                                   //Used for metabolizing reagents.
 	var/breath_pressure = 16                          // Minimum partial pressure safe for breathing, kPa
 	var/breath_type = "oxygen"                        // Non-oxygen gas breathed, if any.
-	var/poison_type = "phoron"                        // Poisonous air.
+	//var/poison_type = "phoron"                        // Poisonous air.
+	var/list/poison_gases = list("phoron","carbonmonoxide","sulfurdioxide","chlorine")
 	var/exhale_type = "carbon_dioxide"                // Exhaled gas type.
 	var/cold_level_1 = 260                            // Cold damage level 1 below this point.
 	var/cold_level_2 = 200                            // Cold damage level 2 below this point.
@@ -188,6 +189,13 @@
 
 	var/list/item_icon_offsets = list(0,0) //A list (x,y) of offsets to apply to inhand images.
 	//NOTE FOR ABOVE: Posive X moves right, positive Y moves up.
+	var/melee_force_multiplier = 1
+	var/equipment_slowdown_multiplier = 1	//for strong or weak species
+	var/ignore_equipment_threshold = 0
+	var/list/pain_scream_sounds = list()
+	var/list/scream_sounds_female = list()
+
+	var/default_faction
 
 /datum/species/proc/get_eyes(var/mob/living/carbon/human/H)
 	return
@@ -297,6 +305,9 @@
 	H.mob_swap_flags = swap_flags
 	H.mob_push_flags = push_flags
 	H.pass_flags = pass_flags
+
+	if(default_faction && (!H.faction || H.faction == "neutral"))
+		H.faction = default_faction
 
 /datum/species/proc/handle_pre_spawn(var/mob/living/carbon/human/H)
 	return

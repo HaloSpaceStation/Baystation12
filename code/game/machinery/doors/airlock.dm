@@ -621,9 +621,9 @@ About the new airlock wires panel:
 		if("opening")
 			if(overlays) overlays.Cut()
 			if(p_open)
-				spawn(2) // The only work around that works. Downside is that the door will be gone for a millisecond.
-					flick("o_door_opening", src)  //can not use flick due to BYOND bug updating overlays right before flicking
-					update_icon()
+				//spawn(2) // The only work around that works. Downside is that the door will be gone for a millisecond.
+				flick("o_door_opening", src)  //can not use flick due to BYOND bug updating overlays right before flicking
+				update_icon()
 			else
 				flick("door_opening", src)//[stat ? "_stat":]
 				update_icon()
@@ -930,6 +930,10 @@ About the new airlock wires panel:
 
 	src.add_fingerprint(user)
 
+	if(istype(C, /obj/item/weapon/plastique))
+		//attempting to apply C12 to the door
+		return
+
 	if (!repairing && (stat & BROKEN) && src.locked) //bolted and broken
 		if (!cut_bolts(C,user))
 			..()
@@ -1071,9 +1075,10 @@ About the new airlock wires panel:
 	update_icon()
 	return
 
-/obj/machinery/door/airlock/open(var/forced=0)
-	if(!can_open(forced))
-		return 0
+/obj/machinery/door/airlock/open(var/forced=0,var/no_checks = 0)
+	if(!no_checks)
+		if(!can_open(forced))
+			return 0
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 
 	//if the door is unpowered then it doesn't make sense to hear the woosh of a pneumatic actuator

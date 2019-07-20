@@ -34,9 +34,9 @@
 	name = "\improper Geminus City - level 1 exterior"
 	icon_state = "red"
 
-/area/planets/Geminus/outdoor/level2
+/*/area/planets/Geminus/outdoor/level2
 	name = "\improper Geminus City - level 2 exterior"
-	icon_state = "red"
+	icon_state = "red"*/
 
 /area/planets/Geminus/outdoor/central
 	name = "\improper Geminus City - Central"
@@ -54,11 +54,11 @@
 /area/planets/Geminus/indoor/arrivalbus
 	name = "\improper Arrival Bus"
 	icon_state = "yellow"
-
+/*
 /area/planets/Geminus/indoor/disco
 	name = "\improper Disco"
 	icon_state = "red"
-
+*/
 /area/planets/Geminus/indoor/backroom
 	name = "\improper Nightclub Backroom"
 	icon_state = "green"
@@ -103,17 +103,17 @@
 	name = "\improper Southwest Appartment Level 1"
 	icon_state = "courtroom"
 
-/area/planets/Geminus/indoor/living2nw
+/*/area/planets/Geminus/indoor/living2nw
 	name = "\improper Northwest Appartment Level 2"
-	icon_state = "courtroom"
+	icon_state = "courtroom"*/
 
-/area/planets/Geminus/indoor/living2ne
+/*/area/planets/Geminus/indoor/living2ne
 	name = "\improper Northeast Appartment Level 2"
-	icon_state = "courtroom"
+	icon_state = "courtroom"*/
 
-/area/planets/Geminus/indoor/living2sw
+/*/area/planets/Geminus/indoor/living2sw
 	name = "\improper Southwest Appartment Level 2"
-	icon_state = "courtroom"
+	icon_state = "courtroom"*/
 
 /area/planets/Geminus/indoor/labs1
 	name = "\improper Research and development level 1"
@@ -214,7 +214,54 @@
 
 /area/planets/Geminus/outdoor/space_elevator
 	name = "\improper Space Elevator"
+	icon_state = "observatory"
 
 //COLONY MAC//
 /area/planets/Geminus/outdoor/MAC
 	name = "\improper Geminus MAC"
+	icon_state = "firingrange"
+
+//UNDERGROUND//
+/area/geminus_underground
+	name = "\improper Geminus Underground Northeast"
+	icon_state = "yellow"
+
+/area/geminus_underground/northwest
+	name = "\improper Geminus Underground Northwest"
+	icon_state = "blueold"
+
+/area/geminus_underground/north
+	name = "\improper Geminus Underground North"
+	icon_state = "dark"
+
+/area/geminus_underground/southwest
+	name = "\improper Geminus Underground South"
+	icon_state = "purple"
+
+/area/geminus_underground/south
+	name = "\improper Geminus Underground South"
+	icon_state = "red"
+
+/area/geminus_underground/southeast
+	name = "\improper Geminus Underground South"
+	icon_state = "green"
+
+/area/geminus_underground/innie
+	name = "\improper Geminus Insurrection Base Alpha Sector"
+	icon_state = "red"
+
+/area/geminus_underground/innie/bravo
+	name = "\improper Geminus Insurrection Base Bravo Sector"
+	icon_state = "purple"
+
+/area/geminus_underground/innie/charlie
+	name = "\improper Geminus Insurrection Base Charlie Sector"
+	icon_state = "green"
+
+/area/geminus_underground/innie/delta
+	name = "\improper Geminus Insurrection Base Delta Sector"
+	icon_state = "yellow"
+
+/area/geminus_underground/innie/echo
+	name = "\improper Geminus Insurrection Base Echo Sector"
+	icon_state = "blueold"

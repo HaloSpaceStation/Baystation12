@@ -25,6 +25,14 @@
 		broke = FALSE
 	GLOB.processing_objects += src
 
+/obj/docking_umbilical/ex_act()
+	if(current_connected)
+		visible_message("<span class = 'notice'>The explosion disconnects the umbilical!</span>")
+		current_connected.visual_umbi_change(1)
+		current_connected.current_connected = null
+		visual_umbi_change(1)
+		current_connected = null
+
 /obj/docking_umbilical/proc/ship_setup()
 	our_ship = map_sectors["[z]"]
 	if(!isnull(our_ship))
@@ -96,8 +104,8 @@
 
 /obj/docking_umbilical/MouseDrop(var/obj/over_object)
 	var/mob/user = usr
-	if(!istype(over_object)) return
-	if(istype(over_object,/obj/vehicles)) return //Yeah no vehicles-through-umbilical thanks. use a dropship.
+	if(!istype(over_object,/obj)) return
+	if(istype(over_object,/obj/vehicles) || istype(over_object,/obj/mecha)) return //Yeah no vehicles-through-umbilical thanks. use a dropship.
 	if(over_object.anchored) return
 	if(!Adjacent(user) || !user.Adjacent(over_object)) return
 	user.visible_message("<span class = 'notice'>[user] starts loading [over_object] through [src]\'s airlock.</span>")
