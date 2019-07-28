@@ -69,21 +69,19 @@
 
 //Hand Cannon
 
-/obj/item/weapon/gun/projectile/handcannon
+/obj/item/weapon/gun/projectile/heavysniper/handgonne
 	name = "Handgonne"
-	desc = "A very rare sidearm made for some kind of big game hunting. Takes 14.5mm."
+	desc = "A very rare sidearm made for some kind of big game hunting. Takes 14.5mm shells."
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "handcannon"
 	item_state = "handgonne"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	caliber = "14.5mm"
-	screen_shake = 1 //extra kickback
-	handle_casings = HOLD_CASINGS
-	load_method = SINGLE_CASING
-	max_shells = 1
+	screen_shake = 2 //extra kickback
+	max_shells = 2
+	one_hand_penalty = 0
 	ammo_type = /obj/item/ammo_casing/a145_ap/tracerless
 	w_class = ITEM_SIZE_NORMAL
-	var/bolt_open = 0
 	accuracy = 1
 
 	item_icons = list(
@@ -91,26 +89,5 @@
 		slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',
 		)
 
-/obj/item/weapon/gun/projectile/handcannon/update_icon()
-	..()
-	if(bolt_open)
-		icon_state = "handcannon_unloaded"
-	else
-		icon_state = "handcannon"
-
-/obj/item/weapon/gun/projectile/handcannon/attack_self(mob/user as mob)
-	playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
-	bolt_open = !bolt_open
-	if(bolt_open)
-		if(chambered)
-			to_chat(user, "<span class='notice'>You flip the gun open, ejecting [chambered]!</span>")
-			chambered.loc = get_turf(src)
-			loaded -= chambered
-			chambered = null
-		else
-			to_chat(user, "<span class='notice'>You flip the gun open.</span>")
-	else
-		to_chat(user, "<span class='notice'>You flip the gun closed.</span>")
-		bolt_open = 0
-	add_fingerprint(user)
-	update_icon()
+/obj/item/weapon/gun/projectile/heavysniper/handgonne/scope()
+	 return
