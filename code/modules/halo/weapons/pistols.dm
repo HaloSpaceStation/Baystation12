@@ -82,8 +82,8 @@
 	load_method = SINGLE_CASING
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a145_ap/tracerless
-	w_class = ITEM_SIZE_NORMAL
-		var/bolt_open = 0
+	 w_class = ITEM_SIZE_NORMAL
+	var/bolt_open = 0
 	accuracy = 1
 
 	item_icons = list(
