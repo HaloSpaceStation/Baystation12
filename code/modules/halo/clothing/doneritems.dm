@@ -5,6 +5,59 @@
 #define MARINE_OVERRIDE 'code/modules/halo/clothing/marine.dmi'
 #define MARINE_INHAND 'code/modules/halo/clothing/marine_items.dmi'
 
+////////ashvor\\\\\\\\
+
+//Marine
+
+/obj/item/clothing/under/unsc/marine_fatigues/ashvor
+	desc = "Reach Variant of the standard issue uniform for UNSC Marine Corps."
+	name = "UNSC Reach Marine Fatigues"
+	item_state = "ashvor uniform"
+	icon_state = "ashvor uniform-inslot"
+	worn_state = "ashvor uniform"
+	starting_accessories = /obj/item/clothing/accessory/badge/tags
+
+/obj/item/clothing/head/helmet/eva/marine/ashvor
+	desc = "The ECH252 is an enclosed variant of the standard CH252 helmet. The helmet can be fully enclosed and environmentally sealed,"
+	name = "ECH252 Enclosed Helmet"
+	item_state = "ashvor helmet"
+	icon_state = "ashvor helmet-inslot"
+
+/obj/item/clothing/suit/spaceeva/eva/ashvor
+	desc = "A pressurized Atmospheric/Exoatmospheric (A/X) version of the standard M52 Body Armor, Worn mitigate the atmospheric hazards caused by nearby glassing,"
+	name = "M52A/X Body Armor"
+	item_state = "ashvor armor"
+	icon_state = "ashvor armor-inslot"
+
+/obj/item/clothing/gloves/thick/unsc/ashvor
+	desc = "The Reach variant of the combat gloves worn by the members of the UNSC Marine Corps,"
+	name = "Reach Combat Gloves"
+	icon = MARINE_INHAND
+	icon_override = MARINE_OVERRIDE
+	item_state = "ashvor gloves"
+	icon_state = "ashvor gloves-inslot"
+
+/obj/item/clothing/shoes/eva/marine/ashvor
+	desc = "A sealed variant of the combat boots worn by the members of the UNSC Marine Corps,"
+	name = "A/X Combat Boots"
+	item_state = "ashvor boots"
+	icon_state = "ashvor boots-inslot"
+
+/obj/item/weapon/storage/backpack/odst/regular/ashvor
+	desc = "The Reach variant of the standard backpack worn by the members of the UNSC Marine Corps, UNSC Army, and UNSC Air Force."
+	name = "UNSC Reach Backpack"
+	item_state = "ashvor backpack"
+	icon_state = "ashvor backpack-inslot"
+
+/decl/hierarchy/outfit/ashvor
+	name = "ashvor - marine"
+	uniform = /obj/item/clothing/under/unsc/marine_fatigues/ashvor
+	suit = /obj/item/clothing/suit/spaceeva/eva/ashvor
+	shoes = /obj/item/clothing/shoes/eva/marine/ashvor
+	gloves = /obj/item/clothing/gloves/thick/unsc/ashvor
+	head = /obj/item/clothing/head/helmet/eva/marine/ashvor
+	back = /obj/item/weapon/storage/backpack/odst/regular/ashvor
+
 
 ////////caelumz\\\\\\\\
 
@@ -937,6 +990,38 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	icon_override = MARINE_OVERRIDE
 	item_state = "sleepybandana"
 	icon_state = "sleepybandana"
+
+/decl/hierarchy/outfit/sleepy_marine
+	name = "sleepy - marine"
+	uniform = /obj/item/clothing/under/urfc_jumpsuit/sleepy_retard
+	mask = /obj/item/clothing/mask/marine/sleepy_retard
+	suit = /obj/item/clothing/suit/storage/marine/sleepy_retard
+	shoes = /obj/item/clothing/shoes/marine/sleepy_retard
+	gloves = /obj/item/clothing/gloves/thick/unsc/sleepy_retard
+	head = /obj/item/clothing/head/helmet/marine/sleepy_retard
+
+//ODST
+
+/obj/item/clothing/head/helmet/odst/engineer/sleepy
+	name = "Customized ODST Helmet"
+
+	item_state = "sleepy odst-helmet-onmob"
+	icon_state = "sleepy odst-helmet-icon"
+
+
+/obj/item/clothing/suit/armor/special/odst/sleepy
+	name = "Customized ODST Armour"
+
+	item_state = "sleepy odst-armor-onmob"
+	icon_state = "sleepy odst-armour-icon"
+
+/obj/item/weapon/storage/backpack/odst/sleepy
+	name = "Customized ODST Backpack"
+	icon = ITEM_INHAND
+	icon_override = ODST_OVERRIDE
+	name = "Customized Backpack"
+	item_state = "sleepy odst-backpack-onmob"
+	icon_state = "sleepy odst-backpack-icon"
 
 /decl/hierarchy/outfit/sleepy_marine
 	name = "sleepy - marine"
