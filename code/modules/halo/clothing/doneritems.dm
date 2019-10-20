@@ -508,6 +508,35 @@
 	belt = /obj/item/weapon/gun/projectile/m6d_magnum
 	back = /obj/item/weapon/gun/projectile/ma5b_ar
 
+////////Loafe\\\\\\\\
+
+//ODST
+
+/obj/item/clothing/head/helmet/odst/donator/loaf
+	name = "Loaf's ODST Helmet"
+	item_state = "loaf-helmet_worn"
+	icon_state = "loaf-helmet_obj"
+	item_state_novisr = "loaf-helmet_worn"
+	icon_state_novisr = "loaf-helmet_obj"
+
+/obj/item/clothing/suit/armor/special/odst/donator/loaf
+	name = "Loaf's ODST Armor"
+	icon_state = "loaf-armor_obj"
+	item_state = "loaf-armor_worn"
+
+/obj/item/weapon/storage/backpack/odst/loaf
+	icon = ITEM_INHAND
+	icon_override = ODST_OVERRIDE
+	name = "Loaf's Backpack"
+	item_state = "loaf-backpack_worn"
+	icon_state = "loaf-backpack_obj"
+
+/decl/hierarchy/outfit/loaf_odst
+	name = "loaf - ODST"
+	head = /obj/item/clothing/head/helmet/odst/donator/loaf
+	suit = /obj/item/clothing/suit/armor/special/odst/donator/loaf
+	back = /obj/item/weapon/storage/backpack/odst/loaf
+
 
 ////////mann\\\\\\\\\
 
