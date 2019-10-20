@@ -508,7 +508,7 @@
 	belt = /obj/item/weapon/gun/projectile/m6d_magnum
 	back = /obj/item/weapon/gun/projectile/ma5b_ar
 
-////////Loafe\\\\\\\\
+////////Loaf\\\\\\\\
 
 //ODST
 
