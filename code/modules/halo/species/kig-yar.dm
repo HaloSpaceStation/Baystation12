@@ -23,6 +23,7 @@
 	item_icon_offsets = list(0,0)
 	total_health = 200
 	default_faction = "Covenant"
+	unarmed_types = list(/datum/unarmed_attack/bird_punch)
 
 	has_limbs = list(
 		BP_CHEST =  list("path" = /obj/item/organ/external/chest),
@@ -85,6 +86,7 @@
 	deform = 'code/modules/halo/icons/species/r_skirmishers.dmi'
 	icon_template = 'code/modules/halo/icons/species/r_skirmisher_template.dmi'
 	default_faction = "Covenant"
+	unarmed_types = list(/datum/unarmed_attack/bird_punch)
 
 	pain_mod = 0.8
 	brute_mod = 1.2
@@ -124,3 +126,12 @@
 	icon_state = "h_quills"
 	name = "Quills"
 	species_allowed = list("Tvaoan Kig-Yar")
+
+/datum/unarmed_attack/bird_punch
+    attack_verb = list("claws", "kicks", "strikes", "slashes", "rips", "bites")
+    attack_noun = list("talon")
+    eye_attack_text = "fingers"
+    eye_attack_text_victim = "digits"
+    damage = 0
+    edge = 1
+    sharp = 1
