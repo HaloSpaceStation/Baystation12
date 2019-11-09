@@ -16,6 +16,8 @@
 		/datum/job/unscbertels_co,\
 		/datum/job/unscbertels_xo,\
 		/datum/job/bertelsunsc_ship_marine,\
+		/datum/job/unscbertels_ship_crew,\
+		/datum/job/unsc_ship_iwo,\
 		/datum/job/unsc_ship_marineplatoon,\
 		/datum/job/bertelsODST,\
 		/datum/job/bertelsODSTO,\
@@ -30,7 +32,10 @@
 		/datum/job/covenant/kigyarminor,\
 		/datum/job/covenant/unggoy_minor,\
 		/datum/job/covenant/skirmmurmillo,\
-		/datum/job/covenant/skirmcommando)
+		/datum/job/covenant/skirmcommando,\
+		/datum/job/covenant/brute_minor,\
+		/datum/job/covenant/brute_major,\
+		/datum/job/covenant/brute_captain)
 
 	allowed_spawns = list(\
 		DEFAULT_SPAWNPOINT_ID,\

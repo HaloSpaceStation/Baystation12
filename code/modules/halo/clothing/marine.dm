@@ -93,7 +93,7 @@
 	siemens_coefficient = 0.6
 	body_parts_covered = FEET|LEGS
 	can_hold_knife = 1
-	stepsound = 'sound/effects/jackboot.ogg'
+	stepsound = 'code/modules/halo/sounds/walk_sounds/marine_boots.ogg'
 	cold_protection = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = FEET
@@ -119,7 +119,7 @@
 	item_state = "UNSC Marine Medical Belt"*/
 	storage_slots = 5
 
-	can_hold = list(/obj/item/ammo_magazine/m5,/obj/item/ammo_magazine/m127_saphp,/obj/item/ammo_magazine/m127_saphe,/obj/item/weapon/storage/firstaid/unsc)
+	can_hold = list(/obj/item/ammo_magazine/m5,/obj/item/ammo_magazine/m127_saphp,/obj/item/ammo_magazine/m127_saphe,/obj/item/weapon/storage/firstaid/unsc,/obj/item/weapon/storage/firstaid/erk,/obj/item/weapon/storage/firstaid/combat/unsc)
 
 /obj/item/clothing/mask/marine
 	name = "marine bandana"
@@ -223,6 +223,7 @@
 	name = "\improper EVA Marine Helmet"
 	desc = "A universally used helmet to protect one's head against the vacuum when doing EVA."
 	icon = 'code/modules/halo/clothing/marine.dmi'
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = FACE|HEAD
 	icon = ITEM_INHAND
 	icon_override = MARINE_OVERRIDE

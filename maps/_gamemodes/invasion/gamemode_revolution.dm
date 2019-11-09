@@ -7,7 +7,7 @@
 	required_players = 0
 	end_conditions_required = 1
 	factions = list(/datum/faction/unsc, /datum/faction/insurrection)
-	overmap_hide = list(/obj/effect/overmap/sector/exo_research, /obj/effect/overmap/sector/exo_listen, /obj/effect/overmap/ship/soe_osprey, /obj/effect/overmap/ship/covenant_corvette)
+	overmap_hide = list(/obj/effect/overmap/sector/exo_research, /obj/effect/overmap/sector/exo_listen, /obj/effect/overmap/ship/soe_argentum, /obj/effect/overmap/ship/covenant_light_cruiser)
 	disabled_jobs_types = list(\
 		/datum/job/researchdirector,\
 		/datum/job/researcher,\
@@ -39,7 +39,7 @@
 	var/datum/objective/retrieve/nav_data/cole_protocol/obj2 = locate() in GLOB.UNSC.all_objectives
 	obj2.fake = 1
 
-	var/datum/objective/destroy_ship/unsc_cov/obj3 = locate() in GLOB.UNSC.all_objectives
+	var/datum/objective/overmap/unsc_cov_ship/obj3 = locate() in GLOB.UNSC.all_objectives
 	obj3.fake = 1
 
 	var/datum/objective/retrieve/artifact/unsc/obj4 = locate() in GLOB.UNSC.all_objectives

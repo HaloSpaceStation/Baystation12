@@ -76,7 +76,6 @@
 		slot_l_hand_str = null,
 		slot_r_hand_str = null,
 		)
-	armor_thickness = 20
 
 
 /obj/item/clothing/shoes/magboots/odst
@@ -89,6 +88,7 @@
 	item_state = "magboots"
 	can_hold_knife = 1
 	force = 5
+	stepsound = 'code/modules/halo/sounds/walk_sounds/marine_boots.ogg'
 
 //Defines for armour subtypes//
 

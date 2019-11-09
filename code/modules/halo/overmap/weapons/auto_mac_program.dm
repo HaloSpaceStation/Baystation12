@@ -4,6 +4,7 @@ datum/computer_file/program/auto_mac
 	filedesc = "MAC Automated Fire Control"
 	program_icon_state = "forensic"
 	nanomodule_path = /datum/nano_module/auto_mac
+	available_on_ntnet = 0
 	extended_desc = "Reroutes targetted_ship and firing the onboard Magnetic Accelerator Cannon to the AI subroutines."
 	size = 30
 
@@ -139,7 +140,7 @@ datum/computer_file/program/auto_mac
 /datum/nano_module/auto_mac/proc/trigger_prox(var/atom/triggering)
 	if(istype(triggering, /obj/effect/overmap/ship))
 		var/obj/effect/overmap/ship/S = triggering
-		if(S.faction in hostile_factions)
+		if(S.get_faction() in hostile_factions)
 			target_ships |= S
 
 /datum/nano_module/auto_mac/proc/prox_turfs_changed(var/list/new_turfs, var/list/old_turfs)

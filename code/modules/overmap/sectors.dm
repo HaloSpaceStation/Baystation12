@@ -4,6 +4,7 @@
 GLOBAL_LIST_EMPTY(overmap_tiles_uncontrolled) //This is any overmap sectors that are uncontrolled by any faction
 
 GLOBAL_LIST_EMPTY(overmap_spawn_near)
+GLOBAL_LIST_EMPTY(overmap_spawn_in)
 
 var/list/points_of_interest = list()
 
@@ -11,6 +12,7 @@ var/list/points_of_interest = list()
 	name = "map object"
 	icon = 'icons/obj/overmap.dmi'
 	icon_state = "object"
+	dir = 1
 	var/list/map_z = list()
 	var/list/map_z_data = list()
 	var/list/targeting_locations = list() // Format: "location" = list(TOP_LEFT_X,TOP_LEFT_Y,BOTTOM_RIGHT_X,BOTTOM_RIGHT_Y)
@@ -42,6 +44,7 @@ var/list/points_of_interest = list()
 
 	var/glassed = 0
 	var/nuked = 0
+	var/demolished = 0
 
 	var/last_adminwarn_attack = 0
 
@@ -51,6 +54,10 @@ var/list/points_of_interest = list()
 	var/parent_area_type
 
 	var/list/overmap_spawn_near_me = list()	//type path of other overmap objects to spawn near this object
+	var/list/overmap_spawn_in_me = list()	//type path of other overmap objects to spawn inside this object
+
+	var/datum/pixel_transform/my_pixel_transform
+	var/list/my_observers = list()
 
 /obj/effect/overmap/New()
 	//this should already be named with a custom name by this point
@@ -72,6 +79,9 @@ var/list/points_of_interest = list()
 	for(var/entry in overmap_spawn_near_me)
 		GLOB.overmap_spawn_near[entry] = src
 
+	for(var/entry in overmap_spawn_in_me)
+		GLOB.overmap_spawn_in[entry] = src
+
 	setup_object()
 	generate_targetable_areas()
 
@@ -86,13 +96,22 @@ var/list/points_of_interest = list()
 		src.forceMove(pick(spawn_locs))
 		GLOB.overmap_spawn_near -= src.type
 
+	summoning_me = GLOB.overmap_spawn_in[src.type]
+	if(summoning_me)
+		src.forceMove(summoning_me)
+		GLOB.overmap_spawn_in -= src.type
+
 	if(flagship && faction)
 		var/datum/faction/F = GLOB.factions_by_name[faction]
 		F.flagship = src
+		F.get_flagship_name()	//update the archived name
 
 	if(base && faction)
 		var/datum/faction/F = GLOB.factions_by_name[faction]
 		F.base = src
+		F.get_base_name()		//update the archived name
+
+	my_faction = GLOB.factions_by_name[faction]
 
 /obj/effect/overmap/proc/generate_targetable_areas()
 	if(isnull(parent_area_type))
