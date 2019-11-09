@@ -997,5 +997,20 @@
 
 	integrated_hud = /obj/item/clothing/glasses/hud/tactical
 
+/obj/item/clothing/suit/bio_suit/urf
+	name = "Dusty Hazmat Suit"
+	desc = "A dusty rubber suit, lined with lead. Smells of graphite."
+	icon = INNIE_OVERRIDE
+	icon_state = "liquidatorsuit"
+	icon_override = INNIE_OVERRIDE
+	item_state = "liquidatorsuit"
+
+/obj/item/clothing/head/bio_hood/urf
+	name = "Dusty Hazmat Hood"
+	desc = "A dusty rubber suit's hood. Not great, not terrible."
+	icon = INNIE_OVERRIDE
+	icon_state = "liquidatorhelmet"
+	item_state = "liquidatorhelmet"
+	icon_override = INNIE_OVERRIDE
 
 #undef INNIE_OVERRIDE
