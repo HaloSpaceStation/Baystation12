@@ -68,6 +68,13 @@
 	suit = /obj/item/clothing/suit/armor/jiralhanae/covenant/captain
 	back = /obj/item/clothing/jiralhanae_flag_random
 
+/decl/hierarchy/outfit/jiralhanae/covenant/chieftan
+	name = "Covenant Jiralhanae Chieftan"
+
+	head = /obj/item/clothing/head/helmet/jiralhanae/covenant/chieftan
+	suit = /obj/item/clothing/suit/armor/jiralhanae/covenant/chieftan
+	back = /obj/item/weapon/grav_hammer
+
 /* Ram Clan Jiralhanae */
 
 /decl/hierarchy/outfit/jiralhanae_ramclan

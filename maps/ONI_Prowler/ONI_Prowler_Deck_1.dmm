@@ -300,7 +300,7 @@
 "fN" = (/obj/machinery/computer/cryopod,/turf/simulated/wall/r_wall,/area/corvette/onifox/cryodorms)
 "fO" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/plating,/area/corvette/onifox/starboardengine)
 "fP" = (/obj/machinery/light{icon_state = "tube1"; dir = 4},/turf/simulated/floor/plating,/area/corvette/onifox/starboardengine)
-"fQ" = (/obj/machinery/organ_printer/flesh/mapped,/turf/simulated/floor/tiled/white,/area/corvette/onifox/medbay)
+"fQ" = (/obj/structure/repair_bench,/turf/simulated/floor/tiled/dark,/area/space)
 "fR" = (/obj/effect/hull_segment,/obj/structure/mirror,/turf/simulated/wall/r_wall,/area/corvette/onifox/Crewmess)
 "fS" = (/obj/structure/mirror,/turf/simulated/wall/r_wall,/area/corvette/onifox/Crewmess)
 "fT" = (/obj/machinery/door/blast/regular{_wifi_id = "prowlerhallwayairlock"; id = "prowlerhallwayairlock"},/turf/simulated/floor/tiled/dark,/area/corvette/onifox/umbilical)
@@ -313,6 +313,9 @@
 "ga" = (/obj/machinery/door/firedoor/multi_tile{tag = "icon-door_open (NORTH)"; icon_state = "door_open"; dir = 1},/obj/machinery/door/airlock/multi_tile/halo{name = "Medical Bay"; req_access = list(117)},/obj/structure/cable/blue{icon_state = "4-8"},/obj/machinery/door/blast/regular{_wifi_id = "prowlermedbay"; id = "prowlermedbay"},/turf/simulated/floor/tiled/white,/area/corvette/onifox/medbay)
 "gb" = (/obj/machinery/button/remote/blast_door{_wifi_id = "prowlerportreactor"; id = "prowlerportreactor"; name = "Blast Door Control"; pixel_x = 24; pixel_y = 0; req_access = list(117)},/turf/simulated/floor/tiled/dark,/area/corvette/onifox/umbilical)
 "gc" = (/obj/machinery/button/remote/blast_door{_wifi_id = "prowlerportreactor"; id = "prowlerportreactor"; name = "Blast Door Control"; pixel_x = -24; pixel_y = 0; req_access = list(117)},/turf/simulated/floor/plating,/area/corvette/onifox/Reactorcore)
+"gd" = (/obj/machinery/organ_printer/flesh/mapped{stored_matter = 10000},/turf/simulated/floor/tiled/white,/area/corvette/onifox/medbay)
+"ge" = (/obj/structure/closet/crate/large{icon_state = "secgearcrate"; name = "Metal Crate"; tag = "icon-secgearcrate"},/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/machinery/light/colored/orange,/turf/simulated/floor/plating,/area/corvette/onifox/Reactorcore)
+"gf" = (/obj/structure/closet/crate/large{icon_state = "secgearcrate"; name = "Metal Crate"; tag = "icon-secgearcrate"},/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/obj/item/stack/material/steel/fifty,/turf/simulated/floor/plating,/area/corvette/onifox/Reactorcore)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -339,7 +342,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaKaoamaramar
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNaNaNaNaNaNaKaaaaaaaaaaaaaaaaaaaKaKaKaKawamawamawamawamababasatasaOaiaiaIaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaNaNaNaNaNaNaNaKaKaKaKaKaKaKaKaKaKaKaKaKaKaxamaxamaxamaxamababauaPaQabaRaSaIaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaNaNaTaNaNaNaNaNaNaUaKaKaKaKblblfRaKaKfSaKaKaKaAaBaAaBaAaBaAamababbcbdbebebfbebebeaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaNaNaNaNbgaNaNaNaNaNaNaNbjbibhbmbkbnbnbnbobpbsbtbuaKaCaAaAaAaEaAaCamaFaGcIaVbebvbybzbAbeaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaNaNaNaNbgaNaNaNaNaNaNaNbjbibhbmbkbnbnbnbobpbsbtbuaKaCaAaAaAfQaAaCamaFaGcIaVbebvbybzbAbeaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaNaNaNaNaNaNaNaNbBbCbDaNaNbnbnbnbnbnbnbnbnbEbEbFbnbEaKaCaAaAaAaWaAaCamaXaXaYaZbebGbHbIbebeaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaNaNaNaNaNbJbKbLaNaNbnbMbnbnbMbnbnbnbNbObFbMbPaKbaaAaAbbaEaAbqamaXaXcIaVbebGbQbHbebeaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaNaNaTbRaNbSaNaNbraNaNaKaKaKbUaKaKaKaKaKaKbTaKaKaKambVbwamamamamamaXaXcIaVbebWbebebebeaaaaaaaaaaaaaa
@@ -350,8 +353,8 @@ aaaaaaaaaaaaaaaaaacqcZcsdacFdbdcddbLdedfaNdgdgeHcPdidjdkdldmdndodpdqcRezdsfYcXdt
 aaaaaaaaaaaaaaaaaaaNaNaNaNdFbYdFaNdGdHdIaNdJdgdhcPdLdkdkdMdkdNdodOdPcRfXdRdScXdTdUdvdVdWdXdYdXdZeaebdEcXcXaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaNaNaTecaNedaNeeaNefaNegdgdKcPeheidkdkdkejdodOdkewcVePcEekeAeAfUdVelemendYdXeoepdEcXcXaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaNaNaNaNaNeqeraNesaNdJdgfgcPdkdkdkdkdkdketeuevgaexfVcVeydvdvfWeBeAeAeCeDeAeEdvdEcXcXaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaNaNaNaNaNaNaNaNeFeGaNaNaNegdgfMcPeIeJfZeKeLfQeMeNeOcRdrcVgbdEgcdvdveQdvdvdveRdvdveSdEcXcXaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaNaNaNaNaNaNaNaNaNaNaNaNcPcPcPcPcRcRcRcRcRcRcRcRcRcReTeUeVcXeWdvdveXeWdvdveRdveWeSdEcXcXaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaNaNaNaNaNaNaNaNeFeGaNaNaNegdgfMcPeIeJfZeKeLgdeMeNeOcRdrcVgbdEgcdvdveQdvdvdveRdvdveSdEcXcXaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaNaNaNaNaNaNaNaNaNaNaNaNcPcPcPcPcRcRcRcRcRcRcRcRcRcReTeUeVcXgegfdveXeWdvdveRdveWeSdEcXcXaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaNaNaTaNaNaNaNaNaNeYcPcPcPcRcRcReZcRcRcRcRcRcRfacVdScYdEdEdEfbdEdEfceRdEdEfbdEcXcXaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaNaNaNaNaNaNaNcPcPcPcPcRcRcRcRcRcRcRcRcRcRcVfdfecXcXcXcXcXfffCfhfifjfkcYfhflaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNaNaNaNaNaNcPaaaaaaaaaaaaaaaaaacRcRcRcRcXcXcXcXcXcXcXcXcXcXfhfmfnfncXfoflaaaaaaaaaaaaaaaa

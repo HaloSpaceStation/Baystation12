@@ -103,8 +103,12 @@ GLOBAL_LIST_INIT(first_names_jiralhanae, world.file2list('code/modules/halo/spec
 
 /obj/item/clothing/head/helmet/jiralhanae/covenant/captain
 	name = "Jiralhanae Helm (Captain)"
-	desc = "This modified helmet is of some significance to Jiralhanae clans. It is a mark of importance, however now diminished by the covenant hierarchy."
 	icon_state = "helm_captain"
+
+/obj/item/clothing/head/helmet/jiralhanae/covenant/chieftan
+	name = "Jiralhanae Helm (Chieftan)"
+	desc = "This modified helmet is of some significance to Jiralhanae clans. It is a mark of importance, however now diminished by the covenant hierarchy."
+	icon_state = "helm_chieftain_blue"
 
 /* ARMOUR */
 
@@ -190,8 +194,12 @@ GLOBAL_LIST_INIT(first_names_jiralhanae, world.file2list('code/modules/halo/spec
 
 /obj/item/clothing/suit/armor/jiralhanae/covenant/captain
 	name = "Jiralhanae Armor (Captain)"
-	desc = "This modified armor used to be a mark of importance to a Jiralhanae clan. The Covenant hierarchy has diminished it's power."
 	icon_state = "armour_captain"
+
+/obj/item/clothing/suit/armor/jiralhanae/covenant/chieftan
+	name = "Jiralhanae Armor (Chieftan)"
+	desc = "This modified armor used to be a mark of importance to a Jiralhanae clan. The Covenant hierarchy has diminished it's power."
+	icon_state = "armour_chieftain_blue"
 
 /* SHOES */
 
