@@ -708,7 +708,6 @@ BLIND     // can't see anything
 	ret.icon_state = "[ret.icon_state]_s"
 	return ret
 
-
 /obj/item/clothing/under/attack_hand(var/mob/user)
 	if(accessories && accessories.len)
 		..()
@@ -950,17 +949,15 @@ BLIND     // can't see anything
 		to_chat(usr, "<span class='notice'>You cannot fit your [src]</span>")
 		return
 	if(rolled_sleeves == 1)
-		to_chat(usr, "<span class='notice'>You cannott fit the [src]'s with your sleeves up!</span>")
+		to_chat(usr, "<span class='notice'>You cannot fit the [src]'s with your sleeves up!</span>")
 		return
 
 
 	fitfemale_down = !fitfemale_down
 	if(fitfemale_down)
-		body_parts_covered &= ~(ARMS|HANDS)
 		item_state_slots[slot_w_uniform_str] = "[worn_state]_f"
 		to_chat(usr, "<span class='notice'>You fit up your [src] into a female version.</span>")
 	else
-		body_parts_covered = initial(body_parts_covered)
 		item_state_slots[slot_w_uniform_str] = "[worn_state]"
 		to_chat(usr, "<span class='notice'>You let [src] be baggy.</span>")
 	update_clothing_icon()
