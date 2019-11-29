@@ -8,6 +8,8 @@
 	belt = /obj/item/weapon/storage/belt/marine_ammo
 	l_ear = /obj/item/device/radio/headset/unsc/spartan
 	suit_store = /obj/item/weapon/tank/emergency/oxygen/double
+	id_slot = slot_wear_id
+	id_type = /obj/item/weapon/card/id/oni
 
 /decl/hierarchy/outfit/onispartan/po3
 	name = "Spartan II PO3"
