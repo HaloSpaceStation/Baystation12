@@ -7,6 +7,7 @@
 /obj/item/weapon/robot_module/huragok_lifeworker/New()
 	src.modules += new /obj/item/weapon/crowbar/covenant(src)
 	src.modules += new /obj/item/device/flash(src)
+	src.modules += new /obj/item/weapon/gripper/cilia(src)
 	src.modules += new /obj/item/borg/sight/hud/med(src)
 	src.modules += new /obj/item/device/healthanalyzer(src)
 	src.modules += new /obj/item/device/reagent_scanner/adv(src)
