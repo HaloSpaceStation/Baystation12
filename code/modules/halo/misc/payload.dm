@@ -19,13 +19,13 @@
 	var/activeoverlay = "MFDD Armed Screen"
 	var/strength=1 //The size of the explosion
 	var/free_explode = 0
-	var/list/blocked_species = COVENANT_SPECIES_AND_MOBS
+//	var/list/blocked_species = COVENANT_SPECIES_AND_MOBS
 
 /obj/payload/attack_hand(var/mob/living/carbon/human/user)
 	if(!exploding)
-		if(blocked_species.len && user.species in blocked_species)
+/*		if(blocked_species.len && user.species in blocked_species)
 			to_chat(user,"<span class='warning'>Your species does not know how to use that!</span>")
-			return
+			return*/
 		if(!checkturf())
 			src.visible_message("<span class='danger'>The [src] beeps a warning:'OPTIMAL LOCATION NOT REACHED'</span>")
 		else
@@ -128,7 +128,7 @@
 	seconds_to_disarm = 60
 	strength=1.5
 	explodetype = /datum/explosion
-	blocked_species = list(/datum/species/human)
+//	blocked_species = list(/datum/species/human)
 
 /obj/item/weapon/pinpointer/advpinpointer/bombplantlocator
 	name = "Optimal Ordinance Yield Locator"
