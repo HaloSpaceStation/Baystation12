@@ -25,6 +25,7 @@
 	if(!exploding)
 		if(blocked_species.len && user.species in blocked_species)
 			to_chat(user,"<span class='warning'>Your species does not know how to use that!</span>")
+			return
 		if(!checkturf())
 			src.visible_message("<span class='danger'>The [src] beeps a warning:'OPTIMAL LOCATION NOT REACHED'</span>")
 		else
