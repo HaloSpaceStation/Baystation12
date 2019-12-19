@@ -57,11 +57,11 @@
 		overlays -= activeoverlay
 
 /obj/payload/proc/checkturf()
-  if(free_explode)
-    return 1
-  for(var/obj/effect/bomblocation/b in range(0,src))
-    return 1
-  return 0
+	if(free_explode)
+		return 1
+	for(var/obj/effect/bomblocation/b in range(0,src))
+		return 1
+	return 0
 
 
 /obj/payload/proc/checknextto()
