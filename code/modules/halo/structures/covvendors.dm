@@ -207,8 +207,8 @@
 	desc = "A vendor that supplies medical equipment"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
-	products = list(/obj/item/weapon/storage/firstaid/unsc/cov = 5, /obj/item/weapon/storage/firstaid/regular/covenant = 10, /obj/item/weapon/storage/firstaid/fire/covenant = 5
-		,/obj/item/weapon/storage/firstaid/o2/covenant = 5,/obj/item/weapon/storage/firstaid/toxin/covenant = 5,/obj/item/weapon/storage/firstaid/erk/cov = 5,/obj/item/weapon/storage/firstaid/combat/unsc/cov = 5,/obj/item/weapon/storage/firstaid/adv = 5)
+	products = list(/obj/item/weapon/storage/firstaid/unsc/cov = 5, /obj/item/weapon/storage/firstaid/regular/covenant = 5, /obj/item/weapon/storage/firstaid/fire/covenant = 2
+		,/obj/item/weapon/storage/firstaid/o2/covenant = 2,/obj/item/weapon/storage/firstaid/toxin/covenant = 2,/obj/item/weapon/storage/firstaid/erk/cov = 2,/obj/item/weapon/storage/firstaid/combat/unsc/cov = 2,/obj/item/weapon/storage/firstaid/adv = 2)
 
 /obj/machinery/vending/armory/covenant/general/medical/surgery
 	name = "Covenant - Surgery Vendor"
