@@ -123,7 +123,7 @@
 	desc = "Storage for Covenant Kig-Yar weapons and ammo"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
-	products = list(/obj/item/weapon/gun/energy/plasmapistol = 25,/obj/item/weapon/gun/projectile/needler = 1,/obj/item/weapon/gun/projectile/type51carbine = 6
+	products = list(/obj/item/weapon/gun/energy/plasmapistol = 15,/obj/item/weapon/gun/projectile/needler = 1,/obj/item/weapon/gun/projectile/type51carbine = 6
 		,/obj/item/ammo_magazine/needles = 6,/obj/item/ammo_magazine/type51mag = 24,/obj/item/weapon/gun/projectile/type31needlerifle = 2,/obj/item/ammo_magazine/rifleneedlepack = 24,/obj/item/weapon/grenade/plasma = 6,/obj/item/weapon/melee/blamite/cutlass = 1
 		,/obj/item/weapon/melee/energy/elite_sword/dagger = 4)
 
