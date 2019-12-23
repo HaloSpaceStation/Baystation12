@@ -74,8 +74,8 @@
 	desc = "Storage for Covenant Sangheili weapons and ammo"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
-	products = list(/obj/item/weapon/gun/energy/plasmapistol = 25,/obj/item/weapon/gun/energy/plasmarifle = 5,/obj/item/weapon/gun/projectile/type31needlerifle = 3
-		,/obj/item/weapon/gun/projectile/type51carbine = 3,/obj/item/ammo_magazine/rifleneedlepack = 12,/obj/item/ammo_magazine/type51mag = 24,/obj/item/weapon/grenade/plasma = 12)
+	products = list(/obj/item/weapon/gun/energy/plasmapistol = 15,/obj/item/weapon/gun/energy/plasmarifle = 5,/obj/item/weapon/gun/projectile/type31needlerifle = 3
+		,/obj/item/weapon/gun/projectile/type51carbine = 3,/obj/item/ammo_magazine/rifleneedlepack = 24,/obj/item/ammo_magazine/type51mag = 24,/obj/item/weapon/grenade/plasma = 12)
 
 /obj/machinery/vending/armory/covenant/sangheili/equipment // Equipment for Sangheili
 	name = "Covenant - Sangheili Equipment Vendor"
