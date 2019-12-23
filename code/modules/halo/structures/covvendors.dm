@@ -156,7 +156,7 @@
 	desc = "Storage for Covenant Unggoy weapons and ammo"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
-	products = list(/obj/item/weapon/gun/energy/plasmapistol = 25,/obj/item/weapon/gun/projectile/needler = 3,/obj/item/ammo_magazine/needles = 24
+	products = list(/obj/item/weapon/gun/energy/plasmapistol = 15,/obj/item/weapon/gun/projectile/needler = 4,/obj/item/ammo_magazine/needles = 32
 		,/obj/item/weapon/grenade/plasma = 12,/obj/item/weapon/melee/energy/elite_sword/dagger = 12)
 
 /obj/machinery/vending/armory/covenant/unggoy/equipment // Equipment for Unggoy
