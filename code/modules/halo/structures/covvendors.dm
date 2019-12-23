@@ -179,21 +179,21 @@
 	desc = "A vendor for Sangheili oriented food."
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
-	products = list(/obj/item/weapon/reagent_containers/food/snacks/covenant/colo = 20,/obj/item/weapon/reagent_containers/food/snacks/covenant/colo/stew = 15,/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar = 60)
+	products = list(/obj/item/weapon/reagent_containers/food/snacks/covenant/colo = 20,/obj/item/weapon/reagent_containers/food/snacks/covenant/colo/stew = 15,/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar = 25)
 
 /obj/machinery/vending/armory/covenant/jiralhanae/food
 	name = "Covenant - Jiralhanae Food Vendor"
 	desc = "A vendor for Jiralhanae oriented food."
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
-	products = list(/obj/item/weapon/reagent_containers/food/snacks/covenant/thornbeast = 20,/obj/item/weapon/reagent_containers/food/snacks/covenant/thornbeast/thorn = 15,/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar = 60)
+	products = list(/obj/item/weapon/reagent_containers/food/snacks/covenant/thornbeast = 20,/obj/item/weapon/reagent_containers/food/snacks/covenant/thornbeast/thorn = 15,/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar = 25)
 
 /obj/machinery/vending/armory/covenant/kigyar/food
 	name = "Covenant - Kig-Yar Food Vendor"
 	desc = "A vendor for Kig-Yar oriented food."
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
-	products = list(/obj/item/weapon/reagent_containers/food/snacks/covenant/uoi = 20,/obj/item/weapon/reagent_containers/food/snacks/covenant/uoi/stew = 15,/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar = 60)
+	products = list(/obj/item/weapon/reagent_containers/food/snacks/covenant/uoi = 20,/obj/item/weapon/reagent_containers/food/snacks/covenant/uoi/stew = 15,/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar = 30)
 
 /obj/machinery/vending/armory/covenant/general/food
 	name = "Covenant - Lesser Food Vendor"
