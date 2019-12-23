@@ -200,7 +200,7 @@
 	desc = "A food vendor for the lesser species."
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
-	products = list(/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar = 120)
+	products = list(/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar = 35)
 
 /obj/machinery/vending/armory/covenant/general/medical
 	name = "Covenant - Medical Vendor"
