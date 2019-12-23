@@ -174,13 +174,6 @@
 	icon_deny = "covendor-deny"
 	products = list(/obj/item/weapon/gun/projectile/fuel_rod_launcher = 1,/obj/item/ammo_magazine/fuel_rod = 2,/obj/item/turret_deploy_kit/plasturret = 2)
 
-/obj/machinery/vending/armory/covenant/unggoy/supplies
-	name = "Covenant - Unggoy Supplies Vendor"
-	desc = "Storage for Unggoy supplies"
-	icon_state ="covendor" // SPRITES
-	icon_deny = "covendor-deny"
-	products = list(/obj/item/weapon/tank/methane/unggoy_internal = 60)
-
 /obj/machinery/vending/armory/covenant/sangheili/food
 	name = "Covenant - Sangheili Food Vendor"
 	desc = "A vendor for Sangheili oriented food."
