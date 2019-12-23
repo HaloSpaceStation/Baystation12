@@ -88,7 +88,7 @@
 		,/obj/item/weapon/pickaxe/plasma_drill = 1,/obj/item/weapon/plastique/covenant = 4,/obj/item/weapon/armor_patch/cov = 6)
 
 /obj/machinery/vending/armory/covenant/sangheili/heavy // Sangheili Heavy Weapons
-	name = "Covenant - Sangheili Heavy Weapons Vendor"
+	name = "Covenant - Sangheili Heavy Vendor"
 	desc = "Storage for Covenant Sangheili equipment"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
@@ -104,7 +104,7 @@
 		,/obj/item/weapon/grenade/frag/spike = 12,/obj/,/obj/item/ammo_magazine/spiker = 40,/obj/item/ammo_magazine/mauler = 40)
 
 /obj/machinery/vending/armory/covenant/jiralhanae/equipment // Equipment for Jiralhanae
-	name = "Covenant - Jiralhanae Weapon Vendor"
+	name = "Covenant - Jiralhanae Equipment Vendor"
 	desc = "Storage for Covenant Jiralhanae weapons and ammo"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
@@ -112,7 +112,7 @@
 		,/obj/item/weapon/storage/belt/covenant_medic = 5,/obj/item/weapon/storage/belt/covenant_ammo = 5,/obj/item/clothing/accessory/storage/bandolier/covenant = 6)
 
 /obj/machinery/vending/armory/covenant/jiralhanae/heavy // Equipment for Jiralhanae
-	name = "Covenant - Jiralhanae Weapon Vendor"
+	name = "Covenant - Jiralhanae Heavy Vendor"
 	desc = "Storage for Covenant Jiralhanae weapons and ammo"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
@@ -136,7 +136,7 @@
 		,/obj/item/weapon/pickaxe/plasma_drill = 1,/obj/item/weapon/plastique/covenant = 4,/obj/item/weapon/armor_patch/cov = 6,/obj/item/clothing/gloves/shield_gauntlet/kigyar = 4)
 
 /obj/machinery/vending/armory/covenant/kigyar/heavy // Equipment for Kig-Yar
-	name = "Covenant - Kig-Yar Equipment Vendor"
+	name = "Covenant - Kig-Yar Heavy Vendor"
 	desc = "Storage for Covenant Kig-Yar equipment"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
@@ -168,7 +168,7 @@
 		,/obj/item/weapon/pickaxe/plasma_drill = 1,/obj/item/weapon/plastique/covenant = 4,/obj/item/weapon/armor_patch/cov = 12)
 
 /obj/machinery/vending/armory/covenant/unggoy/heavy // Equipment for Unggoy
-	name = "Covenant - Kig-Yar Equipment Vendor"
+	name = "Covenant - Unggoy Heavy Vendor"
 	desc = "Storage for Covenant Kig-Yar equipment"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
