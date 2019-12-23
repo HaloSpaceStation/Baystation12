@@ -1,12 +1,5 @@
 /obj/machinery/vending/armory/covenant
 	icon = 'code/modules/halo/icons/machinery/covenant/covendor.dmi'
-	var/covenant_secure = 0
-	ai_access_level = 3
-
-/obj/machinery/vending/armory/attackby(var/atom/A,var/mob/user)
-	if(A in products)
-		products[A] = products[A] + 1
-	return ..()
 
 /obj/machinery/vending/armory/covenant/allowed(var/mob/m) // Covenant lock
 	var/mob/living/carbon/human/h = m
