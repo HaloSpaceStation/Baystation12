@@ -147,9 +147,9 @@
 	desc = "Storage for Covenant Kig-Yar ranger equipment"
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
-	products = list(/obj/item/clothing/head/helmet/ranger_kigyar = 12,/obj/item/clothing/under/covenant/ranger_kigyar = 12,/obj/item/clothing/suit/armor/covenant/ranger_kigyar = 12
-		,/obj/item/clothing/head/helmet/ranger_tvoan = 12,/obj/item/clothing/under/covenant/ranger_tvoan = 12,/obj/item/clothing/suit/armor/covenant/ranger_tvoan = 12
-		,/obj/item/weapon/tank/air/covenant = 12,/obj/item/clothing/mask/breath = 12)
+	products = list(/obj/item/clothing/head/helmet/ranger_kigyar = 8,/obj/item/clothing/under/covenant/ranger_kigyar = 8,/obj/item/clothing/suit/armor/covenant/ranger_kigyar = 8
+		,/obj/item/clothing/head/helmet/ranger_tvoan = 8,/obj/item/clothing/under/covenant/ranger_tvoan = 8,/obj/item/clothing/suit/armor/covenant/ranger_tvoan = 8
+		,/obj/item/weapon/tank/air/covenant = 8,/obj/item/clothing/mask/breath = 8)
 
 /obj/machinery/vending/armory/covenant/unggoy/weapon // Both ammo, and guns!
 	name = "Covenant - Unggoy Weapon Vendor"
