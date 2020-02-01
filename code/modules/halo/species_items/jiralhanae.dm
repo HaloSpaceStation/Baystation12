@@ -123,7 +123,7 @@ GLOBAL_LIST_INIT(first_names_jiralhanae, world.file2list('code/modules/halo/spec
 	icon = JIRALHANAE_ICON_PATH_OBJ
 	icon_state = "armour_minor"
 	sprite_sheets = list("Jiralhanae" = JIRALHANAE_ICON_PATH_MOB)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS
 	armor = list(melee = 30, bullet = 20, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
 	allowed = list(\
 		/obj/item/weapon/grenade/plasma,/obj/item/weapon/grenade/frag/spike,/obj/item/weapon/grenade/brute_shot,/obj/item/weapon/grenade/toxic_gas,\
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(first_names_jiralhanae, world.file2list('code/modules/halo/spec
 	name = "Jiralhanae Major Chest Armour"
 	icon_state = "armour_major"
 	armor = list(melee = 35, bullet = 25, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS
 
 /obj/item/clothing/suit/armor/jiralhanae/captain
 	name = "Jiralhanae Captain Chest Armour"

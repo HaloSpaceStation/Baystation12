@@ -31,6 +31,7 @@
 	item_icon_offsets = list(list(10,4),list(10,4),null,list(6,2),null,null,null,list(6,2),null)
 	unarmed_types = list(/datum/unarmed_attack/brute_punch)
 	inherent_verbs = list(/mob/living/carbon/human/proc/dual_wield_weapons)
+	metabolism_mod = 1.25
 
 	equipment_slowdown_multiplier = 0.5
 	ignore_equipment_threshold = 3
