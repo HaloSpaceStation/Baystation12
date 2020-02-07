@@ -228,7 +228,9 @@
 		dist *= v.vehicle_view_modifier
 	var/list/L = list()
 
-	for(var/A in view(dist,src.loc))
+	var/turf/loc_infront = get_step(src,dir) //This is used when in complete darkenss, seeing only what's directly in front of them.
+
+	for(var/A in view(dist,src.loc) | loc_infront.contents)
 		if(istype(A,/mob/living))
 			L += A
 			continue
@@ -326,7 +328,7 @@
 	. = ..()
 	if(!target_mob && Proj.firer && Proj.firer.faction != faction && health < oldhealth && !incapacitated(INCAPACITATION_KNOCKOUT))
 		target_mob = Proj.firer
-		//MoveToTarget()
+		MoveToTarget()
 		stance = HOSTILE_STANCE_ATTACK
 		Life()
 
