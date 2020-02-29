@@ -83,7 +83,7 @@
 	icon = 'code/modules/halo/icons/Covenant Weapons.dmi'
 	icon_state = "Needler"
 	item_state = "needler"
-	slot_flags = SLOT_BELT||SLOT_HOLSTER
+	slot_flags = SLOT_BELT|SLOT_BACK|SLOT_HOLSTER
 	fire_sound = 'code/modules/halo/sounds/needlerfire.ogg'
 	magazine_type = /obj/item/ammo_magazine/needles
 	handle_casings = CLEAR_CASINGS
