@@ -143,6 +143,8 @@
 	item_state_slots = list(slot_l_hand_str = "armor", slot_r_hand_str = "armor")
 	species_restricted = list("Unggoy")
 	armor = list(melee = 5, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 0, rad = 0)
+	
+	body_parts_covered =
 
 /obj/item/clothing/under/unggoy_thrall
 	name = "Unggoy thrall robe"
@@ -185,9 +187,9 @@
 	item_state = "combatharness_ultra"
 
 	armor = list(melee = 45, bullet = 45, laser = 20, energy = 20, bomb = 60, bio = 0, rad = 0)
-
-	//totalshields = 100
-	//specials = list(/datum/armourspecials/shields/unggoy)
+	
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS||ARMS|
+	
 
 /obj/item/clothing/suit/armor/special/unggoy_combat_harness/specops
 	name = "Unggoy Combat Harness (Spec-Ops)"
@@ -201,6 +203,8 @@
 	specials = list(/datum/armourspecials/cloaking)
 
 	armor = list(melee = 45, bullet = 45, laser = 20, energy = 20, bomb = 60, bio = 0, rad = 0)
+	
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS||ARMS|
 
 
 /obj/item/clothing/suit/armor/special/unggoy_combat_harness/deacon
@@ -225,6 +229,8 @@
 	icon_state = "combatharness_honour"
 	item_state = "combatharness_honour"
 	totalshields = 100 //Pretty much just a distinguishing feature.
+	
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS||ARMS|
 
 	specials = list(/datum/armourspecials/shields/unggoy)
 
