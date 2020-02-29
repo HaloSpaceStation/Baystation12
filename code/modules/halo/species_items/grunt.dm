@@ -172,6 +172,8 @@
 	icon_override = GRUNT_GEAR_ICON
 	icon_state = "combatharness_major"
 	item_state = "combatharness_major"
+	
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 
 	armor = list(melee = 45, bullet = 45, laser = 20, energy = 20, bomb = 60, bio = 0, rad = 0)
 
