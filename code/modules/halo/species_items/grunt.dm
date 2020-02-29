@@ -144,7 +144,6 @@
 	species_restricted = list("Unggoy")
 	armor = list(melee = 5, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 0, rad = 0)
 	
-	body_parts_covered =
 
 /obj/item/clothing/under/unggoy_thrall
 	name = "Unggoy thrall robe"
