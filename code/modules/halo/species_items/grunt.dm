@@ -20,7 +20,7 @@
 	item_state_slots = list(slot_l_hand_str = "armor", slot_r_hand_str = "armor")
 	icon_state = "combatharness_minor"
 
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS //Essentially, the entire body besides the head
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS||ARMS| //Essentially, the entire body besides the head
 
 	flags_inv = HIDESUITSTORAGE|HIDEBACK
 	armor = list(melee = 45, bullet = 40, laser = 10, energy = 10, bomb = 40, bio = 0, rad = 0)
@@ -173,8 +173,6 @@
 	icon_state = "combatharness_major"
 	item_state = "combatharness_major"
 	
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-
 	armor = list(melee = 45, bullet = 45, laser = 20, energy = 20, bomb = 60, bio = 0, rad = 0)
 
 
@@ -252,6 +250,10 @@
 	item_state = "blank"
 
 	canremove = 0
+	
+	armor = list(melee = 55 bullet = 45 laser = 15energy = 15 bomb = 45 bio = 0, rad = 0)
+	
+	body_parts_covered = FEET
 
 /obj/item/clothing/shoes/grunt_gloves
 	name = "Natural Armor"
@@ -261,6 +263,10 @@
 	item_state = "blank"
 
 	canremove = 0
+	
+	armor = list(melee = 55 bullet = 45 laser = 15 energy = 15 bomb = 45 bio = 0, rad = 0)
+	
+	body_parts_covered = HANDS
 
 
 #undef GRUNT_GEAR_ICON
