@@ -189,6 +189,8 @@
 			return global.air_master;
 		if("air_processing_killed")
 			return global.air_processing_killed;
+		if("airlock_overlays")
+			return global.airlock_overlays;
 		if("alarm_manager")
 			return global.alarm_manager;
 		if("alien_whitelist")
@@ -483,8 +485,6 @@
 			return global.fire_alarm;
 		if("flesh_hud_colours")
 			return global.flesh_hud_colours;
-		if("flood_overmind")
-			return global.flood_overmind;
 		if("floorIsLava")
 			return global.floorIsLava;
 		if("floor_decals")
@@ -1414,6 +1414,8 @@
 			global.air_master=newval;
 		if("air_processing_killed")
 			global.air_processing_killed=newval;
+		if("airlock_overlays")
+			global.airlock_overlays=newval;
 		if("alarm_manager")
 			global.alarm_manager=newval;
 		if("alien_whitelist")
@@ -1708,8 +1710,6 @@
 			global.fire_alarm=newval;
 		if("flesh_hud_colours")
 			global.flesh_hud_colours=newval;
-		if("flood_overmind")
-			global.flood_overmind=newval;
 		if("floorIsLava")
 			global.floorIsLava=newval;
 		if("floor_decals")
@@ -2544,6 +2544,7 @@
 	"air_blocked",
 	"air_master",
 	"air_processing_killed",
+	"airlock_overlays",
 	"alarm_manager",
 	"alien_whitelist",
 	"allCasters",
@@ -2691,7 +2692,6 @@
 	"finds_as_strings",
 	"fire_alarm",
 	"flesh_hud_colours",
-	"flood_overmind",
 	"floorIsLava",
 	"floor_decals",
 	"floor_light_cache",
