@@ -20,7 +20,7 @@
 	item_state_slots = list(slot_l_hand_str = "armor", slot_r_hand_str = "armor")
 	icon_state = "combatharness_minor"
 
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS||ARMS| //Essentially, the entire body besides the head
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS| //Essentially, the entire body besides the head
 
 	flags_inv = HIDESUITSTORAGE|HIDEBACK
 	armor = list(melee = 45, bullet = 40, laser = 10, energy = 10, bomb = 40, bio = 0, rad = 0)
@@ -176,6 +176,8 @@
 	
 	armor = list(melee = 45, bullet = 45, laser = 20, energy = 20, bomb = 60, bio = 0, rad = 0)
 
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|
+
 
 /obj/item/clothing/suit/armor/special/unggoy_combat_harness/ultra
 	name = "Unggoy Combat Harness (Ultra)"
@@ -187,7 +189,7 @@
 
 	armor = list(melee = 45, bullet = 45, laser = 20, energy = 20, bomb = 60, bio = 0, rad = 0)
 	
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS||ARMS|
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|
 	
 
 /obj/item/clothing/suit/armor/special/unggoy_combat_harness/specops
@@ -203,7 +205,7 @@
 
 	armor = list(melee = 45, bullet = 45, laser = 20, energy = 20, bomb = 60, bio = 0, rad = 0)
 	
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS||ARMS|
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|
 
 
 /obj/item/clothing/suit/armor/special/unggoy_combat_harness/deacon
@@ -217,6 +219,8 @@
 
 	armor = list(melee = 45, bullet = 45, laser = 20, energy = 20, bomb = 60, bio = 0, rad = 0)
 
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|
+
 
 	specials = list(/datum/armourspecials/shields/unggoy)
 
@@ -229,7 +233,7 @@
 	item_state = "combatharness_honour"
 	totalshields = 100 //Pretty much just a distinguishing feature.
 	
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS||ARMS|
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|
 
 	specials = list(/datum/armourspecials/shields/unggoy)
 
@@ -256,7 +260,7 @@
 
 	canremove = 0
 	
-	armor = list(melee = 55 bullet = 45 laser = 15energy = 15 bomb = 45 bio = 0, rad = 0)
+	armor = list(melee = 55 bullet = 50 laser = 20 energy = 20 bomb = 60 bio = 0, rad = 0)
 	
 	body_parts_covered = FEET
 
@@ -269,7 +273,7 @@
 
 	canremove = 0
 	
-	armor = list(melee = 55 bullet = 45 laser = 15 energy = 15 bomb = 45 bio = 0, rad = 0)
+	armor = list(melee = 55 bullet = 50 laser = 20 energy = 20 bomb = 60 bio = 0, rad = 0)
 	
 	body_parts_covered = HANDS
 
