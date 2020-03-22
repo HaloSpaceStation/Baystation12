@@ -365,7 +365,7 @@
 "ha" = (/obj/structure/bed,/obj/item/weapon/bedsheet/green,/turf/simulated/floor/tiled,/area/asteroid_base/central_hallway_1)
 "hb" = (/obj/structure/bed,/obj/item/weapon/bedsheet/blue,/turf/simulated/floor/tiled,/area/asteroid_base/central_hallway_1)
 "hc" = (/obj/effect/decal/cleanable/blood/oil,/turf/simulated/floor/plating,/area/asteroid_base/central_hallway_1)
-"hd" = (/obj/vehicles/air/pelican/innie,/obj/effect/landmark/dropship_land_point/insurrection_hangar,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
+"hd" = (/obj/vehicles/air/pelican/innie{icon_state = "inni-base"},/obj/effect/landmark/dropship_land_point/insurrection_hangar,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
 "he" = (/obj/effect/decal/cleanable/liquid_fuel,/turf/simulated/floor/plating,/area/asteroid_base/central_hallway_1)
 "hf" = (/obj/item/weapon/caution/cone,/obj/effect/floor_decal/industrial/warning/dust/corner{tag = "icon-warningcorner_dust (EAST)"; icon_state = "warningcorner_dust"; dir = 4},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
 "hg" = (/obj/effect/floor_decal/industrial/warning/dust{tag = "icon-warning_dust (NORTH)"; icon_state = "warning_dust"; dir = 1},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
@@ -379,13 +379,15 @@
 "ho" = (/obj/effect/floor_decal/sign/m,/turf/simulated/floor/plating,/area/asteroid_base/central_hallway_1)
 "hp" = (/obj/effect/decal/cleanable/liquid_fuel,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
 "hq" = (/obj/machinery/light/spot,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
-"hr" = (/obj/vehicles/air/pelican/innie{tag = "icon-base (EAST)"; icon_state = "base"; dir = 4},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
-"hs" = (/obj/vehicles/air/pelican/innie{tag = "icon-base (WEST)"; icon_state = "base"; dir = 8},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
+"hr" = (/obj/effect/landmark/dropship_land_point/insurrection_hangar,/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
+"hs" = (/obj/vehicles/air/pelican/innie{icon_state = "inni-base"},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
 "ht" = (/obj/machinery/telecomms/relay/long_range_planetary{tag = "icon-default"; icon_state = ""},/turf/unsimulated/wall{tag = "icon-rock-dark"; icon_state = "rock-dark"},/area/asteroid_base/central_hallway_1)
 "hu" = (/obj/machinery/vending/wallmed1,/turf/unsimulated/wall,/area/asteroid_base/north_airlock_1)
 "hv" = (/obj/effect/landmark/map_data{name = "New New Antarctica"},/turf/unsimulated/wall{tag = "icon-rock-dark"; icon_state = "rock-dark"},/area/asteroid_base/central_hallway_1)
 "hw" = (/obj/item/device/mobilecomms/commsbackpack/innie/permanant,/turf/unsimulated/wall{tag = "icon-rock-dark"; icon_state = "rock-dark"},/area/asteroid_base/central_hallway_2)
 "hx" = (/obj/item/device/mobilecomms/commsbackpack/unsc/permanant,/turf/unsimulated/wall{tag = "icon-rock-dark"; icon_state = "rock-dark"},/area/asteroid_base/central_hallway_2)
+"hy" = (/obj/vehicles/air/pelican/innie{dir = 4; icon_state = "inni-base"; tag = "icon-base (EAST)"},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
+"hz" = (/obj/vehicles/air/pelican/innie{dir = 8; icon_state = "inni-base"; tag = "icon-base (WEST)"},/turf/simulated/floor/plating,/area/asteroid_base/north_airlock_1)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababab
@@ -429,13 +431,13 @@ eheiejejejgEeWgFejgGgHeogIeogJekehehekejejejejejfcgKfcfcfcfcfcfcfcgLgMfcfcgKfcfc
 eheiejeieiejejejeiekgyeogyeoeogOehehekgPgPejeAeAeMgKfcfcfcfceMeMfcgLfcfcfcgKfcfceMeMfcfcfcgLfcfceGeV
 eheieAeieieieieieiekgQeogReogSekehehekgPgTejejejfcgKfcfcfceMeMfcfcgLgngngngKfcfcfcfcfcfcfcgLeMfceGeV
 eheieAeieieieiehehekgUememeogyekehehekgVgTejejejfcgKfcfcfcfcfcfcfcgLfcfcfcgWfcfcfcfcfcgtfcgLeMgXeGeV
-eheieAejejgYeiehehekgZeohafLhbekehehekejejejejhcgngKfchdfcfcfcfcfcgLfcgnfcgWfcfchdfcfcfcfcgLfcfceGeV
+eheieAejejgYeiehehekgZeohafLhbekehehekejejejejhcgngKfchdfcfcfcfcfcgLfcgnfcgWfcfchrhsfcfcfcgLfcfceGeV
 eheieieieiejeiehehekekekekekekekehehekeAejejejhegngKfcfcfcfcfcfcfcgLfcgnfcgKfcfcfcfcfcfcfcgLfcfceGeV
 eheheheheieAeiehehehehehehehehehehehekeAeAejejejfcgKfcfcfcfcgtfcfcgLfcfcgMgWfcfcfcfcfcfcfcgLfcfceGeV
 eheheheheieAeieheheheieieieieiehehehekejejejejejfchfhghghghghghghghhfcfcfchihghghghghghghghhfcfceGeV
 eheheheheieAeieieieieiejhjhkeieieihlekejejejejejfcfcfcfceMeMfcfcfcfcfcfcfceMeMfcfcfcfcfcfcfcfcfceGeV
 eheheheheiejejejejejeAhmeWgFejejejejhnhoejejejejeLfceMeMfcfcfcfcfcfcfcfcfcfceMfcfcfceLfceMgnhpeMeGeV
 eheheheheieieieieieieiejejeAeieieieiekejhcejejejfceMeMfcfcfcfcfcfcfcfcgtfcfcfcfcfcfcfcfceMfcfceMeGeV
-eheheheheheheheheheheieieieieiehehehekejejejejejfcfcfcfcfchqhrfcfcfceMeMeMfchsfcfchqfcfceMfceMeMeGeV
+eheheheheheheheheheheieieieieiehehehekejejejejejfcfcfcfcfchqhyfcfcfceMeMeMfchzfcfchqfcfceMfceMeMeGeV
 hthvehehehehehehehehehehehehehehehehekekekekekekeGeGeGgNeGeGeGeGeGeGeGeGeGeGeGhueGeGeGeGeGeGeGeGeGeV
 "}

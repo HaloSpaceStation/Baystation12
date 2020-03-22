@@ -69,6 +69,7 @@
 	sustain_delay = 1.5
 
 	w_class = ITEM_SIZE_HUGE
+	wielded_item_state = "30cal-wielded"
 	item_icons = list(
 		slot_l_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_left.dmi',
 		slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',

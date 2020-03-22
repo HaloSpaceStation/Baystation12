@@ -29,9 +29,9 @@
 "aC" = (/obj/structure/table/rack,/obj/item/ammo_magazine/chaingun_boxmag,/turf/simulated/floor/tiled,/area/asteroid_base/armoury_4)
 "aD" = (/turf/simulated/floor/tiled,/area/asteroid_base/armoury_4)
 "aE" = (/obj/structure/table/rack,/obj/item/turret_deploy_kit/HMG,/turf/simulated/floor/tiled,/area/asteroid_base/armoury_4)
-"aF" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/rack,/obj/item/weapon/gun/projectile/br85,/obj/item/weapon/gun/projectile/br85,/turf/simulated/floor/tiled,/area/asteroid_base/armoury_4)
+"aF" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/rack,/obj/item/weapon/gun/projectile/ma5b_ar/MA3,/obj/item/weapon/gun/projectile/ma5b_ar/MA3,/turf/simulated/floor/tiled,/area/asteroid_base/armoury_4)
 "aG" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled,/area/asteroid_base/armoury_4)
-"aH" = (/obj/structure/table/rack,/obj/item/ammo_magazine/m95_sap,/obj/item/ammo_magazine/m95_sap,/obj/item/ammo_magazine/m95_sap,/turf/simulated/floor/tiled,/area/asteroid_base/armoury_4)
+"aH" = (/obj/structure/table/rack,/obj/item/ammo_magazine/m762_ap/MA3,/obj/item/ammo_magazine/m762_ap/MA3,/turf/simulated/floor/tiled,/area/asteroid_base/armoury_4)
 "aI" = (/obj/effect/floor_decal/industrial/outline,/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate/secure/weapon,/obj/item/weapon/gun/projectile/m6d_magnum,/obj/item/weapon/gun/projectile/m6d_magnum,/obj/item/ammo_magazine/m127_saphp,/obj/item/ammo_magazine/m127_saphp,/obj/item/ammo_magazine/m127_saphp,/obj/item/ammo_magazine/m127_saphp,/obj/item/ammo_magazine/m127_saphp,/obj/item/ammo_magazine/m127_saphp,/turf/simulated/floor/tiled,/area/asteroid_base/shuttle_dock)
 "aJ" = (/obj/effect/floor_decal/industrial/outline,/obj/structure/closet/crate/secure,/obj/random/storage,/obj/random/storage,/turf/simulated/floor/tiled,/area/asteroid_base/shuttle_dock)
 "aK" = (/obj/effect/floor_decal/industrial/outline,/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate,/obj/item/device/camera,/obj/item/device/camera,/obj/item/device/camera_film,/obj/item/device/camera_film,/obj/item/device/camera_film,/obj/item/device/camera_film,/turf/simulated/floor/tiled,/area/asteroid_base/shuttle_dock)
@@ -390,6 +390,7 @@
 "hz" = (/obj/effect/landmark/map_data{name = "New New Antarctica"},/turf/unsimulated/wall{tag = "icon-rock-dark"; icon_state = "rock-dark"},/area/asteroid_base/armoury_3)
 "hA" = (/obj/item/device/mobilecomms/commsbackpack/innie/permanant,/turf/unsimulated/wall{tag = "icon-rock-dark"; icon_state = "rock-dark"},/area/asteroid_base/armoury_4)
 "hB" = (/obj/item/device/mobilecomms/commsbackpack/unsc/permanant,/turf/unsimulated/wall{tag = "icon-rock-dark"; icon_state = "rock-dark"},/area/asteroid_base/armoury_4)
+"hC" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/rack,/obj/item/weapon/gun/projectile/ma5b_ar/MA3,/turf/simulated/floor/tiled,/area/asteroid_base/armoury_4)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababab
@@ -397,7 +398,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababacacacacacacacacacacacacabab
 aahAaaaaaaaaaaaaaaaaaaaaaaaaaaaaadadadadadaeadadacacacafagahaiaiajahakalagacamanananabababababababab
 aahBaaaaadadadadadadadadaaaaaaaaadaoaoaoapaqapaoararacasagataiauavahawaxayazaAaAaBanabababababababab
 aaaaaaaaadaCaDaEaFaGaHadadadaeadadaoaoaoaoaqaoaoararacaIavahaiauavataJaKagacanaAaLanabananananananab
-aaaaaaaaadaMaGaNaFaDaHadadaOaPaQadaoaoaqaqaqaqaqararacaRagahaiauagataSaTagacanaUaAanananaVanaWaXanab
+aaaaaaaaadaMaGaNhCaDaHadadaOaPaQadaoaoaqaqaqaqaqararacaRagahaiauagataSaTagacanaUaAanananaVanaWaXanab
 aaaaaaaaadaYaGaZbaaDbbadadbcbdbcadaqaqaqaobeaoaqbfbfacbgagatauawavahbhbibjacanbkblaAbmanbnanaLaAanab
 aaaaaaaaadboaGaDaDaGbpadadbcbqbradbsaoaqaoaoaoaqarbtacbiagbubvbvbwbxbvbvbwbyananananaLanaLaLaLaLanab
 aaaaaaaaadbzaGaDaGaGbzadadadaQadadaoaoaqaoaoaoaqararacawavbAbBbCbBbAbBbBbBacabababanaAbDaAbEbFbGanab
