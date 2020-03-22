@@ -159,7 +159,7 @@
 "dc" = (/obj/machinery/vending/medical,/turf/simulated/floor/tiled/white,/area/asteroid_base/medbay)
 "dd" = (/obj/structure/table/standard,/obj/effect/decal/cleanable/dirt,/obj/machinery/light,/turf/simulated/floor/tiled/white,/area/asteroid_base/medbay)
 "de" = (/obj/structure/closet/secure_closet/medical1,/turf/simulated/floor/tiled/white,/area/asteroid_base/medbay)
-"df" = (/obj/structure/closet/crate,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/device/binoculars,/obj/item/device/binoculars,/obj/item/device/binoculars,/obj/item/device/binoculars,/obj/item/device/binoculars,/obj/item/device/binoculars,/turf/simulated/floor/tiled,/area/asteroid_base/east_dorms)
+"df" = (/obj/structure/closet/crate,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/weapon/grenade/frag/high_yield,/obj/item/device/binoculars,/obj/item/device/binoculars,/obj/item/device/binoculars,/obj/item/device/binoculars,/obj/item/device/binoculars,/obj/item/device/binoculars,/obj/item/weapon/grenade/toxic_gas/chlorine,/obj/item/weapon/grenade/toxic_gas/chlorine,/obj/item/weapon/grenade/toxic_gas/carbon_monodixe,/obj/item/weapon/grenade/toxic_gas/carbon_monodixe,/obj/item/weapon/grenade/toxic_gas/chlorine,/turf/simulated/floor/tiled,/area/asteroid_base/east_dorms)
 "dg" = (/obj/effect/landmark/start/Insurrectionist,/turf/simulated/floor/tiled,/area/asteroid_base/east_dorms)
 "dh" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/plating,/area/asteroid_base/medbay)
 "di" = (/turf/simulated/wall,/area/asteroid_base/east_dorms)
@@ -172,7 +172,7 @@
 "dp" = (/obj/effect/decal/cleanable/cobweb,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/asteroid_base/medbay)
 "dq" = (/obj/effect/decal/cleanable/dirt,/obj/structure/cable/orange{icon_state = "0-4"},/turf/simulated/floor/plating,/area/asteroid_base/medbay)
 "dr" = (/obj/effect/decal/cleanable/dirt,/obj/structure/cable/orange{tag = "icon-2-8"; icon_state = "2-8"},/obj/structure/cable/orange{icon_state = "1-2"},/turf/simulated/floor/plating,/area/asteroid_base/medbay)
-"ds" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/tiled,/area/asteroid_base/east_dorms)
+"ds" = (/obj/effect/decal/cleanable/dirt,/obj/item/weapon/grenade/toxic_gas/sulfur_dioxide,/obj/item/weapon/grenade/toxic_gas/sulfur_dioxide,/obj/item/weapon/grenade/toxic_gas/sulfur_dioxide,/obj/item/weapon/grenade/toxic_gas/sulfur_dioxide,/turf/simulated/floor/tiled,/area/asteroid_base/east_dorms)
 "dt" = (/turf/simulated/floor/plating,/area/asteroid_base/east_dorms)
 "du" = (/obj/structure/sign/warning/high_voltage,/turf/simulated/wall,/area/asteroid_base/medbay)
 "dv" = (/obj/machinery/door/airlock/halo_maint,/obj/effect/decal/cleanable/dirt,/obj/structure/cable/orange{icon_state = "1-2"},/turf/simulated/floor/plating,/area/asteroid_base/medbay)
@@ -237,6 +237,7 @@
 "eC" = (/obj/item/device/mobilecomms/commsbackpack/unsc/permanant,/turf/unsimulated/wall{tag = "icon-rock-dark"; icon_state = "rock-dark"},/area/asteroid_base/kitchen)
 "eD" = (/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/turf/simulated/floor/tiled,/area/asteroid_base/east_dorms)
 "eE" = (/obj/structure/closet/crate,/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts,/obj/item/ammo_box/shotgun,/obj/item/ammo_box/shotgun,/obj/item/ammo_box/shotgun,/obj/item/ammo_box/shotgun,/obj/item/ammo_box/shotgun/slug,/obj/item/ammo_box/shotgun/slug,/obj/item/ammo_box/shotgun/slug,/obj/item/ammo_box/shotgun/slug,/obj/item/ammo_magazine/kv32,/obj/item/ammo_magazine/kv32,/obj/item/ammo_magazine/kv32,/obj/item/ammo_magazine/kv32,/obj/item/ammo_magazine/kv32,/obj/item/ammo_magazine/kv32,/obj/item/ammo_magazine/kv32,/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts,/obj/item/weapon/gun/projectile/shotgun/soe,/obj/item/weapon/gun/projectile/shotgun/soe,/obj/item/weapon/gun/projectile/shotgun/soe,/turf/simulated/floor/tiled,/area/asteroid_base/east_dorms)
+"eF" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light{dir = 4; icon_state = "tube1"},/obj/item/weapon/explosive_spear,/obj/item/weapon/explosive_spear,/obj/item/weapon/explosive_spear,/obj/item/weapon/explosive_spear,/obj/item/weapon/explosive_spear,/obj/item/weapon/explosive_spear,/obj/item/weapon/explosive_spear,/turf/simulated/floor/tiled,/area/asteroid_base/east_dorms)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababab
@@ -280,7 +281,7 @@ bJbJbJbMbMbMbMbMbMbMcYbMbMbMbMbMbMbMbMbMbMcCbMbMcZdadbcJdcdddeclcacacacacacbcmcb
 bJbJbJbJbJbJbJbMdfdgbOdgdnbMbJbJbJbJbJbJdidjdibMclclclclclclclclcacacacacacbcccbcacacacacacacacacaca
 bJbJbJbJbJbJbJbMdkdlbOcfeDbMbJbJbJbJbJbJdidjdibJcacacacacbcbcbcbcbcbcbcbcbcbdmcbcacacacacacacacacaca
 bJbJbJbJbJbJbJbMeEdgbOdgdobMbJbJbJbJbJbJdidjdibJcacacacacbdpcccccccmccccccdqdrcbcacacacacacacacacaca
-bJbJbJbJbJbJbJbMcfbObOdldsbMbJbJbJbJbJbJdidtdibJcacacacacbcmcbcbcbcbcbcbcbdudvcbcbcbcbcbcbcbcbcbcaca
+bJbJbJbJbJbJbJbMdsbObOdleFbMbJbJbJbJbJbJdidtdibJcacacacacbcmcbcbcbcbcbcbcbdudvcbcbcbcbcbcbcbcbcbcaca
 bJbJbJbJbJbJbJbMdwdgbOdgdxbMbJbJbJbJbJbJdidtdibJcacacacacbcccbcacacacacbdydzdAdBdCdDdEdFdCdGcccbcaca
 bJbJbJbJbJbJbJbMbMbMcUbMbMbMbJbJbJbJbJbJdidtdidicbcbcbcbcbcccbcacacacacbdHdIccdJdKdLdMdNdOdPcmcbcaca
 bJbJbJbJbJbJbJbJbMdQdRdSbMbJbJbJbJbJbJbJdidtdtdtcmdhcmcccccccbcacacacacbdTdUcmdVdWdFdXdYdWdZcccbcaca
