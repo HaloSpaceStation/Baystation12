@@ -16,7 +16,7 @@
 	fire_delay = 6
 	burst = 4
 	burst_delay = 1.8
-	dispersion = list(0.2,0.3,0.5,0.73)
+	dispersion = list(0.0,0.2,0.4,0.6)
 	accuracy = 1
 	one_hand_penalty = 3
 
