@@ -166,5 +166,15 @@
 	icon_state = "unsc-dress-cap-obj"
 	item_state = "unsc-dress-cap"
 
+//Captain's Cap
+/obj/item/clothing/head/unsc/co
+	name = "UNSC Captain's Cap"
+	desc = "A soft cap decorated with the crest of the UNSC."
+	icon = 'code/modules/halo/clothing/mob_jumpsuit_ship.dmi'
+	icon_override = 'code/modules/halo/clothing/mob_jumpsuit_ship.dmi'
+	icon_state = "captainscap-obj"
+	item_state = "captainscap"
+
+
 #undef SHIP_MOB_OVERRIDE
 #undef SHIP_ITEM_OVERRIDE

@@ -3,7 +3,8 @@
 	name = "UNSC Commanding Officer"
 	uniform = /obj/item/clothing/under/unsc/co
 	l_ear = /obj/item/device/radio/headset/unsc/commander
-	shoes = /obj/item/clothing/shoes/brown
+	shoes = /obj/item/clothing/shoes/jackboots
+	head = /obj/item/clothing/head/unsc/co
 	back = /obj/item/weapon/material/machete/officersword
 	belt = /obj/item/weapon/gun/projectile/m6d_magnum/CO_magnum
 	starting_accessories = list(/obj/item/clothing/accessory/rank/fleet/officer/o6)
