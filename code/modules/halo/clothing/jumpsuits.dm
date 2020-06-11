@@ -213,7 +213,7 @@
 	icon_state = "unsc-technicians-gloves-obj"
 	item_state = "unsc-technicians-gloves"
 
-/obj/item/clothing/head/hardhat
+/obj/item/clothing/head/hardhat/unsc
 	name = "hard hat"
 	desc = "A piece of headgear used to protect the head."
 	icon = 'code/modules/halo/clothing/mob_jumpsuit_ship.dmi'
