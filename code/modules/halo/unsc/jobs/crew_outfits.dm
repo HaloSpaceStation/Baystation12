@@ -13,7 +13,7 @@
 	name = "UNSC Ship Technician"
 	uniform = /obj/item/clothing/under/unsc/technician
 	shoes = /obj/item/clothing/shoes/jackboots
-	suit = /obj/item/clothing/suit/storage/unsc
+	suit = /obj/item/clothing/suit/storage/unsc/technician
 	head = /obj/item/clothing/head/hardhat
 	glasses = /obj/item/clothing/glasses/welding/unsc
 	gloves = /obj/item/clothing/gloves/insulated/unsc

@@ -183,7 +183,7 @@
 	item_state = "captainscap"
 
 //technician's gear
-/obj/item/clothing/suit/storage/unsc
+/obj/item/clothing/suit/storage/unsc/technician
 	name = "UNSC Technician Vest"
 	desc = "A yellow vest worn by UNSC Technicians, designed to carry tools for day to day work."
 	icon = 'code/modules/halo/clothing/mob_jumpsuit_ship.dmi'
