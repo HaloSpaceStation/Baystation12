@@ -200,19 +200,24 @@
 /obj/item/clothing/glasses/welding/unsc
 	name = "UNSC Technician Welding Goggles"
 	desc = "Welding goggles made for UNSC crewmen for protection of the eyes from physical objects as well as bright lights produced from welding equipment."
+	icon = SHIP_ITEM_OVERRIDE
+	icon_override = SHIP_MOB_OVERRIDE
 	icon_state = "unsc-welding-goggles-obj"
 	item_state = "unsc-welding-goggles"
 
 /obj/item/clothing/gloves/insulated/unsc
 	desc = "These gloves will protect the wearer from electric shocks."
 	name = "UNSC Technician Gloves"
-	color = COLOR_YELLOW
+	icon = SHIP_ITEM_OVERRIDE
+	icon_override = SHIP_MOB_OVERRIDE
 	icon_state = "unsc-technicians-gloves-obj"
 	item_state = "unsc-technicians-gloves"
 
 /obj/item/clothing/head/hardhat
 	name = "hard hat"
 	desc = "A piece of headgear used to protect the head."
+	icon = SHIP_ITEM_OVERRIDE
+	icon_override = SHIP_MOB_OVERRIDE
 	icon_state = "unsc-hardhat-obj"
 	item_state = "unsc-hardhat"
 	w_class = ITEM_SIZE_NORMAL

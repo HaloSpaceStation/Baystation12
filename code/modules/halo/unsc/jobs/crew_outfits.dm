@@ -11,7 +11,12 @@
 
 /decl/hierarchy/outfit/job/unsc/technician
 	name = "UNSC Ship Technician"
-	uniform = /obj/item/clothing/under/unsc/orange
+	uniform = /obj/item/clothing/under/unsc/technician
+	shoes = /obj/item/clothing/shoes/jackboots
+	suit = /obj/item/clothing/suit/storage/unsc
+	head = /obj/item/clothing/head/hardhat
+	glasses = /obj/item/clothing/glasses/welding/unsc
+	gloves = /obj/item/clothing/gloves/insulated/unsc
 	belt = /obj/item/weapon/storage/belt/utility/full
 	starting_accessories = list(/obj/item/clothing/accessory/rank/fleet/enlisted/e5)
 
