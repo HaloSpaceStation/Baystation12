@@ -1,6 +1,7 @@
 
 /datum/map/geminus_city
 	allowed_jobs = list(\
+		/datum/job/unsc/spartan_two,\
 		/datum/job/unsc/crew,\
 		/datum/job/unsc/medical,\
 		/datum/job/unsc/marine,\
@@ -11,6 +12,7 @@
 		/datum/job/unsc/commanding_officer,\
 		/datum/job/unsc/executive_officer,\
 		/datum/job/unsc/oni/research,\
+		/datum/job/unsc_ai,\
 		/datum/job/colonist,\
 		/datum/job/colonist/mayor,\
 		/datum/job/colonist/police,\
