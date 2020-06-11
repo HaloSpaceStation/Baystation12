@@ -12,7 +12,7 @@
 /decl/hierarchy/outfit/job/unsc/executive_officer
 	name = "UNSC Executive Officer"
 	l_ear = /obj/item/device/radio/headset/unsc/officer
-	uniform = /obj/item/clothing/under/unsc/grey
-	shoes = /obj/item/clothing/shoes/brown
+	uniform = /obj/item/clothing/under/unsc/bridge
+	shoes = /obj/item/clothing/shoes/jackboots
 	back = /obj/item/weapon/material/machete/officersword
 	starting_accessories = list(/obj/item/clothing/accessory/rank/fleet/officer/o4)
