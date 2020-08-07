@@ -1,0 +1,5 @@
+author: Terror4000rus
+delete-after: True
+changes: 
+  - tweak: "All weapons are caseless now."
+  - maptweak: "Replaced silver walls in ODP medbay with reinforced one (and painted)."

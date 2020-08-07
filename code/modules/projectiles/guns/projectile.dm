@@ -13,7 +13,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 1000)
 
 	var/caliber = "357"		//determines which casings will fit
-	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled
+	var/handle_casings = CASELESS	//determines how spent casings should be handled
 	var/ejection_angle = 90 //If we handle casings by ejecting them, which direction should we throw them? Angle between 1 to 360
 	var/load_method = SINGLE_CASING|SPEEDLOADER //1 = Single shells, 2 = box or quick loader, 3 = magazine
 	var/obj/item/ammo_casing/chambered = null
