@@ -256,7 +256,7 @@
 	icon_state = "odst_ea"
 
 
-/obj/item/weapon/storage/backpack/odst/squadlead
+/obj/item/weapon/storage/backpack/odst/squadleader
 	icon = ITEM_INHAND
 	icon_override = ODST_OVERRIDE
 	name = "Odst Backpack Squad Leader"
