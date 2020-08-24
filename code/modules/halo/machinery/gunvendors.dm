@@ -17,6 +17,7 @@
 	desc = "Storage for basic weapons and ammunition"
 	req_access = list(access_unsc_armoury)
 	products = list(
+					"Ammunition" = -1,
 					/obj/item/ammo_magazine/m127_saphe = 20,
 					/obj/item/ammo_magazine/m127_saphp = 20,
 					/obj/item/ammo_magazine/m762_ap/MA5B = 40,
@@ -28,16 +29,20 @@
 					/obj/item/ammo_box/shotgun = 10,
 					/obj/item/ammo_box/shotgun/slug = 10,
 					/obj/item/ammo_box/shotgun/beanbag = 10,
+					"Melee" = -1,
 					/obj/item/weapon/material/knife/combat_knife =15,
 					/obj/item/weapon/material/machete = 2,
+					"Guns" = -1,
 					/obj/item/weapon/gun/projectile/m6d_magnum = 15,
 					/obj/item/weapon/gun/projectile/ma5b_ar = 15,
 					/obj/item/weapon/gun/projectile/br55 = 2,
 					/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts = 8,
 					/obj/item/weapon/gun/projectile/m7_smg = 8,
 					/obj/item/weapon/gun/projectile/m392_dmr = 5,
+					"Explosives" = -1,
 					/obj/item/weapon/grenade/frag/m9_hedp = 5,
 					/obj/item/weapon/grenade/smokebomb = 5,
+					"Miscellaneous" = -1,
 					/obj/item/weapon/armor_patch = 8,
 					/obj/item/weapon/armor_patch/mini = 12,
 					/obj/item/drop_pod_beacon = 1)
@@ -47,14 +52,18 @@
 	desc = "Storage for advanced weapons and ammunition"
 	req_access = list(access_unsc_armoury, access_unsc_specialist)
 	products = list(
+					"Guns" = -1,
 					/obj/item/weapon/gun/projectile/m739_lmg = 1,
 					/obj/item/weapon/gun/projectile/srs99_sniper = 1,
 					/obj/item/weapon/gun/projectile/m41 = 1,
+					"Ammunition" = -1,
 					/obj/item/weapon/storage/box/spnkr = 2,
 					/obj/item/ammo_magazine/m145_ap = 4,
 					/obj/item/ammo_magazine/a762_box_ap = 6,
+					"Turrets" = -1,
 					/obj/item/turret_deploy_kit/HMG = 1,
 					/obj/item/turret_deploy_kit/chaingun = 1,
+					"Explosives" = -1,
 					/obj/item/weapon/plastique = 6)
 
 /obj/machinery/vending/armory/police
@@ -72,7 +81,9 @@
 	desc = "A machine full of spare UNSC armor and equipment"
 	req_access = list(access_unsc_marine)
 	products = list(
+					"Undersuits" = -1,
 					/obj/item/clothing/under/unsc/marine_fatigues = 12,
+					"Armor" = -1,
 					/obj/item/weapon/storage/box/large/armorset/green/novisor = 10,
 					/obj/item/weapon/storage/box/large/armorset/green/visor = 10,
 					/obj/item/weapon/storage/box/large/armorset/brown/novisor = 10,
@@ -84,12 +95,14 @@
 					/obj/item/weapon/storage/box/large/armorset/medic/brown/visor = 3,
 					/obj/item/weapon/storage/box/large/armorset/medic/white = 3,
 					/obj/item/weapon/storage/box/large/armorset/eva = 3,
+					"Storage" = -1,
 					/obj/item/weapon/storage/belt/marine_ammo = 8,
 					/obj/item/weapon/storage/belt/marine_medic = 8,
 					/obj/item/weapon/storage/belt/utility/full = 8,
 					/obj/item/clothing/accessory/storage/bandolier = 15,
 					/obj/item/weapon/storage/backpack/marine = 6,
 					/obj/item/weapon/storage/backpack/marine/brown = 6,
+					"Miscellaneous" = -1,
 					/obj/item/flight_item/bullfrog_pack = 1,
 					/obj/item/weapon/armor_patch = 10,)
 
@@ -152,6 +165,7 @@
 	color = COLOR_DARK_GRAY
 	req_access = list(access_unsc_odst)
 	products = list(
+					"Ammunition" = -1,
 					/obj/item/ammo_magazine/m127_saphe = 16,
 					/obj/item/ammo_magazine/m127_saphp = 16,
 					/obj/item/ammo_magazine/m762_ap/MA5B = 40,
@@ -163,14 +177,17 @@
 					/obj/item/ammo_box/shotgun = 10,
 					/obj/item/ammo_box/shotgun/slug = 10,
 					/obj/item/ammo_box/shotgun/beanbag = 10,
+					"Melee" = -1,
 					/obj/item/weapon/material/knife/combat_knife = 15,
 					/obj/item/weapon/material/machete = 2,
+					"Guns" = -1,
 					/obj/item/weapon/gun/projectile/m6c_magnum_s = 15,
 					/obj/item/weapon/gun/projectile/ma5b_ar = 15,
 					/obj/item/weapon/gun/projectile/br55 = 4,
 					/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts = 8,
 					/obj/item/weapon/gun/projectile/m7_smg/silenced = 5,
 					/obj/item/weapon/gun/projectile/m392_dmr = 4,
+					"Explosives" = -1,
 					/obj/item/weapon/grenade/frag/m9_hedp = 5,
 					/obj/item/weapon/grenade/smokebomb = 5,
 					/obj/item/weapon/plastique = 9,
@@ -179,16 +196,19 @@
 /obj/machinery/vending/armory/odstvend/armour
 	name = "Armtech 5530 Gear"
 	products = list(
+					"Armor" = -1,
 					/obj/item/weapon/storage/box/large/armorset/odst/rifleman = 4,
 					/obj/item/weapon/storage/box/large/armorset/odst/cqb = 2,
 					/obj/item/weapon/storage/box/large/armorset/odst/sharpshooter = 2,
 					/obj/item/weapon/storage/box/large/armorset/odst/medic = 2,
 					/obj/item/weapon/storage/box/large/armorset/odst/engineer = 2,
 					/obj/item/weapon/storage/box/large/armorset/odst/squadleader = 2,
+					"Storage" = -1,
 					/obj/item/weapon/storage/belt/marine_ammo = 10,
 					/obj/item/weapon/storage/belt/marine_medic = 5,
 					/obj/item/clothing/accessory/storage/odst = 4,
 					/obj/item/clothing/accessory/storage/bandolier = 10,
+					"Miscellaneous" = -1,
 					/obj/item/weapon/storage/firstaid/unsc = 6,
 					/obj/item/device/binoculars = 4,
 					/obj/item/weapon/armor_patch = 8,
@@ -249,6 +269,7 @@
 	product_ads = "URF! URF!"
 	req_access = list(access_soe)
 	products = list(
+					"Guns" = -1,
 					/obj/item/weapon/gun/projectile/heavysniper = 1,
 					/obj/item/weapon/gun/projectile/br55 = 2,
 					/obj/item/weapon/gun/projectile/m6d_magnum = 2,
@@ -257,6 +278,7 @@
 					/obj/item/weapon/gun/projectile/shotgun/soe = 2,
 					/obj/item/weapon/gun/projectile/m739_lmg/lmg30cal = 1,
 					/obj/item/weapon/gun/projectile/ma5b_ar/MA3 = 8,
+					"Ammunition" = -1,
 					/obj/item/ammo_box/heavysniper = 3,
 					/obj/item/ammo_magazine/m762_ap/MA3 = 16,
 					/obj/item/ammo_magazine/m762_ap/M392/innie = 12,
@@ -268,15 +290,19 @@
 					/obj/item/ammo_magazine/lmg_30cal_box_ap = 6,
 					/obj/item/ammo_magazine/m127_saphe =10,
 					/obj/item/ammo_magazine/m127_saphp =10,
+					"Storage" = -1,
 					/obj/item/weapon/storage/belt/marine_ammo = 4,
 					/obj/item/weapon/storage/belt/marine_medic = 4,
+					"Melee" = -1,
 					/obj/item/weapon/material/knife/combat_knife = 4,
 					/obj/item/weapon/material/machete = 2,
+					"Explosives" = -1,
 					/obj/item/weapon/plastique = 12,
 					/obj/item/weapon/grenade/frag/m9_hedp = 4,
 					/obj/item/weapon/storage/firstaid/unsc = 6,
 					/obj/item/weapon/grenade/smokebomb = 8,
 					/obj/item/device/landmine = 4,
+					"Miscellaneous" = -1,
 					/obj/item/device/binoculars = 4,
 					/obj/item/weapon/handcuffs/ = 5,
 					/obj/item/weapon/armor_patch = 4,
@@ -314,6 +340,7 @@
 	req_access = list(access_unsc)
 	products = list(
 					/obj/item/bodybag/cryobag = 3,
+					"Medkits" = -1,
 					/obj/item/weapon/storage/firstaid/unsc = 10,
 					/obj/item/weapon/storage/firstaid/fire = 2,
 					/obj/item/weapon/storage/firstaid/o2 = 4,
@@ -321,6 +348,7 @@
 					/obj/item/weapon/storage/firstaid/erk = 4,
 					/obj/item/weapon/storage/firstaid/combat/unsc = 7,
 					/obj/item/weapon/storage/firstaid/adv = 7,
+					"Pill Bottles" = -1,
 					/obj/item/weapon/storage/pill_bottle/bicaridine = 6,
 					/obj/item/weapon/storage/pill_bottle/dermaline = 6,
 					/obj/item/weapon/storage/pill_bottle/tramadol = 6,
@@ -328,6 +356,7 @@
 					/obj/item/weapon/storage/pill_bottle/iron = 6,
 					/obj/item/weapon/storage/pill_bottle/dexalin_plus = 6,
 					/obj/item/weapon/storage/pill_bottle/inaprovaline = 6,
+					"Injectors" = -1,
 					/obj/item/weapon/reagent_containers/hypospray = 3,
 					/obj/item/weapon/reagent_containers/syringe/ld50_syringe/triadrenaline = 10,
 					/obj/item/weapon/storage/box/syringes = 2,

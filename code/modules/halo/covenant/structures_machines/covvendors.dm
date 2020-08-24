@@ -99,19 +99,22 @@
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
 	products = list(
+	"Storage" = -1,
 	/obj/item/clothing/accessory/storage/bandolier/covenant = 6,
 	/obj/item/weapon/storage/belt/covenant_medic = 5,
 	/obj/item/weapon/storage/belt/utility/full = 5,
+	"EVA" = -1,
 	/obj/item/weapon/storage/box/large/armorset/elite/eva = 4,
 	/obj/item/weapon/tank/air/covenant = 9,
 	/obj/item/clothing/mask/breath = 7,
+	"Equipment" = -1,
 	/obj/item/weapon/pickaxe/plasma_drill = 1,
+	/obj/item/flight_item/covenant_pack = 1,
+	/obj/item/dumb_ai_chip/cov = 2,
 	/obj/item/weapon/plastique/covenant = 4,
 	/obj/item/weapon/armor_patch/cov = 6,
 	/obj/item/weapon/armor_patch/mini/cov = 8,
 	/obj/item/weapon/pinpointer/artifact = 3,
-	/obj/item/flight_item/covenant_pack = 1,
-	/obj/item/dumb_ai_chip/cov = 2
 	)
 
 /obj/machinery/vending/armory/covenant/jiralhanae/weapon // Both ammo, and guns!
@@ -130,17 +133,20 @@
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
 	products = list(
+	"EVA" = -1,
 	/obj/item/weapon/storage/box/large/armorset/brute/eva = 4,
 	/obj/item/weapon/tank/air/covenant = 7,
+	"Storage" = -1,
 	/obj/item/clothing/accessory/storage/bandolier/covenant = 6,
 	/obj/item/weapon/storage/belt/covenant_medic = 5,
 	/obj/item/weapon/storage/belt/covenant_ammo = 5,
 	/obj/item/weapon/storage/belt/utility/full = 5,
+	"Equipment" = -1,
+	/obj/item/flight_item/covenant_pack = 2,
+	/obj/item/dumb_ai_chip/cov = 2,
 	/obj/item/weapon/armor_patch/cov = 6,
 	/obj/item/weapon/armor_patch/mini/cov = 8,
 	/obj/item/weapon/pinpointer/artifact = 1,
-	/obj/item/flight_item/covenant_pack = 2,
-	/obj/item/dumb_ai_chip/cov = 2
 	)
 
 /obj/machinery/vending/armory/covenant/kigyar/weapon // Both ammo, and guns!
@@ -160,9 +166,11 @@
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
 	products = list(
+	"Storage" = -1,
 	/obj/item/clothing/accessory/storage/bandolier/covenant = 10,
 	/obj/item/weapon/storage/belt/covenant_medic = 5,
 	/obj/item/weapon/storage/belt/utility/full = 5,
+	"Equipment" = -1,
 	/obj/item/flight_item/covenant_pack = 1,
 	/obj/item/clothing/gloves/shield_gauntlet/kigyar = 4,
 	/obj/item/clothing/under/kigyar/armless = 8,
@@ -199,9 +207,11 @@
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
 	products = list(
+	"Storage" = -1,
 	/obj/item/clothing/accessory/storage/bandolier/covenant = 10,
 	/obj/item/weapon/storage/belt/covenant_medic = 5,
 	/obj/item/weapon/storage/belt/utility/full = 5,
+	"Equipment" = -1,
 	/obj/item/weapon/pickaxe/plasma_drill = 1,
 	/obj/item/weapon/plastique/covenant = 4,
 	/obj/item/weapon/armor_patch/cov = 12,
@@ -248,11 +258,13 @@
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
 	products = list(
+	"Storage" = -1,
 	/obj/item/clothing/accessory/storage/bandolier/covenant = 10,
 	/obj/item/weapon/storage/belt/covenant_medic = 4,
 	/obj/item/weapon/storage/belt/covenant_ammo = 4,
 	/obj/item/weapon/storage/belt/utility/full = 4,
 	/obj/item/clothing/accessory/storage/bandolier/covenant = 4,
+	"Equipment" = -1,
 	/obj/item/weapon/plastique/covenant = 4,
 	/obj/item/weapon/armor_patch/cov = 16,
 	/obj/item/weapon/armor_patch/mini/cov = 20,
@@ -284,8 +296,8 @@
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
 	products = list(
-	/obj/item/weapon/storage/box/syringes = 2,
 	/obj/item/bodybag/cryobag/covenant = 3,
+	"Medkits" = -1,
 	/obj/item/weapon/storage/firstaid/unsc/cov = 10,
 	/obj/item/weapon/storage/firstaid/fire/covenant = 2,
 	/obj/item/weapon/storage/firstaid/o2/covenant = 4,
@@ -293,6 +305,7 @@
 	/obj/item/weapon/storage/firstaid/erk/cov = 4,
 	/obj/item/weapon/storage/firstaid/combat/unsc/cov = 7,
 	/obj/item/weapon/storage/firstaid/adv = 7,
+	"Pill Bottles" = -1,
 	/obj/item/weapon/storage/pill_bottle/bicaridine = 6,
 	/obj/item/weapon/storage/pill_bottle/dermaline = 6,
 	/obj/item/weapon/storage/pill_bottle/tramadol = 6,
@@ -300,8 +313,10 @@
 	/obj/item/weapon/storage/pill_bottle/iron = 6,
 	/obj/item/weapon/storage/pill_bottle/dexalin_plus = 6,
 	/obj/item/weapon/storage/pill_bottle/inaprovaline = 6,
+	"Injectors" = -1,
 	/obj/item/weapon/reagent_containers/hypospray = 3,
 	/obj/item/weapon/reagent_containers/syringe/ld50_syringe/triadrenaline = 10,
+	/obj/item/weapon/storage/box/syringes = 2,
 		)
 
 /obj/machinery/vending/armory/covenant/general/medical/surgery
