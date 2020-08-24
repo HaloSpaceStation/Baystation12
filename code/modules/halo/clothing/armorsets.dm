@@ -320,7 +320,7 @@
   startswith = list(
         /obj/item/clothing/head/helmet/odst/squadleader,
         /obj/item/clothing/suit/armor/special/odst/squadleader,
-        /obj/item/weapon/storage/backpack/odst/squadleader,
+        /obj/item/weapon/storage/backpack/odst/squadlead,
         /obj/item/clothing/shoes/magboots/odst,
         /obj/item/clothing/gloves/thick/combat,
         /obj/item/weapon/tank/emergency/oxygen/engi,
@@ -328,7 +328,7 @@
   can_hold = list(
         /obj/item/clothing/head/helmet/odst/squadleader,
         /obj/item/clothing/suit/armor/special/odst/squadleader,
-        /obj/item/weapon/storage/backpack/odst/squadleader,
+        /obj/item/weapon/storage/backpack/odst/squadlead,
         /obj/item/clothing/shoes/magboots/odst,
         /obj/item/clothing/gloves/thick/combat,
         /obj/item/weapon/tank/emergency/oxygen/engi,
