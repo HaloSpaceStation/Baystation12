@@ -248,13 +248,11 @@
 	icon_state ="covendor" // SPRITES
 	icon_deny = "covendor-deny"
 	products = list(
-	"Storage",
 	/obj/item/clothing/accessory/storage/bandolier/covenant = 10,
 	/obj/item/weapon/storage/belt/covenant_medic = 4,
 	/obj/item/weapon/storage/belt/covenant_ammo = 4,
 	/obj/item/weapon/storage/belt/utility/full = 4,
 	/obj/item/clothing/accessory/storage/bandolier/covenant = 4,
-	"Miscellaneous",
 	/obj/item/weapon/plastique/covenant = 4,
 	/obj/item/weapon/armor_patch/cov = 16,
 	/obj/item/weapon/armor_patch/mini/cov = 20,
