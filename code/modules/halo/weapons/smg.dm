@@ -55,7 +55,7 @@
 
 /obj/item/weapon/gun/projectile/m7_smg/silenced/verb/scope()
 	set category = "Weapon"
-	set name = "Use Scope"
+	set name = "Use Scope (Sidearm)"
 	set popup_menu = 1
 
 	toggle_scope(usr, 2.0)
