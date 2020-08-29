@@ -47,6 +47,7 @@
 	silenced = 1
 	is_heavy = 1
 	scoped_accuracy = 1
+	magazine_type = /obj/item/ammo_magazine/m5_s
 	fire_sound = 'code/modules/halo/sounds/SMG_SOCOM_Fire.wav'
 	//fire_sound_burst = 'code/modules/halo/sounds/SMG_SOCOM_Fire.wav'
 	dispersion = list(0.1, 0.3, 0.65, 1.0)
