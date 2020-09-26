@@ -15,20 +15,20 @@
 		/obj/item/clothing/accessory/rank/marine/enlisted/e5,\
 		/obj/item/clothing/accessory/badge/tags)
 
-/decl/hierarchy/outfit/job/unsc/odst/e6
-	name = "ODST Staff Sergeant"
+/decl/hierarchy/outfit/job/unsc/odst/o1
+	name = "ODST Lieutenant"
 	starting_accessories = list(\
-		/obj/item/clothing/accessory/rank/marine/enlisted/e6,\
+		/obj/item/clothing/accessory/rank/marine/officer/o2,\
 		/obj/item/clothing/accessory/badge/tags)
 
-/decl/hierarchy/outfit/job/unsc/odst/e7
-	name = "ODST Gunnery Sergeant"
+/decl/hierarchy/outfit/job/unsc/odst/o2
+	name = "ODST Captain"
 	starting_accessories = list(\
-		/obj/item/clothing/accessory/rank/marine/enlisted/e7,\
+		/obj/item/clothing/accessory/rank/marine/officer/o3,\
 		/obj/item/clothing/accessory/badge/tags)
 
-/decl/hierarchy/outfit/job/unsc/odst/e8
-	name = "ODST Master Sergeant"
+/decl/hierarchy/outfit/job/unsc/odst/o3
+	name = "ODST Major"
 	starting_accessories = list(\
-		/obj/item/clothing/accessory/rank/marine/enlisted/e8,\
+		/obj/item/clothing/accessory/rank/marine/officer/o4,\
 		/obj/item/clothing/accessory/badge/tags)
