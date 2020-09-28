@@ -36,6 +36,15 @@
 	icon_state = "40mm_shell_illumination"
 	projectile_type = /obj/item/projectile/bullet/g40mm/illumination
 
+/obj/item/device/flashlight/flare/g40mm
+	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
+	name = "illumination shell"
+	brightness_on = 7
+	light_color = "#ffff99"
+	icon_state = "40mm_shell_illumination"
+	item_state = null
+	on = 1
+
 /obj/item/projectile/bullet/g40mm
 	name = "shell"
 	fire_sound = 'code/modules/halo/sounds/Grenade 1.ogg'
@@ -95,9 +104,9 @@
 	damage = 30
 	armor_penetration = 5
 
-//this is empty for now
 /obj/item/projectile/bullet/g40mm/illumination/on_impact(var/atom/target)
 	. = ..()
+	new /obj/item/device/flashlight/flare/g40mm(get_turf(loc))
 //Boxes of 40mm ammo for supplypacks
 
 /obj/item/weapon/storage/box/g40mm_he
