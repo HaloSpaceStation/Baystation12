@@ -98,3 +98,21 @@
 //this is empty for now
 /obj/item/projectile/bullet/g40mm/illumination/on_impact(var/atom/target)
 	. = ..()
+//Boxes of 40mm ammo for supplypacks
+
+/obj/item/weapon/storage/box/g40mm_he
+	name = "box of M301 40mm HE grenades"
+	startswith = list(/obj/item/ammo_casing/g40mm/he = 7)
+
+/obj/item/weapon/storage/box/g40mm_frag
+	name = "box of M301 40mm Fragmentation grenades"
+	startswith = list(/obj/item/ammo_casing/g40mm/frag = 7)
+
+/obj/item/weapon/storage/box/g40mm_smoke
+	name = "box of M301 40mm Smoke grenades"
+	startswith = list(/obj/item/ammo_casing/g40mm/smoke = 7)
+
+/obj/item/weapon/storage/box/g40mm_misc
+	name = "box of Misc M301 40mm grenades"
+	startswith = list(/obj/item/ammo_casing/g40mm = 3,
+					  /obj/item/ammo_casing/g40mm/illumination = 3)
