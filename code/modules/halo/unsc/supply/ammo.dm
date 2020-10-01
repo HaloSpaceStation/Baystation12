@@ -152,28 +152,28 @@
 /* M301 */
 
 /decl/hierarchy/supply_pack/unsc_ammo/g40mm_he
-	name = "M301 40mm HE crate(1 box)"
+	name = "M301 40mm HE crate (1 box)"
 	cost = 1000
 	contains = list(/obj/item/weapon/storage/box/g40mm_he = 1)
-	containername = "\improper M301 40mm HE crate(1 box)"
+	containername = "\improper M301 40mm HE crate (1 box)"
 
 /decl/hierarchy/supply_pack/unsc_ammo/g40mm_frag
-	name = "M301 40mm Fragmentation crate(1 box)"
+	name = "M301 40mm Fragmentation crate (1 box)"
 	cost = 1000
 	contains = list(/obj/item/weapon/storage/box/g40mm_frag = 1)
-	containername = "\improper M301 40mm Fragmentation crate(1 box)"
+	containername = "\improper M301 40mm Fragmentation crate (1 box)"
 
 /decl/hierarchy/supply_pack/unsc_ammo/g40mm_smoke
-	name = "M301 40mm Smoke crate(1 box)"
+	name = "M301 40mm Smoke crate (1 box)"
 	cost = 650
 	contains = list(/obj/item/weapon/storage/box/g40mm_smoke = 1)
-	containername = "\improper M301 40mm Smoke crate(1 box)"
+	containername = "\improper M301 40mm Smoke crate (1 box)"
 
 /decl/hierarchy/supply_pack/unsc_ammo/g40mm_misc
-	name = "M301 40mm Miscellaneous crate(2 boxes)"
+	name = "M301 40mm Miscellaneous crate (2 boxes)"
 	cost = 650
 	contains = list(/obj/item/weapon/storage/box/g40mm_misc = 2)
-	containername = "\improper M301 40mm Miscellaneous crate(2 boxes)"
+	containername = "\improper M301 40mm Miscellaneous crate (2 boxes)"
 
 /* TURRET */
 
