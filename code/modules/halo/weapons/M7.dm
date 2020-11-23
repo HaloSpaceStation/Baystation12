@@ -93,6 +93,10 @@
 	name = "box of M7 5mm M443 magazines"
 	startswith = list(/obj/item/ammo_magazine/m7/m443 = 7)
 
+/obj/item/weapon/storage/box/rnd48
+	name = "box of M7 5mm M443 magazines"
+	startswith = list(/obj/item/ammo_magazine/m7/m443/rnd48 = 7)
+
 //M443 Rubber Ammunition
 
 /obj/item/ammo_magazine/m7/rubber

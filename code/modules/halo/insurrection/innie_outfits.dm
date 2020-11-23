@@ -154,7 +154,7 @@
 
 	flags = 0
 
-/decl/hierarchy/outfit/job/geminus_innie_leader/ert(mob/living/carbon/human/H, rank, assignment)
+/decl/hierarchy/outfit/job/geminus_innie_leader/ert/equip_id(mob/living/carbon/human/H, rank, assignment)
 	. = ..()
 
 	var/obj/item/weapon/card/id/W = .
@@ -168,7 +168,7 @@
 
 	head = /obj/item/clothing/head/helmet/innie/urfdefector
 	l_hand = /obj/item/weapon/gun/projectile/m7_smg/silenced
-	r_hand = /obj/item/weapon/storage/box/m7_m443/rnd48
+	r_hand = /obj/item/weapon/storage/box/rnd48
 	glasses = /obj/item/clothing/glasses/hud/tactical
 	mask = /obj/item/clothing/mask/gas/soebalaclava
 	suit = /obj/item/clothing/suit/storage/innie/urfdefector
@@ -215,7 +215,7 @@
 
 	flags = 0
 
-/decl/hierarchy/outfit/job/innie_colossus/ert(mob/living/carbon/human/H, rank, assignment)
+/decl/hierarchy/outfit/job/innie_colossus/ert/equip_id(mob/living/carbon/human/H, rank, assignment)
 	. = ..()
 
 	var/obj/item/weapon/card/id/W = .
@@ -245,7 +245,7 @@
 
 	flags = 0
 
-/decl/hierarchy/outfit/job/zeal_team_rifleman/ert(mob/living/carbon/human/H, rank, assignment)
+/decl/hierarchy/outfit/job/zeal_team_rifleman/ert/equip_id(mob/living/carbon/human/H, rank, assignment)
 	. = ..()
 
 	var/obj/item/weapon/card/id/W = .
