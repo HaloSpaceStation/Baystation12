@@ -85,8 +85,8 @@
 			return global.REMOTEVIEWBLOCK;
 		if("SHOCKIMMUNITYBLOCK")
 			return global.SHOCKIMMUNITYBLOCK;
-		if("SKILLS")
-			return global.SKILLS;
+		//if("SKILLS")
+		//	return global.SKILLS;
 		if("SMALLSIZEBLOCK")
 			return global.SMALLSIZEBLOCK;
 		if("SSatoms")
@@ -551,8 +551,8 @@
 			return global.hair_styles_male_list;
 		if("hazard_overlays")
 			return global.hazard_overlays;
-		if("hidden_skill_types")
-			return global.hidden_skill_types;
+		//if("hidden_skill_types")
+		//	return global.hidden_skill_types;
 		if("hiss_sound")
 			return global.hiss_sound;
 		if("hivemind_bank")
@@ -687,8 +687,8 @@
 			return global.master_controller;
 		if("master_mode")
 			return global.master_mode;
-		if("matchmaker")
-			return global.matchmaker;
+		//if("matchmaker")
+		//	return global.matchmaker;
 		if("maze_cell_count")
 			return global.maze_cell_count;
 		if("mechas_list")
@@ -1304,8 +1304,8 @@
 			global.REMOTEVIEWBLOCK=newval;
 		if("SHOCKIMMUNITYBLOCK")
 			global.SHOCKIMMUNITYBLOCK=newval;
-		if("SKILLS")
-			global.SKILLS=newval;
+		//if("SKILLS")
+		//	global.SKILLS=newval;
 		if("SMALLSIZEBLOCK")
 			global.SMALLSIZEBLOCK=newval;
 		if("SSatoms")
@@ -1770,8 +1770,8 @@
 			global.hair_styles_male_list=newval;
 		if("hazard_overlays")
 			global.hazard_overlays=newval;
-		if("hidden_skill_types")
-			global.hidden_skill_types=newval;
+		//if("hidden_skill_types")
+		//	global.hidden_skill_types=newval;
 		if("hiss_sound")
 			global.hiss_sound=newval;
 		if("hivemind_bank")
@@ -1906,8 +1906,8 @@
 			global.master_controller=newval;
 		if("master_mode")
 			global.master_mode=newval;
-		if("matchmaker")
-			global.matchmaker=newval;
+		//if("matchmaker")
+		//	global.matchmaker=newval;
 		if("maze_cell_count")
 			global.maze_cell_count=newval;
 		if("mechas_list")
