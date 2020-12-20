@@ -166,6 +166,6 @@
 	faction_restrict = "UNSC"
 
 /obj/structure/bumpstairs/road/moonbase_to_oni/Initialize()
+	. = ..()
 	if(locate(/obj/effect/overmap/sector/exo_depot))
 		return INITIALIZE_HINT_QDEL
-	. = ..()
