@@ -42,10 +42,10 @@
 	create_cover_precheck(severity,epi)
 
 //Relevant turf overrides//
-/turf/simulated/asteroid
+/turf/simulated/floor/asteroid
 	explosion_debris_file = 'code/modules/halo/icons/explosion_debris.dmi'
 
-/turf/simulated/exoplanet
+/turf/simulated/floor/exoplanet
 	explosion_debris_file = 'code/modules/halo/icons/explosion_debris.dmi'
 
 /turf/simulated/floor/pavement
