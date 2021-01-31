@@ -32,6 +32,12 @@
 				else
 					color = "#ff0000"
 
+			if(ismob(loc))
+				var/mob/living/M = loc
+				M.update_inv_wear_mask(0)
+				M.update_inv_l_hand(0)
+				M.update_inv_r_hand(1)
+
 		//continue processing
 		return 1
 
