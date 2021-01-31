@@ -32,7 +32,7 @@
 				else
 					color = "#ff0000"
 
-			if(ismob(loc))
+			if(ismob(loc))	//update icons so guns flash in-hand
 				var/mob/living/M = loc
 				M.update_inv_l_hand(0)
 				M.update_inv_r_hand(1)
