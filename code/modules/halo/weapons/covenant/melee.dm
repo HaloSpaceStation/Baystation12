@@ -219,9 +219,9 @@
 /obj/item/weapon/melee/blamite
 	name = "Blamite Weapon"
 	desc = "\
-A weapon with a blade made of Blamite. An internal mechanism cultivates the quick growth of a blamite crystal,\
- although this leaves it brittle and prone to breaking.\
- Luckily, this isn't a downside due to the explosive properties of such a large and quick grown crystal."
+A weapon with a blade made of Blamite. An internal mechanism cultivates the quick growth of a blamite crystal, \
+although this leaves it brittle and prone to breaking. \
+Luckily, this isn't a downside due to the explosive properties of such a large and quick grown crystal."
 	icon = 'code/modules/halo/weapons/icons/blamite.dmi'
 	icon_state = "invalid"
 	item_icons = list(slot_l_hand_str ='code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi')
