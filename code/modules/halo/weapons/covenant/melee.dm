@@ -220,8 +220,8 @@
 	name = "Blamite Weapon"
 	desc = "\
 A weapon with a blade made of Blamite. An internal mechanism cultivates the quick growth of a blamite crystal,\
-although this leaves it brittle and prone to breaking.\
-Luckily, this isn't a downside due to the explosive properties of such a large and quick grown crystal."
+ although this leaves it brittle and prone to breaking.\
+ Luckily, this isn't a downside due to the explosive properties of such a large and quick grown crystal."
 	icon = 'code/modules/halo/weapons/icons/blamite.dmi'
 	icon_state = "invalid"
 	item_icons = list(slot_l_hand_str ='code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi')
@@ -328,6 +328,7 @@ Luckily, this isn't a downside due to the explosive properties of such a large a
 		explode_delay = 1
 		pre_explode_in_player(user, victim, TRUE)
 		explode_delay = initial(explode_delay)
+		GLOB.processing_objects |= src
 
 /obj/item/weapon/melee/blamite/process()
 	if(explode_at != -1 && world.time > explode_at)
