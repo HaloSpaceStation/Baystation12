@@ -243,6 +243,10 @@
 	disable_effect(user)
 
 
+/obj/item/clothing/glasses/hud/tactical/New()
+	nv_enabled = 0	//Careful, don't blind the players with bright NVGs when they spawn in!
+	reset_effect(usr)
+
 
 /* SUBTYPES */
 
