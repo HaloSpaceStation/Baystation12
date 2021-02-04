@@ -137,14 +137,16 @@
 		last_upgrade = world.time
 		adjust_position()
 		update_icons()
-		affecting.update_canmove()
+		if (affecting != null)	// Sanity check in case grab is upgraded AFTER victim escapes.
+			affecting.update_canmove()
 
 /obj/item/grab/proc/downgrade()
 	var/datum/grab/downgrab = current_grab.downgrade(src)
 	if(downgrab)
 		current_grab = downgrab
 		update_icons()
-		affecting.update_canmove()
+		if (affecting != null)
+			affecting.update_canmove()
 
 /obj/item/grab/proc/update_icons()
 	if(current_grab.icon)
