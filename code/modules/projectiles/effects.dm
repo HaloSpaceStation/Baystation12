@@ -3,6 +3,7 @@
 	icon_state = "bolt"
 	plane = EFFECTS_BELOW_LIGHTING_PLANE
 	layer = PROJECTILE_LAYER
+	mouse_opacity = 0
 
 /obj/effect/projectile/New(var/turf/location)
 	if(istype(location))
@@ -17,9 +18,6 @@
 		qdel(src)	//see effect_system.dm - sets loc to null and lets GC handle removing these effects
 
 	return
-
-/obj/effect/projectile/attackby(obj/item/W, mob/user, var/click_params)
-	return	//Prevents from hitting muzzle effects
 
 //----------------------------
 // Laser beam
