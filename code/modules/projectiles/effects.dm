@@ -18,6 +18,9 @@
 
 	return
 
+/obj/effect/projectile/attackby(obj/item/W, mob/user, var/click_params)
+	return	//Prevents from hitting muzzle effects
+
 //----------------------------
 // Laser beam
 //----------------------------
