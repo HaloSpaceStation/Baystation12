@@ -101,8 +101,6 @@
 
 	//"Channeled" weapons, aka longfire beam sustained types (sentinel beam)//
 
-	var/sustain_delay = -1 //Set this to the delay between "firing" whilst channeled.Set the weapon tracer to match this value.
-	var/sustain_time = -1 //How long does this sustain fire for.
 	var/atom/stored_targ
 
 /obj/item/weapon/gun/New()
@@ -380,9 +378,6 @@
 	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
 	stored_targ = target
 	var/atom/use_targ = stored_targ
-	if(sustain_time > 0)
-		burst = sustain_time/sustain_delay
-		burst_delay = sustain_delay
 	. = 1
 	/*
 	user.visible_message(

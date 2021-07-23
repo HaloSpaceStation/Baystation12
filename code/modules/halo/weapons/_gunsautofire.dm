@@ -1,4 +1,7 @@
 
+//General rule for giving guns larger burst-size firemodes: triple base burst size and multiply dispersions by 1.5
+//or add like .1/.2 to the disp.
+
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 	if(mob && istype(mob,/mob/living/carbon/human))
 		var/mob/living/carbon/human/h = mob
