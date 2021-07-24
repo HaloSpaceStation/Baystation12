@@ -15,3 +15,34 @@
 					g.stored_targ = over_location
 		return 1
 	return ..()
+
+//Basic crosshair replacement for guns.
+
+/obj/item/weapon/gun
+	var/crosshair_file = 'code/modules/halo/weapons/icons/dragaim_icon2.dmi'
+
+/obj/item/weapon/gun/proc/check_should_have_crosshair(var/mob/living/user,var/force_off)
+	if(!user.client)
+		return
+	if(force_off)
+		user.client.mouse_pointer_icon = null
+		return
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/h = user
+		if(h.l_hand == src || h.r_hand == src)
+			user.client.mouse_pointer_icon = crosshair_file
+		else
+			user.client.mouse_pointer_icon = null
+	else if(istype(user))
+		if(loc == user)
+			user.client.mouse_pointer_icon = crosshair_file
+		else
+			user.client.mouse_pointer_icon = null
+
+/obj/item/weapon/gun/equipped(var/mob/living/carbon/human/user)
+	. = ..()
+	check_should_have_crosshair(user)
+
+/obj/item/weapon/gun/dropped(var/mob/living/carbon/human/user)
+	. = ..()
+	check_should_have_crosshair(user)
