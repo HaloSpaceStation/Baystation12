@@ -21,15 +21,17 @@
 /obj/item/weapon/gun
 	var/crosshair_file = 'code/modules/halo/weapons/icons/dragaim_icon2.dmi'
 
-/obj/item/weapon/gun/proc/check_should_have_crosshair(var/mob/living/user,var/force_off)
+/obj/item/weapon/gun/proc/check_should_have_crosshair(var/mob/living/user,var/slot = null)
 	if(!user.client)
 		return
-	if(force_off)
-		user.client.mouse_pointer_icon = null
-		return
 	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/h = user
-		if(h.l_hand == src || h.r_hand == src)
+		var/eval = null
+		if(slot)
+			eval = (slot == slot_l_hand || slot == slot_r_hand)
+		else
+			var/mob/living/carbon/human/h = user
+			eval = (h.l_hand == src || h.r_hand == src)
+		if(eval)
 			user.client.mouse_pointer_icon = crosshair_file
 		else
 			user.client.mouse_pointer_icon = null
@@ -39,9 +41,9 @@
 		else
 			user.client.mouse_pointer_icon = null
 
-/obj/item/weapon/gun/equipped(var/mob/living/carbon/human/user)
+/obj/item/weapon/gun/equipped(var/mob/living/carbon/human/user,var/slot)
 	. = ..()
-	check_should_have_crosshair(user)
+	check_should_have_crosshair(user,slot)
 
 /obj/item/weapon/gun/dropped(var/mob/living/carbon/human/user)
 	. = ..()
