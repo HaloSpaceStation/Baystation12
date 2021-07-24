@@ -30,7 +30,7 @@
 	//burst = 10
 	//burst_delay = 2
 	fire_delay = 5
-	dispersion = list(0.2,0.3,0.3,0.4,0.4,0.5,0.6,0.7,0.8,0.8,0.9,1.1)
+	dispersion = list(0.2,0.2,0.2,0.3,0.3,0.4,0.4,0.5,0.5,0.5,0.5,0.55)
 
 	load_time = 5
 	//No acc penalty on long bursts for this, but it's still using chaingun dispersion for both modes.
@@ -51,6 +51,7 @@
 
 	move_delay_malus = 2
 	fire_delay = 8
+	accuracy = -2
 
 	firemodes = list(\
 	list(mode_name="long bursts",  burst=15,burst_delay = 1,fire_delay = 8, accuracy = -1,dispersion=list(0.2,0.2,0.2,0.3,0.3,0.4,0.4,0.5,0.5,0.5,0.5,0.55)),
