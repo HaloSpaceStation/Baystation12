@@ -735,6 +735,7 @@
 		if(new_time > spawn_datum.emp_toggle_time)
 			spawn_datum.emp_toggle_time = new_time
 
+
 	if(affected)
 		src.visible_message("\icon[src] <span class='notice'>[src] is affected by the EMP!</span>")
 
