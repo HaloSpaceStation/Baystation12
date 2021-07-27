@@ -15,7 +15,7 @@
 
 	ammo_containers = newlist(/obj/item/ammo_magazine/wraith_coax,/obj/item/ammo_magazine/wraith_cannon)
 
-	exposed_positions = list("gunner" = 0)
+	exposed_positions = list()
 
 	occupants = list(4,0)
 
@@ -49,7 +49,7 @@
 	desc = "A arcing-projecile firing cannon capable of inflicting heavy damage on both infantry and vehicles."
 
 	fire_delay = 40
-	dispersion = list(0.73)
+	dispersion = list(0)
 	fire_sound = 'code/modules/halo/sounds/wraith_cannon_fire.ogg'
 
 	guns_switchto = newlist(/datum/vehicle_gun/wraith_cannon,/datum/vehicle_gun/wraith_machinegun)
@@ -61,16 +61,17 @@
 	desc = "A arcing-projecile firing cannon capable of inflicting heavy damage on both infantry and vehicles."
 	burst_size = 1
 	fire_delay = 40
-	dispersion = list(0.73)
+	dispersion = list(0)
 	fire_sound = 'code/modules/halo/sounds/wraith_cannon_fire.ogg'
 	mag_used = /obj/item/ammo_magazine/wraith_cannon
 
 /datum/vehicle_gun/wraith_machinegun
 	name = "Wraith Medium Plasma Cannons"
 	desc = "A short burst, mounted Plasma Rifle, used for anti-infantry purposes."
-	burst_size = 3
+	burst_size = 10
 	burst_delay = 1
-	fire_delay = 10
+	dispersion = list(0.55)
+	fire_delay = 8
 	fire_sound = 'code/modules/halo/sounds/plasrifle3burst.ogg'
 	mag_used = /obj/item/ammo_magazine/wraith_coax
 

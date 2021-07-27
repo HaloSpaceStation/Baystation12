@@ -66,7 +66,8 @@
 	burst_delay = 2
 	fire_delay = 15
 
-	burst = 4
+	burst = 8
+	dispersion = list(0.15,0.3,0.45,0.5,0.55)
 
 	irradiate_non_cov = 10
 

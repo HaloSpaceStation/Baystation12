@@ -65,8 +65,9 @@
 	fire_sound = 'code/modules/halo/sounds/Fuelrodfire.ogg'
 	fire_delay = 25
 
-	burst = 10
+	burst = 4
 	burst_delay = 4
+	dispersion = list(0.3,0.45,0.6,0.73)
 
 	irradiate_non_cov = 20
 

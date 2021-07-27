@@ -52,10 +52,9 @@
 	name = "Warthog Turret"
 	desc = "A rapid-fire mounted machine gun."
 
-	fire_delay = 20
+	fire_delay = 8
 
-	dispersion = list(0,0,0,0,0,1)
-	burst_accuracy = list(0,0,0,0,0.-1)
+	dispersion = list(0.15,0.3,0.45,0.5,0.55)
 
 	burst = 15
 	burst_delay = 1.75

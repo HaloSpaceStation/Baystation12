@@ -21,7 +21,7 @@
 
 	ammo_containers = newlist(/obj/item/ammo_magazine/pelican_hmg)
 
-	occupants = list(13,1)
+	occupants = list(13,0)
 
 	vehicle_size = ITEM_SIZE_VEHICLE_LARGE
 	vehicle_carry_size = ITEM_SIZE_VEHICLE
@@ -43,6 +43,7 @@
 	resistances = list("bullet"=70,"energy"=70,"emp"=50,"bomb" = 60)
 
 /datum/component_profile/pelican
+	pos_to_check = "driver"
 	gunner_weapons = list(/obj/item/weapon/gun/vehicle_turret/pelican_autocannon)
 	vital_components = newlist(/obj/item/vehicle_component/health_manager/pelican)
 
@@ -58,9 +59,11 @@
 	icon_state = "chaingun_obj"
 	item_state = "chaingun_obj"
 
-	fire_delay = 1.5 SECONDS
+	fire_delay = 8
 
-	burst = 5
+	burst = 10
+
+	dispersion = list(0.15,0.3,0.45,0.5,0.55)
 
 	magazine_type = /obj/item/ammo_magazine/pelican_hmg
 
@@ -102,9 +105,9 @@
 	vehicle_carry_size = ITEM_SIZE_VEHICLE
 	capacity_flag = ITEM_SIZE_VEHICLE_LARGE
 
-	occupants = list(13,1)
+	occupants = list(13,0)
 
-	exposed_positions = list("driver" = 0)//Passengers could technically be hit by bullets through the troop bay.
+	exposed_positions = list()
 
 	light_color = "#E1FDFF"
 
@@ -154,9 +157,11 @@
 
 	magazine_type = /obj/item/ammo_magazine/pelican_chaingun
 
-	fire_delay = 5.5 SECONDS
+	fire_delay = 8
 
-	burst = 3
+	burst = 12
+
+	dispersion = list(0.15,0.3,0.45,0.5,0.55)
 
 /obj/item/ammo_magazine/pelican_chaingun
 	max_ammo = 150
