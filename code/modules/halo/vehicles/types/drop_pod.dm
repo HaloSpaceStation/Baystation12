@@ -178,7 +178,7 @@
 
 	var/turf/drop_turf = get_drop_turf(drop_point)
 	if(isnull(drop_turf))
-		to_chat(usr,"<span class = 'notice'>No valid drop-turfs available.</span>")
+		to_chat(usr,"<span class = 'notice'>No valid drop-turfs available at selected point.</span>")
 		return
 
 	proc_launch_pod(usr,drop_turf)
