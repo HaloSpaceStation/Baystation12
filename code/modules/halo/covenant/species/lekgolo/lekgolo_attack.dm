@@ -29,7 +29,7 @@
 	charge_max = 50
 	charge_amount = 50
 
-	shot_delay = 4  SECONDS
+	shot_delay = 2  SECONDS
 
 
 
