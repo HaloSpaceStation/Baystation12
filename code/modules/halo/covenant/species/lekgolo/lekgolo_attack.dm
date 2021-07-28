@@ -107,10 +107,6 @@
 
 // Mgalekgolo melee attacks //
 
+//Let's ignore facing on lekgolo melee attacks to emulate the game's behind-the-back type melee attacks.
 /mob/living/simple_animal/mgalekgolo/UnarmedAttack(var/atom/A, var/proximity)
-	var/attackdir = get_dir(src,A)
-	if(!(attackdir in get_allowed_attack_dirs(1)))
-		to_chat(src,"<span class='notice'>You must be facing [A] to attack it!</span>")
-		return
-
 	. = ..()
