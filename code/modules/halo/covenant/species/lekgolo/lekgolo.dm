@@ -90,6 +90,7 @@
 	//heal a little
 	if(stat != DEAD && health < maxHealth)
 		health += regeneration
+	confused = 0 //Reset our confusion counter.
 
 	//regain charge
 	if(active_weapon.charge_amount <= active_weapon.charge_max)
