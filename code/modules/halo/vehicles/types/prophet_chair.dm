@@ -18,6 +18,11 @@
 	can_space_move = 1
 	internal_air = new
 
+	can_smoke = 1
+	smoke_ammo = 3
+	smoke_ammo_max = 3
+	smoke_step_dist = 0
+
 	acceleration = 2
 	min_speed = 8.5
 	max_speed = 2.5

@@ -29,6 +29,11 @@
 
 	light_color = "#E1FDFF"
 
+	can_smoke = 1
+	smoke_ammo = 10
+	smoke_ammo_max = 10
+	smoke_step_dist = 1
+
 	min_speed = 9.75
 	max_speed = 2.25
 	acceleration = 6
@@ -110,6 +115,11 @@
 	exposed_positions = list()
 
 	light_color = "#E1FDFF"
+
+	can_smoke = 1
+	smoke_ammo = 10
+	smoke_ammo_max = 10
+	smoke_step_dist = 0
 
 	min_speed = 9.75
 	max_speed = 2.25

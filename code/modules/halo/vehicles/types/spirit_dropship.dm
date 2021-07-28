@@ -29,6 +29,12 @@
 	capacity_flag = ITEM_SIZE_VEHICLE_LARGE
 
 	light_color = "#C1CEFF"
+
+	can_smoke = 1
+	smoke_ammo = 10
+	smoke_ammo_max = 10
+	smoke_step_dist = 0
+
 	spawn_datum = /datum/mobile_spawn/covenant
 	ammo_containers = newlist(/obj/item/ammo_magazine/spirit_cannon)
 

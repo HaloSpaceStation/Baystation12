@@ -25,6 +25,10 @@
 
 	light_color = "#FEFFE1"
 
+	can_smoke = 1
+	smoke_ammo = 5
+	smoke_ammo_max = 5
+
 	acceleration = 2
 	min_speed = 8.75
 	max_speed = 2.75

@@ -27,6 +27,11 @@
 
 	light_color = "#C1CEFF"
 
+	can_smoke = 1
+	smoke_ammo = 5
+	smoke_ammo_max = 5
+	smoke_step_dist = 1
+
 	can_overrun_cover = 1
 
 	min_speed = 13
