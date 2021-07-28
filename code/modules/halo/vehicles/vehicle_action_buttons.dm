@@ -40,10 +40,10 @@
 
 /obj/vehicles/proc/init_vehicle_actions()
 	driver_actions = list(new /datum/action/vehicle_action/vehicle_brake(src))
-	if(can_smoke)
-		driver_actions += new /datum/action/vehicle_action/vehicle_smoke_deploy (src)
 	if(vehicle_carry_size > 0)
 		driver_actions += new /datum/action/vehicle_action/vehicle_detach_carried (src)
+	if(can_smoke)
+		driver_actions += new /datum/action/vehicle_action/vehicle_smoke_deploy (src)
 
 /obj/vehicles/air/init_vehicle_actions()
 	. = ..()
