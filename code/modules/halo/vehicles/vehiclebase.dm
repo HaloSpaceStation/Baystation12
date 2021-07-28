@@ -735,12 +735,6 @@
 		if(new_time > spawn_datum.emp_toggle_time)
 			spawn_datum.emp_toggle_time = new_time
 
-	//25% lower chance to crash if we are flying
-	if(base_chance && prob(max(base_chance - 25, 5)))
-		//lose control of the vehicle
-		inactive_pilot_effects()
-		affected = TRUE
-
 	if(affected)
 		src.visible_message("\icon[src] <span class='notice'>[src] is affected by the EMP!</span>")
 

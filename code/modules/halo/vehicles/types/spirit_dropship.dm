@@ -90,6 +90,6 @@
 	projectile_type = /obj/item/projectile/bullet/covenant/spirit_cannon
 
 /obj/item/projectile/bullet/covenant/spirit_cannon
-	damage = 50
+	damage = 40
 	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
 	icon_state = "heavy_plas_cannon"
