@@ -84,6 +84,14 @@ for reference:
 /obj/structure/barricade/get_material()
 	return material
 
+/obj/structure/barricade/proc/take_damage(var/amt)
+	health = min(health-amt,maxhealth)
+	if (src.health <= 0)
+		visible_message("<span class='danger'>The barricade is smashed apart!</span>")
+		dismantle()
+		qdel(src)
+		return
+
 /obj/structure/barricade/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/stack))
 		var/obj/item/stack/D = W
@@ -102,17 +110,14 @@ for reference:
 		return
 	else
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		var/damtake = 0
 		switch(W.damtype)
 			if("fire")
-				src.health -= W.force * 1
+				damtake = W.force * 1
 			if("brute")
-				src.health -= W.force * 0.75
-			else
-		if (src.health <= 0)
-			visible_message("<span class='danger'>The barricade is smashed apart!</span>")
-			dismantle()
-			qdel(src)
-			return
+				damtake = W.force * 0.75
+		if(damtake > 0)
+			take_damage(damtake)
 		..()
 
 /obj/structure/barricade/proc/dismantle()
