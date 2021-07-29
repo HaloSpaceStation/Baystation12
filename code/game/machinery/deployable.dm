@@ -137,9 +137,17 @@ for reference:
 	if(air_group || (height==0))
 		return 1
 	if(istype(mover) && (mover.checkpass(PASSTABLE) || mover.elevation != elevation))
+		var/obj/item/projectile/p = mover
+		if(istype(p) && p.original == src)
+			return 0
 		return 1
 	else
 		return 0
+
+/obj/structure/barricade/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()
+	take_damage(Proj.damage)
+	playsound(loc, 'sound/weapons/tablehit1.ogg', 50, 1)
 
 //Actual Deployable machinery stuff
 /obj/machinery/deployable
