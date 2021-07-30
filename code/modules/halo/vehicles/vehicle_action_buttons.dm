@@ -56,3 +56,9 @@
 			a.Remove(m)
 		else
 			a.Grant(m)
+
+#undef ACTION_USE_BRAKE
+#undef ACTION_USE_LANDTAKEOFF
+#undef ACTION_FLY_WAYPOINT
+#undef ACTION_DETACH_VEHICLE
+#undef ACTION_USE_SMOKE
