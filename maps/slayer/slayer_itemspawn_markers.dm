@@ -14,6 +14,9 @@
 	. = ..()
 	GLOB.processing_objects += src
 
+/obj/effect/itemspawn_marker/ex_act()
+	return
+
 /obj/effect/itemspawn_marker/process()
 	if(last_spawned_item)
 		if(last_spawned_item.loc != get_turf(loc)) //.loc is intentionally used here to disallow standing on the spawn tile
