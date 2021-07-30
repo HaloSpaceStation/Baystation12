@@ -10,8 +10,11 @@
 	var/list/spawnables = list()
 	var/mags_spawn = 0
 
-/obj/effect/itemspawn_marker/process()
+/obj/effect/itemspawn_marker/Initialize()
 	. = ..()
+	GLOB.processing_objects += src
+
+/obj/effect/itemspawn_marker/process()
 	if(last_spawned_item)
 		if(last_spawned_item.loc != get_turf(loc)) //.loc is intentionally used here to disallow standing on the spawn tile
 			//whilst holding the item and other such things.
@@ -31,6 +34,10 @@
 	if(mags_spawn > 0 && istype(g))
 		for(var/i = 0 to mags_spawn)
 			new g.magazine_type (t)
+
+/obj/effect/itemspawn_marker/Destroy()
+	GLOB.processing_objects -= src
+	. = ..()
 
 //Marker Variants//
 
