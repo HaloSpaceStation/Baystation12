@@ -54,6 +54,7 @@
 	var/smoke_delay = 3 SECONDS //Delay between smoke charges.
 	var/smoke_step_dist = 0 //How far should the smoke origin be shifted forward of our vehicle?
 	var/smoke_start_amt = 3 //How many times should we pop the smoke effect's start() proc? Smokebombs do it 4 times.
+	var/smoke_type = /datum/effect/effect/system/smoke_spread/vehicle_smokescreen
 
 	//Vehicle ferrying//
 	var/vehicle_size = ITEM_SIZE_VEHICLE//The size of the vehicle, used by vehicle cargo ferrying to determine allowed amount and allowed size.
