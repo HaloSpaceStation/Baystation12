@@ -67,4 +67,8 @@
 	default_language = all_languages[LANGUAGE_SIGN]
 	radio.create_channel_dongle(RADIO_COV)
 
+/mob/living/silicon/robot/huragok/death()
+	. = ..()
+	gib()
+
 #undef HURAGOK_REGEN
