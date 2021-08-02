@@ -79,8 +79,8 @@
 					)
 	amounts = list(\
 		/obj/item/weapon/gun/projectile/m739_lmg = 3,
-		/obj/item/weapon/gun/projectile/srs99_sniper = 3,
-		/obj/item/weapon/gun/projectile/m41 = 3,
+		/obj/item/weapon/gun/projectile/srs99_sniper = 2,
+		/obj/item/weapon/gun/projectile/m41 = 1,
 		/obj/item/turret_deploy_kit/HMG = 2,
 		/obj/item/weapon/plastique = 2,
 		/obj/item/weapon/plastique/breaching = 2,
@@ -109,7 +109,7 @@
 					)
 	amounts = list(\
 		/obj/item/weapon/gun/projectile/m545_lmg  = 1,
-		/obj/item/weapon/gun/projectile/heavysniper = 1,
+		/obj/item/weapon/gun/projectile/heavysniper = 2,
 		/obj/item/weapon/gun/projectile/m41 = 1,
 		/obj/item/turret_deploy_kit/HMG = 2,
 		/obj/item/weapon/plastique = 8,

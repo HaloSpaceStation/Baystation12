@@ -94,9 +94,9 @@
 		/obj/item/turret_deploy_kit/plasturret = 0
 	)
 	amounts = list(\
-		/obj/item/weapon/gun/projectile/fuel_rod = 3,
+		/obj/item/weapon/gun/projectile/fuel_rod = 1,
 		/obj/item/weapon/gun/energy/plasmarepeater = 3,
-		/obj/item/weapon/gun/energy/beam_rifle = 3,
+		/obj/item/weapon/gun/energy/beam_rifle = 2,
 		/obj/item/weapon/grenade/plasma = 15,
 		/obj/item/weapon/grenade/smokebomb/covenant = 15,
 		/obj/item/turret_deploy_kit/plasturret = 4
@@ -259,7 +259,7 @@
 		/obj/item/weapon/grenade/smokebomb/covenant = 0
 	)
 	amounts = list(\
-		/obj/item/weapon/gun/energy/beam_rifle = 3,
+		/obj/item/weapon/gun/energy/beam_rifle = 2,
 		/obj/item/weapon/grenade/plasma = 15,
 		/obj/item/weapon/grenade/smokebomb/covenant = 15
 	)
@@ -347,7 +347,7 @@
 		/obj/item/turret_deploy_kit/plasturret = 0
 	)
 	amounts = list(\
-		/obj/item/weapon/gun/projectile/fuel_rod = 3,
+		/obj/item/weapon/gun/projectile/fuel_rod = 2,
 		/obj/item/weapon/gun/energy/plasmarepeater = 3,
 		/obj/item/weapon/grenade/plasma = 15,
 		/obj/item/weapon/grenade/smokebomb/covenant = 12,
