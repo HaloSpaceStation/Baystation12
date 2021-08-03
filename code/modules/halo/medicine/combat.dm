@@ -46,6 +46,16 @@
 
 	starts_with = list(/datum/reagent/otomax = 10)
 
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/ryetalyn
+	name = "emergency genetic stabilizers"
+	desc = "Reverses genetic mutations from radiation"
+	band_color = COLOR_GREEN
+
+	amount_per_transfer_from_this = 1
+	volume = 1
+
+	starts_with = list(/datum/reagent/ryetalyn = 1)
+
 /obj/item/stack/medical/compression
 	name = "compression bandages"
 	singular_name = "compression bandage"

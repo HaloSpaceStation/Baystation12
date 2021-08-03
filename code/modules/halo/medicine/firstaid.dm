@@ -61,3 +61,16 @@
 		/obj/item/stack/medical/splint,
 		/obj/item/device/healthanalyzer
 		)
+
+/obj/item/weapon/storage/firstaid/combat/radiation
+	name = "field radiation kit"
+	desc = "Contains emergency medicine for severe radiation exposure"
+
+	icon_state = "radfirstaid2"
+	item_state = "radfirstaid2"
+
+	startswith = list (
+		/obj/item/weapon/reagent_containers/hypospray/autoinjector/ryetalyn = 3,
+		/obj/item/weapon/storage/pill_bottle/hyronalin = 2,
+		/obj/item/device/healthanalyzer
+	)
