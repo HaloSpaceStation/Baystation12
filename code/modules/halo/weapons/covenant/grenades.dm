@@ -85,12 +85,14 @@
 				M.playsound_local(epicenter, 'code/modules/halo/sounds/Plasmanadedetonate.ogg', 100, 1)
 	var/mob/living/carbon/human/mob_containing = loc
 	if(istype(mob_containing))
+		alt_explosion_damage_max += PLASNADE_EMBEDDED_DAM_ADD
+		do_alt_explosion()
+		explosion(get_turf(src), -1, 2, 2, 0)
 		mob_containing.contents -= src
 		mob_containing.embedded -= src
-		alt_explosion_damage_max += PLASNADE_EMBEDDED_DAM_ADD
-	do_alt_explosion()
-	if(explosion_size)
-		explosion(get_turf(O), -1, 2, 2, 0)
+	else
+		do_alt_explosion()
+		explosion(get_turf(src), -1, 2, 2, 0)
 	loc = null
 	qdel(src)
 
