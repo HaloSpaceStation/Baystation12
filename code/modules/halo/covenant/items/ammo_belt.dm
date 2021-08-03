@@ -7,7 +7,7 @@
 	color = "#ff99ff"
 	w_class = ITEM_SIZE_HUGE
 	max_w_class = ITEM_SIZE_LARGE
-	storage_slots = 6
+	storage_slots = 7
 	sprite_sheets = list(
 		"Tvaoan Kig-Yar" = null,\
 		"Sangheili" = null\

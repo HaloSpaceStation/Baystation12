@@ -194,7 +194,7 @@
 	w_class = ITEM_SIZE_HUGE
 	max_w_class = ITEM_SIZE_LARGE
 	item_state = "UNSC Marine Ammo Belt"
-	storage_slots = 6
+	storage_slots = 7
 
 	can_hold = list(\
 	/obj/item/weapon/material/knife/combat_knife,
