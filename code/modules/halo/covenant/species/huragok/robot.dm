@@ -67,4 +67,7 @@
 	default_language = all_languages[LANGUAGE_SIGN]
 	radio.create_channel_dongle(RADIO_COV)
 
+/mob/living/silicon/robot/huragok/get_move_sound()
+	. = null // Huragok hover, therefore make no sound when they move
+
 #undef HURAGOK_REGEN
