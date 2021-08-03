@@ -165,7 +165,6 @@
 					/obj/item/weapon/storage/pocketstore/hardcase/bullets = 0,
 					/obj/item/weapon/storage/pocketstore/hardcase/grenade = 1,
 					/obj/item/weapon/storage/pocketstore/hardcase/armorkits = 0,
-					/obj/item/weapon/storage/pocketstore/hardcase/rockets = 1,
 					/obj/item/weapon/storage/pocketstore/hardcase/medbottles = 0,
 					/obj/item/weapon/storage/pocketstore/hardcase/hypos = 0,
 					/obj/item/weapon/storage/pocketstore/hardcase/materials = 0,
