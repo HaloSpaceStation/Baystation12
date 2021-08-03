@@ -197,11 +197,13 @@
 	storage_slots = 6
 
 	can_hold = list(\
+	/obj/item/weapon/material/knife/combat_knife,
 	/obj/item/ammo_magazine,
 	/obj/item/ammo_box,
 	/obj/item/weapon/armor_patch,
 	/obj/item/ammo_casing,
 	/obj/item/weapon/plastique,
+	/obj/item/weapon/tank/emergency/oxygen
 	)
 
 /obj/item/weapon/storage/belt/marine_medic
