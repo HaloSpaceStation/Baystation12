@@ -96,7 +96,7 @@
 	else
 		. = ..()
 
-/obj/item/ammo_casing/proc/add_to_pile(var/image/casing_image,var/casing_transform)
+/obj/item/ammo_casing/proc/add_to_pile()
 	in_pile = min(max_in_pile,in_pile+1)
 	update_icon()
 
@@ -105,8 +105,7 @@
 	if(!BB)
 		var/obj/item/ammo_casing/here = locate(type) in loc.contents - src
 		if(here)
-			var/image/img = image(src) //WHY THE FUCK DOES THIS NOT ACTUALLY CREATE AN IMAGE COPY????
-			here.add_to_pile(img,transform)
+			here.add_to_pile()
 			spawn(20) //Let's wait for the casing to finish their animation before we delete them.
 				qdel(src)
 		else
