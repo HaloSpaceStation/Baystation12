@@ -1,6 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 //Dependencies located in robot.dm and robot_modules.dm, they are vital for this to work//
 //////////////////////////////////////////////////////////////////////////////////////////
+#define HURAGOK_REGEN 2	// 200 seconds to heal from full damage to full health
 
 /mob/living/silicon/robot/huragok
 	name = "Huragok"
@@ -47,7 +48,7 @@
 	if(health < maxHealth)
 		health = min(health + HURAGOK_REGEN,maxHealth)
 	*/
-	heal_overall_damage(maxHealth*0.005,maxHealth*0.005) // Once per second, so up to 200 seconds to heal back to full. Try to avoid division if possible
+	heal_overall_damage(HURAGOK_REGEN,HURAGOK_REGEN)
 
 /mob/living/silicon/robot/huragok/New()
 	. =.. ()
@@ -75,3 +76,5 @@
 		visible_message("<span class='notice'>\The [src] bonks \the [A] harmlessly.</span>")
 		do_attack_animation(A)
 	return
+
+#undefine HURAGOK_REGEN
