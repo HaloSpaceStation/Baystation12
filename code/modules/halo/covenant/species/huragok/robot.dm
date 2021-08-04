@@ -59,6 +59,7 @@
 	default_language = all_languages[LANGUAGE_SIGN]
 	radio.create_channel_dongle(RADIO_COV)
 
+
 /mob/living/silicon/robot/huragok/get_move_sound()
 	. = null // Huragok hover, therefore make no sound when they move
 
@@ -81,5 +82,9 @@
 			playsound(get_turf(src),'sound/effects/pop.ogg',25,1)
 		do_attack_animation(A)
 	return
+  
+/mob/living/silicon/robot/huragok/death()
+	. = ..()
+	gib()
 
 #undef HURAGOK_REGEN
