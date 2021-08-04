@@ -73,8 +73,13 @@
 /mob/living/silicon/robot/huragok/CtrlShiftClickOn(var/atom/A)	// Special Bonk
 	face_atom(A)
 	if(Adjacent(A))
-		visible_message("<span class='notice'>\The [src] bonks \the [A] harmlessly.</span>")
+		if (prob(2))
+			visible_message("<span class='notice'>\The [src] BONKS \the [A].</span>")
+			playsound(get_turf(src),'code/modules/halo/sounds/bonk.ogg',100,0)
+		else
+			visible_message("<span class='notice'>\The [src] bonks \the [A] harmlessly.</span>")
+			playsound(get_turf(src),'sound/effects/pop.ogg',25,1)
 		do_attack_animation(A)
 	return
 
-#undefine HURAGOK_REGEN
+#undef HURAGOK_REGEN
