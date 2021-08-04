@@ -71,7 +71,7 @@
 
 /mob/living/silicon/robot/huragok/CtrlShiftClickOn(var/atom/A)	// Special Bonk
 	face_atom(A)
-	if(get_dist(src, A) < 2)
+	if(Adjacent(A))
 		visible_message("<span class='notice'>\The [src] bonks \the [A] harmlessly.</span>")
 		do_attack_animation(A)
 	return
