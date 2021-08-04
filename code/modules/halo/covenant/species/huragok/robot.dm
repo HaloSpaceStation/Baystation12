@@ -16,6 +16,7 @@
 	speak_query = "chirps"
 	laws = /datum/ai_laws/huragok
 	default_language = /datum/language/sign
+	pass_flags = PASSTABLE
 
 	var/bruteloss = 0
 	var/fireloss = 0
