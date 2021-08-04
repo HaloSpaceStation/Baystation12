@@ -2,15 +2,13 @@
 //Dependencies located in robot.dm and robot_modules.dm, they are vital for this to work//
 //////////////////////////////////////////////////////////////////////////////////////////
 
-#define HURAGOK_REGEN 0.5
-
 /mob/living/silicon/robot/huragok
 	name = "Huragok"
 	real_name = "Huragok"
 	icon = 'code/modules/halo/covenant/species/huragok/huragok.dmi'
 	icon_state = "engineer"
-	maxHealth = 200
-	health = 200
+	maxHealth = 400
+	health = 400
 	faction = "Covenant"
 	spawn_sound = null
 	speak_statement = "chirps"
@@ -18,6 +16,9 @@
 	speak_query = "chirps"
 	laws = /datum/ai_laws/huragok
 	default_language = /datum/language/sign
+
+	var/bruteloss = 0
+	var/fireloss = 0
 
 	modules_available = list("Huragok Engineer", "Huragok Lifeworker")
 
@@ -39,24 +40,13 @@
 
 /mob/living/silicon/robot/huragok/Life()
 	. = ..()
-	if(stat)
+	if(stat == DEAD)
 		return
+	/*	What in the goddamn
 	if(health < maxHealth)
 		health = min(health + HURAGOK_REGEN,maxHealth)
-	for(var/V in components)
-		var/datum/robot_component/C = components[V]
-		if(C.installed != 1)
-			var/init_ex_type = initial(C.external_type)
-			if(isnull(init_ex_type) || !C.wrapped)
-				C.repair()
-		var/heal_brute = 0
-		var/heal_burn = 0
-		if(C.brute_damage > 0)
-			heal_brute = HURAGOK_REGEN
-		if(C.electronics_damage > 0)
-			heal_burn = HURAGOK_REGEN
-		if(heal_brute || heal_burn)
-			C.heal_damage(heal_brute,heal_burn)
+	*/
+	heal_overall_damage(maxHealth*0.005,maxHealth*0.005) // Once per second, so up to 200 seconds to heal back to full. Try to avoid division if possible
 
 /mob/living/silicon/robot/huragok/New()
 	. =.. ()
@@ -70,4 +60,10 @@
 /mob/living/silicon/robot/huragok/get_move_sound()
 	. = null // Huragok hover, therefore make no sound when they move
 
-#undef HURAGOK_REGEN
+/mob/living/silicon/robot/huragok/handle_regular_status_updates()	// Override the proc, so we kill huragok at 0 hp
+	updatehealth()
+
+	if (health <= 0)
+		death()
+
+	return 1
