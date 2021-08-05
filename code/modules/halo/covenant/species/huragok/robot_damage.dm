@@ -17,11 +17,11 @@
 // Just in case this code gets called
 
 /mob/living/silicon/robot/huragok/heal_organ_damage(var/brute, var/burn)
-	take_overall_damage(brute,burn)
+	heal_overall_damage(brute,burn)
 	return
 
 /mob/living/silicon/robot/huragok/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
-	heal_overall_damage(brute,burn)
+	take_overall_damage(brute,burn)
 	return
 
 /mob/living/silicon/robot/huragok/heal_overall_damage(var/brute, var/burn)
