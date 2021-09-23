@@ -40,7 +40,7 @@
 /hook/startup/proc/notifyDiscord()
 	//Todo: Get role ID from config file?
 	if(config.server)
-		message2discord("general", "<@&890638255735857212>, a new round is starting! Join at: <byond://[config.server]>")
+		message2discord("general", "<@&889562841584107562>, a new round is starting! Join at: <byond://[config.server]>")
 	else
-		message2discord("general", "<@&890638255735857212>, a new round is starting!")
+		message2discord("general", "<@&889562841584107562>, a new round is starting!")
 	return 1
