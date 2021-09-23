@@ -55,10 +55,6 @@
 /area/planets/Geminus/indoor/quest_instance
 	name = "Geminus Outskirts"
 
-/obj/effect/shuttle_instance/innie_quest
-	offsite_shuttle_area_type = /area/shuttle/offsite_berth_transport
-
-
 /obj/effect/landmark/instance_defender
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"

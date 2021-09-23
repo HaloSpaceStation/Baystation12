@@ -1718,7 +1718,6 @@
 #include "code\modules\halo\factions\quest\innie\file_comms.dm"
 #include "code\modules\halo\factions\quest\innie\file_coord.dm"
 #include "code\modules\halo\factions\quest\innie\program_comms.dm"
-#include "code\modules\halo\factions\quest\innie\transport_area.dm"
 #include "code\modules\halo\flood\flood.dm"
 #include "code\modules\halo\flood\flood_infection_chem.dm"
 #include "code\modules\halo\flood\flood_npc.dm"
