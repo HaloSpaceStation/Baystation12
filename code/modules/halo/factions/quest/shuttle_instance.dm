@@ -52,9 +52,6 @@
 
 //important! uncomment this when you need it
 
-/area/planets/Geminus/indoor/quest_instance
-	name = "Geminus Outskirts"
-
 /obj/effect/landmark/instance_defender
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"
