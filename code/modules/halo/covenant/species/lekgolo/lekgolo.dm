@@ -10,8 +10,8 @@
 
 	layer = ABOVE_HUMAN_LAYER
 
-	maxHealth = 600
-	health = 600
+	maxHealth = 550
+	health = 550
 	unsuitable_atmos_damage = 0
 	var/crouched = 0
 
@@ -32,9 +32,9 @@
 	var/custom_name
 
 	languages = list(LANGUAGE_SANGHEILI, LANGUAGE_LEKGOLO)
-	melee_damage_lower = 30
-	melee_damage_upper = 50
-	attacktext = "swiped"
+	melee_damage_lower = 50
+	melee_damage_upper = 60
+	attacktext = "crushed"
 	a_intent = I_HURT
 	resistance = 20
 	attack_sound = 'sound/weapons/heavysmash.ogg'
@@ -46,7 +46,7 @@
 
 	var/datum/mgalekgolo_weapon/active_weapon = /datum/mgalekgolo_weapon/fuel_rod_cannon
 	var/atom/current_target
-	var/regeneration = 1
+	var/regeneration = 0.5
 
 	var/hud_setup = 0
 
@@ -90,6 +90,7 @@
 	//heal a little
 	if(stat != DEAD && health < maxHealth)
 		health += regeneration
+	confused = 0 //Reset our confusion counter.
 
 	//regain charge
 	if(active_weapon.charge_amount <= active_weapon.charge_max)

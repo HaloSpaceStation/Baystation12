@@ -5,6 +5,10 @@
 	icon_deny = "ironhammer-deny"
 	ai_access_level = 3
 	nohack = 1
+	vend_delay = 1
+
+/obj/machinery/pointbased_vending/armory
+	vend_delay = 1
 
 /obj/machinery/pointbased_vending/armory/hybrid // Both ammo, and guns!
 	name = "UNSC Equipment Rack"
@@ -36,6 +40,9 @@
 					"Explosives" = -1,
 					/obj/item/weapon/grenade/frag/m9_hedp = 0,
 					/obj/item/weapon/grenade/smokebomb = 0,
+					/obj/item/weapon/plastique = 0,
+					/obj/item/weapon/plastique/breaching = 0,
+					/obj/item/weapon/plastique/breaching/longrange = 0,
 					"Miscellaneous" = -1,
 					/obj/item/weapon/armor_patch = 0,
 					/obj/item/weapon/armor_patch/mini = 0,
@@ -43,7 +50,10 @@
 					)
 	amounts = list(\
 		/obj/item/weapon/grenade/frag/m9_hedp = 15,
-		/obj/item/weapon/grenade/smokebomb = 15
+		/obj/item/weapon/grenade/smokebomb = 15,
+		/obj/item/weapon/plastique = 2,
+		/obj/item/weapon/plastique/breaching = 2,
+		/obj/item/weapon/plastique/breaching/longrange = 2,
 	)
 
 /obj/machinery/pointbased_vending/armory/hybrid/innie
@@ -76,9 +86,9 @@
 		/obj/item/weapon/gun/projectile/srs99_sniper = 3,
 		/obj/item/weapon/gun/projectile/m41 = 3,
 		/obj/item/turret_deploy_kit/HMG = 2,
-		/obj/item/weapon/plastique = 8,
-		/obj/item/weapon/plastique/breaching = 4,
-		/obj/item/weapon/plastique/breaching/longrange = 4,
+		/obj/item/weapon/plastique = 2,
+		/obj/item/weapon/plastique/breaching = 2,
+		/obj/item/weapon/plastique/breaching/longrange = 2,
 	)
 
 /obj/machinery/pointbased_vending/armory/heavy/innie // HEAVY WEAPONS
@@ -107,8 +117,8 @@
 		/obj/item/weapon/gun/projectile/m41 = 1,
 		/obj/item/turret_deploy_kit/HMG = 2,
 		/obj/item/weapon/plastique = 8,
-		/obj/item/weapon/plastique/breaching = 4,
-		/obj/item/weapon/plastique/breaching/longrange = 4,
+		/obj/item/weapon/plastique/breaching = 2,
+		/obj/item/weapon/plastique/breaching/longrange = 2,
 	)
 
 /obj/machinery/vending/armory/police
@@ -144,7 +154,7 @@
 					/obj/item/weapon/storage/belt/marine_ammo = 2,
 					/obj/item/weapon/storage/belt/marine_medic = 1,
 					/obj/item/weapon/storage/belt/utility/full = 0,
-					/obj/item/clothing/accessory/storage/IFAK = 1,
+					/obj/item/clothing/accessory/storage/IFAK/UNSC = 1,
 					/obj/item/clothing/accessory/storage/bandolier = 2,
 					/obj/item/weapon/storage/backpack/marine = 3,
 					/obj/item/weapon/storage/backpack/marine/brown = 3,
@@ -176,7 +186,7 @@
 					)
 	amounts = list(\
 		/obj/item/weapon/storage/box/large/armorset/eva = 3,
-		/obj/item/clothing/accessory/storage/IFAK = 20,
+		/obj/item/clothing/accessory/storage/IFAK/UNSC = 20,
 		/obj/item/weapon/storage/firstaid/unsc = 6,
 		/obj/item/stack/barbedwire/fifteen = 15,
 		/obj/item/flight_item/bullfrog_pack = 1
@@ -281,9 +291,9 @@
 	amounts = list(\
 	/obj/item/weapon/grenade/frag/m9_hedp = 15,
 	/obj/item/weapon/grenade/smokebomb = 15,
-	/obj/item/weapon/plastique = 8,
-	/obj/item/weapon/plastique/breaching = 5,
-	/obj/item/weapon/plastique/breaching/longrange= 5,
+	/obj/item/weapon/plastique = 4,
+	/obj/item/weapon/plastique/breaching = 2,
+	/obj/item/weapon/plastique/breaching/longrange= 2,
 	)
 
 /obj/machinery/pointbased_vending/armory/odstvend/armour
@@ -300,7 +310,7 @@
 					/obj/item/weapon/storage/belt/marine_ammo = 2,
 					/obj/item/weapon/storage/belt/marine_medic = 1,
 					/obj/item/weapon/storage/belt/utility/full = 0,
-					/obj/item/clothing/accessory/storage/IFAK = 1,
+					/obj/item/clothing/accessory/storage/IFAK/UNSC = 1,
 					/obj/item/clothing/accessory/storage/bandolier = 2,
 					/obj/item/weapon/storage/backpack/odst/regular = 3,
 					/obj/item/weapon/storage/backpack/odst/cqb = 3,
@@ -339,7 +349,7 @@
 					/obj/item/weapon/storage/box/large/armorset/odst/engineer = 2,
 					/obj/item/weapon/storage/box/large/armorset/odst/squadleader = 2,
 					/obj/item/stack/barbedwire/fifteen = 5,
-					/obj/item/clothing/accessory/storage/IFAK = 20,
+					/obj/item/clothing/accessory/storage/IFAK/UNSC = 20,
 					/obj/item/weapon/storage/firstaid/unsc = 6,
 					)
 
@@ -423,7 +433,7 @@
 					/obj/item/weapon/storage/belt/marine_ammo = 2,
 					/obj/item/weapon/storage/belt/marine_medic = 1,
 					/obj/item/weapon/storage/belt/utility/full = 0,
-					/obj/item/clothing/accessory/storage/IFAK = 1,
+					/obj/item/clothing/accessory/storage/IFAK/UNSC = 1,
 					/obj/item/clothing/accessory/storage/bandolier = 2,
 					/obj/item/weapon/storage/backpack/marine = 3,
 					"Storage - Holsters" = -1,
@@ -507,7 +517,7 @@
 					/obj/item/weapon/storage/belt/marine_ammo = 2,
 					/obj/item/weapon/storage/belt/marine_medic = 1,
 					/obj/item/weapon/storage/belt/utility/full = 0,
-					/obj/item/clothing/accessory/storage/IFAK = 1,
+					/obj/item/clothing/accessory/storage/IFAK/UNSC = 1,
 					/obj/item/clothing/accessory/storage/bandolier = 2,
 					/obj/item/weapon/storage/backpack/marine = 3,
 					/obj/item/weapon/storage/backpack/marine/brown = 3,
@@ -533,7 +543,7 @@
 					/obj/item/stack/barbedwire/fifteen = 0,
 					)
 	amounts = list(\
-		/obj/item/clothing/accessory/storage/IFAK = 20,
+		/obj/item/clothing/accessory/storage/IFAK/UNSC = 20,
 		/obj/item/stack/barbedwire/fifteen = 15,
 		/obj/item/flight_item/bullfrog_pack = 1,
 		)
