@@ -100,7 +100,7 @@
 		last_spawns_list = weighted_spawn_list
 	else
 		if(last_spawns_list)
-			weighted_spawn_list = last_spawn_list
+			weighted_spawn_list = last_spawns_list
 		else
 			//no custom emeny list and no previous wave list, just pull from the faction defender list
 			weighted_spawn_list = enemy_faction.defender_mob_types
