@@ -5,7 +5,7 @@ it needs to create more trails.A beaker could have a steam_trail_follow system s
 would spawn and follow the beaker, even if it is carried or thrown.
 */
 
-#define SMOKE_PROJPASS_ACC_MALUS 1
+#define SMOKE_PROJPASS_ACC_MALUS 2
 
 /obj/effect/effect
 	name = "effect"
@@ -188,9 +188,9 @@ steam.start() -- spawns the effect
 	if(istype(M))
 		affect(M)
 	else
-		effect_proj(M)
+		affect_proj(M)
 
-/obj/effect/effect/smoke/proc/effect_proj(var/obj/item/projectile/p)
+/obj/effect/effect/smoke/proc/affect_proj(var/obj/item/projectile/p)
 	if(!istype(p))
 		return
 	p.accuracy -= SMOKE_PROJPASS_ACC_MALUS
