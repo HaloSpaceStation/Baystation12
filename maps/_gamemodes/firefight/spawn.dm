@@ -90,18 +90,18 @@
 	enemy_numbers_left -= amount
 
 	//pick a hostile mob to spawn
-	while(amount >= 1)
-		var/list/weighted_spawn_list
-		if(wave_spawns.len)
-			//this gamemode has a custom list of spawns in increasing difficulty per wave
-			var/spawn_list_index = current_wave
-			if(spawn_list_index > wave_spawns.len)
-				spawn_list_index = wave_spawns.len
-			weighted_spawn_list = wave_spawns[spawn_list_index]
-		else
-			//no custom emeny list, just pull from the faction defender list
-			weighted_spawn_list = enemy_faction.defender_mob_types
+	var/list/weighted_spawn_list
+	if(wave_spawns.len)
+		//this gamemode has a custom list of spawns in increasing difficulty per wave
+		var/spawn_list_index = current_wave
+		if(spawn_list_index > wave_spawns.len)
+			spawn_list_index = wave_spawns.len
+		weighted_spawn_list = wave_spawns[spawn_list_index]
+	else
+		//no custom emeny list, just pull from the faction defender list
+		weighted_spawn_list = enemy_faction.defender_mob_types
 
+	while(amount >= 1)
 		var/spawn_type = pickweight(weighted_spawn_list)
 		spawn_attackers(spawn_type, 1)
 		amount -= 1
