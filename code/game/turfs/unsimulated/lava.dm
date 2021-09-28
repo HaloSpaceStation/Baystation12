@@ -46,7 +46,6 @@
 
 	if(loseme)
 		if(Obj.elevation == BASE_ELEVATION)
-
 			for(var/obj/effect/decal/cleanable/ash/A in src)
 				qdel(A)
 			spawn(rand(25,75))
