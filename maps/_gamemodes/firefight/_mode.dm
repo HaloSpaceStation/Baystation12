@@ -36,6 +36,7 @@
 	var/wave_bonus_enemies = list(3, 4, 5, 6, 8)
 	var/player_bonus_enemies = list(0, 1, 1.5, 2.5)
 	var/list/wave_spawn_landmarks = list()
+	var/list/last_spawns_list
 
 	var/time_rest_end = 0
 	var/interval_resupply = 4 MINUTES
