@@ -23,7 +23,7 @@
 	var/pilot_name = "GA-TL1 Longsword Pilot"
 
 	var/current_wave = 0
-	var/max_waves = 5
+	var/max_waves = 8
 
 	var/is_spawning = 0	//0 = rest, 1 = spawning
 	var/spawn_subwave_interval = 10 SECONDS
