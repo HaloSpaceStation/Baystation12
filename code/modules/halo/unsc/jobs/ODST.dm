@@ -4,6 +4,7 @@
 	total_positions = 6
 	spawn_positions = 6
 	faction_whitelist = "UNSC"
+	is_whitelisted = 1
 	outfit_type = /decl/hierarchy/outfit/job/unsc/odst
 	alt_titles = list(\
 		"ODST Sharpshooter",\

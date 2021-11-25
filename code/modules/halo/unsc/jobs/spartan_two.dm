@@ -5,6 +5,7 @@
 	spawn_positions = 0
 	account_allowed = 0
 	faction_whitelist = "UNSC"
+	is_whitelisted = 1
 	access = list(\
 		access_unsc,\
 		access_unsc_bridge,\
