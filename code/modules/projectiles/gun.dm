@@ -780,6 +780,15 @@
 
 	return new_mode
 
+/obj/item/weapon/gun/verb/switch_firemode_verb()
+	set name = "Switch Firemode"
+	set category = "Weapon"
+	set desc = "Switch the weapon's fire mode."
+
+	var/datum/firemode/new_mode = switch_firemodes()
+	if(new_mode)
+		to_chat(usr, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
+
 /obj/item/weapon/gun/attack_self(mob/user)
 	if(stored_targ)
 		to_chat(user,"<span class = 'notice'>You stop your sustained burst from [src]</span>")
