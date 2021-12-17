@@ -1,4 +1,6 @@
 
+#define OVERCAP_PANIC_CLEAN_MULT 20
+
 var/global/datum/controller/process/atom_despawner/atom_despawner = new
 
 /datum/controller/process/atom_despawner
@@ -8,7 +10,7 @@ var/global/datum/controller/process/atom_despawner/atom_despawner = new
 	var/do_cleaning = 1
 	var/overcap_panic_clean = 0
 	var/list_index = 1
-	var/max_cleanup_per_tick = 5
+	var/max_cleanup_per_tick = 20
 
 /datum/controller/process/atom_despawner/New()
 	. = ..()
@@ -18,7 +20,7 @@ var/global/datum/controller/process/atom_despawner/atom_despawner = new
 	if(do_cleaning)
 		var/clean_amount = max_cleanup_per_tick
 		if(overcap_panic_clean)
-			clean_amount = cleanables.len - max_cleanables
+			clean_amount *= OVERCAP_PANIC_CLEAN_MULT
 			overcap_panic_clean = 0
 		for(var/i=0,i<clean_amount,i++)
 			if(!cleanables.len)
@@ -58,3 +60,5 @@ var/global/datum/controller/process/atom_despawner/atom_despawner = new
 		if(cleanables.len > max_cleanables)
 			overcap_panic_clean = 1
 		return 1
+
+#undef OVERCAP_PANIC_CLEAN_MULT
