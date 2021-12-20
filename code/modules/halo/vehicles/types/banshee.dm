@@ -51,6 +51,7 @@
 
 	fire_delay = 8
 	burst = 10
+	burst_delay = 1.75
 	dispersion = list(0.15,0.3,0.45,0.6,0.73)
 	fire_sound = 'code/modules/halo/sounds/plasrifle3burst.ogg'
 
@@ -72,6 +73,7 @@
 	desc = "A vehicle mounted, twin-linked plasma cannon. Useful for anti-infantry and light anti-vehicle."
 	fire_delay = 8
 	burst_size = 10
+	burst_delay = 1.75
 	dispersion = list(0.15,0.3,0.45,0.6,0.73)
 	fire_sound = 'code/modules/halo/sounds/plasrifle3burst.ogg'
 	mag_used = /obj/item/ammo_magazine/banshee_plas

@@ -49,6 +49,7 @@
 
 	fire_delay = 8
 	burst = 10
+	burst_delay = 1.75
 	dispersion = list(0.15,0.3,0.45,0.6,0.73)
 	fire_sound = 'code/modules/halo/sounds/Assault_Rifle_Fire_New.wav'
 
@@ -69,6 +70,7 @@
 	desc = "A vehicle mounted, twin-linked set of autocannons, used for anti-infantry and light anti-vehicle purposes."
 	fire_delay = 8
 	burst_size = 5
+	burst_delay = 1.75
 	dispersion = list(0.15,0.3,0.45,0.6,0.73)
 	fire_sound = 'code/modules/halo/sounds/Assault_Rifle_Fire_New.wav'
 	mag_used = /obj/item/ammo_magazine/hawk_autocannon
