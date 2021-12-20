@@ -84,7 +84,6 @@
 	projectile_type = /obj/item/projectile/bullet/a762_ap/hawk_mounted
 
 /obj/item/projectile/bullet/a762_ap/hawk_mounted
-	damage = 35
 	armor_penetration = 20
 	shield_damage = 10
 
