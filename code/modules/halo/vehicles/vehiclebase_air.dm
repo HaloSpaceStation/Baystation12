@@ -139,7 +139,6 @@
 					if(istype(selected_landing_point_obj, loc_type))
 						to_chat(usr,"<span class = 'notice'>You cannot fly there with [M].</span>")
 						return
-		return
 
 	visible_message("<span class = 'notice'>[src] starts prepping for long-range flight.</span>")
 	if(!do_after(usr,WAYPOINT_FLIGHT_DELAY,src))
