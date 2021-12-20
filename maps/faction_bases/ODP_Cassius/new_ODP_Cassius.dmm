@@ -338,7 +338,7 @@
 "gz" = (/turf/simulated/floor/tiled,/area/faction_base/unsc/odp/odp_helpline)
 "gA" = (/turf/simulated/floor/shuttle/yellow,/area/shuttle/unsc_shuttle_supply)
 "gB" = (/obj/machinery/conveyor{dir = 1; id = "unsc_cargo_conveyor"},/turf/simulated/floor/shuttle/yellow,/area/shuttle/unsc_shuttle_supply)
-"gC" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 8},/turf/simulated/floor/decor{icon_state = "techfloor_neon"},/area/faction_base/unsc/odp/MAC)
+"gC" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 8},/obj/structure/table/steel,/obj/item/weapon/aicard,/obj/item/weapon/aicard,/turf/simulated/floor/decor{icon_state = "techfloor_neon"},/area/faction_base/unsc/odp/MAC)
 "gD" = (/obj/machinery/overmap_weapon_console/mac{icon = 'code/modules/halo/icons/machinery/computer.dmi'; icon_state = "gun"; dir = 4},/turf/simulated/wall/r_wall,/area/faction_base/unsc/odp/MAC)
 "gE" = (/obj/machinery/mac_cannon/capacitor,/obj/structure/window/reinforced/projresist{icon_state = "rwindow"; dir = 8},/turf/simulated/floor/plating,/area/faction_base/unsc/odp/MAC)
 "gF" = (/obj/machinery/door/airlock/halo/maint/odp_maint,/obj/machinery/door/firedoor/unsc_odp,/turf/simulated/floor/plating,/area/faction_base/unsc/odp/MAC)
