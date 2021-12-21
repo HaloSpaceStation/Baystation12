@@ -28,7 +28,7 @@
 
 	spawner.switch_to_camera(u)
 
-/obj/item/squad_camera_control/attack_hand(var/mob/living/attacker)
+/obj/item/squad_camera_control/attack_self(var/mob/living/attacker)
 	if(get_dist(spawner.loc,loc) > 1)
 		qdel(src)
 		return
@@ -97,6 +97,11 @@
 	if(chosen == "Cancel")
 		return
 	selected_device = linked.linked_devices[locs_choosefrom.Find(chosen)]
+	var/mob/living/device_mob = selected_device.loc
+	if(istype(device_mob) && device_mob.stat == DEAD)
+		to_chat(u,"<span class = 'warning'>Access failed, user has perished. Device auto-wiped as final security measure. Disconnecting from system.</span>")
+		linked.linked_devices -= selected_device
+		linked.inform_squad_death(device_mob)
 	set_view_to(selected_device,u)
 
 /obj/machinery/squad_camera_console/proc/switch_next_camera(var/mob/living/u)
