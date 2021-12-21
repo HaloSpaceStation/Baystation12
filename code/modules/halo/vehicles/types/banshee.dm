@@ -4,7 +4,7 @@
 	desc = "The Type-26 is armed with twin linked plasma cannons for infantry elimination, with a singlular, mid-mounted fuel rod cannon for anti-vehicle or anti-group use."
 	icon = 'code/modules/halo/vehicles/types/banshee.dmi'
 	icon_state = "banshee"
-	faction = "covenant"
+	faction = "Covenant"
 	anchored = 1
 
 	bound_height = 64
