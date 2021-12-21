@@ -43,7 +43,7 @@
 				to_chat(device.loc,"<span class = 'warning'>[squad_name] Alert: Waypoint [delete ? "deleted" : "added"], [waypoint.waypoint_name].</span>")
 
 /datum/waypoint_controller/proc/inform_squad_death(var/mob/living/now_dead)
-	var/message = "<span class = 'warning'>Squad Overwatch Alert: [now_dead.name], [now_dead.job] has died. Last known location: [get_area(now_dead.loc)]</span>"
+	var/message = "<span class = 'warning'>Squad Overwatch Alert: [now_dead.name], [now_dead.job] has died.</span>"
 	for(var/obj/device in linked_devices)
 		if(istype(device.loc,/mob/living))
 			to_chat(device.loc,message)
