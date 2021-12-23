@@ -272,21 +272,7 @@
 		to_chat(user, "<span class='warning'>You refrain from firing your [src] as your intent is set to help.</span>")
 		return
 
-	if(is_charging)
-		to_chat(user,"<span class = 'notice'>[src] is charging and cannot fire</span>")
-		return
-
-	if(is_charged_weapon==1)
-		if(charge_sound)
-			playsound(src.loc, charge_sound, 100, 1)
-		user.visible_message("<span class = 'notice'>[user] starts charging the [src]!</span>")
-
-		is_charging = 1
-		if (!do_after(user,arm_time,src))
-			is_charging = 0
-			return
 		Fire(A,user,params)
-		is_charging = 0
 	else
 		Fire(A,user,params) //Otherwise, fire normally.
 
@@ -359,6 +345,21 @@
 		if(!held_twohanded)
 			to_chat(user,"<span class = 'notice'>You can't fire this weapon with just one hand!</span>")
 			return
+
+	if(is_charging)
+		to_chat(user,"<span class = 'notice'>[src] is charging and cannot fire</span>")
+		return
+
+	if(is_charged_weapon==1)
+		if(charge_sound)
+			playsound(src.loc, charge_sound, 100, 1)
+		user.visible_message("<span class = 'notice'>[user] starts charging the [src]!</span>")
+
+		is_charging = 1
+		if (!do_after(user,arm_time,src))
+			is_charging = 0
+			return
+		is_charging = 0
 
 	var/shoot_time = (burst - 1)* burst_delay
 	//user.setClickCooldown(shoot_time) //no clicking on things while shooting
