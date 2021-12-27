@@ -20,12 +20,8 @@
 /obj/item/flight_item/verb/toggle_flight()
 	set name = "Toggle Flight"
 	set category = "Object"
-	set src in usr
 
-	if(active)
-		deactivate(usr)
-	else
-		activate(usr)
+	ui_action_click()
 
 /obj/item/flight_item/New()
 	. = ..()
