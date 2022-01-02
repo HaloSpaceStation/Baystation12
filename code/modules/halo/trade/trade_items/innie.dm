@@ -57,12 +57,3 @@
 	bonus_items = list(/obj/item/ammo_magazine/m26)
 	trader_weight = 1
 	category = "innie"
-
-/datum/trade_item/heavysniper
-	name = "Anti-Material Rifle"
-	item_type = /obj/item/weapon/gun/projectile/heavysniper
-	quantity = 1
-	value = 75000
-	trader_weight = 1
-	category = "innie"
-
