@@ -18,6 +18,7 @@
 	name = "first principle blade"
 	desc = "A sword from the Imperial armory, granted to those charged with executing Covenant infiltrators and saboteurs. Extremely effective in melee combat."
 	icon = 'icons/obj/weapons/melee_physical.dmi'
+	default_material = MATERIAL_TITANIUM
 	force_multiplier = 2
 	armor_penetration = 75
 	thrown_force_multiplier = 2
