@@ -21,17 +21,27 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 	matter = list("cloth" = 1)
+	rolled_sleeves = 0
 
-/obj/item/clothing/under/covenant/jiralhanae/red
+/obj/item/clothing/under/covenant/jiralhanae/rolled
+	worn_state = "bodysuit_r"
+	rolled_sleeves = -1
+
+/obj/item/clothing/under/covenant/jiralhanae/red/rolled
 	icon_state = "bodysuit_red"
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
+
+obj/item/clothing/under/covenant/jiralhanae/rolled
+	worn_state = "bodysuit_red_r"
+	rolled_sleeves = -1
 
 /obj/item/clothing/under/covenant/jiralhanae/blue
 	icon_state = "bodysuit_blue"
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 
-
-
+obj/item/clothing/under/covenant/jiralhanae/blue/rolled
+	worn_state = "bodysuit_blue_r"
+	rolled_sleeves = -1
 
 
 

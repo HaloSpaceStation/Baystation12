@@ -33,18 +33,36 @@
 
 /datum/sprite_accessory/marking/brute_male/
 	do_colouration = 0
-	name = "Brute hair (Male)"
+	name = "Brute hair (Brown Male)"
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
-	icon_state = "mbrute"
-	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_CHEST,BP_GROIN)
+	icon_state = "bmbrute"
+	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_CHEST,BP_GROIN)
 	species_allowed = list("Jiralhanae")
 	gender = MALE
 
 /datum/sprite_accessory/marking/brute_female/
 	do_colouration = 0
-	name = "Brute hair (Female)"
+	name = "Brute hair (Brown Female)"
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
-	icon_state = "fbrute"
-	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_CHEST,BP_GROIN)
+	icon_state = "bfbrute"
+	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_CHEST,BP_GROIN)
+	species_allowed = list("Jiralhanae")
+	gender = FEMALE
+
+/datum/sprite_accessory/marking/brute_male/black/
+	do_colouration = 0
+	name = "Brute hair (Black Male)"
+	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
+	icon_state = "nmbrute"
+	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_CHEST,BP_GROIN)
+	species_allowed = list("Jiralhanae")
+	gender = MALE
+
+/datum/sprite_accessory/marking/brute_female/black/
+	do_colouration = 0
+	name = "Brute hair (Black Female)"
+	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
+	icon_state = "nfbrute"
+	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_CHEST,BP_GROIN)
 	species_allowed = list("Jiralhanae")
 	gender = FEMALE
