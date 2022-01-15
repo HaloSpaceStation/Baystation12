@@ -1745,7 +1745,6 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	icon = 'code/modules/halo/clothing/yoroi.dmi'
 	icon_state = "yoroi-kabuto"
 	item_state = "yoroi-kabuto-worn"
-	icon_override = 'code/modules/halo/clothing/yoroi.dmi'
   
 /obj/item/clothing/suit/armor/special/spartan/yoroi
 	name = "Yoroi Armor"
@@ -1753,7 +1752,6 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	icon = 'code/modules/halo/clothing/yoroi.dmi'
 	icon_state = "yoroi-armor"
 	item_state = "yoroi-armor-worn"
-	icon_override = 'code/modules/halo/clothing/yoroi.dmi'
 
 /obj/item/weapon/material/machete/tenrai //absolutely essential to have this in a clothing file, i assure you
 	name = "first principle blade"
