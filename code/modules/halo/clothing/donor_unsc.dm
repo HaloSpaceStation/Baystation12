@@ -1742,14 +1742,12 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 /obj/item/clothing/head/helmet/spartan/yoroi
 	name = "First Principle Kabuto Helmet"
 	desc = "Popularized by selfless samurai peacekeepers in the early days of the Covenant invasion, Kabuto helmets are now worn by shogunate enforcers responsible for extinguishing the flames of sedition and rebellion."
-	icon = 'code/modules/halo/clothing/yoroi.dmi'
 	icon_state = "yoroi-kabuto"
 	item_state = "yoroi-kabuto-worn"
   
 /obj/item/clothing/suit/armor/special/spartan/yoroi
 	name = "Yoroi Armor"
 	desc = "Suits of Yoroi are forged using ancient karakuri arts from the raw energies of the land, each hand-crafted for eager young samurai of unimpeachable honor to defend their clan and lands from the barbaric Covenant invaders."
-	icon = 'code/modules/halo/clothing/yoroi.dmi'
 	icon_state = "yoroi-armor"
 	item_state = "yoroi-armor-worn"
 
