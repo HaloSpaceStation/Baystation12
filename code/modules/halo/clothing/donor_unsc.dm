@@ -880,7 +880,7 @@ decl/hierarchy/outfit/Jul
 
 /obj/item/weapon/gun/projectile/m6c_magnum_s/donator/mann
 	name = "\improper Collectors SOCOM"
-	desc = "Sporting the profile of an M6C-M, emblazoned cold-blue steel finish, decorated with a golden ODST Shocktrooper insignia on it's Gúta bone-ivory grip, alongside a threaded barrel with a custom-fitted silencer. This gun is a coveted collectors piece, sought after by ODST officers as reminder of the UNSC Bertels. Etched into the blue steel slide on the left side, is an ode to Empires of Humanity’s past, it reads; “VENI, VIDI, VICI”"
+	desc = "Sporting the profile of an M6C-M, emblazoned cold-blue steel finish, decorated with a golden ODST Shocktrooper insignia on it's GÃºta bone-ivory grip, alongside a threaded barrel with a custom-fitted silencer. This gun is a coveted collectors piece, sought after by ODST officers as reminder of the UNSC Bertels. Etched into the blue steel slide on the left side, is an ode to Empires of HumanityÂ’s past, it reads; Â“VENI, VIDI, VICIÂ”"
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "socom-collector"
 	item_state = "socom-collector"
@@ -1736,6 +1736,40 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	/obj/item/clothing/head/helmet/spartan/mkvii,
 	/obj/item/clothing/suit/armor/special/spartan/mkvii
 	)
+
+//Yoroi
+
+/obj/item/clothing/head/helmet/spartan/yoroi
+	name = "First Principle Kabuto Helmet"
+	desc = "Popularized by selfless samurai peacekeepers in the early days of the Covenant invasion, Kabuto helmets are now worn by shogunate enforcers responsible for extinguishing the flames of sedition and rebellion."
+	icon = 'code/modules/halo/clothing/yoroi.dmi'
+	icon_state = "yoroi-kabuto"
+	item_state = "yoroi-kabuto-worn"
+	icon_override = 'code/modules/halo/clothing/yoroi.dmi'
+  
+/obj/item/clothing/suit/armor/special/spartan/yoroi
+	name = "Yoroi Armor"
+	desc = "Suits of Yoroi are forged using ancient karakuri arts from the raw energies of the land, each hand-crafted for eager young samurai of unimpeachable honor to defend their clan and lands from the barbaric Covenant invaders."
+	icon = 'code/modules/halo/clothing/yoroi.dmi'
+	icon_state = "yoroi-armor"
+	item_state = "yoroi-armor-worn"
+	icon_override = 'code/modules/halo/clothing/yoroi.dmi'
+
+/obj/item/weapon/material/machete/tenrai //absolutely essential to have this in a clothing file, i assure you
+	name = "first principle blade"
+	desc = "A sword from the Imperial armory, granted to those charged with executing Covenant infiltrators and saboteurs. Extremely effective in melee combat."
+	icon = 'icons/obj/weapons/melee_physical.dmi'
+	icon_state = "katana"
+	item_state = "katana"
+	default_material = MATERIAL_TITANIUM
+	force_multiplier = 2
+	armor_penetration = 75
+	thrown_force_multiplier = 2
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	base_parry_chance = 70
+	melee_accuracy_bonus = 55
+	worth_multiplier = 100
 
 
 #undef ODST_OVERRIDE
