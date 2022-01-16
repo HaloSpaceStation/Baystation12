@@ -1,14 +1,14 @@
 /datum/sprite_accessory/hair/craig/
 	do_colouration = 0
-	name = "Balding (Brown)"
+	name = "Default (Brown)"
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
 	icon_state = "bcraig"
 	species_allowed = list("Jiralhanae")
 	gender = MALE
 
-/datum/sprite_accessory/hair/craig/black
+/datum/sprite_accessory/hair/craig/black/
 	do_colouration = 0
-	name = "Balding (Black)"
+	name = "Default (Black)"
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
 	icon_state = "ncraig"
 	species_allowed = list("Jiralhanae")
