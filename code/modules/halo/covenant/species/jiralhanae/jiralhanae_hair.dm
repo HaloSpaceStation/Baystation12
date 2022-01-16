@@ -1,33 +1,80 @@
+/datum/sprite_accessory/hair/craig/
+	do_colouration = 0
+	name = "Balding (Brown)"
+	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
+	icon_state = "bcraig"
+	species_allowed = list("Jiralhanae")
+	gender = MALE
+
+/datum/sprite_accessory/hair/craig/black
+	do_colouration = 0
+	name = "Balding (Black)"
+	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
+	icon_state = "ncraig"
+	species_allowed = list("Jiralhanae")
+	gender = MALE
 
 /datum/sprite_accessory/hair/brutebalding/
 	do_colouration = 0
-	name = "balding"
+	name = "Balding (Brown)"
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
-	icon_state = "balding_brute"
+	icon_state = "bbalding_brute"
+	species_allowed = list("Jiralhanae")
+	gender = MALE
+
+datum/sprite_accessory/hair/brutebalding/black
+	do_colouration = 0
+	name = "Balding (Black)"
+	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
+	icon_state = "nbalding_brute"
 	species_allowed = list("Jiralhanae")
 	gender = MALE
 
 /datum/sprite_accessory/hair/brutefullhead/
 	do_colouration = 0
-	name = "Fullhead"
+	name = "Fullhead (Brown)"
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
-	icon_state = "fullhead_brute"
+	icon_state = "bfullhead_brute"
+	species_allowed = list("Jiralhanae")
+	gender = MALE
+
+/datum/sprite_accessory/hair/brutefullhead/black
+	do_colouration = 0
+	name = "Fullhead (Black)"
+	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
+	icon_state = "nfullhead_brute"
 	species_allowed = list("Jiralhanae")
 	gender = MALE
 
 /datum/sprite_accessory/hair/brutefemale/
 	do_colouration = 0
-	name = "Female cut"
+	name = "Female short (Brown)"
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
-	icon_state = "female_brute"
+	icon_state = "bfemale_brute"
+	species_allowed = list("Jiralhanae")
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/brutefemale/black
+	do_colouration = 0
+	name = "Female short (Black)"
+	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
+	icon_state = "nfemale_brute"
 	species_allowed = list("Jiralhanae")
 	gender = FEMALE
 
 /datum/sprite_accessory/hair/brutefemalelong/
 	do_colouration = 0
-	name = "Female long"
+	name = "Female long (Brown)"
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
-	icon_state = "femalelong_brute"
+	icon_state = "bfemalelong_brute"
+	species_allowed = list("Jiralhanae")
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/brutefemalelong/black
+	do_colouration = 0
+	name = "Female long (Black)"
+	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_hair.dmi'
+	icon_state = "nfemalelong_brute"
 	species_allowed = list("Jiralhanae")
 	gender = FEMALE
 
