@@ -27,11 +27,11 @@
 	worn_state = "bodysuit_r"
 	rolled_sleeves = -1
 
-/obj/item/clothing/under/covenant/jiralhanae/red/rolled
+/obj/item/clothing/under/covenant/jiralhanae/red/
 	icon_state = "bodysuit_red"
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 
-obj/item/clothing/under/covenant/jiralhanae/rolled
+obj/item/clothing/under/covenant/jiralhanae/red/rolled
 	worn_state = "bodysuit_red_r"
 	rolled_sleeves = -1
 
@@ -40,7 +40,7 @@ obj/item/clothing/under/covenant/jiralhanae/rolled
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 
 obj/item/clothing/under/covenant/jiralhanae/blue/rolled
-	worn_state = "bodysuit_blue_r"
+	worn_state = "bodysuit_blue_r".
 	rolled_sleeves = -1
 
 
