@@ -124,7 +124,8 @@
 		return 0
 
 	//did our shield absorb the shot?
-	if(drain_shield(damage, P))
+	if(drain_shield(damage))
+		P.on_impact(src)
 		//put a chatlog delay on warning the user
 		if(world.time >= time_next_warning)
 			time_next_warning = world.time + GAUNTLET_WARNING_DELAY
@@ -159,12 +160,6 @@
 			GLOB.processing_objects |= src
 		shield_next_charge = world.time + shield_recharge_delay
 
-
-		//on_impact was being skipped and thats awful
-		if(istype(projectile, /obj/item/projectile))
-			var/obj/item/projectile/P = projectile
-			P.on_impact(src)
-
 		//subtract the damage
 		shield_current_charge -= damage
 
@@ -183,15 +178,6 @@
 		return 1
 
 	return 0
-
-/obj/item/clothing/gloves/shield_gauntlet/emp_act(severity) //basically how body shields handle emp but without the feedback messages because that is already handled by drain_shield
-	. = ..()
-	switch(severity)
-		if(1)
-			drain_shield(shield_max_charge/2)
-		if(2)
-			drain_shield(shield_max_charge)
-
 
 /obj/item/clothing/gloves/shield_gauntlet/update_icon()
 	if(connected_shield)
