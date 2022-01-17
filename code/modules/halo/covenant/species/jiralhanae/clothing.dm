@@ -40,7 +40,7 @@ obj/item/clothing/under/covenant/jiralhanae/red/rolled
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 
 obj/item/clothing/under/covenant/jiralhanae/blue/rolled
-	worn_state = "bodysuit_blue_r".
+	worn_state = "bodysuit_blue_r"
 	rolled_sleeves = -1
 
 
