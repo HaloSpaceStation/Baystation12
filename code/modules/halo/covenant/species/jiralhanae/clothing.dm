@@ -24,10 +24,25 @@
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/covenant/jiralhanae/rolled
+	name = "Jiralhanae short Bodysuit"
+	desc = "A Jiralhanae short body suit. Looks itchy and covered in hair."
 	worn_state = "bodysuit_r"
 	rolled_sleeves = -1
 
+/obj/item/clothing/under/covenant/jiralhanae/straps
+	name = "Jiralhanae straps"
+	desc = "Some straps specifically made of Jiralhanae bodies. Looks itchy and covered in hair."
+	icon = JIRALHANAE_ICON_PATH_OBJ
+	icon_state = "straps"
+	sprite_sheets = list("Jiralhanae" = JIRALHANAE_ICON_PATH_MOB)
+	species_restricted = list("Jiralhanae")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	matter = list("cloth" = 1)
+
 /obj/item/clothing/under/covenant/jiralhanae/red/
+	name = "Jiralhanae Red Bodysuit"
+	desc = "A Jiralhanae body suit. Looks itchy and covered in hair."
 	icon_state = "bodysuit_red"
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 
@@ -36,12 +51,14 @@ obj/item/clothing/under/covenant/jiralhanae/red/rolled
 	rolled_sleeves = -1
 
 /obj/item/clothing/under/covenant/jiralhanae/blue
+	name = "Jiralhanae Blue Bodysuit"
+	desc = "A Jiralhanae body suit. Looks itchy and covered in hair."
 	icon_state = "bodysuit_blue"
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 
 obj/item/clothing/under/covenant/jiralhanae/blue/rolled
 	worn_state = "bodysuit_blue_r"
-	rolled_sleeves = -1
+	rolled_sleeves = 1
 
 
 
