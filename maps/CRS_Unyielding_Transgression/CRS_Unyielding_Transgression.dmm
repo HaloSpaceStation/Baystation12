@@ -529,7 +529,7 @@
 "ki" = (/obj/machinery/door/airlock/multi_tile/covenant/four{name = "Ghost Storage Bay"},/turf/simulated/floor/covenant{icon_state = "cov_floor"},/area/covenant_light_cruiser/portgarage)
 "kj" = (/obj/machinery/door/airlock/multi_tile/covenant/four{name = "Supplies Storage Bay"},/turf/simulated/floor/covenant{icon_state = "cov_floor"},/area/covenant_light_cruiser/portgarage)
 "kk" = (/obj/machinery/deck_gun/missile_pod/plasma_torpedo,/turf/space,/area/space)
-"kl" = (/obj/structure/cable/blue{icon_state = "1-4"},/obj/structure/ai_routing_node/cov,/obj/structure/cable/blue{icon_state = "4-8"},/turf/simulated/floor/covenant{icon_state = "cov_floor"},/area/covenant_light_cruiser/plasmaprojector)
+"kl" = (/obj/structure/cable/blue{icon_state = "1-4"},/obj/structure/ai_routing_node/cov,/turf/simulated/floor/covenant{icon_state = "cov_floor"},/area/covenant_light_cruiser/plasmaprojector)
 "km" = (/obj/machinery/light/colored/red{tag = "icon-red1 (NORTH)"; icon_state = "red1"; dir = 1},/obj/machinery/light/colored/red{tag = "icon-red1 (WEST)"; icon_state = "red1"; dir = 8},/obj/effect/bomblocation,/turf/simulated/floor/covenant{icon_state = "cov_floor"},/area/covenant_light_cruiser/bridge)
 "kn" = (/obj/payload/covenant,/obj/effect/bomblocation,/turf/simulated/floor/covenant{tag = "icon-cov_floor"; icon_state = "cov_floor"},/area/covenant_light_cruiser/bridge)
 "ko" = (/obj/structure/shuttle/window{tag = "icon-10"; icon_state = "10"; color = "grey"},/turf/simulated/floor/shuttle/purple,/area/shuttle/covenant_shuttle_supply)
