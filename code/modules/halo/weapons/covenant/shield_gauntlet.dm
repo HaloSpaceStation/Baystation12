@@ -152,7 +152,7 @@
 
 	return allowed_attack_dirs*/
 
-/obj/item/clothing/gloves/shield_gauntlet/proc/drain_shield(var/damage, var/projectile)
+/obj/item/clothing/gloves/shield_gauntlet/proc/drain_shield(var/damage)
 	if(connected_shield)
 
 		//set a delay on recharging
