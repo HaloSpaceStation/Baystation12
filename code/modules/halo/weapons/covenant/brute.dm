@@ -202,7 +202,7 @@
 	name = "Type-2 Energy Weapon/Hammer"
 	desc = "A long haft and a heavy head with a tungsten-alloy blade on the reverse end. Within the head is a short-range shock-field-generating gravity drive for extra punch."
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_obj_heavy.dmi'
-	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons_big.dmi'
+	icon_override = JIRALHANAE_WEAPONS
 	icon_state = "gravhammer"
 	item_state = "blank"
 	w_class = ITEM_SIZE_HUGE
@@ -269,7 +269,7 @@
 	name = "Type-25 \"Brute Shot\" Grenade Launcher"
 	desc = "A hip fired fast firing launcher for HE munitions with a curved backwards facing blade mounted to its underside."
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_obj_heavy.dmi'
-	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons_big.dmi'
+	icon_override = JIRALHANAE_WEAPONS
 	icon_state = "bruteshot"
 	item_state = "blank"
 	pump_sound = null
