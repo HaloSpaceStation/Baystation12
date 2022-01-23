@@ -1,6 +1,8 @@
 
 /datum/job/unsc/oni
-	access = list(142,300,301,302,303,304,304,306,307,308,309,310,311,312,313,314,315,316,317,117)
+	access = list(access_unsc,access_unsc_bridge,access_unsc_tech,access_unsc_crew,access_unsc_navsec,access_unsc_ops,access_unsc_fighters,\
+access_unsc_shuttles,access_unsc_medical,access_unsc_armoury,access_unsc_supplies,access_unsc_officers,access_unsc_marine,access_unsc_gunnery,\
+access_unsc_ids,access_unsc_odst,access_unsc_oni,access_unsc_specialist,access_unsc_cargo,access_spartan)
 	spawnpoint_override = null
 	fallback_spawnpoint = null
 
@@ -11,7 +13,9 @@
 	spawn_positions = 1
 	outfit_type = /decl/hierarchy/outfit/job/unsc/oni/research
 	alt_titles = list("ONI Doctor","ONI Physicist","ONI Botanist","ONI Chemist","ONI Weapons Researcher","ONI Surgeon","ONI Geneticist")
-	access = list(142,300,301,302,303,304,304,306,307,308,309,310,311,312,313,314,315,316,317,117)
+	access = list(access_unsc,access_unsc_bridge,access_unsc_tech,access_unsc_crew,access_unsc_navsec,access_unsc_ops,access_unsc_fighters,\
+access_unsc_shuttles,access_unsc_medical,access_unsc_armoury,access_unsc_supplies,access_unsc_officers,access_unsc_marine,access_unsc_gunnery,\
+access_unsc_ids,access_unsc_odst,access_unsc_oni,access_unsc_specialist,access_unsc_cargo,access_spartan)
 
 /datum/job/unsc/oni/research/director
 	title = "ONI Research Director"
