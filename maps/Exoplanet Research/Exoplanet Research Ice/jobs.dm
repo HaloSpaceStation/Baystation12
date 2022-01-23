@@ -10,7 +10,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/facil_researcher
 	alt_titles = list("Doctor","Physicist","Botanist","Chemist","Weapons Researcher","Surgeon","Geneticist")
 	selection_color = "#008000"
-	access = list(310,311)
+	access = list(142,300,301,302,303,304,304,306,307,308,309,310,311,312,313,314,315,316,317,117)
 	spawnpoint_override = "Research Facility Spawn"
 	whitelisted_species = list(/datum/species/human)
 	loadout_allowed = TRUE
