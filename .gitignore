@@ -23,3 +23,13 @@ config/*
 
 #VS Code files
 .vscode/launch.json
+config/example/admin_ranks.txt
+config/example/admin_ranks.txt
+config/example/admins.txt
+*.txt
+config/example/lore.html
+config/example/mentors.txt
+config/example/moderators.txt
+maps/odst_prowler/backup/ODST_Ship.dmm
+maps/odst_prowler/ODST_Ship.dmm
+config/example/custom_items.txt
