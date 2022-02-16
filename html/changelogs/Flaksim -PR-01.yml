@@ -1,0 +1,7 @@
+author: Flaksim
+
+delete-after: True
+
+changes: 
+  - maptweak: "Minor ODP Cassius Mapfixes, added emergency medical vendors."
+  - tweak: "Brought ODST Officer ranks in line with it being an officer rank."

@@ -24,12 +24,13 @@
 	spawn_positions = 1
 	is_whitelisted = 1
 	economic_modifier = 1.5
-	outfit_type = /decl/hierarchy/outfit/job/unsc/odst/e5
+	outfit_type = /decl/hierarchy/outfit/job/unsc/odst/o1
 	alt_titles = list(\
-		"ODST Sergeant",\
-		"ODST Staff Sergeant" = /decl/hierarchy/outfit/job/unsc/odst/e6,\
-		"ODST Gunnery Sergeant" = /decl/hierarchy/outfit/job/unsc/odst/e7,\
-		"ODST Master Sergeant" = /decl/hierarchy/outfit/job/unsc/odst/e8)
+		"ODST Second Lieutenant",\
+		"ODST First Lieutenant" = /decl/hierarchy/outfit/job/unsc/odst/o2,\
+		"ODST Captain" = /decl/hierarchy/outfit/job/unsc/odst/o3,\
+		"ODST Major" = /decl/hierarchy/outfit/job/unsc/odst/o4,\
+		"ODST Lieutenant Colonel" = /decl/hierarchy/outfit/job/unsc/odst/o5)
 	access = list(\
 		access_unsc,\
 		access_unsc_armoury,\
