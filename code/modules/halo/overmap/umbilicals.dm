@@ -217,6 +217,9 @@
 		ship_setup()
 	pick_entity_connect_disconnect(user)
 
+/obj/docking_umbilical/attack_ai(var/mob/user)
+	attack_hand(user)
+
 /obj/docking_umbilical/proc/umbi_rip()
 	if(isnull(current_connected))
 		return
