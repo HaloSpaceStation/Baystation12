@@ -176,6 +176,7 @@
 		"Ammunition" = -1,
 		/obj/item/ammo_magazine/spiker = 0,
 		/obj/item/ammo_magazine/mauler = 0,
+		/obj/item/ammo_magazine/type51mag = 0,
 		/obj/item/weapon/grenade/brute_shot = 0,
 		"Explosives" = -1,
 		/obj/item/weapon/grenade/smokebomb/covenant = 0,
