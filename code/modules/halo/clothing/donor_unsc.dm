@@ -932,7 +932,7 @@ decl/hierarchy/outfit/Jul
 
 /obj/item/weapon/gun/projectile/m6c_magnum_s/donator/mann
 	name = "\improper Collectors SOCOM"
-	desc = "Sporting the profile of an M6C-M, emblazoned cold-blue steel finish, decorated with a golden ODST Shocktrooper insignia on it's Gúta bone-ivory grip, alongside a threaded barrel with a custom-fitted silencer. This gun is a coveted collectors piece, sought after by ODST officers as reminder of the UNSC Bertels. Etched into the blue steel slide on the left side, is an ode to Empires of Humanity’s past, it reads; “VENI, VIDI, VICI”"
+	desc = "Sporting the profile of an M6C-M, emblazoned cold-blue steel finish, decorated with a golden ODST Shocktrooper insignia on it's GÃºta bone-ivory grip, alongside a threaded barrel with a custom-fitted silencer. This gun is a coveted collectors piece, sought after by ODST officers as reminder of the UNSC Bertels. Etched into the blue steel slide on the left side, is an ode to Empires of HumanityÂ’s past, it reads; Â“VENI, VIDI, VICIÂ”"
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "socom-collector"
 	item_state = "socom-collector"
@@ -1782,6 +1782,49 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	can_hold = list(\
 	/obj/item/clothing/head/helmet/spartan/ghostdex,
 	/obj/item/clothing/suit/armor/special/spartan/ghostdex
+	)
+
+///////////Lambsie11/////////
+
+//ONI Researcher, using guard armour.
+
+/obj/item/clothing/suit/storage/oni_guard/lamb
+	name = "Refitted Shadow Armour"
+	desc = "Refitted torso plates of Silent Shadow armour, but as a result the advanced systems of it lie dormant."
+
+	icon = ONI_ITEM_INHAND
+	icon_override = ONI_OVERRIDE
+	icon_state = "armor"
+	item_state = "lamb_armour"
+
+/obj/item/clothing/shoes/oni_guard/lamb
+	name = "Refitted Shadow Boots"
+	desc = "Despite being refitted for human use, the boots still seem to follow the shape of the original wearers."
+
+	icon = ONI_ITEM_INHAND
+	icon_override = ONI_OVERRIDE
+	icon_state = "boots_ico"
+	item_state = "lamb_boots"
+
+/obj/item/clothing/head/helmet/oni_guard/lamb
+	name = "Refitted Shadow Helmet"
+	desc = "A helmet of Silent Shadow origin, the refitting process shrunk it down for human wear, but to sacrifice it's abilities."
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR|BLOCKHEADHAIR
+
+	icon = ONI_ITEM_INHAND
+	icon_override = ONI_OVERRIDE
+	item_state = "lamb_helm"
+
+/obj/item/weapon/storage/box/large/donator/lamb
+	startswith = list(\
+	/obj/item/clothing/suit/storage/oni_guard/lamb,
+	/obj/item/clothing/shoes/oni_guard/lamb,
+	/obj/item/clothing/head/helmet/oni_guard/lamb
+	)
+	can_hold = list(\
+	/obj/item/clothing/suit/storage/oni_guard/lamb,
+	/obj/item/clothing/shoes/oni_guard/lamb,
+	/obj/item/clothing/head/helmet/oni_guard/lamb
 	)
 
 ///////////Other/////////
