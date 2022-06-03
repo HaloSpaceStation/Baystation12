@@ -2209,6 +2209,7 @@
 #include "code\modules\halo\weapons\M392.dm"
 #include "code\modules\halo\weapons\M41.dm"
 #include "code\modules\halo\weapons\M545.dm"
+#include "code\modules\halo\weapons\M6C.dm"
 #include "code\modules\halo\weapons\M6D.dm"
 #include "code\modules\halo\weapons\M6S.dm"
 #include "code\modules\halo\weapons\M7.dm"

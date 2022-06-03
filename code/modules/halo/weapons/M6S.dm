@@ -2,7 +2,7 @@
 //Magnum M6S silenced pistol
 
 /obj/item/weapon/gun/projectile/m6c_magnum_s
-	name = "\improper M6S silenced magnum"
+	name = "\improper M6C/SOCOM"
 	desc = "The M6C/SOCOM is a special operations variant of the popular M6C but with a whole host of inbuilt attachments. Takes 12.7mm calibre magazines."
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "SOCOM"
@@ -54,7 +54,7 @@
 
 /obj/item/ammo_magazine/m6s/m224
 	name = "M6S magazine (12.7mm) M224"
-	desc = "12.7x40mm M224 Semi-Armor-Piercing (SAP) magazine for Magnum M6S containing 12 shots."
+	desc = "12.7x40mm M224 Semi-Armor-Piercing (SAP) magazine for the M6C Magnum, containing 12 shots."
 	ammo_type = /obj/item/ammo_casing/m224
 
 /obj/item/weapon/storage/box/m6s_m224
@@ -65,7 +65,7 @@
 
 /obj/item/ammo_magazine/m6s/m225
 	name = "M6S magazine (12.7mm) M225"
-	desc = "12.7x40mm M225 Semi-Armor-Piercing High-Explosive (SAP-HE) magazine for the Magnum M6S containing 12 shots."
+	desc = "12.7x40mm M225 Semi-Armor-Piercing High-Explosive (SAP-HE) magazine for the M6C Magnum, containing 12 shots."
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "SOCOMmag"
 	mag_type = MAGAZINE
@@ -82,7 +82,7 @@
 
 /obj/item/ammo_magazine/m6s_m228
 	name = "M6S magazine (12.7mm) M228"
-	desc = "12.7x40mm M228 Semi-Armor-Piercing High-Penetration (SAP-HP) magazine for the Magnum M6S containing 12 rounds."
+	desc = "12.7x40mm M228 Semi-Armor-Piercing High-Penetration (SAP-HP) magazine for the M6C Magnum, containing 12 shots."
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "SOCOMmag"
 	mag_type = MAGAZINE
