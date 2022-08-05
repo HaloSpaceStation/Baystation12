@@ -654,6 +654,14 @@
 	icon_state = "woodentucker_hat_obj"
 	item_state = "woodentucker_hat_w"
 
+/obj/item/weapon/storage/box/large/donator/woodentucker_lesser_prophet
+	startswith = list(/obj/item/clothing/head/helmet/santa_hat/woodentuckerhat,
+					  /obj/item/clothing/suit/armor/special/shielded_prophet_robe/woodentucker
+					)
+	can_hold = list(/obj/item/clothing/head/helmet/santa_hat/woodentuckerhat,
+					/obj/item/clothing/suit/armor/special/shielded_prophet_robe/woodentucker
+					)
+
 /decl/hierarchy/outfit/lesser_prophet/woodentucker
 	name = "WoodenTucker - Lesser Prophet"
 	head = /obj/item/clothing/head/helmet/santa_hat/woodentuckerhat
