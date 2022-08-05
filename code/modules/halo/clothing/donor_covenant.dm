@@ -95,24 +95,24 @@
 	body_parts_covered = UPPER_TORSO | LOWER_TORSO | ARMS | LEGS
 
 /obj/item/clothing/head/helmet/sangheili/ultra/magnum
-	name = "‘Strangam Clan - Ultra Sangheili Helmet"
+	name = "â€˜Strangam Clan - Ultra Sangheili Helmet"
 	desc = "Head armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Magnum_helmet_obj"
 	item_state = "Magnum_helmet"
 
 /obj/item/clothing/suit/armor/special/combatharness/ultra/magnum
-	name = "‘Strangam Clan - Ultra Combat Harness"
+	name = "â€˜Strangam Clan - Ultra Combat Harness"
 	icon_state = "Magnum_chest_obj"
 	item_state = "Magnum_chest"
 
 /obj/item/clothing/shoes/sangheili/ultra/magnum
-	name = "‘Strangam Clan - Ultra Leg Armour"
+	name = "â€˜Strangam Clan - Ultra Leg Armour"
 	desc = "Leg armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Magnum_boots_obj"
 	item_state = "Magnum_boots"
 
 /obj/item/clothing/gloves/thick/sangheili/ultra/magnum
-	name = "‘Strangam Clan - Ultra Gauntlets"
+	name = "â€˜Strangam Clan - Ultra Gauntlets"
 	desc = "Hand armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Magnum_gloves_obj"
 	item_state = "Magnum_gloves"
@@ -328,24 +328,24 @@
 //Socks Sangheili (MAJOR)
 
 /obj/item/clothing/head/helmet/sangheili/socks
-	name = "‘Nasan Clan - Bluekro Sangheili Helmet"
+	name = "â€˜Nasan Clan - Bluekro Sangheili Helmet"
 	desc = "Head armour, to be used with the Sangheili Combat Harness."
 	icon_state = "socks_helm_obj"
 	item_state = "socks_helm"
 
 /obj/item/clothing/suit/armor/special/combatharness/ultra/socks
-	name = "‘Nasan Clan - Bluekro Combat Harness"
+	name = "â€˜Nasan Clan - Bluekro Combat Harness"
 	icon_state = "socks_chest_obj"
 	item_state = "socks_chest"
 
 /obj/item/clothing/shoes/sangheili/socks
-	name = "‘Nasan Clan - Bluekro Leg Armour"
+	name = "â€˜Nasan Clan - Bluekro Leg Armour"
 	desc = "Leg armour, to be used with the Sangheili Combat Harness."
 	icon_state = "socks_legs_obj"
 	item_state = "socks_legs"
 
 /obj/item/clothing/gloves/thick/sangheili/socks
-	name = "‘Nasan Clan - Bluekro Gauntlets"
+	name = "â€˜Nasan Clan - Bluekro Gauntlets"
 	desc = "Hand armour, to be used with the Sangheili Combat Harness."
 	icon_state = "socks_gloves_obj"
 	item_state = "socks_gloves"
@@ -462,25 +462,25 @@
 //Sangheili (ULTRA/MAJOR)
 
 /obj/item/clothing/head/helmet/sangheili/voloxus
-	name = "‘Vurom Clan Armor - Sangheili Helmet"
+	name = "â€˜Vurom Clan Armor - Sangheili Helmet"
 	desc = "Head armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Leevrukah_helmet_obj"
 	item_state = "Leevrukah_helmet"
 
 /obj/item/clothing/suit/armor/special/combatharness/ultra/voloxus
-	name = "‘Vurom Clan Armor - Combat Harness"
+	name = "â€˜Vurom Clan Armor - Combat Harness"
 	desc = "Worn only by those within the 'Vurom Clan that have distinguished themselves among the most faithful, and zealous within the Covenant."
 	icon_state = "Leevrukah_chest_obj"
 	item_state = "Leevrukah_chest"
 
 /obj/item/clothing/shoes/sangheili/voloxus
-	name = "‘Vurom Clan Armor - Leg Armour"
+	name = "â€˜Vurom Clan Armor - Leg Armour"
 	desc = "Leg armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Leevrukah_legs_obj"
 	item_state = "Leevrukah_legs"
 
 /obj/item/clothing/gloves/thick/sangheili/voloxus
-	name = "‘Vurom Clan Armor - Gauntlets"
+	name = "â€˜Vurom Clan Armor - Gauntlets"
 	desc = "Hand armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Leevrukah_gloves_obj"
 	item_state = "Leevrukah_gloves"
@@ -513,24 +513,24 @@
 //Sangheili (ULTRA)
 
 /obj/item/clothing/head/helmet/sangheili/zane
-	name = "‘Nasan Clan - Ultra Sangheili Helmet"
+	name = "â€˜Nasan Clan - Ultra Sangheili Helmet"
 	desc = "Head armour, to be used with the Sangheili Combat Harness."
 	icon_state = "bluekro_helm_obj"
 	item_state = "bluekro_helm"
 
 /obj/item/clothing/suit/armor/special/combatharness/ultra/zane
-	name = "‘Nasan Clan - Ultra Combat Harness"
+	name = "â€˜Nasan Clan - Ultra Combat Harness"
 	icon_state = "bluekro_chest_obj"
 	item_state = "bluekro_chest"
 
 /obj/item/clothing/shoes/sangheili/zane
-	name = "‘Nasan Clan - Ultra Leg Armour"
+	name = "â€˜Nasan Clan - Ultra Leg Armour"
 	desc = "Leg armour, to be used with the Sangheili Combat Harness."
 	icon_state = "bluekro_legs_obj"
 	item_state = "bluekro_legs"
 
 /obj/item/clothing/gloves/thick/sangheili/zane
-	name = "‘Nasan Clan - Ultra Gauntlets"
+	name = "â€˜Nasan Clan - Ultra Gauntlets"
 	desc = "Hand armour, to be used with the Sangheili Combat Harness."
 	icon_state = "bluekro_gloves_obj"
 	item_state = "bluekro_gloves"
@@ -639,6 +639,25 @@
 	icon_state = "woodentucker2"
 	icon_living = "woodentucker20"
 	icon_dead = "woodentucker2_dead"
+
+//Lesser_Prophet
+
+/obj/item/clothing/suit/armor/special/shielded_prophet_robe/woodentucker
+	name = "Consecrated Robes"
+	desc = "Holy robes woven with a fine frabic and inlined with gold fit for a Sanshyuum of high status."
+	icon_state = "woodentucker_robe_obj"
+	item_state = "woodentucker_robe_w"
+
+/obj/item/clothing/head/helmet/santa_hat/woodentuckerhat
+	name = "Holy Sight"
+	desc = "A crown forged with a high level of craftmanship, it is highly valued by its Sanshyuum wearer."
+	icon_state = "woodentucker_hat_obj"
+	item_state = "woodentucker_hat_w"
+
+/decl/hierarchy/outfit/lesser_prophet/woodentucker
+	name = "WoodenTucker - Lesser Prophet"
+	head = /obj/item/clothing/head/helmet/santa_hat/woodentuckerhat
+	suit = /obj/item/clothing/suit/armor/special/shielded_prophet_robe/woodentucker
 
 /////Zagarnt
 
