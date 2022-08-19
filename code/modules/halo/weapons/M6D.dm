@@ -40,12 +40,7 @@
 		icon_state = "magnum_unloaded"
 	. = ..()
 
-/obj/item/weapon/gun/projectile/m6d_magnum/verb/scope()
-	set category = "Weapon"
-	set name = "Use Scope (Sidearm)"
-	set popup_menu = 1
 
-	toggle_scope(usr, scope_zoom_amount)
 
 /obj/item/weapon/gun/projectile/m6d_magnum/CO_magnum
 	name = "\improper CO\'s Magnum"

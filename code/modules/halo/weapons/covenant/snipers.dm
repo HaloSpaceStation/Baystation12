@@ -36,12 +36,7 @@
 /obj/item/weapon/gun/projectile/type51carbine/can_use_when_prone()
 	return 1
 
-/obj/item/weapon/gun/projectile/type51carbine/verb/scope()
-	set category = "Weapon"
-	set name = "Use Scope"
-	set popup_menu = 1
 
-	toggle_scope(usr, scope_zoom_amount)
 
 /obj/item/weapon/gun/projectile/type51carbine/load_ammo(var/item/I,var/mob/user)
 	unload_ammo(user,1)
@@ -101,12 +96,6 @@
 /obj/item/weapon/gun/energy/beam_rifle/can_use_when_prone()
 	return 1
 
-/obj/item/weapon/gun/energy/beam_rifle/verb/scope()
-	set category = "Weapon"
-	set name = "Use Scope"
-	set popup_menu = 1
-
-	toggle_scope(usr, scope_zoom_amount)
 
 /obj/item/weapon/gun/energy/beam_rifle/proc/cov_plasma_recharge_tick()
 	if(max_shots > 0)
@@ -152,9 +141,3 @@
 /obj/item/weapon/gun/projectile/type31needlerifle/can_use_when_prone()
 	return 1
 
-/obj/item/weapon/gun/projectile/type31needlerifle/verb/scope()
-	set category = "Weapon"
-	set name = "Use Scope"
-	set popup_menu = 1
-
-	toggle_scope(usr, scope_zoom_amount)

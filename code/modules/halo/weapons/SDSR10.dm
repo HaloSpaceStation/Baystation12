@@ -23,12 +23,7 @@
 		slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',
 		)
 
-/obj/item/weapon/gun/energy/SDSR_10/verb/scope()
-	set category = "Weapon"
-	set name = "Use Scope"
-	set popup_menu = 1
 
-	toggle_scope(usr, scope_zoom_amount)
 
 //SDSS PROJECTILE
 /obj/item/projectile/SDSS_proj

@@ -37,12 +37,7 @@
 /obj/item/weapon/gun/projectile/srs99_sniper/can_use_when_prone()
 	return 1
 
-/obj/item/weapon/gun/projectile/srs99_sniper/verb/scope()
-	set category = "Weapon"
-	set name = "Use Scope"
-	set popup_menu = 1
 
-	toggle_scope(usr, scope_zoom_amount)
 
 /obj/item/weapon/gun/projectile/srs99_sniper/update_icon()
 	if(ammo_magazine)

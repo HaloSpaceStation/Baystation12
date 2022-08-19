@@ -64,12 +64,7 @@
 	list(mode_name="extended bursts",  burst=8, dispersion=list(0.3, 0.3, 0.4, 0.5, 0.6, 0.8, 1.1))
 	)
 
-/obj/item/weapon/gun/projectile/m7_smg/silenced/verb/scope()
-	set category = "Weapon"
-	set name = "Use Scope"
-	set popup_menu = 1
 
-	toggle_scope(usr, scope_zoom_amount)
 
 /obj/item/weapon/gun/projectile/m7_smg/silenced/update_icon()
 	if(ammo_magazine)

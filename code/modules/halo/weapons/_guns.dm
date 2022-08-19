@@ -14,6 +14,7 @@
 /obj/item/weapon/gun/Initialize()
 	. = ..()
 	if(scope_zoom_amount != 0)
+		verbs += /obj/item/weapon/gun/proc/use_scope
 		create_scope_actions(0)
 		if(max_zoom_amount == 0)
 			max_zoom_amount = scope_zoom_amount

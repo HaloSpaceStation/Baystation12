@@ -26,12 +26,7 @@
 		)
 	crosshair_file = 'code/modules/halo/weapons/icons/dragaim_icon.dmi'
 
-/obj/item/weapon/gun/projectile/m6c_magnum_s/verb/scope()
-	set category = "Weapon"
-	set name = "Use Scope (Sidearm)"
-	set popup_menu = 1
 
-	toggle_scope(usr, scope_zoom_amount)
 
 /obj/item/weapon/gun/projectile/m6c_magnum_s/update_icon()
 	if(ammo_magazine)
