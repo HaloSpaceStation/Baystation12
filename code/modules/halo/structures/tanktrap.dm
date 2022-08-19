@@ -3,6 +3,12 @@
 	name = "tanktrap"
 	desc = "This space is blocked off by a barricade."
 	icon_state = "tanktrap"
+	maxHealth = 300
+	health = 300
+	explosion_damage_mult = 3
+	mob_climb_time = 3 SECONDS
+	bump_climb = 1
+	cover_rating = 0
 	dead_type = /obj/structure/tanktrap_dead
 
 /obj/structure/destructible/tanktrap/update_icon()

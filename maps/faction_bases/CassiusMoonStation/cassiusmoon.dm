@@ -33,3 +33,8 @@
 	console_from.visible_message("<span class = 'notice'>Post firing scan reveals any viable targets are located deep underground, requiring direct designation.</span>")
 	return 0
 
+/obj/effect/overmap/unsc_cassius_moon/nuked_effects(var/nuke_at_loc)
+	. = ..()
+	superstructure_failing = 0
+	pre_superstructure_failing()
+

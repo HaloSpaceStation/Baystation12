@@ -1,6 +1,7 @@
 ////////Boltersam\\\\\\\\
 
 //JIRALHANAE
+#define JIRALHANAE_ICON_PATH_MOB 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
 
 /obj/item/clothing/head/helmet/jiralhanae/covenant/boltersam
 	icon_state = "bolter_helm"
@@ -52,13 +53,22 @@
 ///////billymom2///////////
 
 /obj/item/clothing/head/helmet/jiralhanae/covenant/billymom2
-	icon_state = "billymom2_helm"
+	icon = JIRALHANAE_ICON_PATH_MOB
+	icon_state = "helm_billymom2"
+	name = "Jiralhanae Stalker Helmet"
+	desc = "A helmet meant to be worn by Jiralhanae Stalkers."
 
 /obj/item/clothing/suit/armor/jiralhanae/covenant/billymom2
-	icon_state = "billymom2_armour"
+	icon = JIRALHANAE_ICON_PATH_MOB
+	icon_state = "armour_billymom2"
+	name = "Jiralhanae Stalker Armor"
+	desc = "The armor of a Jiralhanae stealth specialist."
 
 /obj/item/clothing/shoes/jiralhanae/covenant/billymom2
-	icon_state = " "
+	icon = JIRALHANAE_ICON_PATH_MOB
+	icon_state = "billymom2feet"
+	name = "Jiralhanae Stalker Greaves"
+	desc = "Leg armor meant to be worn by Jiralhanae Stalkers"
 
 /obj/item/weapon/storage/box/large/donator/billymom2
 	startswith = list(/obj/item/clothing/head/helmet/jiralhanae/covenant/billymom2,
@@ -85,24 +95,24 @@
 	body_parts_covered = UPPER_TORSO | LOWER_TORSO | ARMS | LEGS
 
 /obj/item/clothing/head/helmet/sangheili/ultra/magnum
-	name = "‘Strangam Clan - Ultra Sangheili Helmet"
+	name = "â€˜Strangam Clan - Ultra Sangheili Helmet"
 	desc = "Head armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Magnum_helmet_obj"
 	item_state = "Magnum_helmet"
 
 /obj/item/clothing/suit/armor/special/combatharness/ultra/magnum
-	name = "‘Strangam Clan - Ultra Combat Harness"
+	name = "â€˜Strangam Clan - Ultra Combat Harness"
 	icon_state = "Magnum_chest_obj"
 	item_state = "Magnum_chest"
 
 /obj/item/clothing/shoes/sangheili/ultra/magnum
-	name = "‘Strangam Clan - Ultra Leg Armour"
+	name = "â€˜Strangam Clan - Ultra Leg Armour"
 	desc = "Leg armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Magnum_boots_obj"
 	item_state = "Magnum_boots"
 
 /obj/item/clothing/gloves/thick/sangheili/ultra/magnum
-	name = "‘Strangam Clan - Ultra Gauntlets"
+	name = "â€˜Strangam Clan - Ultra Gauntlets"
 	desc = "Hand armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Magnum_gloves_obj"
 	item_state = "Magnum_gloves"
@@ -318,24 +328,24 @@
 //Socks Sangheili (MAJOR)
 
 /obj/item/clothing/head/helmet/sangheili/socks
-	name = "‘Nasan Clan - Bluekro Sangheili Helmet"
+	name = "â€˜Nasan Clan - Bluekro Sangheili Helmet"
 	desc = "Head armour, to be used with the Sangheili Combat Harness."
 	icon_state = "socks_helm_obj"
 	item_state = "socks_helm"
 
 /obj/item/clothing/suit/armor/special/combatharness/ultra/socks
-	name = "‘Nasan Clan - Bluekro Combat Harness"
+	name = "â€˜Nasan Clan - Bluekro Combat Harness"
 	icon_state = "socks_chest_obj"
 	item_state = "socks_chest"
 
 /obj/item/clothing/shoes/sangheili/socks
-	name = "‘Nasan Clan - Bluekro Leg Armour"
+	name = "â€˜Nasan Clan - Bluekro Leg Armour"
 	desc = "Leg armour, to be used with the Sangheili Combat Harness."
 	icon_state = "socks_legs_obj"
 	item_state = "socks_legs"
 
 /obj/item/clothing/gloves/thick/sangheili/socks
-	name = "‘Nasan Clan - Bluekro Gauntlets"
+	name = "â€˜Nasan Clan - Bluekro Gauntlets"
 	desc = "Hand armour, to be used with the Sangheili Combat Harness."
 	icon_state = "socks_gloves_obj"
 	item_state = "socks_gloves"
@@ -452,25 +462,25 @@
 //Sangheili (ULTRA/MAJOR)
 
 /obj/item/clothing/head/helmet/sangheili/voloxus
-	name = "‘Vurom Clan Armor - Sangheili Helmet"
+	name = "â€˜Vurom Clan Armor - Sangheili Helmet"
 	desc = "Head armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Leevrukah_helmet_obj"
 	item_state = "Leevrukah_helmet"
 
 /obj/item/clothing/suit/armor/special/combatharness/ultra/voloxus
-	name = "‘Vurom Clan Armor - Combat Harness"
+	name = "â€˜Vurom Clan Armor - Combat Harness"
 	desc = "Worn only by those within the 'Vurom Clan that have distinguished themselves among the most faithful, and zealous within the Covenant."
 	icon_state = "Leevrukah_chest_obj"
 	item_state = "Leevrukah_chest"
 
 /obj/item/clothing/shoes/sangheili/voloxus
-	name = "‘Vurom Clan Armor - Leg Armour"
+	name = "â€˜Vurom Clan Armor - Leg Armour"
 	desc = "Leg armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Leevrukah_legs_obj"
 	item_state = "Leevrukah_legs"
 
 /obj/item/clothing/gloves/thick/sangheili/voloxus
-	name = "‘Vurom Clan Armor - Gauntlets"
+	name = "â€˜Vurom Clan Armor - Gauntlets"
 	desc = "Hand armour, to be used with the Sangheili Combat Harness."
 	icon_state = "Leevrukah_gloves_obj"
 	item_state = "Leevrukah_gloves"
@@ -503,24 +513,24 @@
 //Sangheili (ULTRA)
 
 /obj/item/clothing/head/helmet/sangheili/zane
-	name = "‘Nasan Clan - Ultra Sangheili Helmet"
+	name = "â€˜Nasan Clan - Ultra Sangheili Helmet"
 	desc = "Head armour, to be used with the Sangheili Combat Harness."
 	icon_state = "bluekro_helm_obj"
 	item_state = "bluekro_helm"
 
 /obj/item/clothing/suit/armor/special/combatharness/ultra/zane
-	name = "‘Nasan Clan - Ultra Combat Harness"
+	name = "â€˜Nasan Clan - Ultra Combat Harness"
 	icon_state = "bluekro_chest_obj"
 	item_state = "bluekro_chest"
 
 /obj/item/clothing/shoes/sangheili/zane
-	name = "‘Nasan Clan - Ultra Leg Armour"
+	name = "â€˜Nasan Clan - Ultra Leg Armour"
 	desc = "Leg armour, to be used with the Sangheili Combat Harness."
 	icon_state = "bluekro_legs_obj"
 	item_state = "bluekro_legs"
 
 /obj/item/clothing/gloves/thick/sangheili/zane
-	name = "‘Nasan Clan - Ultra Gauntlets"
+	name = "â€˜Nasan Clan - Ultra Gauntlets"
 	desc = "Hand armour, to be used with the Sangheili Combat Harness."
 	icon_state = "bluekro_gloves_obj"
 	item_state = "bluekro_gloves"
@@ -583,3 +593,139 @@
 					)
 	can_hold = list(/obj/item/xor_harness_replacer,
 					)
+
+///////Aroliacue (SHIPMASTER)
+
+/obj/item/clothing/head/helmet/sangheili/aroliacue
+	icon_state = "arol_helm_obj"
+	item_state = "arol_helm"
+
+/obj/item/clothing/suit/armor/special/combatharness/shipmaster/aroliacue
+	icon_state = "arol_chest_obj"
+	item_state = "arol_chest"
+
+/obj/item/clothing/shoes/sangheili/aroliacue
+	icon_state = "arol_legs_obj"
+	item_state = "arol_legs"
+
+/obj/item/clothing/gloves/thick/sangheili/aroliacue
+	icon_state = "arol_gloves_obj"
+	item_state = "arol_gloves"
+
+/obj/item/weapon/storage/box/large/donator/aroliacue/shipmaster
+	startswith = list(/obj/item/clothing/head/helmet/sangheili/aroliacue,/obj/item/clothing/suit/armor/special/combatharness/shipmaster/aroliacue,/obj/item/clothing/shoes/sangheili/aroliacue,/obj/item/clothing/gloves/thick/sangheili/aroliacue)
+	can_hold = list(/obj/item/clothing/head/helmet/sangheili/aroliacue,/obj/item/clothing/suit/armor/special/combatharness/shipmaster/aroliacue,/obj/item/clothing/shoes/sangheili/aroliacue,/obj/item/clothing/gloves/thick/sangheili/aroliacue)
+
+/decl/hierarchy/outfit/aroliacue_shipmaster
+	name = "Aroliacue - Shipmaster"
+	head = /obj/item/clothing/head/helmet/sangheili/aroliacue
+	suit = /obj/item/clothing/suit/armor/special/combatharness/shipmaster/aroliacue
+	gloves = /obj/item/clothing/gloves/thick/sangheili/aroliacue
+	shoes = /obj/item/clothing/shoes/sangheili/aroliacue
+
+//////FarFromtheTsar (MINOR)
+
+/obj/item/clothing/head/helmet/sangheili/tsar
+	icon_state = "tsar_helm_obj"
+	item_state = "tsar_helm"
+
+//////WoodenTucker
+/mob/living/simple_animal/mgalekgolo/WoodenTucker
+	icon_state = "woodentucker"
+	icon_living = "woodentucker0"
+	icon_dead = "woodentucker_dead"
+
+/mob/living/simple_animal/mgalekgolo/WoodenTucker2
+	icon_state = "woodentucker2"
+	icon_living = "woodentucker20"
+	icon_dead = "woodentucker2_dead"
+
+//Lesser_Prophet
+
+/obj/item/clothing/suit/armor/special/shielded_prophet_robe/woodentucker
+	name = "Consecrated Robes"
+	desc = "Holy robes woven with a fine frabic and inlined with gold fit for a Sanshyuum of high status."
+	icon_state = "woodentucker_robe_obj"
+	item_state = "woodentucker_robe_w"
+
+/obj/item/clothing/head/helmet/santa_hat/woodentuckerhat
+	name = "Holy Sight"
+	desc = "A crown forged with a high level of craftmanship, it is highly valued by its Sanshyuum wearer."
+	icon_state = "woodentucker_hat_obj"
+	item_state = "woodentucker_hat_w"
+
+/obj/item/weapon/storage/box/large/donator/woodentucker_lesser_prophet
+	startswith = list(/obj/item/clothing/head/helmet/santa_hat/woodentuckerhat,
+					  /obj/item/clothing/suit/armor/special/shielded_prophet_robe/woodentucker
+					)
+	can_hold = list(/obj/item/clothing/head/helmet/santa_hat/woodentuckerhat,
+					/obj/item/clothing/suit/armor/special/shielded_prophet_robe/woodentucker
+					)
+
+/decl/hierarchy/outfit/lesser_prophet/woodentucker
+	name = "WoodenTucker - Lesser Prophet"
+	head = /obj/item/clothing/head/helmet/santa_hat/woodentuckerhat
+	suit = /obj/item/clothing/suit/armor/special/shielded_prophet_robe/woodentucker
+
+/////Zagarnt
+
+
+/obj/item/clothing/head/helmet/sangheili/zagarnt
+	icon_state = "zagarnt_helm_obj"
+	item_state = "zagarnt_helm"
+
+/obj/item/clothing/suit/armor/special/combatharness/ultra/zagarnt
+	icon_state = "zagarnt_chest_obj"
+	item_state = "zagarnt_chest"
+
+/obj/item/clothing/suit/armor/special/combatharness/major/zagarnt
+	icon_state = "zagarnt_chest_obj"
+	item_state = "zagarnt_chest"
+
+/obj/item/clothing/shoes/sangheili/zagarnt
+	icon_state = "zagarnt_legs_obj"
+	item_state = "zagarnt_legs"
+
+/obj/item/clothing/gloves/thick/sangheili/zagarnt
+	icon_state = "zagarnt_gloves_obj"
+	item_state = "zagarnt_gloves"
+
+/obj/item/weapon/storage/box/large/donator/zagarnt_ultra
+	startswith = list(/obj/item/clothing/head/helmet/sangheili/zagarnt,
+					/obj/item/clothing/suit/armor/special/combatharness/ultra/zagarnt,
+					/obj/item/clothing/shoes/sangheili/zagarnt,
+					/obj/item/clothing/gloves/thick/sangheili/zagarnt
+					)
+	can_hold = list(/obj/item/clothing/head/helmet/sangheili/zagarnt,
+					/obj/item/clothing/suit/armor/special/combatharness/ultra/zagarnt,
+					/obj/item/clothing/shoes/sangheili/zagarnt,
+					/obj/item/clothing/gloves/thick/sangheili/zagarnt
+					)
+
+/obj/item/weapon/storage/box/large/donator/zagarnt_major
+	startswith = list(/obj/item/clothing/head/helmet/sangheili/zagarnt,
+					/obj/item/clothing/suit/armor/special/combatharness/major/zagarnt,
+					/obj/item/clothing/shoes/sangheili/zagarnt,
+					/obj/item/clothing/gloves/thick/sangheili/zagarnt
+					)
+	can_hold = list(/obj/item/clothing/head/helmet/sangheili/zagarnt,
+					/obj/item/clothing/suit/armor/special/combatharness/major/zagarnt,
+					/obj/item/clothing/shoes/sangheili/zagarnt,
+					/obj/item/clothing/gloves/thick/sangheili/zagarnt
+					)
+
+/decl/hierarchy/outfit/zagarnt_ultra
+	name = "Zagarnt - Ultra"
+	head = /obj/item/clothing/head/helmet/sangheili/zagarnt
+	suit = /obj/item/clothing/suit/armor/special/combatharness/ultra/zagarnt
+	gloves = /obj/item/clothing/gloves/thick/sangheili/zagarnt
+	shoes = /obj/item/clothing/shoes/sangheili/zagarnt
+
+/decl/hierarchy/outfit/zagarnt_major
+	name = "Zagarnt - Major"
+	head = /obj/item/clothing/head/helmet/sangheili/zagarnt
+	suit = /obj/item/clothing/suit/armor/special/combatharness/major/zagarnt
+	gloves = /obj/item/clothing/gloves/thick/sangheili/zagarnt
+	shoes = /obj/item/clothing/shoes/sangheili/zagarnt
+
+#undef JIRALHANAE_ICON_PATH_OBJ

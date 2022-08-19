@@ -44,6 +44,10 @@
 	id_type = /obj/item/weapon/card/id/skirmisher_zealot
 	id_slot = slot_wear_id
 
+/decl/hierarchy/outfit/skirmisher_murmillo/armed
+	name = "Armed T\'Vaoan Skirmisher Murmillo"
+	belt = /obj/item/weapon/gun/energy/plasmapistol
+
 /decl/hierarchy/outfit/skirmisher_commando
 	name = "T\'Vaoan Skirmisher Commando"
 	l_ear = /obj/item/device/radio/headset/covenant
@@ -60,13 +64,18 @@
 	id_type = /obj/item/weapon/card/id/skirmisher_zealot
 	id_slot = slot_wear_id
 
+/decl/hierarchy/outfit/skirmisher_commando/armed
+	name = "Armed T\'Vaoan Skirmisher Commando"
+	belt = /obj/item/weapon/gun/energy/plasmapistol
+
 /decl/hierarchy/outfit/skirmisher_champion
 	name = "T\'Vaoan Skirmisher Champion"
 	l_ear = /obj/item/device/radio/headset/covenant
 	uniform = /obj/item/clothing/under/kigyar
 	suit = /obj/item/clothing/suit/armor/special/skirmisher/champion
-	belt = /obj/item/weapon/gun/energy/plasmapistol
-	l_hand = /obj/item/weapon/melee/blamite/dagger
+	belt = null
+	l_hand = /obj/item/language_learner/unggoy_to_common
+	r_hand = /obj/item/weapon/melee/blamite/cutlass
 	l_pocket = /obj/item/weapon/melee/energy/elite_sword/dagger
 	head = /obj/item/clothing/head/helmet/kigyar/skirmisher/champion
 	gloves = /obj/item/clothing/gloves/skirmisher_shield_gauntlets/champion
@@ -74,3 +83,7 @@
 	//
 	id_type = /obj/item/weapon/card/id/skirmisher_zealot
 	id_slot = slot_wear_id
+
+/decl/hierarchy/outfit/skirmisher_champion/armed
+	name = "Armed T\'Vaoan Skirmisher Champion"
+	belt = /obj/item/weapon/gun/energy/plasmapistol

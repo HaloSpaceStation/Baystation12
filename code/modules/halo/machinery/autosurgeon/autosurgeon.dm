@@ -93,10 +93,14 @@
 	if(botch_surgery)
 		to_chat(user,"<span class='danger'>Its instruments have been misaligned and will do terrible damage to anyone placed on it!</span>")
 
-/obj/machinery/autosurgeon/verb/align(var/mob/user)
+/obj/machinery/autosurgeon/verb/align(var/mob/living/carbon/human/user)
 	set src in view(1)
 	set category = "Object"
 	set name = "Align autosurgeon instruments"
+
+	if(!istype(user))
+		to_chat(user, "<span class = 'notice'>You have no idea how to do that.</span>")
+		return
 
 	botch_surgery = !botch_surgery
 

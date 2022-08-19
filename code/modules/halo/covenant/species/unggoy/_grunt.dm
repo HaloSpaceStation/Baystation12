@@ -23,15 +23,13 @@
 	item_icon_offsets = list(list(0,0),list(0,0),null,list(0,0),null,null,null,list(0,0),null)
 	default_faction = "Covenant"
 	unarmed_types = list(/datum/unarmed_attack/grunt_punch)
-	can_operate_advanced_covenant = 0
 
 	breath_type = "methane"
 	exhale_type = "carbon_dioxide"
 
 	warning_low_pressure = 25
 	hazard_low_pressure = -1
-	equipment_slowdown_multiplier = 0.5
-	slowdown = 0
+	equipment_slowdown_multiplier = 0.9
 	pain_scream_sounds = list(\
 	'code/modules/halo/sounds/species_pain_screams/gruntscream_1.ogg',
 	'code/modules/halo/sounds/species_pain_screams/gruntscream_2.ogg',

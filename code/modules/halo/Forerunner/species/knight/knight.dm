@@ -24,6 +24,7 @@
 	inhand_icon_offsets = list(list(5,0),list(-7,0),null,list(2,0),null,null,null,list(2,0),null)
 	inter_hand_dist = 14
 	roll_distance = 3
+	dodge_roll_delay = DODGE_ROLL_BASE_COOLDOWN - 2 SECOND
 
 	total_health = 300
 	radiation_mod = 0
@@ -36,7 +37,7 @@
 	brute_mod = 1
 	burn_mod = 1
 	pain_mod = 0
-	slowdown = -0.5
+	slowdown = -0.2
 	explosion_effect_mod = 0
 	can_force_door = 1
 
@@ -147,7 +148,7 @@
 	icon = 'code/modules/halo/Forerunner/species/knight/knight.dmi'
 	icon_state = "knight_elegiast"
 	robotic = ORGAN_ROBOT
-	max_damage = 100
+	max_damage = 200
 
 /obj/item/organ/external/chest/knight
 	robotic = ORGAN_ROBOT

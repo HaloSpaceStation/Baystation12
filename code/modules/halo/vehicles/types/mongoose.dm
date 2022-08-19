@@ -19,8 +19,16 @@
 
 	vehicle_size = ITEM_SIZE_VEHICLE_SMALL
 
+	vehicle_view_modifier = 1.5
+
 	light_color = "#E1FDFF"
 
+	can_smoke = 1
+	smoke_ammo = 3
+	smoke_ammo_max = 3
+	smoke_step_dist = 0
+
+	acceleration = 1.5
 	min_speed = 6
 	max_speed = 2
 

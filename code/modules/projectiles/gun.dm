@@ -5,7 +5,7 @@
 	If the fire mode value for a setting is null, it will be replaced with the initial value of that gun's variable when the firemode is created.
 	Obviously not compatible with variables that take a null value. If a setting is not present, then the corresponding var will not be modified.
 */
-#define BASE_MOVEDELAY_MOD_APPLYFOR_TIME 1 SECOND
+#define BASE_MOVEDELAY_MOD_APPLYFOR_TIME 1.5 SECONDS
 
 /datum/firemode
 	var/name = "default"
@@ -52,14 +52,13 @@
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 
-	slowdown_general = 0.25 //Guns R heavy.
+	slowdown_general = 0.3 //Guns R heavy.
 
 	var/unique_name
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
 	var/burst_delay = 2	//delay between shots, if firing in bursts
-	var/move_delay = 0
-	var/move_delay_malus = 0.5
+	var/move_delay_malus = 1
 	var/fire_sound = 'sound/weapons/gunshot/gunshot.ogg'
 	var/fire_sound_text = "gunshot"
 	var/screen_shake = 0 //shouldn't be greater than 2 unless zoomed
@@ -96,14 +95,10 @@
 	var/arm_time = 25 //Default charge time for weapons that charge
 	var/charge_sound = 'code/modules/halo/sounds/Spartan_Laser_Charge_Sound_Effect.ogg'
 	var/is_charging = 0
-	var/irradiate_non_cov = 0 //Set this to anything above 0, and it'll irradiate humans when fired. Spartans and Orions are ok.
 	var/is_heavy = 0 //Set this to anything above 0, and all species that aren't elites/brutes/spartans/orions have to two-hand it
-	var/advanced_covenant = 0
 
 	//"Channeled" weapons, aka longfire beam sustained types (sentinel beam)//
 
-	var/sustain_delay = -1 //Set this to the delay between "firing" whilst channeled.Set the weapon tracer to match this value.
-	var/sustain_time = -1 //How long does this sustain fire for.
 	var/atom/stored_targ
 
 /obj/item/weapon/gun/New()
@@ -239,10 +234,6 @@
 		else
 			handle_click_empty(user)
 		return 0
-	var/mob/living/carbon/human/h = user
-	if(istype(h) && h.species.can_operate_advanced_covenant == 0 && advanced_covenant == 1)
-		to_chat(h,"<span class= 'danger'>You don't know how to operate this weapon!</span>")
-		return 0
 	return 1
 
 /obj/item/weapon/gun/emp_act(severity)
@@ -254,10 +245,10 @@
 
 	if(!user.aiming)
 		user.aiming = new(user)
-
-	var/obj/screen/weapondisplay/display = locate(/obj/screen/weapondisplay) in user.client.screen
-	if(display)
-		display.update_gun_ref(src)
+	if(user.client)
+		var/obj/screen/weapondisplay/display = locate(/obj/screen/weapondisplay) in user.client.screen
+		if(display)
+			display.update_gun_ref(src)
 
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
@@ -280,21 +271,7 @@
 		to_chat(user, "<span class='warning'>You refrain from firing your [src] as your intent is set to help.</span>")
 		return
 
-	if(is_charging)
-		to_chat(user,"<span class = 'notice'>[src] is charging and cannot fire</span>")
-		return
-
-	if(is_charged_weapon==1)
-		if(charge_sound)
-			playsound(src.loc, charge_sound, 100, 1)
-		user.visible_message("<span class = 'notice'>[user] starts charging the [src]!</span>")
-
-		is_charging = 1
-		if (!do_after(user,arm_time,src))
-			is_charging = 0
-			return
 		Fire(A,user,params)
-		is_charging = 0
 	else
 		Fire(A,user,params) //Otherwise, fire normally.
 
@@ -338,6 +315,12 @@
 	if(check_overheat())
 		return
 
+	if(world.time < next_fire_time)
+		/*if (world.time % 3) //to prevent spam
+			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
+			*/
+		return
+
 	var/list/attachments = get_attachments()
 	if(attachments.len > 0)
 		var/have_fired = 0
@@ -353,13 +336,6 @@
 
 	if(stored_targ)
 		stored_targ = target
-		visible_message("<span class = 'notice'>[user] refocuses their aim on [target]</span>")
-		return
-
-	if(world.time < next_fire_time)
-		/*if (world.time % 3) //to prevent spam
-			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
-			*/
 		return
 
 	var/held_twohanded = (user.can_wield_item(src) && src.is_held_twohanded(user))
@@ -368,6 +344,21 @@
 		if(!held_twohanded)
 			to_chat(user,"<span class = 'notice'>You can't fire this weapon with just one hand!</span>")
 			return
+
+	if(is_charging)
+		to_chat(user,"<span class = 'notice'>[src] is charging and cannot fire</span>")
+		return
+
+	if(is_charged_weapon==1)
+		if(charge_sound)
+			playsound(src.loc, charge_sound, 100, 1)
+		user.visible_message("<span class = 'notice'>[user] starts charging the [src]!</span>")
+
+		is_charging = 1
+		if (!do_after(user,arm_time,src))
+			is_charging = 0
+			return
+		is_charging = 0
 
 	var/shoot_time = (burst - 1)* burst_delay
 	//user.setClickCooldown(shoot_time) //no clicking on things while shooting
@@ -380,12 +371,8 @@
 
 	//actually attempt to shoot
 	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
-	var/atom/use_targ = target
-	if(sustain_time > 0)
-		burst = sustain_time/sustain_delay
-		burst_delay = sustain_delay
-		stored_targ = target
-		use_targ = stored_targ
+	stored_targ = target
+	var/atom/use_targ = stored_targ
 	. = 1
 	/*
 	user.visible_message(
@@ -402,8 +389,8 @@
 				stored_targ = null
 				visible_message("<span class = 'notice'>[user] stops firing [src].</span>")
 				break
-			targloc = get_turf(stored_targ)
 			use_targ = stored_targ
+			targloc = get_turf(stored_targ)
 		var/mob/living/carbon/human/h = user
 		if(!istype(loc,/obj/item/weapon/gun/dual_wield_placeholder))
 			if(isnull(user) || user.stat == DEAD || (istype(h) && (h.l_hand != src && h.r_hand != src)))
@@ -528,11 +515,6 @@
 					to_chat(user, "<span class='warning'>You have trouble holding \the [src] steady.</span>")
 				if(4 to INFINITY)
 					to_chat(user, "<span class='warning'>You struggle to hold \the [src] steady!</span>")
-
-	if(irradiate_non_cov > 0 && istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/h = user
-		if(istype(h.species,/datum/species/human))
-			h.rad_act(irradiate_non_cov)
 
 	if(screen_shake)
 		spawn()
@@ -759,6 +741,8 @@
 
 /obj/item/weapon/gun/examine(mob/user)
 	. = ..()
+	if(slowdown_general == 0)
+		to_chat(user,"<span class = 'notice'>The relatively small size and low weight make it unencumbering and allows for faster movement than when utilising full rifles.</span>")
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		to_chat(user, "The fire selector is set to [current_mode.name].")
@@ -785,6 +769,15 @@
 	new_mode.apply_to(src)
 
 	return new_mode
+
+/obj/item/weapon/gun/verb/switch_firemode_verb()
+	set name = "Switch Firemode"
+	set category = "Weapon"
+	set desc = "Switch the weapon's fire mode."
+
+	var/datum/firemode/new_mode = switch_firemodes()
+	if(new_mode)
+		to_chat(usr, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	if(stored_targ)

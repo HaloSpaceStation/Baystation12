@@ -88,7 +88,7 @@
 
 /obj/item/clothing/glasses/hud/tactical/proc/get_loc_used()
 	if(!isturf(loc))
-		return loc.loc
+		return get_turf(loc)
 	else
 		return loc
 
@@ -120,7 +120,10 @@
 		return
 	last_user = user
 	for(var/obj/effect/waypoint_holder/waypoint in known_waypoints)
-		if(get_dist(waypoint,get_loc_used()) <= user.client.view)
+		var/dist_to = get_dist(waypoint,get_loc_used())
+		if(dist_to == 0) //Don't render it if we're right on top of it. It'd just get in the way.
+			continue
+		if(dist_to <= user.client.view)
 			process_visible_marker(waypoint,user)
 			continue
 		var/dir_to_point = get_dir(get_loc_used(),waypoint)
@@ -141,9 +144,11 @@
 
 /obj/item/clothing/glasses/hud/tactical/proc/process_visible_marker(var/obj/effect/waypoint_holder/waypoint,var/mob/user) //This is for waypoints the player can currently see on-screen
 	if(waypoint_pointers[waypoint])
-		remove_pointer(waypoint)
+		remove_pointer(user,waypoint)
 	var/image/pointer = image(waypoint.icon,waypoint.loc,"[waypoint.waypoint_icon]_onscreen")
 	pointer.name = waypoint.waypoint_name
+	pointer.mouse_opacity = 0
+	pointer.alpha = 150
 	pointer.plane = HUD_PLANE
 	pointer.layer = HUD_ABOVE_ITEM_LAYER
 	waypoint_pointers[waypoint] = pointer
@@ -152,17 +157,13 @@
 /obj/item/clothing/glasses/hud/tactical/process_hud()
 	process_hud_pointers()
 
-
-
 /* NIGHT VISION */
 
 #define NV_LAYER 6
 #define VISION_CONE_LAYER 7
 
 /obj/item/clothing/glasses/hud/tactical
-	darkness_view = 3	//6 = fullscreen, because this adds to the default mob darkvision of 2 (1 = self tile only)
-	see_invisible = SEE_INVISIBLE_NOLIGHTING
-	var/nv_enabled = 1
+	var/nv_enabled = 0
 	var/nv_screen_colour = /obj/screen/fullscreen/night_vision/green
 	var/nv_screen_impair = /obj/screen/fullscreen/night_vision/cone
 	action_button_name = "Toggle HUD Night Vision"
@@ -196,8 +197,7 @@
 
 /obj/item/clothing/glasses/hud/tactical/proc/reset_effect(var/mob/living/user)
 	if(nv_enabled)
-		darkness_view = max(initial(darkness_view), 2)
-		darkness_view = min(darkness_view, 7)
+		darkness_view = 3	//6 = fullscreen, because this adds to the default mob darkvision of 2 (1 = self tile only)
 		see_invisible = SEE_INVISIBLE_NOLIGHTING
 		enable_effect(user)
 
@@ -321,6 +321,7 @@
 	screen_loc = ui_entire_screen
 	plane = LIGHTING_PLANE
 	layer = LIGHTING_LAYER
+	alpha = 150
 
 /obj/screen/fullscreen/night_vision/noise/New()
 	. = ..()
@@ -328,10 +329,10 @@
 
 /obj/screen/fullscreen/night_vision/cone
 	icon = 'icons/mob/screen_full.dmi'
-	icon_state = "impairedoverlay2"//"visioncone90-7"
+	icon_state = "nvobscure"//"visioncone90-7"
 	screen_loc = "CENTER-7,CENTER-7"
 	plane = LIGHTING_PLANE
 	layer = 11
 
 /obj/screen/fullscreen/night_vision/cone/better
-	icon_state = "impairedoverlay1"
+	icon_state = "nvobscurebetter"

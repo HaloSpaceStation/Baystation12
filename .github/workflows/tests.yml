@@ -1,0 +1,93 @@
+name: Run tests
+
+on:
+  push:
+    branches:
+      - alpha
+  pull_request:
+    branches:
+      - alpha
+    
+env:
+  BYOND_MAJOR: 513
+  BYOND_MINOR: 1536
+    
+jobs:
+  code-tests:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        TEST: [CODE, WEB]
+    timeout-minutes: 20
+    env:
+      TEST: ${{ matrix.TEST }}
+      
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            tgui/node_modules
+          key: ${{ runner.os }}-tgui-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install gcc-multilib g++-multilib
+      - name: Run tests
+        run: bash test/run-test.sh
+  map-tests:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        MAPPATH:
+          - operation_trebuchet
+          - slayer
+          - firefight
+          - crusade
+          - stranded
+          - first_contact
+          - ks7_elmsville
+          - ks7_elmsville_spaceodp
+          - base_assault
+          - base_assault_unsc_defend_vs_urf
+          - unsc_achlys
+          - base_assault_neutral_base
+          - base_assault_neutral_base_taurus
+          - geminus_city         
+          - geminus_city_urf_active
+          #- example
+          #- overmap_example
+    
+    timeout-minutes: 20
+    env:
+      TEST: MAP
+      MAP_PATH: ${{ matrix.MAPPATH }}
+      
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            tgui/node_modules
+            ~/BYOND-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}
+          key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install gcc-multilib g++-multilib
+      - name: Run tests
+        run: bash test/run-test.sh

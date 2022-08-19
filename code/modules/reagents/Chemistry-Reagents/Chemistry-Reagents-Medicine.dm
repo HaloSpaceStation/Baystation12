@@ -70,7 +70,8 @@
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
 	var/static/list/remove_toxins = list(
-		/datum/reagent/toxin/zombiepowder
+		/datum/reagent/toxin/zombiepowder,
+		/datum/reagent/floodinfectiontoxin
 	)
 
 /datum/reagent/dylovene/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -188,7 +189,7 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/paracetamol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_PAINKILLER, 30)
+	M.add_chemical_effect(CE_PAINKILLER, 25)
 
 /datum/reagent/paracetamol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -206,7 +207,7 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/tramadol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_PAINKILLER, 100)
+	M.add_chemical_effect(CE_PAINKILLER, 80)
 
 /datum/reagent/tramadol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -219,11 +220,11 @@
 	reagent_state = LIQUID
 	color = "#800080"
 	overdose = 20
-	metabolism = 0.02
+	metabolism = REM*1.5
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/oxycodone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_PAINKILLER, 225)
+	M.add_chemical_effect(CE_PAINKILLER, 200)
 
 /datum/reagent/oxycodone/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -310,7 +311,11 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/otomax/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.adjustEarDamage(-1, -1)
+	if(M.ear_damage == 0)
+		//Heal deafness more effectively if the ears are undamaged
+		M.adjustEarDamage(0, -5 * removed)
+	else
+		M.adjustEarDamage(-1, -1)
 
 /datum/reagent/otomax/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -664,7 +669,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	scannable = 1
-	overdose = 10
+	overdose = 0
 
 /datum/reagent/adrenaline/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -681,9 +686,9 @@
 		remove_self(5)
 		M.resuscitate()
 	while(volume >= M.species.adrenal_break_threshold)//slightly more than 100/5.
-		M.add_chemical_effect(CE_PAINKILLER,120) //Reach a threshold of adrenaline, massive painkill effect
+		M.add_chemical_effect(CE_PAINKILLER,120*(M.species.adrenal_break_threshold/30)) //Reach a threshold of adrenaline, massive painkill effect
 		M.add_chemical_effect(CE_PULSE,3) //But your heart goes mental
 		remove_self(M.species.adrenal_break_threshold) //And your body consumes the adrenaline for that last final push
 
 /datum/reagent/adrenaline/overdose(var/mob/living/carbon/M, var/alien)
-	M.adjustToxLoss(REM)
+	return

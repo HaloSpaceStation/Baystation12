@@ -29,8 +29,8 @@
 	desc = "A X-52 headdress designed to keep out dust and protect agains the sun."
 	icon = INNIE_OVERRIDE
 	icon_override = INNIE_OVERRIDE
-	icon_state = "maskworn"
-	item_state = "maskobj"
+	icon_state = "maskobj"
+	item_state = "maskworn"
 	body_parts_covered = FACE
 	item_flags = FLEXIBLEMATERIAL
 	w_class = ITEM_SIZE_SMALL
@@ -558,6 +558,7 @@
 	allowed = list(/obj/item/weapon/gun)
 	slowdown_general = -3
 	armor_thickness = 15
+	armor_thickness_max = 15
 	siemens_coefficient = 0.5
 	armor = list(melee = 25, bullet = 30, laser = 20, energy = 20, bomb = 20, bio = 10, rad = 15)
 
@@ -576,6 +577,7 @@
 	w_class = ITEM_SIZE_LARGE//bulky item
 	siemens_coefficient = 0.5
 	armor_thickness = 15
+	armor_thickness_max = 15
 	armor = list(melee = 25, bullet = 30, laser = 20, energy = 20, bomb = 20, bio = 10, rad = 15)
 	gas_transfer_coefficient = 0.90
 

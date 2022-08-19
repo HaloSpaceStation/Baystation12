@@ -5,6 +5,7 @@ it needs to create more trails.A beaker could have a steam_trail_follow system s
 would spawn and follow the beaker, even if it is carried or thrown.
 */
 
+#define SMOKE_PROJPASS_ACC_MALUS 2
 
 /obj/effect/effect
 	name = "effect"
@@ -186,6 +187,13 @@ steam.start() -- spawns the effect
 	..()
 	if(istype(M))
 		affect(M)
+	else
+		affect_proj(M)
+
+/obj/effect/effect/smoke/proc/affect_proj(var/obj/item/projectile/p)
+	if(!istype(p))
+		return
+	p.accuracy -= SMOKE_PROJPASS_ACC_MALUS
 
 /obj/effect/effect/smoke/proc/affect(var/mob/living/carbon/M)
 	if (istype(M))
@@ -303,6 +311,8 @@ steam.start() -- spawns the effect
 	var/total_smoke = 0 // To stop it being spammed and lagging!
 	var/direction
 	var/smoke_type = /obj/effect/effect/smoke
+	var/list/smokemove_picklist = list(0,1,1,1,2,2,2,3) //This is used to determine how many times a spawned smoke tile moves.
+	var/spread_steps_on_spawn = 0 //How many steps should our smoke take on spawning, with no delay. (this doesn't detract from the picklist)
 
 /datum/effect/effect/system/smoke_spread/set_up(n = 5, c = 0, loca, direct)
 	if(n > 10)
@@ -332,8 +342,13 @@ steam.start() -- spawns the effect
 					direction = pick(GLOB.cardinal)
 				else
 					direction = pick(GLOB.alldirs)
-			for(i=0, i<pick(0,1,1,1,2,2,2,3), i++)
-				sleep(10)
+			var/amt_smoke_move = pick(smokemove_picklist)
+			var/spreadsteps = spread_steps_on_spawn
+			for(i=0, i<amt_smoke_move + spread_steps_on_spawn, i++)
+				if(spreadsteps > 0)
+					spreadsteps--
+				else
+					sleep(10)
 				step(smoke,direction)
 			spawn(smoke.time_to_live*0.75+rand(10,30))
 				if (smoke) qdel(smoke)
@@ -499,3 +514,5 @@ steam.start() -- spawns the effect
 				round(min(light, BOMBCAP_LIGHT_RADIUS)),
 				round(min(flash, BOMBCAP_FLASH_RADIUS))
 				)
+
+#undef SMOKE_PROJPASS_ACC_MALUS

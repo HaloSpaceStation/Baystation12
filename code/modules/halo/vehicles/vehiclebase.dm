@@ -11,6 +11,7 @@
 	var/movement_destroyed = 0
 	var/block_enter_exit //Set this to block entering/exiting.
 	var/can_traverse_zs = 0
+	var/can_overrun_cover = 0 //Allows these vehicles, on collision, to destroy barricade cover and collapse covenant shield cover. This does, however, stop the vehicle in its tracks.
 
 	var/next_move_input_at = 0//When can we send our next movement input?
 	var/moving_x = 0
@@ -23,6 +24,9 @@
 	var/acceleration = 1 //By how much does our speed change per input?
 	var/braking_mode = 0 //1 = brakes active, -1 = purposefully reducing drag to slide.
 	var/can_space_move = 0
+
+	//Action Button Handling
+	var/list/driver_actions = list()
 
 	//Advanced Damage Handling
 	var/datum/component_profile/comp_prof = /datum/component_profile
@@ -41,6 +45,21 @@
 	var/list/cargo_contents = list()
 	var/list/ammo_containers = list() //Ammunition containers in the form of ammo magazines.
 
+	//Smoke Countermeasures
+	var/can_smoke = 0
+	var/smoke_amt = 12 //The number of smoke entities created when the smoke button is hit. Smokebombs give off 10. Max 20.
+	var/smoke_ammo = 0 //How many smoke charges do we have.
+	var/smoke_ammo_max = 0
+	var/next_smoke_min = 0 //How long do we need to wait until we can use our next smoke charge?
+	var/smoke_delay = 3 SECONDS //Delay between smoke charges.
+	var/smoke_step_dist = 0 //How far should the smoke origin be shifted forward of our vehicle?
+	var/smoke_start_amt = 3 //How many times should we pop the smoke effect's start() proc? Smokebombs do it 4 times.
+	var/smoke_type = /datum/effect/effect/system/smoke_spread/vehicle_smokescreen
+
+	//Melee (For Mechs)
+	var/melee_type = null //The melee weapon typepath, if any. This is stored and should probably have can_embed returning 0
+	var/obj/item/melee_weapon = null //The melee weapon itself. Used in all melee interactions. Also used in ramming, if it exists.
+
 	//Vehicle ferrying//
 	var/vehicle_size = ITEM_SIZE_VEHICLE//The size of the vehicle, used by vehicle cargo ferrying to determine allowed amount and allowed size.
 	var/vehicle_carry_size = 0		//the max size of a carried vehicle
@@ -48,7 +67,7 @@
 
 	var/vehicle_view_modifier = 1 //The view-size modifier to apply to the occupants of the vehicle.
 	var/move_sound = null
-	var/collision_sound = 'sound/effects/clang.ogg'
+	var/collision_sound = 'sound/effects/meteorimpact.ogg'
 
 	var/datum/mobile_spawn/spawn_datum //Setting this makes this a mobile spawn point.
 
@@ -121,12 +140,17 @@
 /obj/vehicles/New()
 	. = ..()
 	comp_prof = new comp_prof(src)
+	if(melee_type)
+		melee_weapon = new melee_type(null)
 	GLOB.processing_objects += src
 	update_object_sprites()
 	if(light_range != 0)
 		verbs += /obj/vehicles/verb/toggle_headlights
 		set_light(0) //Switch off at spawn.
 	cargo_capacity = base_storage_capacity(capacity_flag)
+	if(can_smoke)
+		verbs += /obj/vehicles/proc/deploy_smoke
+	init_vehicle_actions()
 
 /obj/vehicles/Initialize()
 	. = ..()
@@ -171,19 +195,25 @@
 		attacker.UnarmedAttack(mob_to_hit)
 	comp_prof.take_component_damage(damage,"brute")
 
+/obj/vehicles/proc/get_display_filled_amt(var/amt,var/amt_initial)
+	. = "is empty!"
+	if(amt == amt_initial)
+		. = "is full!"
+	else if(amt >= amt_initial * 0.75)
+		. = "is about 3 quarters full."
+	else if(amt > amt_initial * 0.5)
+		. = "is about half full."
+	else if(amt > amt_initial * 0.25)
+		. = "is about a quarter full."
+
 /obj/vehicles/proc/display_ammo_status(var/mob/user)
 	for(var/m in ammo_containers)
 		var/obj/item/ammo_magazine/mag = m
-		var/msg = "is empty!"
-		if(mag.stored_ammo.len == mag.initial_ammo)
-			msg = "is full!"
-		if(mag.stored_ammo.len >= mag.initial_ammo * 0.75)
-			msg = "is about 3 quarters full."
-		else if(mag.stored_ammo.len > mag.initial_ammo * 0.5)
-			msg = "is about half full."
-		else if(mag.stored_ammo.len > mag.initial_ammo * 0.25)
-			msg = "is about a quarter full."
+		var/msg = get_display_filled_amt(mag.stored_ammo.len,mag.initial_ammo)
 		to_chat(user,"<span class = 'notice'>[src]'s [mag] [msg]</span>")
+
+	if(can_smoke)
+		to_chat(user,"<span class = 'notice'>[src]'s smoke dispenser has [smoke_ammo]/[smoke_ammo_max] charges remaining.</span>")
 
 /obj/vehicles/examine(var/mob/user)
 	. = ..()
@@ -230,13 +260,14 @@
 	return pick(valid_exit_locs)
 //
 /obj/vehicles/Destroy()
+	if(melee_weapon)
+		qdel(melee_weapon)
 	GLOB.processing_objects -= src
 	kick_occupants()
 	GLOB.emp_candidates -= src
 	. = ..()
 
 /obj/vehicles/proc/on_death()
-	explosion(get_turf(loc),-1,-1,2,5)
 	movement_destroyed = 1
 	guns_disabled = 1
 	icon_state = "[initial(icon_state)]_destroyed"
@@ -273,6 +304,16 @@
 
 		//eject it
 		eject_cargo_item(A, T)
+	for(var/mob/living/l in occupants)
+		var/dam_max = BASE_VEHICLE_DEATH_EXPLODE_DAMAGE * ((bound_height / 32) + (bound_width / 32))/2
+		l.adjustBruteLoss(dam_max/2)
+		dam_max /= 2
+		while(dam_max > 0)
+			var/dam_deal = rand(dam_max/3,dam_max)
+			dam_max -= dam_deal
+			l.adjustBruteLoss(dam_deal)
+	kick_occupants()
+	explosion(get_turf(src),1,2,3,5)
 
 /obj/vehicles/proc/inactive_pilot_effects() //Overriden on a vehicle-by-vehicle basis.
 
@@ -417,25 +458,33 @@
 	. = ..()
 
 /obj/vehicles/proc/collide_with_obstacle(var/atom/obstacle)
+	if(can_overrun_cover && obstacle.type in LIST_OVERRUN_COLLIDE_DESTROY)
+		playsound(loc,collision_sound,100,0,4)
+		if(istype(obstacle,/obj/structure/destructible))
+			var/obj/structure/destructible/b = obstacle
+			b.take_damage(b.health)
+		else if(istype(obstacle,/obj/structure/energybarricade))
+			var/obj/structure/energybarricade/b = obstacle
+			b.take_damage(b.shield_health)
 	if(istype(obstacle,/mob/living))
 		var/mob/living/hit_mob = obstacle
 		playsound(loc,collision_sound,100,0,4)
 		hit_mob.Weaken(2) //No damage for now, let's just knock them over.
 	else
 		next_move_input_at = world.time + min_speed
-		moving_x = 0
-		moving_y = 0
 		if(last_move == EAST || last_move == WEST)
+			moving_x = 0
 			speed[1] = 0
 		else if(last_move == NORTH || last_move == SOUTH)
 			speed[2] = 0
+			moving_y = 0
 		last_moved_axis = 0
 	visible_message("<span class = 'notice'>[src] collides wth [obstacle]</span>")
 
 /obj/vehicles/Bump(var/atom/obstacle)
 	..()
 	. = collide_with_obstacle(obstacle)
-
+/*
 /obj/vehicles/proc/movement_loop(var/speed_index_target = 1)
 	switch(speed_index_target)
 		if(1)
@@ -474,6 +523,56 @@
 			moving_x = 0
 		else
 			moving_y = 0
+*/
+
+/obj/vehicles/proc/drag_slowdown(var/index,var/slowdown_amount = drag)
+	if(speed[index] > 0)
+		speed[index] = max(speed[index] - drag,0)
+	else
+		speed[index] = min(speed[index] + drag,0)
+
+/obj/vehicles/proc/movement_loop(var/speed_index_target = 1)
+	var/noprocstart = 0
+	if(moving_x || moving_y)
+		noprocstart = 1
+	switch(speed_index_target)
+		if(1)
+			moving_x = 1
+		if(2)
+			moving_y = 1
+	if(noprocstart)
+		return
+	spawn()
+		while (moving_x || moving_y)
+			sleep(max(min_speed - (abs(speed[1]) + abs(speed[2]) ),max_speed))
+			if(speed[1] == 0)
+				moving_x = 0
+			else
+				if(speed[1] > 0)
+					last_move = EAST
+					. = Move(get_step(loc,EAST),EAST)
+				else
+					last_move = WEST
+					. = Move(get_step(loc,WEST),WEST)
+
+			if(speed[2] == 0)
+				moving_y = 0
+			else
+				if(speed[2] > 0)
+					last_move = NORTH
+					. = Move(get_step(loc,NORTH),NORTH)
+				else
+					last_move = SOUTH
+					. = Move(get_step(loc,SOUTH),SOUTH)
+			var/list/index_list = list(1,2)
+			for(var/index in index_list)
+				if(last_moved_axis == index)
+					continue
+				drag_slowdown(index)
+			if(world.time >= next_move_input_at)
+				last_moved_axis = 0
+			if(move_sound && world.time % 2 == 0)
+				playsound(loc,move_sound,75,0,4)
 
 /obj/vehicles/bullet_act(var/obj/item/projectile/P, var/def_zone)
 	var/pos_to_dam = should_damage_occ()
@@ -543,6 +642,10 @@
 		if(WEST)
 			last_moved_axis = 1
 			speed[1] = max(speed[1] - acceleration,-min_speed)
+	if(last_moved_axis == 1)
+		drag_slowdown(2,acceleration)
+	else
+		drag_slowdown(1,acceleration)
 	if(braking_mode == 1) //If we're braking, we don't get the leeway in movement.
 		last_moved_axis = 0
 
@@ -641,11 +744,6 @@
 		if(new_time > spawn_datum.emp_toggle_time)
 			spawn_datum.emp_toggle_time = new_time
 
-	//25% lower chance to crash if we are flying
-	if(base_chance && prob(max(base_chance - 25, 5)))
-		//lose control of the vehicle
-		inactive_pilot_effects()
-		affected = TRUE
 
 	if(affected)
 		src.visible_message("\icon[src] <span class='notice'>[src] is affected by the EMP!</span>")
@@ -659,3 +757,9 @@
 		spawn(10)
 			overlays -= I
 			qdel(I)
+
+//Melee weapon handling
+/obj/vehicles/proc/handle_melee(var/atom/attacked,var/mob/user,var/params)
+	if(isnull(melee_weapon))
+		return
+	melee_weapon.resolve_attackby(attacked,user,params)

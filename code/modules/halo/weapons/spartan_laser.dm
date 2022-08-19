@@ -1,10 +1,10 @@
 
 /obj/item/weapon/gun/energy/spartanlaser
 	name = "M6 Grindell/Galilean Nonlinear Rifle"
-	desc = "Also known as the spartan laser, is the most powerful handheld weapon produced by the UNSC. It can disable most vehicles and infantry in a single hit."
+	desc = "Also known as the spartan laser, this is the most powerful handheld weapon produced by the UNSC. It can disable most vehicles and infantry in a single hit."
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "spartanlaser"
-	item_state = "m41"
+	item_state = "spartanlaser"
 	slot_flags = SLOT_BACK
 	w_class = ITEM_SIZE_HUGE
 
@@ -14,19 +14,19 @@
 		)
 
 	one_hand_penalty = -1
-	self_recharge = 1
+	self_recharge = 0
 	recharge_time = 20
-	max_shots = 4
+	max_shots = 8
 	is_charged_weapon = TRUE
 
-	arm_time = 10 //Deciseconds
+	arm_time = 7 //Deciseconds
 	charge_meter = 0
 	force = 10
 	screen_shake = 0.5
 	fire_delay = 10
 	scope_zoom_amount = 3
 	overheat_capacity = 3
-	overheat_fullclear_delay = 18
+	overheat_fullclear_delay = 30
 
 	fire_sound = null
 
@@ -36,8 +36,8 @@
 
 	hud_bullet_usebar = 1
 
-	sustain_time = 0.5 SECONDS
-	sustain_delay = 2.5
+	burst = 2
+	burst_delay = 2.5
 
 /obj/item/weapon/gun/energy/spartanlaser/verb/scope()
 	set category = "Weapon"
@@ -50,7 +50,7 @@
 	name = "spartan laser"
 	icon_state = "heavylaser"
 	damage = 100
-	shield_damage = 100 //No shields for you
+	shield_damage = 210 //No shields for you
 	armor_penetration = 100
 
 	fire_sound = 'code/modules/halo/sounds/Spartan_Laser_Beam_Shot_Sound_Effect.ogg'

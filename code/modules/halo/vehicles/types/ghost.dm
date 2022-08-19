@@ -24,8 +24,16 @@
 
 	move_sound = 'code/modules/halo/sounds/ghost_move.ogg'
 
+	vehicle_view_modifier = 1.5
+
 	light_color = "#C1CEFF"
 
+	can_smoke = 1
+	smoke_ammo = 1
+	smoke_ammo_max = 1
+	smoke_step_dist = 0
+
+	acceleration = 1.5
 	min_speed = 6.25
 	max_speed = 2.25
 	drag = 2.25
@@ -65,9 +73,9 @@
 	burst_delay = 2
 	fire_delay = 15
 
-	burst = 4
+	burst = 8
+	dispersion = list(0.15,0.3,0.45,0.5,0.55)
 
-	irradiate_non_cov = 10
 
 	magazine_type = /obj/item/ammo_magazine/ghost_internal
 

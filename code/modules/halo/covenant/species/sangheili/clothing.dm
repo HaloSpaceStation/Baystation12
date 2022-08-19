@@ -42,8 +42,10 @@
 	icon_state = null
 	sprite_sheets = list("Sangheili" = SANGHEILI_ARMOUR_ICON)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	specials = list(/datum/armourspecials/shields,/datum/armourspecials/shieldmonitor/sangheili)
-	armor = list(melee = 55, bullet = 45, laser = 55, energy = 50, bomb = 40, bio = 25, rad = 25)//ODST tier
+	allowed = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/projectile, /obj/item/ammo_magazine,
+				   /obj/item/ammo_casing, /obj/item/weapon/melee/baton, /obj/item/weapon/melee/energy/elite_sword)
+	specials = list(/datum/armourspecials/shields/elite,/datum/armourspecials/shieldmonitor/sangheili)
+	armor = list(melee = 55, bullet = 50, laser = 55, energy = 45, bomb = 40, bio = 25, rad = 25)
 	armor_thickness_modifiers = list()
 	unacidable = 1
 	max_suitstore_w_class = ITEM_SIZE_HUGE
@@ -56,10 +58,11 @@
 	icon_state = null
 	sprite_sheets = list("Sangheili" = SANGHEILI_ARMOUR_ICON)
 	species_restricted = list("Sangheili")
-	body_parts_covered = LEGS|FEET
+	body_parts_covered = FEET
 	armor = list(melee = 60, bullet = 45, laser = 35,energy = 35, bomb = 30, bio = 35, rad = 35)
 	armor_thickness = 20
 	matter = list("nanolaminate" = 1)
+	stepsound = 'code/modules/halo/sounds/walk_sounds/spartan_boots.ogg'
 
 /obj/item/clothing/gloves/thick/sangheili
 	name = "Sangheili Combat Gauntlets"
@@ -138,7 +141,7 @@
 		equip_dagger()
 		playsound(usr, 'code/modules/halo/sounds/Energysworddeploy.ogg',75, 1)
 	else
-		playsound(usr, 'sound/weapons/saberoff.ogg', 50, 1)
+		playsound(usr, 'code/modules/halo/sounds/Energysworddeactivate.ogg', 50, 1)
 		unequip_dagger()
 
 
@@ -146,7 +149,7 @@
 
 /obj/item/weapon/melee/energy/elite_sword/g_dagger
 	name = "Internal Energy Dagger"
-	desc = "A wrist-mounted Energy Dagger that extends from sangheili combat gauntlets"
+	desc = "A wrist-mounted energy dagger that extends from Sangheili combat gauntlets."
 
 	icon = 'code/modules/halo/weapons/icons/Covenant Weapons.dmi'
 	icon_state = "en_dag_deploy"
@@ -164,6 +167,11 @@
 	slot_l_hand_str = "en_dag_l_hand",
 	slot_r_hand_str = "en_dag_r_hand" )
 	hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
+
+/obj/item/weapon/melee/energy/elite_sword/g_dagger/can_execute(mob/living/carbon/human/user, mob/living/carbon/human/victim)
+	active = 1
+	. = ..()
+	active = initial(active)
 
 /obj/item/weapon/melee/energy/elite_sword/g_dagger/New(var/obj/created_by)
 	.=..()
@@ -321,14 +329,14 @@
 	name = "Sangheili Helmet (Shipmaster)"
 	desc = "Head armour, to be used with the Sangheili Combat Harness."
 	icon = SANGHEILI_ARMOUR_ICON
-	icon_state = "zealot_helm_obj"
-	item_state = "zealot_helm"
+	icon_state = "regal_helm_obj"
+	item_state = "regal_helm"
 
 /obj/item/clothing/suit/armor/special/combatharness/shipmaster
 	name = "Sangheili Combat Harness (Shipmaster)"
-	icon_state = "zealot_chest_obj"
-	item_state = "zealot_chest"
-	totalshields = 300
+	icon_state = "regal_chest_obj"
+	item_state = "regal_chest"
+	totalshields = 270
 
 /obj/item/clothing/shoes/sangheili/shipmaster
 	name = "Sanghelli Leg Armour (Shipmaster)"
@@ -354,7 +362,7 @@
 	icon_state = "specops_chest_obj"
 	item_state = "specops_chest"
 	totalshields = 150
-	specials = list(/datum/armourspecials/shields,/datum/armourspecials/shieldmonitor/sangheili,/datum/armourspecials/cloaking)
+	specials = list(/datum/armourspecials/shields/elite,/datum/armourspecials/shieldmonitor/sangheili,/datum/armourspecials/cloaking)
 	action_button_name = "Toggle Active Camouflage"
 
 /obj/item/clothing/shoes/sangheili/specops
@@ -368,6 +376,49 @@
 	desc = "Hand armour, to be used with the Sangheili Combat Harness."
 	icon_state = "specops_gloves_obj"
 	item_state = "specops_gloves"
+
+/obj/item/clothing/head/helmet/sangheili/silentshadow
+	name = "Sangheili Helmet (Silent Shadow)"
+	desc = "Head armour, to be used with the Sangheili Combat Harness."
+	icon = SANGHEILI_ARMOUR_ICON
+	icon_state = "ss_helm_obj"
+	item_state = "ss_helm"
+	body_parts_covered = HEAD | FACE
+	item_flags = THICKMATERIAL | FLASH_PROTECTION_MAJOR
+	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL | AIRTIGHT
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
+	body_parts_covered = HEAD|FACE
+	cold_protection = HEAD
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
+
+/obj/item/clothing/suit/armor/special/combatharness/silentshadow
+	name = "Sangheili Combat Harness (Silent Shadow)"
+	icon_state = "ss_chest_obj"
+	item_state = "ss_chest"
+	slowdown_general = -2 //They're meant to be primarily melee-only and admemespawn anyway, so.
+	totalshields = 210
+	specials = list(/datum/armourspecials/shields/elite,/datum/armourspecials/shieldmonitor/sangheili,/datum/armourspecials/cloaking/silentshadow)
+	action_button_name = "Toggle Active Camouflage"
+	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL | AIRTIGHT
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+
+/obj/item/clothing/shoes/magboots/sangheili/silentshadow
+	name = "Sanghelli Leg Armour (Silent Shadow)"
+	desc = "Leg armour, to be used with the Sangheili Combat Harness."
+	icon_state = "ss_legs_obj"
+	item_state = "ss_legs"
+
+/obj/item/clothing/gloves/thick/sangheili/silentshadow
+	name = "Sanghelli Combat Gauntlets (Silent Shadow)"
+	desc = "Hand armour, to be used with the Sangheili Combat Harness."
+	icon_state = "ss_gloves_obj"
+	item_state = "ss_gloves"
+	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL | AIRTIGHT
+	body_parts_covered = HANDS
+	cold_protection = HANDS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/helmet/sangheili/ranger
 	name = "Sangheili Helmet (Ranger)"

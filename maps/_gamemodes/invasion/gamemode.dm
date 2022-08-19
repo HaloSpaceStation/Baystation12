@@ -11,12 +11,13 @@
 	round_description = "In an outer colony on the edge of human space, an insurrection is brewing. Meanwhile an alien threat lurks in the void."
 	extended_round_description = "In an outer colony on the edge of human space, an insurrection is brewing. Meanwhile an alien threat lurks in the void."
 	probability = 1
-	ship_lockdown_duration = 10 MINUTES
+	ship_lockdown_duration = 12 MINUTES
 	required_players = 6
+	votable = 1
 
 	var/safe_expire_warning = 0
 
-	var/list/factions = list(/datum/faction/unsc, /datum/faction/covenant, /datum/faction/insurrection)
+	factions = list(/datum/faction/unsc, /datum/faction/covenant, /datum/faction/insurrection)
 	var/list/endgame_fleets = list(/datum/faction/unsc)
 
 	var/list/overmap_hide = list()
@@ -32,7 +33,6 @@
 	var/cov_scan_next_tick = 0
 
 	var/end_conditions_required = 4 //3 destructions, with the fourth causing failure.
-	votable = 0
 
 /datum/game_mode/outer_colonies/pre_setup()
 	. = ..()
@@ -54,7 +54,8 @@
 	shipmap_handler.spawn_ship(GLOB.HUMAN_CIV, 3)
 
 	//setup the endgame fleet spawning
-	GLOB.UNSC.set_endless_fleets()
+	GLOB.UNSC.fleets_max = 1
+	GLOB.UNSC.fleet_spawn_at = 75 MINUTES
 
 	//setup faction handling
 	for(var/faction_type in factions)

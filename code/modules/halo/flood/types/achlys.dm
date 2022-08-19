@@ -1,4 +1,3 @@
-
 //below are prison related flood
 //these flood are gamemode specific and shouldn't be used elsewhere as they're crafted
 //specifically for the achlys gamemode. you've been warned.
@@ -27,8 +26,8 @@
 	icon_state = "prisoner_infected1"
 	icon_living = "prisoner_infected1"
 	icon_dead = "prisoner_infected1_dead"
-	move_to_delay = 10 //slower than common counterpart to give sense of weight to it
-	health = 85 //beefier than it's common counterpart to give a better sense of danger and urgency to encounters
+	move_to_delay = 10  //slower than common counterpart to give sense of weight to it
+	health = 85 		//beefier than it's common counterpart to give a better sense of danger and urgency to encounters
 	maxHealth = 85
 	melee_damage_lower = 20 //as above so below
 	melee_damage_upper = 30

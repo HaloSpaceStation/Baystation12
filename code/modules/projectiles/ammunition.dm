@@ -15,6 +15,8 @@
 	var/obj/item/projectile/BB = null	//The loaded bullet - make it so that the projectiles are created only when needed?
 	var/fire_sound = null //Launcher weapons runtime if they have no fire_sound variable.
 	var/spent_icon = "s-casing-spent"
+	var/in_pile = 1
+	var/max_in_pile = 25
 
 /obj/item/ammo_casing/New()
 	..()
@@ -51,7 +53,7 @@
 			H.gunshot_residue = caliber
 
 /obj/item/ammo_casing/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/screwdriver))
+	if(W.sharp)
 		if(!BB)
 			to_chat(user, "<span class='notice'>There is no bullet in the casing to inscribe anything into.</span>")
 			return
@@ -71,11 +73,49 @@
 /obj/item/ammo_casing/update_icon()
 	if(spent_icon && !BB)
 		icon_state = spent_icon
+	if(in_pile > 1 && overlays.len < in_pile-1)
+		for(var/i = 1 to in_pile)
+			var/image/img = image(icon,icon_state,layer,dir)
+			img.pixel_x = rand(-16-i,16+i) - pixel_x
+			img.pixel_y = rand(-16-i,16+i) - pixel_y
+			img.transform = turn(matrix(), rand(120,300))
+			overlays += img
 
 /obj/item/ammo_casing/examine(mob/user)
 	. = ..()
 	if (!BB)
 		to_chat(user, "This one is spent.")
+
+/obj/item/ammo_casing/attack_hand(var/mob/user)
+	if(in_pile > 1)
+		in_pile--
+		var/obj/item/ammo_casing/spawned = new type (loc)
+		spawned.expend()
+		spawned.attack_hand(user)
+		update_icon()
+	else
+		. = ..()
+
+/obj/item/ammo_casing/proc/add_to_pile()
+	in_pile = min(max_in_pile,in_pile+1)
+	update_icon()
+
+/obj/item/ammo_casing/throw_impact(var/atom/A)
+	. = ..()
+	if(!BB && loc)
+		var/obj/item/ammo_casing/here = locate(type) in loc.contents - src
+		if(here)
+			here.add_to_pile()
+			qdel(src)
+		else
+			atom_despawner.mark_for_despawn(src)
+
+/obj/item/ammo_casing/Destroy()
+	in_pile = 0
+	overlays.Cut()
+	if(BB)
+		qdel(BB)
+	. = ..()
 
 //Gun loading types
 #define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
@@ -130,14 +170,20 @@
 	if(box.contents.len == 0 || isnull(box.contents.len))
 		to_chat(user,"<span class ='notice'>The [box.name] is empty!</span>")
 		return
+	if(box.loading)
+		to_chat(user,"<span class = 'notice'>You are already reloading something with [box]</span>")
+		return
 	to_chat(user,"<span class ='notice'>You start loading the [name] from the [box.name]</span>")
+	box.loading = 1
 	for(var/ammo in box.contents)
-		if(do_after(user,box.load_time SECONDS,box, same_direction = 1))
+		if(do_after(user,box.load_time,box, 1, 1, INCAPACITATION_DEFAULT, 0, 0, 0))
 			attackby(ammo,user)
 			continue
 		break
+	box.loading = 0
 
 	box.update_icon()
+	update_icon()
 
 /obj/item/ammo_magazine/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/ammo_box))
@@ -221,4 +267,6 @@
 
 	magazine_icondata_keys["[M.type]"] = icon_keys
 	magazine_icondata_states["[M.type]"] = ammo_states
+
+
 

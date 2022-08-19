@@ -14,8 +14,13 @@
 	integrated_hud = /obj/item/clothing/glasses/hud/tactical/kigyar_nv
 	matter = list("nanolaminate" = 1)
 
+/obj/item/clothing/head/helmet/kigyar/major
+	name = "Kig-Yar Major Scout Helmet"
+	icon_state = "scouthelm_obj_major"
+	item_state = "scouthelm_major"
+
 /obj/item/clothing/under/kigyar
-	name = "Kig-Yar Body-Suit"
+	name = "Kig-Yar Bodysuit"
 	desc = "A Kig-Yar body suit for Ruuhtians and T\'vaoans. Meant to be worn underneath a combat harness"
 	icon = KIGYAR_CLOTHING_PATH
 	icon_state = "jackal_bodysuit_obj"
@@ -27,11 +32,22 @@
 	armor =  list(melee = 10, bullet = 10, laser = 0, energy = 10, bomb = 0, bio = 0, rad = 0)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	matter = list("cloth" = 1)
+	rolled_sleeves = 0
 
-/obj/item/clothing/under/kigyar/armless //Purposefully a visual change only so their armour still applies.
+/obj/item/clothing/under/kigyar/variant //Purposefully a visual change only so their armour still applies.
+	name = "Kig-Yar Bodysuit (Armless)"
 	icon_state = "jackal_bodysuit_armless_obj"
-	worn_state = "jackal_bodysuit_armless"
+	worn_state = "jackal_bodysuit_r"
 	species_restricted = list("Kig-Yar")
+	rolled_sleeves = -1
+
+/obj/item/clothing/under/kigyar/variant/one
+	name = "Kig-Yar Bodysuit (Straps)"
+	worn_state = "jackal_bodysuit_straps"
+
+/obj/item/clothing/under/kigyar/variant/two
+	name = "Kig-Yar Bodysuit (Top)"
+	worn_state = "jackal_bodysuit_top"
 
 /obj/item/clothing/suit/armor/kigyar
 	name = "Kig-Yar Combat Harness"
@@ -47,6 +63,11 @@
 	armor_thickness_modifiers = list()
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	matter = list("nanolaminate" = 1)
+
+/obj/item/clothing/suit/armor/kigyar/major
+	name = "Kig-Yar Major Combat Harness"
+	icon_state = "scout_major"
+	item_state = "scout_major"
 
 //First Contact Variant
 /obj/item/clothing/head/helmet/kigyar/first_contact

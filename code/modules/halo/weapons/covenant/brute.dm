@@ -1,4 +1,7 @@
 
+#define BRUTE_SHOT_GRENADE_MAX_THROW_DIST 6
+#define BRUTE_SHOT_GRENADE_MIN_THROW_DIST 2
+#define JIRALHANAE_WEAPONS 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons_big.dmi'
 
 
 /* SPIKE GRENADE */
@@ -8,20 +11,22 @@
 	desc = "This device embeds itself into soft targets and explodes into a hail of deadly shards. Works well as a melee weapon."
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_obj.dmi'
 	icon_state = "spikegren0"
-	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
+	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons.dmi'
 	item_state = "spikegren1"
 	item_state_slots = list(slot_l_hand_str = "spnade", slot_r_hand_str = "spnade")
 	sprite_sheets = list(\
-	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
+	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons.dmi'
 	)
 
-	force = 35
+	force = 30
 	armor_penetration = 70
 
 	sharp = 1
 	edge = 1
 
 	//less explosive power but more spikes
+	det_time = 20
+	starttimer_on_hit = 1
 	explosion_size = 0
 	num_fragments = 250 //50 more than a high yield frag bomb
 
@@ -50,7 +55,7 @@
 	name = "Type-25 Spiker Carbine"
 	desc = "A sidearm with two wicked blades curving out from under the barrel."
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_obj.dmi'
-	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
+	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons.dmi'
 	icon_state = "spiker"
 	item_state = "blank"
 	slot_flags = SLOT_BACK | SLOT_BELT
@@ -64,17 +69,17 @@
 	burst = 3
 	edge = 1
 	sharp = 1
-	force = 40
+	force = 35
 	is_heavy = 1
 	armor_penetration = 70
-	accuracy = -1
+	accuracy = 0
 	dispersion = list(0.2,0.3,0.5)
 	hud_bullet_reffile = 'code/modules/halo/icons/hud_display/hud_bullet_5x6.dmi'
 	hud_bullet_iconstate = "spike"
 	//reload_sound = 'code/modules/halo/sounds/Spikershotfire.ogg'
 	item_state_slots = list(slot_l_hand_str = "spiker", slot_r_hand_str = "spiker")
 	sprite_sheets = list(\
-	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
+	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons_big.dmi'
 	)
 	lunge_dist = 3
 	matter = list("duridium" = 1)
@@ -109,8 +114,9 @@
 
 /obj/item/projectile/bullet/spiker
 	name = "Spike"
-	armor_penetration = 20
 	damage = 20
+	shield_damage = 15
+	armor_penetration = 20
 
 /obj/item/projectile/bullet/spiker/on_hit(var/mob/living/carbon/human/L, var/blocked, var/def_zone )
 	if(blocked >= 100 || !istype(L))
@@ -129,7 +135,7 @@
 	name = "Type-52 \"Mauler\""
 	desc = "A single shot, short range Jiralhanae sidearm with a powerful punch. Has a blade underneath."
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_obj.dmi'
-	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
+	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons.dmi'
 	icon_state = "mauler"
 	item_state = "blank"
 	slot_flags = SLOT_BACK | SLOT_BELT
@@ -141,18 +147,16 @@
 	fire_sound = 'code/modules/halo/sounds/mauler_firing.ogg'
 	edge = 1
 	sharp = 1
-	force = 40
+	force = 35
 	is_heavy = 1
 	armor_penetration = 70
-	accuracy = -1
+	accuracy = 0
 	dispersion = list(0.45)
 	hud_bullet_reffile = 'code/modules/halo/icons/hud_display/hud_bullet_7x8.dmi'
 	hud_bullet_iconstate = "mauler"
 	w_class = ITEM_SIZE_NORMAL
 	item_state_slots = list(slot_l_hand_str = "mauler", slot_r_hand_str = "mauler")
-	sprite_sheets = list(\
-	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
-	)
+	sprite_sheets = list("Kig-Yar" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons.dmi')
 	lunge_dist = 3
 	matter = list("duridium" = 1)
 
@@ -200,24 +204,31 @@
 	name = "Type-2 Energy Weapon/Hammer"
 	desc = "A long haft and a heavy head with a tungsten-alloy blade on the reverse end. Within the head is a short-range shock-field-generating gravity drive for extra punch."
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_obj_heavy.dmi'
-	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
+	icon_override = JIRALHANAE_WEAPONS
 	icon_state = "gravhammer"
 	item_state = "blank"
 	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BACK
-	force = 50 //Less than sword due to afterattack ability
+	force = 45 //Less than sword due to afterattack ability
 	edge = 0
 	sharp = 0
 	armor_penetration = 70
 	lunge_dist = 2
 	hitsound = 'code/modules/halo/sounds/gravhammer.ogg'
 	sprite_sheets = list(
-	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi',
+	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons_big.dmi',
 	)
 	item_state_slots = list(slot_l_hand_str = "gravhammer", slot_r_hand_str = "gravhammer", slot_back_str = "back_hammer")
 	matter = list("nanolaminate" = 2, "duridium" = 3)
+	var/unique_afterattack = 1
 
 /obj/item/weapon/grav_hammer/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity)
+	if(lunge_dist > 0)
+		. = ..()
+
+	if(!unique_afterattack)
+		return
+
 	if(get_dist(A,user) > 1)
 		return
 
@@ -245,14 +256,14 @@
 	name = "Type-2 Energy Weapon/Hammer, Depowered"
 	desc = "A long haft and a heavy head with a tungsten-alloy blade on the reverse end. The short-range gravity field in the head of the weapon has been disabled."
 	icon_state = "gravlesshammer"
-	force = 45
-	lunge_dist = 3
+	force = 40
+	lunge_dist = 4
 	hitsound = "swing_hit"
 	item_state_slots = list(slot_l_hand_str = "gravlesshammer", slot_r_hand_str = "gravlesshammer", slot_back_str = "back_hammer")
-
-
-/obj/item/weapon/grav_hammer/gravless/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity)
-	return
+	sprite_sheets = list(\
+	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons_big.dmi'
+	)
+	unique_afterattack = 0
 
 /* BRUTE SHOT */
 
@@ -260,23 +271,23 @@
 	name = "Type-25 \"Brute Shot\" Grenade Launcher"
 	desc = "A hip fired fast firing launcher for HE munitions with a curved backwards facing blade mounted to its underside."
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_obj_heavy.dmi'
-	icon_override = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
+	icon_override = JIRALHANAE_WEAPONS
 	icon_state = "bruteshot"
 	item_state = "blank"
 	pump_sound = null
+	fire_delay = 10
 	max_grenades = 6
 	one_hand_penalty = -1
 	fire_sound = 'code/modules/halo/sounds/bruteshotfire.ogg'
 	var/reload_sound = 'code/modules/halo/sounds/bruteshotreload.ogg'
 	var/reload_time = 30
-	force = 50
+	force = 40
 	edge = 1
 	armor_penetration = 70
 	item_state_slots = list(slot_l_hand_str = "bruteshot", slot_r_hand_str = "bruteshot", slot_back_str = "bruteshot back")
-	sprite_sheets = list(\
-	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_gear.dmi'
+	sprite_sheets = list("Default" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons.dmi',
+	"Jiralhanae" = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_weapons_big.dmi'
 	)
-	advanced_covenant = 1
 	matter = list("nanolaminate" = 2, "kemocite" = 1, "duridium" = 1)
 
 	whitelisted_grenades = list(/obj/item/weapon/grenade/brute_shot)
@@ -313,7 +324,7 @@
 
 			return
 
-	return ..()
+	return
 
 /obj/item/weapon/gun/launcher/grenade/brute_shot/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
 	. = ..()
@@ -329,7 +340,7 @@
 	icon = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_obj.dmi'
 	icon_state = "bruteshot_belt"
 	var/fire_sound = null
-	det_time = 10
+	det_time = 1
 	starttimer_on_hit = 1
 	arm_sound = null
 	var/amount = 12
@@ -348,29 +359,12 @@
 	to_chat(user, "<span class='info'>It has [amount] grenade[amount != 1 ? "s" : ""] remaining on the belt.</span>")
 
 /obj/item/weapon/grenade/brute_shot/detonate()
-
-	explosion(get_turf(src), 0, 0, max(amount / 2, 2), max(amount / 2, 3), 0)
-
-	for(var/atom/movable/M in range(src,1))
-		if(M == src)
-			continue
-
-		if(!M.anchored)
-			var/atom/throw_target = get_edge_target_turf(M, get_dir(src, get_step_away(M, src)))
-			M.throw_at(throw_target, 1, 4, src)
+	explosion(get_turf(src), 0, max(round(amount/4),1), max(round(amount / 2), 2), max(amount, 4), guaranteed_damage = 40, guaranteed_damage_range = 2)
 	. = ..()
 	qdel(src)
 
 /obj/item/weapon/grenade/brute_shot/proc/modify_amount(var/transferred, var/delete_if_empty = 1)
 	amount += transferred
-
-	//update the throw range... more = heaver = shorter range
-	throw_range = 10
-	if(amount > 1)
-		if(amount > 3)
-			throw_range = 2
-		else
-			throw_range = 3
 
 	//delete if none
 	if(!amount && delete_if_empty)
@@ -423,6 +417,11 @@
 		src.overlays += gren
 
 		grensleft -= 1
+
+/obj/item/weapon/grenade/brute_shot/throw_at(atom/target, range, speed, thrower)
+	throw_range = max(BRUTE_SHOT_GRENADE_MAX_THROW_DIST * (1 - (amount/max_amount)),BRUTE_SHOT_GRENADE_MIN_THROW_DIST)
+	range = throw_range
+	. = ..()
 
 /obj/item/weapon/grenade/toxic_gas
 	name = "toxic gas grenade"

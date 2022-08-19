@@ -8,10 +8,9 @@
 	fire_sound = 'code/modules/halo/sounds/Fuelrodfire.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/fuel_rod
-	fire_delay = 10 //Slightly higher due to higher magsize
+	fire_delay = 24 //disencourage spamming even though we have a higher mag size
 	one_hand_penalty = -1
-	dispersion = list(0.73)
-	arm_time = 15
+	dispersion = list(0)
 	charge_sound = null
 	hud_bullet_row_num = 5
 	hud_bullet_reffile = 'code/modules/halo/icons/hud_display/hud_bullet_12x8.dmi'
@@ -26,10 +25,12 @@
 		slot_back_str = 'code/modules/halo/weapons/icons/Back_Weapons.dmi',
 		slot_s_store_str = 'code/modules/halo/weapons/icons/Armor_Weapons.dmi',
 		)
-	slowdown_general = 2
+	crosshair_file = 'code/modules/halo/weapons/icons/dragaim_missile.dmi'
 	wielded_item_state = "fuelrod-wielded"
 	salvage_components = list(/obj/item/plasma_core)
 	matter = list("nanolaminate" = 2, "kemocite" = 1)
+	slowdown_general = 1
+	scope_zoom_amount = 1.5
 
 /obj/item/weapon/gun/projectile/fuel_rod/update_icon()
 	if(ammo_magazine)

@@ -191,10 +191,20 @@
 	desc = "A belt with many various pouches to hold ammunition"
 	icon = 'code/modules/halo/clothing/marine_items.dmi'
 	icon_state = "UNSC Marine Ammo Belt item"
+	w_class = ITEM_SIZE_HUGE
+	max_w_class = ITEM_SIZE_LARGE
 	item_state = "UNSC Marine Ammo Belt"
-	storage_slots = 6
+	storage_slots = 7
 
-	can_hold = list(/obj/item/ammo_magazine,/obj/item/ammo_box,/obj/item/weapon/armor_patch,/obj/item/ammo_casing,/obj/item/weapon/plastique)
+	can_hold = list(\
+	/obj/item/weapon/material/knife/combat_knife,
+	/obj/item/ammo_magazine,
+	/obj/item/ammo_box,
+	/obj/item/weapon/armor_patch,
+	/obj/item/ammo_casing,
+	/obj/item/weapon/plastique,
+	/obj/item/weapon/tank/emergency/oxygen
+	)
 
 /obj/item/weapon/storage/belt/marine_medic
 	name = "Medical Supplies Storage Belt"
@@ -383,6 +393,13 @@
 /obj/item/weapon/card/id/oni
 	name = "ONI ID Badge"
 	desc = "An identification card worn by members of the Office Of Naval Intelligence."
+	icon = 'code/modules/halo/icons/objs/(Placeholder)card.dmi'
+	icon_state = "id"
+	item_state = "card-id"
+
+/obj/item/weapon/card/id/spartan
+	name = "Spartan ID Badge"
+	desc = "An identification card worn by members of the Spartan-II program."
 	icon = 'code/modules/halo/icons/objs/(Placeholder)card.dmi'
 	icon_state = "id"
 	item_state = "card-id"

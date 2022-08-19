@@ -105,7 +105,7 @@
 //unsc senior officer headset
 /obj/item/device/radio/headset/unsc/commander
 	name = "UNSC commander radio headset"
-	icon_state = "nt_headset"
+	icon_state = "med_headset"
 	dongles = list(/obj/item/device/channel_dongle/human_civ,\
 		/obj/item/device/channel_dongle/squadcom,\
 		/obj/item/device/channel_dongle/marines,\

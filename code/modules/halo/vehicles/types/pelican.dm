@@ -21,7 +21,7 @@
 
 	ammo_containers = newlist(/obj/item/ammo_magazine/pelican_hmg)
 
-	occupants = list(13,1)
+	occupants = list(13,0)
 
 	vehicle_size = ITEM_SIZE_VEHICLE_LARGE
 	vehicle_carry_size = ITEM_SIZE_VEHICLE
@@ -29,10 +29,15 @@
 
 	light_color = "#E1FDFF"
 
-	min_speed = 17.25
+	can_smoke = 1
+	smoke_ammo = 10
+	smoke_ammo_max = 10
+	smoke_step_dist = 1
+
+	min_speed = 9.75
 	max_speed = 2.25
 	acceleration = 6
-	drag = 7
+	drag = 5
 	internal_air = new
 
 /obj/vehicles/air/pelican/update_object_sprites()
@@ -43,11 +48,12 @@
 	resistances = list("bullet"=70,"energy"=70,"emp"=50,"bomb" = 60)
 
 /datum/component_profile/pelican
+	pos_to_check = "driver"
 	gunner_weapons = list(/obj/item/weapon/gun/vehicle_turret/pelican_autocannon)
 	vital_components = newlist(/obj/item/vehicle_component/health_manager/pelican)
 
 /obj/vehicles/air/pelican/unsc
-	faction = "unsc"
+	faction = "UNSC"
 
 	spawn_datum = /datum/mobile_spawn/unsc
 
@@ -58,9 +64,11 @@
 	icon_state = "chaingun_obj"
 	item_state = "chaingun_obj"
 
-	fire_delay = 1.5 SECONDS
+	fire_delay = 8
 
-	burst = 5
+	burst = 10
+
+	dispersion = list(0.15,0.3,0.45,0.5,0.55)
 
 	magazine_type = /obj/item/ammo_magazine/pelican_hmg
 
@@ -102,30 +110,35 @@
 	vehicle_carry_size = ITEM_SIZE_VEHICLE
 	capacity_flag = ITEM_SIZE_VEHICLE_LARGE
 
-	occupants = list(13,1)
+	occupants = list(13,0)
 
-	exposed_positions = list("driver" = 0)//Passengers could technically be hit by bullets through the troop bay.
+	exposed_positions = list()
 
 	light_color = "#E1FDFF"
 
-	min_speed = 17.25
+	can_smoke = 1
+	smoke_ammo = 10
+	smoke_ammo_max = 10
+	smoke_step_dist = 0
+
+	min_speed = 9.75
 	max_speed = 2.25
 	acceleration = 6
-	drag = 7
+	drag = 5
 
 	internal_air = new
 
 /obj/vehicles/air/overmap/pelican/unsc
-	faction = "unsc"
+	faction = "UNSC"
 
 	spawn_datum = /datum/mobile_spawn/unsc
 
 /obj/vehicles/air/overmap/pelican/urf
-	faction = "innie"
+	faction = "Insurrection"
 
 	icon_state = "inni-base"
 	desc = "A versatile aircraft used by the UNSC for medium-lift operations of personnel, vehicles and equipment. This one has a red fist painted onto the armor. A 40mm Chain-Gun is mounted on the nose."
-	faction = "innie"
+	faction = "Insurrection"
 
 	comp_prof = /datum/component_profile/pelican/urf
 
@@ -154,9 +167,11 @@
 
 	magazine_type = /obj/item/ammo_magazine/pelican_chaingun
 
-	fire_delay = 5.5 SECONDS
+	fire_delay = 8
 
-	burst = 3
+	burst = 12
+
+	dispersion = list(0.15,0.3,0.45,0.5,0.55)
 
 /obj/item/ammo_magazine/pelican_chaingun
 	max_ammo = 150
@@ -185,7 +200,7 @@
 
 /obj/vehicles/air/pelican/innie
 	desc = "A versatile aircraft used by the UNSC for medium-lift operations of personnel, vehicles and equipment. This one has a red fist painted onto the armor. A 40mm Chain-Gun is mounted on the nose."
-	faction = "innie"
+	faction = "Insurrection"
 	occupants = list(13,1)
 
 	comp_prof = /datum/component_profile/pelican/urf

@@ -13,12 +13,12 @@
 
 	action_button_name = "Toggle Shield Gauntlet"
 
-	var/shield_max_charge = 600
-	var/shield_current_charge = 600
+	var/shield_max_charge = 450
+	var/shield_current_charge = 450
 	var/list/shield_colour_values = list("#0000FF","#00FFFF","#FFFF00","#FFA500","#FF2600")		//highest charge to lowest charge
 	var/shield_recharge_delay = 6 SECONDS //The delay between taking damage and starting to recharge, in ticks.
 	var/shield_next_charge
-	var/active_slowdown_amount = 1.5 //Bracing to hide behind the shield. Using value of an active, firing LMG
+	var/active_slowdown_amount = 1.0 //Bracing to hide behind the shield.
 	var/overloaded = 0
 
 	var/obj/item/weapon/gauntlet_shield/connected_shield
@@ -115,6 +115,7 @@
 	var/obj/item/projectile/P = damage_source
 	if(istype(P))
 		starting = get_turf(P)
+		damage = max(0,damage + P.shield_damage)
 	else
 		starting = get_turf(damage_source)
 
@@ -124,6 +125,8 @@
 
 	//did our shield absorb the shot?
 	if(drain_shield(damage))
+		if(istype(P, /obj/item/projectile))
+			P.on_impact(src)
 		//put a chatlog delay on warning the user
 		if(world.time >= time_next_warning)
 			time_next_warning = world.time + GAUNTLET_WARNING_DELAY
@@ -261,5 +264,12 @@
 	name = "Kig-Yar Point Defense Gauntlet"
 	desc = "A wrist-worn gauntlet that contains a directional shield generator, allowing it to provide protection from gunfire in the direction the user is facing."
 	species_restricted = list("Kig-Yar")
+	body_parts_covered = HANDS
+	armor = list(melee = 30, bullet = 40, laser = 10, energy = 25, bomb = 15, bio = 0, rad = 0)
+
+/obj/item/clothing/gloves/shield_gauntlet/unsc
+	name = "Experimental UNSC Energy-Shield Gauntlet"
+	desc = "A wrist-worn gauntlet that containes a reverse-engineered shield generator. It looks experimental and... dangerous."
+	species_restricted = list("Human","Spartan")
 	body_parts_covered = HANDS
 	armor = list(melee = 30, bullet = 40, laser = 10, energy = 25, bomb = 15, bio = 0, rad = 0)

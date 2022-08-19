@@ -8,9 +8,9 @@
 	fire_sound = 'code/modules/halo/sounds/Rocket_Launcher_Fire_New.wav'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/spnkr
-	fire_delay = 8
+	fire_delay = 20
 	one_hand_penalty = -1
-	dispersion = list(0.73)
+	dispersion = list(0)
 	hud_bullet_row_num = 2
 	hud_bullet_reffile = 'code/modules/halo/icons/hud_display/hud_bullet_32x16.dmi'
 	hud_bullet_iconstate = "rocket"
@@ -21,10 +21,12 @@
 	item_icons = list(
 		slot_l_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_left.dmi',
 		slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',
+		slot_back_str = 'code/modules/halo/weapons/icons/Back_Weapons.dmi',
 		)
-	arm_time = 15
+	crosshair_file = 'code/modules/halo/weapons/icons/dragaim_missile.dmi'
 	charge_sound = null
 	slowdown_general = 1
+	scope_zoom_amount = 1.5
 
 /obj/item/weapon/gun/projectile/m41/update_icon()
 	if(ammo_magazine)
@@ -40,11 +42,11 @@
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "SPNKr"
 	mag_type = MAGAZINE
-	slot_flags = SLOT_BELT | SLOT_MASK //Shhh it's a joke
+	slot_flags = SLOT_BELT
 	ammo_type = /obj/item/ammo_casing/spnkr
 	caliber = "spnkr"
 	max_ammo = 2
-	w_class = ITEM_SIZE_HUGE
+	w_class = ITEM_SIZE_LARGE
 
 /obj/item/ammo_casing/spnkr
 	caliber = "spnkr"
@@ -55,20 +57,14 @@
 	icon_state = "ssr"
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	check_armour = "bomb"
-	step_delay = 1.2
-	shield_damage = 200 //just below elite minor shields, meaning subsequent explosion and guaranteed damage will collapse it.
+	damage_type = "bomb"
+	damtype = "bomb"
+	step_delay = 1.3
+	kill_count = 21
+	shield_damage = 100
+	damage = 70
+	armor_penetration = 50
 
 /obj/item/projectile/bullet/ssr/on_impact(var/atom/target)
-	explosion(get_turf(target), 1, 1, 2, 4,guaranteed_damage = 50,guaranteed_damage_range = 2)
+	explosion(get_turf(target), -1, 1, 3, 4,guaranteed_damage = 65,guaranteed_damage_range = 2)
 	..()
-
-/obj/item/weapon/storage/box/spnkr
-	name = "102mm HEAT SPNKr crate"
-	desc = "UNSC certified crate containing three tubes of SPNKr rockets for a total of six rockets to be loaded in the M41 SSR."
-	icon = 'code/modules/halo/icons/objs/halohumanmisc.dmi'
-	icon_state = "ssrcrate"
-	max_storage_space = base_storage_capacity(12)
-	startswith = list(/obj/item/ammo_magazine/spnkr = 3)
-	can_hold = list(/obj/item/ammo_magazine/spnkr)
-	slot_flags = SLOT_BACK | SLOT_BELT
-	max_w_class = ITEM_SIZE_HUGE

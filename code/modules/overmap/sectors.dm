@@ -90,8 +90,6 @@ var/list/points_of_interest = list()
 	setup_object()
 	generate_targetable_areas()
 
-	if(flagship)
-		GLOB.overmap_tiles_uncontrolled -= trange(28,src)
 	if(occupy_range)
 		GLOB.overmap_tiles_uncontrolled -= trange(occupy_range,src)
 
@@ -116,6 +114,11 @@ var/list/points_of_interest = list()
 		if(F)
 			F.flagship = src
 			F.get_flagship_name()	//update the archived name
+		var/datum/game_mode/gm = ticker.mode
+		if(istype(gm) && gm.factions.len > 0)
+			if(!(F.type in ticker.mode.factions))
+				loc = null //Throw them into nullspace. Slipspace capable ships will be able to escape this, so it's not completely unescapable.
+				slipspace_status = 1 //Log that they're in slipspace.
 
 	if(base && faction)
 		var/datum/faction/F = GLOB.factions_by_name[faction]
@@ -281,7 +284,8 @@ var/list/points_of_interest = list()
 
 /obj/effect/overmap/proc/do_superstructure_fail()
 	for(var/mob/player in GLOB.mobs_in_sectors[src])
-		player.dust()
+		if(istype(player.loc,/turf)) //There's a number of situations where being inside something may be a problem, so let's handle them all here.
+			player.dust()
 	loc = null
 
 	message_admins("NOTICE: Overmap object [src] has been destroyed. Please wait as it is deleted.")

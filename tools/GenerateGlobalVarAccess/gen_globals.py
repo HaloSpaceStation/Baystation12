@@ -47,7 +47,7 @@ def main():
 
 	tree = ""
 	if namespace.projectfile[-4:] == ".txt":
-		with open(namespace.projectfile, "r") as f:
+		with open(namespace.projectfile, "r", encoding='cp1252') as f:
 			tree = f.read()
 
 	else:
@@ -76,14 +76,14 @@ def main():
 def GenerateMD5(fname):
     hash_md5 = hashlib.md5()
     with open(fname, "rb") as f:
-        for chunk in iter(lambda: f.read(4096), b""):
+        for chunk in iter(lambda: f.read(4096).replace(b"\r\n", b"\n"), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
 def CompileFile(filename):
 	compiler_path = FindCompiler()
 
-	return subprocess.check_output([compiler_path, "-code_tree", filename], universal_newlines=True)
+	return subprocess.check_output([compiler_path, "-code_tree", filename], universal_newlines=True, encoding='cp1252')
 
 def FindCompiler():
 	compiler_path = None;

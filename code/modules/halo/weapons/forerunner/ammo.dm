@@ -38,7 +38,8 @@
 	icon = 'code/modules/halo/weapons/icons/forerunner_sprites.dmi'
 	icon_state = "boolet"
 	fire_sound = 'code/modules/halo/sounds/boltshot_fire.ogg'
-	damage = 40
+	damage = 30
+	armor_penetration = 30
 
 /obj/item/projectile/bullet/pellet/shotgun/boltshot
 	name = "hardlight shrapnel"
@@ -57,7 +58,7 @@
 	caliber = "hardlightBinaryrifle"
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/binaryrifle
-	max_ammo = 2
+	max_ammo = 4
 
 /obj/item/ammo_casing/binaryrifle
 	name = "hardlight cell"
@@ -73,7 +74,7 @@
 	damage = 55
 	armor_penetration = 60
 	step_delay = 0
-	penetrating = 5
+	penetrating = 1
 	shield_damage = 210
 	tracer_type = /obj/effect/projectile/binaryrifle
 	tracer_delay_time = 2 SECONDS
@@ -81,6 +82,7 @@
 /obj/effect/projectile/binaryrifle
 	icon = 'code/modules/halo/weapons/icons/forerunner_sprites.dmi'
 	icon_state = "binaryrifle_trail"
+	alpha = 160
 
 /obj/item/ammo_magazine/suppressor
 	name = "Z-130 DEAW magazine"
@@ -103,7 +105,7 @@
 	name = "hardlight round"
 	icon = 'code/modules/halo/weapons/icons/forerunner_sprites.dmi'
 	icon_state = "suppressor_ammo"
-	damage = 20
-	armor_penetration = 10
+	damage = 25
+	armor_penetration = 20
 	penetrating = 1
 	shield_damage = 15

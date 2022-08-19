@@ -19,17 +19,10 @@
 		/mob/living/simple_animal/hostile/covenant/grunt/heavy = 1,\
 		/mob/living/simple_animal/hostile/covenant/jackal = 4,\
 		/mob/living/simple_animal/hostile/covenant/jackal/shield = 6,\
-		/mob/living/simple_animal/hostile/covenant/jackal/sniper = 4,\
 		/mob/living/simple_animal/hostile/covenant/drone = 4,\
-		/mob/living/simple_animal/hostile/covenant/drone/ranged = 5,\
-		/mob/living/simple_animal/hostile/covenant/elite = 4,\
-		/mob/living/simple_animal/hostile/covenant/elite/major = 3,\
-		/mob/living/simple_animal/hostile/covenant/elite/ultra = 2,\
-		/mob/living/simple_animal/hostile/covenant/elite/zealot = 1)
+		/mob/living/simple_animal/hostile/covenant/drone/ranged = 5)
 	default_radio_channel = RADIO_COV
-	special_jobs = list(/datum/job/covenant/brute_captain,\
-		/datum/job/covenant/skirmchampion,\
-		/datum/job/covenant/sangheili_zealot)
+	special_jobs = list(/datum/job/covenant/mgalekgolo)
 	income = 1000
 	contraband_gear = "Covenant"
 
@@ -71,8 +64,7 @@
 		/mob/living/simple_animal/hostile/unsc/odst = 6,\
 		/mob/living/simple_animal/hostile/battledog = 3,\
 		/mob/living/simple_animal/hostile/battledog/pmc = 2,\
-		/mob/living/simple_animal/hostile/battledog/odst = 1,\
-		/mob/living/simple_animal/hostile/unsc/spartan_two = 1)
+		/mob/living/simple_animal/hostile/battledog/odst = 1)
 	default_radio_channel = RADIO_SQUAD
 	income = 1000
 	special_jobs = list(/datum/job/unsc/spartan_two)

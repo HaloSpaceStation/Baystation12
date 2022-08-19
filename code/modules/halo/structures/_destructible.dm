@@ -1,5 +1,6 @@
 
 #define REPAIR_AMOUNT 100
+#define DESTRUCTIBLE_REPAIR_DELAY 20
 
 /obj/structure/destructible
 	name = "destructible"
@@ -12,10 +13,13 @@
 	var/list/maneuvring_mobs = list()
 	var/repair_material_name
 	var/cover_rating = 10
+	var/explosion_damage_mult = 1
 	var/deconstruct_tools = list(/obj/item/weapon/weldingtool)
 	var/list/loot_types = list(/obj/item/stack/material/steel)
 	var/list/scrap_types = list(/obj/item/salvage/metal)
 	var/dead_type
+	var/mob_climb_time = 3 SECONDS
+	var/bump_climb = 0
 	var/climbable = 1
 
 /obj/structure/destructible/New()
@@ -47,7 +51,7 @@
 				if (D.get_amount() > 0)
 					if (health < maxHealth - REPAIR_AMOUNT)
 						visible_message("<span class='notice'>[user] begins to repair \the [src].</span>")
-						if(do_after(user,20,src) && D.use(1))
+						if(do_after(user,DESTRUCTIBLE_REPAIR_DELAY,src) && D.use(1))
 							repair_damage(REPAIR_AMOUNT)
 							to_chat(user, "\icon[src] <span class='info'>You repair \the [src]. It is now \
 								[round(100*health/maxHealth)]% repaired (+[round(100*REPAIR_AMOUNT/maxHealth)]%).</span>")
@@ -63,7 +67,7 @@
 			to_chat(user, "<span class='warning'>[src] cannot be repaired.</span>")
 
 	else if(attempt_deconstruct(W, user))
-		if(do_after(user,20,src))
+		if(do_after(user,DESTRUCTIBLE_REPAIR_DELAY,src))
 			dismantle()
 
 	else
@@ -72,10 +76,16 @@
 			take_damage(W.force)
 		..()
 
+/obj/structure/destructible/proc/is_deconstruct_tool(obj/item/W as obj)
+	for(var/path in deconstruct_tools)
+		if(istype(W,path))
+			return 1
+	return 0
+
 /obj/structure/destructible/proc/attempt_deconstruct(obj/item/W as obj, mob/user as mob)
 	. = 0
 
-	if (!(W in deconstruct_tools))
+	if (!is_deconstruct_tool(W))
 		return 0
 
 	if(istype(W, /obj/item/weapon/weldingtool))
@@ -84,6 +94,7 @@
 			return 1
 		else
 			to_chat(user, "<span class='warning'>You need more fuel.</span>")
+			return 0
 
 /obj/structure/destructible/attack_generic(var/mob/user, var/damage, var/attacktext)
 	//user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
@@ -103,6 +114,11 @@
 		I.loc = src
 	qdel(src)
 	return
+
+/obj/structure/destructible/Bumped(var/mob/living/bumper)
+	. = ..()
+	if(bump_climb && istype(bumper) && bumper.is_preference_enabled(/datum/client_preference/toggle_obstacle_autoclimb))
+		structure_climb(bumper)
 
 /obj/structure/destructible/CanPass(atom/movable/mover, turf/start, height=0, air_group=0)//So bullets will fly over and stuff.
 
@@ -130,8 +146,10 @@
 	//by default, assume we will bump
 	var/is_bumping = 1
 
+	if(mob_climb_time == 0 && ismob(mover))
+		is_bumping = 0
 	//are we only blocking the edge of the tile?
-	if(src.flags & ON_BORDER)
+	else if(src.flags & ON_BORDER)
 		//check if we are trying to cross that edge
 		is_bumping = edge_bump_check(mover, get_turf(src))
 
@@ -150,9 +168,7 @@
 
 		return 0
 
-	else
-		//something is trying to enter the turf via a different edge to us
-		return 1
+	return 1
 
 /obj/structure/destructible/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
 
@@ -170,8 +186,10 @@
 
 	var/is_bumping = 0
 
+	if(mob_climb_time == 0 && ismob(mover))
+		is_bumping = 0
 	//are we only blocking the edge of the tile?
-	if(src.flags & ON_BORDER)
+	else if(src.flags & ON_BORDER)
 		//check if we are trying to cross that edge
 		is_bumping = edge_bump_check(mover, target)
 
@@ -224,6 +242,8 @@
 		return 1
 
 /obj/structure/destructible/proc/projectile_block_check(var/obj/item/projectile/P)
+	if(P.original && P.original == loc) //If they're specifically shooting at us, we'll block them all the time.
+		return 1
 	var/modified_cover_rating = cover_rating
 	if(P.starting)
 		//get_dist() will return 0 for on top of, 1 for adjacent and surrounds
@@ -267,7 +287,7 @@
 */
 /obj/structure/destructible/ex_act(severity)
 	//explosions do extra damage
-	take_damage(severity * 50)
+	take_damage(((3-severity))* 70 * explosion_damage_mult)
 
 /obj/structure/destructible/proc/take_damage(var/amount)
 	health -= amount
@@ -325,7 +345,7 @@
 		if(T.CanPass(user, T))
 			user.dir = climb_dir
 			to_chat(user, "<span class='notice'>You start climbing over [src]...</span>")
-			if(do_after(user, 30))
+			if(do_after(user, mob_climb_time))
 				src.visible_message("<span class='info'>[user] climbs over [src].</span>")
 				user.loc = T
 		else
@@ -342,6 +362,7 @@
 	if(climbable && istype(target))
 		if(target.anchored)
 			to_chat(user,"<span class = 'notice'>You can't move [target]!</span>")
+			return
 		if(target == user)
 			structure_climb(user)
 		else
@@ -393,3 +414,6 @@
 	if(prob(50))
 		new /obj/item/stack/material/wood(src.loc)
 	qdel(src)
+
+#undef REPAIR_AMOUNT
+#undef DESTRUCTIBLE_REPAIR_DELAY

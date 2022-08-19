@@ -1,4 +1,3 @@
-#define POD_FAIL_CHANCE 1 //This is the chance a drop-pod will fail on impact and auto-eject the user + exploding.
 
 /obj/vehicles/drop_pod
 	name = "SOEIV Drop Pod"
@@ -19,6 +18,11 @@
 	comp_prof = /datum/component_profile/drop_pod
 
 	exposed_positions = list()
+
+	can_smoke = 1
+	smoke_ammo = 1
+	smoke_ammo_max = 1
+	smoke_step_dist = 1
 
 	var/faction_tag = "UNSC"
 
@@ -66,7 +70,7 @@
 		visible_message("<span class = 'warning'>[src] blurts a warning: ERROR: NO AVAILABLE DROP-TARGETS.</span>")
 		return
 	var/list/valid_points = list()
-	for(var/turf/l in view(drop_point,drop_accuracy))
+	for(var/turf/l in range(drop_point,drop_accuracy))
 		if(istype(l,/turf/simulated/floor))
 			valid_points += l
 		if(istype(l,/turf/unsimulated/floor))
@@ -133,10 +137,6 @@
 			post_drop_effects(drop_turf)
 
 /obj/vehicles/drop_pod/proc/post_drop_effects(var/turf/drop_turf)
-
-	if(prob(POD_FAIL_CHANCE))
-		on_death()//do death effects
-		return
 	//explosion(drop_turf,-1,0,2,5)
 	playsound(src, 'sound/effects/bamf.ogg', 100, 1)
 
@@ -157,6 +157,9 @@
 	if(launched)
 		to_chat(usr,"<span class = 'notice'>[src] has already been launched once and cannot be launched again.</span>")
 		return
+	if(world.time < ticker.mode.ship_lockdown_until)
+		to_chat(usr,"<span class = 'notice'>[src] is still finalising deployment preparations!</span>")
+		return
 
 	var/list/potential_om_targ = get_overmap_targets()
 	if(isnull(potential_om_targ) || potential_om_targ.len == 0)
@@ -168,9 +171,14 @@
 		return
 	om_targ = potential_om_targ[om_user_choice]
 
-	var/turf/drop_turf = get_drop_turf(get_drop_point(usr,om_targ))
+	var/drop_point = get_drop_point(usr,om_targ)
+	if(isnull(drop_point))
+		to_chat(usr,"<span class = 'notice'>Error acquiring drop-point information from system.</span>")
+		return
+
+	var/turf/drop_turf = get_drop_turf(drop_point)
 	if(isnull(drop_turf))
-		to_chat(usr,"<span class = 'notice'>No valid drop-turfs available.</span>")
+		to_chat(usr,"<span class = 'notice'>No valid drop-turfs available at selected point.</span>")
 		return
 
 	proc_launch_pod(usr,drop_turf)
@@ -198,7 +206,7 @@
 
 	//does this overmap object have predefined drop pod locations?
 	for(var/obj/effect/landmark/drop_pod_landing/D in world)
-		if(!(D.loc.z  in om_targ.map_z))
+		if(!(D.z  in om_targ.map_z))
 			continue
 		var/area/A = get_area(D)
 		var/entry_name = A.name
@@ -222,15 +230,6 @@
 		target_turf = locate(rand(chosen_area[1],chosen_area[3]),rand(chosen_area[2],chosen_area[4]),pick(om_targ.map_z))
 
 	return target_turf
-
-/obj/vehicles/drop_pod/overmap/post_drop_effects(var/turf/drop_turf)
-	var/obj/effect/overmap/our_om_obj = map_sectors["[drop_turf.z]"]
-	if(!isnull(our_om_obj))
-		var/landing_depth = our_om_obj.map_z.Find(drop_turf.z)
-		if(prob(POD_FAIL_CHANCE * landing_depth))
-			on_death()//do death effects
-			return
-	. = ..()
 
 /datum/component_profile/drop_pod
 	gunner_weapons = list()

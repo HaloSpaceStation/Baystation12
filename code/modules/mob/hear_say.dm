@@ -234,7 +234,7 @@
 
 /mob/living/silicon/ai/on_hear_radio(part_a, speaker_name, track, part_b, part_c, formatted)
 	var/time = say_timestamp()
-	to_chat(src, "[time][part_a][track][part_b][formatted][part_c]")
+	to_chat(src, "[time][part_a][speaker_name][track][part_b][formatted][part_c]")
 
 /mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)
 	if(!client)

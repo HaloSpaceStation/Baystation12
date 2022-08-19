@@ -70,6 +70,9 @@
 	set name = "Detach vehicle"
 	set src in view(1)
 
+	if(!carried_vehicle)
+		to_chat(usr,"<span class = 'notice'>You're not carrying a vehicle to detach!</span>")
+		return
 	verbs -= /obj/vehicles/proc/detach_vehicle
 	carried_vehicle.loc = pick_valid_exit_loc()
 	carried_vehicle = null
@@ -126,7 +129,7 @@
 	if(grabbed_mob.stat == CONSCIOUS)
 		if(!do_after(user, VEHICLE_LOAD_DELAY,grabbed_mob,1,1,,1))
 			return
-	var/enter_result = enter_as_position(grabbed_mob,"passenger")
+	var/enter_result = enter_as_position(grabbed_mob,"passenger",h.faction)
 	h.drop_from_inventory(I)
 	if(enter_result == 0)
 		to_chat(user,"<span class = 'notice'>Something stops you putting [grabbed_mob] in [src.name]'s passenger seat.</span>")

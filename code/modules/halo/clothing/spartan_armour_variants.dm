@@ -90,3 +90,39 @@
 	name = "MJOLNIR Powered Assault Armor Mark V Gungnir"
 	icon_state = "mk5-gungirshell"
 	item_state = "mk5-gungirshell-worn"
+
+// YOROI //
+
+/obj/item/clothing/head/helmet/spartan/yoroi
+	name = "First Principle Kabuto Helmet"
+	desc = "Popularized be selfless samurai peacekeepers in the early days of the Covenant invasion, Kabuto helmets are now worn by shogunate enforcers responsible for extinguishing the flames of sedition and rebellion."
+	icon_state = "yoroi-helm-obj"
+	item_state = "yoroi-helm-worn"
+
+/obj/item/clothing/suit/armor/special/spartan/yoroi
+	name = "Yoroi Armor"
+	desc = "Suits of Yoroi are forged using ancient karakuri arts from the raw energies of the land, each hand-crafted for eager young samurai of unimpeachable honor to defend their clan and lands from the barbaric Covenant invaders."
+	icon_state = "yoroi-obj"
+	item_state = "yoroi-worn"
+
+/obj/item/weapon/material/machete/tenrai
+	name = "first principle blade"
+	desc = "A sword from the Imperial armory, granted to those charged with executing Covenant infiltrators and saboteurs. Extremely effective in melee combat."
+	icon_state = "tenrai"
+	item_state = "tenrai"
+	force = 50///Meant to be admin-spawn to clash with the energy sword, so it does the same damage and will be unacidable
+	unacidable = 1
+
+// MK.VI //
+
+/obj/item/clothing/head/helmet/spartan/mkvi
+	name = "MJOLNIR Powered Assault Armour Helmet Mark VI"
+	icon_state = "mkvi-helm-obj"
+	item_state = "mkvi-helm-worn"
+
+/obj/item/clothing/suit/armor/special/spartan/mkvi
+	name = "MJOLNIR Powered Assault Armour Mark VI"
+	desc = "The Mjolnir Mark VI was the third major version of the MJOLNIR Powered Assault Armour Series, though it was issued to very few Spartan-IIs due to it being developed close to the end of the war, much like Mark V."
+	icon_state = "mkvi-obj"
+	item_state = "mkvi-worn"
+

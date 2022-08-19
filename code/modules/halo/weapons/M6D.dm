@@ -7,23 +7,26 @@
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "magnum"
 	item_state = "halo_pistol"
-	magazine_type = /obj/item/ammo_magazine/m6d/m224
+	magazine_type = /obj/item/ammo_magazine/m6d/m225
 	allowed_magazines = list(/obj/item/ammo_magazine/m6d/m224,/obj/item/ammo_magazine/m6d/m225, /obj/item/ammo_magazine/m6d/m228)
 	caliber = "12.7mm"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	one_hand_penalty = 1
+	fire_delay = 4 //Lower mag cap than the plaspistol, so we'll let it fire faster.
 	fire_sound = 'code/modules/halo/sounds/Magnum_Fire_New.wav'
 	reload_sound = 'code/modules/halo/sounds/Magnum_Reload_New.wav'
 	load_method = MAGAZINE
 	w_class = ITEM_SIZE_NORMAL
+	scope_zoom_amount = 1.1
 
 	item_icons = list(
 		slot_l_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_left.dmi',
 		slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',
 		slot_belt_str = 'code/modules/halo/weapons/icons/Belt_Weapons.dmi',
 		)
+	crosshair_file = 'code/modules/halo/weapons/icons/dragaim_icon.dmi'
 
-	dispersion = list(0.4) //Maxes out at just about 1 tile @ 7 tiles range. Should rarely actually deviate to that tile, though.
+	dispersion = list(0)
 	hud_bullet_row_num = 6
 	hud_bullet_reffile = 'code/modules/halo/icons/hud_display/hud_bullet_7x8.dmi'
 	hud_bullet_iconstate = "bigpistol"
@@ -42,7 +45,7 @@
 	set name = "Use Scope (Sidearm)"
 	set popup_menu = 1
 
-	toggle_scope(usr, 1.1)
+	toggle_scope(usr, scope_zoom_amount)
 
 /obj/item/weapon/gun/projectile/m6d_magnum/CO_magnum
 	name = "\improper CO\'s Magnum"
@@ -112,6 +115,8 @@
 	fire_sound = 'code/modules/halo/sounds/MagnumShotSoundEffect.ogg'
 	reload_sound = 'code/modules/halo/sounds/MagnumReloadSoundEffect.ogg'
 
+	magazine_type = /obj/item/ammo_magazine/m6d/m224
+
 	one_hand_penalty = 0
 
 /obj/item/weapon/gun/projectile/m6d_magnum/civilian/update_icon()
@@ -121,10 +126,6 @@
 	else
 		icon_state = "m6b_unloaded"
 
-/obj/item/weapon/gun/projectile/m6d_magnum/civilian/scope()
-	..()
-	return
-
 /obj/item/weapon/gun/projectile/m6d_magnum/police
 	name = "\improper M6B Magnum"
 	icon_state = "m6b_police"
@@ -132,6 +133,8 @@
 	fire_sound = 'code/modules/halo/sounds/MagnumShotSoundEffect.ogg'
 	reload_sound = 'code/modules/halo/sounds/MagnumReloadSoundEffect.ogg'
 	desc = "Common handgun accessible to civilians with a lack of a scope, in drab gray GCPD colors. Takes 12.7mm calibre magazines sized for an M6D."
+
+	magazine_type = /obj/item/ammo_magazine/m6d/m224
 
 /obj/item/weapon/gun/projectile/m6d_magnum/police/police/update_icon()
 	. = ..()

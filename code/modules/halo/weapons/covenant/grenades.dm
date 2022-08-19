@@ -1,4 +1,5 @@
 #define ADHERENCE_TIME 1.0
+#define PLASNADE_EMBEDDED_DAM_ADD 10
 
 //plasma grenade visual effect
 /obj/effect/plasma_explosion
@@ -27,12 +28,12 @@
 	icon = 'code/modules/halo/weapons/icons/Covenant Weapons.dmi'
 	icon_state = "plasmagrenade"
 	throw_speed = 0 //sleep each tick
-	det_time = 40
+	det_time = 30
 	can_adjust_timer = 0
 	starttimer_on_hit = 1
 	arm_sound = 'code/modules/halo/sounds/Plasmanadethrow.ogg'
-	alt_explosion_range = 1
-	alt_explosion_damage_max = 60
+	alt_explosion_range = 3
+	alt_explosion_damage_max = 40
 	matter = list("nanolaminate" = 1, "kemocite" = 1)
 	salvage_components = list(/obj/item/plasma_core)
 	item_state_slots = list(slot_l_hand_str = "plasma_nade_off", slot_r_hand_str = "plasma_nade_off")
@@ -44,7 +45,7 @@
 /obj/item/weapon/grenade/plasma/activate(var/mob/living/carbon/human/h)
 	item_state_slots = list(slot_l_hand_str = "plasma_nade_on", slot_r_hand_str = "plasma_nade_on")
 	if(istype(h) && istype(h.species,/datum/species/unggoy) && prob(5))
-		playsound(h.loc, 'code/modules/halo/sounds/unggoy_grenade_throw.ogg', 100, 1)
+		playsound(h.loc, 'code/modules/halo/sounds/unggoy_grenade_throw.ogg', 100)
 	. = ..()
 	activated_at = world.time
 	if(istype(h))
@@ -83,11 +84,15 @@
 			if(dist <= round(alt_explosion_range + world.view - 2, 1))
 				M.playsound_local(epicenter, 'code/modules/halo/sounds/Plasmanadedetonate.ogg', 100, 1)
 	var/mob/living/carbon/human/mob_containing = loc
-	do_alt_explosion()
-	explosion(get_turf(src),0,0,1,0)
 	if(istype(mob_containing))
+		alt_explosion_damage_max += PLASNADE_EMBEDDED_DAM_ADD
+		do_alt_explosion()
+		explosion(get_turf(src), -1, 2, 2, 0)
 		mob_containing.contents -= src
 		mob_containing.embedded -= src
+	else
+		do_alt_explosion()
+		explosion(get_turf(src), -1, 2, 2, 0)
 	loc = null
 	qdel(src)
 
@@ -96,4 +101,8 @@
 	desc = "For only the most devoted of troops, this grenade is unthrowable, but can be dropped for a near instant explosion."
 	det_time = 5
 	throw_range = 0
-	alt_explosion_range = 2
+	alt_explosion_range = 4
+	alt_explosion_damage_max = 60
+
+#undef ADHERENCE_TIME
+#undef PLASNADE_EMBEDDED_DAM_ADD

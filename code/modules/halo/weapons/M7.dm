@@ -31,6 +31,13 @@
 		slot_belt_str = 'code/modules/halo/weapons/icons/Belt_Weapons.dmi',
 		)
 
+	slowdown_general = 0
+
+	firemodes = list(\
+	list(mode_name="short bursts",  burst=4,dispersion=list(0.2, 0.4, 0.7, 1.0)),
+	list(mode_name="extended bursts",  burst=8, dispersion=list(0.3, 0.3, 0.5, 0.5, 0.9, 0.9, 1.2, 1.2))
+	)
+
 /obj/item/weapon/gun/projectile/m7_smg/update_icon()
 	if(ammo_magazine)
 		icon_state = "m7smg"
@@ -45,19 +52,24 @@
 	is_heavy = 1
 	scoped_accuracy = 1
 	magazine_type = /obj/item/ammo_magazine/m7/m443/rnd48
-	allowed_magazines = list(/obj/item/ammo_magazine/m7/m443/rnd48)
+	allowed_magazines = list(/obj/item/ammo_magazine/m7/m443/rnd48,/obj/item/ammo_magazine/m7/rubber)
 	fire_sound = 'code/modules/halo/sounds/SMG_SOCOM_Fire.wav'
 	//fire_sound_burst = 'code/modules/halo/sounds/SMG_SOCOM_Fire.wav'
 	dispersion = list(0.1, 0.3, 0.6, 1.0)
 	one_hand_penalty = 2
-	allowed_magazines = list(/obj/item/ammo_magazine/m7, /obj/item/ammo_magazine/m7)
+	scope_zoom_amount = 2.0
+
+	firemodes = list(\
+	list(mode_name="short bursts",  burst=4, dispersion=list(0.1, 0.3, 0.6, 1.0)),
+	list(mode_name="extended bursts",  burst=8, dispersion=list(0.3, 0.3, 0.4, 0.5, 0.6, 0.8, 1.1))
+	)
 
 /obj/item/weapon/gun/projectile/m7_smg/silenced/verb/scope()
 	set category = "Weapon"
-	set name = "Use Scope (Sidearm)"
+	set name = "Use Scope"
 	set popup_menu = 1
 
-	toggle_scope(usr, 2.0)
+	toggle_scope(usr, scope_zoom_amount)
 
 /obj/item/weapon/gun/projectile/m7_smg/silenced/update_icon()
 	if(ammo_magazine)

@@ -9,7 +9,8 @@
 	item_state = "m90"
 	fire_sound = 'code/modules/halo/sounds/Shotgun_Fire_New.wav'
 	reload_sound = 'code/modules/halo/sounds/Shotgun_Reload_New.wav'
-	ammo_type = /obj/item/ammo_casing/shotgun/pellet
+	ammo_type = /obj/item/ammo_casing/shotgun/pellet/high_power
+	caliber = "shotgunhighpower"
 	max_shells = 8
 	fire_delay = 8
 	one_hand_penalty = -1
@@ -48,15 +49,16 @@
 	icon_state = "KV-32_unloaded"
 	item_state = "KV-32"
 	load_method = MAGAZINE
-	caliber = "shotgun"
+	caliber = "shotgunlowpower"
 	slot_flags = SLOT_BACK
 	magazine_type = /obj/item/ammo_magazine/kv32
 	one_hand_penalty = -1
-	burst = 2
-	fire_delay = 1
+	burst = 1
+	fire_delay = 5
+	burst_delay = 1
 	screen_shake = 1
 	accuracy = -1
-	dispersion = list(0.45,0.45)
+	dispersion = list(0.45)
 	hud_bullet_reffile = 'code/modules/halo/icons/hud_display/hud_bullet_7x8.dmi'
 	hud_bullet_iconstate = "shell"
 	hud_bullet_row_num = 2
@@ -82,9 +84,9 @@
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "kv_mag"
 	mag_type = MAGAZINE
-	ammo_type = /obj/item/ammo_casing/shotgun/pellet
+	ammo_type = /obj/item/ammo_casing/shotgun/pellet/low_power
 	matter = list(DEFAULT_WALL_MATERIAL = 1500)
-	caliber = "shotgun"
+	caliber = "shotgunlowpower"
 	max_ammo = 4
 	multiple_sprites = 1
 
@@ -98,7 +100,8 @@
 	item_state = "m45"
 	fire_sound = 'code/modules/halo/sounds/Shotgun_Shot_Sound_Effect.ogg'
 	reload_sound = 'code/modules/halo/sounds/Shotgun_Pump_Slide.ogg'
-	ammo_type = /obj/item/ammo_casing/shotgun/pellet
+	ammo_type = /obj/item/ammo_casing/shotgun/pellet/high_power
+	caliber = "shotgunhighpower"
 	max_shells = 6
 	one_hand_penalty = -1
 	dispersion = list(0.45)
@@ -115,7 +118,7 @@
 
 
 /obj/item/weapon/gun/projectile/shotgun/pump/m45_ts/police
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag/high_power
 
 /obj/item/weapon/gun/projectile/shotgun/pump/m45_ts/verb/toggle_light()
 	set category = "Object"

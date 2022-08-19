@@ -14,8 +14,9 @@
 		/datum/job/unsc/oni/research,\
 		/datum/job/unsc/oni/research/director,\
 		/datum/job/unsc_ai,\
-		/datum/job/colonist/unsc,\
+		/datum/job/colonist,\
 		/datum/job/covenant/AI,\
+		/datum/job/covenant/huragok,\
 		/datum/job/covenant/sangheili_minor,\
 		/datum/job/covenant/sangheili_major,\
 		/datum/job/covenant/sangheili_ultra,\
@@ -36,6 +37,7 @@
 		/datum/job/covenant/yanmee_major,\
 		/datum/job/covenant/yanmee_ultra,\
 		/datum/job/covenant/yanmee_leader,\
+		/datum/job/covenant/mgalekgolo\
 		)
 
 	allowed_spawns = list(\

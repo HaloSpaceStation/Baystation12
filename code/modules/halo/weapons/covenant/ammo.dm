@@ -1,8 +1,9 @@
-#define NEEDLER_EMBED_PROB 66
+#define NEEDLER_EMBED_PROB 60
 #define NEEDLER_SHARD_DET_TIME 10 SECONDS
+#define NEEDLER_SHRAPNEL_AP 50
+#define NEEDLER_SUPERCOMBINE_SHRAPNEL_DAMAGE_MULT 3
 #define FUEL_ROD_IRRADIATE_RANGE 2
 #define FUEL_ROD_IRRADIATE_AMOUNT 10
-#define FUEL_ROD_MAX_OVERSHOOT 3
 
  // need icons for all projectiles and magazines
 /obj/item/projectile/bullet/covenant
@@ -30,7 +31,8 @@
 	muzzle_type = /obj/effect/projectile/muzzle/cov_green
 
 /obj/item/projectile/bullet/covenant/plasmapistol
-	damage = 50
+	damage = 45
+	armor_penetration = 15
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "Plasmapistol Shot"
 	muzzle_type = /obj/effect/projectile/muzzle/cov_green
@@ -39,7 +41,9 @@
 	damage = 20
 
 /obj/item/projectile/bullet/covenant/plasmapistol/overcharge
-	damage = 60
+	damage = 55
+	shield_damage = -50 //EMP does most of the work.
+	armor_penetration = 20 //Slightly lower AP than the magnum baseline due to slightly higher base damage.
 	icon_state = "Overcharged_Plasmapistol shot"
 
 /obj/item/projectile/bullet/covenant/plasmapistol/overcharge/on_impact(var/atom/impacted)
@@ -50,18 +54,19 @@
 	damage = 30
 
 /obj/item/projectile/bullet/covenant/plasmarifle
-	damage = 35 // more damage than MA5B.
+	damage = 30
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "Plasmarifle Shot"
 
 /obj/item/projectile/bullet/covenant/plasmarepeater
-	damage = 30 //The repeater does enough, thank you.
+	damage = 30
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "plasma_repeater"
 	muzzle_type = /obj/effect/projectile/muzzle/cov_cyan
 
 /obj/item/projectile/bullet/covenant/plasmarifle/brute
 	damage = 25
+	shield_damage = 5
 	icon_state = "heavy_plas_cannon"
 	muzzle_type = /obj/effect/projectile/muzzle/cov_red
 
@@ -70,11 +75,11 @@
 	desc = ""
 	damage = 55
 	armor_penetration = 60
+	penetrating = 1
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
-	icon_state = "carbine_casing"
+	icon_state = "beam_rifle_trail"
 	tracer_type = /obj/effect/projectile/beam_rifle
 	tracer_delay_time = 1.5 SECONDS
-	invisibility = 61
 	shield_damage = 210
 	step_delay = 0
 	muzzle_type = /obj/effect/projectile/muzzle/cov_cyan
@@ -83,12 +88,13 @@
 	if(!istype(L))
 		. = ..()
 		return
-	L.rad_act(6)
+	L.rad_act(3)
 	. = ..()
 
 /obj/effect/projectile/beam_rifle
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "beam_rifle_trail"
+	alpha = 160
 
 //Covenant Magazine-Fed defines//
 
@@ -118,7 +124,7 @@
 	if(world.time >= die_at)
 		var/mob/living/m = loc
 		if(istype(m))
-			m.apply_damage(our_dam,BURN) //The low damage done by this shard exploding is meant to bypass defences, it's embedded into you.
+			m.apply_damage(our_dam, BURN, null, m.run_armor_check(null, "energy", NEEDLER_SHRAPNEL_AP))
 			m.embedded -= src
 			m.pinned -= src
 			if(m.pinned.len == 0)
@@ -131,15 +137,13 @@
 /obj/item/projectile/bullet/covenant/needles
 	name = "Needle"
 	desc = "A sharp, pink crystalline shard"
-	damage = 15 // Low damage, special effect would do the most damage.
+	damage = 15 //A little lower than the smg because of the shrapnel dam
 	shield_damage = 15
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "Needler Shot"
 	embed = 1
 	sharp = 1
-	armor_penetration = 20
-	step_delay = 0.75 //slower than most
-	var/max_track_steps = 3 // 4 tiles worth of tracking
+	var/max_track_steps = 3
 	var/shards_to_explode = 6
 	var/shard_name = "Needle shrapnel"
 	var/mob/locked_target
@@ -156,11 +160,11 @@
 		if(shard.name == shard_name)
 			embedded_shards += shard
 		if(embedded_shards.len >=shards_to_explode)
-			explosion(get_turf(L),-1,-1,3,5,guaranteed_damage = 100,guaranteed_damage_range = 1)
+			explosion(get_turf(L),-1,-1,2,5,guaranteed_damage = 35,guaranteed_damage_range = 1)
 			for(var/obj/I in embedded_shards)
 				var/obj/item/weapon/material/shard/shrapnel/needleshrap/needle = I
 				if(istype(needle))
-					needle.our_dam *= 2
+					needle.our_dam *= NEEDLER_SUPERCOMBINE_SHRAPNEL_DAMAGE_MULT
 					needle.die_at = 0
 					needle.process()
 				else
@@ -187,7 +191,7 @@
 	if(ismob(target))
 		locked_target = target //Setting target directly if we've clicked on them.
 	if(isturf(target))
-		for(var/mob/M in target.contents)//Otherwise search the contents of the clicked turf, and take the first mob we find as a target.
+		for(var/mob/living/M in target.contents)//Otherwise search the contents of the clicked turf, and take the first mob we find as a target.
 			locked_target = M
 			break
 	. = ..()
@@ -227,6 +231,7 @@
 	desc = "This projectile leaves a green trail in its wake."
 	damage = 25 //A lot less rounds in a mag than the counterpart BR.
 	shield_damage = 10
+	armor_penetration = 20
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "carbine_casing"
 	check_armour = "energy"
@@ -237,23 +242,25 @@
 	sharp = 1
 	use_covenant_burndam_override = 0
 	muzzle_type = /obj/effect/projectile/muzzle/cov_green
+	steps_between_delays = 3
 
 /obj/item/projectile/bullet/covenant/type51carbine/attack_mob(var/mob/living/carbon/human/L)
 	if(!istype(L))
 		. = ..()
 		return
-	L.rad_act(3)
+	L.rad_act(1)
 	. = ..()
 
 /obj/effect/projectile/type51carbine
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "carbine_trail"
+	alpha = 160
 
 /obj/item/ammo_magazine/rifleneedlepack
 	name = "Rifle Needles"
 	desc = "A pack of fewer, larger crystalline needles. For T-31 rifle."
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
-	icon_state = "needlerpack"
+	icon_state = "needlerpack-rifle"
 	max_ammo = 21
 	ammo_type = /obj/item/ammo_casing/rifleneedle
 	caliber = "needle_rifle"
@@ -269,21 +276,24 @@
 
 /obj/item/projectile/bullet/covenant/needles/rifleneedle
 	name = "Rifle Needle"
-	damage = 30
-	armor_penetration = 20
-	shield_damage = 20
+	damage = 25 //Shrapnel makes up the difference with the dmr
+	armor_penetration = 40
+	shield_damage = 5
 	shrapnel_damage = 10
 	shards_to_explode = 3
 	shard_name = "Rifle Needle shrapnel"
 	tracer_type = /obj/effect/projectile/bullet/covenant/needles/rifleneedle
 	tracer_delay_time = 0.5 SECONDS
 	invisibility = 101
-	step_delay = 0.65 //slower than most, faster than normal needles
-	max_track_steps = 2
+	max_track_steps = 1
 	muzzle_type = /obj/effect/projectile/muzzle/cov_red
+	steps_between_delays = 3
+
+/obj/effect/projectile/bullet/covenant/needles
+	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
+	alpha = 160
 
 /obj/effect/projectile/bullet/covenant/needles/rifleneedle
-	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "needlerifle_trail"
 
 /obj/item/ammo_magazine/fuel_rod
@@ -291,12 +301,13 @@
 	desc = "Contains a maximum of 5 fuel rods."
 	icon = 'code/modules/halo/weapons/icons/fuel_rod_cannon.dmi'
 	icon_state = "fuel_rod_mag"
+	w_class = ITEM_SIZE_LARGE
+	slot_flags = SLOT_BELT | SLOT_POCKET
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/fuel_rod
 	caliber = "fuel rod"
 	max_ammo = 5
 	multiple_sprites = 1
-	w_class = ITEM_SIZE_NORMAL
 
 /obj/item/ammo_casing/fuel_rod
 	icon = 'code/modules/halo/weapons/icons/fuel_rod_cannon.dmi'
@@ -306,20 +317,17 @@
 
 /obj/item/projectile/bullet/fuel_rod
 	name = "fuel rod"
-	check_armour = "bomb"
-	step_delay = 1.2
-	kill_count = 15
-	shield_damage = 100
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "Overcharged_Plasmapistol shot"
+	check_armour = "bomb"
+	damage_type = "bomb"
+	damtype = "bomb"
+	step_delay = 1.3
+	kill_count = 21
+	shield_damage = 100
+	damage = 50
+	armor_penetration = 50
 	muzzle_type = /obj/effect/projectile/muzzle/cov_green
-
-/obj/item/projectile/bullet/fuel_rod/launch(atom/target, var/target_zone, var/x_offset=0, var/y_offset=0, var/angle_offset=0)
-	//kill count is the number of turfs the bullet travels, at the end it automatically calls on_impact()
-	//we want the fuel rod to not fly off into the distance if it misses
-	//add a bit of randomness
-	. = ..()
-	kill_count = world.view + (rand(0, FUEL_ROD_MAX_OVERSHOOT * 2) - FUEL_ROD_MAX_OVERSHOOT)
 
 /obj/item/projectile/bullet/fuel_rod/throw_impact(atom/hit_atom)
 	return on_impact(hit_atom)
@@ -350,13 +358,13 @@
 
 /obj/item/projectile/bullet/covenant/concussion_rifle
 	name = "heavy plasma round"
-	damage = 30 //Same as plasma rifle (When factoring in the aoe), but it has AP!
-	armor_penetration = 30
+	damage = 50
+	armor_penetration = 40
 	shield_damage = 50
+	step_delay = 0.75 //slower than most
 	icon = 'code/modules/halo/weapons/icons/Covenant_Projectiles.dmi'
 	icon_state = "pulse0"
 	muzzle_type = /obj/effect/projectile/muzzle/cov_red
-	var/aoe_damage = 5
 
 /obj/item/projectile/bullet/covenant/concussion_rifle/launch(atom/target, var/target_zone, var/x_offset=0, var/y_offset=0, var/angle_offset=0)
 	. = ..()
@@ -364,7 +372,7 @@
 
 /obj/item/projectile/bullet/covenant/concussion_rifle/on_impact(var/atom/A)
 	playsound(A, 'code/modules/halo/sounds/conc_rifle_explode.ogg', 100, 1)
-	for(var/atom/movable/m in range(1,loc) + range(1,A))
+	for(var/atom/movable/m in range(1,A))
 		if(m.anchored)
 			continue
 		if(istype(m,/obj/effect))
@@ -380,16 +388,13 @@
 		if(dir_move in GLOB.cardinal)
 			lastloc = get_edge_target_turf(m, dir_move)
 		else
-			for(var/i = 0 to world.view - 1)
+			for(var/i = 0 to world.view - 2)
 				var/turf/newloc = get_step(lastloc,dir_move)
 				if(newloc.density == 1)
 					break
 				lastloc = newloc
-		var/mob/living/mob = m
-		if(istype(mob))
-			mob.adjustFireLoss(aoe_damage)
 		spawn()
-			m.throw_at(lastloc, world.view,1,firer)
+			m.throw_at(lastloc,3,1,firer)
 	. = ..()
 	qdel(src)
 
@@ -403,10 +408,10 @@
 	damage = 0
 	armor_penetration = 0
 	shield_damage = 0
-	aoe_damage = 0
 
 #undef FUEL_ROD_IRRADIATE_RANGE
 #undef FUEL_ROD_IRRADIATE_AMOUNT
 #undef FUEL_ROD_MAX_OVERSHOOT
 #undef NEEDLER_EMBED_PROB
+#undef NEEDLER_SHRAPNEL_AP
 #undef NEEDLER_SHARD_DET_TIME

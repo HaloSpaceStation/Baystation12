@@ -48,14 +48,13 @@ then
 	rm switchable_maps
 fi
 
-grep "MAP_PATH=" .travis.yml | while read -r line ; do
+# depends on # of spaces, which isn't the best, but hopefully that doesn't change much
+grep -P "\s{10}- " .github/workflows/tests.yml | while read -r line ; do
 
 	#make sure this line isnt commented out
 	hashpos=`expr index "$line" \#`
 	
-	#this is a nasty hack
-	zero=0
-	if [ $hashpos == $zero ]
+	if [ $hashpos -eq 0 ]
 	then
 		#this is a nasty hack
 		linepos=`expr index "$line" H`

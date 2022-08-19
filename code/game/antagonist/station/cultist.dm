@@ -17,7 +17,7 @@ var/datum/antagonist/cultist/cult
 /proc/iscultist(var/mob/player)
 	if(!cult || !player.mind)
 		return 0
-	if(player.mind in cult.current_antagonists)
+	if(player.mind in cult.current_antagonists || player.mind in deity.current_antagonists)
 		return 1
 
 /datum/antagonist/cultist

@@ -3,10 +3,12 @@
 	name = "Jetpack Item"
 	desc = "A pack that jets. Allows you limited timeframe flight, as well as maintaining altitude, although it is not strong enough to allow in-atmosphere z-level changing."
 
+	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BACK
 
 	var/flight_ticks_max = 65
 	var/flight_ticks_curr = 0
+	var/flight_ticks_regen = 4
 	var/takeoff_msg = "takes off!"
 	var/land_msg = "lands"
 	var/mob/living/cached_user
@@ -16,6 +18,12 @@
 
 	slowdown_general = 0.1
 	action_button_name = "Activate Jump-Jet"
+
+/obj/item/flight_item/verb/toggle_flight()
+	set name = "Toggle Flight"
+	set category = "Object"
+
+	ui_action_click()
 
 /obj/item/flight_item/New()
 	. = ..()
@@ -42,13 +50,14 @@
 	else
 		to_chat(examiner,"<span class = 'notice'>It is currently in use and is draining power.[cached_user ? " [cached_user.flight_ticks_remain] power units remain" : "" ]</span>")
 
-/obj/item/flight_item/update_icon()
+/obj/item/flight_item/update_icon(var/mob/living/user)
 	if(active)
 		icon_state = "[initial(icon_state)]-active"
 		item_state = "[initial(item_state)]-active"
 	else
 		icon_state = initial(icon_state)
 		item_state = initial(item_state)
+	user.update_inv_back(1)
 	. = ..()
 
 /obj/item/flight_item/proc/activate(var/mob/living/user)
@@ -57,12 +66,10 @@
 	cached_user = user
 	active = TRUE
 	user.flight_ticks_remain = flight_ticks_curr
-	slowdown_general = -0.1
 	user.flight_item = src
 	user.take_flight(flight_ticks_curr,"<span class = 'warning'>[user.name][takeoff_msg]</span>","<span class = 'warning'>[user.name][land_msg]</span>")
 	GLOB.processing_objects -= src
-	update_icon()
-	user.update_icon()
+	update_icon(user)
 	if(!flight_bar)
 		flight_bar = new(user,flight_ticks_max,src)
 
@@ -73,12 +80,10 @@
 	cached_user = null
 	flight_ticks_curr = user.flight_ticks_remain
 	user.flight_item = null
-	slowdown_general = initial(slowdown_general)
 	if(user.elevation > 0)
 		user.take_flight(0,(output_msg ? "<span class = 'warning'>[user.name][takeoff_msg]</span>" : null),(output_msg ? "<span class = 'warning'>[user.name][land_msg]</span>" : null))
 	GLOB.processing_objects += src
-	update_icon()
-	user.update_icon()
+	update_icon(user)
 
 /obj/item/flight_item/ui_action_click()
 	if(usr != loc)
@@ -96,7 +101,7 @@
 		activate(usr)
 
 /obj/item/flight_item/process()
-	flight_ticks_curr = min(flight_ticks_max, flight_ticks_curr + flight_ticks_max /20)
+	flight_ticks_curr = min(flight_ticks_max, flight_ticks_curr + flight_ticks_regen)
 	flight_bar.update(flight_ticks_curr)
 	if(flight_ticks_curr == flight_ticks_max)
 		GLOB.processing_objects -= src

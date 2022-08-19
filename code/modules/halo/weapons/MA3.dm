@@ -5,10 +5,13 @@
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "MA3"
 	item_state = "ma3"
+	caliber = "7.62mm"
+	load_method = MAGAZINE
+	slot_flags = SLOT_BACK
 	magazine_type = /obj/item/ammo_magazine/ma3/m118
 	ammo_icon_state = null
 	allowed_magazines = list(/obj/item/ammo_magazine/ma3/m118)
-	attachment_slots = null
+	attachment_slots = list("barrel","underbarrel rail","upper rail","upper stock", "stock")
 	attachments_on_spawn = null
 	burst = 4
 	burst_delay = 1.7
@@ -17,8 +20,16 @@
 	fire_sound = 'code/modules/halo/sounds/MA3firefix.ogg'
 	reload_sound = 'code/modules/halo/sounds/MA3reload.ogg'
 
+	wielded_item_state = "ma3-wielded"
 
-/obj/item/weapon/gun/projectile/ma3/update_icon()
+	item_icons = list(
+		slot_l_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_left.dmi',
+		slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',
+		slot_back_str = 'code/modules/halo/weapons/icons/Back_Weapons.dmi',
+		slot_s_store_str = 'code/modules/halo/weapons/icons/Armor_Weapons.dmi',
+		)
+
+/obj/item/weapon/gun/projectile/ma3_ar/update_icon()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "MA3"

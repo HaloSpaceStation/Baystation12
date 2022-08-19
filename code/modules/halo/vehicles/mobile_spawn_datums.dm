@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(MOBILE_SPAWN_RESPAWN_TIME,5 MINUTES)
+GLOBAL_VAR_INIT(MOBILE_SPAWN_RESPAWN_TIME,8 MINUTES)
 
 /datum/mobile_spawn
 	var/is_spawn_active = 0
@@ -60,8 +60,9 @@ GLOBAL_VAR_INIT(MOBILE_SPAWN_RESPAWN_TIME,5 MINUTES)
 	if(GLOB.MOBILE_SPAWN_RESPAWN_TIME == -1)
 		to_chat(user,"<span class = 'notice'>Mobile respawn is disabled.</span>")
 		return
-	if(world.time - user.timeofdeath < GLOB.MOBILE_SPAWN_RESPAWN_TIME)
-		to_chat(user,"<span class = 'notice'>You have not been dead long enough to respawn at a mobile spawn point.</span>")
+	var/deltaToD = world.time - user.timeofdeath
+	if(deltaToD < GLOB.MOBILE_SPAWN_RESPAWN_TIME)
+		to_chat(user,"<span class = 'notice'>You have not been dead long enough to respawn at a mobile spawn point. [-(deltaToD - GLOB.MOBILE_SPAWN_RESPAWN_TIME)/600] minutes remain.</span>")
 		return
 	var/species_choice = input(user,"Spawn as what species?","Species Spawn Choice","Cancel") in species_outfits + list("Cancel")
 	if(species_choice == "Cancel")
@@ -86,7 +87,14 @@ GLOBAL_VAR_INIT(MOBILE_SPAWN_RESPAWN_TIME,5 MINUTES)
 	if(lace)
 		lace.access = access_list
 	qdel(user)
-
+	var/datum/faction/ourfaction = GLOB.factions_by_name[spawn_faction]
+	if(ourfaction && h.mind)
+		//The following chunk of code is copied from job.dm, line 80.
+		ourfaction.assigned_minds.Add(h.mind)
+		ourfaction.living_minds.Add(h.mind)
+		for(var/datum/objective/O in ourfaction.all_objectives)
+			h.mind.objectives.Add(O)
+		show_objectives(h.mind)
 	max_spawns--
 	if(!max_spawns)
 		owner.set_mobile_spawn_deploy(FALSE)

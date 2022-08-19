@@ -103,6 +103,9 @@
 /obj/machinery/door/airlock/multi_tile/halo/blast_normal_triple/moonbase_cassius_general/hangar
 	name = "Hangar Bay"
 
+/obj/machinery/door/airlock/multi_tile/halo/blast_normal_triple/moonbase_cassius_general/garage_external
+	name = "External Garage"
+
 /obj/machinery/door/airlock/multi_tile/halo/blast_normal_triple/moonbase_cassius_general/shooting_range
 	name = "Shooting Range"
 
@@ -142,5 +145,30 @@
 /obj/item/weapon/light/tube/large_cavewall
 	name = "underground large light tube"
 	brightness_range = 10
-	brightness_power = 2
+	brightness_power = 4
 	brightness_color = "#362F29"
+
+/obj/effect/landmark/flank_marker
+	name = "Marks spots for wall-spawn when poplocking map flanks"
+
+/obj/effect/landmark/flank_marker/mid
+	name = "midlane"
+
+/obj/effect/landmark/flank_marker/left
+	name = "leftflank"
+
+/obj/effect/landmark/flank_marker/rightflank
+	name = "rightflank"
+
+//Placeholder so runtimes don't happen//
+/obj/effect/overmap/sector/exo_depot
+
+/obj/structure/bumpstairs/road/moonbase_to_oni
+	id_self = "oni_gem"
+	id_target = "gem_oni"
+	faction_restrict = "UNSC"
+
+/obj/structure/bumpstairs/road/moonbase_to_oni/Initialize()
+	. = ..()
+	if(locate(/obj/effect/overmap/sector/exo_depot))
+		return INITIALIZE_HINT_QDEL

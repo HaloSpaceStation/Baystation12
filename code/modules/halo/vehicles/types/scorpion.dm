@@ -8,28 +8,35 @@
 	anchored = 1
 
 	bound_height = 64
-	bound_width = 96
-
+	bound_width = 64
+	pixel_x = -16
 	comp_prof = /datum/component_profile/scorpion
 
 	ammo_containers = newlist(/obj/item/ammo_magazine/scorp_coax,/obj/item/ammo_magazine/scorp_shell)
 
 	exposed_positions = list("passenger" = 15)
 
-	occupants = list(4,1)
+	occupants = list(4,0)
 
 	vehicle_size = ITEM_SIZE_VEHICLE
 
 	move_sound = 'code/modules/halo/sounds/scorp_move.ogg'
 
-	vehicle_view_modifier = 1.3
+	vehicle_view_modifier = 1.65
 
 	light_color = "#E1FDFF"
+
+	can_smoke = 1
+	smoke_ammo = 5
+	smoke_ammo_max = 5
+	smoke_step_dist = 1
+
+	can_overrun_cover = 1
 
 	min_speed = 13
 	max_speed = 4
 	acceleration = 4
-	drag = 7
+	drag = 5
 
 /obj/item/vehicle_component/health_manager/scorpion
 	integrity = 750
@@ -37,7 +44,7 @@
 	repair_materials = list("plasteel")
 
 /datum/component_profile/scorpion
-	pos_to_check = "gunner"
+	pos_to_check = "driver"
 	gunner_weapons = list(/obj/item/weapon/gun/vehicle_turret/switchable/scorpion_cannon)
 	vital_components = newlist(/obj/item/vehicle_component/health_manager/scorpion)
 
@@ -47,6 +54,8 @@
 
 	fire_delay = 40
 	fire_sound = 'code/modules/halo/sounds/scorp_cannon_fire.ogg'
+
+	scope_zoom_amount = 1.5
 
 	burst = 1
 
@@ -58,6 +67,7 @@
 	desc = "A slow firing but devastatinly damaging cannon."
 	burst_size = 1
 	burst_delay = 1
+	dispersion = list(0)
 	fire_delay = 40
 	fire_sound = 'code/modules/halo/sounds/scorp_cannon_fire.ogg'
 	mag_used = /obj/item/ammo_magazine/scorp_shell
@@ -65,9 +75,10 @@
 /datum/vehicle_gun/scorp_machinegun
 	name = "Scorpion Machinegun"
 	desc = "A short burst machinegun, used for anti-infantry purposes."
-	burst_size = 3
+	burst_size = 10
 	burst_delay = 1
-	fire_delay = 10
+	dispersion = list(0.55)
+	fire_delay = 8
 	fire_sound = 'code/modules/halo/sounds/scorp_machinegun_fire.ogg'
 	mag_used = /obj/item/ammo_magazine/scorp_coax
 
@@ -95,6 +106,7 @@
 	damtype = "bomb"
 	armor_penetration = 50
 	shield_damage = 240
+	steps_between_delays = 2
 
 /obj/item/projectile/bullet/scorp_cannon/on_impact(var/atom/impacted)
 	explosion(get_turf(impacted),0,1,3,5,guaranteed_damage = 50,guaranteed_damage_range = 2)

@@ -13,11 +13,6 @@
 	var/projectiletype
 	var/projectilesound
 
-	var/primed_grenade = 0 //If set to 1, we will throw a grenade next time we attack.
-	var/next_grenade_at = 0 //WE cannot prime a nade again until this time.
-	var/grenade_delay = 10 SECONDS //Delays between nade priming
-	var/list/possible_grenades = list()
-
 	var/list/attack_sfx = list()
 	var/obj/item/ammo_casing/casingtype
 	var/attack_delay = DEFAULT_ATTACK_COOLDOWN
@@ -77,6 +72,11 @@
 			qdel(using_vehicle_gun)
 		. = ..()
 
+/mob/living/simple_animal/hostile/can_move_mob(var/mob/living/swapped, swapping = 0, passive = 0)
+	. = ..()
+	if(. && faction != swapped.faction)
+		. = 0
+
 /mob/living/simple_animal/hostile/proc/hostilemob_walk_to(var/target,var/safedist,var/delay)
 	if(istype(loc,/obj/vehicles))
 		spawn(-1)
@@ -85,7 +85,7 @@
 				if(!istype(v))
 					break
 				v.relaymove(src,get_dir(src.loc,target))
-				sleep(1)
+				sleep(delay)
 	else
 		walk_to(src, target, safedist, delay)
 
@@ -175,6 +175,8 @@
 
 /mob/living/simple_animal/hostile/proc/AttackTarget()
 	stop_automated_movement = 1
+	if(stat != CONSCIOUS)
+		return 0
 	if(!target_mob || SA_attackable(target_mob))
 		LostTarget()
 		return 0
@@ -228,17 +230,6 @@
 				stance = HOSTILE_STANCE_IDLE
 		return o
 
-/mob/living/simple_animal/hostile/proc/throw_nade(var/atom/attacked)
-	var/turf/atk_trf = get_turf(attacked)
-	var/turf/spawn_turf = get_step(loc,get_dir(loc,atk_trf))
-	primed_grenade = 0
-	var/nadetype = pick(possible_grenades)
-	var/obj/item/weapon/grenade/nade = new nadetype (spawn_turf)
-	visible_message("<span class = 'danger'>[src] throws [nade]!</span>")
-	nade.activate(src)
-	nade.det_time = max(10,nade.det_time-10)
-	nade.throw_at(atk_trf, nade.throw_range, nade.throw_speed, src)
-
 /mob/living/simple_animal/hostile/RangedAttack(var/atom/attacked)
 	var/obj/vehicles/v = loc
 	if(istype(v))
@@ -275,12 +266,6 @@
 	if(using_vehicle_gun && !v.guns_disabled)
 		fire_delay_use = using_vehicle_gun.fire_delay
 	setClickCooldown(fire_delay_use)
-	if(primed_grenade)
-		throw_nade(target)
-	if(possible_grenades.len > 0 && world.time >= next_grenade_at)
-		primed_grenade = 1
-		next_grenade_at = world.time + grenade_delay
-		visible_message("<span class = 'warning'>[src] gets ready to throw a grenade!</span>")
 
 /mob/living/simple_animal/hostile/proc/LoseTarget()
 	stance = HOSTILE_STANCE_IDLE
@@ -299,7 +284,7 @@
 		view_from = v
 	var/list/L = list()
 
-	var/list/in_sight = view(dist,view_from)
+	var/list/in_sight = view(dist,view_from) | dview(see_in_dark,view_from)
 	for(var/mob/living/M in in_sight)
 		L += M
 	for(var/obj/vehicles/M in in_sight)

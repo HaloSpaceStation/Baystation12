@@ -6,6 +6,60 @@
 #define ONI_OVERRIDE 'code/modules/halo/clothing/oni_guard.dmi'
 #define ONI_ITEM_INHAND 'code/modules/halo/clothing/item_oni.dmi'
 
+////////Aroliacue\\\\\\
+
+//CO
+
+/obj/item/clothing/under/mildress/aroliacue
+	icon = MARINE_INHAND
+	icon_override = MARINE_OVERRIDE
+	item_state = "arol-uniform"
+	icon_state = "arol-uniform-obj"
+	worn_state = "arol-uniform"
+	name = "Officer's Dress"
+	desc = "An elegant, well-fitting suit for all kinds of whimsical occasions."
+
+/obj/item/clothing/head/dress/aroliacue
+	icon = MARINE_INHAND
+	icon_override = MARINE_OVERRIDE
+	item_state = "arol-hat-worn"
+	icon_state = "arol-hat-obj"
+	name = "Officer's Service Cap."
+	desc = "A round, flat, visored combination cover to distinguish an Officer's position."
+
+/obj/item/weapon/material/machete/officersword/aroliacue
+	icon_state = "arol-officersword-obj"
+	item_state = "arol-officersword"
+	name = "Officer's Sabre"
+	desc = "A simple, rigid blade, designed to emphasise finesse and dexterity in combat. Likely belongs to someone of a high office."
+
+/decl/hierarchy/outfit/aroliacue_co
+	name = "Aroliacue - CO"
+	uniform = /obj/item/clothing/under/mildress/aroliacue
+	head = /obj/item/clothing/head/dress/aroliacue
+	suit = /obj/item/clothing/suit/armor/special/odst/aroliacue
+	l_hand = /obj/item/clothing/head/helmet/odst/aroliacue
+	r_hand = /obj/item/weapon/material/machete/officersword/aroliacue
+
+
+//ODST
+
+/obj/item/clothing/head/helmet/odst/aroliacue
+	name = "Ornamental Chapeau"
+	desc = "A standard ODST Squad Leader Helmet decorated with golden engravings."
+	item_state = "arol-helmet-worn"
+	icon_state = "arol-helmet-obj"
+
+/obj/item/clothing/suit/armor/special/odst/aroliacue
+	name = "Ornamental Cuirass"
+	desc = "A Standard ODST Squad Leader chestplate decorated with golden engravings."
+	item_state = "arol-armour-worn"
+	icon_state = "arol-armour-obj"
+
+/obj/item/weapon/storage/box/large/donator/aroliacue/CO
+	startswith = list(/obj/item/clothing/under/mildress/aroliacue,/obj/item/clothing/head/dress/aroliacue,/obj/item/weapon/material/machete/officersword/aroliacue,/obj/item/clothing/head/helmet/odst/aroliacue,/obj/item/clothing/suit/armor/special/odst/aroliacue)
+	can_hold = list(/obj/item/clothing/under/mildress/aroliacue,/obj/item/clothing/head/dress/aroliacue,/obj/item/weapon/material/machete/officersword/aroliacue,/obj/item/clothing/head/helmet/odst/aroliacue,/obj/item/clothing/suit/armor/special/odst/aroliacue)
+
 ////////ashvor\\\\\\\\
 
 //Marine
@@ -488,8 +542,6 @@ decl/hierarchy/outfit/Jul
 	item_state = "karmac-marine_worn"
 	icon_state = "karmac-marine_obj"
 
-//For whatever goddamn reason I can only get jumpsuits to work with the urfc path... If you can change this to /unsc/marine_fatigues/ or whatever it is, please do and tell me what I did wrong -Stingray
-
 /obj/item/clothing/under/unsc/marine_fatigues/karmac
 	desc = "Standard issue uniform for UNSC Marine Corps."
 	name = "UNSC Marine fatigues"
@@ -880,7 +932,7 @@ decl/hierarchy/outfit/Jul
 
 /obj/item/weapon/gun/projectile/m6c_magnum_s/donator/mann
 	name = "\improper Collectors SOCOM"
-	desc = "Sporting the profile of an M6C-M, emblazoned cold-blue steel finish, decorated with a golden ODST Shocktrooper insignia on it's Gúta bone-ivory grip, alongside a threaded barrel with a custom-fitted silencer. This gun is a coveted collectors piece, sought after by ODST officers as reminder of the UNSC Bertels. Etched into the blue steel slide on the left side, is an ode to Empires of Humanity’s past, it reads; “VENI, VIDI, VICI”"
+	desc = "Sporting the profile of an M6C-M, emblazoned cold-blue steel finish, decorated with a golden ODST Shocktrooper insignia on it's GÃºta bone-ivory grip, alongside a threaded barrel with a custom-fitted silencer. This gun is a coveted collectors piece, sought after by ODST officers as reminder of the UNSC Bertels. Etched into the blue steel slide on the left side, is an ode to Empires of HumanityÂ’s past, it reads; Â“VENI, VIDI, VICIÂ”"
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "socom-collector"
 	item_state = "socom-collector"
@@ -1130,6 +1182,31 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	suit = /obj/item/clothing/suit/armor/special/spartan/pinstripe
 	head = /obj/item/clothing/head/helmet/spartan/pinstripe
 
+////////Planetary\\\\\\\\
+
+//Spartan
+
+/obj/item/clothing/head/helmet/spartan/planetary
+	icon_state = "planetary-helm-obj"
+	item_state = "planetary-helm-worn"
+
+/obj/item/clothing/suit/armor/special/spartan/planetary
+	icon_state = "planetary-obj"
+	item_state = "planetary-worn"
+
+/decl/hierarchy/outfit/planetary_spartan
+	name = "planetary - spartan"
+	head = /obj/item/clothing/head/helmet/spartan/planetary
+	suit = /obj/item/clothing/suit/armor/special/spartan/planetary
+
+/obj/item/weapon/storage/box/large/donator/planetary
+	startswith = list(/obj/item/clothing/head/helmet/spartan/planetary,
+					/obj/item/clothing/suit/armor/special/spartan/planetary
+					)
+	can_hold = list(/obj/item/clothing/head/helmet/spartan/planetary,
+					/obj/item/clothing/suit/armor/special/spartan/planetary
+					)
+
 ////////ragnarok\\\\\\\\
 
 //ODST
@@ -1367,7 +1444,26 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	name = "stingray - spartan"
 	suit = /obj/item/clothing/suit/armor/special/spartan/stingray
 	head = /obj/item/clothing/head/helmet/spartan/stingray
+////////wildwehraboo\\\\\\\
 
+//ODST
+
+/obj/item/clothing/head/helmet/odst/donator/wildwehraboo
+	item_state = "wildwehraboo-helmet-worn"
+	icon_state = "wildwehraboo-helmet-obj"
+
+/obj/item/clothing/suit/armor/special/odst/donator/wildwehraboo
+	item_state = "wildwehraboo-armour-worn"
+	icon_state = "wildwehraboo-armour-obj"
+
+/obj/item/weapon/storage/box/large/donator/wildwehraboo
+	startswith = list(/obj/item/clothing/head/helmet/odst/donator/wildwehraboo,/obj/item/clothing/suit/armor/special/odst/donator/wildwehraboo)
+	can_hold = list(/obj/item/clothing/suit/armor/special/odst/donator/wildwehraboo)
+
+/decl/hierarchy/outfit/wildwehraboo_odst
+	name = "wildwehraboo - ODST"
+	head = /obj/item/clothing/head/helmet/odst/donator/wildwehraboo
+	suit = /obj/item/clothing/suit/armor/special/odst/donator/wildwehraboo
 ////////wehraboo\\\\\\\\\
 
 //ODST
@@ -1477,7 +1573,7 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	name = "UNSC Combat Gloves"
 	icon = MARINE_INHAND
 	icon_override = MARINE_OVERRIDE
-	item_state = "UNSCMarineGloves"
+	item_state = "unsc_gloves OLD"
 	icon_state = "unsc gloves_obj"
 
 /obj/item/clothing/shoes/marine/riley
@@ -1491,7 +1587,7 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	worn_state = "UNSC Marine Fatiguesold"
 
 /obj/item/clothing/suit/storage/marine/riley
-	desc = "this is an  M52BMC a modified M52B marine armor with Blue instead of red crosses and and front chest an tac pad monitor witch displays a blinking red cross and a text with says (you fuck up i patch up) the armor also seems to be fitted with a holographic cat tail"
+	desc = "this is an  M52BMC a modified M52B marine armor with Blue instead of red crosses and and front chest an tac pad monitor witch displays a blinking red cross and a text with says (You fuck up, I patch up) the armor also seems to be fitted with a holographic cat tail"
 	name = "M52BMC"
 	item_state = "riley-armor_worn"
 	icon_state = "riley-armor_obj"
@@ -1533,12 +1629,29 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 					/obj/item/weapon/gun/projectile/m7_smg/riley
 					)
 
-/decl/hierarchy/outfit/riley_marine
-	name = "riley - marine"
-	suit = /obj/item/clothing/suit/storage/marine/riley
-	head = /obj/item/clothing/head/helmet/marine/riley
 
+/obj/item/clothing/head/helmet/hellbringer/riley
+	item_state = "riley_donor"
 
+/obj/item/clothing/suit/storage/hellbringer/riley
+	desc = "Hellbringer armour, with Holy, but twisted imagery. A set of wings adorn the armour."
+	item_state = "riley_donor_armor"
+
+/obj/item/weapon/storage/box/large/donator/riley_hellbringer
+	startswith = list(/obj/item/clothing/head/helmet/hellbringer/riley,
+					/obj/item/clothing/under/unsc/hellbringer_undersuit,
+					/obj/item/clothing/gloves/thick/unsc/hellbringer,
+					/obj/item/clothing/suit/storage/hellbringer/riley,
+					/obj/item/clothing/shoes/hellbringer,
+					/obj/item/weapon/gun/projectile/m7_smg/riley
+					)
+	can_hold = list(/obj/item/clothing/head/helmet/hellbringer/riley,
+					/obj/item/clothing/under/unsc/hellbringer_undersuit,
+					/obj/item/clothing/gloves/thick/unsc/hellbringer,
+					/obj/item/clothing/suit/storage/hellbringer/riley,
+					/obj/item/clothing/shoes/hellbringer,
+					/obj/item/weapon/gun/projectile/m7_smg/riley
+					)
 ///////////CommanderXor/////////
 
 //ONI Researcher, using guard armour.
@@ -1670,6 +1783,74 @@ obj/item/clothing/head/helmet/odst/donator/pinstripe
 	/obj/item/clothing/head/helmet/spartan/ghostdex,
 	/obj/item/clothing/suit/armor/special/spartan/ghostdex
 	)
+
+///////////Lambsie11/////////
+
+//ONI Researcher, using guard armour.
+
+/obj/item/clothing/suit/storage/oni_guard/lamb
+	name = "Refitted Shadow Armour"
+	desc = "Refitted torso plates of Silent Shadow armour, but as a result the advanced systems of it lie dormant."
+
+	icon = ONI_ITEM_INHAND
+	icon_override = ONI_OVERRIDE
+	icon_state = "armor"
+	item_state = "lamb_armour"
+
+/obj/item/clothing/shoes/oni_guard/lamb
+	name = "Refitted Shadow Boots"
+	desc = "Despite being refitted for human use, the boots still seem to follow the shape of the original wearers."
+
+	icon = ONI_ITEM_INHAND
+	icon_override = ONI_OVERRIDE
+	icon_state = "boots_ico"
+	item_state = "lamb_boots"
+
+/obj/item/clothing/head/helmet/oni_guard/lamb
+	name = "Refitted Shadow Helmet"
+	desc = "A helmet of Silent Shadow origin, the refitting process shrunk it down for human wear, but to sacrifice it's abilities."
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR|BLOCKHEADHAIR
+
+	icon = ONI_ITEM_INHAND
+	icon_override = ONI_OVERRIDE
+	item_state = "lamb_helm"
+
+/obj/item/weapon/storage/box/large/donator/lamb
+	startswith = list(\
+	/obj/item/clothing/suit/storage/oni_guard/lamb,
+	/obj/item/clothing/shoes/oni_guard/lamb,
+	/obj/item/clothing/head/helmet/oni_guard/lamb
+	)
+	can_hold = list(\
+	/obj/item/clothing/suit/storage/oni_guard/lamb,
+	/obj/item/clothing/shoes/oni_guard/lamb,
+	/obj/item/clothing/head/helmet/oni_guard/lamb
+	)
+
+///////////Other/////////
+
+//MK.VII
+
+/obj/item/clothing/head/helmet/spartan/mkvii
+	name = "MJOLNIR Powered Assault Armor Helmet Mark VII"
+	icon_state = "mkvii-helm-obj"
+	item_state = "mkvii-helm-worn"
+
+/obj/item/clothing/suit/armor/special/spartan/mkvii
+	name = "MJOLNIR Powered Assault Armor Mark VII"
+	icon_state = "mkvii-obj"
+	item_state = "mkvii-worn"
+
+/obj/item/weapon/storage/box/large/donator/mkvii
+	startswith = list(\
+	/obj/item/clothing/head/helmet/spartan/mkvii,
+	/obj/item/clothing/suit/armor/special/spartan/mkvii
+	)
+	can_hold = list(\
+	/obj/item/clothing/head/helmet/spartan/mkvii,
+	/obj/item/clothing/suit/armor/special/spartan/mkvii
+	)
+
 
 #undef ODST_OVERRIDE
 #undef ITEM_INHAND

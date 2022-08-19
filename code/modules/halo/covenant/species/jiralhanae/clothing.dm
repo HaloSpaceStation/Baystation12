@@ -21,17 +21,44 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 	matter = list("cloth" = 1)
+	rolled_sleeves = 0
 
-/obj/item/clothing/under/covenant/jiralhanae/red
+/obj/item/clothing/under/covenant/jiralhanae/rolled
+	name = "Jiralhanae short Bodysuit"
+	desc = "A Jiralhanae short body suit. Looks itchy and covered in hair."
+	worn_state = "bodysuit_r"
+	rolled_sleeves = -1
+
+/obj/item/clothing/under/covenant/jiralhanae/straps
+	name = "Jiralhanae straps"
+	desc = "Some straps specifically made of Jiralhanae bodies. Looks itchy and covered in hair."
+	icon = JIRALHANAE_ICON_PATH_OBJ
+	icon_state = "straps"
+	sprite_sheets = list("Jiralhanae" = JIRALHANAE_ICON_PATH_MOB)
+	species_restricted = list("Jiralhanae")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	matter = list("cloth" = 1)
+
+/obj/item/clothing/under/covenant/jiralhanae/red/
+	name = "Jiralhanae Red Bodysuit"
+	desc = "A Jiralhanae body suit. Looks itchy and covered in hair."
 	icon_state = "bodysuit_red"
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 
+obj/item/clothing/under/covenant/jiralhanae/red/rolled
+	worn_state = "bodysuit_red_r"
+	rolled_sleeves = -1
+
 /obj/item/clothing/under/covenant/jiralhanae/blue
+	name = "Jiralhanae Blue Bodysuit"
+	desc = "A Jiralhanae body suit. Looks itchy and covered in hair."
 	icon_state = "bodysuit_blue"
 	armor = list(melee = 3, bullet = 3, laser = 3, energy = 3, bomb = 3, bio = 0, rad = 0)
 
-
-
+obj/item/clothing/under/covenant/jiralhanae/blue/rolled
+	worn_state = "bodysuit_blue_r"
+	rolled_sleeves = 1
 
 
 
@@ -64,12 +91,14 @@
 	icon_state = "helm_chieftain_red"
 	armor = list(melee = 40, bullet = 30, laser = 10,energy = 10, bomb = 10, bio = 0, rad = 0)
 	armor_thickness = 25
+	armor_thickness_max = 25
 
 /obj/item/clothing/head/helmet/jiralhanae/chieftain_ram
 	name = "Ram Chieftain Helm"
 	icon_state = "helm_chieftain_blue"
 	armor = list(melee = 40, bullet = 30, laser = 10,energy = 10, bomb = 10, bio = 0, rad = 0)
 	armor_thickness = 25
+	armor_thickness_max = 25
 
 /obj/item/clothing/head/helmet/jiralhanae/covenant
 	icon_state = "helm_covenant"
@@ -77,6 +106,7 @@
 	armor = list(melee = 55, bullet = 35, laser = 25,energy = 25, bomb = 20, bio = 25, rad = 25)
 	integrated_hud = /obj/item/clothing/glasses/hud/tactical/covenant
 	armor_thickness = 22
+	armor_thickness_max = 22
 
 /obj/item/clothing/head/helmet/jiralhanae/covenant/minor
 	name = "Jiralhanae Helm (Minor)"
@@ -88,6 +118,7 @@
 	icon = JIRALHANAE_ICON_PATH_OBJ
 	icon_state = "majorhelm"
 	armor_thickness = 24
+	armor_thickness_max = 24
 
 /obj/item/clothing/head/helmet/jiralhanae/covenant/captain
 	name = "Jiralhanae Helm (Captain)"
@@ -95,6 +126,14 @@
 	icon = JIRALHANAE_ICON_PATH_OBJ
 	icon_state = "captainhelm"
 	armor_thickness = 26
+	armor_thickness_max = 26
+
+/obj/item/clothing/head/helmet/jiralhanae/covenant/chieftain
+	name = "Jiralhanae Helm (Chieftain)"
+	desc = "This modified helmet is signficant to Jiralhanae clans. It is a mark of importance and leadership, however now somewhat diminished by the covenant hierarchy."
+	icon_state = "helm_chieftain"
+	armor_thickness = 28
+	armor_thickness_max = 28
 
 /obj/item/clothing/head/helmet/jiralhanae/covenant/EVA
 	name = "Jiralhanae Softsuit Helmet"
@@ -154,6 +193,7 @@
 	armor = list(melee = 40, bullet = 30, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS
 	armor_thickness = 25
+	armor_thickness_max = 25
 
 /obj/item/clothing/suit/armor/jiralhanae/blue
 	name = "Jiralhanae Ram Chest Armour"
@@ -173,6 +213,7 @@
 	armor = list(melee = 40, bullet = 30, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS
 	armor_thickness = 25
+	armor_thickness_max = 25
 
 /obj/item/clothing/suit/armor/jiralhanae/covenant
 	icon_state = "armour_covenant"
@@ -180,6 +221,7 @@
 	armor = list(melee = 50, bullet = 45, laser = 50, energy = 40, bomb = 35, bio = 20, rad = 20)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS
 	armor_thickness = 24
+	armor_thickness_max = 24
 
 /obj/item/clothing/suit/armor/jiralhanae/covenant/EVA
 	name = "Jiralhanae Softsuit"
@@ -206,6 +248,7 @@
 	icon = JIRALHANAE_ICON_PATH_OBJ
 	icon_state = "majorchest"
 	armor_thickness = 27
+	armor_thickness_max = 27
 
 /obj/item/clothing/suit/armor/jiralhanae/covenant/captain
 	name = "Jiralhanae Armor (Captain)"
@@ -213,6 +256,25 @@
 	icon = JIRALHANAE_ICON_PATH_OBJ
 	icon_state = "captainchest"
 	armor_thickness = 30
+	armor_thickness_max = 30
+
+/obj/item/clothing/suit/armor/special/chieftain
+	name = "Jiralhanae Armour (Chieftain)"
+	desc = "This modified armor used to be a mark of importance to Jiralhanae clans. The Covenant hierarchy has diminished it's power."
+	species_restricted = list("Jiralhanae")
+	icon = JIRALHANAE_ICON_PATH_OBJ
+	icon_state = "armour_chieftain"
+	sprite_sheets = list("Jiralhanae" = JIRALHANAE_ICON_PATH_MOB)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 50, bullet = 45, laser = 50, energy = 40, bomb = 35, bio = 20, rad = 20)
+	specials = list(/datum/armourspecials/shields/elite,/datum/armourspecials/shieldmonitor/sangheili)
+	totalshields = 210
+	armor_thickness = 30
+	matter = list("nanolaminate" = 2)
+	allowed = list(\
+		/obj/item/weapon/grenade/plasma,/obj/item/weapon/grenade/frag/spike,/obj/item/weapon/grenade/brute_shot,/obj/item/weapon/grenade/toxic_gas,\
+		/obj/item/weapon/gun/projectile/spiker,/obj/item/weapon/gun/projectile/mauler,\
+		/obj/item/weapon/gun/energy/plasmapistol, /obj/item/weapon/gun/energy/plasmarifle, /obj/item/weapon/gun/energy/plasmarifle/brute)
 
 /* SHOES */
 
@@ -227,6 +289,7 @@
 	sprite_sheets = list("Jiralhanae" = JIRALHANAE_ICON_PATH_MOB)
 	armor = list(melee = 30, bullet = 20, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
 	body_parts_covered = LEGS|FEET
+	stepsound = 'code/modules/halo/sounds/walk_sounds/brute_boots.ogg'
 	matter = list("nanolaminate" = 1)
 
 /obj/item/clothing/shoes/jiralhanae/covenant
@@ -250,6 +313,11 @@
 	name = "Jiralhanae Greaves (Captain)"
 	icon = JIRALHANAE_ICON_PATH_OBJ
 	icon_state = "captainfeet"
+
+/obj/item/clothing/shoes/jiralhanae/covenant/captain/chieftain
+	name = "Jiralhanae Greaves (Chieftain)"//We have no Chieftain sprites for these, but a rename still works.
+	icon = JIRALHANAE_ICON_PATH_OBJ
+	icon_state = "chieftainfeet"
 
 /obj/item/clothing/shoes/magboots/jiralhanaeEVA
 	name = "Jiralhanae Maggreaves"

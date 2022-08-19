@@ -6,6 +6,7 @@
 	icon_state = "binaryrifle"
 	item_state = "binaryrifle"
 	wielded_item_state = "binaryrifle"
+	w_class = ITEM_SIZE_HUGE
 	load_method = MAGAZINE
 	handle_casings = CASELESS
 	caliber = "hardlightBinaryrifle"
@@ -14,19 +15,24 @@
 	fire_sound = 'code/modules/halo/sounds/binaryrifle_fire.ogg'
 	reload_sound = 'code/modules/halo/sounds/binaryrifle_reload.ogg'
 	one_hand_penalty = -1
-	scoped_accuracy = 7
-	accuracy = -10
+	accuracy = -12
 	screen_shake = 0
-	dispersion = list(0.1)
+	dispersion = list(0)
 	fire_delay = 12
 	burst = 2
-	burst_delay = 0
-	w_class = ITEM_SIZE_HUGE
+	burst_delay = 1
+	fire_delay = 8
 
 	is_charged_weapon = 1
 	arm_time = 5
 	charge_sound = null
 	auto_eject = 1
+
+	scope_zoom_amount = 8
+	min_zoom_amount = 3
+	is_scope_variable = 1
+
+	scoped_accuracy = 7
 
 	item_icons = list(
 		slot_l_hand_str = 'code/modules/halo/weapons/icons/forerunner_sprites_inhand_l.dmi',
@@ -41,7 +47,7 @@
 	set name = "Use Scope"
 	set popup_menu = 1
 
-	toggle_scope(usr, 1.75)
+	toggle_scope(usr, scope_zoom_amount)
 
 /obj/item/weapon/gun/projectile/binary_rifle/update_icon()
 	if(ammo_magazine)

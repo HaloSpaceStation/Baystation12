@@ -12,7 +12,7 @@
 	amount_per_transfer_from_this = 5
 	unacidable = 1
 	volume = 30
-	possible_transfer_amounts = null
+	possible_transfer_amounts = "5;10"
 	flags = OPENCONTAINER
 	slot_flags = SLOT_BELT
 	var/list/starts_with = list()
@@ -62,6 +62,9 @@
 		if(M.run_armor_check(H.get_organ(user.zone_sel.selecting), "melee") >= 100)
 			user.visible_message("<span class = 'warning'>The modified [src] bounces off of [M]'s armor!</span>")
 			return
+		user.visible_message(user,"<span class='warning'>[user] tries to inject [M] with [src]...</span>")
+		if(!do_after(user, 3 SECONDS, M,,,,1,1))
+			return
 	to_chat(user, "<span class='notice'>You inject [M] with [src].</span>")
 	to_chat(M, "<span class='notice'>You feel a tiny prick!</span>")
 	user.visible_message("<span class='warning'>[user] injects [M] with [src].</span>")
@@ -81,6 +84,7 @@
 	icon_state = "autoinjector"
 	item_state = "autoinjector"
 	amount_per_transfer_from_this = 5
+	possible_transfer_amounts = null
 	volume = 5
 
 	var/band_color = COLOR_ORANGE

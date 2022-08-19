@@ -4,7 +4,7 @@
 	desc = "The AV-22 is armed with twin-linked autocannons, with the original nose mounted spartan laser omitted in the place of two rocket pods."
 	icon = 'code/modules/halo/vehicles/types/sparrowhawk.dmi'
 	icon_state = "sparrowhawk"
-	faction = "unsc"
+	faction = "UNSC"
 	anchored = 1
 
 	bound_height = 64
@@ -28,10 +28,10 @@
 
 	move_sound = 'code/modules/halo/sounds/sparrowhawk_move.ogg'
 
-	min_speed = 16.75
+	min_speed = 10.75
 	max_speed = 1.75
 	acceleration = 5
-	drag = 6
+	drag = 4
 
 /obj/item/vehicle_component/health_manager/sparrowhawk
 	integrity = 400
@@ -48,7 +48,8 @@
 	desc = "A set of twin linked, high calibre autocannons used for anti infantry and light anti-vehicle"
 
 	fire_delay = 8
-	burst = 5
+	burst = 10
+	burst_delay = 1.75
 	dispersion = list(0.15,0.3,0.45,0.6,0.73)
 	fire_sound = 'code/modules/halo/sounds/Assault_Rifle_Fire_New.wav'
 
@@ -69,6 +70,7 @@
 	desc = "A vehicle mounted, twin-linked set of autocannons, used for anti-infantry and light anti-vehicle purposes."
 	fire_delay = 8
 	burst_size = 5
+	burst_delay = 1.75
 	dispersion = list(0.15,0.3,0.45,0.6,0.73)
 	fire_sound = 'code/modules/halo/sounds/Assault_Rifle_Fire_New.wav'
 	mag_used = /obj/item/ammo_magazine/hawk_autocannon
@@ -84,7 +86,6 @@
 	projectile_type = /obj/item/projectile/bullet/a762_ap/hawk_mounted
 
 /obj/item/projectile/bullet/a762_ap/hawk_mounted
-	damage = 35
 	armor_penetration = 20
 	shield_damage = 10
 

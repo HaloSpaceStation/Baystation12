@@ -7,12 +7,24 @@ GLOBAL_LIST_EMPTY(live_flood_simplemobs)
 
 #define COMBAT_FORM_INFESTOR_SPAWN_DELAY 30SECONDS
 
+#define FLOOD_INFECTED_PLAYER_ROLE_NAME "Flood-Infected"
+
 #define TO_PLAYER_INFECTED_SOUND 'code/modules/halo/sounds/flood_infect_gravemind.ogg'
 
 #define PLAYER_TRANSFORM_SFX 'code/modules/halo/sounds/flood_join_chorus.ogg'
 
-#define ODST_FLOOD_GUN_LIST list(/obj/item/weapon/gun/projectile/m6d_magnum,/obj/item/weapon/gun/projectile/m6c_magnum_s,\
-/obj/item/weapon/gun/projectile/ma5b_ar,/obj/item/weapon/gun/projectile/m7_smg,/obj/item/weapon/gun/projectile/m7_smg/silenced)
+#define MARINE_FLOOD_GUN_LIST list(/obj/item/weapon/gun/projectile/m6d_magnum,/obj/item/weapon/gun/projectile/ma5b_ar,\
+/obj/item/weapon/gun/projectile/m7_smg,/obj/item/weapon/gun/projectile/m392_dmr)
+
+#define ODST_FLOOD_GUN_LIST list(/obj/item/weapon/gun/projectile/m6d_magnum,/obj/item/weapon/gun/projectile/ma5b_ar,\
+/obj/item/weapon/gun/projectile/m7_smg,/obj/item/weapon/gun/projectile/m392_dmr,\
+/obj/item/weapon/gun/projectile/m6c_magnum_s,/obj/item/weapon/gun/projectile/m7_smg/silenced)
+
+#define COV_MEDIUM_FLOOD_GUN_LIST list(/obj/item/weapon/gun/energy/plasmapistol,/obj/item/weapon/gun/projectile/type31needlerifle,\
+/obj/item/weapon/gun/projectile/needler)
+
+#define COV_STRONG_FLOOD_GUN_LIST list(/obj/item/weapon/gun/projectile/type31needlerifle,/obj/item/weapon/gun/energy/plasmarifle,\
+/obj/item/weapon/gun/projectile/type51carbine,)
 
 #define FLOOD_BURNDAM_MULTIPLIER 1.5
 
@@ -29,6 +41,19 @@ GLOBAL_LIST_EMPTY(live_flood_simplemobs)
 /obj/item/clothing/under/unsc/odst_jumpsuit = /mob/living/simple_animal/hostile/flood/combat_form/ODST,\
 /obj/item/clothing/under/unsc/marine_fatigues/oni_uniform = /mob/living/simple_animal/hostile/flood/combat_form/oni,\
 /obj/item/clothing/under/color/orange = /mob/living/simple_animal/hostile/flood/combat_form/prisoner)
+
+/datum/language/floodmind
+	name = LANGUAGE_FLOODMIND
+	desc = "The language of the flood's psychic hivemind"
+	speech_verb = "emits a rumbling sound"
+	ask_verb = "emits a rumbling sound"
+	exclaim_verb = "emits a rumbling sound"
+	colour = "lekgolo"
+	key = "f"
+	flags = RESTRICTED | NO_STUTTER
+	native = 1
+	syllables = list()
+	machine_understands = 0
 
 /mob/living/simple_animal/hostile/flood
 	attack_sfx = list(\
@@ -60,7 +85,7 @@ GLOBAL_LIST_EMPTY(live_flood_simplemobs)
 							'sound/flood/pain.pain2.ogg','sound/flood/pain.pain3.ogg',\
 							'sound/flood/pain.pain5.ogg','sound/flood/pain.pain6.ogg')
 	assault_target_type = /obj/effect/landmark/assault_target/flood
-	see_in_dark = 6
+	see_in_dark = 5
 
 	faction = "Flood"
 
@@ -75,6 +100,8 @@ GLOBAL_LIST_EMPTY(live_flood_simplemobs)
 	our_overmind = GLOB.flood_overmind
 	. = ..()
 	GLOB.live_flood_simplemobs.Add(src)
+	add_language(LANGUAGE_FLOODMIND)
+	sm_radio = new(src)
 	/*if(prob(50))
 		wander = 1
 		stop_automated_movement = 0*/
@@ -110,6 +137,9 @@ GLOBAL_LIST_EMPTY(live_flood_simplemobs)
 		if(!isnull(item_find))
 			mob_type_spawn = item_check[item]
 
+	if(h.mind)
+		h.mind.assigned_role = FLOOD_INFECTED_PLAYER_ROLE_NAME
+
 	var/mob/living/simple_animal/hostile/flood/combat_form/new_combat_form = new mob_type_spawn
 	new_combat_form.maxHealth *= PLAYER_FLOOD_HEALTH_MOD //Buff their health a bit.
 	new_combat_form.health *= PLAYER_FLOOD_HEALTH_MOD
@@ -121,6 +151,13 @@ GLOBAL_LIST_EMPTY(live_flood_simplemobs)
 	if(new_combat_form.ckey)
 		new_combat_form.stop_automated_movement = 1
 	for(var/obj/i in h.contents)
+		if(istype(i,/obj/item/device/radio))
+			var/obj/item/device/radio/r = i
+			for(var/channel in r.channels_dongles)
+				if(channel == "Public")
+					continue
+				new_combat_form.sm_radio.create_channel_dongle(channel)
 		h.drop_from_inventory(i)
 	qdel(h)
+	sm_radio.examine(new_combat_form)
 

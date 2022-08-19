@@ -19,20 +19,22 @@
 	var/obj/item/ammo_casing/chambered = null
 
 	//For SINGLE_CASING or SPEEDLOADER guns
-	var/max_shells = 0			//the number of casings that will fit inside
-	var/ammo_type = null		//the type of ammo that the gun comes preloaded with
-	var/list/loaded = list()	//stored ammo
-	var/starts_loaded = 1		//whether the gun starts loaded or not, can be overridden for guns crafted in-game
+	var/max_shells = 0				//the number of casings that will fit inside
+	var/ammo_type = null			//the type of ammo that the gun comes preloaded with
+	var/list/loaded = list()		//stored ammo
+	var/starts_loaded = 1			//whether the gun starts loaded or not, can be overridden for guns crafted in-game
 
 	//For MAGAZINE guns
-	var/magazine_type = null	//the type of magazine that the gun comes preloaded with
+	var/magazine_type = null    	//the type of magazine that the gun comes preloaded with
 	var/obj/item/ammo_magazine/ammo_magazine = null //stored magazine
-	var/allowed_magazines		//magazine types that may be loaded. Can be a list or single path
-	var/auto_eject = 0			//if the magazine should automatically eject itself when empty.
+	var/allowed_magazines	    	//magazine types that may be loaded. Can be a list or single path
+	var/auto_eject = 0		    	//if the magazine should automatically eject itself when empty.
 	var/auto_eject_sound = null
+	var/speed_reload_time = 0.4 SECONDS		//How long it takes to speed reload this gun. Set to -1 to disable.
+	var/tactical_reload_time = 0.5 SECONDS	//How long it takes to tactically reload this gun. Set to -1 to disable.
 
-	var/is_jammed = 0           //Whether this gun is jammed
-	var/jam_chance = 0          //Chance it jams on fire
+	var/is_jammed = 0           	//Whether this gun is jammed
+	var/jam_chance = 0          	//Chance it jams on fire
 	var/sound/reload_sound = 'sound/weapons/empty.ogg'
 	var/ammo_icon_state //Used to define a magazine icon state to render underneath the gun's icon.
 	//TODO generalize ammo icon states for guns
@@ -51,19 +53,19 @@
 	update_icon()
 
 /obj/item/weapon/gun/projectile/proc/load_from_box(var/obj/item/ammo_box/box,var/mob/user)
-	if(box.loading)
-		to_chat(user,"<span class = 'notice'>[box] is already being used to load a gun!</span>")
-		return
 	if(box.contents.len == 0 || isnull(box.contents.len))
 		to_chat(user,"<span class ='notice'>The [box.name] is empty!</span>")
 		return
 	if(!(loaded.len <= max_shells))
 		to_chat(user,"<span class = 'notice'>The [name] is full!</span>")
 		return
+	if(box.loading)
+		to_chat(user,"<span class = 'notice'>[box] is already being used to load a gun!</span>")
+		return
 	to_chat(user,"<span class ='notice'>You start loading the [name] from the [box.name]</span>")
 	box.loading = 1
 	for(var/ammo in box.contents)
-		if(do_after(user,box.load_time SECONDS,box, same_direction = 1))
+		if(do_after(user,box.load_time,box, 1, 1, INCAPACITATION_DEFAULT, 0, 0, 0))
 			load_ammo(ammo,user)
 			continue
 		break
@@ -104,7 +106,6 @@
 /obj/item/weapon/gun/projectile/proc/process_chambered()
 	if (!chambered) return
 	if(handle_casings == EJECT_CASINGS)
-		atom_despawner.mark_for_despawn(chambered)
 		var/obj/item/ammo_casing/to_eject = chambered
 		spawn()
 			to_eject.eject(get_turf(src), angle2dir(dir2angle(loc.dir)+ejection_angle))
@@ -117,7 +118,6 @@
 		qdel(chambered)
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
-
 
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
@@ -144,14 +144,40 @@
 				if((ispath(allowed_magazines) && !istype(A, allowed_magazines)) || (islist(allowed_magazines) && !is_type_in_list(A, allowed_magazines)))
 					to_chat(user, "<span class='warning'>\The [A] won't fit into [src].</span>")
 					return
+				var/reloadmessage = "insert"
 				if(ammo_magazine)
-					to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>")//already a magazine here
-
-					return
-				user.remove_from_mob(AM)
-				AM.loc = src
+					if(user.a_intent == I_HELP || user.a_intent == I_DISARM)
+						to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>")//already a magazine here
+						return
+					else
+						if(user.a_intent == I_GRAB) //Tactical reloading
+							if(tactical_reload_time == -1)
+								to_chat(user, "<span class='warning'>You can't tactically reload this gun!</span>")
+								return
+							if(!do_after(user, tactical_reload_time, src,same_loc = 0))
+								return
+							user.remove_from_mob(AM)
+							AM.loc = src
+							ammo_magazine.update_icon()
+							user.put_in_hands(ammo_magazine)
+							reloadmessage = "tactically reload"
+						else //Speed reloading
+							if(!speed_reload_time == -1)
+								to_chat(user, "<span class='warning'>You can't speed reload with this gun!</span>")
+								return
+							if(!do_after(user, speed_reload_time, src,same_loc = 0))
+								return
+							user.remove_from_mob(AM)
+							AM.loc = src.loc
+							ammo_magazine.update_icon()
+							ammo_magazine.dropInto(user.loc)
+							reloadmessage = "speed reload"
+				if(reloadmessage == "insert") //this is done to make speed reloading drop the mag on the floor like it should
+					user.remove_from_mob(AM)
+					AM.loc = src.loc
 				ammo_magazine = AM
-				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
+				user.visible_message("<span class ='warning'>\The [user] [reloadmessage]s[reloadmessage == "insert" ? " \the [AM] into" : ""] \the [src].</span>",
+				"<span class='notice'>You [reloadmessage][reloadmessage == "insert" ? " \the [AM] into" : ""] \the [src].</span>")
 				playsound(src.loc, reload_sound, 50, 1)
 			if(SPEEDLOADER)
 				if(loaded.len >= max_shells)
@@ -238,14 +264,11 @@
 	load_ammo(A, user)
 
 /obj/item/weapon/gun/projectile/attack_self(mob/user as mob)
-	if(firemodes.len > 1)
-		..()
-	else
-		if(stored_targ)
-			to_chat(user,"<span class = 'notice'>You stop your sustained burst from [src]</span>")
-			stored_targ = null
-			return
-		unload_ammo(user)
+	if(stored_targ)
+		to_chat(user,"<span class = 'notice'>You stop your sustained burst from [src]</span>")
+		stored_targ = null
+		return
+	unload_ammo(user)
 
 /obj/item/weapon/gun/projectile/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src)

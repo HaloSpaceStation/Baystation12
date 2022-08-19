@@ -23,13 +23,12 @@ Huragok Engineers. Their flight makes them hard to hit during combat and their n
 	language = LANGUAGE_SANGHEILI
 	additional_langs = list(LANGUAGE_YANMEE_HIVE)
 	radiation_mod = 0.6 //Covie weapons emit beta radiation. Resistant to 1/3 types of radiation.
-	inherent_verbs = list(/mob/living/carbon/human/proc/yanmee_flight_ability)
+	//inherent_verbs = list(/mob/living/carbon/human/proc/yanmee_flight_ability)
 	spawn_flags = SPECIES_CAN_JOIN
 	flags = NO_MINOR_CUT
 	darksight = 4
-	brute_mod = 1.2
-	burn_mod = 1.2
-	slowdown = -0.1 //Brute tier
+	brute_mod = 1.1
+	burn_mod = 1.1
 	gluttonous = GLUT_ANYTHING
 	pixel_offset_x = -1
 	default_faction = "Covenant"
@@ -40,16 +39,18 @@ Huragok Engineers. Their flight makes them hard to hit during combat and their n
 
 	item_icon_offsets = list(list(1,0),list(1,0),null,list(1,0),null,null,null,list(-1,0),null)
 
-	roll_distance = 3
+	roll_distance = 2
+	dodge_roll_delay = DODGE_ROLL_BASE_COOLDOWN - 1 SECOND
 	gibbed_anim = null
 	dusted_anim = null
+	equipment_slowdown_multiplier = 1.25 //Disincentives multiple weapon carry
 
 	pain_scream_sounds = list(\
-		'code/modules/halo/sounds/species_pain_screams/kiggyscream_1.ogg',
-		'code/modules/halo/sounds/species_pain_screams/kiggyscream_2.ogg',
-		'code/modules/halo/sounds/species_pain_screams/kiggyscream_3.ogg',
-		'code/modules/halo/sounds/species_pain_screams/kiggyscream_4.ogg',
-		'code/modules/halo/sounds/species_pain_screams/kiggyscream_5.ogg')
+		'code/modules/halo/sounds/species_pain_screams/yanmescream_1.ogg',
+		'code/modules/halo/sounds/species_pain_screams/yanmescream_2.ogg',
+		'code/modules/halo/sounds/species_pain_screams/yanmescream_3.ogg',
+		'code/modules/halo/sounds/species_pain_screams/yanmescream_4.ogg',
+		'code/modules/halo/sounds/species_pain_screams/yanmescream_5.ogg')
 
 /datum/species/yanmee/create_organs(var/mob/living/carbon/human/H)
 	. = ..()
@@ -69,7 +70,7 @@ Huragok Engineers. Their flight makes them hard to hit during combat and their n
 	return "Yanme\'e [rand(1,999)] \"[to_format_name]\""
 
 /datum/species/yanmee/handle_flight_failure(var/mob/living/carbon/human/H)
-	H.visible_message("<span class = 'warning'>[name] is unable to support their flight and falls to the ground, reflexively slowing their fall with their wings!</span>")
+	H.visible_message("<span class = 'danger'>[H.name] is unable to support their flight and falls to the ground, reflexively slowing their fall with their wings!</span>")
 	if(H.flight_item)
 		H.flight_item.deactivate(H,0)
 	else

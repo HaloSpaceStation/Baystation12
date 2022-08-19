@@ -1,16 +1,15 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 //Dependencies located in robot.dm and robot_modules.dm, they are vital for this to work//
 //////////////////////////////////////////////////////////////////////////////////////////
-
-#define HURAGOK_REGEN 1
+#define HURAGOK_REGEN 2	// 200 seconds to heal from full damage to full health
 
 /mob/living/silicon/robot/huragok
 	name = "Huragok"
 	real_name = "Huragok"
 	icon = 'code/modules/halo/covenant/species/huragok/huragok.dmi'
 	icon_state = "engineer"
-	maxHealth = 200
-	health = 200
+	maxHealth = 400
+	health = 400
 	faction = "Covenant"
 	spawn_sound = null
 	speak_statement = "chirps"
@@ -18,6 +17,10 @@
 	speak_query = "chirps"
 	laws = /datum/ai_laws/huragok
 	default_language = /datum/language/sign
+	pass_flags = PASSTABLE
+
+	var/bruteloss = 0
+	var/fireloss = 0
 
 	modules_available = list("Huragok Engineer", "Huragok Lifeworker")
 
@@ -39,14 +42,13 @@
 
 /mob/living/silicon/robot/huragok/Life()
 	. = ..()
-	if(stat)
+	if(stat == DEAD)
 		return
-	for(var/V in components)
-		var/datum/robot_component/C = components[V]
-		if(C.brute_damage > 0)
-			C.brute_damage = max(0,C.brute_damage - HURAGOK_REGEN)
-		if(C.electronics_damage > 0)
-			C.electronics_damage = max(0,C.electronics_damage - HURAGOK_REGEN)
+	/*	What in the goddamn
+	if(health < maxHealth)
+		health = min(health + HURAGOK_REGEN,maxHealth)
+	*/
+	heal_overall_damage(HURAGOK_REGEN,HURAGOK_REGEN)
 
 /mob/living/silicon/robot/huragok/New()
 	. =.. ()
@@ -56,5 +58,26 @@
 	add_language(LANGUAGE_SANGHEILI, 0)
 	default_language = all_languages[LANGUAGE_SIGN]
 	radio.create_channel_dongle(RADIO_COV)
+
+/mob/living/silicon/robot/huragok/get_move_sound()
+	. = null // Huragok hover, therefore make no sound when they move
+
+/mob/living/silicon/robot/huragok/handle_regular_status_updates()	// Override the proc, so we kill huragok at 0 hp
+	. = ..()
+	if (health <= 0)
+		visible_message("<b>\The [src]</b> explodes in a cloud of blue mist!")
+		gib()
+
+/mob/living/silicon/robot/huragok/CtrlShiftClickOn(var/atom/A)	// Special Bonk
+	face_atom(A)
+	if(Adjacent(A))
+		if (prob(2))
+			visible_message("<span class='notice'>\The [src] BONKS \the [A].</span>")
+			playsound(get_turf(src),'code/modules/halo/sounds/bonk.ogg',100,0)
+		else
+			visible_message("<span class='notice'>\The [src] bonks \the [A] harmlessly.</span>")
+			playsound(get_turf(src),'sound/effects/pop.ogg',25,1)
+		do_attack_animation(A)
+	return
 
 #undef HURAGOK_REGEN

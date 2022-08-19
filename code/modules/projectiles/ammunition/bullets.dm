@@ -199,7 +199,7 @@
 
 /obj/item/ammo_casing/shotgun/emp
 	name = "haywire slug"
-	desc = "A 12-gauge shotgun slug fitted with a single-use ion pulse generator."
+	desc = "A 12 gauge shotgun slug fitted with a single-use ion pulse generator."
 	icon_state = "empshell"
 	spent_icon = "empshell-spent"
 	projectile_type  = /obj/item/projectile/ion/small

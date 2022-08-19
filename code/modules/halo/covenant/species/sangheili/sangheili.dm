@@ -21,14 +21,14 @@ GLOBAL_LIST_INIT(last_names_sangheili, world.file2list('code/modules/halo/covena
 	default_language = LANGUAGE_SANGHEILI
 	language = LANGUAGE_SANGHEILI
 	flags = NO_MINOR_CUT
-	total_health = 250 // Stronger than humans at base health.
+	total_health = 230 // Stronger than humans at base health.
 	radiation_mod = 0.6 //Covie weapons emit beta radiation. Resistant to 1/3 types of radiation.
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_SKIN_TONE
+	appearance_flags = HAS_SKIN_TONE | HAS_EYE_COLOR
 	brute_mod = 0.9
 	burn_mod = 0.9
-	pain_mod = 0.75 //Pain has quarter an effect on them
-	slowdown = -0.3
+	pain_mod = 0.85
+	slowdown = -0.1
 	explosion_effect_mod = 0.5
 	can_force_door = 1
 	pixel_offset_x = -8
@@ -41,6 +41,20 @@ GLOBAL_LIST_INIT(last_names_sangheili, world.file2list('code/modules/halo/covena
 	gibbed_anim = null
 	dusted_anim = null
 
+	has_limbs = list(
+		BP_CHEST =  list("path" = /obj/item/organ/external/chest),
+		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head/sangheili),
+		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
+		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
+		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
+		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+		)
+
 	has_organ = list(
 	BP_HEART =    /obj/item/organ/internal/heart,
 	"second heart" =	 /obj/item/organ/internal/heart_secondary,
@@ -52,7 +66,8 @@ GLOBAL_LIST_INIT(last_names_sangheili, world.file2list('code/modules/halo/covena
 	BP_EYES =     /obj/item/organ/internal/eyes
 	)
 
-	equipment_slowdown_multiplier = 0.7
+	equipment_slowdown_multiplier = 0.9
+	dodge_roll_delay = DODGE_ROLL_BASE_COOLDOWN - 2 SECOND
 
 	pain_scream_sounds = list(\
 	'code/modules/halo/sounds/species_pain_screams/elitescream_1.ogg',
@@ -84,6 +99,10 @@ GLOBAL_LIST_INIT(last_names_sangheili, world.file2list('code/modules/halo/covena
 	eye_attack_text = "fingers"
 	eye_attack_text_victim = "digits"
 	damage = 15
+
+/obj/item/organ/external/head/sangheili
+	eye_icon = "eyes_s"
+	eye_icon_location = 'code/modules/halo/covenant/species/sangheili/r_elite.dmi'
 
 /mob/living/carbon/human/covenant/sangheili/New(var/new_loc)
 	. = ..(new_loc,"Sangheili")

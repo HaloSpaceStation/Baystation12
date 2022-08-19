@@ -14,7 +14,7 @@
 
 	ammo_containers = newlist(/obj/item/ammo_magazine/shadow_cannon)
 
-	exposed_positions = list("passenger" = 5,"driver" = 0,"gunner" = 5)
+	exposed_positions = list("passenger" = 5,"gunner" = 5)
 
 	occupants = list(4,1)
 
@@ -23,8 +23,16 @@
 
 	move_sound = 'code/modules/halo/sounds/ghost_move.ogg'
 
+	vehicle_view_modifier = 1.5
+
 	light_color = "#C1CEFF"
 
+	can_smoke = 1
+	smoke_ammo = 3
+	smoke_ammo_max = 3
+	smoke_step_dist = 0
+
+	acceleration = 2
 	min_speed = 8.25
 	max_speed = 2.75
 
@@ -53,16 +61,14 @@
 	name = "Shadow Cannon"
 	desc = "A fast firing plasma weapon capable of inflicting heavy damage."
 
-	fire_delay = 1 SECOND
+	fire_delay = 8
 	fire_sound = 'code/modules/halo/sounds/shadow_cannon_fire.ogg'
 
-	dispersion = list(0,0,0,0,0,1)
-	burst_accuracy = list(0,0,0,0,0.-1)
+	dispersion = list(0.15,0.3,0.45,0.5,0.55)
 
-	sustain_time = 6 SECONDS
-	sustain_delay = 2
+	burst = 15
+	burst_delay = 2
 
-	irradiate_non_cov = 10
 	magazine_type = /obj/item/ammo_magazine/shadow_cannon
 
 /obj/item/ammo_magazine/shadow_cannon
@@ -76,6 +82,6 @@
 	projectile_type = /obj/item/projectile/bullet/covenant/shadow_cannon
 
 /obj/item/projectile/bullet/covenant/shadow_cannon
-	damage = 40
+	damage = 30
 	icon = 'code/modules/halo/icons/Covenant_Projectiles.dmi'
 	icon_state = "Plasmarifle Shot"

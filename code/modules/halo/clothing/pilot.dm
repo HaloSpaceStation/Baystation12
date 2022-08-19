@@ -54,6 +54,8 @@
 	flags_inv = HIDEEARS
 	var/up = 0
 
+	integrated_hud = /obj/item/clothing/glasses/hud/tactical
+
 /obj/item/clothing/head/helmet/newpilot/attack_self()
 	toggle()
 
@@ -80,8 +82,6 @@
 		update_clothing_icon()
 		usr.update_action_buttons()
 
-
-	integrated_hud = /obj/item/clothing/glasses/hud/tactical
 
 #undef SHIP_MOB_OVERRIDE
 #undef SHIP_ITEM_OVERRIDE

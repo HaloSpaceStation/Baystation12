@@ -23,12 +23,20 @@
 
 	move_sound = 'code/modules/halo/sounds/scorp_move.ogg'
 
-	vehicle_view_modifier = 1.2
+	vehicle_view_modifier = 1.5
 
 	light_color = "#FEFFE1"
 
+	can_smoke = 1
+	smoke_ammo = 5 //Technically the urf tank but it's also light armored so let's use same amount as 'hog and shadow.
+	smoke_ammo_max = 5
+	smoke_step_dist = 1
+
+	can_overrun_cover = 1
+
 	min_speed = 12.5
 	max_speed = 4.5
+	acceleration = 4
 	drag = 3
 
 	var/lockdown = 0
@@ -61,7 +69,7 @@
 	if(lockdown)
 		active = 0
 		icon_state = "cobra_deployed"
-		vehicle_view_modifier = 1.5
+		vehicle_view_modifier = 1.8
 		comp_prof.gunner_weapons = list(/obj/item/weapon/gun/vehicle_turret/cobra_sniper)
 	else
 		active = 1
@@ -100,7 +108,7 @@
 	if(zoomed)
 		vehicle_view_modifier = 2.5
 	else
-		vehicle_view_modifier = 1.5
+		vehicle_view_modifier = 1.8
 
 	spawn(5)
 		for(var/mob/occupant in occupants)
@@ -153,6 +161,7 @@
 /obj/item/projectile/bullet/cobra_cannon
 	name = "railgun round"
 	damage = 40
+	shield_damage = 40
 	armor_penetration = 50
 
 /obj/item/ammo_magazine/cobra_sniper
@@ -171,7 +180,7 @@
 	damage = 150
 	damage_type = "bomb"
 	damtype = "bomb"
-	armor_penetration = 200
+	armor_penetration = 210
 	shield_damage = 240
 
 /obj/item/projectile/bullet/cobra_sniper/get_structure_damage()

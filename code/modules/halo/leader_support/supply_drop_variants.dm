@@ -65,7 +65,7 @@
 	/obj/item/ammo_magazine/br55/m634,
 	)
 
-/datum/support_option/supply_drop/cov/mass_ammo
+/datum/support_option/supply_drop/mass_ammo/cov
 	name = "Supply Drop (Covenant, Ammunition, Mass )"
 	arrival_sfx = 'code/modules/halo/sound/sprit_flyby.ogg'
 	drop_delay = 2 SECONDS
@@ -111,7 +111,8 @@
 	/obj/item/weapon/storage/firstaid/combat/unsc,
 	/obj/item/weapon/storage/firstaid/combat/unsc,
 	/obj/item/weapon/storage/pill_bottle/bicaridine,
-	/obj/item/weapon/storage/pill_bottle/dermaline
+	/obj/item/weapon/storage/pill_bottle/dermaline,
+	/obj/item/weapon/storage/pill_bottle/polypseudomorphine
 	)
 
 /datum/support_option/supply_drop/medical_drop/cov
@@ -131,7 +132,8 @@
 	/obj/item/weapon/storage/firstaid/combat/unsc/cov,
 	/obj/item/weapon/storage/firstaid/combat/unsc/cov,
 	/obj/item/weapon/storage/pill_bottle/covenant/bicaridine,
-	/obj/item/weapon/storage/pill_bottle/covenant/dermaline
+	/obj/item/weapon/storage/pill_bottle/covenant/dermaline,
+	/obj/item/weapon/storage/pill_bottle/covenant/polypseudomorphine
 	)
 
 //RECON VEHICLE DROP//

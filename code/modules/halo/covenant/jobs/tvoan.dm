@@ -25,6 +25,8 @@
 	access = list(access_covenant, access_covenant_command, access_covenant_slipspace, access_covenant_cargo)
 	faction_whitelist = "Covenant"
 	whitelisted_species = list(/datum/species/kig_yar_skirmisher)
+	pop_balance_mult = 1.5 //They're worth a bit more than a marine due to their speed.
+	open_slot_on_death = 1 //Since the speed nerf, these aren't nearly as powerful as they used to be.
 
 /datum/job/covenant/skirmcommando
 	title = "T-Vaoan Commando"
@@ -34,12 +36,14 @@
 	access = list(access_covenant, access_covenant_command, access_covenant_slipspace, access_covenant_cargo)
 	faction_whitelist = "Covenant"
 	whitelisted_species = list(/datum/species/kig_yar_skirmisher)
+	pop_balance_mult = 1.5 //They're worth a bit more than a marine due to their speed.
 
 /datum/job/covenant/skirmchampion
 	title = "T-Vaoan Champion"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 1
+	spawn_positions = 1
 	outfit_type = /decl/hierarchy/outfit/skirmisher_champion
 	access = list(access_covenant, access_covenant_command, access_covenant_slipspace, access_covenant_cargo)
 	faction_whitelist = "Covenant"
 	whitelisted_species = list(/datum/species/kig_yar_skirmisher)
+	pop_balance_mult = 2 //They have stronger shield gauntlets than murmillos and the commando's holo decoy.

@@ -3,6 +3,10 @@
 	name = "Maintenance Access"
 	req_access = list(access_unsc)
 
+/obj/machinery/door/airlock/halo/maint/odp_maint/public
+	name = "Maintenance Access"
+	req_access = list()
+
 /obj/machinery/door/airlock/halo/odp_general
 	req_access = list(access_unsc)
 
@@ -108,9 +112,6 @@
 
 /obj/machinery/door/airlock/multi_tile/halo/blast_normal_triple/odp_general/umbilical_divider
 	name = "Umbilical Divider"
-
-/obj/machinery/door/window/odst_armory
-	req_access = list(access_unsc_odst)
 
 /obj/machinery/door/window/northleft/oni_entrance
 	req_access = list(access_unsc_oni)

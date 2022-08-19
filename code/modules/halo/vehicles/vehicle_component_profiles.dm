@@ -50,7 +50,7 @@
 		comps_to_dam = vital_components
 	for(var/obj/item/vehicle_component/component in comps_to_dam)
 		var/comp_resistance = component.get_resistance_for("bomb")/100
-		component.damage_integrity((500/ex_severity) * (1- comp_resistance))
+		component.damage_integrity((650/ex_severity) * (1- comp_resistance))
 
 /datum/component_profile/proc/give_gunner_weapons(var/obj/vehicles/source_vehicle)
 	var/list/gunners = source_vehicle.get_occupants_in_position(pos_to_check)
@@ -65,6 +65,14 @@
 		source_vehicle.update_user_view(gunner,1)
 		spawn(1)
 			source_vehicle.update_user_view(gunner)
+
+/datum/component_profile/proc/remove_gunner_weapons(var/mob/living/carbon/human/h)
+	if(!istype(h))
+		return
+	for(var/guntype in gunner_weapons)
+		var/obj/item/gun = locate(guntype) in h.contents
+		if(gun)
+			h.drop_from_inventory(gun)
 
 /datum/component_profile/proc/gunner_fire_check(var/mob/user,var/obj/vehicles/source_vehicle,var/obj/gun)
 	if(!(gun.type in gunner_weapons))

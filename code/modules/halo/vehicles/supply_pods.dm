@@ -55,6 +55,7 @@
 
 /obj/vehicles/drop_pod/supply_pod/enter_as_position(var/mob/user,var/position = "passenger")
 	to_chat(user,"<span class = 'notice'>[src] does not have any seats for people.</span>")
+	return 0
 
 /obj/vehicles/drop_pod/overmap/supply_pod/post_drop_effects(var/turf/drop_turf)
 	anchored = 1

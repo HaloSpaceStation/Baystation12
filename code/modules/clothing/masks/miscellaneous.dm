@@ -120,6 +120,7 @@
 	body_parts_covered = HEAD|FACE|EYES
 	w_class = ITEM_SIZE_SMALL
 	siemens_coefficient = 0.9
+	unacidable = 0
 
 /obj/item/clothing/mask/horsehead/New()
     ..()

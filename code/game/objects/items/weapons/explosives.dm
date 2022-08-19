@@ -51,6 +51,7 @@
 	if(do_after(user, 50, target) && in_range(user, target))
 		user.drop_item()
 		src.target = target
+		dir = get_dir(user,target)
 		forceMove(null)
 
 		if (ismob(target))
@@ -63,7 +64,7 @@
 
 		target.overlays += image_overlay
 		to_chat(user, "Bomb has been planted. Timer counting down from [timer].")
-		spawn(timer*10)
+		spawn(timer SECONDS)
 			explode(get_turf(target))
 
 /obj/item/weapon/plastique/proc/explode(var/location)
@@ -88,3 +89,27 @@
 
 /obj/item/weapon/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
 	return
+
+/obj/item/weapon/plastique/breaching
+	name = "Breaching Charge"
+
+/obj/item/weapon/plastique/breaching/explode(var/location)
+	if(!target)
+		target = get_atom_on_turf(src)
+	if(!target)
+		target = src
+	//This is purposefully inverted so the alternative effect happens first, then the explosion.
+	if(target)
+		if (istype(target, /turf/simulated/wall))
+			var/turf/simulated/wall/W = target
+			W.dismantle_wall(1)
+		else if(istype(target, /mob/living))
+			target.ex_act(2) // c4 can't gib mobs anymore.
+		else
+			target.ex_act(1)
+	if(location)
+		explosion(location,5,3,4,5,1,0,1,0,0,null,dir,0,2)
+
+	if(target)
+		target.overlays -= image_overlay
+	qdel(src)

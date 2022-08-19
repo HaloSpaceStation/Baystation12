@@ -15,7 +15,7 @@
 	reload_sound = 'code/modules/halo/sounds/DMR_Reload_New.wav'
 	one_hand_penalty = -1
 	w_class = ITEM_SIZE_LARGE
-	dispersion = list(0.26)
+	dispersion = list(0)
 	hud_bullet_row_num = 10
 	accuracy = -1
 	scoped_accuracy = 2
@@ -68,11 +68,11 @@
 
 /obj/item/weapon/gun/projectile/m392_dmr/innie
 	name = "Modified M392 DMR"
-	desc = "A heavily modified M392 remade without a bullpup design and including a hardened barrel for a faster fire rate. Has both semi and burst functionality. Takes 7.62mm rounds."
+	desc = "A heavily modified M392 remade without a bullpup design and including a hardened barrel for a faster fire rate. Takes 7.62mm rounds."
 	fire_sound = 'code/modules/halo/sounds/innieDMRfirfix.ogg'
 	reload_sound = 'code/modules/halo/sounds/InnieDMRreload.ogg'
-	fire_delay = 7
-	burst_delay = 1
-	burst = 2
-	accuracy = -1
+	fire_delay = 5
+	dispersion = list(0)
+	burst = 1
+	accuracy = -2
 	scoped_accuracy = 0

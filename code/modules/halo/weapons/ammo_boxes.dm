@@ -10,7 +10,7 @@
 	var/capacity = 1
 	var/desc_ammo_name = "rounds"
 	var/list/ammo_spawnwith = list()
-	var/load_time = 0.5 //The time it takes to load one round from the box to the weapon, in seconds
+	var/load_time = 1 SECOND//The time it takes to load one round from the box to the weapon
 
 /obj/item/ammo_box/Initialize()
 	.=..()
@@ -57,39 +57,39 @@
 
 /obj/item/ammo_box/shotgun
 	name = "Shotgun Shell Box"
-	desc = "A box of shells to assist in loading pump-action shotguns"
-	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/pellet)
-	capacity = 24
+	desc = "A box of 8 gauge shells to assist in loading pump-action shotguns"
+	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/pellet/high_power)
+	capacity = 16
 
 /obj/item/ammo_box/shotgun/slug
 	name = "Shotgun Slug Box"
-	desc = "A box of slugs to assist in loading pump-action shotguns"
-	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun)
+	desc = "A box of 8 gauge slugs to assist in loading pump-action shotguns"
+	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/high_power)
 	desc_ammo_name = "slugs"
 
 /obj/item/ammo_box/shotgun/emp
 	name = "Shotgun EMP Box"
-	desc = "A box of EMP shells to assist in loading pump-action shotguns"
-	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/emp)
+	desc = "A box of 8 gauge EMP shells to assist in loading pump-action shotguns"
+	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/emp/high_power)
 	capacity = 8
 	desc_ammo_name = "emp shells"
 
 /obj/item/ammo_box/shotgun/beanbag
 	name = "Shotgun Beanbag Box"
-	desc = "A box of beanbag shells to assist in loading pump-action shotguns"
-	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/beanbag)
+	desc = "A box of 8 gauge beanbag shells to assist in loading pump-action shotguns"
+	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/beanbag/high_power)
 	desc_ammo_name = "beanbags"
 
 /obj/item/ammo_box/shotgun/flash
 	name = "Shotgun Flash Box"
-	desc = "A box of flash shells to assist in loading pump-action shotguns"
-	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/flash)
+	desc = "A box of 8 gauge flash shells to assist in loading pump-action shotguns"
+	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/flash/high_power)
 	desc_ammo_name = "flash shells"
 
 /obj/item/ammo_box/shotgun/practice
 	name = "Shotgun Practice Box"
-	desc = "A box of practice shells to assist in loading pump-action shotguns"
-	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/practice)
+	desc = "A box of 8 gauge practice shells to assist in loading pump-action shotguns"
+	ammo_spawnwith = list(/obj/item/ammo_casing/shotgun/practice/high_power)
 	desc_ammo_name = "practice shells"
 
 /obj/item/ammo_box/heavysniper

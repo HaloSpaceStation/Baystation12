@@ -5,6 +5,8 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 	fire_sound_text = "laser blast"
 
+	hud_bullet_usebar = 1
+
 	var/obj/item/weapon/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 20 //How much energy is needed to fire.
 	var/max_shots = 10 //Determines the capacity of the weapon's power cell. Specifying a cell_type overrides this value.
@@ -46,8 +48,8 @@
 /obj/item/weapon/gun/energy/process()
 	. = PROCESS_KILL
 	. = ..()
-	if(process_self_recharge())
-		return 0
+	if(self_recharge)
+		. = process_self_recharge()
 	return .
 
 /obj/item/weapon/gun/energy/proc/process_self_recharge()

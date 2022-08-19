@@ -9,7 +9,6 @@
 
 /obj/item/projectile/bullet/m118
 	damage = 30
-	shield_damage = -5 //Unspecialised kinetics are less powerful vs shields
 
 /* M118 TTR Rounds */
 
@@ -34,9 +33,16 @@
 
 /obj/item/projectile/bullet/m119
 	damage = 35
-	shield_damage = -10
+	shield_damage = -5 //keep the anti-shield at original levels
 
 /* M120 Rounds */
+
+/* Tracer visual effect */
+
+/obj/effect/projectile/dmr_trail
+	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
+	icon_state = "dmr_trail"
+	alpha = 160
 
 /obj/item/ammo_casing/m120
 	desc = "A 7.62mm HP bullet casing."
@@ -44,6 +50,9 @@
 	projectile_type = /obj/item/projectile/bullet/m120
 
 /obj/item/projectile/bullet/m120
-	damage = 40
-	armor_penetration = 20
-	shield_damage = 20
+	damage = 35
+	armor_penetration = 40
+	shield_damage = 5
+	tracer_type = /obj/effect/projectile/dmr_trail
+	tracer_delay_time = 0.5 SECONDS
+	steps_between_delays = 3

@@ -26,31 +26,43 @@ GLOBAL_LIST_INIT(first_names_jiralhanae, world.file2list('code/modules/halo/cove
 	language = LANGUAGE_SANGHEILI
 	additional_langs = list(LANGUAGE_BRUTE)
 	flags = NO_MINOR_CUT
-	appearance_flags = HAS_SKIN_TONE
-	total_health = 200 //Not quite elites, but their adrenline makes up for it
+	appearance_flags = HAS_SKIN_TONE | HAS_EYE_COLOR | NO_MARKING_COLOUR
 	radiation_mod = 0.6
 	spawn_flags = SPECIES_CAN_JOIN
-	brute_mod = 0.9
-	burn_mod = 0.9
-	pain_mod = 0.55
-	//ABOVE MODIFIERS ARE PLACEHOLDERS TO START BALANCING FROM.//
-	slowdown = -0.1 //A miniscule amount faster than most.
-	adrenal_break_threshold = 30//Originally, this was lower, however, the higher threshold allows brutes
+	brute_mod = 0.65
+	burn_mod = 0.65
+	pain_mod = 0.8
+	adrenal_break_threshold = 100//Originally, this was lower, however, the higher threshold allows brutes
 	//to sustain a longer lasting lower-level painkill rather than having their adrenaline
 	//forcefully swapped for a very short term buff
 	explosion_effect_mod = 0.5
 	can_force_door = 1
 	default_faction = "Covenant"
-	pixel_offset_x = -12
-	item_icon_offsets = list(list(14,4),list(10,4),null,list(6,2),null,null,null,list(6,2),null)
-	inhand_icon_offsets = list(list(6,0),list(-6,0),null,list(6,0),null,null,null,list(6,0),null)
-	inter_hand_dist = 15
+	pixel_offset_x = -8
+	//item_icon_offsets = list(list(9,6),list(9,6),null,list(6,6),null,null,null,list(6,6),null)
+	inhand_icon_offsets = list(list(13,1),list(3,1),null,list(7,1),null,null,null,list(10,1),null)
+	inter_hand_dist = 10
 	unarmed_types = list(/datum/unarmed_attack/brute_punch)
 	inherent_verbs = list()
 	gibbed_anim = null
 	dusted_anim = null
 
-	equipment_slowdown_multiplier = 0.7
+	has_limbs = list(
+		BP_CHEST =  list("path" = /obj/item/organ/external/chest),
+		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head/jiralhanae),
+		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
+		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
+		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
+		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+		)
+
+	equipment_slowdown_multiplier = 0.85
+	dodge_roll_delay = DODGE_ROLL_BASE_COOLDOWN - 1 SECOND
 
 	pain_scream_sounds = list(\
 	'code/modules/halo/sounds/species_pain_screams/brutescream1.ogg',
@@ -77,3 +89,7 @@ GLOBAL_LIST_INIT(first_names_jiralhanae, world.file2list('code/modules/halo/cove
     eye_attack_text = "fingers"
     eye_attack_text_victim = "digits"
     damage = 25
+
+/obj/item/organ/external/head/jiralhanae
+	eye_icon = "eyes_s"
+	eye_icon_location = 'code/modules/halo/covenant/species/jiralhanae/jiralhanae_mob.dmi'

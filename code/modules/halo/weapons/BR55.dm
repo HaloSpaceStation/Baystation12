@@ -19,7 +19,7 @@
 	burst_delay = 1.2
 	hud_bullet_row_num = 18
 	w_class = ITEM_SIZE_LARGE
-	dispersion=list(0.26, 0.26, 0.26)
+	dispersion=list(0.16, 0.16, 0.16)
 	wielded_item_state = "br55-wielded"
 	item_icons = list(
 		slot_l_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_left.dmi',
@@ -27,6 +27,7 @@
 		slot_back_str = 'code/modules/halo/weapons/icons/Back_Weapons.dmi',
 		slot_s_store_str = 'code/modules/halo/weapons/icons/Armor_Weapons.dmi',
 		)
+	crosshair_file = 'code/modules/halo/weapons/icons/dragaim_icon.dmi'
 	attachment_slots = list("barrel","underbarrel rail","upper rail","upper stock")
 	attachments_on_spawn = list(/obj/item/weapon_attachment/barrel/br55,/obj/item/weapon_attachment/br55_stock_cheekrest,/obj/item/weapon_attachment/br55_bottom,/obj/item/weapon_attachment/br55_upper,/obj/item/weapon_attachment/sight/br55_scope)
 

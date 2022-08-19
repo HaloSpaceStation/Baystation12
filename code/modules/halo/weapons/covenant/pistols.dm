@@ -7,22 +7,21 @@
 	slot_flags = SLOT_BELT|SLOT_HOLSTER|SLOT_BACK
 	fire_sound = 'code/modules/halo/sounds/haloplasmapistol.ogg'
 	charge_meter = 1
-	max_shots = 100
+	max_shots = 125
 	slowdown_general = 0
 	fire_delay = 5 //Lower damage projectile, so we fire just slightly faster.
-	dispersion = list(0.45)
+	dispersion = list(0)
 	var/overcharge = 0
 	var/overcharge_type = /obj/item/projectile/bullet/covenant/plasmapistol/overcharge
 	projectile_type = /obj/item/projectile/bullet/covenant/plasmapistol
 	screen_shake = 0
-	irradiate_non_cov = 10
 	var/overcharge_cost = 1
 	salvage_components = list(/obj/item/plasma_core)
 	matter = list("nanolaminate" = 1)
 	hud_bullet_usebar = 1
 
-	overheat_capacity = 12
-	overheat_fullclear_delay = 25
+	overheat_capacity = 10
+	overheat_fullclear_delay = 2.5 SECONDS
 	overheat_sfx = 'code/modules/halo/sounds/plaspistol_overheat.ogg'
 	alt_charge_method = 1
 
@@ -37,7 +36,7 @@
 
 /obj/item/weapon/gun/energy/plasmapistol/New()
 	. = ..()
-	overcharge_cost = charge_cost * 4
+	overcharge_cost = charge_cost * 2
 
 /obj/item/weapon/gun/energy/plasmapistol/attack_self(var/mob/user)
 	if(power_supply.charge >= overcharge_cost)
@@ -58,17 +57,19 @@
 			projectile_type = overcharge_type
 			charge_cost = overcharge_cost
 			overcharge = 1
+			fire_delay = initial(fire_delay)*2
 			overlays += "overcharge"
 			set_light(3, 1, "66FF00")
 			burst = 1
 			fire_delay = initial(fire_delay) * 3 //triples the fire delay.
-			heat_per_shot = overheat_capacity
+			heat_per_shot = overheat_capacity/2
 		else
 			if(user && !silent)
 				visible_message("<span class='notice'>[user.name]'s [src]'s lights darken</span>","<span class='notice'>You deactivate your [src]'s overcharge</span>")
 			projectile_type = initial(projectile_type)
 			overcharge = 0
 			charge_cost = initial(charge_cost)
+			fire_delay = initial(fire_delay)
 			overlays -= "overcharge"
 			set_light(0, 0, "66FF00")
 			burst = initial(burst)
@@ -132,19 +133,30 @@
 	handle_casings = CASELESS
 	caliber = "needler"
 	load_method = MAGAZINE
-	one_hand_penalty = 1
-	burst = 4
+	one_hand_penalty = 3
+	burst = 3
 	burst_delay = 1.5
-	dispersion = list(0.2, 0.4, 0.7, 1.0)
+	dispersion = list(0.2, 0.4, 0.7)
 	hud_bullet_reffile = 'code/modules/halo/icons/hud_display/hud_bullet_5x6.dmi'
 	hud_bullet_iconstate = "needle"
-	is_heavy = 1
-	irradiate_non_cov = 5
 	slowdown_general = 0
 	matter = list("nanolaminate" = 1)
+	auto_eject = 1
+	auto_eject_sound = null
 
 	item_icons = list(
 		slot_l_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_left.dmi',
 		slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',
 		slot_back_str = 'code/modules/halo/weapons/icons/Back_Weapons.dmi',
 		)
+
+	firemodes = list(\
+	list(mode_name="short bursts",  burst=3, dispersion=list(0.2, 0.4, 0.7)),
+	list(mode_name="extended bursts",  burst=6, dispersion=list(0.3, 0.3, 0.5, 0.5, 0.7, 0.7, 0.9, 0.9))
+	)
+
+/obj/item/weapon/gun/projectile/needler/update_icon()
+	if(ammo_magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]_unloaded"

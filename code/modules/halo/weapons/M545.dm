@@ -1,6 +1,4 @@
 
-
-
 /obj/item/weapon/gun/projectile/m545_lmg
 	name = "\improper M545 Light Machine Gun"
 	desc = "An antiquated light machine gun. Takes 7.62mm box type magazines"
@@ -8,20 +6,30 @@
 	icon_state = "Innie 30cal LMG - Full Closed"
 	item_state = "30cal"
 	caliber = "7.62mm"
-	slot_flags = 0	//too unwieldy to carry on your back
+	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m545/m118
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
 	//fire_sound = 'code/modules/halo/sounds/MagnumShotSoundEffect.ogg'
 	reload_sound = 'code/modules/halo/sounds/UNSC_Saw_Reload_Sound_Effect.ogg'
-	handle_casings = CASELESS
 	one_hand_penalty = -1
-	hud_bullet_reffile = 'code/modules/halo/icons/hud_display/hud_bullet_2x5.dmi'
+	dispersion = list(0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.6, 0.6, 0.6, 0.6)
 	w_class = ITEM_SIZE_HUGE
+	hud_bullet_row_num = 50
+	hud_bullet_reffile = 'code/modules/halo/icons/hud_display/hud_bullet_2x5.dmi'
+	wielded_item_state = "SAW-wielded"
 	item_icons = list(
 		slot_l_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_left.dmi',
 		slot_r_hand_str = 'code/modules/halo/weapons/icons/Weapon_Inhands_right.dmi',
 		)
+	burst_delay = 1.5
+	move_delay_malus = 1.5
+	slowdown_general = 1
+
+	firemodes = list(\
+	list(mode_name="short bursts",  burst=12,accuracy=0, dispersion=list(0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.6, 0.6, 0.6, 0.6)),
+	list(mode_name="extended bursts", burst=24, accuracy=-1,dispersion=list(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.7, 0.7, 0.7, 0.7))
+	)
 
 /obj/item/weapon/gun/projectile/m545_lmg/update_icon()
 	. = ..()

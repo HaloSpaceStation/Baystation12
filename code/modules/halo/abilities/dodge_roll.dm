@@ -31,6 +31,9 @@
 mob/living/proc/getPerRollDelay()
 	return 2
 
+/mob/living/proc/getRollCooldown()
+	return DODGE_ROLL_BASE_COOLDOWN
+
 /mob/living/silicon/getRollDist()
 	return 0
 
@@ -40,19 +43,28 @@ mob/living/proc/getPerRollDelay()
 /mob/living/carbon/human/getPerRollDelay()
 	return species.per_roll_delay
 
+/mob/living/carbon/human/getRollCooldown()
+	return species.dodge_roll_delay
+
 /mob/living/proc/rollDir(var/dir_roll)
 	if(world.time < next_roll_at)
 		to_chat(src,"<span class = 'notice'>You can't dodge roll again just yet!</span>")
 		return 0
 	var/roll_dist = getRollDist()
 	var/roll_delay = getPerRollDelay()
-	if(roll_dist <= 0 || incapacitated())
+	update_canmove()
+	if(roll_dist <= 0 || incapacitated(INCAPACITATION_DISABLED) || incapacitated(INCAPACITATION_KNOCKDOWN))
 		to_chat(src,"<span class = 'notice'>You can't dodge roll in your current state.</span>")
 		return 0
 	var/obj/vehicles/v = loc
 	if(istype(v))
 		v.exit_vehicle(src)
-	next_roll_at = world.time + ((roll_delay * roll_dist) + DODGE_ROLL_BASE_COOLDOWN)
+	var/obj/structure/closet/closet = loc
+	if(istype(closet))
+		to_chat(src,"<span class = 'notice'>You struggle to dodge roll out of the locker!</span>")
+		closet.open()
+		return 0
+	next_roll_at = world.time + ((roll_delay * roll_dist) + getRollCooldown())
 	doRoll(dir_roll,roll_dist,roll_delay)
 
 /mob/living/proc/doRoll(var/dir_roll,var/roll_dist,var/roll_delay)
@@ -62,6 +74,9 @@ mob/living/proc/getPerRollDelay()
 		tableroll = 0
 	if(tableroll)
 		pass_flags |= PASSTABLE
+	fire_stacks = max(0,fire_stacks - 0.8)
+	if(fire_stacks <= 0)
+		ExtinguishMob()
 	for(var/i = 0,i < roll_dist,i++)
 		var/turf/step_to = get_step(loc,dir_roll)
 		if(step_to.density == 1 || !step(src,dir_roll))
@@ -74,7 +89,10 @@ mob/living/proc/getPerRollDelay()
 			m = matrix()
 		else
 			m = transform
-		animate(src,transform = turn(m,359/(roll_dist)),time = 2) //We use 359 instead of 360 to ensure the flip-vertically animation doesn't happen
+		if(dir_roll == 2 || dir_roll == 8)	//Rotate in one direction when rolling north or east, the other when south or west
+			animate(src,transform = turn(m,-359/(roll_dist)),time = 2) //We use 359 instead of 360 to ensure the flip-vertically animation doesn't happen
+		else
+			animate(src,transform = turn(m,359/(roll_dist)),time = 2) //We use 359 instead of 360 to ensure the flip-vertically animation doesn't happen
 		setClickCooldown(2)
 		if(client)
 			client.move_delay = max(client.move_delay,world.time + 2)
@@ -92,4 +110,8 @@ mob/living/proc/getPerRollDelay()
 /datum/species/proc/handle_dodge_roll(var/mob/roller,var/rolldir)
 	return 0
 
-#undef DODGE_ROLL_BASE_COOLDOWN
+/obj/structure/closet/dump_contents()	// Prevent immediately dodgerolling out of a locker after it opens
+	for (var/mob/living/M in src)
+		if (istype(M))
+			M.next_roll_at = max(M.next_roll_at,world.time + M.getRollCooldown())
+	. = ..()

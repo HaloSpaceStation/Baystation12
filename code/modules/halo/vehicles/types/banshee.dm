@@ -4,7 +4,7 @@
 	desc = "The Type-26 is armed with twin linked plasma cannons for infantry elimination, with a singlular, mid-mounted fuel rod cannon for anti-vehicle or anti-group use."
 	icon = 'code/modules/halo/vehicles/types/banshee.dmi'
 	icon_state = "banshee"
-	faction = "covenant"
+	faction = "Covenant"
 	anchored = 1
 
 	bound_height = 64
@@ -30,10 +30,10 @@
 
 	move_sound = 'code/modules/halo/sounds/banshee_move.ogg'
 
-	min_speed = 16.75
+	min_speed = 10.75
 	max_speed = 1.75
 	acceleration = 5
-	drag = 6
+	drag = 4
 
 /obj/item/vehicle_component/health_manager/banshee
 	integrity = 400
@@ -50,13 +50,13 @@
 	desc = "A set of twin linked plasma cannons used for anti infantry and light anti-vehicle"
 
 	fire_delay = 8
-	burst = 5
+	burst = 10
+	burst_delay = 1.75
 	dispersion = list(0.15,0.3,0.45,0.6,0.73)
 	fire_sound = 'code/modules/halo/sounds/plasrifle3burst.ogg'
 
 	guns_switchto = newlist(/datum/vehicle_gun/banshee_plas,/datum/vehicle_gun/banshee_fuel)
 	magazine_type = /obj/item/ammo_magazine/banshee_plas
-	irradiate_non_cov = 15
 
 /datum/vehicle_gun/banshee_fuel
 	name = "Mounted Fuel Rod Cannon"
@@ -71,7 +71,8 @@
 	name = "Twin-Linked Plasma Cannons"
 	desc = "A vehicle mounted, twin-linked plasma cannon. Useful for anti-infantry and light anti-vehicle."
 	fire_delay = 8
-	burst_size = 5
+	burst_size = 10
+	burst_delay = 1.75
 	dispersion = list(0.15,0.3,0.45,0.6,0.73)
 	fire_sound = 'code/modules/halo/sounds/plasrifle3burst.ogg'
 	mag_used = /obj/item/ammo_magazine/banshee_plas
