@@ -122,6 +122,8 @@
 #define LAZYREMOVE(L, I) if(L) { L -= I; if(!L.len) { L = null; } }
 // Adds I to L, initalizing L if necessary
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
+// Insert I into L at position X, initalizing L if necessary
+#define LAZYINSERT(L, I, X) if(!L) { L = list(); } L.Insert(X, I);
 // Sets L[A] to I, initalizing L if necessary
 #define LAZYSET(L, A, I) if(!L) { L = list(); } L[A] = I;
 // Reads I from L safely - Works with both associative and traditional lists.
