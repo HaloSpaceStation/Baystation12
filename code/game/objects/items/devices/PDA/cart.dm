@@ -477,16 +477,11 @@
 
 
 
-/obj/item/weapon/cartridge/Topic(href, href_list)
-	..()
-
-	if (!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
+/obj/item/weapon/cartridge/Topic(href, href_list, state = GLOB.physical_state)
+	if((. = ..()))
 		usr.unset_machine()
 		usr << browse(null, "window=pda")
 		return
-
-
-
 
 	switch(href_list["choice"])
 		if("Medical Records")

@@ -103,7 +103,7 @@
 
 /obj/item/grab/proc/init()
 	last_target = assailant.zone_sel.selecting
-	affecting.update_canmove()
+	affecting.UpdateLyingBuckledAndVerbStatus()
 	adjust_position()
 	update_icons()
 	action_used()
@@ -138,16 +138,13 @@
 		last_upgrade = world.time
 		adjust_position()
 		update_icons()
-		if (affecting != null)	// Sanity check in case grab is upgraded AFTER victim escapes.
-			affecting.update_canmove()
+		current_grab.enter_as_up(src)
 
 /obj/item/grab/proc/downgrade()
 	var/datum/grab/downgrab = current_grab.downgrade(src)
 	if(downgrab)
 		current_grab = downgrab
 		update_icons()
-		if (affecting != null)
-			affecting.update_canmove()
 
 /obj/item/grab/proc/update_icons()
 	if(current_grab.icon)

@@ -52,7 +52,7 @@ mob/living/proc/getPerRollDelay()
 		return 0
 	var/roll_dist = getRollDist()
 	var/roll_delay = getPerRollDelay()
-	update_canmove()
+	UpdateLyingBuckledAndVerbStatus()
 	if(roll_dist <= 0 || incapacitated(INCAPACITATION_DISABLED) || incapacitated(INCAPACITATION_KNOCKDOWN))
 		to_chat(src,"<span class = 'notice'>You can't dodge roll in your current state.</span>")
 		return 0
@@ -94,8 +94,7 @@ mob/living/proc/getPerRollDelay()
 		else
 			animate(src,transform = turn(m,359/(roll_dist)),time = 2) //We use 359 instead of 360 to ensure the flip-vertically animation doesn't happen
 		setClickCooldown(2)
-		if(client)
-			client.move_delay = max(client.move_delay,world.time + 2)
+		move_delay = max(move_delay,world.time + 2)
 		sleep(2)
 	animate(src,transform = null,time = 1)
 	if(tableroll)

@@ -167,7 +167,7 @@
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
-		if((isturf(src.loc) || istype(loc,/obj/vehicles)) && !resting && !buckled && canmove)	//This is so it only moves if it's not inside a closet, gentics machine, etc.
+		if((isturf(src.loc) || istype(loc,/obj/vehicles)) && !resting) //This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Some animals don't move when pulled
@@ -187,8 +187,7 @@
 								allow_move = 1
 							dirs_pickfrom -= moving_to
 						if(move_step)
-							set_dir(moving_to)			//How about we turn them the direction they are moving, yay.
-							Move(move_step,moving_to)
+							SelfMove(pick(GLOB.cardinal))
 							turns_since_move = 0
 
 	//Speaking

@@ -214,7 +214,6 @@
 // What happens when you let go of someone by either dropping the grab
 // or by downgrading from the lowest grab state.
 /datum/grab/proc/let_go_effect(var/obj/item/grab/G)
-	G.affecting.update_canmove()
 
 // What happens each tic when process is called.
 /datum/grab/proc/process_effect(var/obj/item/grab/G)
@@ -250,6 +249,9 @@
 /datum/grab/proc/resolve_openhand_attack(var/obj/item/grab/G)
 	return 0
 
+// Used when you want an effect to happen when the grab enters this state as an upgrade
+/datum/grab/proc/enter_as_up(var/obj/item/grab/G)
+
 /datum/grab/proc/item_attack(var/obj/item/grab/G, var/obj/item)
 
 /datum/grab/proc/resolve_item_attack(var/obj/item/grab/G, var/mob/living/carbon/human/user, var/obj/item/I, var/target_zone)
@@ -282,10 +284,3 @@
 	return mob_size_difference(A.mob_size, B.mob_size)
 
 /datum/grab/proc/moved_effect(var/obj/item/grab/G)
-
-/client/proc/Process_Grab()
-	//if we are being grabbed
-	if(isliving(mob))
-		var/mob/living/L = mob
-		if(!L.canmove && L.grabbed_by.len)
-			L.resist() //shortcut for resisting grabs

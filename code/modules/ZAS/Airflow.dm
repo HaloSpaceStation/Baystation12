@@ -189,8 +189,8 @@ obj/check_airflow_movable(n)
 		if(!istype(loc, /turf))
 			return
 		step_towards(src, src.airflow_dest)
-		if(ismob(src) && src:client)
-			src:client:move_delay = world.time + vsc.airflow_mob_slowdown
+		if(ismob(src))
+			src:move_delay = world.time + vsc.airflow_mob_slowdown
 		airborne_acceleration++
 	airflow_dest = null
 	airflow_speed = 0

@@ -160,6 +160,10 @@
 	hud_list[IMPTRACK_HUD]    = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 	hud_list[SPECIALROLE_HUD] = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 
+/mob/living/silicon/robot/Initialize()
+	. = ..()
+	AddMovementHandler(/datum/movement_handler/robot/use_power, /datum/movement_handler/mob/space)
+
 /mob/living/silicon/robot/proc/recalculate_synth_capacities()
 	if(!module || !module.synths)
 		return
@@ -926,7 +930,6 @@
 	disconnect_from_ai()
 	lawupdate = 0
 	lockcharge = 0
-	canmove = 1
 	scrambledcodes = 1
 	//Disconnect it's camera so it's not so easily tracked.
 	if(src.camera)
@@ -954,7 +957,7 @@
 
 	if(lockcharge != state)
 		lockcharge = state
-		update_canmove()
+		UpdateLyingBuckledAndVerbStatus()
 		return 1
 	return 0
 
