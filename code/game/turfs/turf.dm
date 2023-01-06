@@ -56,14 +56,16 @@
 	return 1
 
 /turf/attack_hand(mob/user)
-	if(!(user.canmove) || user.restrained() || !(user.pulling))
+	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	if(!(user.pulling))
 		return 0
-	if(user.pulling.anchored || !isturf(user.pulling.loc))
+
+	if(user.restrained())
+		return 0
+	if(isnull(user.pulling) || user.pulling.anchored || !isturf(user.pulling.loc))
 		return 0
 	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
 		return 0
-
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	if(ismob(user.pulling))
 		var/mob/M = user.pulling
 		var/atom/movable/t = M.pulling

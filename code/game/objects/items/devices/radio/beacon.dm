@@ -10,19 +10,15 @@
 	return
 
 
-/obj/item/device/radio/beacon/verb/alter_signal(t as text)
+/obj/item/device/radio/beacon/verb/alter_signal(newcode as text)
 	set name = "Alter Beacon's Signal"
 	set category = "Object"
 	set src in usr
 
-	if ((usr.canmove && !( usr.restrained() )))
-		src.code = t
-	if (!( src.code ))
-		src.code = "beacon"
-	src.add_fingerprint(usr)
-	return
-
-
+	var/mob/user = usr
+	if (!user.incapacitated())
+		code = newcode
+		add_fingerprint(user)
 /obj/item/device/radio/beacon/bacon //Probably a better way of doing this, I'm lazy.
 	proc/digest_delay()
 		spawn(600)

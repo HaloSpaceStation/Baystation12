@@ -76,7 +76,7 @@
 	set name = "Turn Counterclockwise"
 
 	visible_message("\icon[src] <span class='notice'>[src] shuffles to face the left.</span>")
-	facedir(GLOB.cww_dir[dir], 1)
+	facedir(GLOB.ccw_dir[dir], 1)
 
 //see code\modules\mob\mob.dm
 /mob/living/simple_animal/mgalekgolo/set_dir(var/new_dir)

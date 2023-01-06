@@ -31,7 +31,7 @@
 	M.buckled = src
 	M.facing_dir = null
 	M.set_dir(buckle_dir ? buckle_dir : dir)
-	M.update_canmove()
+	M.UpdateLyingBuckledAndVerbStatus()
 	M.update_floating()
 	buckled_mob = M
 
@@ -43,7 +43,7 @@
 		. = buckled_mob
 		buckled_mob.buckled = null
 		buckled_mob.anchored = initial(buckled_mob.anchored)
-		buckled_mob.update_canmove()
+		buckled_mob.UpdateLyingBuckledAndVerbStatus()
 		buckled_mob.update_floating()
 		buckled_mob = null
 
