@@ -2,70 +2,83 @@
 	name = "UNSC Weapons"
 	containertype = /obj/structure/closet/crate/secure/weapon
 
-/* GRENADES */
-
-/decl/hierarchy/supply_pack/unsc_weapons/fragnade
-	name = "M9 Fragmentation grenades (2 boxes)"
-	contains = list(/obj/item/weapon/storage/box/m9_frag = 2)
-	cost = 200
-	containername = "\improper M9 grenades crate"
-
-/decl/hierarchy/supply_pack/unsc_weapons/smokenade
-	name = "Smoke grenades (6)"
-	contains = list(/obj/item/weapon/grenade/smokebomb = 6)
-	cost = 50
-	containername = "\improper Smoke grenades crate"
-
-/* LANDMINES */
-
-/decl/hierarchy/supply_pack/unsc_weapons/fragmine
-	name = "Fragmentation Land Mines (6 mines)"
-	contains = list(/obj/item/device/landmine/frag = 6)
-	cost = 800
-	containername = "\improper Frag Mine Crate"
-
-/decl/hierarchy/supply_pack/unsc_weapons/hemine
-	name = "High Explosive Land Mines (6 mines)"
-	contains = list(/obj/item/device/landmine/explosive = 6)
-	cost = 800
-	containername = "\improper HE Mine Crate"
-
-/decl/hierarchy/supply_pack/unsc_weapons/empmine
-	name = "Electromagnetic Pulse Land Mines (3 mines)"
-	contains = list(/obj/item/device/landmine/emp = 3)
-	cost = 1000
-	containername = "\improper EMP Mine Crate"
-
-/decl/hierarchy/supply_pack/unsc_weapons/incmine
-	name = "Incendiary Land Mines (3 mines)"
-	contains = list(/obj/item/device/landmine/flame = 3)
-	cost = 800
-	containername = "\improper Incendiary Mine Crate"
-
 /* MELEE */
 
-/decl/hierarchy/supply_pack/unsc_weapons/melee
-	name = "Mixed melee (6)"
+/decl/hierarchy/supply_pack/unsc_weapons/melee_knife
+	name = "Combat Knives (3)"
+	cost = 25
+	contains = list(
+		/obj/item/weapon/material/knife/combat_knife = 3)
+	containername = "\improper Combat Knife crate"
+
+/decl/hierarchy/supply_pack/unsc_weapons/melee_machete
+	name = "Machetes (3)"
 	cost = 50
 	contains = list(
-		/obj/item/weapon/material/knife/combat_knife = 2,
-		/obj/item/weapon/melee/baton/humbler = 2,
-		/obj/item/weapon/material/machete = 2)
-	containername = "\improper Mixed melee crate"
+		/obj/item/weapon/material/machete = 3)
+	containername = "\improper Machete crate"
 
-/* M6D */
+/decl/hierarchy/supply_pack/unsc_weapons/melee_humbler
+	name = "Humbler Stun Batons (3)"
+	cost = 50
+	contains = list(
+		/obj/item/weapon/melee/baton/humbler = 3)
+	containername = "\improper Humbler Stun Baton crate"
+
+/* FIREARMS */
 
 /decl/hierarchy/supply_pack/unsc_weapons/m6d
-	name = "M6D Magnum (3)"
+	name = "M6D Magnums (3)"
 	cost = 100
 	contains = list(
 		/obj/item/weapon/gun/projectile/m6d_magnum = 3)
 	containername = "\improper M6D Magnum crate"
 
+/decl/hierarchy/supply_pack/unsc_weapons/ma5b_ar
+	name = "MA5B Assault Rifles (3)"
+	cost = 100
+	contains = list(
+		/obj/item/weapon/gun/projectile/ma5b_ar = 3)
+	containername = "\improper MA5B Assault Rifle crate"
+
+/decl/hierarchy/supply_pack/unsc_weapons/br55
+	name = "BR55 Battle Rifles (3)"
+	cost = 100
+	contains = list(
+		/obj/item/weapon/gun/projectile/br55 = 3)
+	containername = "\improper BR55 Battle Rifle crate"
+
+/decl/hierarchy/supply_pack/unsc_weapons/m392_dmr
+	name = "M392 Designated Marksman Rifles (3)"
+	cost = 100
+	contains = list(
+		/obj/item/weapon/gun/projectile/m392_dmr = 3)
+	containername = "\improper M392 Designated Marksman Rifle crate"
+
+/decl/hierarchy/supply_pack/unsc_weapons/m90_ts
+	name = "M90 Tactical Shotguns (3)"
+	cost = 100
+	contains = list(
+		/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts = 3)
+	containername = "\improper M90 Tactical Shotgun crate"
+
+/decl/hierarchy/supply_pack/unsc_weapons/m7_smg
+	name = "M7 Submachine Guns (3)"
+	cost = 100
+	contains = list(
+		/obj/item/weapon/gun/projectile/m7_smg = 3)
+	containername = "\improper M7 Submachine Gun crate"
+
 /* TURRETS */
 
 /decl/hierarchy/supply_pack/unsc_weapons/hmg_kit
 	name = "HMG Turret Kit"
-	cost = 500
+	cost = 600
 	contains = list(/obj/item/turret_deploy_kit/HMG = 1)
 	containername = "\improper HMG Turret Kit crate"
+
+/decl/hierarchy/supply_pack/unsc_weapons/chaingun_kit
+	name = "Chaingun Turret Kit"
+	cost = 600
+	contains = list(/obj/item/turret_deploy_kit/chaingun = 1)
+	containername = "\improper Chaingun Turret Kit crate"
