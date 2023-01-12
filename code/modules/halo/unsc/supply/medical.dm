@@ -1,5 +1,6 @@
 /decl/hierarchy/supply_pack/unsc_medical
 	name = "UNSC Medical Supplies"
+	faction_lock = "UNSC"
 	containertype = /obj/structure/closet/crate/secure/weapon
 
 /* SANITIZATION */
@@ -58,8 +59,23 @@
 	cost = 250
 	containername = "\improper Stasis Bag Crate"
 
+/decl/hierarchy/supply_pack/unsc_medical/autopsykit
+	name = "Autopsy Kit"
+	contains = list(
+	/obj/item/weapon/storage/firstaid/surgery = 1,
+	/obj/item/weapon/autopsy_scanner = 1,
+	/obj/item/weapon/storage/fancy/vials = 1,
+	/obj/item/device/healthanalyzer = 1,
+	/obj/item/device/camera = 1,
+	/obj/item/weapon/storage/briefcase/crimekit = 1,
+	/obj/item/device/reagent_scanner/adv = 1,
+	)
+	cost = 150
+	containername = "\improper Autopsy Kit"
+
 /decl/hierarchy/supply_pack/unsc_medical/medfob
 	name = "Medical FOB Kit"
+	containertype = /obj/structure/largecrate //Requires a larger crate to fit
 	contains = list(
 	/obj/machinery/iv_drip = 1,
 	/obj/structure/bed/roller = 1,

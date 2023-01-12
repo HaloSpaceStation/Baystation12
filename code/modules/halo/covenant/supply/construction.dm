@@ -1,9 +1,7 @@
 
 /decl/hierarchy/supply_pack/covenant_construction
 	name = "Construction"
-	//hierarchy_type = /decl/hierarchy/supply_pack/covenant
-	//access = access_covenant
-	contraband = "Covenant"
+	faction_lock = "Covenant"
 	containertype = /obj/structure/closet/crate/covenant
 
 

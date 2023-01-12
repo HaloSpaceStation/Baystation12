@@ -1,9 +1,7 @@
 
 /decl/hierarchy/supply_pack/covenant_allies
 	name = "Allies"
-	//hierarchy_type = /decl/hierarchy/supply_pack/covenant
-	//access = access_covenant
-	contraband = "Covenant"
+	faction_lock = "Covenant"
 	containertype = null
 
 /decl/hierarchy/supply_pack/covenant_allies/grunt

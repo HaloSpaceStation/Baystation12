@@ -1,5 +1,6 @@
 /decl/hierarchy/supply_pack/unsc_specammo
 	name = "UNSC Special Ammunition"
+	faction_lock = "UNSC"
 	containertype = /obj/structure/closet/crate/secure/weapon
 
 /* M6D */

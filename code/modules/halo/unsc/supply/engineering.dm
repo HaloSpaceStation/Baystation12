@@ -1,5 +1,6 @@
 /decl/hierarchy/supply_pack/unsc_engineering
 	name = "UNSC Engineering Supplies"
+	faction_lock = "UNSC"
 	containertype = /obj/structure/closet/crate/secure/weapon
 
 /* TEN SHEETS */
@@ -39,6 +40,12 @@
 	contains = list(/obj/item/stack/material/uranium/ten = 1)
 	cost = 100
 	containername = "\improper Uranium Crate"
+
+/decl/hierarchy/supply_pack/unsc_engineering/platinum
+	name = "Platinum (10 Sheets)"
+	contains = list(/obj/item/stack/material/platinum/ten = 1)
+	cost = 50
+	containername = "\improper Platinum Crate"
 
 /* FIFTY SHEETS */
 
@@ -89,11 +96,11 @@
 /decl/hierarchy/supply_pack/unsc_engineering/steelshipment
 	name = "Steel (200 Sheets)"
 	contains = list(/obj/item/stack/material/steel/fifty = 4)
-	cost = 50
+	cost = 40
 	containername = "\improper Steel Shipment Crate"
 
 /decl/hierarchy/supply_pack/unsc_engineering/plasteelshipment
 	name = "Plasteel (200 Sheets)"
 	contains = list(/obj/item/stack/material/plasteel/fifty = 4)
-	cost = 200
+	cost = 275
 	containername = "\improper Plasteel Shipment Crate"

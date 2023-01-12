@@ -1,5 +1,6 @@
 /decl/hierarchy/supply_pack/unsc_weapons
 	name = "UNSC Weapons"
+	faction_lock = "UNSC"
 	containertype = /obj/structure/closet/crate/secure/weapon
 
 /* MELEE */

@@ -1,5 +1,6 @@
 /decl/hierarchy/supply_pack/unsc_food
 	name = "UNSC MREs"
+	faction_lock = "UNSC"
 	containertype = /obj/structure/closet/crate/secure/weapon
 
 /* MREs */

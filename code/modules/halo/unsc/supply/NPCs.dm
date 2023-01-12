@@ -1,5 +1,6 @@
 /decl/hierarchy/supply_pack/unsc_npcs
 	name = "UNSC Reinforcements"
+	faction_lock = "UNSC"
 	containertype = null
 
 /decl/hierarchy/supply_pack/unsc_npcs/o2_can

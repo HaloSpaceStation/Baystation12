@@ -13,6 +13,7 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 	var/contraband = 0
 	var/num_contained = 0 //number of items picked to be contained in a randomised crate
 	var/supply_method = /decl/supply_method
+	var/faction_lock = null
 
 /decl/hierarchy/supply_pack/New()
 	..()

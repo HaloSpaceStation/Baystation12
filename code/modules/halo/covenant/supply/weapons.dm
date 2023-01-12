@@ -1,12 +1,8 @@
 
 /decl/hierarchy/supply_pack/covenant_weapons
 	name = "Covenant Weapons"
-	//hierarchy_type = /decl/hierarchy/supply_pack/covenant
-	//access = access_covenant
-	contraband = "Covenant"
+	faction_lock = "Covenant"
 	containertype = /obj/structure/closet/crate/covenant
-
-
 
 /* WEAPON SUPPLY PACKS */
 

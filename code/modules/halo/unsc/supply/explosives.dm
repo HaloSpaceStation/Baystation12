@@ -1,5 +1,6 @@
 /decl/hierarchy/supply_pack/unsc_explosives
 	name = "UNSC Explosives"
+	faction_lock = "UNSC"
 	containertype = /obj/structure/closet/crate/secure/weapon
 
 /* GRENADES */
