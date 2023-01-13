@@ -1,4 +1,4 @@
-
+/*
 /decl/hierarchy/supply_pack/covenant_equipment
 	name = "Equipment"
 	faction_lock = "Covenant"
