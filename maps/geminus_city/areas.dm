@@ -1,3 +1,6 @@
+/obj/autolight_init/geminus
+	targ_area = /area/planets/Geminus/outdoor
+	autolight_chance = 1
 
 /area/planets/Geminus
 	name = "\improper Geminus City"
@@ -31,7 +34,6 @@
 	name = "\improper Geminus City - Central"
 	icon_state = "green"
 
-
 /area/planets/Geminus/outdoor/metro/abandoned
 	name = "\improper Abandoned Metro"
 	icon_state = "green"
@@ -39,6 +41,8 @@
 /area/planets/Geminus/indoor
 	name = "\improper Geminus Interior"
 	icon_state = "yellow"
+	luminosity = 0
+	dynamic_lighting = 1
 
 /area/planets/Geminus/indoor/arrivalbus
 	name = "\improper Arrival Bus"
