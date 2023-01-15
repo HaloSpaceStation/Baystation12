@@ -1,5 +1,5 @@
 
-#define PLANETFALL_BOUND_PADDING 15 //How many extra tiles to add to our bounds
+#define PLANETFALL_BOUND_PADDING 10 //How many extra tiles to add to our bounds
 
 /obj/effect/overmap/ship
 	var/obj/effect/overmap/old_om_type
@@ -11,6 +11,7 @@
 		qdel(old_om_type)
 
 /obj/effect/overmap/ship/proc/do_landing(var/obj/effect/overmap/planet,var/keep_umbilicals_active = 0)
+	set background = 1
 	var/obj/effect/landmark/map_data/our_last = map_z_data[map_z_data.len]
 	var/obj/effect/landmark/map_data/their_first = planet.map_z_data[1]
 	if(!our_last || !their_first)

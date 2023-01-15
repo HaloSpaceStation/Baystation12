@@ -283,17 +283,32 @@ var/list/points_of_interest = list()
 		. += restricted_waypoints[shuttle_name]
 
 /obj/effect/overmap/proc/do_superstructure_fail()
-	for(var/mob/player in GLOB.mobs_in_sectors[src])
+	var/obj/effect/overmap/sector/s = locate() in range(1,src)
+	var/obj/effect/overmap/ship/self_ship = src
+	var/crash_landing = 0
+	if(s && istype(self_ship))
+		crash_landing = 1
+	for(var/mob/living/player in GLOB.mobs_in_sectors[src])
 		if(istype(player.loc,/turf)) //There's a number of situations where being inside something may be a problem, so let's handle them all here.
-			player.dust()
-	loc = null
+			if(crash_landing)
+				player.adjustBruteLoss(40)
+				player.adjustFireLoss(40)
+				to_chat(player,"<span class = 'userdanger'>You hang on for dear life as [src] de-orbits.</span>")
+				player.Stun(6)
+				player.flash_eyes()
+			else
+				player.dust()
+	if(crash_landing)
+		self_ship.do_crash_landing(s,0)
+	else
+		loc = null
 
-	message_admins("NOTICE: Overmap object [src] has been destroyed. Please wait as it is deleted.")
-	log_admin("NOTICE: Overmap object [src] has been destroyed.")
-	sleep(10)//To allow the previous message to actually be seen
-	for(var/z_level in map_z)
-		shipmap_handler.free_map(z_level)
-	qdel(src)
+		message_admins("NOTICE: Overmap object [src] has been destroyed. Please wait as it is deleted.")
+		log_admin("NOTICE: Overmap object [src] has been destroyed.")
+		sleep(10)//To allow the previous message to actually be seen
+		for(var/z_level in map_z)
+			shipmap_handler.free_map(z_level)
+		qdel(src)
 
 /obj/effect/overmap/proc/pre_superstructure_failing()
 	for(var/mob/player in GLOB.mobs_in_sectors[src])
@@ -308,11 +323,12 @@ var/list/points_of_interest = list()
 /obj/effect/overmap/proc/superstructure_process()
 	if(superstructure_failing == -1)
 		return
-	if(superstructure_failing == 1 && (world.time % 4) == 0)
+	if(superstructure_failing == 1)
 		if(hull_segments.len == 0)
 			return
-		var/obj/explode_at = pick(hull_segments)
-		explosion(explode_at.loc,1,2,3,5, adminlog = 0)
+		var/obj/explode_center = pick(hull_segments)
+		var/turf/explode_at = pick(trange(7,explode_center))
+		explosion(explode_at,1,3,5,5, adminlog = 0)
 		return
 	var/list/superstructure_strength = get_superstructure_strength()
 	if(isnull(superstructure_strength))
