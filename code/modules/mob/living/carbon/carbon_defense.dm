@@ -22,7 +22,7 @@
 			damage *= blocked_mult(blocked)
 
 		//blunt objects should really not be embedding in things unless a huge amount of force is involved
-		var/embed_chance = weapon_sharp? damage/I.w_class : damage/(I.w_class*3)
+		var/embed_chance = weapon_sharp? (damage/I.w_class)/3 : (damage/(I.w_class*3))/3
 		var/embed_threshold = weapon_sharp? 5*I.w_class : 15*I.w_class
 
 		//Sharp objects will always embed if they do enough damage.
