@@ -14,14 +14,14 @@
 	if(.)
 		UpdateMobSector(A)
 
-/obj/effect/z_darken
+/obj/effect/z_vis
 	anchored = 1
 	density = 0
 	mouse_opacity = 0
 	icon = 'icons/turf/space.dmi'
 	icon_state = "empty"
-	plane = LIGHTING_PLANE
-	layer = ABOVE_LIGHTING_LAYER
+	plane = ABOVE_PLATING_PLANE
+	layer = ABOVE_WIRE_LAYER
 
 /turf/simulated/open/CanZPass(atom, direction)
 	UpdateMobSector(atom)
@@ -34,11 +34,11 @@
 /turf/simulated/open
 	name = "open space"
 	icon = 'icons/turf/space.dmi'
-	icon_state = ""
-	plane = SPACE_PLANE
+	icon_state = "empty"
+	plane = OBSCURITY_PLANE
 	density = 0
 	pathweight = 100000 //Seriously, don't try and path over this one numbnuts
-	var/obj/effect/darken_image
+	var/obj/effect/vis_image
 
 	var/turf/below
 
@@ -79,17 +79,10 @@
 		O.hide(0)
 
 /turf/simulated/open/update_icon()
-	if(below)
-		vis_contents.Cut()
-		vis_contents += below
-
-	if(!istype(below,/turf/space))
-		if(!darken_image)
-			darken_image = new /obj/effect/z_darken (src)
-	else
-		if(darken_image)
-			qdel(darken_image)
-			darken_image = null
+	if(!vis_image)
+		vis_image = new /obj/effect/z_vis (src)
+	if(below && vis_image)
+		vis_image.vis_contents += below
 
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)
 	if (istype(C, /obj/item/stack/rods))
@@ -134,7 +127,7 @@
 
 /turf/simulated/open/Destroy()
 	. = ..()
-	qdel(darken_image)
+	qdel(vis_image)
 
 //Most things use is_plating to test if there is a cover tile on top (like regular floors)
 /turf/simulated/open/is_plating()

@@ -7,6 +7,7 @@ GLOBAL_LIST_INIT(impact_crater_images, list(\
 
 /turf/unsimulated
 	name = "command"
+	plane = PLATING_PLANE
 	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
 	var/exploded
 
