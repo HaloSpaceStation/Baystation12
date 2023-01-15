@@ -6,7 +6,7 @@
 /* NEEDLER */
 
 /decl/hierarchy/supply_pack/covregammo/mags_needler
-	name = "Needler Magazines (2x7)"
+	name = "Type-33 Needler Magazines (2x7)"
 	contains = list(/obj/item/weapon/storage/box/needles = 2)
 	cost = 50
 	containername = "\improper Needler magazine crate"
@@ -62,7 +62,7 @@
 /* FUEL ROD CANNON */
 
 /decl/hierarchy/supply_pack/covregammo/mags_fuelrod
-	name = "Type-33 Light Anti-Armor Weapon magazines (3 magazines)"
+	name = "Type-33 Fuel Rod magazines (3 magazines)"
 	contains = list(/obj/item/ammo_magazine/fuel_rod = 3)
 	cost = 200
 	containername = "\improper Type-33 Light Anti-Armor Weapon magazine crate"
