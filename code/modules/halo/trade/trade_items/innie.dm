@@ -27,7 +27,7 @@
 	name = "KV-32 custom shotgun"
 	item_type = /obj/item/weapon/gun/projectile/shotgun/soe
 	quantity = 8
-	value = 2800
+	value = 280
 	trader_weight = 5
 	bonus_items = list(/obj/item/ammo_magazine/kv32)
 	category = "innie"
@@ -36,7 +36,7 @@
 	name = "M545 Light Machine Gun"
 	item_type = /obj/item/weapon/gun/projectile/m545_lmg
 	quantity = 1
-	value = 12000
+	value = 1200
 	category = "innie"
 	bonus_items = list(/obj/item/ammo_magazine/m545/m118)
 
@@ -44,7 +44,7 @@
 	name = "Modified M392 DMR"
 	item_type = /obj/item/weapon/gun/projectile/m392_dmr/innie
 	quantity = 4
-	value = 17000
+	value = 1700
 	trader_weight = 5
 	bonus_items = list(/obj/item/ammo_magazine/m392/m120)
 	category = "innie"
@@ -53,7 +53,7 @@
 	name = "ACL-55"
 	item_type = /obj/item/weapon/gun/projectile/ACL55
 	quantity = 1
-	value = 68000
+	value = 6800
 	bonus_items = list(/obj/item/ammo_magazine/m26)
 	trader_weight = 1
 	category = "innie"

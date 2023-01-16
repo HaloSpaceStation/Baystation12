@@ -4,7 +4,7 @@
 	item_type = /obj/item/organ/internal/appendix
 	category = "organs"
 	quantity = 1
-	value = 5000
+	value = 500
 	trader_weight = 1
 
 /datum/trade_item/lungs
@@ -12,7 +12,7 @@
 	item_type = /obj/item/organ/internal/lungs
 	category = "organs"
 	quantity = 1
-	value = 50000
+	value = 5000
 	trader_weight = 1
 
 /datum/trade_item/eyes
@@ -20,7 +20,7 @@
 	item_type = /obj/item/organ/internal/eyes
 	category = "organs"
 	quantity = 1
-	value = 70000
+	value = 7000
 	trader_weight = 1
 
 /datum/trade_item/heart
@@ -28,7 +28,7 @@
 	item_type = /obj/item/organ/internal/heart
 	category = "organs"
 	quantity = 1
-	value = 100000
+	value = 10000
 	trader_weight = 1
 
 /datum/trade_item/kidneys
@@ -36,7 +36,7 @@
 	item_type = /obj/item/organ/internal/kidneys
 	category = "organs"
 	quantity = 1
-	value = 40000
+	value = 4000
 	trader_weight = 1
 
 /datum/trade_item/liver
@@ -44,7 +44,7 @@
 	item_type = /obj/item/organ/internal/liver
 	category = "organs"
 	quantity = 1
-	value = 30000
+	value = 3000
 	trader_weight = 1
 
 /datum/trade_item/left_arm
@@ -52,7 +52,7 @@
 	item_type = /obj/item/organ/external/arm
 	category = "organs"
 	quantity = 1
-	value = 20000
+	value = 2000
 	trader_weight = 2
 
 /datum/trade_item/right_arm
@@ -60,7 +60,7 @@
 	item_type = /obj/item/organ/external/arm/right
 	category = "organs"
 	quantity = 1
-	value = 20000
+	value = 2000
 	trader_weight = 2
 
 /datum/trade_item/left_hand
@@ -68,7 +68,7 @@
 	item_type = /obj/item/organ/external/hand
 	category = "organs"
 	quantity = 1
-	value = 10000
+	value = 1000
 	trader_weight = 2
 
 /datum/trade_item/right_hand
@@ -76,7 +76,7 @@
 	item_type = /obj/item/organ/external/hand/right
 	category = "organs"
 	quantity = 1
-	value = 10000
+	value = 1000
 	trader_weight = 2
 
 /datum/trade_item/left_leg
@@ -84,7 +84,7 @@
 	item_type = /obj/item/organ/external/leg
 	category = "organs"
 	quantity = 1
-	value = 20000
+	value = 2000
 	trader_weight = 2
 
 /datum/trade_item/right_leg
@@ -92,7 +92,7 @@
 	item_type = /obj/item/organ/external/leg/right
 	category = "organs"
 	quantity = 1
-	value = 20000
+	value = 2000
 	trader_weight = 2
 
 /datum/trade_item/left_foot
@@ -100,7 +100,7 @@
 	item_type = /obj/item/organ/external/foot
 	category = "organs"
 	quantity = 1
-	value = 10000
+	value = 1000
 	trader_weight = 2
 
 /datum/trade_item/right_foot
@@ -108,5 +108,5 @@
 	item_type = /obj/item/organ/external/foot/right
 	category = "organs"
 	quantity = 1
-	value = 10000
+	value = 1000
 	trader_weight = 2

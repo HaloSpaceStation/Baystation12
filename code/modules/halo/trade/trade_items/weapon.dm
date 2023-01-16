@@ -20,7 +20,7 @@
 	name = "C-20r submachine gun"
 	item_type = /obj/item/weapon/gun/projectile/automatic/c20r
 	quantity = 10
-	value = 1500
+	value = 150
 	trader_weight = 15
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/a10mm)
@@ -29,7 +29,7 @@
 	name = "STS35 assault rifle"
 	item_type = /obj/item/weapon/gun/projectile/automatic/sts35
 	quantity = 10
-	value = 3000
+	value = 300
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/c762)
@@ -38,7 +38,7 @@
 	name = "WT550 machine pistol"
 	item_type = /obj/item/weapon/gun/projectile/automatic/wt550
 	quantity = 10
-	value = 2000
+	value = 200
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/mc9mmt)
@@ -47,7 +47,7 @@
 	name = "Z8 bullpup assault rifle"
 	item_type = /obj/item/weapon/gun/projectile/automatic/z8
 	quantity = 10
-	value = 10000
+	value = 1000
 	trader_weight = 5
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/a556)
@@ -56,7 +56,7 @@
 	name = "L6 SAW light machine gun"
 	item_type = /obj/item/weapon/gun/projectile/automatic/l6_saw
 	quantity = 10
-	value = 12000
+	value = 1200
 	trader_weight = 5
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/box/a762)
@@ -65,7 +65,7 @@
 	name = "W-T Remmington 29x shotgun"
 	item_type = /obj/item/weapon/gun/projectile/shotgun/pump
 	quantity = 10
-	value = 2000
+	value = 200
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_casing/shotgun/pellet)
@@ -74,7 +74,7 @@
 	name = "Hephaestus Industries KS-40 combat shotgun"
 	item_type = /obj/item/weapon/gun/projectile/shotgun/pump/combat
 	quantity = 10
-	value = 2000
+	value = 200
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_casing/shotgun/pellet)
@@ -83,7 +83,7 @@
 	name = "double-barreled shotgun"
 	item_type = /obj/item/weapon/gun/projectile/shotgun/doublebarrel
 	quantity = 10
-	value = 2000
+	value = 200
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_casing/shotgun/pellet)
@@ -92,7 +92,7 @@
 	name = "sawn-off shotgun"
 	item_type = /obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn
 	quantity = 10
-	value = 1000
+	value = 100
 	trader_weight = 15
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_casing/shotgun/pellet)
@@ -101,7 +101,7 @@
 	name = "Lumoco Arms HE Colt revolver"
 	item_type = /obj/item/weapon/gun/projectile/revolver
 	quantity = 10
-	value = 600
+	value = 60
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/a357)
@@ -110,7 +110,7 @@
 	name = "Smith & Wesson Model 10 revolver (Martian special)"
 	item_type = /obj/item/weapon/gun/projectile/revolver/detective
 	quantity = 10
-	value = 600
+	value = 60
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_casing/c38)
@@ -119,7 +119,7 @@
 	name = "Colt M1911 pistol"
 	item_type = /obj/item/weapon/gun/projectile/colt
 	quantity = 10
-	value = 600
+	value = 60
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/c45m)
@@ -128,7 +128,7 @@
 	name = "NT Mk58 pistol"
 	item_type = /obj/item/weapon/gun/projectile/sec
 	quantity = 10
-	value = 600
+	value = 60
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/c45m)
@@ -137,7 +137,7 @@
 	name = "silenced pistol"
 	item_type = /obj/item/weapon/gun/projectile/silenced
 	quantity = 10
-	value = 600
+	value = 60
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/c45m)
@@ -146,7 +146,7 @@
 	name = "Magnum pistol"
 	item_type = /obj/item/weapon/gun/projectile/magnum_pistol
 	quantity = 10
-	value = 600
+	value = 60
 	trader_weight = 10
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/a50)
@@ -155,7 +155,7 @@
 	name = "gyrojet pistol"
 	item_type = /obj/item/weapon/gun/projectile/gyropistol
 	quantity = 1
-	value = 10000
+	value = 1000
 	trader_weight = 5
 	category = "weapon"
 	bonus_items = list(/obj/item/ammo_magazine/a75)
@@ -173,7 +173,7 @@
 	name = "HI PTR-7 anti-materiel rifle"
 	item_type = /obj/item/weapon/gun/projectile/heavysniper
 	quantity = 10
-	value = 30000
+	value = 3000
 	trader_weight = 1
 	category = "weapon"
 	//bonus_items = list(/obj/item/ammo_casing/a145)

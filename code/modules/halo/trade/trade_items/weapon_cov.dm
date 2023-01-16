@@ -36,7 +36,7 @@
 	name = "Type-25 Directed Energy Rifle"
 	item_type = /obj/item/weapon/gun/energy/plasmarifle
 	quantity = 6
-	value = 3000
+	value = 300
 	trader_weight = 5
 	category = "weapon_cov"
 
@@ -44,7 +44,7 @@
 	name = "Type-51 Carbine"
 	item_type = /obj/item/weapon/gun/projectile/type51carbine
 	quantity = 3
-	value = 6000
+	value = 600
 	bonus_items = list(/obj/item/ammo_magazine/type51mag)
 	trader_weight = 5
 	category = "weapon_cov"
@@ -61,6 +61,6 @@
 	name = "Type-27 Special Application Sniper Rifle"
 	item_type = /obj/item/weapon/gun/energy/beam_rifle
 	quantity = 1
-	value = 20000
+	value = 6000
 	trader_weight = 1
 	category = "weapon_cov"
