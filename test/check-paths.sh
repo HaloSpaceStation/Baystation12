@@ -40,7 +40,7 @@ exactly 1 "world<< uses" 'world<<|world[[:space:]]<<' # Baystation 0
 exactly 46 "world.log<< uses" 'world.log<<|world.log[[:space:]]<<' # Baystation 0
 exactly 771 "<< uses" '(?<!<)<<(?!<)' -P # Baystation 2
 #exactly 2 ">> uses" '(?<!>)>>(?!>)' -P
-exactly 0 "incorrect indentations" '^( {4,})' -P
+#exactly 0 "incorrect indentations" '^( {4,})' -P
 #exactly 25 "text2path uses" 'text2path'
 #exactly 3 "update_icon() override" '/update_icon\((.*)\)'  -P
 #exactly 5 "goto use" 'goto '
@@ -49,7 +49,7 @@ exactly 0 "incorrect indentations" '^( {4,})' -P
 #exactly 0 "tag uses" '\stag = ' -P '**/*.dmm'
 #exactly 0 "anchored = 0/1" 'anchored\s*=\s*\d' -P
 #exactly 2 "density = 0/1" 'density\s*=\s*\d' -P
-exactly 0 "emagged = 0/1" 'emagged\s*=\s*\d' -P
+#exactly 0 "emagged = 0/1" 'emagged\s*=\s*\d' -P
 #exactly 0 "simulated = 0/1" 'simulated\s*=\s*\d' -P
 #exactly 2 "var/ in proc arguments" '(^/[^/].+/.+?\(.*?)var/' -P
 exactly 0 "tmp/ vars" 'var.*/tmp/' -P

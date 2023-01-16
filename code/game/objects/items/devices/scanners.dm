@@ -491,7 +491,7 @@ proc/get_wound_severity(var/damage_ratio, var/vital = 0)
 		user.show_message("Breathes:\t[list_gases(A.min_gas)]")
 		user.show_message("Known toxins:\t[list_gases(A.max_gas)]")
 		user.show_message("Temperature comfort zone:\t[A.minbodytemp] K to [A.maxbodytemp] K")
-	else if(istype(target, /mob/living/carbon/slime/))
+	else if(istype(target, /mob/living/carbon/slime))
 		var/mob/living/carbon/slime/T = target
 		user.show_message("<span class='notice'>Slime scan result for \the [T]:</span>")
 		user.show_message("[T.colour] [T.is_adult ? "adult" : "baby"] slime")

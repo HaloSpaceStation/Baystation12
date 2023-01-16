@@ -371,7 +371,7 @@ var/list/points_of_interest = list()
 		if(T.x == GLOB.using_map.overmap_size || T.y == GLOB.using_map.overmap_size)
 			T = T.ChangeTurf(/turf/unsimulated/map/edge)
 		else
-			T = T.ChangeTurf(/turf/unsimulated/map/)
+			T = T.ChangeTurf(/turf/unsimulated/map)
 			GLOB.overmap_tiles_uncontrolled += T
 		T.lighting_clear_overlay()
 		turfs += T
@@ -387,6 +387,3 @@ var/list/points_of_interest = list()
 	report_progress("Overmap build complete.")
 	shipmap_handler.max_z_cached = world.maxz
 	return 1
-
-
-

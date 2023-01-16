@@ -51,7 +51,7 @@
 		else
 			to_chat(user, "This radio doesn't have any encryption keys!")
 
-	if(istype(W, /obj/item/device/encryptionkey/))
+	if(istype(W, /obj/item/device/encryptionkey))
 		if(keyslot)
 			to_chat(user, "The radio can't hold another key!")
 			return

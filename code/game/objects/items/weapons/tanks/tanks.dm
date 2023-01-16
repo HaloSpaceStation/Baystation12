@@ -181,7 +181,7 @@ var/list/global/tank_gauge_cache = list()
 			to_chat(user, "<span class='notice'>You need to wire the device up first.</span>")
 
 
-	if(istype(W, /obj/item/weapon/weldingtool/))
+	if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(1,user))
 			if(!valve_welded)
@@ -659,4 +659,3 @@ var/list/global/tank_gauge_cache = list()
 /obj/item/projectile/bullet/pellet/fragment/tank/big
 	name = "large metal fragment"
 	damage = 17
-

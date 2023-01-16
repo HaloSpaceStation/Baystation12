@@ -45,7 +45,7 @@
 
 
 /obj/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
-	if(istype(I, /obj/item/weapon/card/data/))
+	if(istype(I, /obj/item/weapon/card/data))
 		var/obj/item/weapon/card/data/C = I
 		if(stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
 			src.attack_hand()
@@ -62,7 +62,7 @@
 			L = locate("landmark*[C.data]") // use old stype
 
 
-		if(istype(L, /obj/effect/landmark/) && istype(L.loc, /turf))
+		if(istype(L, /obj/effect/landmark) && istype(L.loc, /turf))
 			to_chat(usr, "You insert the coordinates into the machine.")
 			to_chat(usr, "A message flashes across the screen reminding the traveller that the nuclear authentication disk is to remain on the [station_name()] at all times.")
 			user.drop_item()

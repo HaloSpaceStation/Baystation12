@@ -12,7 +12,7 @@ var/global/datum/matchmaker/matchmaker = new()
 
 /datum/matchmaker/New()
 	..()
-	for(var/T in subtypesof(/datum/relation/))
+	for(var/T in subtypesof(/datum/relation))
 		var/datum/relation/R = T
 		relation_types[initial(R.name)] = T
 

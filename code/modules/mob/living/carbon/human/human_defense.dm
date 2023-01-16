@@ -300,7 +300,7 @@ cloak disrupt override
 
 //this proc handles being hit by a thrown atom
 /mob/living/carbon/human/hitby(atom/movable/AM as mob|obj,var/speed = THROWFORCE_SPEED_DIVISOR)
-	if(istype(AM,/obj/))
+	if(istype(AM,/obj))
 		var/obj/O = AM
 
 		if(in_throw_mode && !get_active_hand() && speed <= THROWFORCE_SPEED_DIVISOR)	//empty active hand and we're in throw mode

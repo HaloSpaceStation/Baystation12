@@ -192,7 +192,7 @@
 
 /obj/machinery/artifact/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
 
-	if (istype(W, /obj/item/weapon/reagent_containers/))
+	if (istype(W, /obj/item/weapon/reagent_containers))
 		if(W.reagents.has_reagent(/datum/reagent/hydrazine, 1) || W.reagents.has_reagent(/datum/reagent/water, 1))
 			if(my_effect.trigger == TRIGGER_WATER)
 				my_effect.ToggleActivate()

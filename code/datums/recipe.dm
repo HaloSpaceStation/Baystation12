@@ -111,7 +111,7 @@
 			O.reagents.del_reagent(/datum/reagent/nutriment)
 			O.reagents.update_total()
 			O.reagents.trans_to_obj(result_obj, O.reagents.total_volume)
-		if(istype(O,/obj/item/weapon/holder/))
+		if(istype(O,/obj/item/weapon/holder))
 			var/obj/item/weapon/holder/H = O
 			H.destroy_all()
 		qdel(O)

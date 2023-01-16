@@ -940,7 +940,7 @@
 	if(!src.occupant) return
 	if(usr!=src.occupant)
 		return
-	var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector/) in loc
+	var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector) in loc
 	if(possible_port)
 		if(connect(possible_port))
 			src.occupant_message("<span class='notice'>\The [name] connects to the port.</span>")

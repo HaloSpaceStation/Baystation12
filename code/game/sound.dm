@@ -134,7 +134,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 
 	if(!is_global)
 
-		if(istype(src,/mob/living/))
+		if(istype(src,/mob/living))
 			var/mob/living/M = src
 			if (M.hallucination)
 				S.environment = PSYCHOTIC

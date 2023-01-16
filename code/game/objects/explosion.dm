@@ -88,7 +88,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 					if(atom_movable in exploded)
 						continue
 					var/atom/movable/AM = atom_movable
-					if(istype(AM,/mob/living/))
+					if(istype(AM,/mob/living))
 						var/mob/living/m = AM
 						if(dist_num <= guaranteed_damage_range)
 							var/mob/living/carbon/human/h = m

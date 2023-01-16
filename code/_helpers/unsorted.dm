@@ -1000,7 +1000,7 @@ proc/is_hot(obj/item/W as obj)
 		. = TRUE
 	if(locate(/obj/structure/table, T))
 		. = TRUE
-	if(locate(/obj/effect/rune/, T))
+	if(locate(/obj/effect/rune, T))
 		. = TRUE
 
 	if(M == user)

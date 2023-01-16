@@ -56,7 +56,7 @@
 						gib.blood_DNA[MobDNA.unique_enzymes] = MobDNA.b_type
 					else if(istype(src, /obj/effect/gibspawner/human)) // Probably a monkey
 						gib.blood_DNA["Non-human DNA"] = "A+"
-					if(istype(location,/turf/))
+					if(istype(location,/turf))
 						var/list/directions = gibdirections[i]
 						if(directions.len)
 							gib.streak(directions)
