@@ -17,14 +17,14 @@
 	icon_state = "arol-uniform-obj"
 	worn_state = "arol-uniform"
 	name = "Officer's Dress"
-	desc = "An elegant, well-fitting suit for all kinds of whimsical occasions."
+	desc = "An elegant, well-fitting suit for military wear."
 
 /obj/item/clothing/head/dress/aroliacue
 	icon = MARINE_INHAND
 	icon_override = MARINE_OVERRIDE
 	item_state = "arol-hat-worn"
 	icon_state = "arol-hat-obj"
-	name = "Officer's Service Cap."
+	name = "Officer's Service Cap"
 	desc = "A round, flat, visored combination cover to distinguish an Officer's position."
 
 /obj/item/weapon/material/machete/officersword/aroliacue

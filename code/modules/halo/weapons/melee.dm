@@ -53,8 +53,9 @@
 	name = "CO's Sword"
 	desc = "A reinforced sword capable of safely parrying blows from energy weapons."
 	icon_state = "COsword_obj"
-	item_state = "machete"
+	item_state = "arol-officersword"
 	unacidable = 1
+	attack_verb = list("sliced", "torn", "cut", "stabbed")
 	armor_penetration = 70
 	applies_material_colour = FALSE
 	lunge_dist = 3
