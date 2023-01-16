@@ -1,23 +1,66 @@
 #!/usr/bin/env bash
-set -e
-
-WORLD_LOG_COUNT=46
-ANGLE_BRACKET_COUNT=771
+set -eo pipefail
 
 FAILED=0
-
 shopt -s globstar
-num=`grep -E '\\\\(red|blue|green|black|b|i[^mc])' **/*.dm | wc -l`; echo "$num escapes (expecting 0)"; [ $num -eq 0 ] || FAILED=1
-num=`grep -E '\WDel\(' **/*.dm | wc -l`; echo "$num Del()s (expecting exactly 6)"; [ $num -eq 6 ] || FAILED=1
-num=`grep -E '"/atom' **/*.dm | wc -l`; echo "$num /atom text paths (expecting 2 or less)"; [ $num -le 2 ] || FAILED=1
-num=`grep -E '"/area' **/*.dm | wc -l`; echo "$num /area text paths (expecting 2 or less)"; [ $num -le 2 ] || FAILED=1
-num=`grep -E '"/datum' **/*.dm | wc -l`; echo "$num /datum text paths (expecting 2 or less)"; [ $num -le 2 ] || FAILED=1
-num=`grep -E '"/mob' **/*.dm | wc -l`; echo "$num /mob text paths (expecting 2 or less)"; [ $num -le 2 ] || FAILED=1
-num=`grep -E '"/obj' **/*.dm | wc -l`; echo "$num /obj text paths (expecting 12 or less)"; [ $num -le 12 ] || FAILED=1
-num=`grep -E '"/turf' **/*.dm | wc -l`; echo "$num /turf text paths (expecting 8 or less)"; [ $num -le 8 ] || FAILED=1
-num=`grep -E 'world<<|world[[:space:]]<<' **/*.dm | wc -l`; echo "$num world<< uses (expecting exactly 1)"; [ $num -eq 1 ] || FAILED=1
-num=`grep -E 'world.log<<|world.log[[:space:]]<<' **/*.dm | wc -l`; echo "$num world.log<< uses (expecting ${WORLD_LOG_COUNT} or less)"; [ $num -le ${WORLD_LOG_COUNT} ] || FAILED=1
-num=`grep -P '(?<!<)<<(?!<)' **/*.dm | wc -l`; echo "$num << uses (expecting ${ANGLE_BRACKET_COUNT} or less)"; [ $num -le ${ANGLE_BRACKET_COUNT} ] || FAILED=1
-num=`find ./html/changelogs -not -name "*.yml" | wc -l`; echo "$num non-yml files (expecting exactly 2)"; [ $num -eq 2 ] || FAILED=1
 
-[[ $FAILED -eq 1 ]] && exit 1 || exit 0
+exactly() { # exactly N name search [mode] [filter]
+	count="$1"
+	name="$2"
+	search="$3"
+	mode="${4:--E}"
+	filter="${5:-**/*.dm}"
+
+	num="$(grep "$mode" "$search" $filter | wc -l || true)"
+
+	if [ $num -eq $count ]; then
+		echo "$num $name"
+	else
+		echo "$(tput setaf 9)$num $name (expecting exactly $count)$(tput sgr0)"
+		FAILED=1
+	fi
+}
+
+# Commented out exactly procs are pending for future PRs/Integrations
+# With the potential exception of << if you increase any of these numbers you're probably doing it wrong
+exactly 0 "escapes" '\\\\(red|blue|green|black|b|i[^mc])'
+exactly 6 "Del()s" '\WDel\(' # Baystation 4
+exactly 2 "/atom text paths" '"/atom'
+exactly 2 "/area text paths" '"/area'
+exactly 2 "/datum text paths" '"/datum'
+exactly 2 "/mob text paths" '"/mob'
+exactly 12 "/obj text paths" '"/obj' # Baystation 10
+exactly 8 "/turf text paths" '"/turf'
+#exactly 117 "to_world uses" '\sto_world\('
+#exactly 0 "globals with leading /" '^/var' -P
+#exactly 0 "globals without global sugar" '^var/(?!global/)' -P
+exactly 0 "apparent paths with trailing /" '\w/[,\)\n]' -P
+#exactly 51 "to_world_log uses" '\sto_world_log\('
+exactly 1 "world<< uses" 'world<<|world[[:space:]]<<' # Baystation 0
+exactly 46 "world.log<< uses" 'world.log<<|world.log[[:space:]]<<' # Baystation 0
+exactly 771 "<< uses" '(?<!<)<<(?!<)' -P # Baystation 2
+#exactly 2 ">> uses" '(?<!>)>>(?!>)' -P
+exactly 0 "incorrect indentations" '^( {4,})' -P
+#exactly 25 "text2path uses" 'text2path'
+#exactly 3 "update_icon() override" '/update_icon\((.*)\)'  -P
+#exactly 5 "goto use" 'goto '
+#exactly 1 "NOOP match" 'NOOP'
+#exactly 352 "spawn uses" '^\s*spawn\s*\(\s*(-\s*)?\d*\s*\)' -P
+#exactly 0 "tag uses" '\stag = ' -P '**/*.dmm'
+#exactly 0 "anchored = 0/1" 'anchored\s*=\s*\d' -P
+#exactly 2 "density = 0/1" 'density\s*=\s*\d' -P
+exactly 0 "emagged = 0/1" 'emagged\s*=\s*\d' -P
+#exactly 0 "simulated = 0/1" 'simulated\s*=\s*\d' -P
+#exactly 2 "var/ in proc arguments" '(^/[^/].+/.+?\(.*?)var/' -P
+exactly 0 "tmp/ vars" 'var.*/tmp/' -P
+# With the potential exception of << if you increase any of these numbers you're probably doing it wrong
+
+num=`find ./html/changelogs -not -name "*.yml" | wc -l`
+echo "$num non-yml files (expecting exactly 2)"
+[ $num -eq 2 ] || FAILED=1
+
+num=`find . -perm /111 -name "*.dm*" | wc -l`
+echo "$num executable *.dm? files (expecting exactly 0)"
+[ $num -eq 0 ] || FAILED=1
+
+exit $FAILED
