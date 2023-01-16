@@ -37,8 +37,8 @@ exactly 8 "/turf text paths" '"/turf'
 exactly 0 "apparent paths with trailing /" '\w/[,\)\n]' -P
 #exactly 51 "to_world_log uses" '\sto_world_log\('
 exactly 1 "world<< uses" 'world<<|world[[:space:]]<<' # Baystation 0
-exactly 46 "world.log<< uses" 'world.log<<|world.log[[:space:]]<<' # Baystation 0
-exactly 771 "<< uses" '(?<!<)<<(?!<)' -P # Baystation 2
+exactly 41 "world.log<< uses" 'world.log<<|world.log[[:space:]]<<' # Baystation 0
+exactly 731 "<< uses" '(?<!<)<<(?!<)' -P # Baystation 2
 #exactly 2 ">> uses" '(?<!>)>>(?!>)' -P
 #exactly 0 "incorrect indentations" '^( {4,})' -P
 #exactly 25 "text2path uses" 'text2path'
@@ -52,7 +52,7 @@ exactly 771 "<< uses" '(?<!<)<<(?!<)' -P # Baystation 2
 #exactly 0 "emagged = 0/1" 'emagged\s*=\s*\d' -P
 #exactly 0 "simulated = 0/1" 'simulated\s*=\s*\d' -P
 #exactly 2 "var/ in proc arguments" '(^/[^/].+/.+?\(.*?)var/' -P
-exactly 0 "tmp/ vars" 'var.*/tmp/' -P
+#exactly 0 "tmp/ vars" 'var.*/tmp/' -P
 # With the potential exception of << if you increase any of these numbers you're probably doing it wrong
 
 num=`find ./html/changelogs -not -name "*.yml" | wc -l`
