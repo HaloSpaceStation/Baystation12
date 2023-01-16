@@ -27,7 +27,7 @@
 
 /obj/item/salvage/metal
 	name = "%REPLACETEXT% scraps"
-	icon = 'code/modules/halo/structures/vehicle.dmi'
+	icon = 'code/modules/halo/structures/trash.dmi'
 
 /obj/item/salvage/metal/New()
 	. = ..()
