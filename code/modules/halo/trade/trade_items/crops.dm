@@ -1,6 +1,6 @@
 
 /datum/trade_item/grown
-	value = 50
+	value = 100
 	category = "crops"
 	item_type = /obj/item/weapon/reagent_containers/food/snacks/grown
 	trader_weight = 0
@@ -10,7 +10,7 @@
 	category = "crops"
 	item_type = /obj/item/stack/material/wood
 	quantity = 20
-	value = 30
+	value = 50
 	trader_weight = 1
 
 /datum/trade_item/cloth
@@ -18,7 +18,7 @@
 	category = "crops"
 	item_type = /obj/item/stack/material/cloth
 	quantity = 20
-	value = 30
+	value = 50
 	trader_weight = 1
 
 /*

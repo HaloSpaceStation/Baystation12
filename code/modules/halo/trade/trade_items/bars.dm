@@ -8,7 +8,7 @@
 	item_type = /obj/item/stack/material/iron
 	category = "ore"
 	quantity = 0
-	value = 30
+	value = 100
 	trader_weight = 0
 
 /datum/trade_item/sheet_silver
@@ -16,7 +16,7 @@
 	item_type = /obj/item/stack/material/silver
 	category = "ore"
 	quantity = 0
-	value = 70
+	value = 200
 	trader_weight = 0
 
 /datum/trade_item/sheet_gold
@@ -24,7 +24,7 @@
 	item_type = /obj/item/stack/material/gold
 	category = "ore"
 	quantity = 0
-	value = 70
+	value = 300
 	trader_weight = 0
 
 /datum/trade_item/sheet_diamond
@@ -32,7 +32,7 @@
 	item_type = /obj/item/stack/material/diamond
 	category = "ore"
 	quantity = 0
-	value = 125
+	value = 1000
 	trader_weight = 0
 
 /datum/trade_item/sheet_phoron
@@ -40,7 +40,7 @@
 	item_type = /obj/item/stack/material/phoron
 	category = "ore"
 	quantity = 0
-	value = 100
+	value = 500
 	trader_weight = 0
 
 /datum/trade_item/sheet_uranium
@@ -48,7 +48,7 @@
 	item_type = /obj/item/stack/material/uranium
 	category = "ore"
 	quantity = 0
-	value = 125
+	value = 500
 	trader_weight = 0
 
 /datum/trade_item/sheet_steel
@@ -56,7 +56,7 @@
 	item_type = /obj/item/stack/material/steel
 	category = "ore"
 	quantity = 150
-	value = 50
+	value = 300
 	trader_weight = 1
 
 /datum/trade_item/sheet_hydrogen
@@ -64,5 +64,5 @@
 	item_type = /obj/item/stack/material/mhydrogen
 	category = "ore"
 	quantity = 0
-	value = 75
+	value = 200
 	trader_weight = 0
