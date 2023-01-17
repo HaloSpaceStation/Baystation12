@@ -72,7 +72,8 @@
 	dongles = list(/obj/item/device/channel_dongle/human_civ,\
 		/obj/item/device/channel_dongle/squadcom,\
 		/obj/item/device/channel_dongle/marines,\
-		/obj/item/device/channel_dongle/odst)
+		/obj/item/device/channel_dongle/odst,\
+		/obj/item/device/channel_dongle/fleetcom)
 
 //unsc spartan headset
 /obj/item/device/radio/headset/unsc/spartan
@@ -100,6 +101,7 @@
 		/obj/item/device/channel_dongle/squadcom,\
 		/obj/item/device/channel_dongle/marines,\
 		/obj/item/device/channel_dongle/odst,\
+		/obj/item/device/channel_dongle/spartan,\
 		/obj/item/device/channel_dongle/fleetcom)
 
 //unsc senior officer headset
@@ -110,6 +112,7 @@
 		/obj/item/device/channel_dongle/squadcom,\
 		/obj/item/device/channel_dongle/marines,\
 		/obj/item/device/channel_dongle/odst,\
+		/obj/item/device/channel_dongle/spartan,\
 		/obj/item/device/channel_dongle/fleetcom)
 
 //unsc oni headset
@@ -118,7 +121,9 @@
 		/obj/item/device/channel_dongle/squadcom,\
 		/obj/item/device/channel_dongle/marines,\
 		/obj/item/device/channel_dongle/odst,\
-		/obj/item/device/channel_dongle/oni)
+		/obj/item/device/channel_dongle/oni,\
+		/obj/item/device/channel_dongle/spartan,\
+		/obj/item/device/channel_dongle/fleetcom)
 
 
 
@@ -127,7 +132,8 @@
 /obj/item/device/radio/headset/covenant
 	name = "Battlenet headset"
 	icon = 'code/modules/halo/comms/comms.dmi'
-	dongles = list(/obj/item/device/channel_dongle/battlenet)
+	dongles = list(/obj/item/device/channel_dongle/battlenet,\
+		/obj/item/device/channel_dongle/sequestrations)
 	matter = list("nanolaminate" = 1)
 
 /obj/item/device/radio/headset/covenant/attackby()

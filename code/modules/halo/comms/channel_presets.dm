@@ -6,14 +6,15 @@
 #define RADIO_INNIE "INNIE"
 #define RADIO_URFC "URFC"
 #define RADIO_SEC "GCPD"
-#define RADIO_SQUAD "SQUAD"
-#define RADIO_MARINE "TEAM1"
-#define RADIO_ODST "TEAM2"
-#define RADIO_ONI "TEAM3"
-#define RADIO_SPARTAN "TEAM4"
-#define RADIO_FLEET "FLEET"
+#define RADIO_SQUAD "UNSC"
+#define RADIO_MARINE "REQUISITION"
+#define RADIO_ODST "ODST"
+#define RADIO_ONI "ONI"
+#define RADIO_SPARTAN "SPARTAN"
+#define RADIO_FLEET "FLEETCOM"
 #define RADIO_SHIP "SHIP"
 #define RADIO_COV "Battlenet"
+#define RADIO_COVREQ "Sequestrations"
 #define RADIO_BOULDER "BoulderNet"
 #define RADIO_RAM "RamNet"
 
@@ -29,7 +30,8 @@ GLOBAL_LIST_INIT(random_channels, list(\
 	"DRACOCOM","RAPTORCOM","PREDCOM","REDCOM",\
 	"OPCOM","OWLCOM","RAWCOM","BLUECOM","DOPECOM",\
 	"BULLCOM","SILVERCOM","DOGCOM","SNAKECOM",\
-	"EXCOM","RAMCOM","RANCHCOM"\
+	"EXCOM","RAMCOM","RANCHCOM","BASEDCOM","CRINGECOM",\
+	"DRIPCOM"\
 	))
 
 
@@ -115,6 +117,14 @@ GLOBAL_LIST_INIT(random_channels, list(\
 	channel_name = RADIO_COV
 	chat_span_class = "sciradio"
 	hotkey = "c"
+//
+/obj/item/device/channel_dongle/sequestrations
+	channel_preset = RADIO_COVREQ
+
+/datum/channel_cipher/sequestrations
+	channel_name = RADIO_COVREQ
+	chat_span_class = "supradio"
+	hotkey = "x"
 
 /obj/item/device/channel_dongle/bouldernet
 	channel_preset = RADIO_BOULDER
