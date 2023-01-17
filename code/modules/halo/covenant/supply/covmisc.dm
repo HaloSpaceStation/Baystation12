@@ -43,6 +43,12 @@
 	cost = 50
 	containername = "\improper Glowsticks crate"
 
+/decl/hierarchy/supply_pack/covenant_equipment/nvgs
+	name = "Improved Night Vision Goggles (2)"
+	contains = list(/obj/item/clothing/glasses/tacgoggles = 2)
+	cost = 500
+	containername = "\improper NVGs Crate"
+
 /* PINPOINTERS */
 
 /decl/hierarchy/supply_pack/covenant_equipment/artifact_pinpointer

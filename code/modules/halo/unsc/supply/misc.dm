@@ -23,6 +23,12 @@
 	cost = 50
 	containername = "\improper Glowsticks Crate"
 
+/decl/hierarchy/supply_pack/unsc_misc/nvgs
+	name = "Improved Night Vision Goggles (2)"
+	contains = list(/obj/item/clothing/glasses/tacgoggles = 2)
+	cost = 500
+	containername = "\improper NVGs Crate"
+
 /* PINPOINTERS */
 
 /decl/hierarchy/supply_pack/unsc_misc/bomb_pinpointer
@@ -32,13 +38,13 @@
 	containername = "\improper Bomb Plant Pinpointer crate"
 
 /decl/hierarchy/supply_pack/unsc_misc/scanpoint_locator
-	name = "Scanpoint locator (1)"
-	contains = list(/obj/item/weapon/pinpointer/scanpoint_locator = 1)
+	name = "Signal Interception Device (1)"
+	contains = list(/obj/item/weapon/pinpointer/scanpoint_locator/unsc = 1)
 	cost = 200
-	containername = "\improper Scanpoint Locator crate"
+	containername = "\improper Scanpoint Pinpointer crate"
 
 /decl/hierarchy/supply_pack/unsc_misc/artifact_pinpointer
 	name = "Artifact Pinpointer (1)"
 	contains = list(/obj/item/weapon/pinpointer/artifact = 1)
-	cost = 800
+	cost = 10000
 	containername = "\improper Artifact Pinpointers crate"
