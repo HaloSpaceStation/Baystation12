@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(random_channels, list(\
 //
 /datum/channel_cipher/odst
 	channel_name = RADIO_ODST
-	chat_span_class = "supradio"
+	chat_span_class = "secradio"
 	hotkey = "t"
 
 /obj/item/device/channel_dongle/oni
@@ -83,7 +83,7 @@ GLOBAL_LIST_INIT(random_channels, list(\
 //
 /datum/channel_cipher/oni
 	channel_name = RADIO_ONI
-	chat_span_class = "supradio"
+	chat_span_class = "srvradio"
 	hotkey = "o"
 
 /obj/item/device/channel_dongle/spartan
@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(random_channels, list(\
 //
 /datum/channel_cipher/spartan
 	channel_name = RADIO_SPARTAN
-	chat_span_class = "supradio"
+	chat_span_class = "engradio"
 	hotkey = "z"
 
 /obj/item/device/channel_dongle/fleetcom
@@ -123,7 +123,7 @@ GLOBAL_LIST_INIT(random_channels, list(\
 
 /datum/channel_cipher/sequestrations
 	channel_name = RADIO_COVREQ
-	chat_span_class = "supradio"
+	chat_span_class = "airadio"
 	hotkey = "x"
 
 /obj/item/device/channel_dongle/bouldernet
