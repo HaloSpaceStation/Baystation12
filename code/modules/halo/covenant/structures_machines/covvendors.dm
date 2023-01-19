@@ -101,7 +101,6 @@
 		/obj/item/weapon/grenade/plasma = 15,
 		/obj/item/weapon/grenade/smokebomb/covenant = 15,
 		/obj/item/turret_deploy_kit/plasturret = 3,
-		/obj/item/drop_pod_beacon/covenant = 25
 	)
 
 /obj/machinery/pointbased_vending/armory/covenant/sangheili/equipment // Equipment for Sangheili
