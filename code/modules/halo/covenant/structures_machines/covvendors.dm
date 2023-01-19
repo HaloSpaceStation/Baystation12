@@ -459,7 +459,7 @@
 		/obj/item/weapon/plastique/breaching/longrange/covenant = 0,
 		/obj/item/weapon/armor_patch/cov = 0,
 		/obj/item/weapon/armor_patch/mini/cov = 0,
-		/obj/item/weapon/pinpointer/artifact = 0
+		/obj/item/weapon/pinpointer/artifact = 0,
 		/obj/item/drop_pod_beacon/covenant = 0
 	)
 	amounts = list(\
