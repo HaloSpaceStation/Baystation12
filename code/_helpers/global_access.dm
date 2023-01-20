@@ -87,6 +87,8 @@
 			return global.SHOCKIMMUNITYBLOCK;
 		if("SMALLSIZEBLOCK")
 			return global.SMALLSIZEBLOCK;
+		if("SSalarm")
+			return global.SSalarm;
 		if("SSatoms")
 			return global.SSatoms;
 		if("SSevent")
@@ -109,6 +111,8 @@
 			return global.SSsun;
 		if("SStrade")
 			return global.SStrade;
+		if("SSturf")
+			return global.SSturf;
 		if("SSvote")
 			return global.SSvote;
 		if("TELEBLOCK")
@@ -205,8 +209,6 @@
 			return global.air_processing_killed;
 		if("airlock_overlays")
 			return global.airlock_overlays;
-		if("alarm_manager")
-			return global.alarm_manager;
 		if("alien_whitelist")
 			return global.alien_whitelist;
 		if("allCasters")
@@ -867,8 +869,6 @@
 			return global.priv_syndicate_access;
 		if("processScheduler")
 			return global.processScheduler;
-		if("processing_turfs")
-			return global.processing_turfs;
 		if("prometheans")
 			return global.prometheans;
 		if("protected_objects")
@@ -1308,6 +1308,8 @@
 			global.SHOCKIMMUNITYBLOCK=newval;
 		if("SMALLSIZEBLOCK")
 			global.SMALLSIZEBLOCK=newval;
+		if("SSalarm")
+			global.SSalarm=newval;
 		if("SSatoms")
 			global.SSatoms=newval;
 		if("SSevent")
@@ -1330,6 +1332,8 @@
 			global.SSsun=newval;
 		if("SStrade")
 			global.SStrade=newval;
+		if("SSturf")
+			global.SSturf=newval;
 		if("SSvote")
 			global.SSvote=newval;
 		if("TELEBLOCK")
@@ -1426,8 +1430,6 @@
 			global.air_processing_killed=newval;
 		if("airlock_overlays")
 			global.airlock_overlays=newval;
-		if("alarm_manager")
-			global.alarm_manager=newval;
 		if("alien_whitelist")
 			global.alien_whitelist=newval;
 		if("allCasters")
@@ -2088,8 +2090,6 @@
 			global.priv_syndicate_access=newval;
 		if("processScheduler")
 			global.processScheduler=newval;
-		if("processing_turfs")
-			global.processing_turfs=newval;
 		if("prometheans")
 			global.prometheans=newval;
 		if("protected_objects")
@@ -2485,6 +2485,7 @@
 	"REMOTEVIEWBLOCK",
 	"SHOCKIMMUNITYBLOCK",
 	"SMALLSIZEBLOCK",
+	"SSalarm",
 	"SSatoms",
 	"SSevent",
 	"SSgarbage",
@@ -2496,6 +2497,7 @@
 	"SSprofiler",
 	"SSsun",
 	"SStrade",
+	"SSturf",
 	"SSvote",
 	"TELEBLOCK",
 	"TWITCHBLOCK",
@@ -2544,7 +2546,6 @@
 	"air_master",
 	"air_processing_killed",
 	"airlock_overlays",
-	"alarm_manager",
 	"alien_whitelist",
 	"allCasters",
 	"allConsoles",
@@ -2875,7 +2876,6 @@
 	"priv_station_access",
 	"priv_syndicate_access",
 	"processScheduler",
-	"processing_turfs",
 	"prometheans",
 	"protected_objects",
 	"punch_sound",
