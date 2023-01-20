@@ -40,10 +40,6 @@
 		spawn_trade_item(T, 1)
 		return T.value
 
-	if(istype(O, /obj/item/stack))
-		var/obj/item/stack/S = O
-		return T.value * S.amount
-
 	//check if it's a container
 	if (istype(O, /obj/item/weapon/storage))
 		var/obj/item/weapon/storage/S = O
@@ -55,7 +51,11 @@
 	//try and find it via the global controller
 	T = GLOB.trade_controller.trade_items_by_type[O.type]
 	if(T)
-		return T.value
+		. = T.value
+
+	if(istype(O, /obj/item/stack))
+		var/obj/item/stack/S = O
+		return . * S.amount
 
 	//try and find it via the global categories
 	/*
