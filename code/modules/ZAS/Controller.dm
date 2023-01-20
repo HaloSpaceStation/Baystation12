@@ -1,6 +1,6 @@
-var/datum/controller/air_system/air_master
+var/global/datum/controller/air_system/air_master
 
-var/tick_multiplier = 2
+var/global/tick_multiplier = 2
 
 /*
 

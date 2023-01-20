@@ -1,5 +1,5 @@
-var/CMinutes = null
-var/savefile/Banlist
+var/global/CMinutes = null
+var/global/savefile/Banlist
 
 
 /proc/CheckBan(var/ckey, var/id, var/address)
@@ -226,4 +226,3 @@ var/savefile/Banlist
 	Banlist.cd = "/base"
 	for (var/A in Banlist.dir)
 		RemoveBan(A)
-

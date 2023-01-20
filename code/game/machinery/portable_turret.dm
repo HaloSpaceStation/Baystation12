@@ -159,7 +159,7 @@
 			eshot_sound = 'sound/weapons/Laser.ogg'
 			egun = 1
 
-var/list/turret_icons
+var/global/list/turret_icons
 
 /obj/machinery/porta_turret/update_icon()
 	if(!turret_icons)

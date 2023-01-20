@@ -1,4 +1,4 @@
-var/datum/antagonist/deity/deity
+var/global/datum/antagonist/deity/deity
 
 /datum/antagonist/deity
 	id = MODE_DEITY

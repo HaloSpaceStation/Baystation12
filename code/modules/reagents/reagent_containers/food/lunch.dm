@@ -1,4 +1,4 @@
-var/list/lunchables_lunches_ = list(/obj/item/weapon/reagent_containers/food/snacks/sandwich,
+var/global/list/lunchables_lunches_ = list(/obj/item/weapon/reagent_containers/food/snacks/sandwich,
                                   /obj/item/weapon/reagent_containers/food/snacks/slice/meatbread/filled,
                                   /obj/item/weapon/reagent_containers/food/snacks/slice/tofubread/filled,
                                   /obj/item/weapon/reagent_containers/food/snacks/slice/creamcheesebread/filled,
@@ -11,7 +11,7 @@ var/list/lunchables_lunches_ = list(/obj/item/weapon/reagent_containers/food/sna
                                   /obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry,
                                   /obj/item/weapon/reagent_containers/food/snacks/tossedsalad)
 
-var/list/lunchables_snacks_ = list(/obj/item/weapon/reagent_containers/food/snacks/donut/jelly,
+var/global/list/lunchables_snacks_ = list(/obj/item/weapon/reagent_containers/food/snacks/donut/jelly,
                                    /obj/item/weapon/reagent_containers/food/snacks/donut/cherryjelly,
                                    /obj/item/weapon/reagent_containers/food/snacks/muffin,
                                    /obj/item/weapon/reagent_containers/food/snacks/popcorn,
@@ -39,7 +39,7 @@ var/list/lunchables_snacks_ = list(/obj/item/weapon/reagent_containers/food/snac
                                    /obj/item/weapon/reagent_containers/food/snacks/slice/pumpkinpie/filled,
                                    /obj/item/weapon/reagent_containers/food/snacks/skrellsnacks)
 
-var/list/lunchables_drinks_ = list(/obj/item/weapon/reagent_containers/food/drinks/cans/cola,
+var/global/list/lunchables_drinks_ = list(/obj/item/weapon/reagent_containers/food/drinks/cans/cola,
                                    /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle,
                                    /obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind,
                                    /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb,
@@ -52,7 +52,7 @@ var/list/lunchables_drinks_ = list(/obj/item/weapon/reagent_containers/food/drin
                                    /obj/item/weapon/reagent_containers/food/drinks/cans/sodawater)
 
 // This default list is a bit different, it contains items we don't want
-var/list/lunchables_drink_reagents_ = list(/datum/reagent/drink/nothing,
+var/global/list/lunchables_drink_reagents_ = list(/datum/reagent/drink/nothing,
                                            /datum/reagent/drink/doctor_delight,
                                            /datum/reagent/drink/dry_ramen,
                                            /datum/reagent/drink/hell_ramen,
@@ -60,7 +60,7 @@ var/list/lunchables_drink_reagents_ = list(/datum/reagent/drink/nothing,
                                            /datum/reagent/drink/nuka_cola,)
 
 // This default list is a bit different, it contains items we don't want
-var/list/lunchables_ethanol_reagents_ = list(/datum/reagent/ethanol/acid_spit,
+var/global/list/lunchables_ethanol_reagents_ = list(/datum/reagent/ethanol/acid_spit,
                                              /datum/reagent/ethanol/atomicbomb,
                                              /datum/reagent/ethanol/beepsky_smash,
                                              /datum/reagent/ethanol/coffee,

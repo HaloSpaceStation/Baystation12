@@ -1,4 +1,4 @@
-var/list/datum/list_of_ais = list()
+var/global/list/datum/list_of_ais = list()
 
 /datum/controller/process/ai/setup()
 	name = "ai"

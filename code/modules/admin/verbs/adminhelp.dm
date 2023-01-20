@@ -1,6 +1,6 @@
 
 //This is a list of words which are ignored by the parser when comparing message contents for names. MUST BE IN LOWER CASE!
-var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","alien","as")
+var/global/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","alien","as")
 
 /client/verb/adminhelp(msg as text)
 	set category = "Admin"
@@ -132,4 +132,3 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 	feedback_add_details("admin_verb","AH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
-

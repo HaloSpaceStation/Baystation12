@@ -1,4 +1,4 @@
-var/list/sector_shuttles = list()
+var/global/list/sector_shuttles = list()
 
 #define waypoint_sector(waypoint) map_sectors["[waypoint.z]"]
 

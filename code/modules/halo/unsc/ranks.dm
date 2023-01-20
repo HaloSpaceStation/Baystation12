@@ -69,7 +69,7 @@
 		else if(rank >= ENLISTED_MIN)
 			return "rating"
 
-var/list/UNSC_ranks = list(\
+var/global/list/UNSC_ranks = list(\
 	"Crewman Recruit",
 	"Crewman Apprentice",
 	"Crewman",

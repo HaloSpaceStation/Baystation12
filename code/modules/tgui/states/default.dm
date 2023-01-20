@@ -4,7 +4,7 @@
   * Checks a number of things -- mostly physical distance for humans and view for robots.
  **/
 
-/var/global/datum/ui_state/default/tg_default_state = new()
+var/global/datum/ui_state/default/tg_default_state = new()
 
 /datum/ui_state/default/can_use_topic(src_object, mob/user)
 	return user.tg_default_can_use_topic(src_object) // Call the individual mob-overriden procs.

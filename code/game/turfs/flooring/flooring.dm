@@ -1,4 +1,4 @@
-var/list/flooring_types
+var/global/list/flooring_types
 
 /proc/get_flooring_data(var/flooring_path)
 	if(!flooring_types)

@@ -12,7 +12,7 @@
 
 #define CULT_MAX_CULTINESS 350 // When this value is reached, the game stops checking for updates so we don't recheck every time a tile is converted in endgame
 
-var/datum/antagonist/cultist/cult
+var/global/datum/antagonist/cultist/cult
 
 /proc/iscultist(var/mob/player)
 	if(!cult || !player.mind)

@@ -22,7 +22,7 @@ If d1 = dir1 and d2 = dir2, it's a full X-X cable, getting from dir1 to dir2
 By design, d1 is the smallest direction and d2 is the highest
 */
 
-var/list/possible_cable_coil_colours
+var/global/list/possible_cable_coil_colours
 
 /obj/structure/cable
 	level = 1

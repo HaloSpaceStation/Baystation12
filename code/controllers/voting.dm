@@ -1,4 +1,4 @@
-var/datum/controller/subsystem/vote/vote
+var/global/datum/controller/subsystem/vote/vote
 GLOBAL_LIST_EMPTY(voting)
 
 #define VOTE_INACTIVE 0

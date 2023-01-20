@@ -1,4 +1,4 @@
-var/datum/antagonist/raider/raiders
+var/global/datum/antagonist/raider/raiders
 
 /datum/antagonist/raider
 	id = MODE_RAIDER
@@ -302,4 +302,3 @@ var/datum/antagonist/raider/raiders
 		player.internals.icon_state = "internal1"
 
 	return 1
-

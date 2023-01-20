@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(overmap_tiles_uncontrolled) //This is any overmap sectors that
 GLOBAL_LIST_EMPTY(overmap_spawn_near)
 GLOBAL_LIST_EMPTY(overmap_spawn_in)
 
-var/list/points_of_interest = list()
+var/global/list/points_of_interest = list()
 
 /obj/effect/overmap
 	name = "map object"
@@ -403,6 +403,3 @@ var/list/points_of_interest = list()
 	report_progress("Overmap build complete.")
 	shipmap_handler.max_z_cached = world.maxz
 	return 1
-
-
-

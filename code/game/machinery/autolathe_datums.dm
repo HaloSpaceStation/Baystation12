@@ -1,5 +1,5 @@
-/var/global/list/autolathe_recipes
-/var/global/list/autolathe_categories
+var/global/list/autolathe_recipes
+var/global/list/autolathe_categories
 
 /proc/populate_lathe_recipes()
 

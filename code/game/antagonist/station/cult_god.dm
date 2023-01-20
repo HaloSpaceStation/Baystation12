@@ -1,4 +1,4 @@
-var/datum/antagonist/godcultist/godcult
+var/global/datum/antagonist/godcultist/godcult
 
 /datum/antagonist/godcultist
 	id = MODE_GODCULTIST

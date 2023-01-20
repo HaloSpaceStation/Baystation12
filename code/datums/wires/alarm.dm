@@ -2,11 +2,11 @@
 	holder_type = /obj/machinery/alarm
 	wire_count = 5
 
-var/const/AALARM_WIRE_IDSCAN = 1
-var/const/AALARM_WIRE_POWER = 2
-var/const/AALARM_WIRE_SYPHON = 4
-var/const/AALARM_WIRE_AI_CONTROL = 8
-var/const/AALARM_WIRE_AALARM = 16
+var/global/const/AALARM_WIRE_IDSCAN = 1
+var/global/const/AALARM_WIRE_POWER = 2
+var/global/const/AALARM_WIRE_SYPHON = 4
+var/global/const/AALARM_WIRE_AI_CONTROL = 8
+var/global/const/AALARM_WIRE_AALARM = 16
 
 
 /datum/wires/alarm/CanUse(var/mob/living/L)

@@ -211,7 +211,7 @@
 						//eg if there were 2 separate docking hatches for berth 1 each should have a separate instance of this spawner but both have the berth_tag "berth1"
 
 /*
-var/list/shuttle_types = list(\
+var/global/list/shuttle_types = list(\
 /obj/machinery/overmap_vehicle/shuttle,\
 /obj/machinery/overmap_vehicle/shuttle/med1,\
 /obj/machinery/overmap_vehicle/shuttle/per1,\

@@ -2,7 +2,7 @@
 //Mainly used so that stuff inside them can also add to their value, and other things like material,
 //stuff like that.
 
-var/list/worths = list(
+var/global/list/worths = list(
 //ROBOT ASSEMBLIES,
 					/obj/item/weapon/secbot_assembly = 180,
 					/obj/item/weapon/secbot_assembly/ed209_assembly = 280,
@@ -754,4 +754,3 @@ var/list/worths = list(
 					/obj/machinery/bookbinder = -1200,
 					/obj/machinery = -1000,
 					) //Must be in descending order. Child before parents, otherwise it doesn't work.,
-

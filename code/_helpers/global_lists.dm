@@ -22,7 +22,7 @@ var/global/list/language_keys[0]					// Table of say codes for all languages
 var/global/list/whitelisted_species = list(SPECIES_HUMAN) // Species that require a whitelist check.
 var/global/list/playable_species = list(SPECIES_HUMAN)    // A list of ALL playable species, whitelisted, latejoin or otherwise.
 
-var/list/mannequins_
+var/global/list/mannequins_
 
 // Posters
 var/global/list/poster_designs = list()
@@ -32,7 +32,7 @@ var/global/list/all_grabstates[0]
 var/global/list/all_grabobjects[0]
 
 // Uplinks
-var/list/obj/item/device/uplink/world_uplinks = list()
+var/global/list/obj/item/device/uplink/world_uplinks = list()
 
 //Preferences stuff
 	//Hairstyles
@@ -51,7 +51,7 @@ var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Brown Satc
 var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 
 // Visual nets
-var/list/datum/visualnet/visual_nets = list()
+var/global/list/datum/visualnet/visual_nets = list()
 
 // Runes
 var/global/list/rune_list = new()

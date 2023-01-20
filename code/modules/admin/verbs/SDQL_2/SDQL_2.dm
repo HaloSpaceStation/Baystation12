@@ -376,7 +376,8 @@
 	var/long = start < expression.len
 
 	if (object == world && (!long || expression[start + 1] == ".") && !(expression[start] in exclude))
-		v = readglobal(expression[start])
+		var/name = expression[start]
+		v = global.vars[name]
 
 	else if (expression [start] == "{" && long)
 		if (lowertext(copytext(expression[start + 1], 1, 3)) != "0x")

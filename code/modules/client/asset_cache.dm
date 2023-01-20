@@ -141,7 +141,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 //These datums are used to populate the asset cache, the proc "register()" does this.
 
 //all of our asset datums, used for referring to these later
-/var/global/list/asset_datums = list()
+var/global/list/asset_datums = list()
 
 //get a assetdatum or make a new one
 /proc/get_asset_datum(var/type)
@@ -260,7 +260,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 /*
 	Asset cache
 */
-var/decl/asset_cache/asset_cache = new()
+var/global/decl/asset_cache/asset_cache = new()
 
 /decl/asset_cache
 	var/list/cache

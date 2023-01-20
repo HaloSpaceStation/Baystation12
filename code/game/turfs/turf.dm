@@ -122,7 +122,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 				return 0
 	return 1 //Nothing found to block so return success!
 
-var/const/enterloopsanity = 100
+var/global/const/enterloopsanity = 100
 /turf/Entered(atom/atom as mob|obj)
 
 	..()

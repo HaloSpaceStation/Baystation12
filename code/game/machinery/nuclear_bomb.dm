@@ -1,4 +1,4 @@
-var/bomb_set
+var/global/bomb_set
 
 //Code to pick a random pass-phrase for Project Orion
 var/global/orion_password = null

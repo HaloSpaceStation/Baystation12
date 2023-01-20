@@ -1,4 +1,4 @@
-var/list/integrated_circuit_blacklist = list(/obj/item/integrated_circuit, /obj/item/integrated_circuit/arithmetic, /obj/item/integrated_circuit/converter,
+var/global/list/integrated_circuit_blacklist = list(/obj/item/integrated_circuit, /obj/item/integrated_circuit/arithmetic, /obj/item/integrated_circuit/converter,
 										/obj/item/integrated_circuit/filter, /obj/item/integrated_circuit/filter/ref, /obj/item/integrated_circuit/input,
 										/obj/item/integrated_circuit/output, /obj/item/integrated_circuit/manipulation, /obj/item/integrated_circuit/sensor,
 										/obj/item/integrated_circuit/time, /obj/item/integrated_circuit/manipulation/grenade/frag, /obj/item/integrated_circuit/manipulation/locomotion)

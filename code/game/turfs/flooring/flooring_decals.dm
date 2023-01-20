@@ -1,7 +1,7 @@
 // These are objects that destroy themselves and add themselves to the
 // decal list of the floor under them. Use them rather than distinct icon_states
 // when mapping in interesting floor designs.
-var/list/floor_decals = list()
+var/global/list/floor_decals = list()
 
 /obj/effect/floor_decal
 	name = "floor decal"
@@ -428,4 +428,3 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/snow
 	icon = 'icons/turf/overlays.dmi'
 	icon_state = "snowfloor"
-
