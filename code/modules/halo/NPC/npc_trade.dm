@@ -40,6 +40,10 @@
 		spawn_trade_item(T, 1)
 		return T.value
 
+	if(istype(O, /obj/item/stack))
+		var/obj/item/stack/S = O
+		return T.value * S.amount
+
 	//check if it's a container
 	if (istype(O, /obj/item/weapon/storage))
 		var/obj/item/weapon/storage/S = O
