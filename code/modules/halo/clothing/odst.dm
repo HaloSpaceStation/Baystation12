@@ -57,7 +57,7 @@
 	allowed = list(/obj/item/weapon/gun/energy,/obj/item/device/radio,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/gun/magnetic,/obj/item/weapon/tank)
 	item_flags = STOPPRESSUREDAMAGE|THICKMATERIAL
 	body_parts_covered = UPPER_TORSO | LOWER_TORSO | ARMS | LEGS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
+	flags_inv = HIDETAIL
 	unacidable = 1
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	heat_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
@@ -75,11 +75,11 @@
 /obj/item/clothing/shoes/magboots/odst
 	name = "ODST Magboots"
 	desc = "Experimental magnetic boots, used to ensure the user is safely attached to any surfaces during extra-vehicular operations. They're large enough to be worn over other footwear."
-	icon = 'code/modules/halo/clothing/urf_commando.dmi'
-	icon_override = 'code/modules/halo/clothing/urf_commando.dmi'
-	icon_state = "magboots_obj0"
-	icon_base = "magboots_obj"
-	item_state = "magboots"
+	icon = 'code/modules/halo/clothing/odst.dmi'
+	icon_override = 'code/modules/halo/clothing/odst.dmi'
+	icon_state = "magboot_ODST"
+	icon_base = "magboot_ODST"
+	item_state = "magboot_ODST"
 	can_hold_knife = 1
 	force = 5
 	stepsound = 'code/modules/halo/sounds/walk_sounds/marine_boots.ogg'
