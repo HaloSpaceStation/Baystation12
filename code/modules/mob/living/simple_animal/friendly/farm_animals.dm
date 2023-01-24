@@ -246,7 +246,7 @@ var/global/chicken_count = 0
 	. =..()
 	if(!.)
 		return
-	if(!stat && istype(loc,/turf) && prob(3) && eggsleft > 0)
+	if(!stat && prob(3) && eggsleft > 0)
 		visible_message("[src] [pick("lays an egg.","squats down and croons.","begins making a huge racket.","begins clucking raucously.")]")
 		eggsleft--
 		var/obj/item/weapon/reagent_containers/food/snacks/egg/E = new(get_turf(src))
@@ -257,7 +257,7 @@ var/global/chicken_count = 0
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/var/amount_grown = 0
 /obj/item/weapon/reagent_containers/food/snacks/egg/process()
-	if(chicken_count < MAX_CHICKENS && isturf(loc))
+	if(isturf(loc))
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
 			visible_message("[src] hatches with a quiet cracking sound.")

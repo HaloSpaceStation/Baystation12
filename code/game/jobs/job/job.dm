@@ -191,10 +191,11 @@
 	if(!is_species_allowed(S))
 		to_chat(feedback, "<span class='boldannounce'>Restricted species, [S], for [title].</span>")
 		return TRUE
+
 	poplock_bypassing = 0
 	//is this gamemode trying to balance the faction population?
 	var/num_balancing_factions = ticker.mode ? ticker.mode.faction_balance.len : 0
-	if(ticker.current_state == GAME_STATE_PLAYING && num_balancing_factions >= 2) //Only popbalance if we're actually playing rn.
+	if(num_balancing_factions >= 2)
 		if(Debug2)	to_debug_listeners("Checking gamemode balance for [src.title]...")
 
 		//are we out of the safe time?
@@ -238,7 +239,7 @@
 						if(minds_balance.len != 0)
 							for(var/datum/mind/player in minds_balance)
 								var/add_as_players = 1
-								if(!player.current || !istype(player.current,/mob/living) || isnull(player.current.ckey) || player.current.stat == DEAD)
+								if(!player.current || !istype(player.current,/mob/living) || !player.active || isnull(player.current.ckey) ||  player.current.stat == DEAD)
 									continue
 								if(player.assigned_role)
 									var/datum/job/j = job_master.occupations_by_title[player.assigned_role]

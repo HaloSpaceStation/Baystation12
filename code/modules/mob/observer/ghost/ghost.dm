@@ -150,17 +150,6 @@ Works together with spawning an observer, noted above.
 		var/mob/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
-		//Wave Respawn code. Synchronise your death watches..
-		if(mind && mind.current)
-			var/datum/faction/f = GLOB.factions_by_name[mind.current.faction]
-			if(f.wave_respawn)
-				var/msg_extra = "You're the first one to die in this wave. Keep in mind how long you have left until respawn, and coordinate with your faction members."
-				if(f.wave_timeofdeath_use != 0)
-					ghost.timeofdeath = f.wave_timeofdeath_use
-					msg_extra = "Speak to your fellow faction members in dead-chat to see how long you have left until respawn, and plan your return."
-				else
-					f.wave_timeofdeath_use = ghost.timeofdeath
-				to_chat(mind.current,"<span class = 'notice'>Wave respawning for your faction is active. [msg_extra]</span>")
 		ghost.key = key
 		if(ghost.client && !ghost.client.holder && !config.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			ghost.verbs -= /mob/observer/ghost/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
@@ -197,8 +186,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/observer/ghost/ghost = ghostize(0)	//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		//Kill the body brain so people know they're gone.//
 		death(0,deathmessage="breathes their last breath, a faint wisp dispersing in the air...", show_dead_message = "You have died.")
-		//ghost.timeofdeath = world.time // Because the living mob won't have a time of death and we want the respawn timer to work properly.
-		//above is actually prehandled by ghostize
+		ghost.timeofdeath = world.time // Because the living mob won't have a time of death and we want the respawn timer to work properly.
 		announce_ghost_joinleave(ghost)
 
 /mob/observer/ghost/can_use_hands()	return 0
@@ -485,18 +473,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			to_chat(src, "<span class='warning'>antagHUD restrictions prevent you from respawning.</span>")
 		return 0
 
-	var/timeofdeath_use = timeofdeath
-	if(mind && mind.current)
-		var/datum/faction/f = GLOB.factions_by_name[mind.current.faction]
-		if(f && f.wave_respawn)
-			timeofdeath_use = f.wave_timeofdeath_use
-
-	var/timedifference = world.time - timeofdeath_use
+	var/timedifference = world.time - timeofdeath
 	if(!started_as_observer && !client.holder && respawn_time && timeofdeath && timedifference < respawn_time MINUTES)
 		var/timedifference_text = time2text(respawn_time MINUTES - timedifference,"mm:ss")
 		to_chat(src, "<span class='warning'>You must have been dead for [respawn_time] minute\s to respawn. You have [timedifference_text] left.</span>")
 		return 0
-
 
 	return 1
 
@@ -546,11 +527,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 	else if(!MayRespawn(1, ticker.mode.get_respawn_time()))
 		return
-
-	var/datum/faction/f = GLOB.factions_by_name[mind.current.faction]
-	if(f && f.wave_respawn) //If we have a faction, reset the faction's wave-respawn time so we can start the next wave.
-		f.wave_timeofdeath_use = 0
-
 
 	to_chat(usr, "You can respawn now, enjoy your new life!")
 	to_chat(usr, "<span class='notice'><B>Make sure to play a different character, and please roleplay correctly!</B></span>")

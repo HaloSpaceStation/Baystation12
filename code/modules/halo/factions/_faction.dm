@@ -54,10 +54,6 @@
 	var/next_special_job = 0
 
 	var/list/listening_programs = list()
-
-	var/wave_respawn = 1
-	var/wave_timeofdeath_use = 0
-
 	var/datum/repository/crew/crew_repo
 
 /datum/faction/New()

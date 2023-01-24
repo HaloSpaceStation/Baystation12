@@ -60,8 +60,9 @@ GLOBAL_VAR_INIT(MOBILE_SPAWN_RESPAWN_TIME,7 MINUTES)
 	if(GLOB.MOBILE_SPAWN_RESPAWN_TIME == -1)
 		to_chat(user,"<span class = 'notice'>Mobile respawn is disabled.</span>")
 		return
-	if(!user.MayRespawn(1, GLOB.MOBILE_SPAWN_RESPAWN_TIME))
-		to_chat(user,"<span class = 'notice'>You have not been dead long enough to respawn at a mobile spawn point.</span>")
+	var/deltaToD = world.time - user.timeofdeath
+	if(deltaToD < GLOB.MOBILE_SPAWN_RESPAWN_TIME)
+		to_chat(user,"<span class = 'notice'>You have not been dead long enough to respawn at a mobile spawn point. [-(deltaToD - GLOB.MOBILE_SPAWN_RESPAWN_TIME)/600] minutes remain.</span>")
 		return
 	var/species_choice = input(user,"Spawn as what species?","Species Spawn Choice","Cancel") in species_outfits + list("Cancel")
 	if(species_choice == "Cancel")
@@ -78,20 +79,15 @@ GLOBAL_VAR_INIT(MOBILE_SPAWN_RESPAWN_TIME,7 MINUTES)
 	var/mob/living/carbon/human/h = new(owner.loc,species_choice)
 	h.faction = spawn_faction
 	outfit_choice.equip(h)
+	h.ckey = user.ckey
 	var/obj/item/weapon/card/id/id = h.GetIdCard()
 	var/obj/item/organ/internal/stack/lace = h.GetLace()
 	if(id)
 		id.access = access_list
 	if(lace)
 		lace.access = access_list
-	var/datum/faction/ourfaction = GLOB.factions_by_name[spawn_faction]
-	if(user.mind && user.mind.current)
-		var/datum/faction/f = GLOB.factions_by_name[user.mind.current.faction] //We need our old faction, irrespective of what the respawn assigns us.
-		if(f && f.wave_respawn) //If we have a faction, reset the faction's wave-respawn time so we can start the next wave.
-			f.wave_timeofdeath_use = 0
-
-	h.ckey = user.ckey
 	qdel(user)
+	var/datum/faction/ourfaction = GLOB.factions_by_name[spawn_faction]
 	if(ourfaction && h.mind)
 		//The following chunk of code is copied from job.dm, line 80.
 		ourfaction.assigned_minds.Add(h.mind)
