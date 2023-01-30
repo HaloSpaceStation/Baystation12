@@ -32,8 +32,8 @@
 	/obj/item/weapon/tape_roll = 20
 	)
 
-	min_duration = 70
-	max_duration = 90
+	min_duration = 40
+	max_duration = 50
 
 /datum/surgery_step/internal/fix_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 
@@ -128,8 +128,8 @@
 	/obj/item/weapon/material/shard = 50, 		\
 	)
 
-	min_duration = 90
-	max_duration = 110
+	min_duration = 60
+	max_duration = 70
 
 /datum/surgery_step/internal/detatch_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 
@@ -140,7 +140,7 @@
 
 	if(!affected)
 		return 0
-	
+
 	if(affected.robotic >= ORGAN_ROBOT)
 		return 0
 
@@ -192,8 +192,8 @@
 	/obj/item/weapon/material/kitchen/utensil/fork = 20
 	)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = 45
+	max_duration = 55
 
 /datum/surgery_step/internal/remove_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 
@@ -266,8 +266,8 @@
 	/obj/item/organ = 100
 	)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = 45
+	max_duration = 60
 
 /datum/surgery_step/internal/replace_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 
@@ -356,8 +356,8 @@
 	/obj/item/weapon/tape_roll = 50
 	)
 
-	min_duration = 100
-	max_duration = 120
+	min_duration = 50
+	max_duration = 60
 
 /datum/surgery_step/internal/attach_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 
@@ -422,8 +422,8 @@
 	can_infect = 0
 	blood_level = 0
 
-	min_duration = 50
-	max_duration = 60
+	min_duration = 45
+	max_duration = 55
 
 /datum/surgery_step/internal/treat_necrosis/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/weapon/reagent_containers/container = tool
