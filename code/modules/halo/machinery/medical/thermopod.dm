@@ -12,7 +12,7 @@
 	anchored = 1
 	clicksound = 'sound/machines/buttonbeep.ogg'
 	clickvol = 30
-	var/tmp/mob/living/carbon/human/occupant = null
+	var/mob/living/carbon/human/occupant = null
 	var/list/chems = list("Leporazine" = LEPORAZINE, "Cryoprethaline" = CRYOP, "Hexaline" = HEXALINE, "Ketoprofen" = KETOPROF)
 
 	use_power = 1

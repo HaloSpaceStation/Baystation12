@@ -162,7 +162,7 @@
 	icon_state = "bottle19"
 
 	attack(mob/living/carbon/slime/M as mob, mob/user as mob)
-		if(!istype(M, /mob/living/carbon/slime/))//If target is not a slime.
+		if(!istype(M, /mob/living/carbon/slime))//If target is not a slime.
 			to_chat(user, "<span class='warning'> The potion only works on slimes!</span>")
 			return ..()
 		if(M.stat)
@@ -280,4 +280,3 @@
 			var/area/A = get_area(src)
 			if(A)
 				to_chat(G, "Golem rune created in [A.name].")
-

@@ -5,31 +5,31 @@
 	 * State vars
 	 */
 	// Main controller ref
-	var/tmp/datum/controller/processScheduler/main
+	var/datum/controller/processScheduler/main
 
 	// 1 if process is not running or queued
-	var/tmp/idle = 1
+	var/idle = 1
 
 	// 1 if process is queued
-	var/tmp/queued = 0
+	var/queued = 0
 
 	// 1 if process is running
-	var/tmp/running = 0
+	var/running = 0
 
 	// 1 if process is blocked up
-	var/tmp/hung = 0
+	var/hung = 0
 
 	// 1 if process was killed
-	var/tmp/killed = 0
+	var/killed = 0
 
 	// Status text var
-	var/tmp/status
+	var/status
 
 	// Previous status text var
-	var/tmp/previousStatus
+	var/previousStatus
 
 	// 1 if process is disabled
-	var/tmp/disabled = 0
+	var/disabled = 0
 
 	/**
 	 * Config vars
@@ -41,51 +41,51 @@
 	// If the process scheduler sees that the process has finished, it will wait until
 	// this amount of time has elapsed from the start of the previous run to start the
 	// process running again.
-	var/tmp/schedule_interval = PROCESS_DEFAULT_SCHEDULE_INTERVAL // run every 50 ticks
+	var/schedule_interval = PROCESS_DEFAULT_SCHEDULE_INTERVAL // run every 50 ticks
 
 	// Process sleep interval
 	// This controls how often the process will yield (call sleep(0)) while it is running.
 	// Every concurrent process should sleep periodically while running in order to allow other
 	// processes to execute concurrently.
-	var/tmp/sleep_interval
+	var/sleep_interval
 
 	// hang_warning_time - this is the time (in 1/10 seconds) after which the server will begin to show "maybe hung" in the context window
-	var/tmp/hang_warning_time = PROCESS_DEFAULT_HANG_WARNING_TIME
+	var/hang_warning_time = PROCESS_DEFAULT_HANG_WARNING_TIME
 
 	// hang_alert_time - After this much time(in 1/10 seconds), the server will send an admin debug message saying the process may be hung
-	var/tmp/hang_alert_time = PROCESS_DEFAULT_HANG_ALERT_TIME
+	var/hang_alert_time = PROCESS_DEFAULT_HANG_ALERT_TIME
 
 	// hang_restart_time - After this much time(in 1/10 seconds), the server will automatically kill and restart the process.
-	var/tmp/hang_restart_time = PROCESS_DEFAULT_HANG_RESTART_TIME
+	var/hang_restart_time = PROCESS_DEFAULT_HANG_RESTART_TIME
 
 	// How many times in the current run has the process deferred work till the next tick?
-	var/tmp/cpu_defer_count = 0
+	var/cpu_defer_count = 0
 
 	// How many SCHECKs have been skipped (to limit btime calls)
-	var/tmp/calls_since_last_scheck = 0
+	var/calls_since_last_scheck = 0
 
 	/**
 	 * recordkeeping vars
 	 */
 
 	// Records the time (1/10s timeoftick) at which the process last finished sleeping
-	var/tmp/last_slept = 0
+	var/last_slept = 0
 
 	// Records the time (1/10s timeofgame) at which the process last began running
-	var/tmp/run_start = 0
+	var/run_start = 0
 
 	// Records the number of times this process has been killed and restarted
-	var/tmp/times_killed
+	var/times_killed
 
 	// Tick count
-	var/tmp/ticks = 0
+	var/ticks = 0
 
-	var/tmp/last_task = ""
+	var/last_task = ""
 
-	var/tmp/last_object
+	var/last_object
 
 	// Counts the number of times an exception has occurred; gets reset after 10
-	var/tmp/list/exceptions = list()
+	var/list/exceptions = list()
 
 	// Number of deciseconds to delay before starting the process
 	var/start_delay = 0

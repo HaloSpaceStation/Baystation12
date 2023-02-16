@@ -80,9 +80,9 @@
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
 						//0 for one bullet after tarrget moves and aim is lowered
 	var/multi_aim = 0 //Used to determine if you can target multiple people.
-	var/tmp/list/mob/living/aim_targets //List of who yer targeting.
-	var/tmp/mob/living/last_moved_mob //Used to fire faster at more than one person.
-	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
+	var/list/mob/living/aim_targets //List of who yer targeting.
+	var/mob/living/last_moved_mob //Used to fire faster at more than one person.
+	var/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/lock_time = 1 SECOND
 
 	var/last_elevation = BASE_ELEVATION
@@ -810,4 +810,3 @@
 	if (scope_zoom_amount == 0) return
 
 	toggle_scope(usr, scope_zoom_amount)
-

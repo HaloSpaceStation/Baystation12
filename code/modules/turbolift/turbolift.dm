@@ -10,8 +10,8 @@
 	var/obj/structure/lift/panel/control_panel_interior // Lift control panel.
 	var/doors_closing = 0								// Whether doors are in the process of closing
 
-	var/tmp/moving_upwards
-	var/tmp/busy
+	var/moving_upwards
+	var/busy
 
 /datum/turbolift/proc/emergency_stop()
 	queued_floors.Cut()

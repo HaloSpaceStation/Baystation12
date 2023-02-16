@@ -3,54 +3,54 @@ var/global/datum/controller/processScheduler/processScheduler
 
 /datum/controller/processScheduler
 	// Processes known by the scheduler
-	var/tmp/datum/controller/process/list/processes = new
+	var/datum/controller/process/list/processes = new
 
 	// Processes that are currently running
-	var/tmp/datum/controller/process/list/running = new
+	var/datum/controller/process/list/running = new
 
 	// Processes that are idle
-	var/tmp/datum/controller/process/list/idle = new
+	var/datum/controller/process/list/idle = new
 
 	// Processes that are queued to run
-	var/tmp/datum/controller/process/list/queued = new
+	var/datum/controller/process/list/queued = new
 
 	// Process name -> process object map
-	var/tmp/datum/controller/process/list/nameToProcessMap = new
+	var/datum/controller/process/list/nameToProcessMap = new
 
 	// Process last queued times (world time)
-	var/tmp/datum/controller/process/list/last_queued = new
+	var/datum/controller/process/list/last_queued = new
 
 	// Process last start times (real time)
-	var/tmp/datum/controller/process/list/last_start = new
+	var/datum/controller/process/list/last_start = new
 
 	// Process last run durations
-	var/tmp/datum/controller/process/list/last_run_time = new
+	var/datum/controller/process/list/last_run_time = new
 
 	// Per process list of the last 20 durations
-	var/tmp/datum/controller/process/list/last_twenty_run_times = new
+	var/datum/controller/process/list/last_twenty_run_times = new
 
 	// Process highest run time
-	var/tmp/datum/controller/process/list/highest_run_time = new
+	var/datum/controller/process/list/highest_run_time = new
 
 	// Process total run time
-	var/tmp/datum/controller/process/list/total_run_time = new
+	var/datum/controller/process/list/total_run_time = new
 
 	// How long to sleep between runs (set to tick_lag in New)
-	var/tmp/scheduler_sleep_interval
+	var/scheduler_sleep_interval
 
 	// Controls whether the scheduler is running or not
-	var/tmp/isRunning = 0
+	var/isRunning = 0
 
 	// Setup for these processes will be deferred until all the other processes are set up.
-	var/tmp/list/deferredSetupList = new
+	var/list/deferredSetupList = new
 
-	var/tmp/currentTick = 0
+	var/currentTick = 0
 
-	var/tmp/timeAllowance = 0
+	var/timeAllowance = 0
 
-	var/tmp/cpuAverage = 0
+	var/cpuAverage = 0
 
-	var/tmp/timeAllowanceMax = 0
+	var/timeAllowanceMax = 0
 
 /datum/controller/processScheduler/New()
 	..()

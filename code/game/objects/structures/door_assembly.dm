@@ -30,7 +30,7 @@
 
 /obj/structure/door_assembly/Bumped(atom/movable/AM)
 	if(isliving(AM) && AM:a_intent == I_HELP)
-		if(istype(AM, /mob/living/simple_animal/))
+		if(istype(AM, /mob/living/simple_animal))
 			return
 		if(istype(AM, /mob/living/simple_animal/hostile))
 			var/mob/living/simple_animal/hostile/H = AM

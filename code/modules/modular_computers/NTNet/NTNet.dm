@@ -115,7 +115,7 @@ var/global/datum/ntnet/ntnet_global = new()
 // Builds lists that contain downloadable software.
 /datum/ntnet/proc/build_news_list()
 	available_news = list()
-	for(var/F in typesof(/datum/computer_file/data/news_article/))
+	for(var/F in typesof(/datum/computer_file/data/news_article))
 		var/datum/computer_file/data/news_article/news = new F(1)
 		if(news.stored_data)
 			available_news.Add(news)
@@ -179,6 +179,3 @@ var/global/datum/ntnet/ntnet_global = new()
 		if(A.login == login)
 			return 1
 	return 0
-
-
-

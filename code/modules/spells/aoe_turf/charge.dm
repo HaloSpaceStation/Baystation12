@@ -46,7 +46,7 @@
 			var/mob/M = G.affecting
 			charged_item = mob_charge(M)
 
-	if(istype(target, /obj/item/weapon/cell/))
+	if(istype(target, /obj/item/weapon/cell))
 		var/obj/item/weapon/cell/C = target
 		if(prob(80) && C.maxcharge)
 			C.maxcharge -= 200

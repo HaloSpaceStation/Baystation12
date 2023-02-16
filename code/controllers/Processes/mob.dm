@@ -1,5 +1,5 @@
 /datum/controller/process/mob
-	var/tmp/datum/updateQueue/updateQueueInstance
+	var/datum/updateQueue/updateQueueInstance
 
 /datum/controller/process/mob/setup()
 	name = "mob"

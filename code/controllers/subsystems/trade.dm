@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(trade)
 	//Initializes at default time
 
 	var/list/traders = list()
-	var/tmp/list/current_traders
+	var/list/current_traders
 
 /datum/controller/subsystem/trade/Initialize()
 	. = ..()

@@ -34,7 +34,7 @@
 
 /obj/machinery/computer/gravity_control_computer/proc/updatemodules()
 	for(dir in list(NORTH,EAST,SOUTH,WEST))
-		gravity_generator = locate(/obj/machinery/gravity_generator/, get_step(src, dir))
+		gravity_generator = locate(/obj/machinery/gravity_generator, get_step(src, dir))
 		if (gravity_generator)
 			return
 

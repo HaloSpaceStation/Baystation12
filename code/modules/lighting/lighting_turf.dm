@@ -2,17 +2,17 @@
 	var/dynamic_lighting = TRUE    // Does the turf use dynamic lighting?
 	luminosity           = 1
 
-	var/tmp/lighting_corners_initialised = FALSE
+	var/lighting_corners_initialised = FALSE
 
-	var/tmp/list/datum/light_source/affecting_lights       // List of light sources affecting this turf.
-	var/tmp/atom/movable/lighting_overlay/lighting_overlay // Our lighting overlay.
-	var/tmp/list/datum/lighting_corner/corners
+	var/list/datum/light_source/affecting_lights       // List of light sources affecting this turf.
+	var/atom/movable/lighting_overlay/lighting_overlay // Our lighting overlay.
+	var/list/datum/lighting_corner/corners
 	var/opaque_counter
 
 /turf/New()
 	opaque_counter = opacity
 	..()
-	
+
 /turf/set_opacity()
 	. = ..()
 	handle_opacity_change(src)
@@ -73,7 +73,7 @@
 	if(Obj && Obj.opacity)
 		if(!opaque_counter++)
 			reconsider_lights()
-		
+
 
 /turf/Exited(var/atom/movable/Obj, var/atom/newloc)
 	. = ..()
@@ -109,5 +109,3 @@
 			opaque_counter--
 			if(old_counter && !opaque_counter)
 				reconsider_lights()
-	
-	

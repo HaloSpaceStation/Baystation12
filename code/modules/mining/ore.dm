@@ -48,7 +48,7 @@
 		H.eye_blind += 5
 		H.eye_blurry += 10
 		spawn(1)
-			if(istype(loc, /turf/)) qdel(src)
+			if(istype(loc, /turf)) qdel(src)
 
 
 /obj/item/weapon/ore/phoron

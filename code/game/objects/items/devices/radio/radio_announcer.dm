@@ -16,6 +16,6 @@
 
 /obj/item/device/radio/announcer/LateInitialize()
 	//connect to channels
-	for(var/dongle_type in typesof(/obj/item/device/channel_dongle/) - /obj/item/device/channel_dongle/)
+	for(var/dongle_type in typesof(/obj/item/device/channel_dongle) - /obj/item/device/channel_dongle)
 		var/obj/item/device/channel_dongle/new_dongle = new dongle_type(src)
 		src.insert_dongle(null, new_dongle, 0)

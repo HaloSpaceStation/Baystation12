@@ -3033,7 +3033,7 @@
 	update_icon()
 
 /obj/item/pizzabox/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/pizzabox/))
+	if(istype(I, /obj/item/pizzabox))
 		var/obj/item/pizzabox/box = I
 
 		if(!box.open && !src.open)
@@ -3061,7 +3061,7 @@
 
 		return
 
-	if(istype(I, /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/)) // Long ass fucking object name
+	if(istype(I, /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza)) // Long ass fucking object name
 
 		if(src.open)
 			user.drop_item()
@@ -3075,7 +3075,7 @@
 			to_chat(user, "<span class='warning'>You try to push \the [I] through the lid but it doesn't work!</span>")
 		return
 
-	if(istype(I, /obj/item/weapon/pen/))
+	if(istype(I, /obj/item/weapon/pen))
 
 		if(src.open)
 			return

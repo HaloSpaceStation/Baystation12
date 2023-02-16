@@ -23,7 +23,7 @@
 
 /datum/effect/system/expl_particles/proc/set_up(n = 10, loca)
 	number = n
-	if(istype(loca, /turf/)) location = loca
+	if(istype(loca, /turf)) location = loca
 	else location = get_turf(loca)
 
 /datum/effect/system/expl_particles/proc/start()
@@ -56,7 +56,7 @@
 	var/turf/location
 
 /datum/effect/system/explosion/proc/set_up(loca)
-	if(istype(loca, /turf/)) location = loca
+	if(istype(loca, /turf)) location = loca
 	else location = get_turf(loca)
 
 /datum/effect/system/explosion/proc/start()
