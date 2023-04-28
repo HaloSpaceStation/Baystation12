@@ -11,7 +11,7 @@
 	GLOB.processing_objects += src
 	. = ..()
 
-/turf/unsimulated/floor/lava/glassed_turf/process()
+/turf/unsimulated/floor/lava/glassed_turf/Process()
 	if(world.time >= cool_at)
 		GLOB.processing_objects -= src
 		ChangeTurf(turf_replacewith)

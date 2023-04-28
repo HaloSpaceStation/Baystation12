@@ -71,7 +71,7 @@
 /turf/simulated/open/pillar_lift/attackby(obj/item/C as obj, mob/user as mob)
 	return
 
-/turf/simulated/open/pillar_lift/process()
+/turf/simulated/open/pillar_lift/Process()
 	. = 1
 	if(world.time >= time_finish_moving)
 		GLOB.processing_objects -= src
