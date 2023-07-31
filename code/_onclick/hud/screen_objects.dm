@@ -252,6 +252,10 @@
 								breathes = H.species.breath_type
 								nicename = list ("suit", "back", "belt", "right hand", "left hand", "left pocket", "right pocket")
 								tankcheck = list (H.s_store, C.back, H.belt, C.r_hand, C.l_hand, H.l_store, H.r_store)
+								if(istype(H.belt,/obj/item/weapon/storage/belt))
+									for(var/i in H.belt.contents)
+										nicename += "belt storage"
+										tankcheck += i
 							else
 								nicename = list("right hand", "left hand", "back")
 								tankcheck = list(C.r_hand, C.l_hand, C.back)
