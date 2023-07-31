@@ -10,7 +10,7 @@
 	/datum/job/colonist/casino_owner,
 	/datum/job/colonist/hospital_worker,
 	/datum/job/colonist/pharmacist,
-	/datum/job/colonist/colonist_marshall,
+	/datum/job/colonist/colonist_marshal,
 	/datum/job/colonist/bartender,
 	/datum/job/colonist/chef,
 	/datum/job/colonist/librarian_museum,
@@ -125,10 +125,10 @@
 	total_positions = 1
 	outfit_type = /decl/hierarchy/outfit/job/ks7_colonist/pharmacist
 
-/datum/job/colonist/colonist_marshall
-	title = "KS7 Colonist Marshall"
+/datum/job/colonist/colonist_marshal
+	title = "KS7 Colonist Marshal"
 	total_positions = 5
-	outfit_type = /decl/hierarchy/outfit/job/ks7_colonist/colonist_marshall
+	outfit_type = /decl/hierarchy/outfit/job/ks7_colonist/colonist_marshal
 
 /datum/job/colonist/bartender
 	title = "KS7 Bartender"

@@ -6,6 +6,7 @@
 #define RADIO_INNIE "INNIE"
 #define RADIO_URFC "URFC"
 #define RADIO_SEC "GCPD"
+#define RADIO_MARSHAL "Marshals"
 #define RADIO_SQUAD "UNSC"
 #define RADIO_MARINE "REQUISITION"
 #define RADIO_ODST "ODST"
@@ -48,6 +49,16 @@ GLOBAL_LIST_INIT(random_channels, list(\
 
 /obj/item/device/channel_dongle/gcpd
 	channel_preset = RADIO_SEC
+
+//
+/obj/item/device/channel_dongle/marshals
+	channel_preset = RADIO_MARSHAL
+
+/datum/channel_cipher/marshals
+	channel_name = RADIO_MARSHAL
+	chat_span_class = "secradio"
+	hotkey = "m"
+
 //
 /datum/channel_cipher/gcpd
 	channel_name = RADIO_SEC

@@ -20,8 +20,8 @@
 /obj/effect/landmark/start/pharmacist
 	name = "KS7 Pharmacist"
 
-/obj/effect/landmark/start/colonist_marshall
-	name = "KS7 Colonist Marshall"
+/obj/effect/landmark/start/colonist_marshal
+	name = "KS7 Colonist Marshal"
 
 /obj/effect/landmark/start/bartender
 	name = "KS7 Bartender"
