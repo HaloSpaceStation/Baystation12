@@ -114,7 +114,7 @@
 	)
 
 /obj/item/clothing/gloves/SPIgen1/field_agent //This has a door-spoofer inside; unlike the normal gloves.
-	desc = "Advanced stealth capabilities and spaceworthiness with reduced protection. Fitted for human use. Contains an ewar device for infiltration."
+	desc = "Advanced stealth capabilities and spaceworthiness with reduced protection. Fitted for human use. Contains an EWAR device for infiltration."
 
 /obj/item/clothing/gloves/SPIgen1/field_agent/New()
 	..()

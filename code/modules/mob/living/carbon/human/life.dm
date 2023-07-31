@@ -296,7 +296,11 @@
 //				rig_supply = s.internal_air_tank
 //Work in progress
 
-		if (!rig_supply && (!contents.Find(internal) || !((wear_mask && (wear_mask.item_flags & AIRTIGHT)) || (head && (head.item_flags & AIRTIGHT)))))
+		var/list/holding = contents.Copy()
+		if(istype(belt,/obj/item/weapon/storage/belt))
+			holding += belt.contents
+
+		if (!rig_supply && (!holding.Find(internal) || !((wear_mask && (wear_mask.item_flags & AIRTIGHT)) || (head && (head.item_flags & AIRTIGHT)))))
 			internal = null
 
 		if(internal)
