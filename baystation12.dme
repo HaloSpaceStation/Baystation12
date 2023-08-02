@@ -3353,6 +3353,7 @@
 #include "maps\_gamemodes\randantag\randantag.dm"
 #include "maps\faction_bases\civ_shuttle.dm"
 #include "maps\geminus_city\geminus_city.dm"
+#include "maps\ks7_elmsville\includes.dm"
 #include "maps\system_conquest\jobs.dm"
 #include "maps\~mapsystem\map_preferences.dm"
 #include "maps\~mapsystem\map_ranks.dm"
