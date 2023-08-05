@@ -1,5 +1,5 @@
 
-var/list/nuke_disks = list()
+var/global/list/nuke_disks = list()
 
 
 /obj/item/weapon/pinpointer

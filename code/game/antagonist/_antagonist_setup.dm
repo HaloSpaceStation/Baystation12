@@ -61,9 +61,9 @@
 			return antag
 	return 0
 
-var/list/all_antag_types_
-var/list/all_antag_spawnpoints_
-var/list/antag_names_to_ids_
+var/global/list/all_antag_types_
+var/global/list/all_antag_spawnpoints_
+var/global/list/antag_names_to_ids_
 
 /proc/all_antag_types()
 	populate_antag_type_list()

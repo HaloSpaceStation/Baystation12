@@ -1,7 +1,7 @@
-var/const/GHOST_IMAGE_NONE = 0
-var/const/GHOST_IMAGE_DARKNESS = 1
-var/const/GHOST_IMAGE_SIGHTLESS = 2
-var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
+var/global/const/GHOST_IMAGE_NONE = 0
+var/global/const/GHOST_IMAGE_DARKNESS = 1
+var/global/const/GHOST_IMAGE_SIGHTLESS = 2
+var/global/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 
 /mob/observer
 	density = 0
@@ -85,4 +85,3 @@ mob/observer/check_airflow_movable()
 		inertia_dir = 0
 		throwing = 0
 		to_chat(src, "<span class='notice'>You cannot move further in this direction.</span>")
-

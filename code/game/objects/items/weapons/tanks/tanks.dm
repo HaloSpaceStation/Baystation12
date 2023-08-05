@@ -2,7 +2,7 @@
 #define TANK_DEFAULT_RELEASE_PRESSURE 24
 #define TANK_IDEAL_PRESSURE 1015 //Arbitrary.
 
-var/list/global/tank_gauge_cache = list()
+var/global/list/global/tank_gauge_cache = list()
 
 /obj/item/weapon/tank
 	name = "tank"
@@ -666,4 +666,3 @@ var/list/global/tank_gauge_cache = list()
 /obj/item/projectile/bullet/pellet/fragment/tank/big
 	name = "large metal fragment"
 	damage = 17
-

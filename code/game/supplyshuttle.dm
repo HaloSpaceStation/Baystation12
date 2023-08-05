@@ -5,9 +5,9 @@
 //Supply packs are in /code/defines/obj/supplypacks.dm
 //Computers are in /code/game/machinery/computer/supply.dm
 
-var/datum/controller/supply/supply_controller = new()
+var/global/datum/controller/supply/supply_controller = new()
 
-var/list/mechtoys = list(
+var/global/list/mechtoys = list(
 	/obj/item/toy/prize/ripley,
 	/obj/item/toy/prize/fireripley,
 	/obj/item/toy/prize/deathripley,
@@ -110,7 +110,7 @@ var/list/mechtoys = list(
 	var/reason = null
 	var/orderedrank = null //used for supply console printing
 
-var/list/point_source_descriptions = list(
+var/global/list/point_source_descriptions = list(
 	"time" = "Base station supply",
 	"manifest" = "From exported manifests",
 	"crate" = "From exported crates",

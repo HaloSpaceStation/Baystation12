@@ -1,4 +1,4 @@
-var/church_name = null
+var/global/church_name = null
 /proc/church_name()
 	if (church_name)
 		return church_name
@@ -15,7 +15,7 @@ var/church_name = null
 
 	return name
 
-var/command_name = null
+var/global/command_name = null
 /proc/command_name()
 	if (command_name)
 		return command_name
@@ -33,7 +33,7 @@ var/command_name = null
 
 	return name
 
-var/religion_name = null
+var/global/religion_name = null
 /proc/religion_name()
 	if (religion_name)
 		return religion_name
@@ -127,7 +127,7 @@ var/religion_name = null
 
 	return name
 
-var/syndicate_name = null
+var/global/syndicate_name = null
 /proc/syndicate_name()
 	if (!syndicate_name)
 		syndicate_name = random_syndicate_name()
@@ -160,8 +160,8 @@ var/syndicate_name = null
 
 
 //Traitors and traitor silicons will get these. Revs will not.
-var/syndicate_code_phrase//Code phrase for traitors.
-var/syndicate_code_response//Code response for traitors.
+var/global/syndicate_code_phrase//Code phrase for traitors.
+var/global/syndicate_code_response//Code response for traitors.
 
 	/*
 	Should be expanded.

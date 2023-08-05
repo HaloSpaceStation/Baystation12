@@ -1,15 +1,15 @@
-var/runtime_diary = null
+var/global/runtime_diary = null
 
 
-var/list/combatlog = list()
-var/list/IClog     = list()
-var/list/OOClog    = list()
-var/list/adminlog  = list()
+var/global/list/combatlog = list()
+var/global/list/IClog     = list()
+var/global/list/OOClog    = list()
+var/global/list/adminlog  = list()
 
-var/datum/configuration/config      = null
-var/list/jobMax        = list()
+var/global/datum/configuration/config      = null
+var/global/list/jobMax        = list()
 
-var/diary               = null
+var/global/diary               = null
 
 GLOBAL_VAR(log_directory)
 GLOBAL_PROTECT(log_directory)

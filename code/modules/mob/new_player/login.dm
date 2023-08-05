@@ -1,4 +1,4 @@
-/var/obj/effect/lobby_image = new/obj/effect/lobby_image()
+var/global/obj/effect/lobby_image = new/obj/effect/lobby_image()
 
 /obj/effect/lobby_image
 	name = "Baystation12"

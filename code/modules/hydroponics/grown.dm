@@ -39,7 +39,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/grown/proc/fill_reagents()
 	if(!seed)
 		return
-	
+
 	if(!seed.chems)
 		return
 
@@ -314,7 +314,7 @@
 	icon = 'icons/obj/hydroponics_misc.dmi'
 	icon_state = ""
 
-var/list/fruit_icon_cache = list()
+var/global/list/fruit_icon_cache = list()
 
 /obj/item/weapon/reagent_containers/food/snacks/fruit_slice/New(var/newloc, var/datum/seed/S)
 	..(newloc)

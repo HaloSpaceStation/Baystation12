@@ -1,12 +1,12 @@
-/var/security_level = 0
+var/global/security_level = 0
 //0 = code green
 //1 = code orange
 //2 = code red
 //3 = code delta
 
 //config.alert_desc_orange_downto
-/var/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/misc/notice1.ogg'))
-/var/datum/announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
+var/global/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/misc/notice1.ogg'))
+var/global/datum/announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
 
 /proc/set_security_level(var/level)
 	switch(level)

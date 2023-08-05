@@ -5,7 +5,7 @@
 #define EVAC_COOLDOWN   4
 #define EVAC_COMPLETE   5
 
-var/datum/evacuation_controller/evacuation_controller
+var/global/datum/evacuation_controller/evacuation_controller
 
 /datum/evacuation_controller
 
@@ -180,4 +180,3 @@ var/datum/evacuation_controller/evacuation_controller
 
 /datum/evacuation_controller/proc/get_evac_option(var/option_target)
 	return null
-

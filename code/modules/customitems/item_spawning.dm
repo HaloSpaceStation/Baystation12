@@ -15,7 +15,7 @@
 // Kits must also have hardsuit icons in CUSTOM_ITEM_MOB as [kit_icon]_suit
 // and [kit_icon]_helmet, and in CUSTOM_ITEM_OBJ as [kit_icon].
 
-/var/list/custom_items = list()
+var/global/list/custom_items = list()
 
 /datum/custom_item
 	var/assoc_key

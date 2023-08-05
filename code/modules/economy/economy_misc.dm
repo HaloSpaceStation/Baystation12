@@ -47,7 +47,7 @@
 #define GEAR_EVA 15
 
 //Note that you have to specify each subspecies individually. Shouldn't be a big deal.
-/var/list/economic_species_modifier = list(
+var/global/list/economic_species_modifier = list(
 												/datum/species/human             = 10
 												/*/datum/species/human/gravworlder = 10,
 												/datum/species/human/spacer      = 10,

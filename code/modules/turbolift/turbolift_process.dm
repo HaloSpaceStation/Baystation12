@@ -1,4 +1,4 @@
-var/datum/controller/process/turbolift/turbolift_controller
+var/global/datum/controller/process/turbolift/turbolift_controller
 
 /datum/controller/process/turbolift
 	var/list/moving_lifts = list()

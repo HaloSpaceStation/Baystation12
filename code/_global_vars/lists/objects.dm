@@ -21,6 +21,6 @@ GLOBAL_LIST_EMPTY(global_map)
 // Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it. Also headset, for things that should be affected by comms outages.
 GLOBAL_DATUM_INIT(global_announcer, /obj/item/device/radio/announcer, new)
 
-var/host = null //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
+var/global/host = null //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
 GLOBAL_DATUM_INIT(sun, /datum/sun, new)
 GLOBAL_DATUM_INIT(universe, /datum/universal_state, new)

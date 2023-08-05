@@ -1,7 +1,7 @@
 /*
 File: Options
 */
-var/const  //Ascii values of characters
+var/global/const  //Ascii values of characters
 	ascii_A  =65
 	ascii_Z  =90
 	ascii_a  =97

@@ -10,7 +10,7 @@
 */
 //-------------------------------
 
-var/datum/controller/process/wireless/wirelessProcess
+var/global/datum/controller/process/wireless/wirelessProcess
 
 /datum/controller/process/wireless
 	var/list/receiver_list

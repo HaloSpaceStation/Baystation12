@@ -46,7 +46,7 @@
 	return equip_to_slot_if_possible(W, slot, 1, 1, 0)
 
 //The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
-var/list/slot_equipment_priority = list( \
+var/global/list/slot_equipment_priority = list( \
 		slot_back,\
 		slot_wear_id,\
 		slot_w_uniform,\

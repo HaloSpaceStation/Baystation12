@@ -1,4 +1,4 @@
-var/datum/antagonist/rogue_ai/malf
+var/global/datum/antagonist/rogue_ai/malf
 
 /datum/antagonist/rogue_ai
 	id = MODE_MALFUNCTION
@@ -94,4 +94,3 @@ var/datum/antagonist/rogue_ai/malf
 	if (newname)
 		player.fully_replace_character_name(newname)
 	if(player.mind) player.mind.name = player.name
-

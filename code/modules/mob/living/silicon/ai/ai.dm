@@ -3,8 +3,8 @@
 #define AI_CPULOSS_STUNMAX_DIVISOR 3
 #define RANGECHECK_DELETE_DELAY 5 SECONDS //Delay between spawning the image and deleting it.
 
-var/list/ai_list = list()
-var/list/ai_verbs_default = list(
+var/global/list/ai_list = list()
+var/global/list/ai_verbs_default = list(
 	/mob/living/silicon/ai/proc/prep_EWAR_command,
 	/mob/living/silicon/ai/proc/prep_ewar_command_macroable,
 	/mob/living/silicon/ai/proc/check_EWAR_command,

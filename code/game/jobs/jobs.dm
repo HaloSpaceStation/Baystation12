@@ -1,51 +1,51 @@
-var/const/ENG               =(1<<0)
-var/const/SEC               =(1<<1)
-var/const/MED               =(1<<2)
-var/const/SCI               =(1<<3)
-var/const/CIV               =(1<<4)
-var/const/COM               =(1<<5)
-var/const/CRG               =(1<<6)
-var/const/MSC               =(1<<7)
-var/const/SRV               =(1<<8)
-var/const/SUP               =(1<<9)
-var/const/SPT               =(1<<10)
+var/global/const/ENG               =(1<<0)
+var/global/const/SEC               =(1<<1)
+var/global/const/MED               =(1<<2)
+var/global/const/SCI               =(1<<3)
+var/global/const/CIV               =(1<<4)
+var/global/const/COM               =(1<<5)
+var/global/const/CRG               =(1<<6)
+var/global/const/MSC               =(1<<7)
+var/global/const/SRV               =(1<<8)
+var/global/const/SUP               =(1<<9)
+var/global/const/SPT               =(1<<10)
 
-var/list/assistant_occupations = list(
+var/global/list/assistant_occupations = list(
 )
 
-var/list/command_positions = list(
+var/global/list/command_positions = list(
 )
 
-var/list/engineering_positions = list(
+var/global/list/engineering_positions = list(
 )
 
-var/list/medical_positions = list(
+var/global/list/medical_positions = list(
 )
 
-var/list/science_positions = list(
+var/global/list/science_positions = list(
 )
 
-var/list/cargo_positions = list(
+var/global/list/cargo_positions = list(
 )
 
-var/list/civilian_positions = list(
+var/global/list/civilian_positions = list(
 )
 
 
-var/list/security_positions = list(
+var/global/list/security_positions = list(
 )
 
-var/list/nonhuman_positions = list(
+var/global/list/nonhuman_positions = list(
 	"pAI"
 )
 
-var/list/service_positions = list(
+var/global/list/service_positions = list(
 )
 
-var/list/supply_positions = list(
+var/global/list/supply_positions = list(
 )
 
-var/list/support_positions = list(
+var/global/list/support_positions = list(
 )
 
 

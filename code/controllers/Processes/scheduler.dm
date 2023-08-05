@@ -1,4 +1,4 @@
-/var/datum/controller/process/scheduler/scheduler
+var/global/datum/controller/process/scheduler/scheduler
 
 /************
 * Scheduler *

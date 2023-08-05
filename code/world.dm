@@ -1,8 +1,10 @@
+#define RECOMMENDED_VERSION 514
+#define FAILED_DB_CONNECTION_CUTOFF 5
 #define WORLD_ICON_SIZE 32
 
-/var/server_name = "Halo Spacestation Evolved"
+var/global/server_name = "Halo Spacestation Evolved"
+var/global/game_id = null
 
-/var/game_id = null
 /hook/global_init/proc/generate_gameid()
 	if(game_id != null)
 		return
@@ -79,7 +81,6 @@
 	loop_checks = FALSE
 #endif
 
-#define RECOMMENDED_VERSION 513
 #if DM_VERSION < RECOMMENDED_VERSION
 #error Your BYOND is out of date!
 #endif
@@ -157,10 +158,8 @@
 		if(config.ToRban)
 			ToRban_autoupdate()
 
-#undef RECOMMENDED_VERSION
-
-var/world_topic_spam_protect_ip = "0.0.0.0"
-var/world_topic_spam_protect_time = world.timeofday
+var/global/world_topic_spam_protect_ip = "0.0.0.0"
+var/global/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
 	diary << "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]"
@@ -658,9 +657,8 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	GLOB.world_runtime_log << "\n\nStarting up round ID [game_id]. [time_stamp()]\n---------------------"
 
-#define FAILED_DB_CONNECTION_CUTOFF 5
-var/failed_db_connections = 0
-var/failed_old_db_connections = 0
+var/global/failed_db_connections = 0
+var/global/failed_old_db_connections = 0
 
 /hook/startup/proc/connectDB()
 	if(!config.do_sql_connection)
@@ -748,4 +746,5 @@ proc/establish_old_db_connection()
 	else
 		return 1
 
+#undef RECOMMENDED_VERSION
 #undef FAILED_DB_CONNECTION_CUTOFF

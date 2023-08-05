@@ -1,4 +1,4 @@
-var/decl/sound_player/sound_player = new()
+var/global/decl/sound_player/sound_player = new()
 
 /*
 	A sound player/manager for looping 3D sound effects.

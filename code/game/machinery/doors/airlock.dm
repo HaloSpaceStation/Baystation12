@@ -13,7 +13,7 @@
 #define AIRLOCK_STRIPABLE 2
 #define AIRLOCK_DETAILABLE 4
 
-var/list/airlock_overlays = list()
+var/global/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock
 	name = "airlock"

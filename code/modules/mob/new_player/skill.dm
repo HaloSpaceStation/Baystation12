@@ -1,13 +1,13 @@
 /*
 
-var/const/SKILL_NONE = 0
-var/const/SKILL_BASIC = 1
-var/const/SKILL_ADEPT = 2
-var/const/SKILL_EXPERT = 3
+var/global/const/SKILL_NONE = 0
+var/global/const/SKILL_BASIC = 1
+var/global/const/SKILL_ADEPT = 2
+var/global/const/SKILL_EXPERT = 3
 
 // Specific skill typepaths that won't show up on the skills panel.
 // This is used to hide the category subtypes, without having to use special variable.
-var/list/hidden_skill_types = list(\
+var/global/list/hidden_skill_types = list(\
 	/datum/skill,\
 	/datum/skill/secondary,\
 	/datum/skill/security,\

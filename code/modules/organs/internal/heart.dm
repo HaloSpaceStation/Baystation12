@@ -1,8 +1,8 @@
 //Blood levels. These are percentages based on the species blood_volume far.
-var/const/BLOOD_VOLUME_SAFE    = 85
-var/const/BLOOD_VOLUME_OKAY    = 75
-var/const/BLOOD_VOLUME_BAD     = 60
-var/const/BLOOD_VOLUME_SURVIVE = 40
+var/global/const/BLOOD_VOLUME_SAFE    = 85
+var/global/const/BLOOD_VOLUME_OKAY    = 75
+var/global/const/BLOOD_VOLUME_BAD     = 60
+var/global/const/BLOOD_VOLUME_SURVIVE = 40
 
 /obj/item/organ/internal/heart
 	name = "heart"

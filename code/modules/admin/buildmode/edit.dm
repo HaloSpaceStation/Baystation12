@@ -41,7 +41,7 @@
 		SetValue(new_value)
 
 /datum/build_mode/edit/OnClick(var/atom/A, var/list/parameters)
-	if(!A.may_edit_var(usr, var_to_edit))
+	if(A.may_not_edit_var(usr, var_to_edit))
 		return
 
 	var/old_value = A.vars[var_to_edit]

@@ -28,9 +28,9 @@
 
 	return wtime + (time_offset + wusage) * world.tick_lag
 
-var/roundstart_hour
-var/station_date = ""
-var/next_station_date_change = 1 DAY
+var/global/roundstart_hour
+var/global/station_date = ""
+var/global/next_station_date_change = 1 DAY
 
 #define duration2stationtime(time) time2text(station_time_in_ticks + time, "hh:mm")
 #define worldtime2stationtime(time) time2text(roundstart_hour HOURS + time, "hh:mm")
@@ -66,9 +66,9 @@ proc/isDay(var/month, var/day)
 		//else
 			//return 1
 
-var/next_duration_update = 0
-var/last_round_duration = 0
-var/round_start_time = 0
+var/global/next_duration_update = 0
+var/global/last_round_duration = 0
+var/global/round_start_time = 0
 
 /hook/roundstart/proc/start_timer()
 	round_start_time = world.time
@@ -101,8 +101,8 @@ var/round_start_time = 0
 	roundstart_hour = pick(2,7,12,17)
 	return 1
 
-/var/midnight_rollovers = 0
-/var/rollovercheck_last_timeofday = 0
+var/global/midnight_rollovers = 0
+var/global/rollovercheck_last_timeofday = 0
 /proc/update_midnight_rollover()
 	if (world.timeofday < rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
 		return midnight_rollovers++

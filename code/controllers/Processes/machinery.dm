@@ -1,4 +1,4 @@
-/var/global/machinery_sort_required = 0
+var/global/machinery_sort_required = 0
 
 /datum/controller/process/machinery/setup()
 	name = "machinery"

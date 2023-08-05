@@ -1,4 +1,4 @@
-var/datum/controller/process/chemistry/chemistryProcess
+var/global/datum/controller/process/chemistry/chemistryProcess
 
 /datum/controller/process/chemistry
 	var/list/active_holders

@@ -50,7 +50,7 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define NETWORK_ALARM_MOTION "Motion Alarms"
 #define NETWORK_ALARM_POWER "Power Alarms"
 
-var/list/all_networks = list()
+var/global/list/all_networks = list()
 
 
 //singularity defines

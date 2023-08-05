@@ -1,5 +1,5 @@
 //this function places received data into element with specified id.
-var/const/js_byjax = {"
+var/global/const/js_byjax = {"
 
 function replaceContent() {
 	var args = Array.prototype.slice.call(arguments);
@@ -47,4 +47,3 @@ proc/send_byjax(receiver, control_id, target_element, new_content=null, callback
 */
 		receiver << output(argums,"[control_id]:replaceContent")
 	return
-

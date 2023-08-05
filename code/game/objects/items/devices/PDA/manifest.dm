@@ -6,8 +6,8 @@ using /datum/datacore/proc/manifest_inject( ), or manifest_insert( ). Synth desp
 name updates also zero the list; although they are not in data_core, synths are on manifest.
 */
 
-/var/global/list/PDA_Manifest = list()
-/var/list/acting_rank_prefixes = list("acting", "temporary", "interim", "provisional")
+var/global/list/PDA_Manifest = list()
+var/global/list/acting_rank_prefixes = list("acting", "temporary", "interim", "provisional")
 
 /proc/make_list_rank(rank)
 	for(var/prefix in acting_rank_prefixes)
