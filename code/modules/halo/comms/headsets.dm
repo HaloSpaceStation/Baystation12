@@ -29,7 +29,12 @@
 		/obj/item/device/channel_dongle/innie,\
 		/obj/item/device/channel_dongle/urfc)
 
-
+//colonial marshal headset
+/obj/item/device/radio/headset/marshal
+	name = "colonial marshal radio headset"
+	icon_state = "sec_headset"
+	dongles = list(/obj/item/device/channel_dongle/human_civ,\
+		/obj/item/device/channel_dongle/marshals)
 
 /* UNSC */
 

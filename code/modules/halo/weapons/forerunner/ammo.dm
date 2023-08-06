@@ -105,7 +105,7 @@
 	name = "hardlight round"
 	icon = 'code/modules/halo/weapons/icons/forerunner_sprites.dmi'
 	icon_state = "suppressor_ammo"
-	damage = 25
-	armor_penetration = 10
+	damage = 20
+	armor_penetration = 20
 	penetrating = 1
-	shield_damage = 10
+	shield_damage = 5

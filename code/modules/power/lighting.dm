@@ -150,6 +150,7 @@ var/global/list/light_type_cache = list()
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	vis_flags = VIS_HIDE
 
 	var/on = 0					// 1 if on, 0 if off
 	var/status = LIGHT_OK		// LIGHT_OK, _EMPTY, _BURNED or _BROKEN

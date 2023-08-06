@@ -52,7 +52,7 @@
 
 /datum/job/covenant/brute_chieftain
 	command_rank = 2
-	
+
 /datum/job/covenant/brute_captain
 	command_rank = 2
 
@@ -83,6 +83,9 @@
 /datum/job/unsc/marine/iwo//just in case
 	command_rank = 2
 
+/datum/job/unsc/odst
+	command_rank = 2
+
 /datum/job/unsc/odst/squad_leader
 	command_rank = 3
 
@@ -91,6 +94,9 @@
 
 /datum/job/unsc/executive_officer
 	command_rank = 3
+
+/datum/job/unsc/oni/field_agent
+	command_rank = 1
 
 /datum/job/unsc/oni/research/director
 	command_rank = 2

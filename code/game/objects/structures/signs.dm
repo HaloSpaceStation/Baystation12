@@ -5,6 +5,7 @@
 	density = 0
 	layer = ABOVE_WINDOW_LAYER
 	w_class = ITEM_SIZE_NORMAL
+	vis_flags = VIS_HIDE
 
 /obj/structure/sign/ex_act(severity)
 	switch(severity)

@@ -278,7 +278,7 @@
 	name = "Rifle Needle"
 	damage = 25 //Shrapnel makes up the difference with the dmr
 	armor_penetration = 40
-	shield_damage = 5
+	shield_damage = 15
 	shrapnel_damage = 10
 	shards_to_explode = 3
 	shard_name = "Rifle Needle shrapnel"

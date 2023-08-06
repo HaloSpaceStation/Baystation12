@@ -66,10 +66,19 @@
 	name = "KS7 Pharmacist"
 	l_hand = /obj/item/weapon/card/id/building_key/pharmacy
 
-/decl/hierarchy/outfit/job/ks7_colonist/colonist_marshall
-	name = "KS7 Colonist Marshall"
-	l_hand = /obj/item/weapon/card/id/building_key/police_station
-	l_ear = /obj/item/device/radio/headset/police
+/decl/hierarchy/outfit/job/ks7_colonist/colonist_marshal
+	name = "KS7 Colonial Marshal"
+	head = /obj/item/clothing/head/soft/police/marshal
+	uniform = /obj/item/clothing/under/police/marshal
+	belt = /obj/item/weapon/gun/projectile/m6d_magnum/police/police
+	shoes = /obj/item/clothing/shoes/marine/marshal
+	gloves = /obj/item/clothing/gloves/thick/unsc/marshal
+	r_pocket = /obj/item/ammo_magazine/m6d/m224
+	l_pocket = /obj/item/weapon/storage/wallet/leather
+	pda_slot = null
+	id_type = /obj/item/weapon/card/id/civilian/marshal
+	l_hand = null
+	l_ear = /obj/item/device/radio/headset/marshal
 
 /decl/hierarchy/outfit/job/ks7_colonist/bartender
 	name = "KS7 Bartender"

@@ -65,7 +65,7 @@
 	short_text = "Colonial revolt"
 	explanation_text = "Raise the colony in revolt! We must remove the UNSC from our world."
 	radio_name = "Insurrection Overwatch"
-	win_points = 150
+	win_points = 50
 
 /datum/objective/assassinate/leader/innies_unsc
 	explanation_text = "Assassinate the leader of the UNSC"

@@ -25,7 +25,7 @@
 
 /decl/hierarchy/supply_pack/covmedical/biofoam
 	name = "Biofoam Crate (10 syringes)"
-	contains = list(/obj/item/weapon/reagent_containers/syringe/biofoam = 10)
+	contains = list(/obj/item/weapon/reagent_containers/syringe/biofoam/cov = 10)
 	cost = 250
 	containername = "\improper Biofoam Crate"
 

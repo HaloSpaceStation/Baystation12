@@ -4,7 +4,6 @@
 // Do not remove this functionality without good reason, cough reagent_containers cough.
 // -Sayu
 
-
 /obj/item/weapon/storage
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
@@ -28,6 +27,7 @@
 	var/list/startswith
 	var/datum/storage_ui/storage_ui = /datum/storage_ui/default
 	var/use_dynamic_slowdown = 1
+	var/dynamic_storage_threshold = 2 // This is the amount of normal-sized items that you can carry before slowdown kicks in.
 
 /obj/item/weapon/storage/Destroy()
 	QDEL_NULL(storage_ui)
@@ -49,7 +49,7 @@
 			slowdown_total += base_storage_cost(A.w_class) * STORAGE_SLOWDOWN_MOD
 		inv -= A
 
-	var/min_threshold_slowdown = (base_storage_cost(ITEM_SIZE_NORMAL) * STORAGE_SLOWDOWN_MOD) * 2 //2 normals.
+	var/min_threshold_slowdown = (base_storage_cost(ITEM_SIZE_NORMAL) * (STORAGE_SLOWDOWN_MOD) * dynamic_storage_threshold) //Dynamic variable settable in specific items.
 	if(slowdown_total <= min_threshold_slowdown)
 		slowdown_total = 0
 	else

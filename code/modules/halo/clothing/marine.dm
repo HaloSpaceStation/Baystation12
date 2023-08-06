@@ -101,6 +101,7 @@
 	icon_override = MARINE_OVERRIDE
 	item_state = "M52B Body Armor regular"
 	icon_state = "M52B Body Armor regular_obj"
+	species_restricted = list("Human", "Orion")
 	blood_overlay_type = "armor"
 	item_state_slots = list(slot_l_hand_str = "armor", slot_r_hand_str = "armor")
 	body_parts_covered = ARMS|UPPER_TORSO|LOWER_TORSO
@@ -190,7 +191,7 @@
 
 /obj/item/weapon/storage/belt/marine_medic
 	name = "Medical Supplies Storage Belt"
-	desc = "A belt with multiple hooks to hold medical kits, alongside a few small ammunition pouches"
+	desc = "A belt with multiple hooks to hold medical kits. Heavy, but distributes the weight of larger loads much more efficiently."
 	icon_state = "medicalbelt"
 	w_class = ITEM_SIZE_HUGE
 	/*icon = ITEM_INHAND //Using normal medical belt sprites for now.
@@ -198,14 +199,13 @@
 	icon_state = "UNSC Marine Medical Belt item"
 	item_state = "UNSC Marine Medical Belt"*/
 	storage_slots = 5
+	dynamic_storage_threshold = 12
 
 	can_hold = list(\
 	/obj/item/ammo_magazine/m7,
 	/obj/item/ammo_magazine/m6d,
 	/obj/item/ammo_magazine/m6s,
-	/obj/item/weapon/storage/firstaid/unsc,
-	/obj/item/weapon/storage/firstaid/erk,
-	/obj/item/weapon/storage/firstaid/combat/unsc,
+	/obj/item/weapon/storage/firstaid,
 	/obj/item/device/healthanalyzer,
 	/obj/item/weapon/reagent_containers/dropper,
 	/obj/item/weapon/reagent_containers/glass/beaker,
@@ -220,7 +220,8 @@
 	/obj/item/clothing/head/surgery,
 	/obj/item/clothing/gloves/latex,
 	/obj/item/weapon/reagent_containers/hypospray,
-	/obj/item/clothing/glasses/hud/health
+	/obj/item/clothing/glasses/hud/health,
+	/obj/item/weapon/defibrillator/compact
 	)
 
 /obj/item/clothing/mask/marine

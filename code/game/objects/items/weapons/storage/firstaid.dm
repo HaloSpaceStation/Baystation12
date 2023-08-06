@@ -81,16 +81,16 @@
 
 /obj/item/weapon/storage/firstaid/adv
 	name = "advanced first-aid kit"
-	desc = "Contains advanced medical treatments."
+	desc = "Contains equipment for treating extensive physical trauma."
 	icon_state = "advfirstaid"
 	item_state = "firstaid-advanced"
 
 	startswith = list(
-		/obj/item/weapon/reagent_containers/hypospray/autoinjector,
 		/obj/item/stack/medical/advanced/bruise_pack = 2,
 		/obj/item/stack/medical/advanced/ointment = 2,
 		/obj/item/stack/medical/splint,
-		/obj/item/weapon/storage/pill_bottle/paracetamol
+		/obj/item/weapon/storage/pill_bottle/bicaridine,
+		/obj/item/weapon/storage/pill_bottle/dermaline
 		)
 
 /obj/item/weapon/storage/firstaid/combat

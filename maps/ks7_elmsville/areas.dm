@@ -73,6 +73,12 @@
 /area/exo_ice_facility/interior/police
 	name = "KS7 - Police Station"
 
+/area/exo_ice_facility/interior/police/floor2
+	name = "KS7 - Police Station Second Floor"
+
+/area/exo_ice_facility/interior/police/floor3
+	name = "KS7 - Police Station Basement"
+
 /area/exo_ice_facility/interior/hospital
 	name = "KS7 - Hospital"
 

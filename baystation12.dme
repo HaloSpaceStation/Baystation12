@@ -1473,6 +1473,7 @@
 #include "code\modules\halo\clothing\jetpacks.dm"
 #include "code\modules\halo\clothing\jumpsuits.dm"
 #include "code\modules\halo\clothing\marine.dm"
+#include "code\modules\halo\clothing\marshal.dm"
 #include "code\modules\halo\clothing\odst.dm"
 #include "code\modules\halo\clothing\oni_guard.dm"
 #include "code\modules\halo\clothing\pilot.dm"

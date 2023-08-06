@@ -755,5 +755,70 @@
 					/obj/item/clothing/shoes/jiralhanae/covenant/lord_inquisitor
 					)
 
+///////Planetary\\\\\\\\
+
+//Skirmisher
+
+/obj/item/clothing/suit/armor/special/skirmisher/murmillo/donator/planetary
+	name = "'ODST Armor'"
+	desc = "Lightweight, durable armour issued to Orbital Drop Squak Troopers for increased survivability in the field."
+	icon = 'code/modules/halo/covenant/species/tvoan/skirm_clothing.dmi'
+	icon_state = "planetary_worn"
+	item_state = "planetary_worn"
+	species_restricted = list("Tvaoan Kig-Yar")
+
+/obj/item/clothing/head/helmet/kigyar/skirmisher/murmillo/donator/planetary
+	name = "'ODST Helmet'"
+	desc = "Standard issue short-EVA capable helmet issued to ODST forces"
+	icon = 'code/modules/halo/covenant/species/tvoan/skirm_clothing.dmi'
+	icon_state = "planetary_helmet_worn"
+	item_state = "planetary_helmet_worn"
+	species_restricted = list("Tvaoan Kig-Yar")
+
+/obj/item/weapon/storage/box/large/donator/planetary/murmillo
+	startswith = list(/obj/item/clothing/suit/armor/special/skirmisher/murmillo/donator/planetary,
+					/obj/item/clothing/head/helmet/kigyar/skirmisher/murmillo/donator/planetary
+					)
+	can_hold = list(/obj/item/clothing/suit/armor/special/skirmisher/murmillo/donator/planetary,
+					/obj/item/clothing/head/helmet/kigyar/skirmisher/murmillo/donator/planetary
+					)
+
+///////Timmypool\\\\\\\\
+
+//Sangheili (MINOR)
+
+/obj/item/clothing/head/helmet/sangheili/minor/timmy
+	name = "Silent Shadow Slim Helmet"
+	desc = "Armor worn by a noble blood line regularly inducted into the Silent Shadow."
+	icon_state = "tk_helm_obj"
+	item_state = "tk_helm"
+
+/obj/item/clothing/suit/armor/special/combatharness/minor/timmy
+	name = "Silent Shadow Slim Armor"
+	icon_state = "tk_chest_obj"
+	item_state = "tk_chest"
+
+/obj/item/clothing/shoes/sangheili/minor/timmy
+	name = "Silent Shadow Slim Leg Armor"
+	icon_state = "tk_legs_obj"
+	item_state = "tk_legs"
+
+
+/obj/item/clothing/gloves/thick/sangheili/minor/timmy
+	name = "Silent Shadow Slim Gauntlets"
+	icon_state = "tk_gloves_obj"
+	item_state = "tk_gloves"
+
+/obj/item/weapon/storage/box/large/donator/timmy
+	startswith = list(/obj/item/clothing/head/helmet/sangheili/minor/timmy,
+					/obj/item/clothing/suit/armor/special/combatharness/minor/timmy,
+					/obj/item/clothing/shoes/sangheili/minor/timmy,
+					/obj/item/clothing/gloves/thick/sangheili/minor/timmy
+					)
+	can_hold = list(/obj/item/clothing/head/helmet/sangheili/minor/timmy,
+					/obj/item/clothing/suit/armor/special/combatharness/minor/timmy,
+					/obj/item/clothing/shoes/sangheili/minor/timmy,
+					/obj/item/clothing/gloves/thick/sangheili/minor/timmy
+					)
 
 #undef JIRALHANAE_ICON_PATH_OBJ

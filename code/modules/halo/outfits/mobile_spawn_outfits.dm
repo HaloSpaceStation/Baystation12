@@ -30,7 +30,7 @@
 	name = "Unggoy Soldier (Minor)"
 
 	l_ear = /obj/item/device/radio/headset/covenant
-	r_ear = /obj/item/weapon/reagent_containers/syringe/biofoam
+	r_ear = /obj/item/weapon/reagent_containers/syringe/biofoam/cov
 	glasses = /obj/item/clothing/glasses/hud/tactical/covenant
 	suit = /obj/item/clothing/suit/armor/special/unggoy_combat_harness
 	back = /obj/item/weapon/tank/methane/unggoy_internal
@@ -50,13 +50,13 @@
 	l_hand = /obj/item/weapon/gun/projectile/needler
 	r_hand = /obj/item/weapon/gun/energy/plasmapistol
 
-	l_pocket = /obj/item/weapon/reagent_containers/syringe/biofoam
+	l_pocket = /obj/item/weapon/reagent_containers/syringe/biofoam/cov
 
 /decl/hierarchy/outfit/mobilespawn_unggoy_grenadier
 	name = "Unggoy Soldier (Grenadier)"
 
 	l_ear = /obj/item/device/radio/headset/covenant
-	r_ear = /obj/item/weapon/reagent_containers/syringe/biofoam
+	r_ear = /obj/item/weapon/reagent_containers/syringe/biofoam/cov
 	glasses = /obj/item/clothing/glasses/hud/tactical/covenant
 	suit = /obj/item/clothing/suit/armor/special/unggoy_combat_harness
 	back = /obj/item/weapon/tank/methane/unggoy_internal
@@ -315,7 +315,7 @@
 	name = "Insurrectionist (MA3)"
 
 	l_ear = /obj/item/device/radio/headset/insurrection
-	r_ear = /obj/item/weapon/reagent_containers/syringe/biofoam
+	r_ear = /obj/item/weapon/reagent_containers/syringe/biofoam/urf
 	mask = /obj/item/clothing/mask/balaclava/tactical
 	glasses = /obj/item/clothing/glasses/hud/tactical
 	uniform = /obj/item/clothing/under/innie/jumpsuit
@@ -362,7 +362,7 @@
 	name = "Insurrectionist Gladiator"
 
 	l_ear = /obj/item/device/radio/headset/insurrection
-	r_ear = /obj/item/weapon/reagent_containers/syringe/biofoam
+	r_ear = /obj/item/weapon/reagent_containers/syringe/biofoam/urf
 
 	head = /obj/item/clothing/head/helmet/gladiator/combat_ready
 	uniform = /obj/item/clothing/under/gladiator/combat_ready

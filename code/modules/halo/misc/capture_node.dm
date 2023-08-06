@@ -205,6 +205,7 @@ GLOBAL_LIST_EMPTY(capture_nodes)
 	var/image/faction_logo
 	var/fade_alpha1 = 100
 	var/fade_alpha2 = 0
+	vis_flags = VIS_HIDE
 
 /obj/structure/capture_marker/proc/set_owner(var/new_faction)
 	GLOB.processing_objects.Remove(src)

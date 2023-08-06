@@ -23,6 +23,7 @@
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
 	use_dynamic_slowdown = 1
 	cant_hold = list(/obj/item/weapon/gun)
+	dynamic_storage_threshold = 8
 
 /obj/item/weapon/storage/backpack/equipped()
 	if(!has_extension(src, /datum/extension/appearance))

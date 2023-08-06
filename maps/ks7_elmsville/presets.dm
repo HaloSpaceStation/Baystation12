@@ -357,32 +357,56 @@
 	id = "barShutter"
 	req_access = list(6682)
 
-
 /obj/structure/closet/secure_closet/ks7_police
-	name = "Police Patrol Gear Locker"
+	name = "Marshal Patrol Gear Locker"
 	desc = "Use this to protect the citizens of your planet from hostile wildlife and people."
-	icon = 'icons/obj/guncabinet.dmi'
-	icon_broken = "closed_full"
-	icon_closed = "closed_full"
-	icon_locked = "closed_full"
-	icon_off = "closed_full"
-	icon_opened = "open_full"
-	icon_state = "closed_full"
+	icon = 'icons/obj/closet.dmi'
+	icon_broken = "hossecurebroken"
+	icon_closed = "hossecure"
+	icon_locked = "hossecure1"
+	icon_off = "hossecureoff"
+	icon_opened = "hossecureopen"
+	icon_state = "hossecure1"
 
 /obj/structure/closet/secure_closet/ks7_police/WillContain()
 	return list(\
-	/obj/item/clothing/under/marshall,
-	/obj/item/clothing/head/soft/emsville_marshall,
-	/obj/item/clothing/head/helmet/emsville_marshall,
-	/obj/item/clothing/suit/storage/marine/emsville_marshall,
-	/obj/item/clothing/shoes/marine/emsville_marshall,
-	/obj/item/clothing/gloves/thick/unsc/emsville_marshall,
-	/obj/item/weapon/storage/belt/marine_ammo,
-	/obj/item/weapon/gun/projectile/ma3_ar,
-	/obj/item/weapon/gun/projectile/m6d_magnum/police,
-	/obj/item/weapon/storage/backpack/marine,
+	/obj/item/clothing/under/police/marshal,
+	/obj/item/clothing/head/soft/police/marshal,
+	/obj/item/clothing/head/soft/police/marshal/patrol,
+	/obj/item/clothing/head/soft/police/marshal/beret,
+	/obj/item/clothing/head/helmet/swat/police/marshal,
+	/obj/item/clothing/head/helmet/swat/police/medium/marshal,
+	/obj/item/clothing/suit/storage/vest/tactical/police/marshal,
+	/obj/item/clothing/suit/armor/vest/police_medium/marshal,
+	/obj/item/clothing/mask/balaclava/tactical/police/marshal,
+	/obj/item/clothing/glasses/police/marshal,
+	/obj/item/clothing/shoes/marine/marshal,
+	/obj/item/clothing/gloves/thick/unsc/marshal,
+	/obj/item/weapon/storage/belt/marine_ammo/marshal,
+	/obj/item/weapon/storage/belt/security,
+	/obj/item/weapon/gun/projectile/m6d_magnum/police/police,
+	/obj/item/clothing/accessory/badge/marshal,
+	/obj/item/device/radio/headset/marshal,
+	/obj/item/weapon/storage/backpack/marine/brown,
+	/obj/item/weapon/reagent_containers/spray/pepper,
 	/obj/item/weapon/melee/baton/humbler,
-	/obj/item/weapon/storage/box/handcuffs
+	/obj/item/weapon/handcuffs,
+	/obj/item/weapon/gun/energy/taser,
+	/obj/item/device/flashlight/maglight
+	)
+
+/obj/structure/closet/secure_closet/ks7_police/swat
+	name = "Marshal SWAT Gear Locker"
+	desc = "Contains SWAT equipment, only opened and used in the most extreme circumstances."
+
+/obj/structure/closet/secure_closet/ks7_police/swat/WillContain()
+	return list(\
+	/obj/item/clothing/head/helmet/gas/police/heavy/marshal,
+	/obj/item/clothing/head/helmet/gas/police/heavy/marshal,
+	/obj/item/clothing/head/helmet/gas/police/heavy/marshal,
+	/obj/item/clothing/suit/armor/vest/police/marshal,
+	/obj/item/clothing/suit/armor/vest/police/marshal,
+	/obj/item/clothing/suit/armor/vest/police/marshal
 	)
 
 /obj/structure/closet/secure_closet/ks7_police/ammo

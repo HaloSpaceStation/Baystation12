@@ -24,7 +24,7 @@
 /obj/item/weapon/armor_patch/attack(mob/living/M, mob/living/user, var/target_zone)
 	var/mob/living/carbon/human/h = M
 	if(istype(h) && !isnull(h.wear_suit) && user.a_intent == "help")
-		repair_clothing(h.wear_suit,user,1)
+		repair_clothing(h.wear_suit,user,(h!=user ? 1 : 0))
 	else
 		. = ..()
 

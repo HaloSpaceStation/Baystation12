@@ -8,7 +8,7 @@
 	/datum/job/colonist/casino_owner,
 	/datum/job/colonist/hospital_worker,
 	/datum/job/colonist/pharmacist,
-	/datum/job/colonist/colonist_marshall,
+	/datum/job/colonist/colonist_marshal,
 	/datum/job/colonist/bartender,
 	/datum/job/colonist/chef,
 	/datum/job/colonist/librarian_museum,

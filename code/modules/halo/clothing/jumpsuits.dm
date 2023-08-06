@@ -10,6 +10,7 @@
 	icon_state = "unscgrey"
 	item_state = "unscgrey"
 	worn_state = "unsc_grey"
+	species_restricted = list("Human", "Orion")
 	item_icons = list(
 		slot_l_hand_str = null,
 		slot_r_hand_str = null,

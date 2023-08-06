@@ -50,6 +50,7 @@
 	/obj/item/weapon/reagent_containers/pill/dermaline,
 	/obj/item/weapon/reagent_containers/pill/polypseudomorphine,
 	/obj/item/weapon/reagent_containers/pill/iron,
+	/obj/item/weapon/reagent_containers/food/snacks/chocolatebar
 	)
 
 /obj/item/clothing/accessory/storage/IFAK/New()
@@ -58,21 +59,29 @@
 		/obj/item/weapon/reagent_containers/syringe,
 		/obj/item/weapon/reagent_containers/hypospray,
 		/obj/item/weapon/reagent_containers/pill,
+		/obj/item/weapon/reagent_containers/food/snacks/chocolatebar,
+		/obj/item/weapon/pen/crayon
 	)
 
-/obj/item/clothing/accessory/storage/IFAK/UNSC/New()
-	if(prob(50))
-		startingitems += /obj/item/weapon/reagent_containers/food/snacks/chocolatebar
-	else
-		startingitems += /obj/item/weapon/pen/crayon/rainbow
-	. = ..()
-	hold.can_hold += /obj/item/weapon/reagent_containers/food/snacks/chocolatebar
-	hold.can_hold += /obj/item/weapon/pen/crayon
+/obj/item/clothing/accessory/storage/IFAK/UNSC
 
 /obj/item/clothing/accessory/storage/IFAK/cov
 	icon_state = "cov_ifak"
+	startingitems = list(\
+	/obj/item/weapon/reagent_containers/syringe/biofoam/cov,
+	/obj/item/weapon/reagent_containers/syringe/biofoam/cov,
+	/obj/item/weapon/reagent_containers/pill/bicaridine,
+	/obj/item/weapon/reagent_containers/pill/dermaline,
+	/obj/item/weapon/reagent_containers/pill/polypseudomorphine,
+	/obj/item/weapon/reagent_containers/pill/iron,
+	/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar
+	)
 
 /obj/item/clothing/accessory/storage/IFAK/cov/New()
-	startingitems += /obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar
 	. = ..()
-	hold.can_hold += /obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar
+	hold.can_hold = list(\
+		/obj/item/weapon/reagent_containers/syringe,
+		/obj/item/weapon/reagent_containers/hypospray,
+		/obj/item/weapon/reagent_containers/pill,
+		/obj/item/weapon/reagent_containers/food/snacks/covenant/irukanbar
+	)

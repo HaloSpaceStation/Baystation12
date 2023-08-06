@@ -277,7 +277,7 @@
 									poplock_bypassing = 1
 									return FALSE
 
-							to_chat(feedback, "<span class='boldannounce'>Joining as [title] is blocked due to [spawn_faction] faction overpop.</span>")
+							to_chat(feedback, "<span class='boldannounce'><font size='3'>Joining as [title] is blocked due to [spawn_faction] faction overpop. Try joining as another team!</font></span>")
 							//tell the admins, but dont spam them too much
 							if(world.time > GLOB.last_admin_notice_overpop + 30 SECONDS)
 								GLOB.last_admin_notice_overpop = world.time
