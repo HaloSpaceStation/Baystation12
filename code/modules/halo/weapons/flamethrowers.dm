@@ -46,7 +46,7 @@
 	embed = 0
 	sharp = 0
 	damage = 20 //Low, but has extra flame effects and such.
-	shield_damage = 10
+	shield_damage =30
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "fire"
 	kill_count = 6 //No sniping!
@@ -64,7 +64,8 @@
 	..()
 	var/impacted_loc = loc
 	if(!ismob(loc))
-		new /obj/effect/fire/noheat(impacted_loc)
+		var/obj/effect/fire/f = new /obj/effect/fire/noheat(impacted_loc)
+		f.firelevel = 8
 
 /obj/item/projectile/bullet/fire/launch_from_gun(var/atom/target)
 	. = ..()

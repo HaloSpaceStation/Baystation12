@@ -115,7 +115,7 @@
 	var/obj/item/projectile/P = damage_source
 	if(istype(P))
 		starting = get_turf(P)
-		damage = max(0,damage + P.shield_damage)
+		damage = max(0, ( damage + P.shield_damage ) * (lore_accuracy ? 3.5 : 1) )
 	else
 		starting = get_turf(damage_source)
 

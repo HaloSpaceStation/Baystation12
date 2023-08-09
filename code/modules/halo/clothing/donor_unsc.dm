@@ -1999,6 +1999,56 @@ obj/item/clothing/head/helmet/odst/donator/roadcone_orange
 	/obj/item/clothing/suit/armor/special/spartan/pneumothorax
 	)
 
+///////////TempleOSDavis/////////
+
+//Spartan
+
+/obj/item/clothing/head/helmet/spartan/temple
+	name = "Mjionir MK V Abomination Helmet"
+	desc = "Absolute cancer."
+	icon_state = "temple_helm_obj"
+	item_state = "temple_helm_worn"
+
+/obj/item/clothing/suit/armor/special/spartan/temple
+	name = "Mjionir MK V Abomination Armor"
+	desc = "Absolute cancer."
+	icon_state = "temple_armor_obj"
+	item_state = "temple_armor_worn"
+
+/obj/item/weapon/storage/box/large/donator/temple
+	startswith = list(\
+	/obj/item/clothing/head/helmet/spartan/temple,
+	/obj/item/clothing/suit/armor/special/spartan/temple
+	)
+	can_hold = list(\
+	/obj/item/clothing/head/helmet/spartan/temple,
+	/obj/item/clothing/suit/armor/special/spartan/temple
+	)
+
+//ONI Field Agent(SPI)
+
+/obj/item/clothing/head/helmet/SPIgen1/temple
+	name = "SPI Skullsuit Helmet"
+	desc = "A helmet modelled after Cybernetic Ninja."
+	icon_state = "temple_helm"
+	item_state = "temple_helm"
+
+/obj/item/clothing/suit/armor/special/SPIgen1/temple
+	name = "SPI Skullsuit"
+	desc = "A skintight suit modelled after Cybernetic Ninja."
+	icon_state = "temple_suit"
+	item_state = "temple_suit"
+
+/obj/item/weapon/storage/box/large/donator/temple/SPI
+	startswith = list(\
+	/obj/item/clothing/head/helmet/SPIgen1/temple,
+	/obj/item/clothing/suit/armor/special/SPIgen1/temple
+	)
+	can_hold = list(\
+	/obj/item/clothing/head/helmet/SPIgen1/temple,
+	/obj/item/clothing/suit/armor/special/SPIgen1/temple
+	)
+
 #undef ODST_OVERRIDE
 #undef ITEM_INHAND
 #undef MARINE_OVERRIDE

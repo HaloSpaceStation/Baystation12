@@ -132,7 +132,7 @@
 	if(istype(dam_proj))
 		if(dam_proj.shield_damage < 0) //Handling for -'ve shield damage numbers
 			damage = max(0,damage - dam_proj.shield_damage)
-		else if(dam_proj.shield_damage >0 && !take_damage(dam_proj.shield_damage,0))
+		else if(dam_proj.shield_damage >0 && !take_damage( dam_proj.shield_damage,0))
 			return 0
 	if(take_damage(damage))
 		//Melee damage through shields is reduced
@@ -163,6 +163,8 @@
 
 /datum/armourspecials/shields/proc/take_damage(var/damage,var/shield_gate = 1)
 	. = 0
+
+	damage *= (lore_accuracy ? 3.5 : 1)
 
 	//some shields dont have full coverage
 	if(prob(intercept_chance))

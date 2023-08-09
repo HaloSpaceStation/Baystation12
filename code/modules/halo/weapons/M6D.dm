@@ -125,7 +125,7 @@
 	name = "\improper M6B Magnum"
 	icon_state = "m6b_police"
 	item_state = "m6b_police"
-	fire_sound = 'code/modules/halo/sounds/MagnumShotSoundEffect.ogg'
+	fire_sound = 'code/modules/halo/sounds/Magnum_Low_Power_Fire.ogg'
 	reload_sound = 'code/modules/halo/sounds/MagnumReloadSoundEffect.ogg'
 	desc = "Common handgun accessible to civilians with a lack of a scope, in drab gray GCPD colors. Takes 12.7mm calibre magazines sized for an M6D."
 

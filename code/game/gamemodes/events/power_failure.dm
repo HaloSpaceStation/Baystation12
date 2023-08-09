@@ -1,4 +1,3 @@
-
 /proc/power_failure(var/announce = 1, var/severity = 2, var/list/affected_z_levels)
 	if(announce)
 		GLOB.using_map.grid_check_announcement()

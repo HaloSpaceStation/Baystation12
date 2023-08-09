@@ -39,7 +39,7 @@
 	max_shots = 500
 	fire_delay = 20
 	burst_delay = 1.5
-	burst = 8
+	burst = 7
 	charge_meter = 0
 
 	fire_sound = 'code/modules/halo/sounds/forerunner/sentFire.ogg'
@@ -55,8 +55,9 @@
 /obj/item/weapon/gun/energy/laser/sentinel_beam/detached
 	burst = 10
 	fire_delay = 10
-	recharge_time = 15
+	recharge_time = 25
 	max_shots = 100
+	one_hand_penalty = 3
 
 
 // AI pathing landmark

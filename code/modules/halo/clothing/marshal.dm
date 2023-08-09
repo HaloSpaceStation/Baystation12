@@ -75,6 +75,9 @@ obj/item/clothing/under/police/marshal
 	icon = MARSHAL_OVERRIDE
 	icon_state = "marshal_armor_l_obj"
 	item_state = "marshal_armor_l_w"
+	body_parts_covered = ARMS|UPPER_TORSO
+	armor = list(melee = 40, bullet = 45, laser = 45, energy = 40, bomb = 40, bio = 25, rad = 25) // Weaker than Marine armor.
+	armor_thickness = 15
 
 /obj/item/clothing/suit/armor/vest/police_medium/marshal //medium
 	name = "Marshal Ballistic Vest"
@@ -83,6 +86,8 @@ obj/item/clothing/under/police/marshal
 	icon = MARSHAL_OVERRIDE
 	icon_state = "marshal_armor_m_obj"
 	item_state = "marshal_armor_m_w"
+	armor = list(melee = 45, bullet = 50, laser = 50, energy = 40, bomb = 40, bio = 25, rad = 25) // Slightly more protection than the light vest, still weaker than marine armor.
+	armor_thickness = 20
 
 /obj/item/clothing/suit/armor/vest/police/marshal //heavy
 	name = "Marshal Heavy Ballistic Suit"
@@ -91,6 +96,8 @@ obj/item/clothing/under/police/marshal
 	icon = MARSHAL_OVERRIDE
 	icon_state = "marshal_armor_h_obj"
 	item_state = "marshal_armor_h_w"
+	armor = list(melee = 60, bullet = 55, laser = 55, energy = 45, bomb = 50, bio = 25, rad = 25) // More protection than the medium vest and stronger than marine armor, at the cost of slowdown.
+	armor_thickness = 25
 
 //MASK
 

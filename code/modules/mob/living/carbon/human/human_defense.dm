@@ -112,7 +112,7 @@ cloak disrupt override
 					effective_armor_thickness = (C.armor_thickness/10) + 1
 					if(type in C.armor_thickness_modifiers)
 						effective_armor_thickness *= C.armor_thickness_modifiers[type]
-				protection = add_armor(protection, (C.armor[type] * effective_armor_thickness))
+				protection = add_armor(protection, (C.armor[type] * effective_armor_thickness * (lore_accuracy ? 0.4 : 1) ))
 	return protection
 
 /mob/living/carbon/human/proc/check_head_coverage()

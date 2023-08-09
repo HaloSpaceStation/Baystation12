@@ -22,11 +22,11 @@
 			sleep(1200)
 
 */
-var/eventchance = 10 // Percent chance per 5 minutes.
+var/eventchance = 3 // Percent chance per 5 minutes.
 var/hadevent    = 0
 
 /proc/appendicitis()
-	for(var/mob/living/carbon/human/H in shuffle(GLOB.living_mob_list_))
+/*	for(var/mob/living/carbon/human/H in shuffle(GLOB.living_mob_list_))
 		if(H.client && H.stat != DEAD)
 			var/obj/item/organ/internal/appendix/A = H.internal_organs_by_name[BP_APPENDIX]
 			if(!istype(A) || (A && A.inflamed))
@@ -34,7 +34,7 @@ var/hadevent    = 0
 			A.inflamed = 1
 			A.update_icon()
 			break
-
+*/
 
 /proc/alien_infestation(var/spawncount = 1) // -- TLE
 	//command_alert("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert")

@@ -19,7 +19,7 @@
 	exposed_positions = list("driver" = 0,"passenger" = 5,"gunner" = 5)
 
 	vehicle_size = ITEM_SIZE_VEHICLE
-	capacity_flag = ITEM_SIZE_NORMAL
+	capacity_flag = ITEM_SIZE_VEHICLE
 
 	move_sound = 'code/modules/halo/sounds/warthog_move.ogg'
 
