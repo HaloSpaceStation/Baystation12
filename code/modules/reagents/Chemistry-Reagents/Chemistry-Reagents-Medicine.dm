@@ -301,7 +301,7 @@
 	M.AdjustWeakened(-1)
 	holder.remove_reagent(/datum/reagent/mindbreaker, 5)
 	M.hallucination = max(0, M.hallucination - 10)
-	M.adjustToxLoss(10 * removed) // Reduced from 12 to 10 to make it toxin buildup a little more sane with its slow metabolism.
+	M.adjustToxLoss(10 * removed) // Reduced from 12 to 10 to make its toxin buildup a little more sane with its slow metabolism.
 	M.add_chemical_effect(CE_PAINKILLER, 20)
 
 /datum/reagent/alkysine
