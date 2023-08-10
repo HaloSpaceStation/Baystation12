@@ -315,6 +315,18 @@
 /datum/reagent/iron/huragok/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_ingest(M, alien, removed)
 
+/datum/reagent/synthblood
+	name = "Synthblood"
+	description = "An advanced blend of cryoprecipitate and saline, most commonly used to rapidly restore the blood volume of a patient."
+	taste_description = "metal"
+	reagent_state = LIQUID
+	metabolism = REM * 3
+	color = "#D59F9F"
+
+/datum/reagent/synthblood/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien != IS_DIONA)
+		M.add_chemical_effect(CE_BLOODRESTORE, 20 * removed)
+
 #undef POLYPSEUDOMORPHINE_PAINKILL
 #undef BIOFOAM_COST_STOPBLEED
 #undef BIOFOAM_COST_MENDBONE

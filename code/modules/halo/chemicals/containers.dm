@@ -20,7 +20,7 @@
 
 /obj/item/weapon/reagent_containers/syringe/ld50_syringe/triadrenaline
 	name = "Tri-Adrenaline Syringe"
-	desc = "A spring-loaded syringe of tri-adrenaline. Used for resuscitation"
+	desc = "A spring-loaded syringe of tri-adrenaline. Used for resuscitation."
 	amount_per_transfer_from_this = 15
 	volume = 15
 	visible_name = "a giant syringe"
@@ -35,16 +35,29 @@
 
 /obj/item/weapon/reagent_containers/syringe/psychostimulant
 	name = "Psychostimulant Syringe"
-	desc = "A dangerous syringe full of a potent brain-mending concoction used to treat traumatic brain injuries. Side effects include loss of consciousness; contains biofoam."
+	desc = "A dangerous syringe full of a potent neural-mending concoction used to treat traumatic brain injuries. Contains Alkysine, Inaprovaline and Tricordrazine. Causes liver damage."
 	amount_per_transfer_from_this = 15
 	volume = 15
 	time = 30
 
 	New()
 		..()
-		reagents.add_reagent(/datum/reagent/alkysine, 3)
-		reagents.add_reagent(/datum/reagent/inaprovaline, 7)
-		reagents.add_reagent(/datum/reagent/biofoam, 5)
+		reagents.add_reagent(/datum/reagent/alkysine, 2)
+		reagents.add_reagent(/datum/reagent/inaprovaline, 5)
+		reagents.add_reagent(/datum/reagent/tricordrazine, 8)
+		mode = SYRINGE_INJECT
+		update_icon()
+
+/obj/item/weapon/reagent_containers/syringe/synthblood
+	name = "Synthblood Syringe"
+	desc = "A syringe full of synthblood, used for rapidly restoring blood volume to a patient. Has no overdose limit, but metabolizes quickly."
+	amount_per_transfer_from_this = 15
+	volume = 15
+	time = 30
+
+	New()
+		..()
+		reagents.add_reagent(/datum/reagent/synthblood, 15)
 		mode = SYRINGE_INJECT
 		update_icon()
 

@@ -286,11 +286,11 @@
 	if(H.should_have_organ(BP_BRAIN))
 		var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[BP_BRAIN]
 		if(!brain || H.stat == DEAD || (H.status_flags & FAKEDEATH))
-			brain_result = "<span class='danger'>none, patient is braindead</span>"
+			brain_result = "<span class='danger'>none, patient is braindead.</span>"
 		else if(H.stat != DEAD)
 			brain_result = "[round(max(0,(1 - brain.damage/brain.max_damage)*100))]%"
 	else
-		brain_result = "<span class='danger'>ERROR - Nonstandard biology</span>"
+		brain_result = "<span class='danger'>ERROR - Nonstandard biology.</span>"
 	dat += "<b>Brain activity:</b> [brain_result]"
 
 	var/pulse_result = "normal"

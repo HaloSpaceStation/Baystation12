@@ -246,7 +246,8 @@ obj/structure/closet/crate/supply_drop/mass_ammo/odst/WillContain()
 	/obj/item/weapon/storage/pill_bottle/bicaridine,
 	/obj/item/weapon/storage/pill_bottle/dermaline,
 	/obj/item/weapon/storage/pill_bottle/polypseudomorphine,
-	/obj/item/weapon/reagent_containers/syringe/psychostimulant,
+	/obj/item/weapon/reagent_containers/syringe/psychostimulant = 2,
+	/obj/item/weapon/reagent_containers/syringe/synthblood = 2,
 	)
 
 /datum/support_option/supply_drop/medical_drop/cov
@@ -268,7 +269,8 @@ obj/structure/closet/crate/supply_drop/mass_ammo/odst/WillContain()
 	/obj/item/weapon/storage/pill_bottle/covenant/bicaridine,
 	/obj/item/weapon/storage/pill_bottle/covenant/dermaline,
 	/obj/item/weapon/storage/pill_bottle/covenant/polypseudomorphine,
-	/obj/item/weapon/reagent_containers/syringe/psychostimulant,
+	/obj/item/weapon/reagent_containers/syringe/psychostimulant = 2,
+	/obj/item/weapon/reagent_containers/syringe/synthblood = 2,
 	)
 
 //RECON VEHICLE DROP//

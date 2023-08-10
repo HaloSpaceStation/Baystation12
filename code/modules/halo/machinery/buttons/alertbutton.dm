@@ -58,10 +58,10 @@
 //Stupid snowflake button for both sound and door control at the same time
 /obj/machinery/button/remote/blast_door/firing_sequence
 	var/area/area_base = null
-	var/sound_cooldown = 999999
+	var/sound_cooldown = 200
 	var/last_used = 0
 	var/alarm_sound = 'code/modules/halo/sounds/station_firing_sequence.ogg'
-	var/door_cooldown = 999999
+	var/door_cooldown = 50
 	var/state = 1
 
 /obj/machinery/button/remote/blast_door/firing_sequence/trigger()

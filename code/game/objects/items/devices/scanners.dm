@@ -59,25 +59,17 @@ proc/medical_scan_results(var/mob/living/carbon/human/H, var/verbose)
 	. = list()
 	. += "<span class='notice'><b>Scan results for \the [H]:</b></span>"
 
-	// Brain activity.
+	// Brain activity. Literally just copied over the body scanner's code so people will stop malding about brain damage not showing up properly.
 	var/brain_result = "normal"
 	if(H.should_have_organ(BP_BRAIN))
 		var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[BP_BRAIN]
 		if(!brain || H.stat == DEAD || (H.status_flags & FAKEDEATH))
-			brain_result = "<span class='danger'>none, patient is braindead</span>"
+			brain_result = "<span class='danger'>none, patient is braindead.</span>"
 		else if(H.stat != DEAD)
 			if(H.has_brain_worms())
 				brain_result = "<span class='danger'>ERROR - aberrant/unknown brainwave patterns, advanced scanner recommended</span>"
 			else
-				switch((brain.damage / brain.max_damage)*100)
-					if(0 to 20)
-						brain_result = "<span class='notice'>normal</span>"
-					if(20 to 60)
-						brain_result = "<span class='warning'>weak</span>"
-					if(60 to INFINITY)
-						brain_result = "<span class='danger'>extremely weak</span>"
-					else
-						brain_result = "<span class='danger'>ERROR - Hardware fault</span>"
+				brain_result = "[round(max(0,(1 - brain.damage/brain.max_damage)*100))]%"
 	else
 		brain_result = "<span class='danger'>ERROR - Nonstandard biology</span>"
 	. += "<span class='notice'>Brain activity:</span> [brain_result]."

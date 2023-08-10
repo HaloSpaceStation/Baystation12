@@ -189,13 +189,14 @@
 			switch(blood_volume)
 
 				if(BLOOD_VOLUME_SAFE to INFINITY)
-					if((damage%damage_threshold_value)>=1 || (damage && owner.chem_effects[CE_BRAIN_REGEN]))
-						damage = max(damage - 1,0)
+					var/brain_regen = owner.chem_effects[CE_BRAIN_REGEN]
+					if((damage%damage_threshold_value)>=1 || (damage && brain_regen != 0))
+						damage = max(damage - brain_regen,0)
 				if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 					if(prob(1))
 						to_chat(owner, "<span class='warning'>You feel [pick("dizzy","woozy","faint")]...</span>")
-					if(!past_damage_threshold(2))
-						take_damage(2)
+//					if(!past_damage_threshold(2))
+//						take_damage(1) // Need more bloodloss to incur brain damage buildup.
 				if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 					owner.eye_blurry = max(owner.eye_blurry,6)
 					if(!past_damage_threshold(4))

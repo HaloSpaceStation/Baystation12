@@ -15,6 +15,7 @@
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE)
 		M.add_chemical_effect(CE_PAINKILLER, 10)
+		M.add_chemical_effect(CE_BRAIN_REGEN, 1) // Slowly repairs brain damage.
 	M.add_chemical_effect(CE_PULSE, -1)
 
 /datum/reagent/bicaridine
@@ -151,11 +152,35 @@
 
 /datum/reagent/cryoxadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.add_chemical_effect(CE_CRYO, 3)
-	if(M.bodytemperature < 170)
-		M.adjustCloneLoss(-10 * removed)
+	if(M.bodytemperature < 200)
+		M.adjustCloneLoss(-15 * removed)
 		M.add_chemical_effect(CE_OXYGENATED, 1)
-		M.heal_organ_damage(10 * removed, 10 * removed)
+		M.heal_organ_damage(20 * removed, 20 * removed)
 		M.add_chemical_effect(CE_PULSE, -2)
+		M.add_chemical_effect(CE_BRAIN_REGEN, 5)
+		M.AdjustParalysis(-1)
+		M.AdjustStunned(-1)
+		M.AdjustWeakened(-1)
+		M.radiation = max(M.radiation - 30 * removed, 0)
+		M.add_up_to_chemical_effect(CE_ANTITOX, 1)
+		M.add_chemical_effect(CE_BLOODRESTORE, 20 * removed)
+		M.immunity = max(M.immunity - 0.1, 0)
+		M.add_chemical_effect(CE_ANTIVIRAL, VIRUS_COMMON)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			for(var/obj/item/organ/I in H.internal_organs)
+				if(I.robotic >= ORGAN_ROBOT)
+					continue
+				if(I.organ_tag == BP_BRAIN)
+					if(I.damage >= I.min_bruised_damage)
+						continue
+				I.damage = max(I.damage - removed, 0)
+			for(var/obj/item/organ/external/o in H.organs)
+				if(o.status & ORGAN_BROKEN)
+					o.mend_fracture()
+	if(M.bodytemperature > 200)
+		var/mob/living/carbon/human/H = M
+		H.drowsyness++
 
 /datum/reagent/clonexadone
 	name = "Clonexadone"
@@ -169,11 +194,35 @@
 
 /datum/reagent/clonexadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.add_chemical_effect(CE_CRYO, 3)
-	if(M.bodytemperature < 170)
+	if(M.bodytemperature < 200)
 		M.adjustCloneLoss(-30 * removed)
 		M.add_chemical_effect(CE_OXYGENATED, 2)
 		M.heal_organ_damage(30 * removed, 30 * removed)
 		M.add_chemical_effect(CE_PULSE, -2)
+		M.add_chemical_effect(CE_BRAIN_REGEN, 10)
+		M.AdjustParalysis(-2)
+		M.AdjustStunned(-2)
+		M.AdjustWeakened(-2)
+		M.radiation = max(M.radiation - 30 * removed, 0)
+		M.add_up_to_chemical_effect(CE_ANTITOX, 2)
+		M.add_chemical_effect(CE_BLOODRESTORE, 30 * removed)
+		M.immunity = max(M.immunity - 0.1, 0)
+		M.add_chemical_effect(CE_ANTIVIRAL, VIRUS_COMMON)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			for(var/obj/item/organ/I in H.internal_organs)
+				if(I.robotic >= ORGAN_ROBOT)
+					continue
+				if(I.organ_tag == BP_BRAIN)
+					if(I.damage >= I.min_bruised_damage)
+						continue
+				I.damage = max(I.damage - removed, 0)
+			for(var/obj/item/organ/external/o in H.organs)
+				if(o.status & ORGAN_BROKEN)
+					o.mend_fracture()
+	if(M.bodytemperature > 200)
+		var/mob/living/carbon/human/H = M
+		H.drowsyness++
 
 /* Painkillers */
 
@@ -252,7 +301,7 @@
 	M.AdjustWeakened(-1)
 	holder.remove_reagent(/datum/reagent/mindbreaker, 5)
 	M.hallucination = max(0, M.hallucination - 10)
-	M.adjustToxLoss(12 * removed) // Boosted the baseline damage from 5 to 12 as this was used to easily ignore stuns.
+	M.adjustToxLoss(10 * removed) // Reduced from 12 to 10 to make it toxin buildup a little more sane with its slow metabolism.
 	M.add_chemical_effect(CE_PAINKILLER, 20)
 
 /datum/reagent/alkysine
@@ -270,11 +319,8 @@
 	if(alien == IS_DIONA)
 		return
 	M.add_chemical_effect(CE_PAINKILLER, 10)
-	M.add_chemical_effect(CE_BRAIN_REGEN, 1)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.confused++
-		H.drowsyness++
+	M.add_chemical_effect(CE_BRAIN_REGEN, 2) // 1 to 2. Heals the brain twice as fast.
+	M.adjustToxLoss(10 * removed) // Removed confusion and drowsiness, added toxin buildup.
 
 /datum/reagent/imidazoline
 	name = "Imidazoline"
@@ -312,10 +358,10 @@
 
 /datum/reagent/otomax/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(M.ear_damage == 0)
-		//Heal deafness more effectively if the ears are undamaged
-		M.adjustEarDamage(0, -5 * removed)
+		//Heal deafness more effectively if the ears are undamaged. Buffed to make it more relevant, now that earplugs are a thing.
+		M.adjustEarDamage(0, -10 * removed)
 	else
-		M.adjustEarDamage(-1, -1)
+		M.adjustEarDamage(-3, -3)
 
 /datum/reagent/otomax/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -679,7 +725,7 @@
 		M.add_chemical_effect(CE_PULSE, 1)
 	else
 		M.add_chemical_effect(CE_PAINKILLER, min(30*volume, 80))
-		M.add_chemical_effect(CE_PULSE, 2)
+		M.add_chemical_effect(CE_PULSE, 1) // 2 -> 1 due to brutes breaking their hearts on this stuff.
 	if(dose > 5)
 		M.make_jittery(5)
 	if(volume >= 5 && M.is_asystole())
@@ -687,7 +733,7 @@
 		M.resuscitate()
 	while(volume >= M.species.adrenal_break_threshold)//slightly more than 100/5.
 		M.add_chemical_effect(CE_PAINKILLER,120*(M.species.adrenal_break_threshold/30)) //Reach a threshold of adrenaline, massive painkill effect
-		M.add_chemical_effect(CE_PULSE,3) //But your heart goes mental
+		M.add_chemical_effect(CE_PULSE,2) //But your heart goes mental. 3 -> 2 due to brutes breaking their hearts on this stuff.
 		remove_self(M.species.adrenal_break_threshold) //And your body consumes the adrenaline for that last final push
 
 /datum/reagent/adrenaline/overdose(var/mob/living/carbon/M, var/alien)
