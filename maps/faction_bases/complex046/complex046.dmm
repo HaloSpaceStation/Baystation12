@@ -181,7 +181,7 @@
 "dy" = (/obj/structure/table/standard,/obj/item/weapon/storage/firstaid/surgery,/obj/item/device/healthanalyzer,/turf/simulated/floor/tiled/white,/area/faction_base/oni/blacksite)
 "dz" = (/obj/machinery/light/colored/blue{icon_state = "blue1"; dir = 1},/turf/simulated/floor/tiled/dark,/area/faction_base/oni/research)
 "dA" = (/obj/structure/table/standard,/obj/item/weapon/stamp/cargo,/turf/simulated/floor/tech/maint,/area/faction_base/oni/hangar)
-"dB" = (/obj/machinery/light{dir = 8},/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/obj/item/weapon/wrench,/obj/structure/table/glass,/turf/simulated/floor/tech/white,/area/faction_base/oni/medbay)
+"dB" = (/obj/machinery/light{dir = 8},/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/obj/item/weapon/wrench,/obj/structure/table/glass,/obj/item/weapon/paper/cryo_guide,/turf/simulated/floor/tech/white,/area/faction_base/oni/medbay)
 "dC" = (/obj/structure/sign/greencross,/turf/simulated/wall/silver{tag = "icon-solidfwall_opening"; icon_state = "solidfwall_opening"},/area/faction_base/oni/medbay)
 "dD" = (/obj/vehicles/warthog,/obj/effect/floor_decal/industrial/hatch/yellow,/turf/simulated/floor/road{tag = "icon-road_empty (NORTH)"; icon_state = "road_empty"; dir = 1},/area/faction_base/oni/garage)
 "dE" = (/obj/effect/floor_decal/industrial/warning{icon_state = "warning"; dir = 1},/turf/simulated/floor/tech/maint,/area/faction_base/oni/hangar)
