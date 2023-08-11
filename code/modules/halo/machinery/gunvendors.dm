@@ -644,7 +644,7 @@
 					/obj/item/weapon/reagent_containers/hypospray = 3,
 					/obj/item/weapon/reagent_containers/syringe/psychostimulant = 10,
 					/obj/item/weapon/reagent_containers/syringe/ld50_syringe/triadrenaline = 10,
-					/obj/item/weapon/reagent_containers/syringe/synthblood = 20,
+					/obj/item/weapon/reagent_containers/syringe/synthblood = 10,
 					/obj/item/weapon/storage/box/syringes = 2,
 					)
 
