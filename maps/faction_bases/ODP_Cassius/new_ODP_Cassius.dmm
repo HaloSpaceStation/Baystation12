@@ -149,7 +149,7 @@
 "cS" = (/obj/machinery/light{dir = 1; icon_state = "tube1"},/obj/machinery/atmospherics/unary/vent_scrubber/on,/turf/simulated/floor/tiled,/area/faction_base/unsc/odp/umbi_w_n)
 "cT" = (/turf/simulated/wall/r_wall,/area/faction_base/unsc/odp/escape_pods_e)
 "cU" = (/turf/simulated/floor/tiled,/area/faction_base/unsc/odp/central_lobby)
-"cV" = (/obj/structure/window/reinforced{icon_state = "rwindow"; dir = 4},/obj/structure/table/steel_reinforced,/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/obj/item/weapon/wrench,/turf/simulated/floor/tiled/white,/area/faction_base/unsc/odp/medical)
+"cV" = (/obj/structure/window/reinforced{icon_state = "rwindow"; dir = 4},/obj/structure/table/steel_reinforced,/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/obj/item/weapon/wrench,/obj/item/weapon/paper/cryo_guide,/turf/simulated/floor/tiled/white,/area/faction_base/unsc/odp/medical)
 "cW" = (/turf/simulated/floor/grass,/area/faction_base/unsc/odp/central_lobby)
 "cX" = (/obj/machinery/door/airlock/multi_tile/halo/odp_general/storage_room{icon_state = "closed"; dir = 4},/obj/machinery/door/firedoor/unsc_odp,/turf/simulated/floor/plating,/area/faction_base/unsc/odp/store_room)
 "cY" = (/obj/structure/window/reinforced/projresist{icon_state = "rwindow"; dir = 8},/turf/simulated/floor/tiled,/area/faction_base/unsc/odp/hangar_e)

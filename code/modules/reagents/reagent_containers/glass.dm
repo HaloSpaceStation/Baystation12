@@ -190,6 +190,7 @@
 	flags = OPENCONTAINER
 
 /obj/item/weapon/reagent_containers/glass/beaker/cryoxadone
+	name = "cryoxadone beaker"
 	New()
 		..()
 		reagents.add_reagent(/datum/reagent/cryoxadone, 30)
