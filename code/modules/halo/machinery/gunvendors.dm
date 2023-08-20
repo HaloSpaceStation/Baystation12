@@ -60,6 +60,35 @@
 		/obj/item/turret_deploy_kit/chaingun = 2,
 	)
 
+/obj/machinery/vending/armory/light
+	name = "UNSC Light Equipment Rack"
+	desc = "Storage for basic weapons and ammunition, alongside some equipment."
+	req_access = list(access_unsc_armoury)
+	products = list(
+					"Melee" = -1,
+					/obj/item/weapon/material/knife/combat_knife = 10,
+					"Guns" = -1,
+					/obj/item/weapon/gun/projectile/m6d_magnum = 20,
+					/obj/item/weapon/gun/projectile/ma5b_ar = 20,
+					/obj/item/weapon/gun/projectile/m7_smg = 10,
+					/obj/item/weapon/gun/projectile/br55 = 5,
+					"Ammunition" = -1,
+					/obj/item/ammo_magazine/m6d/m225 = 100,
+					/obj/item/ammo_magazine/ma5b/m118 = 100,
+					/obj/item/ammo_magazine/br55/m634 = 50,
+					/obj/item/ammo_magazine/m7/m443 = 50,
+					"Explosives" = -1,
+					/obj/item/weapon/grenade/frag/m9_hedp = 15,
+					/obj/item/weapon/grenade/smokebomb = 15,
+					/obj/item/weapon/plastique = 10,
+					/obj/item/weapon/plastique/breaching = 10,
+					/obj/item/weapon/plastique/breaching/longrange = 10,
+					"Miscellaneous" = -1,
+					/obj/item/weapon/armor_patch = 15,
+					/obj/item/weapon/armor_patch/mini = 15,
+					/obj/item/drop_pod_beacon = 15,
+					)
+
 /obj/machinery/pointbased_vending/armory/hybrid/innie
 	name = "Insurrectionist Equipment Rack"
 	desc = "An equipment rack, obviously stolen from the UNSC or their suppliers."

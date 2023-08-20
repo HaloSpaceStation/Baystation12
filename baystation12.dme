@@ -3360,6 +3360,7 @@
 #include "maps\_gamemodes\_popbalance.dm"
 #include "maps\_gamemodes\gamemode_overrides.dm"
 #include "maps\_gamemodes\randantag\randantag.dm"
+#include "maps\faction_bases\Cassius_Base\include.dm"
 #include "maps\geminus_city\geminus_city.dm"
 #include "maps\~mapsystem\map_preferences.dm"
 #include "maps\~mapsystem\map_ranks.dm"
