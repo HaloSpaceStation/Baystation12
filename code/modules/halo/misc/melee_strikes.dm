@@ -41,14 +41,14 @@
 	. = ..()
 
 /obj/item/proc/has_melee_strike(var/mob/user)
-	if(isnull(melee_strikes))
+	if(isnull(melee_strikes) || melee_strikes.len == 0)
 		return null
 	if(isnull(melee_strike))
 		melee_strike = melee_strikes[1]
 		if(!isnull(melee_strike))
 			melee_strike.strike_active(user)
 
-	return melee_strike
+	return 1
 
 /obj/item/proc/verb_swap_stances()
 	set name = "Swap Stances"
