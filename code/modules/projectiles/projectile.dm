@@ -68,11 +68,16 @@
 	var/datum/plot_vector/trajectory	// used to plot the path of the projectile
 	var/datum/vector_loc/location		// current location of the projectile in pixel space
 	var/matrix/effect_transform			// matrix to rotate and scale projectile effects - putting it here so it doesn't
-										//  have to be recreated multiple times
+										//  have to be recreated multiple time
+	var/list/segments					// Tracers for hitscan projectiles.
 
-/obj/item/projectile/New()
+/obj/item/projectile/Initialize()
 	damtype = damage_type //TODO unify these vars properly
-	..()
+	if(!hitscan)
+		animate_movement = SLIDE_STEPS
+	else
+		animate_movement = NO_STEPS
+	. = ..()
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
 /obj/item/projectile/proc/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
@@ -416,12 +421,12 @@
 			P.set_transform(M)
 			P.pixel_x = location.pixel_x
 			P.pixel_y = location.pixel_y
-			if(tracer_delay_time)
+			if(hitscan)
+				segments += P
+			else if(tracer_delay_time)
 				P.activate(tracer_delay_time)
-			else if(!hitscan)
-				P.activate(step_delay)	//if not a hitscan projectile, remove after a single delay
 			else
-				P.activate()
+				P.activate(step_delay)
 
 /obj/item/projectile/proc/impact_effect(var/matrix/M)
 	if(ispath(impact_type))
@@ -432,6 +437,13 @@
 			P.pixel_x = location.pixel_x
 			P.pixel_y = location.pixel_y
 			P.activate()
+
+/obj/item/projectile/Destroy()
+	for(var/entry in segments)
+		segments -= entry
+		spawn( (tracer_delay_time ? tracer_delay_time : step_delay) )
+			qdel(entry)
+	. = ..()
 
 //"Tracing" projectile
 /obj/item/projectile/test //Used to see if you can hit them.

@@ -1,8 +1,8 @@
 /obj/item/device/taperecorder
 	name = "universal recorder"
 	desc = "A device that can record to cassette tapes, and play them. It automatically translates the content in playback."
-	icon_state = "taperecorder"
-	item_state = "analyzer"
+	icon_state = "taperecorder_idle"
+	item_state = "taperecorder_idle"
 	w_class = ITEM_SIZE_SMALL
 
 	matter = list(DEFAULT_WALL_MATERIAL = 60,"glass" = 30)

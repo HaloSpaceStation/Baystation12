@@ -3,6 +3,10 @@
 	//gamemode
 	#include "../_gamemodes/firefight/_all_includes.dm"
 
+	//overmap define
+	#include "../desert_outpost/desert_outpost_overmap.dm"
+	#include "../desert_outpost/desert_outpost_map.dm"
+
 	//lobby music
 	#include "../../code/modules/halo/lobby_music/halo_music.dm"
 
@@ -15,10 +19,12 @@
 	#include "map.dm"
 
 	//map turfs
-	#include "../desert_outpost/turfs_areas.dm"
+	#include "../desert_outpost/areas.dm"
 
 	//map
-	#include "../desert_outpost/desert_outpost.dmm"
+//	#include "../desert_outpost/desert_outpost_old.dmm"
+	#include "../desert_outpost/desert_outpost2.dmm"
+	#include "../desert_outpost/desert_outpost1.dmm"
 
 	#define using_map_DATUM /datum/map/stranded_desert_outpost
 

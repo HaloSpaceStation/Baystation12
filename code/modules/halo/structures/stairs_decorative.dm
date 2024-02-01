@@ -29,3 +29,32 @@
 /obj/structure/stairs_decorative/west
 	dir = WEST
 	bound_width = 64
+
+/obj/structure/stairs_decorative/dark
+	icon = 'code/modules/halo/structures/dark_stair.dmi'
+	icon_state = "stairstop"
+
+/obj/structure/stairs_decorative/dark/north
+	dir = NORTH
+	bound_height = 64
+	bound_y = -32
+	pixel_y = -32
+
+/obj/structure/stairs_decorative/dark/south
+	dir = SOUTH
+	bound_height = 64
+
+/obj/structure/stairs_decorative/dark/east
+	dir = EAST
+	bound_width = 64
+	bound_x = -32
+	pixel_x = -32
+
+/obj/structure/stairs_decorative/dark/west
+	dir = WEST
+	bound_width = 64
+
+/obj/structure/stairs_decorative/industrial
+	name = "industrial stairs"
+	icon = 'icons/obj/stairs.dmi'
+	icon_state = "industrialstair"

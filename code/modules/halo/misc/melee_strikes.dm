@@ -75,14 +75,14 @@
 
 /obj/item/equipped(var/mob/living/carbon/human/user)
 	. = ..()
-	if(src in list(user.l_hand,user.r_hand) )
+	if(src in list(user.l_hand,user.r_hand) && has_melee_strike(user))
 		verbs |= /obj/item/proc/verb_swap_stances
 	else
 		verbs -= /obj/item/proc/verb_swap_stances
 
 /obj/item/dropped(mob/user as mob)
 	. = ..()
-	if(src in list(user.l_hand,user.r_hand) )
+	if(src in list(user.l_hand,user.r_hand) && has_melee_strike(user))
 		verbs |= /obj/item/proc/verb_swap_stances
 	else
 		verbs -= /obj/item/proc/verb_swap_stances

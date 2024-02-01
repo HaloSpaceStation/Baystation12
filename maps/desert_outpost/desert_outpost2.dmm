@@ -1,0 +1,188 @@
+"aa" = (/turf/unsimulated/mineral,/area/planet/daynight/floor1)
+"ab" = (/turf/simulated/open,/area/planet/daynight/floor1)
+"ac" = (/turf/simulated/wall/flood_biomass,/area/planet/daynight/floor1)
+"ad" = (/turf/simulated/floor/asteroid/planet,/area/planet/daynight/floor1)
+"ae" = (/obj/effect/landmark/spawn_easy,/turf/simulated/floor/asteroid/planet,/area/planet/daynight/floor1)
+"af" = (/turf/simulated/floor/flood_biomass,/area/planet/daynight/floor1)
+"ag" = (/obj/effect/landmark/spawn_medium,/turf/simulated/floor/asteroid/planet,/area/planet/daynight/floor1)
+"ah" = (/obj/effect/landmark/spawn_hard,/turf/simulated/floor/asteroid/planet,/area/planet/daynight/floor1)
+"ai" = (/obj/effect/landmark/spawn_legendary,/turf/simulated/floor/asteroid/planet,/area/planet/daynight/floor1)
+"aj" = (/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ak" = (/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"al" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 4},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 5},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"am" = (/obj/effect/floor_decal/steeldecal/steel_decals9{icon_state = "steel_decals9"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"an" = (/obj/effect/floor_decal/steeldecal/steel_decals9{icon_state = "steel_decals9"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ao" = (/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 1},/obj/effect/floor_decal/techfloor,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ap" = (/obj/structure/destructible/railing/industrial/corner,/obj/effect/floor_decal/techfloor,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aq" = (/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 4},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 9},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ar" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 8},/turf/simulated/floor/tiled/doubletiled,/area/planet/daynight/floor1)
+"as" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 4},/turf/simulated/floor/tiled/doubletiled,/area/planet/daynight/floor1)
+"at" = (/turf/unsimulated/wall{icon_state = "0"},/area/planet/daynight/floor1)
+"au" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 8},/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 1},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 9},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"av" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 1},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aw" = (/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ax" = (/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ay" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 4},/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 1},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 5},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"az" = (/obj/structure/destructible/marine_barricade{icon_state = "fullbarricade"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aA" = (/obj/effect/landmark/start/joinlate,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aB" = (/obj/structure/closet/crate/supply_drop/construction,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aC" = (/obj/structure/closet/crate/supply_drop/construction,/obj/item/device/lightreplacer,/obj/item/weapon/storage/box/lights/mixed,/obj/item/weapon/storage/box/lights/mixed,/obj/item/weapon/storage/box/lights/mixed,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aD" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 8},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 9},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aE" = (/obj/structure/closet/crate/supply_drop,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aF" = (/obj/structure/closet/crate/supply_drop/mass_ammo/odst,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aG" = (/obj/effect/floor_decal/techfloor/corner{icon_state = "techfloor_corners"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aH" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aI" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 4},/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 4},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 5},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aJ" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 8},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aK" = (/obj/structure/destructible/marine_barricade{icon_state = "fullbarricade"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aL" = (/obj/effect/landmark/assault_target_firefight,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aM" = (/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 8},/obj/structure/destructible/railing/industrial/corner,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aN" = (/obj/machinery/light/floor,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aO" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 1},/turf/simulated/floor/tech/steel,/area/planet/daynight/floor1)
+"aP" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 4},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aQ" = (/obj/structure/destructible/railing/dark/corner_outer,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aR" = (/obj/structure/destructible/railing/dark,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aS" = (/obj/structure/destructible/railing/dark/corner_outer{icon_state = "railing_corner_outer_dark"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aT" = (/obj/machinery/light/floor,/turf/simulated/floor/tech/steel,/area/planet/daynight/floor1)
+"aU" = (/turf/simulated/floor/tiled/steel_ridged,/area/planet/daynight/floor1)
+"aV" = (/turf/simulated/floor/tech/steel,/area/planet/daynight/floor1)
+"aW" = (/obj/effect/landmark/assault_target/flood,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aX" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 4},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 6},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aY" = (/obj/structure/destructible/railing/dark{icon_state = "railing_dark"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"aZ" = (/turf/unsimulated/floor/grass5,/area/planet/daynight/floor1)
+"ba" = (/obj/structure/destructible/railing/dark{icon_state = "railing_dark"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bb" = (/obj/structure/destructible/railing/dark,/turf/simulated/floor/tech/steel,/area/planet/daynight/floor1)
+"bc" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 8},/obj/structure/destructible/railing/industrial,/obj/effect/floor_decal/techfloor,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bd" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"be" = (/obj/structure/destructible/railing/dark/corner_outer{icon_state = "railing_corner_outer_dark"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bf" = (/obj/structure/destructible/railing/dark{icon_state = "railing_dark"; dir = 1},/turf/simulated/floor/tech/steel,/area/planet/daynight/floor1)
+"bg" = (/obj/structure/destructible/railing/dark/corner_outer{icon_state = "railing_corner_outer_dark"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bh" = (/obj/item/weapon/storage/belt/marine_ammo,/obj/structure/closet/crate/supply_drop,/obj/item/weapon/storage/belt/marine_ammo,/obj/item/weapon/storage/belt/marine_ammo,/obj/item/weapon/storage/belt/marine_ammo,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bi" = (/obj/item/weapon/gun/projectile/ma37_ar,/obj/item/weapon/gun/projectile/ma37_ar,/obj/structure/closet/crate/supply_drop,/obj/item/ammo_magazine/ma37/m118,/obj/item/ammo_magazine/ma37/m118,/obj/item/ammo_magazine/ma37/m118,/obj/item/ammo_magazine/ma37/m118,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bj" = (/obj/structure/destructible/railing/dark{icon_state = "railing_dark"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bk" = (/obj/structure/closet/crate/supply_drop/medical,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bl" = (/obj/structure/closet/crate/supply_drop,/obj/item/weapon/storage/firstaid/unsc,/obj/item/weapon/storage/firstaid/unsc,/obj/item/weapon/storage/belt/marine_medic,/obj/item/weapon/storage/belt/marine_medic,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bm" = (/obj/structure/destructible/railing/industrial,/turf/simulated/floor/tech/steel,/area/planet/daynight/floor1)
+"bn" = (/obj/structure/bed/roller,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bo" = (/obj/structure/closet/crate/supply_drop,/obj/item/weapon/storage/firstaid/combat/unsc,/obj/item/weapon/storage/firstaid/fire,/obj/item/weapon/storage/firstaid/o2,/obj/item/weapon/storage/firstaid/regular,/obj/item/weapon/storage/firstaid/toxin,/obj/item/weapon/storage/firstaid/surgery,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bp" = (/obj/structure/closet/crate/supply_drop,/obj/item/weapon/gun/projectile/m392_dmr,/obj/item/weapon/gun/projectile/m392_dmr,/obj/item/ammo_magazine/m392,/obj/item/ammo_magazine/m392,/obj/item/ammo_magazine/m392,/obj/item/ammo_magazine/m392,/obj/item/ammo_magazine/m392,/obj/item/ammo_magazine/m392,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bq" = (/obj/structure/closet/crate/supply_drop,/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts,/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts,/obj/item/ammo_box/shotgun,/obj/item/ammo_box/shotgun,/obj/item/ammo_box/shotgun,/obj/item/ammo_box/shotgun,/obj/item/ammo_box/shotgun,/obj/item/ammo_box/shotgun,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"br" = (/obj/structure/closet/crate/supply_drop,/obj/item/weapon/material/machete,/obj/item/weapon/material/machete,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bs" = (/obj/structure/destructible/railing/industrial,/obj/effect/floor_decal/techfloor,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bt" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 8},/turf/simulated/floor/tech/steel,/area/planet/daynight/floor1)
+"bu" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 4},/turf/simulated/floor/tech/steel,/area/planet/daynight/floor1)
+"bv" = (/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 8},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 5},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bw" = (/obj/effect/landmark/spawn_medium,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bx" = (/obj/effect/landmark/spawn_medium,/turf/simulated/floor/tiled/techfloor/grid,/area/planet/daynight/floor1)
+"by" = (/obj/effect/landmark/spawn_legendary,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bz" = (/obj/effect/landmark/spawn_hard,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bA" = (/obj/effect/landmark/spawn_hard,/turf/simulated/floor/tiled/techfloor/grid,/area/planet/daynight/floor1)
+"bB" = (/obj/effect/landmark/spawn_easy,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bC" = (/obj/effect/landmark/spawn_easy,/turf/simulated/floor/tiled/techfloor/grid,/area/planet/daynight/floor1)
+"bD" = (/obj/effect/overmap/sector/desert_outpost,/turf/unsimulated/mineral,/area/planet/daynight/floor1)
+"bE" = (/obj/effect/landmark/map_data{name = "Desert Outpost"},/turf/unsimulated/mineral,/area/planet/daynight/floor1)
+"bF" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 4},/obj/structure/destructible/railing/industrial,/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 6},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bG" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 9},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 9},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bH" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 5},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 5},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bI" = (/obj/effect/floor_decal/techfloor/hole{icon_state = "techfloor_hole_left"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bJ" = (/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bK" = (/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 8},/obj/effect/floor_decal/techfloor/corner{icon_state = "techfloor_corners"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bL" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 1},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 5},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bM" = (/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 4},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bN" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 4},/obj/structure/table/rack,/obj/item/ammo_magazine/m6s/m224,/obj/item/ammo_magazine/m6s/m224,/obj/item/ammo_magazine/m6s/m224,/obj/item/ammo_magazine/m6s/m224,/obj/item/ammo_magazine/m6s/m224,/obj/item/ammo_magazine/m6s/m224,/obj/item/weapon/gun/projectile/m6c_magnum_s,/obj/item/weapon/gun/projectile/m6c_magnum_s,/obj/item/weapon/gun/projectile/m6c_magnum_s,/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bO" = (/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bP" = (/obj/structure/destructible/railing/industrial/corner,/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 8},/obj/effect/floor_decal/techfloor/corner,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bQ" = (/obj/structure/destructible/railing/dark/corner_outer,/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bR" = (/obj/structure/destructible/railing/dark/corner_outer{icon_state = "railing_corner_outer_dark"; dir = 4},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bS" = (/obj/effect/floor_decal/techfloor/hole{icon_state = "techfloor_hole_left"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bT" = (/obj/structure/table/rack,/obj/structure/destructible/railing/dark{icon_state = "railing_dark"; dir = 4},/obj/item/weapon/gun/projectile/m7_smg/silenced,/obj/item/weapon/gun/projectile/m7_smg/silenced,/obj/item/ammo_magazine/m7/m443/rnd48,/obj/item/ammo_magazine/m7/m443/rnd48,/obj/item/ammo_magazine/m7/m443/rnd48,/obj/item/ammo_magazine/m7/m443/rnd48,/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bU" = (/obj/structure/destructible/railing/dark{icon_state = "railing_dark"; dir = 8},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bV" = (/obj/effect/floor_decal/techfloor/hole{icon_state = "techfloor_hole_left"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bW" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 8},/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 1},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bX" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 4},/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 1},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bY" = (/obj/structure/destructible/railing/dark/corner_outer{icon_state = "railing_corner_outer_dark"; dir = 1},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"bZ" = (/obj/structure/destructible/railing/dark/corner_outer{icon_state = "railing_corner_outer_dark"; dir = 8},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ca" = (/obj/structure/destructible/railing/industrial/corner,/obj/effect/floor_decal/techfloor/corner,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cb" = (/obj/structure/destructible/railing/industrial,/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 6},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cc" = (/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 1},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cd" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 8},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 10},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ce" = (/obj/effect/floor_decal/techfloor/corner{icon_state = "techfloor_corners"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cf" = (/obj/machinery/light/spot,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cg" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 10},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 10},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ch" = (/obj/structure/destructible/railing/industrial{icon_state = "railing_industrial"; dir = 6},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 6},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ci" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 8},/obj/structure/destructible/railing/industrial/corner{icon_state = "railing_deco"; dir = 1},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 10},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cj" = (/obj/effect/floor_decal/techfloor,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ck" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 4},/obj/structure/destructible/railing/industrial,/obj/effect/floor_decal/techfloor,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cl" = (/obj/effect/floor_decal/steeldecal/steel_decals9,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cm" = (/obj/structure/destructible/railing/dark{icon_state = "railing_dark"; dir = 8},/obj/effect/floor_decal/steeldecal/steel_decals9,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cn" = (/obj/structure/destructible/railing/dark{icon_state = "railing_dark"; dir = 8},/obj/effect/floor_decal/steeldecal/steel_decals9{icon_state = "steel_decals9"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"co" = (/obj/effect/floor_decal/steeldecal/steel_decals9{icon_state = "steel_decals9"; dir = 4},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cp" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 8},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 9},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cq" = (/obj/effect/landmark/spawn_medium,/obj/effect/floor_decal/techfloor/corner{icon_state = "techfloor_corners"; dir = 1},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cr" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 4},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 5},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cs" = (/obj/effect/landmark/spawn_easy,/obj/effect/floor_decal/techfloor/corner{icon_state = "techfloor_corners"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"ct" = (/obj/effect/landmark/spawn_easy,/obj/effect/floor_decal/techfloor/corner,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cu" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 8},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 10},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cv" = (/obj/effect/floor_decal/techfloor/corner,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cw" = (/obj/machinery/light/spot{icon_state = "tube1"; dir = 4},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 6},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cx" = (/obj/structure/destructible/railing/industrial,/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 10},/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+"cy" = (/obj/structure/closet/crate/supply_drop,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/obj/item/weapon/armor_patch,/turf/simulated/floor/tiled/techfloor,/area/planet/daynight/floor1)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababab
+aaaaaaaaaaaaaaaaaaaaaaaaacacacacacacacacacacacacacadadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadaaadadadadadadadaaaaaaaaaaaaaaaaaaaaaaaeaeaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababababababababababab
+aaaaaaaaaaaaaaaaaaacacacacafafafafafafafafafafafadadadadaaaaaaaaaaaaaaaaaaaaaaaaaaadadadadadadaaaaaaaaaaadadadadaaaaagagagagagagaeaeaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababab
+aaaaaaaaaaaaaaaaacacafafafafafafafafafafafafacacacacadadadaaaaaaaaaaaaaaaaadadadadadaaaaaaaaaaaaaaaaaaaaaaaaaaadahahaiaiaiaiaiaiaeaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababab
+aaaaaaaaaaaaaaacacafafafafafacacacacacacacacacaaaaacadadadadadadadaaaaadadadadadadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahaiaiaiaiaiaiaeaeaaaaaaaaababababababababababababababababababababababababababababababab
+aaaaaaaaaaaaacacafafafafafacacaaaaaaaaaaaaaaaaaaaaacacacacadadadadadadadadadadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahaiaiaiaiaeaeaaaaaaaaababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacacafafafafacacacaaaaaaaaaaabaaaaaaaaaaaaaaaaacacacaaadadadadadaaaaaaaaaaaaaaaaabababababaaaaaaaaaaaaaaahaiaiaeaaaaaaaaaaabababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacafafafafacacaaaaaaaaaaababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababaaaaaaaaahaiaeaaaaaaaaaaababababababababababababababababababababababababababababababababababab
+aaaaaaaaacacafafafacacaaaaaaaaaaababababababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababababababaaaaadadaaaaabababababababababababababababababababababababababababababababababababababab
+aaaaaaacacafafafacacaaaaaaaaaaaaababababababababababababaaaaaaaaaaaaaaaaaaabababababababababababababababababababaDajajajajalabababababababababababababababababababababababababababababababababababababab
+aaaaacacafafafacacaaaaaaaaaaaaabababababababababababababababaaaaaaaaaaabababababababababababababababababababababaJamcoanclaPabababababababababababababababababababababababababababababababababababababab
+aaacacafafafacacaaaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababcgbsaoapbschabababababababababababababababababababababababababababababababababababababab
+aaacabafafacacaaaaaaaaaaaaaaababababababababababababababababababababababababababababababababababababababababababababarasabababababababababababababababababababababababababababababababababababababababab
+aaababafafacaaaaaaaaaaaaaaaaababababababababababababababababababababababababababababababababababababababababababababarasabababababababababababababababababababababababababababababababababababababababab
+aaabafafacacaaaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababababarasabababababababababababababababababababababababababababababababababababababababab
+aaacafafafacacaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababababarasabababababababababababababababababababababababababababababababababababababababab
+aaacacafafafacaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababababarasabababababababababababababababababababababababababababababababababababababababab
+aaaaacacafafacaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababababarasabababababababababababababababababababababababababababababababababababababababab
+aaaaacacafafacaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababababarasabababababababababababababababababababababababababababababababababababababababab
+aaaaacafafafacaaaaaaaaaaaaababababababababababababababababababababababababababababababababababababababababababatauavawaxavavavavavavatavavavavavayatabababababababababababababababababababababababababab
+aaacacafafafacaaaaaaaaaaaaababababababababababababababababababababababababababababababababababababababababababaDaGakakakazakakakazakaHaAakakaAaBaCaIabababababababababababababababababababababababababab
+aaacafafafafacaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababaJakakakakakakazakakakazakakakakakaCaPabababababababababababababababababababababababababab
+aaacafafafacacaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababaJakakakakakakazakakakazakakaEaEakakaPabababababababababababababababababababababababababab
+aaacafafafacaaaaaaaaaaababababababababababababababababababababababababababababababababababababababababababababaJakakakakazakakakazakakaAaEaEaAakaFaXabababababababababababababababababababababababababab
+aaacafafacacaaaaaaaaaaababababababababababababababababababababababababababababababababababababababababababababaJakakakatbcbsbsbsbsbsatbsbsbsbsbsbFatabababababababababababababababababababababababababab
+aaacafafabacacaaaaaaaaababababababababababababababababababababababababababababababababababababababababababababaJakakakaPabababababababababababababababababababababababababababababababababababababababab
+aaacafafababacaaaaaaaaababababababababababababababababababababababababababababababababababababababababababababaJakakakaPabababababababababababababababababababababababababababababababababababababababab
+aaacacafafabacaaaaaaaaababababababababababababababababababababababababababababbGavavbHababababababababababababaJakakbIaPabababababababababababababababababababababababababababababababababababababababab
+aaaaacafafabacaaaaaaaaababababababababababababababababababababababababababababaJaKakbJababababababababababababaJaLaKakaMabababababababababababababababababababababababababababababababababababababababab
+aaaaacacafafacaaaaaaaaababababababababababababababababababababababababababababaJakaNbKavavbLaOaOaOaOaOaOaOaOaObMakaKakbNabababababababababababababababababababababababababababababababababababababababab
+aaaaaaacafafacaaaaaaabababababababababababababababababababababababababababababaJaQaRaSakclbJaTaUaVaUaTaUaVaUaTbOaWaKakbPabababababababababababababababababababababababababababababababababababababababab
+aaaaaaacafafacaaaaaaabababababababababababababababababababababababababababababaJaYaZcmakakbQbbbbbbbbbbbbbbbbbbbRakbSakaPabababababababababababababababababababababababababababababababababababababababab
+aaaaacacafafacaaaaababababababababababababababababababababababababababababababaJaYaZbaakakbTabababababababababbUbVbSbdatbWavavavavavatavavavavavbXatabababababababababababababababababababababababababab
+aaaaacafafafacaaaaaaabababababababababababababababababababababababababababababaJaYaZcnakakbYbfbfbfbfbfbfbfbfbfbZakakakakazakakakazakakakaAakaAbhbiaPabababababababababababababababababababababababababab
+aaacacafafacacaaaaaaabababababababababababababababababababababababababababababaJbebjbgakcobJaTaUaVaUaTaUaVaUaTbOakakakclakakazclakakazbkakblakakakaPabababababababababababababababababababababababababab
+aaacafafafacaaaaaaaaabababababababababababababababababababababababababababababaJakaNcabsbscbbmbmbmbmbmbmbmbmbmccakakakcoakakazcoakakazbkbnbobnbpbqaPabababababababababababababababababababababababababab
+aaacafafacacaaaaaaaaabababababababababababababababababababababababababababababaJaKakbJababababababababababababcdceakakakazakakakazakcfakaAakaAbrcyaPabababababababababababababababababababababababababab
+aaacafafafacacaaaaaaaaababababababababababababababababababababababababababababcgbsbschababababababababababababatcicjcjbsbsbsbsbsbsbsatbsbsbsbsbsckatabababababababababababababababababababababababababab
+aaacabafafafacaaaaaaaaaaababababababababababababababababababababababababababababababababababababababababababababbtaVbuababababababababababababababababababababababababababababababababababababababababab
+aaacababafafacaaaaaaaaaaababababababababababababababababababababababababababababababababababababababababababababbtaUbuababababababababababababababababababababababababababababababababababababababababab
+aaacacabafafacacaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababbtaVbuababababababababababababababababababababababababababababababababababababababababab
+aaaaacacafafafacaaaaaaaaaaaaababababaaabababababababababababababababababababababababababababababababababababababbtaUbuababababababababababababababababababababababababababababababababababababababababab
+aaaaaaacafafafacaaaaaaaaaaaaaaababaaaaabababababababababababababababababababababababababababababababababababababbtaVbuababababababababababababababababababababababababababababababababababababababababab
+aaaaaaacacafafacaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababababbtaUbuababababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaacafafacacaaaaaaaaaaaaaaaaaaaaaaababababababababababababababababababababababababababababababababababababbtaVbuababababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaacacafafacacacaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababababababababababatataqajbvatatababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacafafababacaaaaaaaaaaaaaaaaaaaaaaababababaaaaababababababababababababababababababababababababababatcpcqbwbwcratababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacafafababacaaaaaaaaaaaaaaaaaaaaaaaaababaaaaaaaaaaababababababababababababababababababababababababaDcqbxbybxbwalababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacafafabacacaaaaacacacacaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababababababababababababbMbybzbzbzbyaPababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacafafafacacaaaaacafafacacacacacacacacaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababbObzbAbybAbzaPababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacacafafafacacacacafafafafafafafafafacacacacacacacacacaaaaaaaaababababababababababababababababababccbybBbBbBbyaPababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacacabafafafababacacafafafafafafafafafafafafafafafafacacaaaaaaababababababababababababababababababcdcsbCbybCctaXababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacababafafababababacafafacafafafafafafafafafafafafafafacaaaaaaaaaaababababababababababababababababatcuceakcvcwatababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacababacacabacabababafafacafafafafafafafafafafafafafafacaaaaaaaaaaaaababaaababababababababababababatatcxbscbatatababababababababababababababababababababababababababababababababababababababab
+aaaaaaaaaaacacacacacacacacacacacacacacacacacacacacacacacacacacacacaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
+bDbEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
+"}

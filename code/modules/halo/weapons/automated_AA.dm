@@ -38,6 +38,13 @@
 	faction_nofire = "unsc"
 	pixel_x = -7
 
+/obj/structure/automated_anti_air/covenant
+	name = "Type-14 Anti-Aircraft Cannon"
+	icon_state = "covenant_anti_air"
+	fire_anim_state = "covenant_anti_air_active"
+	faction_nofire = "covenant"
+	pixel_x = -7
+
 /obj/structure/automated_anti_air/Initialize()
 	. = ..()
 	create_triggers()

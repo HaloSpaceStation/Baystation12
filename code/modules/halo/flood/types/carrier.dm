@@ -9,7 +9,7 @@
 	icon_living = "static"
 	icon_dead = ""
 	//
-	move_to_delay = 30
+	move_to_delay = 7
 	health = 10
 	maxHealth = 10
 	melee_damage_lower = 5

@@ -158,3 +158,20 @@
 	name = "half-right railing"
 	desc = "Half of a metal railing, connected to the corners."
 	icon_state = "railing_half_right_dark"
+
+// INDUSTRIAL RAILING //
+
+/obj/structure/destructible/railing/industrial
+	desc = "A dark, metal railing."
+	icon_state = "railing_industrial"
+	maxHealth = 1500	// High health to accommodate high damage halo weaponry to prevent decor annihilation with just one stray bullet
+	health = 1500
+
+/obj/structure/destructible/railing/industrial/mounted
+	icon_state = "railing_overlay"
+
+/obj/structure/destructible/railing/industrial/corner
+	icon_state = "railing_deco"
+	flags = ON_BORDER
+	density = 0
+	cover_rating = 0

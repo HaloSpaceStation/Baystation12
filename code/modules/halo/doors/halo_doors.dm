@@ -16,3 +16,6 @@
 	icon = 'code/modules/halo/doors/airlockmaint/airlockmaint_iso.dmi'
 	glass = 1
 	glass_file = null
+
+	open_sound_powered = 'code/modules/halo/sounds/airlock_sounds/maintenance32open.ogg'
+	close_sound_powered = 'code/modules/halo/sounds/airlock_sounds/maintenance32close.ogg'

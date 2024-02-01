@@ -136,6 +136,7 @@
 		/obj/item/weapon/pickaxe/plasma_drill = 0,
 		/obj/item/flight_item/covenant_pack = 0,
 		/obj/item/dumb_ai_chip/cov = 0,
+		/obj/item/device/flashlight/covenant = 0,
 		/obj/item/stack/barbedwire/covenant/fifteen = 0,
 		/obj/item/weapon/plastique/covenant = 0,
 		/obj/item/weapon/plastique/breaching/covenant = 0,
@@ -159,6 +160,7 @@
 		/obj/item/weapon/pickaxe/plasma_drill = 1,
 		/obj/item/flight_item/covenant_pack = 1,
 		/obj/item/dumb_ai_chip/cov = 2,
+		/obj/item/device/flashlight/covenant = 3,
 		/obj/item/stack/barbedwire/covenant/fifteen = 5,
 		/obj/item/weapon/plastique/covenant = 8,
 		/obj/item/weapon/plastique/breaching/covenant = 5,
@@ -241,6 +243,7 @@
 		/obj/item/clothing/under/covenant/jiralhanae/straps = 0,
 		/obj/item/flight_item/covenant_pack = 0,
 		/obj/item/dumb_ai_chip/cov = 0,
+		/obj/item/device/flashlight/covenant = 0,
 		/obj/item/stack/barbedwire/covenant/fifteen = 0,
 		/obj/item/weapon/plastique/covenant = 0,
 		/obj/item/weapon/plastique/breaching/covenant = 0,
@@ -263,6 +266,7 @@
 		/obj/item/weapon/pickaxe/plasma_drill = 1,
 		/obj/item/flight_item/covenant_pack = 1,
 		/obj/item/dumb_ai_chip/cov = 2,
+		/obj/item/device/flashlight/covenant = 3,
 		/obj/item/stack/barbedwire/covenant/fifteen = 5,
 		/obj/item/weapon/plastique/covenant = 8,
 		/obj/item/weapon/plastique/breaching/covenant = 5,
@@ -343,6 +347,7 @@
 		/obj/item/clothing/under/kigyar/variant = 0,
 		/obj/item/clothing/under/kigyar/variant/one = 0,
 		/obj/item/clothing/under/kigyar/variant/two = 0,
+		/obj/item/device/flashlight/covenant = 0,
 		/obj/item/weapon/pickaxe/plasma_drill = 0,
 		/obj/item/stack/barbedwire/covenant/fifteen = 0,
 		/obj/item/weapon/plastique/covenant = 0,
@@ -363,6 +368,7 @@
 	amounts = list(\
 		/obj/item/flight_item/covenant_pack = 1,
 		/obj/item/clothing/gloves/shield_gauntlet/kigyar = 6,
+		/obj/item/device/flashlight/covenant = 3,
 		/obj/item/stack/barbedwire/covenant/fifteen = 5,
 		/obj/item/weapon/pickaxe/plasma_drill = 1,
 		/obj/item/weapon/plastique/covenant = 6,
@@ -447,6 +453,7 @@
 		/obj/item/weapon/storage/pocketstore/hardcase/tools/cov = 0,
 		"Equipment" = -1,
 		/obj/item/clothing/ears/earmuffs/earplugs/covenant = 0,
+		/obj/item/device/flashlight/covenant = 0,
 		/obj/item/weapon/pickaxe/plasma_drill = 0,
 		/obj/item/stack/barbedwire/covenant/fifteen = 0,
 		/obj/item/weapon/plastique/covenant = 0,
@@ -460,6 +467,7 @@
 	)
 	amounts = list(\
 		/obj/item/weapon/pickaxe/plasma_drill = 1,
+		/obj/item/device/flashlight/covenant = 3,
 		/obj/item/stack/barbedwire/covenant/fifteen = 5,
 		/obj/item/weapon/plastique/covenant = 6,
 		/obj/item/weapon/plastique/breaching/covenant = 4,
@@ -497,6 +505,7 @@
 		/obj/item/weapon/storage/pocketstore/hardcase/tools/cov = 0,
 		"Equipment" = -1,
 		/obj/item/clothing/ears/earmuffs/earplugs/covenant = 0,
+		/obj/item/device/flashlight/covenant = 0,
 		/obj/item/weapon/pickaxe/plasma_drill = 0,
 		/obj/item/stack/barbedwire/covenant/fifteen = 0,
 		/obj/item/weapon/plastique/covenant = 0,
@@ -508,6 +517,7 @@
 		/obj/item/drop_pod_beacon/covenant = 0
 	)
 	amounts = list(\
+		/obj/item/device/flashlight/covenant = 3,
 		/obj/item/weapon/pickaxe/plasma_drill = 1,
 		/obj/item/stack/barbedwire/covenant/fifteen = 5,
 		/obj/item/weapon/plastique/covenant = 6,
@@ -658,3 +668,7 @@
 	/obj/item/weapon/reagent_containers/blood/empty = 12,
 	/obj/item/weapon/reagent_containers/spray/cleaner = 2
 	)
+
+/obj/machinery/smartfridge/chemistry/covenant
+	icon = 'code/modules/halo/covenant/structures_machines/smartfridge.dmi'
+	icon_state = "smartfridge"

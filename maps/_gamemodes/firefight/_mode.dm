@@ -42,7 +42,7 @@
 	var/interval_resupply = 4 MINUTES
 	var/time_next_resupply = 0
 
-	var/rest_time = 4 MINUTES
+	var/rest_time = 2 MINUTES
 	var/safe_time = 999999
 
 	var/time_evac_leave = 0

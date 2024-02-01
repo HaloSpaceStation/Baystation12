@@ -225,5 +225,31 @@
 		dir = WEST
 		bound_width = 64
 
+
+/obj/structure/stairs/dark
+	icon = 'code/modules/halo/structures/dark_ramp.dmi'
+	icon_state = "ramp"
+
+	// type paths to make mapping easier.
+	north
+		dir = NORTH
+		bound_height = 64
+		bound_y = -32
+		pixel_y = -32
+
+	south
+		dir = SOUTH
+		bound_height = 64
+
+	east
+		dir = EAST
+		bound_width = 64
+		bound_x = -32
+		pixel_x = -32
+
+	west
+		dir = WEST
+		bound_width = 64
+
 /obj/structure/stairs/ex_act(var/severity)  //Explosion invulnerability
 	return

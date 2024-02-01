@@ -1,5 +1,6 @@
 
 //#define YANMEE_FLIGHT_TICKS 80
+#define FLIGHT_LAND_NOMOVE_TIME 2 SECONDS
 
 /mob/living
 	var/flight_ticks_remain = 0 //Movement and life() ticks degrade this. Set by Yanme'e flight and jump-packs
@@ -28,13 +29,18 @@
 		if(message_flight)
 			visible_message("[message_flight]")
 	else
-		Stun(2)
+		if(canmove)
+			canmove = 0
+			spawn(FLIGHT_LAND_NOMOVE_TIME)
+				canmove = 1
 		flight_ticks_remain = 0
 		change_elevation(-flight_elevation)
 		if(message_land)
 			visible_message("[message_land]")
 		if(istype(loc,/turf/simulated/open))
 			fall()
+
+#undef FLIGHT_LAND_NOMOVE_TIME
 
 /*
 /mob/living/carbon/human/proc/yanmee_flight_ability()

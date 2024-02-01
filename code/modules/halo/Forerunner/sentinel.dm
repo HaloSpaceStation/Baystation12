@@ -127,6 +127,15 @@
 
 	return ..()
 
+/mob/living/simple_animal/hostile/sentinel/major
+	name = "Sentinel Major"
+	desc = "An automated defence drone made of advanced alien technology, this one seems to be a more advanced variant."
+	icon_state = "sentinel_major"
+	icon_living = "sentinel_major"
+	icon_dead = "sentinel_major_dead"
+	health = 200
+	maxHealth = 200
+
 /mob/living/simple_animal/hostile/sentinel/player_sentinel
 	name = "Sentinel"
 	desc = "An automated defence drone made of advanced alien technology. This one seems to posses some higher-thought functions."

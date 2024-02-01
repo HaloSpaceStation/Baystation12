@@ -108,13 +108,15 @@ GLOBAL_LIST_INIT(mobs_to_reqdatum,list())
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/pointbased_vending/proc/vend_item(var/datum/stored_items/vending_products/R,var/datum/vendor_req/user_req = null)
+/obj/machinery/pointbased_vending/proc/vend_item(var/datum/stored_items/vending_products/R,var/datum/vendor_req/user_req = null,var/mob/living/carbon/human/user = null)
 	vend_ready = 0
 	flick(icon_vend,src)
 	spawn(vend_delay)
 		var/prod = R.get_product(get_turf(src))
 		if(user_req)
 			user_req.reqd_items[prod] = R.price
+		if(istype(user) && isitem(prod))
+			user.put_in_hands(prod)
 		vend_ready = 1
 
 /obj/machinery/pointbased_vending/Topic(href, href_list)
@@ -140,7 +142,7 @@ GLOBAL_LIST_INIT(mobs_to_reqdatum,list())
 				to_chat(usr,"<span class = 'warning'>Insufficient requisition points for purchase.</span>")
 				return
 
-			vend_item(R,user_req)
+			vend_item(R,user_req,usr)
 
 		src.add_fingerprint(usr)
 		SSnano.update_uis(src)

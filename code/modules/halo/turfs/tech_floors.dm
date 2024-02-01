@@ -109,7 +109,36 @@
 	name = "steel floor"
 	icon = 'code/modules/halo/turfs/floor_tech.dmi'
 	icon_state = "techfloor_gray"
-	initial_flooring = /decl/flooring/tiling/tech
+
+/turf/simulated/floor/tech/lightedcorner
+	icon_state = "techfloor_lightedcorner"
+
+/turf/simulated/floor/tech/lightedcorner/lightedcorner_grid
+	icon_state = "techfloor_lightedcorner_grid"
+
+/turf/simulated/floor/tech/lightedcorner/lightedcorner_off
+	icon_state = "techfloor_lightedcorner_off"
+
+/turf/simulated/floor/tech/lightedcorner/lightedcorner_grid_off
+	icon_state = "techfloor_lightedcorner_grid_off"
+
+/turf/simulated/floor/tech/endfulltwogray
+	icon_state = "techfloor_endfulltwogray"
+
+/turf/simulated/floor/tech/endfulltwogray/endfulltwogrid
+	icon_state = "techfloor_endfulltwogrid"
+
+/turf/simulated/floor/tech/endfulltwogray/endfulltwomix
+	icon_state = "techfloor_endfulltwomix"
+
+/turf/simulated/floor/tech/endfulltwogray/fulltwomirroredmix
+	icon_state = "techfloor_endfulltwomirroredmix"
+
+/turf/simulated/floor/tech/gridcorner
+	icon_state = "techfloor_gridcorner"
+
+/turf/simulated/floor/tech/graycorner
+	icon_state = "techfloor_graycorner"
 
 /turf/simulated/floor/tech/white
 	icon_state = "techfloor_white"
