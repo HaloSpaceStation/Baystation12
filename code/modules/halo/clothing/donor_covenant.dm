@@ -972,5 +972,68 @@
 					/obj/item/clothing/shoes/jiralhanae/covenant/captain/domodyl
 					)
 
+///////Thot'Lottee\\\\\\\\
+
+//Sangheili Undersuit
+
+/obj/item/clothing/under/covenant/sangheili/thotlottee
+	icon_state = "sangheili-thotlottee_undersuit"
+	species_restricted = list ("Sangheili")
+	body_parts_covered = UPPER_TORSO | LOWER_TORSO | ARMS | LEGS
+
+//Sangheili (Ultra)
+
+/obj/item/clothing/suit/armor/special/combatharness/ultra/thotlottee
+	icon_state = "thotlottee_chest_obj"
+	item_state = "thotlottee_chest"
+
+/obj/item/clothing/head/helmet/sangheili/ultra/thotlottee
+	icon_state = "thotlottee_helm"
+	item_state = "thotlottee_helm"
+
+/obj/item/clothing/shoes/sangheili/ultra/thotlottee
+	icon_state = "thotlottee_legs_obj"
+	item_state = "thotlottee_legs"
+
+/obj/item/clothing/gloves/thick/sangheili/ultra/thotlottee
+	icon_state = "thotlottee_gloves_obj"
+	item_state = "thotlottee_gloves"
+
+//Sangheili (Shipmaster)
+
+/obj/item/clothing/suit/armor/special/combatharness/shipmaster/thotlottee
+	icon_state = "thotlottee_chest_obj"
+	item_state = "thotlottee_chest"
+
+//Donor Boxes
+
+/obj/item/weapon/storage/box/large/donator/thotlottee/ultra
+	startswith = list(/obj/item/clothing/under/covenant/sangheili/thotlottee,
+					/obj/item/clothing/suit/armor/special/combatharness/ultra/thotlottee,
+					/obj/item/clothing/head/helmet/sangheili/ultra/thotlottee,
+					/obj/item/clothing/shoes/sangheili/ultra/thotlottee,
+					/obj/item/clothing/gloves/thick/sangheili/ultra/thotlottee
+					)
+	can_hold = list(/obj/item/clothing/under/covenant/sangheili/thotlottee,
+					/obj/item/clothing/suit/armor/special/combatharness/ultra/thotlottee,
+					/obj/item/clothing/head/helmet/sangheili/ultra/thotlottee,
+					/obj/item/clothing/shoes/sangheili/ultra/thotlottee,
+					/obj/item/clothing/gloves/thick/sangheili/ultra/thotlottee
+					)
+
+/obj/item/weapon/storage/box/large/donator/thotlottee/shipmaster
+	startswith = list(/obj/item/clothing/under/covenant/sangheili/thotlottee,
+					/obj/item/clothing/suit/armor/special/combatharness/shipmaster/thotlottee,
+					/obj/item/clothing/head/helmet/sangheili/ultra/thotlottee,
+					/obj/item/clothing/shoes/sangheili/ultra/thotlottee,
+					/obj/item/clothing/gloves/thick/sangheili/ultra/thotlottee
+					)
+	can_hold = list(/obj/item/clothing/under/covenant/sangheili/thotlottee,
+					/obj/item/clothing/suit/armor/special/combatharness/shipmaster/thotlottee,
+					/obj/item/clothing/head/helmet/sangheili/ultra/thotlottee,
+					/obj/item/clothing/shoes/sangheili/ultra/thotlottee,
+					/obj/item/clothing/gloves/thick/sangheili/ultra/thotlottee
+					)
+
 #undef JIRALHANAE_ICON_PATH_OBJ
 #undef GRUNT_GEAR_ICON
