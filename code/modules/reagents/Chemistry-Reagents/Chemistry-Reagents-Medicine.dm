@@ -14,7 +14,7 @@
 /datum/reagent/inaprovaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE)
-		M.add_chemical_effect(CE_PAINKILLER, 10)
+		M.add_chemical_effect_diminishing(CE_PAINKILLER, 10,dose,metabolism)
 		M.add_chemical_effect(CE_BRAIN_REGEN, 1) // Slowly repairs brain damage.
 	M.add_chemical_effect(CE_PULSE, -1)
 
@@ -238,7 +238,7 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/paracetamol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_PAINKILLER, 25)
+	M.add_chemical_effect_diminishing(CE_PAINKILLER, 25,dose,metabolism)
 
 /datum/reagent/paracetamol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -256,7 +256,7 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/tramadol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_PAINKILLER, 80)
+	M.add_chemical_effect_diminishing(CE_PAINKILLER, 80,dose,metabolism)
 
 /datum/reagent/tramadol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -273,7 +273,7 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/oxycodone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_PAINKILLER, 200)
+	M.add_chemical_effect_diminishing(CE_PAINKILLER, 200,dose,metabolism)
 
 /datum/reagent/oxycodone/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -302,7 +302,7 @@
 	holder.remove_reagent(/datum/reagent/mindbreaker, 5)
 	M.hallucination = max(0, M.hallucination - 10)
 	M.adjustToxLoss(10 * removed) // Reduced from 12 to 10 to make its toxin buildup a little more sane with its slow metabolism.
-	M.add_chemical_effect(CE_PAINKILLER, 20)
+	M.add_chemical_effect_diminishing(CE_PAINKILLER, 20,dose,metabolism)
 
 /datum/reagent/alkysine
 	name = "Alkysine"
@@ -318,7 +318,7 @@
 /datum/reagent/alkysine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	M.add_chemical_effect(CE_PAINKILLER, 10)
+	M.add_chemical_effect_diminishing(CE_PAINKILLER, 10,dose,metabolism)
 	M.add_chemical_effect(CE_BRAIN_REGEN, 2) // 1 to 2. Heals the brain twice as fast.
 	M.adjustToxLoss(10 * removed) // Removed confusion and drowsiness, added toxin buildup.
 
@@ -701,7 +701,7 @@
 	if(alien == IS_DIONA)
 		return
 
-	M.add_chemical_effect(CE_PAINKILLER, 15)
+	M.add_chemical_effect_diminishing(CE_PAINKILLER, 15,dose,metabolism)
 	M.add_chemical_effect(CE_ANTIVIRAL, 1)
 
 /datum/reagent/antidexafen/overdose(var/mob/living/carbon/M, var/alien)
@@ -716,25 +716,29 @@
 	color = "#C8A5DC"
 	scannable = 1
 	overdose = 0
+	var/metab_adr = null
 
 /datum/reagent/adrenaline/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	if(dose > 1)	//not that effective after initial rush
-		M.add_chemical_effect(CE_PAINKILLER, min(10*volume, 20))
-		M.add_chemical_effect(CE_PULSE, 1)
-	else
+	var/break_threshold = M.species.adrenal_break_threshold
+	var/adrenal_break = 0
+	if(!metab_adr)//Caching
+		metab_adr = initial(metabolism) * ADRENAL_RUSH_TIME
+	if(volume > break_threshold)
+		metabolism = adrenal_break/3
+		adrenal_break = 1
+	if(adrenal_break || dose < (metabolism * ADRENAL_RUSH_TIME))	//not that effective after initial rush
 		M.add_chemical_effect(CE_PAINKILLER, min(30*volume, 80))
-		M.add_chemical_effect(CE_PULSE, 1) // 2 -> 1 due to brutes breaking their hearts on this stuff.
+		M.add_chemical_effect(CE_PULSE, 2)
+	else
+		M.add_chemical_effect(CE_PAINKILLER, min(10*volume, 45))
+		M.add_chemical_effect(CE_PULSE, 1)
 	if(dose > 5)
 		M.make_jittery(5)
 	if(volume >= 5 && M.is_asystole())
 		remove_self(5)
 		M.resuscitate()
-	while(volume >= M.species.adrenal_break_threshold)//slightly more than 100/5.
-		M.add_chemical_effect(CE_PAINKILLER,120*(M.species.adrenal_break_threshold/30)) //Reach a threshold of adrenaline, massive painkill effect
-		M.add_chemical_effect(CE_PULSE,2) //But your heart goes mental. 3 -> 2 due to brutes breaking their hearts on this stuff.
-		remove_self(M.species.adrenal_break_threshold) //And your body consumes the adrenaline for that last final push
 
 /datum/reagent/adrenaline/overdose(var/mob/living/carbon/M, var/alien)
 	return

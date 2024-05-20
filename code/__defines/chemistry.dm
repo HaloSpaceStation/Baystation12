@@ -14,6 +14,13 @@
 
 #define REAGENTS_OVERDOSE 30
 
+//For chemical effects with diminishing returns, how much %wise should we lose for each second the chem is in us?
+#define DIMINISHING_RETURNS_PERSECOND_LOSS 0.006
+//What is the lowest our multiplier can get?
+#define DIMINISHING_RETURNS_CAP 0.4
+
+#define ADRENAL_RUSH_TIME 4 SECONDS
+
 #define CHEM_SYNTH_ENERGY 500 // How much energy does it take to synthesize 1 unit of chemical, in Joules.
 
 // Some on_mob_life() procs check for alien races.
