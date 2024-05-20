@@ -394,7 +394,7 @@
 		dose_mult = min(dose_mult_step1,1)
 	else
 		dose_mult = max(1 - dose_mult_step1,DIMINISHING_RETURNS_CAP)
-	add_chemical_effect(effect*dose_mult,magnitude)
+	add_chemical_effect(effect,magnitude*dose_mult)
 
 /mob/living/carbon/proc/add_chemical_effect_diminishing_reverse(var/effect,var/magnitude,var/dose,var/metab)
 	add_chemical_effect_diminishing(effect,magnitude,dose,metab,1)
