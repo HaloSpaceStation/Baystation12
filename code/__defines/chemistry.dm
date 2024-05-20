@@ -15,7 +15,7 @@
 #define REAGENTS_OVERDOSE 30
 
 //For chemical effects with diminishing returns, how much %wise should we lose for each second the chem is in us?
-#define DIMINISHING_RETURNS_PERSECOND_LOSS 0.006
+#define DIMINISHING_RETURNS_PERSECOND_LOSS 0.007
 //What is the lowest our multiplier can get?
 #define DIMINISHING_RETURNS_CAP 0.4
 
