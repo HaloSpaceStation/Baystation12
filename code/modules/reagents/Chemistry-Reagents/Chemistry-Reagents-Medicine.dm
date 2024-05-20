@@ -234,7 +234,7 @@
 	color = "#C8A5DC"
 	overdose = 60
 	scannable = 1
-	metabolism = 0.02
+	metabolism = REM * 0.5
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/paracetamol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -252,7 +252,7 @@
 	color = "#CB68FC"
 	overdose = 30
 	scannable = 1
-	metabolism = 0.02
+	metabolism = REM
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/tramadol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -717,17 +717,21 @@
 	scannable = 1
 	overdose = 0
 	var/metab_adr = null
+	var/adrenal_break = 0
 
 /datum/reagent/adrenaline/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
 	var/break_threshold = M.species.adrenal_break_threshold
-	var/adrenal_break = 0
 	if(!metab_adr)//Caching
 		metab_adr = initial(metabolism) * ADRENAL_RUSH_TIME
 	if(volume > break_threshold)
-		metabolism = adrenal_break/3
+		metabolism = break_threshold*1.5
 		adrenal_break = 1
+	else
+		if(adrenal_break)
+			adrenal_break = 0
+			metabolism = initial(metabolism)
 	if(adrenal_break || dose < (metabolism * ADRENAL_RUSH_TIME))	//not that effective after initial rush
 		M.add_chemical_effect(CE_PAINKILLER, min(30*volume, 80))
 		M.add_chemical_effect(CE_PULSE, 2)
