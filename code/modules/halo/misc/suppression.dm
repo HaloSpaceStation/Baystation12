@@ -19,7 +19,7 @@
 		//low supression effects
 
 	if(prob(shake_chance))
-		shake_camera(src, round(0.25 SECONDS * shake_multiplier), shake_intensity))
+		shake_camera(src, round(0.25 SECONDS * shake_intensity), shake_intensity)
 	if(prob(SUPPRESSION_SCREAM_CHANCE))
 		emote("painscream",AUDIBLE_MESSAGE)
 	time_last_suppressed = world.time
