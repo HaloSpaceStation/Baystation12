@@ -273,11 +273,11 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/oxycodone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect_diminishing(CE_PAINKILLER, 200,dose,metabolism)
+	M.add_chemical_effect_diminishing(CE_PAINKILLER, 120,dose,metabolism)
+	M.druggy = max(M.druggy, 10)
 
 /datum/reagent/oxycodone/overdose(var/mob/living/carbon/M, var/alien)
 	..()
-	M.druggy = max(M.druggy, 10)
 	M.hallucination = max(M.hallucination, 3)
 
 /* Other medicine */
