@@ -575,7 +575,7 @@
 		M.AdjustStunned(-1)
 		M.AdjustWeakened(-1)
 		M.add_chemical_effect(CE_PAINKILLER, 40)
-		M.add_chemical_effect(CE_SPEEDBOOST, 1)
+		M.add_chemical_effect_diminishing(CE_SPEEDBOOST, 1,dose,metabolism)
 		M.adjustOxyLoss(-10 * removed)
 		M.heal_organ_damage(5 * removed, 5 * removed)
 		M.adjustToxLoss(-5 * removed)

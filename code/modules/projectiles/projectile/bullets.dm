@@ -13,10 +13,11 @@
 	muzzle_type = /obj/effect/projectile/bullet/muzzle
 
 /obj/item/projectile/bullet/on_hit(var/atom/target, var/blocked = 0)
-	if (..(target, blocked))
+/*	if (..(target, blocked))
 		var/mob/living/L = target
-		shake_camera(L, 3, 2)
-
+		The Suppression system should be handling screenshakes.
+		shake_camera(L, 2, 1.5)
+*/
 /obj/item/projectile/bullet/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
 	if(penetrating > 0 && damage > 20 && prob(damage))
 		mob_passthrough_check = 1

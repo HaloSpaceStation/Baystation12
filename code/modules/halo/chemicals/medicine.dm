@@ -48,7 +48,7 @@
 	description = "The remnants of biofoam, clogging the person's body and stopping further biofoam usage."
 	reagent_state = LIQUID
 	color = "#edd9c0"
-	metabolism = REM*3
+	metabolism = REM*2
 	overdose = 0
 	scannable = 1
 
@@ -173,7 +173,7 @@
 
 /datum/reagent/hyperzine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustToxLoss(0.5)
-	M.add_chemical_effect(CE_SLOWREMOVE, 1)
+	M.add_chemical_effect_diminishing(CE_SLOWREMOVE, 1,dose,metabolism)
 	M.add_chemical_effect(CE_PULSE, 2)
 
 /datum/reagent/hyperzine_concentrated
@@ -192,7 +192,7 @@
 	H.adjustToxLoss(0.75)
 	if(prob(10))
 		H.emote(pick("twitch", "blink_r", "shiver"))
-	H.add_chemical_effect(CE_SPEEDBOOST, 1)
+	H.add_chemical_effect_diminishing(CE_SPEEDBOOST, 1,dose,metabolism)
 	H.add_chemical_effect(CE_PULSE, 2)
 
 /datum/reagent/hyperzine_concentrated/overdose(var/mob/living/carbon/human/H)
@@ -262,7 +262,7 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/ketoprofen/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_PAINKILLER, 40)
+	M.add_chemical_effect_diminishing(CE_PAINKILLER, 40,dose,metabolism)
 	M.add_chemical_effect(CE_CRYO, -1)
 
 	var/target = 310 //Target body temperature
@@ -286,7 +286,7 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/polypseudomorphine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_PAINKILLER, POLYPSEUDOMORPHINE_PAINKILL)
+	M.add_chemical_effect_diminishing(CE_PAINKILLER, POLYPSEUDOMORPHINE_PAINKILL,dose,metabolism)
 	for(var/datum/reagents/reag_hold in list(M.bloodstr,M.ingested,M.touching))
 		reag_hold.remove_reagent(/datum/reagent/hyperzine,100)
 		reag_hold.remove_reagent(/datum/reagent/hyperzine_concentrated,100)

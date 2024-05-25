@@ -384,6 +384,21 @@
 	else
 		chem_effects[effect] = magnitude
 
+/mob/living/carbon/proc/add_chemical_effect_diminishing(var/effect,var/magnitude,var/dose,var/metab,var/reverse)
+	//This does some preprocessing to lower the final effect by how much has already been processed.
+	//How long has this been processing in us (seconds)?
+	var/dose_time = (dose / metab)/10
+	var/dose_mult_step1 = DIMINISHING_RETURNS_PERSECOND_LOSS * dose_time
+	var/dose_mult = 1
+	if(reverse)
+		dose_mult = min(dose_mult_step1,1)
+	else
+		dose_mult = max(1 - dose_mult_step1,DIMINISHING_RETURNS_CAP)
+	add_chemical_effect(effect,magnitude*dose_mult)
+
+/mob/living/carbon/proc/add_chemical_effect_diminishing_reverse(var/effect,var/magnitude,var/dose,var/metab)
+	add_chemical_effect_diminishing(effect,magnitude,dose,metab,1)
+
 /mob/living/carbon/proc/add_up_to_chemical_effect(var/effect, var/magnitude = 1)
 	if(effect in chem_effects)
 		chem_effects[effect] = max(magnitude, chem_effects[effect])

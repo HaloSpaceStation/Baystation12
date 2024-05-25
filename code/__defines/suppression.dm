@@ -1,5 +1,5 @@
 
-#define SUPPRESS_LARGE 5
-#define SUPPRESS_MID 3
-#define SUPPRESS_SMALL 2
+#define SUPPRESS_LARGE 9
+#define SUPPRESS_MID 6
+#define SUPPRESS_SMALL 3
 #define SUPPRESSION_FULLSCREEN_TYPE /obj/screen/fullscreen/oxy
