@@ -21,12 +21,10 @@
 
 	var/new_thickness = round(armor_thickness - min(damage,thickness_dam_cap))
 	new_thickness = max(0, new_thickness)
-	armor_thickness = new_thickness
-	update_damage_description()
 
 	var/mob/user = src.loc
 	if(istype(user))
-		if(new_thickness == 0)
+		if(new_thickness == 0 && world.time >= next_warning_time)
 			to_chat(user, "<font size = 4><span class = 'warning'>Your [name]'s armor plating is [damage_type == BURN ? "melted away" : "destroyed"]! </span></font>")
 			playsound(user, armor_break_sound, 70, 1)
 
