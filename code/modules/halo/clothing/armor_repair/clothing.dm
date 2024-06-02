@@ -21,18 +21,17 @@
 
 	var/new_thickness = round(armor_thickness - min(damage,thickness_dam_cap))
 	new_thickness = max(0, new_thickness)
-	armor_thickness = new_thickness
-	update_damage_description()
 
 	var/mob/user = src.loc
 	if(istype(user))
-		if(new_thickness == 0)
-			to_chat(user, "<font size = 4><span class = 'warning'>Your [name]'s armor plating is [damage_type == BURN ? "melted away" : "destroyed"]! </span></font>")
-			playsound(user, armor_break_sound, 70, 1)
+		if(world.time > next_warning_time)
+			if(new_thickness == 0)
+				to_chat(user, "<font size = 4><span class = 'warning'>Your [name]'s armor plating is [damage_type == BURN ? "melted away" : "destroyed"]! </span></font>")
+				playsound(user, armor_break_sound, 70, 1)
 
-		else if(istype(user) && world.time >= next_warning_time)
+			else if(istype(user))
+				to_chat(user, "<span class = 'warning'>Your [name]'s armor plating is [damage_type == BURN ? "scorched" : "damaged"]! </span>")
 			next_warning_time = world.time + WARNING_DELAY
-			to_chat(user, "<span class = 'warning'>Your [name]'s armor plating is [damage_type == BURN ? "scorched" : "damaged"]! </span>")
 
 /obj/item/clothing/proc/update_damage_description(var/damage_type = BRUTE)
 	var/desc_addition_to_apply = "Its armor plating is nominal."
