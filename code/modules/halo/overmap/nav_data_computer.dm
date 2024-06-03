@@ -19,15 +19,11 @@
 			remove_nav_chip()
 			qdel(chip_to_remove)
 
-/obj/machinery/nav_computer/LateInitialize()
-	. = ..()
-	START_PROCESSING(SSobj, src)
-
 /obj/machinery/nav_computer/Process()
 	var/obj/effect/overmap/ship/our_om = map_sectors["[z]"]
 	if(istype(our_om))
 		our_om.nav_comp = src
-		STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSmachines, src)
 
 /obj/machinery/nav_computer/examine(var/mob/examiner)
 	. = ..()
