@@ -67,9 +67,4 @@ var/list/all_virtual_listeners = list()
 	return ..()
 
 /atom/movable/proc/shall_have_virtual_mob()
-	return TRUE
-
-/mob/shall_have_virtual_mob()
-	var/init_virt = initial(virtual_mob)
-	if(!isnull(init_virt))
-		return ispath(init_virt)
+	return ispath(initial(virtual_mob))

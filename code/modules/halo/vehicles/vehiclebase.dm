@@ -328,7 +328,7 @@
 			var/list/drivers = get_occupants_in_position("driver")
 			if(!drivers.len || isnull(drivers) || movement_destroyed)
 				inactive_pilot_effects()
-	if(spawn_datum)
+	if(!isnull(spawn_datum) && !ispath(spawn_datum))
 		spawn_datum.process_resource_regen()
 
 /obj/vehicles/proc/update_object_sprites() //This is modified on a vehicle-by-vehicle basis to render mobsprites etc, a basic render of playerheads in the top right is used if no overidden.

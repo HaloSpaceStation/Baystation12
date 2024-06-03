@@ -45,10 +45,6 @@
 /mob/Initialize()
 	. = ..()
 	START_PROCESSING(SSmobs, src)
-	..()
-
-/mob/Initialize()
-	. = ..()
 	last_z = z
 	var/obj/om_obj = map_sectors["[z]"]
 	if(om_obj)

@@ -1134,9 +1134,9 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		set_light(origin.light_range, origin.light_power, origin.light_color)
 
 /mob/dview/Initialize()
-	..()
+	. = ..()
 	// We don't want to be in any mob lists; we're a dummy not a mob.
-	SSmobs.mob_list -= src
+	STOP_PROCESSING(SSmobs, src)
 
 // call to generate a stack trace and print to runtime logs
 /proc/crash_with(msg)
