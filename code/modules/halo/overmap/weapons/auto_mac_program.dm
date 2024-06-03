@@ -23,7 +23,7 @@
 	var/obj/machinery/overmap_weapon_console/mac/linked_manual_console
 	var/list/linked_devices = list()
 
-/datum/nano_module/auto_mac/proc/process()
+/datum/nano_module/auto_mac/Process()
 	target_ship()
 	attempt_fire()
 
@@ -112,7 +112,7 @@
 
 	prox_trigger = new (host_vessel, /datum/nano_module/auto_mac/proc/trigger_prox, /datum/nano_module/auto_mac/proc/prox_turfs_changed, overmap_range, 0, src)
 	prox_trigger.register_turfs()
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 	linked_manual_console = locate() in range(1, host)
 	if(linked_manual_console)
@@ -157,7 +157,7 @@
 		prox_trigger = null
 	target_ships = list()
 	targetted_ship = null
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 
 	if(linked_manual_console)
 		linked_manual_console.automated = 0

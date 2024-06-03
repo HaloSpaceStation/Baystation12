@@ -177,7 +177,7 @@
 			if(objective.find_target())
 				F.objectives_without_targets -= objective
 
-/datum/game_mode/outer_colonies/process()
+/datum/game_mode/outer_colonies/Process()
 	. = ..()
 	if(scan_percent < 100 && scanner_destructions_left && scanners_active && world.time >= cov_scan_next_tick)
 		if(allow_scan)

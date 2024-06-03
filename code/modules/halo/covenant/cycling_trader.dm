@@ -14,10 +14,10 @@
 
 /obj/effect/landmark/cycling_trader/New()
 	. = ..()
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	time_cycle_trader = world.time + trader_gap_max
 
-/obj/effect/landmark/cycling_trader/process()
+/obj/effect/landmark/cycling_trader/Process()
 	if(world.time > time_cycle_trader)
 		if(has_trader)
 			trader_leave()

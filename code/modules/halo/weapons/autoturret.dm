@@ -48,7 +48,7 @@
 	visible_message("<span class = 'notice'>[user] activates [src]</span>")
 	targets_in_view.Cut()
 	anchored = 1
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /obj/structure/autoturret/verb/deactivate_autoturret()
 	set name = "Deactivate Autoturret"
@@ -66,7 +66,7 @@
 	visible_message("<span class = 'notice'>[user] deactivates [src]</span>")
 	targets_in_view.Cut()
 	anchored = 0
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 
 /obj/structure/autoturret/verb/clear_friendlies()
 	set name = "Clear Friendlies"
@@ -108,7 +108,7 @@
 	visible_message("<span class = 'danger'>[p] damages [src]'s ammunition storage!</span>")
 	loaded_ammo.Cut(loaded_ammo.len-(p.damage/2))
 
-/obj/structure/autoturret/process()
+/obj/structure/autoturret/Process()
 	for(var/mob/living/m in view(vision_range,loc))
 		if(!(m in targets_in_view) && !(m in friendlies_stored) && (!(m.health <= 0) || m.stat == CONSCIOUS))
 			targets_in_view += m
@@ -164,7 +164,7 @@
 			loaded_ammo += new to_fabricate
 
 /obj/structure/autoturret/Destroy()
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/structure/autoturret/ONI

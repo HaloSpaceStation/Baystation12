@@ -141,7 +141,7 @@
 	comp_prof = new comp_prof(src)
 	if(melee_type)
 		melee_weapon = new melee_type(null)
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 	update_object_sprites()
 	if(light_range != 0)
 		verbs += /obj/vehicles/verb/toggle_headlights
@@ -265,7 +265,7 @@
 /obj/vehicles/Destroy()
 	if(melee_weapon)
 		qdel(melee_weapon)
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	kick_occupants()
 	GLOB.emp_candidates -= src
 	. = ..()
@@ -320,7 +320,7 @@
 
 /obj/vehicles/proc/inactive_pilot_effects() //Overriden on a vehicle-by-vehicle basis.
 
-/obj/vehicles/process()
+/obj/vehicles/Process()
 	if(world.time % 3)
 		comp_prof.give_gunner_weapons(src)
 		update_object_sprites()

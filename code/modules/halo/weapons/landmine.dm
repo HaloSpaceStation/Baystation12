@@ -59,14 +59,14 @@
 /obj/item/device/landmine/proc/set_processing()
 	if(!processing)
 		processing = 1
-		GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/device/landmine/proc/stop_processing()
 	if(processing)
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		processing = 0
 
-/obj/item/device/landmine/process()
+/obj/item/device/landmine/Process()
 	switch(state)
 		if(STATE_ARMING)
 			if(world.time > arm_time)

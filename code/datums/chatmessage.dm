@@ -162,12 +162,12 @@
 
 	// Prepare for destruction
 	scheduled_destruction = world.time + (lifespan - CHAT_MESSAGE_EOL_FADE)
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 	//I wish we didn't have to do this, but we don't have a timer subsystem. More load for processing.
 
-/datum/chatmessage/proc/process()
+/datum/chatmessage/Process()
 	if(world.time >= scheduled_destruction)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		end_of_life()
 		return PROCESS_KILL
 

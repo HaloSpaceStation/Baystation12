@@ -5,7 +5,7 @@
 	var/respawn_interval = 4 SECONDS
 	var/time_next_respawn = 0
 
-/datum/npc_quest/proc/process()
+/datum/npc_quest/Process()
 	if(quest_status != STATUS_PROGRESS)
 		//future todo: sometimes quests might have ticking effects as long as they are available
 		//for now, just tell the faction we dont need to process any more

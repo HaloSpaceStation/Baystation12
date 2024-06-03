@@ -40,7 +40,7 @@
 
 /obj/effect/evac_area/proc/set_evac_time(var/time)
 	evac_end_at = world.time + time
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/evac_area/proc/set_evac_to(var/to_spot)
 	evac_to = to_spot
@@ -50,7 +50,7 @@
 		return
 	to_evac.forceMove(evac_to)
 
-/obj/effect/evac_area/process()
+/obj/effect/evac_area/Process()
 	if(world.time > evac_end_at)
 		qdel(src)
 

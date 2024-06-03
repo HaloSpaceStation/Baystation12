@@ -126,7 +126,7 @@
 				last_activation = world.time
 
 			//process the effect
-			inserted_battery.battery_effect.process()
+			inserted_battery.battery_effect.Process()
 
 			//work out if we need to shutdown
 			if(inserted_battery.stored_charge <= 0)

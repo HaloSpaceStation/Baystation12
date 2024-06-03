@@ -12,7 +12,7 @@
 // Return the appropriate QDEL_HINT; in most cases this is QDEL_HINT_QUEUE.
 /datum/proc/Destroy(force=FALSE)
 	tag = null
-	GLOB.nanomanager && GLOB.nanomanager.close_uis(src)
+	SSnano && SSnano.close_uis(src)
 	return QDEL_HINT_QUEUE
 
 /datum/proc/Process()

@@ -151,7 +151,7 @@
 	spawn(10 SECONDS) //Delay this for a little to allow for people to spawn in.
 		inform_start_round()
 
-/datum/game_mode/operation_trebuchet/process()
+/datum/game_mode/operation_trebuchet/Process()
 	..()
 	if(last_assault == BOMB_ACTIVE) //When the bomb's active, check much more frequently.
 		update_bomb_status()

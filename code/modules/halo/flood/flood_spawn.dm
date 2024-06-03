@@ -34,9 +34,9 @@
 		return
 
 	spawning = 1
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
-/datum/flood_spawner/proc/process()
+/datum/flood_spawner/Process()
 	if(world.time > time_next_respawn)
 		time_next_respawn = world.time + respawn_delay
 		if(live_flood.len < max_flood)
@@ -50,7 +50,7 @@
 				if(!spawn_flood())
 					qdel(src)
 		else
-			GLOB.processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 			spawning = 0
 
 		//this is probably superfluous, but leave it here just in case
@@ -90,12 +90,12 @@
 	live_flood -= F
 	if(!spawning)
 		spawning = 1
-		GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 		time_next_respawn = world.time + respawn_delay
 
 /datum/flood_spawner/Destroy()
 	if(spawning)
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	if(hasvar(owner, "flood_spawner"))
 		owner:flood_spawner = null
 	. = ..()

@@ -5,13 +5,13 @@ var/datum/controller/transfer_controller/transfer_controller
 
 /datum/controller/transfer_controller/New()
 	timerbuffer = config.vote_autotransfer_initial
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /datum/controller/transfer_controller/Destroy()
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/datum/controller/transfer_controller/proc/process()
+/datum/controller/transfer_controller/Process()
 	if (time_till_transfer_vote() <= 0)
 		vote.autotransfer()
 		timerbuffer += config.vote_autotransfer_interval

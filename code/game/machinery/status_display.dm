@@ -65,7 +65,7 @@ var/list/status_icons_to_colour = list(
 		radio_controller.add_object(src, frequency)
 
 // timed process
-/obj/machinery/status_display/process()
+/obj/machinery/status_display/Process()
 	if(stat & NOPOWER)
 		remove_display()
 		return

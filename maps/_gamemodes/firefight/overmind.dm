@@ -11,7 +11,7 @@
 
 /datum/npc_overmind/firefight/New()
 	. = ..()
-	GLOB.processing_objects.Add(src)
+START_PROCESSING(SSobj, src)
 
 /datum/npc_overmind/firefight/create_taskpoint_assign()
 	//intentionally left blank

@@ -61,9 +61,9 @@
 		return
 
 	if(my_effect)
-		my_effect.process()
+		my_effect.Process()
 	if(secondary_effect)
-		secondary_effect.process()
+		secondary_effect.Process()
 
 	if(pulledby)
 		Bumped(pulledby)

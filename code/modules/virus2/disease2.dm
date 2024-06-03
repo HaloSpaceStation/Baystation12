@@ -53,7 +53,7 @@
 				res |= picked.primitive_form
 	return res
 
-/datum/disease2/disease/proc/process(var/mob/living/carbon/human/mob)
+/datum/disease2/disease/Process(var/mob/living/carbon/human/mob)
 	if(dead)
 		cure(mob)
 		return

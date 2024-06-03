@@ -21,7 +21,7 @@
 	eject_fuel()
 	return
 
-/obj/machinery/power/fusion_drive_simple/process()
+/obj/machinery/power/fusion_drive_simple/Process()
 	if(held_fuel && held_fuel.fuel_left > 0)
 		held_fuel.fuel_left = max(held_fuel.fuel_left - fuel_consumption_rate, 0)
 

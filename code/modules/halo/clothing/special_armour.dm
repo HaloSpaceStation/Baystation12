@@ -58,7 +58,7 @@
 		special.try_item_action()
 
 /obj/item/clothing/suit/armor/special/Destroy()
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	for(var/item in specials)
 		qdel(item)
 	. = ..()

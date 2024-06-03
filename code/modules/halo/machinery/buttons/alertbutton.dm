@@ -45,7 +45,7 @@
 	else
 		currently_alarming = 0
 	//Then, switch all lights to ominous red.
-	for(var/obj/machinery/light/l in GLOB.machines)
+	for(var/obj/machinery/light/l in SSmachines.machinery)
 		if(!istype(l.loc.loc,area_base))
 			continue
 		if(on)

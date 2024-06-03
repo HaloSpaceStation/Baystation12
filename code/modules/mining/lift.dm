@@ -9,7 +9,7 @@
 
 /obj/machinery/mine_lift/New()
 	. = ..()
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 
 /obj/machinery/mine_lift/attack_hand(mob/user)
 	if(isliving(user))
@@ -36,9 +36,9 @@
 	icon_state = new_icon_state
 
 	if(icon_state == "chute_active")
-		GLOB.processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	else
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 	update_target_lift(icon_state, dir)
 
@@ -62,7 +62,7 @@
 
 	return null
 
-/obj/machinery/mine_lift/process()
+/obj/machinery/mine_lift/Process()
 	if(icon_state == "chute_active")
 		if(target_lift)
 			for(var/obj/O in src.loc)

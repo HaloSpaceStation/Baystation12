@@ -23,7 +23,7 @@
 	set_dir(pick(GLOB.cardinal))
 	set_light(3, 1, light_color)
 	firelevel = fl
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 	//ignite all the fuel
 	for(var/obj/effect/decal/cleanable/liquid_fuel/fuel in src.loc)
@@ -41,7 +41,7 @@
 	var/temperature = max(4000*sqrt(firelevel/vsc.fire_firelevel_multiplier), env_temperature)
 	return heat2color(temperature)
 
-/obj/effect/fire/process()
+/obj/effect/fire/Process()
 	. = 1
 
 	var/turf/simulated/my_tile = get_turf(loc)
@@ -125,7 +125,7 @@
 	var/turf/T = loc
 	if (istype(T))
 		set_light(0)
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 
 	. = ..()
 

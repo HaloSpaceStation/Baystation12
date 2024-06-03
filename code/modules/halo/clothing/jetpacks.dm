@@ -80,7 +80,7 @@
 	user.flight_ticks_remain = flight_ticks_curr
 	user.flight_item = src
 	user.take_flight(flight_ticks_curr,"<span class = 'warning'>[user.name][takeoff_msg]</span>","<span class = 'warning'>[user.name][land_msg]</span>")
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	update_icon(user)
 	if(!flight_bar)
 		flight_bar = new(user,flight_ticks_max,src)
@@ -94,7 +94,7 @@
 	user.flight_item = null
 	if(user.elevation > 0)
 		user.take_flight(0,(output_msg ? "<span class = 'warning'>[user.name][takeoff_msg]</span>" : null),(output_msg ? "<span class = 'warning'>[user.name][land_msg]</span>" : null))
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 	update_icon(user)
 
 /obj/item/flight_item/ui_action_click()
@@ -112,11 +112,11 @@
 	else
 		activate(usr)
 
-/obj/item/flight_item/process()
+/obj/item/flight_item/Process()
 	flight_ticks_curr = min(flight_ticks_max, flight_ticks_curr + flight_ticks_regen)
 	flight_bar.update(flight_ticks_curr)
 	if(flight_ticks_curr == flight_ticks_max)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/flight_item/bullfrog_pack
 	name = "\improper Series 8 Single Operator Lift Apparatus"

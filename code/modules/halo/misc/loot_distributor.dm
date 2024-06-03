@@ -22,9 +22,9 @@ var/global/datum/loot_distributor/loot_distributor = new
 		loclist = list()
 	loclist += loc
 	distribute_locs[type] = loclist
-	GLOB.processing_objects |= src
+	START_PROCESSING(SSobj, src)
 
-/datum/loot_distributor/proc/process()
+/datum/loot_distributor/Process()
 	for(var/tag in distribute_locs)
 		var/list/lootlist = get_lootlist_for_type(tag)
 		var/list/loclist = distribute_locs[tag]

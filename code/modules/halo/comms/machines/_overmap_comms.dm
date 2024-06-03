@@ -53,7 +53,7 @@
 	emp_act()
 	failure_timer = duration
 
-/obj/machinery/overmap_comms/process()
+/obj/machinery/overmap_comms/Process()
 	. = ..()
 
 	//slowly recover from EMP

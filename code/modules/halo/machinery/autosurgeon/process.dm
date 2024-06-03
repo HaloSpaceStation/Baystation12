@@ -1,5 +1,5 @@
 
-/obj/machinery/autosurgeon/process()
+/obj/machinery/autosurgeon/Process()
 	if(active)
 		if(world.time >= next_autosurgeon_action)
 			next_autosurgeon_action = world.time + autosurgeon_action_delay

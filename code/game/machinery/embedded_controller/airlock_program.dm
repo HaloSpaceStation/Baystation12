@@ -171,7 +171,7 @@
 
 
 
-/datum/computer/file/embedded_program/airlock/process()
+/datum/computer/file/embedded_program/airlock/Process()
 	if(!state) //Idle
 		if(target_state)
 			switch(target_state)

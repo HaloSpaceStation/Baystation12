@@ -17,11 +17,11 @@
 
 /obj/item/weapon/gun/energy/temperature/Initialize()
 	. = ..()
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 
 /obj/item/weapon/gun/energy/temperature/Destroy()
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 
@@ -62,7 +62,7 @@
 	return
 
 
-/obj/item/weapon/gun/energy/temperature/process()
+/obj/item/weapon/gun/energy/temperature/Process()
 	switch(temperature)
 		if(0 to 100) charge_cost = 100
 		if(100 to 250) charge_cost = 50

@@ -158,7 +158,7 @@
 
 		//set a delay on recharging
 		if(!shield_next_charge)
-			GLOB.processing_objects |= src
+			START_PROCESSING(SSobj, src)
 		shield_next_charge = world.time + shield_recharge_delay
 
 		//subtract the damage
@@ -223,9 +223,9 @@
 	else
 		action.button.maptext = null
 
-/obj/item/clothing/gloves/shield_gauntlet/process()
+/obj/item/clothing/gloves/shield_gauntlet/Process()
 	if(shield_current_charge >= shield_max_charge)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		shield_next_charge = 0
 		return
 

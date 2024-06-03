@@ -20,7 +20,7 @@ GLOBAL_DATUM(covenant_overmind, /datum/npc_overmind/covenant)
 	if(!GLOB.covenant_overmind)
 		GLOB.covenant_overmind = new()
 		controlling_overmind =  GLOB.covenant_overmind
-		GLOB.processing_objects |= GLOB.covenant_overmind
+		START_PROCESSING(SSobj, GLOB.covenant_overmind)
 		GLOB.covenant_overmind.overmind_active = 1
 		GLOB.covenant_overmind.reports.Cut() //We're likely activating the overmind here. Cut all previous reports out, they're likely outdated.
 

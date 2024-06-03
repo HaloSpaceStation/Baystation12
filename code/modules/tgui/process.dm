@@ -73,7 +73,7 @@
 	for(var/ui_key in tg_open_uis[src_object_key])
 		for(var/datum/tgui/ui in tg_open_uis[src_object_key][ui_key])
 			if(ui && ui.src_object && ui.user && ui.src_object.ui_host()) // Check the UI is valid.
-				ui.process(force = 1) // Update the UI.
+				ui.Process(force = 1) // Update the UI.
 				update_count++ // Count each UI we update.
 	return update_count
 
@@ -117,7 +117,7 @@
 	var/update_count = 0
 	for(var/datum/tgui/ui in user.tg_open_uis)
 		if((isnull(src_object) || !isnull(src_object) && ui.src_object == src_object) && (isnull(ui_key) || !isnull(ui_key) && ui.ui_key == ui_key))
-			ui.process(force = 1) // Update the UI.
+			ui.Process(force = 1) // Update the UI.
 			update_count++ // Count each UI we upadte.
 	return update_count
 

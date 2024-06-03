@@ -48,5 +48,5 @@
 
 /datum/controller/process/factions/doWork()
 	for(var/datum/faction/F in processing_factions)
-		F.process()
+		F.Process()
 

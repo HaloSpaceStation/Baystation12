@@ -51,9 +51,9 @@
 	else if(istype(AM, /mob/living/carbon/human))
 		timer = world.time + time_to_spawn //starts the countdown
 		uses--
-		GLOB.processing_objects |= src
+		START_PROCESSING(SSobj, src)
 
-/obj/structure/floodspawner/process()
+/obj/structure/floodspawner/Process()
 	if(timer != 0 && world.time > timer)
 		timer_end()
 	return
@@ -64,6 +64,6 @@
 	src.loc.visible_message("<span class='danger'>A swarm of monsters bursts from a nearby air vent!</span>")
 	for(var/i = 0 to 8)
 		new /mob/living/simple_animal/hostile/flood/infestor(dest)
-	GLOB.processing_objects.Remove(src)							//removes from global list
+	STOP_PROCESSING(SSobj, src)							//removes from global list
 	if(uses <= 0)												//redundant < in case of a use failure or bug
 		qdel(src) 												//deletes after it runs out of uses

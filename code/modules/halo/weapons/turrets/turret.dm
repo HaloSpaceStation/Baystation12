@@ -143,7 +143,7 @@
 	mob_manning.buckled = src
 	give_manning_gun()
 	handle_dir()
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /obj/structure/turret/proc/unman_turret()
 	if(mob_manning)
@@ -152,7 +152,7 @@
 		mob_manning.pixel_y = initial(mob_manning.pixel_y)
 		remove_manning_gun()
 		mob_manning = null
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 
 /obj/structure/turret/attack_hand(var/mob/user)
 	if(!mob_manning)
@@ -194,7 +194,7 @@
 	if(unman)
 		unman_turret()
 
-/obj/structure/turret/process()
+/obj/structure/turret/Process()
 	check_user_has_gun()
 	handle_dir()
 

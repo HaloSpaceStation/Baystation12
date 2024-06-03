@@ -3,9 +3,9 @@
 /datum/game_mode/var/max_autotraitor_delay = 12 MINUTES
 /datum/game_mode/var/process_count = 0
 
-///process()
+///Process()
 ///Called by the gameticker
-/datum/game_mode/proc/process()
+/datum/game_mode/Process()
 	if(shall_process_autoantag())
 		process_autoantag()
 

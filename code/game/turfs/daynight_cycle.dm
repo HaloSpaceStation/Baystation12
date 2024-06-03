@@ -41,10 +41,10 @@
 
 /obj/effect/landmark/day_night_zcontroller/Initialize()
 	..()
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	return INITIALIZE_HINT_NORMAL
 
-/obj/effect/landmark/day_night_zcontroller/process()
+/obj/effect/landmark/day_night_zcontroller/Process()
 
 	//its a new day
 	if(world.time + solar_cycle_offset > solar_cycle_start + solar_cycle_duration)

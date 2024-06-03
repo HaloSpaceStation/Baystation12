@@ -8,14 +8,14 @@ var/list/ship_engines = list()
 /datum/ship_engine/New(var/obj/machinery/_holder)
 	. = ..()
 	holder = _holder
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
-/datum/ship_engine/proc/process()
+/datum/ship_engine/Process()
 	ship_engines += src
 	var/obj/effect/overmap/ship/S = map_sectors["[holder.z]"]
 	if(istype(S))
 		S.engines |= src
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /datum/ship_engine/proc/can_burn()
 	return 0

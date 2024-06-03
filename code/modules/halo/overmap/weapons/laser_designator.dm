@@ -71,9 +71,9 @@
 	else
 		name = "Bombardment Beacon [rand(0,999)] - [area_contained.name]"
 	created_at = world.time
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
-/obj/effect/bombardment_beacon/process()
+/obj/effect/bombardment_beacon/Process()
 	if(world.time > (created_at + BEACON_EXPIRE_TIME))
 		qdel(src)
 

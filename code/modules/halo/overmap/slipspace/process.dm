@@ -1,5 +1,5 @@
 
-/obj/machinery/slipspace_engine/process()
+/obj/machinery/slipspace_engine/Process()
 	if(current_charge_ticks)
 		if(powered())
 			if(current_charge_ticks < target_charge_ticks)

@@ -138,7 +138,7 @@
 		melee_damage_lower = min(swarm_size, 30)
 		melee_damage_upper = min(swarm_size * 5, 50)
 		//
-		GLOB.mob_list -= AM
+		SSmobs.mob_list -= AM
 		GLOB.live_flood_simplemobs -= AM
 		if(AM:our_overmind)
 			AM:our_overmind.combat_troops -= AM

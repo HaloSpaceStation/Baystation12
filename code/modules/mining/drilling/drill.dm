@@ -56,7 +56,7 @@
 
 	RefreshParts()
 
-/obj/machinery/mining/drill/process()
+/obj/machinery/mining/drill/Process()
 
 	if(need_player_check)
 		return

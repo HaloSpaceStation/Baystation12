@@ -61,14 +61,13 @@
 	var/wight_check_index = 1
 	var/list/shadow_wights = list()
 
-/obj/item/weapon/vampiric/Iniitalize()
+/obj/item/weapon/vampiric/Initialize()
 	. = ..()
 	GLOB.listening_objects += src
 	START_PROCESSING(SSobj, src)
 
 
 /obj/item/weapon/vampiric/Destroy()
-	GLOB.processing_objects.Remove(src)
 	GLOB.listening_objects -= src
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -221,7 +220,7 @@
 			M.sleeping = max(M.sleeping,rand(5,10))
 			src.loc = null
 	else
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/effect/shadow_wight/Bump(var/atom/obstacle)
 	to_chat(obstacle, "<span class='warning'>You feel a chill run down your spine!</span>")

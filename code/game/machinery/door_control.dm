@@ -175,7 +175,7 @@
 	active = 1
 	update_icon()
 
-	for(var/obj/machinery/door/blast/M in GLOB.machines)
+	for(var/obj/machinery/door/blast/M in SSmachines.machinery)
 		if (M.id == src.id)
 			spawn( 0 )
 				M.open()
@@ -183,13 +183,13 @@
 
 	sleep(20)
 
-	for(var/obj/machinery/mass_driver/M in GLOB.machines)
+	for(var/obj/machinery/mass_driver/M in SSmachines.machinery)
 		if(M.id == src.id)
 			M.drive()
 
 	sleep(50)
 
-	for(var/obj/machinery/door/blast/M in GLOB.machines)
+	for(var/obj/machinery/door/blast/M in SSmachines.machinery)
 		if (M.id == src.id)
 			spawn(0)
 				M.close()

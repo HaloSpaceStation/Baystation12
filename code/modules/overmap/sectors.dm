@@ -337,7 +337,7 @@ var/list/points_of_interest = list()
 	if(superstructure_strength <= SUPERSTRUCTURE_FAIL_PERCENT)
 		pre_superstructure_failing()
 
-/obj/effect/overmap/process()
+/obj/effect/overmap/Process()
 	for(var/e in active_effects)
 		var/datum/overmap_effect/effect = e
 		if(effect && !effect.process_effect())
@@ -361,8 +361,8 @@ var/list/points_of_interest = list()
 
 /obj/effect/overmap/sector/Initialize()
 	. = ..()
-	GLOB.processing_objects += src
-	for(var/obj/machinery/computer/helm/H in GLOB.machines)
+	START_PROCESSING(SSobj, src)
+	for(var/obj/machinery/computer/helm/H in SSmachines.machinery)
 		H.get_known_sectors()
 	if(base)
 		GLOB.om_base_sectors += src

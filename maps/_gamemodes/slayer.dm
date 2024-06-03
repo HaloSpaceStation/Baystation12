@@ -68,7 +68,7 @@
 		H.set_species(new_species_name)
 		outfit.equip(H)
 
-/datum/game_mode/slayer/process() //Used to allow respawns after few minutes. Also auto-kills people after a threshold.
+/datum/game_mode/slayer/Process() //Used to allow respawns after few minutes. Also auto-kills people after a threshold.
 	if(world.time >= nextrespawn)
 		auto_respawn()
 		auto_kill()

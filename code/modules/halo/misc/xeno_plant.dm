@@ -21,10 +21,10 @@
 	. = ..()
 	icon_state = "weird_plant[pick("1","2","3")]"
 	internal_container = new/datum/reagents(20,src)
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /obj/structure/xeno_plant/Destroy()
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/structure/xeno_plant/attack_hand(var/mob/living/carbon/human/M)
@@ -40,7 +40,7 @@
 	visible_message("<span class = 'notice'>[M] picks one of the fruits off of [src]</span>")
 	next_fruit_at = world.time + XENO_PLANT_FRUITGROW_DELAY
 
-/obj/structure/xeno_plant/process()
+/obj/structure/xeno_plant/Process()
 	if(world.time > next_smoke_at)
 		next_smoke_at = world.time + XENO_PLANT_SMOKE_DELAY
 		internal_container.add_reagent(pick(reagents_can_spawn),5)

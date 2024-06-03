@@ -21,7 +21,7 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/device/geiger/process()
+/obj/item/device/geiger/Process()
 	if(!scanning)
 		return
 	radiation_count = radiation_repository.get_rads_at_turf(get_turf(src))

@@ -54,7 +54,7 @@ var/global/orion_password = null
 	auth = null
 	return ..()
 
-/obj/machinery/nuclearbomb/Process()
+/obj/machinery/nuclearbomb/Process(var/wait)
 	if (timing)
 		timeleft = max(timeleft - (wait / 10), 0)
 		if (timeleft <= 0)

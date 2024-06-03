@@ -1,5 +1,5 @@
 
-/obj/machinery/research/protolathe/process()
+/obj/machinery/research/protolathe/Process()
 	. = ..()
 
 	if(do_reagents_update)

@@ -57,7 +57,7 @@ var/global/datum/controller/gameticker/ticker
 		while(current_state == GAME_STATE_PREGAME)
 			for(var/i=0, i<10, i++)
 				sleep(1)
-				vote.process()
+				vote.Process()
 			if(round_progressing)
 				pregame_timeleft--
 			if(pregame_timeleft <= config.vote_autogamemode_timeleft && !gamemode_voted)
@@ -70,7 +70,7 @@ var/global/datum/controller/gameticker/ticker
 					while(vote.delay_round_start())
 						for(var/i=0, i<10, i++)
 							sleep(1)
-							vote.process()
+							vote.Process()
 			if(pregame_timeleft <= 0 || ((initialization_stage & INITIALIZATION_NOW_AND_COMPLETE) == INITIALIZATION_NOW_AND_COMPLETE))
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
@@ -337,13 +337,13 @@ var/global/datum/controller/gameticker/ticker
 					to_chat(M, "Captainship not forced on anyone.")
 
 
-	proc/process()
+	Process()
 		if(current_state != GAME_STATE_PLAYING)
 			return 0
 
-		mode.process()
+		mode.Process()
 
-//		emergency_shuttle.process() //handled in scheduler
+//		emergency_shuttle.Process() //handled in scheduler
 
 		var/game_finished = 0
 		var/mode_finished = 0
@@ -459,7 +459,7 @@ var/global/datum/controller/gameticker/ticker
 
 
 	/*
-	for (var/mob/living/silicon/ai/aiPlayer in GLOB.mob_list)
+	for (var/mob/living/silicon/ai/aiPlayer in SSmobs.mob_list)
 		if (aiPlayer.stat != 2)
 			to_world("<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
 
@@ -479,7 +479,7 @@ var/global/datum/controller/gameticker/ticker
 	/*
 	var/dronecount = 0
 
-	for (var/mob/living/silicon/robot/robo in GLOB.mob_list)
+	for (var/mob/living/silicon/robot/robo in SSmobs.mob_list)
 
 		if(istype(robo,/mob/living/silicon/robot/drone))
 			dronecount++

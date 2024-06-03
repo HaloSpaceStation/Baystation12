@@ -8,14 +8,14 @@
 
 /obj/item/weapon/gun/launcher/alien/Initialize()
 	. = ..()
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 
 /obj/item/weapon/gun/launcher/alien/Destroy()
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/weapon/gun/launcher/alien/process()
+/obj/item/weapon/gun/launcher/alien/Process()
 	if(ammo < max_ammo && world.time > last_regen + ammo_gen_time)
 		ammo++
 		last_regen = world.time

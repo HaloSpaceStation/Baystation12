@@ -62,7 +62,7 @@
 	//Twice as good at handling toxin damage... but not any tougher
 	toxin_danger_level = 120
 
-/obj/item/organ/internal/liver/spartan/process()
+/obj/item/organ/internal/liver/spartan/Process()
 	//To allow some filtering first, we're putting off our ..() call
 	if(owner.chem_effects[CE_ALCOHOL] && owner.chem_effects[CE_ALCOHOL_TOXIC])
 		//Remove an additional amount of alcohol
@@ -85,7 +85,7 @@
 	min_broken_damage = 45
 
 //give spartans some slight regen
-/obj/item/organ/internal/heart/spartan/process()
+/obj/item/organ/internal/heart/spartan/Process()
 	. = ..()
 	for(var/obj/item/organ/external/e in owner.bad_external_organs)
 		if(!e.clamped() && prob(SPARTAN_BLEEDBLOCK_CHANCE))

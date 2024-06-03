@@ -298,10 +298,10 @@
 
 /obj/structure/repair_component/mac_console/finalise_repair()
 	reboot_at = world.time + CONSOLE_REBOOT_TIME
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 	name = "Rebooting MAC Fire Control"
 
-/obj/structure/repair_component/mac_console/process()
+/obj/structure/repair_component/mac_console/Process()
 	if(world.time > reboot_at)
 		new repair_into (loc)
 		qdel(src)

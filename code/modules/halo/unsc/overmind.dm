@@ -16,7 +16,7 @@ GLOBAL_DATUM(unsc_overmind, /datum/npc_overmind/unsc)
 	if(!GLOB.unsc_overmind)
 		GLOB.unsc_overmind = new()
 		controlling_overmind =  GLOB.unsc_overmind
-		GLOB.processing_objects |= GLOB.unsc_overmind
+		START_PROCESSING(SSobj, GLOB.unsc_overmind)
 		GLOB.unsc_overmind.overmind_active = 1
 		GLOB.unsc_overmind.reports.Cut() //We're likely activating the overmind here. Cut all previous reports out, they're likely outdated.
 

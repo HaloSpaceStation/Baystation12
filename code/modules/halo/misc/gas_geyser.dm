@@ -19,7 +19,7 @@
 
 /obj/structure/geyser/New()
 	. = ..()
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	time_between_vent = rand(30,200)
 	duration_of_vent = rand(10, 100)
 	time_last_vent = world.time - rand(0, time_between_vent)
@@ -46,7 +46,7 @@
 /obj/structure/geyser/ex_act()
 	return
 
-/obj/structure/geyser/process()
+/obj/structure/geyser/Process()
 	if(venting)
 		vent_gases()
 		if(world.time > time_last_vent + duration_of_vent)

@@ -77,7 +77,7 @@
 	to_chat(owner, aim_message)
 	if(aiming_at)
 		to_chat(aiming_at, "<span class='[use_span]'>You are [message].</span>")
-/obj/aiming_overlay/process()
+/obj/aiming_overlay/Process()
 	if(!owner)
 		qdel(src)
 		return
@@ -172,7 +172,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 
 
 	forceMove(get_turf(target))
-	GLOB.processing_objects |= src
+	START_PROCESSING(SSobj, src)
 
 	aiming_at.aimed |= src
 	toggle_active(1)
@@ -226,7 +226,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 
 	aiming_with = null
 	loc = null
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 
 /obj/aiming_overlay/proc/target_moved()
 	update_aiming()

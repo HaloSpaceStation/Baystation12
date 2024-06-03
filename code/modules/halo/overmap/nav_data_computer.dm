@@ -21,13 +21,13 @@
 
 /obj/machinery/nav_computer/LateInitialize()
 	. = ..()
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
-/obj/machinery/nav_computer/process()
+/obj/machinery/nav_computer/Process()
 	var/obj/effect/overmap/ship/our_om = map_sectors["[z]"]
 	if(istype(our_om))
 		our_om.nav_comp = src
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /obj/machinery/nav_computer/examine(var/mob/examiner)
 	. = ..()

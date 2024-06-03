@@ -2,7 +2,7 @@
 	..()
 	if(stat != DEAD)
 		switch_to_net_by_name(network)
-		for(var/obj/machinery/ai_status_display/O in GLOB.machines) //change status
+		for(var/obj/machinery/ai_status_display/O in SSmachines.machinery) //change status
 			O.mode = 1
 			O.emotion = "Neutral"
 

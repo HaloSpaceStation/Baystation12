@@ -10,10 +10,10 @@
 	var/alert_pressure = 0
 
 	New()
-		GLOB.processing_objects += src
+		START_PROCESSING(SSobj, src)
 
 	Destroy()
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		QDEL_NULL(network)
 
 		if(air && air.volume)
@@ -204,7 +204,7 @@
 
 			air.temperature -= heat/total_heat_capacity
 		if(network)
-		network.update = 1
+			network.update = 1
 
 	//surface must be the surface area in m^2
 /datum/pipeline/proc/radiate_heat_to_space(surface, thermal_conductivity)

@@ -91,7 +91,7 @@
 		if(ticker.current_state <= GAME_STATE_SETTING_UP)
 			pregame_vote = 1
 
-/datum/vote/gamemode/process()
+/datum/vote/gamemode/Process()
 	. = ..()
 
 	// No more change mode votes after the game has started.

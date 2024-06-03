@@ -34,14 +34,14 @@
 		generate_map()
 		generate_landing()
 		update_biome()
-		GLOB.processing_objects += src
+		START_PROCESSING(SSobj, src)
 
 //Not that it should ever get deleted but just in case
 /obj/effect/overmap/sector/exoplanet/Destroy()
 		. = ..()
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
-/obj/effect/overmap/sector/exoplanet/process()
+/obj/effect/overmap/sector/exoplanet/Process()
 	if(!atmosphere)
 		return
 	for(var/zlevel in map_z)

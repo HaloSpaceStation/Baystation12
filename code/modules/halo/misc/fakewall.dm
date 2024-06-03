@@ -23,9 +23,9 @@
 /turf/simulated/floor/plating/fakewall/New()
 	. = ..()
 	revert_time = world.time + open_duration
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/plating/fakewall/process()
+/turf/simulated/floor/plating/fakewall/Process()
 	if(world.time >= revert_time)
 		src.visible_message("<span class='info'>[src] slides forward to hide its contents.</span>")
 		for(var/obj/machinery/light/S in get_step(src,dir))

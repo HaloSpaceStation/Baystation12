@@ -27,7 +27,7 @@
 
 	//Give pipelines their process call for pressure checking and what not. Have to remove pressure checks for the time being as pipes dont radiate heat - Mport
 	//for(var/datum/pipeline/line_member in line_members)
-	//	line_member.process()
+	//	line_member.Process()
 
 /datum/pipe_network/proc/build_network(obj/machinery/atmospherics/start_normal, obj/machinery/atmospherics/reference)
 	//Purpose: Generate membership roster

@@ -43,7 +43,7 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/device/suit_cooling_unit/process()
+/obj/item/device/suit_cooling_unit/Process()
 	if (!on || !cell)
 		return
 

@@ -180,7 +180,7 @@ All 3 of these cannot spawn on open space
 				typepath_to_spawn = /obj/item/flood_spore_growing
 			new typepath_to_spawn (pick(valid_spawns))
 
-/datum/game_mode/achlys/process()
+/datum/game_mode/achlys/Process()
 	..()
 	if(!has_configured)
 		if(world.time >= mode_config_deadline)

@@ -194,7 +194,7 @@
 
 /*
 
-/obj/machinery/body_scanconsole/process() //not really used right now
+/obj/machinery/body_scanconsole/Process() //not really used right now
 	if(stat & (NOPOWER|BROKEN))
 		return
 	//use_power(250) // power stuff

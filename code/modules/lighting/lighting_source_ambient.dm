@@ -12,16 +12,16 @@
 	applied_lum_g = lum_g
 	applied_lum_b = lum_b
 
-	GLOB.processing_objects |= src
+	START_PROCESSING(SSobj, src)
 	turfs_to_update_lum = block(locate(1, 1, source_turf.z), locate(world.maxx, world.maxy, source_turf.z))
 
 	update_gen++
 
-/datum/light_source/ambient/proc/process()
+/datum/light_source/ambient/Process()
 	if(turfs_to_update_lum.len)
 		apply_lum_delayedtick()
 	else
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 #define APPLY_CORNER_AMBIENT(C)      \
 	. = 1;                           \

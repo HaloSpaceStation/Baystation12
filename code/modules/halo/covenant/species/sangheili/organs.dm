@@ -10,7 +10,7 @@
 	max_damage = 45
 	var/useheart = 0
 
-/obj/item/organ/internal/heart_secondary/process()
+/obj/item/organ/internal/heart_secondary/Process()
 	if(is_broken())
 		return
 	var/obj/item/organ/internal/heart = owner.internal_organs_by_name["heart"]

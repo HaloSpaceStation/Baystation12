@@ -106,9 +106,9 @@
 	catcher.SetSize(7)
 	particle_catchers.Add(catcher)
 
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
-/obj/effect/fusion_em_field/process()
+/obj/effect/fusion_em_field/Process()
 	//make sure the field generator is still intact
 	if(!owned_core || QDELETED(owned_core))
 		qdel(src)
@@ -480,7 +480,7 @@
 	if(owned_core)
 		owned_core.owned_field = null
 		owned_core = null
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/effect/fusion_em_field/bullet_act(var/obj/item/projectile/Proj)
