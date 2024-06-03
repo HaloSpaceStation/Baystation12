@@ -57,7 +57,7 @@
 			meltdown()
 		else if (prob(60))	//but more likely it will just quietly die
 			malfunction = MALFUNCTION_PERMANENT
-	STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSobj, src)
 
 	spawn(20)
 		malfunction = 0

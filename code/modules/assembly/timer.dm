@@ -30,7 +30,7 @@
 		START_PROCESSING(SSobj, src)
 	else
 		timing = 0
-	STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSobj, src)
 	update_icon()
 	return secured
 

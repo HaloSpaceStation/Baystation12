@@ -52,7 +52,7 @@
 	if(heat_current > 0)
 		if(!heat_bar)
 			heat_bar = new (src.loc, overheat_capacity, src)
-		START_PROCESSING(SSobj, src)
+			START_PROCESSING(SSobj, src)
 		heat_bar.update(heat_current)
 
 		if(heat_current >= overheat_capacity)

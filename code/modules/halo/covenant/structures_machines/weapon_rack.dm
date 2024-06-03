@@ -38,7 +38,7 @@
 			charging_items.Add(I)
 			if(!charging)
 				charging = 1
-			START_PROCESSING(SSobj, src)
+				START_PROCESSING(SSobj, src)
 		return 1
 	else
 		to_chat(user, "<span class='warning'>You can't fit \icon[I] onto [src].</span>")
@@ -83,4 +83,4 @@
 
 	if(!charging_items.len)
 		charging = 0
-	STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSobj, src)

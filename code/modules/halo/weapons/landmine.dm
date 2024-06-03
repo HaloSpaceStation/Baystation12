@@ -59,7 +59,7 @@
 /obj/item/device/landmine/proc/set_processing()
 	if(!processing)
 		processing = 1
-	START_PROCESSING(SSobj, src)
+		START_PROCESSING(SSobj, src)
 
 /obj/item/device/landmine/proc/stop_processing()
 	if(processing)

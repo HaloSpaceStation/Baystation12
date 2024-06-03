@@ -84,7 +84,7 @@
 /obj/effect/landmark/mercspawn/New()
 	. = ..()
 	ship_area = locate(ship_area_type) in world
-START_PROCESSING(SSobj, src)
+	START_PROCESSING(SSobj, src)
 	dropship = new(src)
 
 /obj/effect/landmark/mercspawn/ram

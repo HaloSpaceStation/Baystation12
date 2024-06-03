@@ -250,7 +250,7 @@
 	var/obj/item/device/radio/target_radio
 
 /obj/item/device/beacon_locator/Initialize()
-	..()
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/device/beacon_locator/Destroy()

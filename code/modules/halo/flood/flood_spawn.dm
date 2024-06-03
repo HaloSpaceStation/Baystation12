@@ -90,7 +90,7 @@
 	live_flood -= F
 	if(!spawning)
 		spawning = 1
-	START_PROCESSING(SSobj, src)
+		START_PROCESSING(SSobj, src)
 		time_next_respawn = world.time + respawn_delay
 
 /datum/flood_spawner/Destroy()

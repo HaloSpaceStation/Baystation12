@@ -165,7 +165,7 @@
 
 		if(!processing)
 			processing = 1
-		START_PROCESSING(SSobj, src)
+			START_PROCESSING(SSobj, src)
 
 /obj/structure/energybarricade/update_icon()
 	var/shield_ratio = shield_health/max_shield
