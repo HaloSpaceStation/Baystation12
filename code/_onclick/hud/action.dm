@@ -81,8 +81,8 @@
 /datum/action/proc/Deactivate()
 	return
 
-///datum/action/proc/Process()
-//	return
+/datum/action/proc/ProcessAction()
+	return
 
 /datum/action/proc/CheckRemoval(mob/living/user) // 1 if action is no longer valid for this mob and should be removed
 	return 0

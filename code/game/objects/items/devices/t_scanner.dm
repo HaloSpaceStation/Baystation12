@@ -21,6 +21,11 @@
 
 	var/global/list/overlay_cache = list() //cache recent overlays
 
+/obj/item/device/t_scanner/Destroy()
+	. = ..()
+	if(on)
+		set_active(FALSE)
+
 /obj/item/device/t_scanner/update_icon()
 	icon_state = "t-ray[on]"
 

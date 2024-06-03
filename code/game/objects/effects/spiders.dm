@@ -126,7 +126,7 @@
 
 	var/shift_range = 6
 
-/obj/effect/spider/spiderling/New(var/location, var/atom/parent)
+/obj/effect/spider/spiderling/Initialize(var/location, var/atom/parent)
 	greater_form = pick(typesof(/mob/living/simple_animal/hostile/giant_spider))
 	icon_state = initial(greater_form.icon_state)
 	pixel_x = rand(-shift_range, shift_range)
@@ -142,7 +142,7 @@
 		GLOB.processing_objects |= src
 
 	get_light_and_color(parent)
-	..()
+	. = ..()
 
 /obj/effect/spider/spiderling/mundane
 	growth_chance = 0 // Just a simple, non-mutant spider

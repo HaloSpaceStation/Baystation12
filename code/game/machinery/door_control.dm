@@ -171,6 +171,7 @@
 	icon_state = "launcherbtt"
 
 /obj/machinery/button/remote/driver/trigger(mob/user as mob)
+	set waitfor = 0
 	active = 1
 	update_icon()
 

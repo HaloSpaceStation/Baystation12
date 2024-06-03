@@ -13,8 +13,13 @@
 	var/scanning = 0
 	var/radiation_count = 0
 
-/obj/item/device/geiger/New()
-	GLOB.processing_objects |= src
+/obj/item/device/geiger/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/device/geiger/Destroy()
+	. = ..()
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/geiger/process()
 	if(!scanning)

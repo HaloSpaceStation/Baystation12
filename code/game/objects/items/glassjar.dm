@@ -57,7 +57,7 @@
 			return
 		if(3)
 			for(var/obj/effect/spider/spiderling/S in src)
-				S.loc = user.loc
+				S.dropInto(user.loc)
 				user.visible_message("<span class='notice'>[user] releases [S] from \the [src].</span>", "<span class='notice'>You release [S] from \the [src].</span>")
 				GLOB.processing_objects.Add(S) // They can grow after being let out though
 			contains = 0

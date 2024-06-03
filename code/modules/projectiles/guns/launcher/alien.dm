@@ -6,8 +6,8 @@
 	var/ammo_type
 	var/ammo_name
 
-/obj/item/weapon/gun/launcher/alien/New()
-	..()
+/obj/item/weapon/gun/launcher/alien/Initialize()
+	. = ..()
 	GLOB.processing_objects.Add(src)
 	last_regen = world.time
 

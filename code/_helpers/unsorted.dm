@@ -1126,12 +1126,14 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	see_in_dark = 1e6
 
+	virtual_mob = null
+
 /atom/proc/get_light_and_color(var/atom/origin)
 	if(origin)
 		color = origin.color
 		set_light(origin.light_range, origin.light_power, origin.light_color)
 
-/mob/dview/New()
+/mob/dview/Initialize()
 	..()
 	// We don't want to be in any mob lists; we're a dummy not a mob.
 	GLOB.mob_list -= src

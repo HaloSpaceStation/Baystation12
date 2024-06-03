@@ -18,8 +18,8 @@
 	..()
 
 /obj/item/weapon/shield_diffuser/Destroy()
-	qdel(cell)
 	cell = null
+	QDEL_NULL(cell)
 	if(enabled)
 		GLOB.processing_objects.Remove(src)
 	. = ..()

@@ -252,6 +252,10 @@
 	light_color = color
 	..()
 
+/obj/item/device/flashlight/glowstick/Destroy()
+	. = ..()
+	STOP_PROCESSING(SSobj, src)
+
 /obj/item/device/flashlight/glowstick/process()
 	fuel = max(fuel - 1, 0)
 	if(!fuel)

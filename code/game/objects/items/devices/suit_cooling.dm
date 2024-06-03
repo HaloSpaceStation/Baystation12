@@ -35,9 +35,13 @@
 
 /obj/item/device/suit_cooling_unit/Initialize()
 	. = ..()
-	GLOB.processing_objects |= src
+	START_PROCESSING(SSobj, src)
 	cell = new/obj/item/weapon/cell/high()		// 10K rated cell.
 	cell.forceMove(src)
+
+/obj/item/device/suit_cooling_unit/Destroy()
+	. = ..()
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/suit_cooling_unit/process()
 	if (!on || !cell)

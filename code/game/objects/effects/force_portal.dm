@@ -9,8 +9,8 @@
 	anchored = 1
 	var/boom_time = 1
 
-/obj/effect/force_portal/New(var/loc)
-	..()
+/obj/effect/force_portal/Initialize(var/loc)
+	. = ..()
 	boom_time = world.time + 30 SECONDS
 	GLOB.processing_objects += src
 
