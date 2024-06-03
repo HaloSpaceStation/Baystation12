@@ -54,7 +54,7 @@
 /datum/overmap_effect/proc/effect_created()
 
 /datum/overmap_effect/proc/process_effect()
-	if(world.time >= live_until)
+	if(world.time >= live_until || ticker.current_state != 3)
 		return 0
 	return 1
 
@@ -114,7 +114,7 @@
 	if(!.)
 		target.weapon_miss_chance = olddodge
 		return
-	if(prob(GAS_CLOUD_EMP_CHANCE))
+	if(prob(GAS_CLOUD_EMP_CHANCE) && target.map_z)
 		var/turf/emp_center = locate(rand(target.map_bounds[1],target.map_bounds[3]),rand(target.map_bounds[2],target.map_bounds[4]),pick(target.map_z))
 		empulse(emp_center, rand(2, 7), rand(7, 14))
 	return 1

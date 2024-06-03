@@ -205,6 +205,9 @@ GLOBAL_LIST_INIT(om_base_sectors, list())
 		return ..()
 
 /obj/effect/overmap/ship/npc_ship/Process()
+	//Let's wait until gametime to do anything.
+	if(ticker.current_state != 3)
+		return
 	//despawn after a while
 	if(world.time >= unload_at && unload_at != 0)
 		lose_to_space()
