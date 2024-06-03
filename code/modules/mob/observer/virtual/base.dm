@@ -70,4 +70,6 @@ var/list/all_virtual_listeners = list()
 	return TRUE
 
 /mob/shall_have_virtual_mob()
-	return ispath(initial(virtual_mob))
+	var/init_virt = initial(virtual_mob)
+	if(!isnull(init_virt))
+		return ispath(init_virt)

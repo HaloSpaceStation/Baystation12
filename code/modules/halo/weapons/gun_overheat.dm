@@ -62,7 +62,7 @@
 	else
 		qdel(heat_bar)
 		heat_bar = null
-	STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/proc/overheat_sfx(var/origin)
 	if(overheat_sfx)
