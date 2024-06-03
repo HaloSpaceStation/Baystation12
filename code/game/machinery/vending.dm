@@ -124,12 +124,13 @@
 			src.product_records.Add(product)
 
 /obj/machinery/vending/Destroy()
-	qdel(wires)
+	QDEL_NULL(wires)
 	wires = null
-	qdel(coin)
+	QDEL_NULL(coin)
 	coin = null
 	for(var/R in product_records)
-		qdel(R)
+		product_records -= R
+		QDEL_NULL(R)
 	product_records = null
 	return ..()
 

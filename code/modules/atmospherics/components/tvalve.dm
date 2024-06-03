@@ -116,7 +116,7 @@
 	node2 = null
 	node3 = null
 
-	..()
+	. = ..()
 
 /obj/machinery/atmospherics/tvalve/proc/go_to_side()
 

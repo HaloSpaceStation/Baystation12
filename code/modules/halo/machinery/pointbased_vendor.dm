@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(mobs_to_reqdatum,list())
 	for(var/datum/stored_items/vending_products/R in product_records)
 		qdel(R)
 	product_records = null
-	return ..()
+	. = ..()
 
 /obj/machinery/pointbased_vending/ex_act(severity)
 	return
