@@ -104,11 +104,11 @@ cloak disrupt override
 	var/protection = 0
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
 	for(var/gear in protective_gear)
-		if(gear && istype(gear ,/obj/item/clothing))
+		if(gear)
 			var/obj/item/clothing/C = gear
 			if(istype(C) && C.body_parts_covered & def_zone.body_part)
-				var/effective_armor_thickness = 1
-				if(!isnull(initial(C.armor_thickness)))
+				var/effective_armor_thickness = 0
+				if(!isnull(C.armor_thickness_max))
 					effective_armor_thickness = (C.armor_thickness/10) + 1
 					if(type in C.armor_thickness_modifiers)
 						effective_armor_thickness *= C.armor_thickness_modifiers[type]
