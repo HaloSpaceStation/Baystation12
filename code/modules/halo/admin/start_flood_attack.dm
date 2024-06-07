@@ -41,10 +41,10 @@
 
 /datum/flood_invasion/New()
 	. = ..()
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /datum/flood_invasion/Destroy()
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /datum/flood_invasion/proc/do_attack()
@@ -58,7 +58,7 @@
 	else
 		new_proj.launch(pick(overmap_objs))
 
-/datum/flood_invasion/proc/process()
+/datum/flood_invasion/Process()
 	if(world.time > next_attack_at)
 		do_attack()
 		next_attack_at = world.time + FLOOD_INVASION_ATTACK_DELAY

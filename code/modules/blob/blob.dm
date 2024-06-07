@@ -188,14 +188,14 @@
 			icon_state = "blob_factory"
 
 /obj/effect/blob/core/New(loc)
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	return ..(loc)
 
 /obj/effect/blob/core/Destroy()
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/blob/core/process()
+/obj/effect/blob/core/Process()
 	set waitfor = 0
 	if(!blob_may_process)
 		return

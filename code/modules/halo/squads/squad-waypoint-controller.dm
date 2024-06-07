@@ -23,8 +23,7 @@
 	created_waypoint.waypoint_name = "[waypoint_name_defaults[active_waypoints.len]]"
 	inform_waypoint_modification(created_waypoint)
 	update_linked_waypoint_locations()
-	if(!(src in GLOB.processing_objects))
-		GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 	return created_waypoint
 
 /datum/waypoint_controller/proc/cole_protocol() //This wipes the controller, removing all waypoints and linked devices before deleting itself.
@@ -60,7 +59,7 @@
 	update_linked_waypoint_locations()
 	qdel(waypoint)
 	if(active_waypoints.len == 0)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /datum/waypoint_controller/proc/get_waypoints()
 	var/list/waypoints_by_name = list()
@@ -78,7 +77,7 @@
 		device.update_known_waypoints(active_waypoints)
 		device.process_hud()
 
-/datum/waypoint_controller/proc/process()
+/datum/waypoint_controller/Process()
 	update_linked_waypoint_locations()
 
 #undef WAYPOINT_DEFAULT_NAME_LIST

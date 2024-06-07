@@ -148,7 +148,7 @@ GLOBAL_LIST_INIT(DEMOLITION_MANAGER_LIST, new)
 
 	to_chat(get_mobs_inside(), S)
 
-/datum/demolition_manager/proc/process()
+/datum/demolition_manager/Process()
 	if(!structural_turfs.len)
 		set_processing(0)
 		do_demolition()
@@ -182,9 +182,9 @@ GLOBAL_LIST_INIT(DEMOLITION_MANAGER_LIST, new)
 	if(do_process)
 		if(!is_processing)
 			is_processing = 1
-			GLOB.processing_objects += src
+			START_PROCESSING(SSobj, src)
 			time_last_process = world.time
 	else
 		if(is_processing)
 			is_processing = 0
-			GLOB.processing_objects -= src
+			STOP_PROCESSING(SSobj, src)

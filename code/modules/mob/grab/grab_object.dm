@@ -33,8 +33,8 @@
 	if(start_grab_name != NORM_PASSIVE)
 		last_upgrade = world.time
 
-/obj/item/grab/process()
-	current_grab.process(src)
+/obj/item/grab/Process()
+	current_grab.Process(src)
 
 /obj/item/grab/attack_self(mob/user)
 	switch(assailant.a_intent)

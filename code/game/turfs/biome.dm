@@ -16,7 +16,7 @@
 /obj/effect/landmark/biome/New()
 	..()
 	if(atom_types.len || turf_types.len)
-		GLOB.processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 		var/turf/my_turf = get_turf(src)
 		my_area = my_turf.loc
 		my_turfs = get_area_turfs(my_area)
@@ -25,14 +25,14 @@
 		if(turf_types.len)
 			chosen_turf_type = pick(turf_types)
 
-/obj/effect/landmark/biome/process()
+/obj/effect/landmark/biome/Process()
 	set background = 1
 	var/tiles_processed = 0
 
 	while(tiles_processed < tiles_per_tick)
 		//check if we are finished
 		if(turf_index > my_turfs.len)
-			GLOB.processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 			log_admin("[src] [src.type] ([src.x],[src.y],[src.z]) has finished processing in [my_area] [my_area.type]. Time taken: [(world.time-time_start)/10] seconds.")
 			qdel(src)
 			break

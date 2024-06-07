@@ -33,7 +33,7 @@
 		qdel(n)
 	for(var/tag in CONSOLE_SPAWN_TAGS)
 		loot_distributor.loot_list["[tag]"] = list(/obj/machinery/computer/capture_node/system_conquest)
-	loot_distributor.process()
+	loot_distributor.Process()
 
 /datum/game_mode/system_conquest/pre_setup()
 	. = ..()
@@ -77,7 +77,7 @@
 	active_objective = null
 	next_objective_at = world.time + inter_objective_delay
 
-/datum/game_mode/system_conquest/process()
+/datum/game_mode/system_conquest/Process()
 	. = ..()
 	if(world.time < next_objective_at)
 		return

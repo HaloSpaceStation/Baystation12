@@ -11,9 +11,9 @@
 
 /obj/effect/splinter_field/Initialize()
 	. = ..()
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
-/obj/effect/splinter_field/process()
+/obj/effect/splinter_field/Process()
 	if(world.time >= die_at)
 		qdel(src)
 

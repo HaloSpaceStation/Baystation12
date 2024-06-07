@@ -112,7 +112,7 @@ var/global/datum/repository/crew/crew_repository = new()
 /datum/repository/crew/proc/scan()
 	var/list/tracked = list()
 	. = tracked
-	//for(var/mob/living/carbon/human/H in GLOB.mob_list)
+	//for(var/mob/living/carbon/human/H in SSmobs.mob_list)
 	for(var/datum/mind/M in my_faction.assigned_minds)
 		var/mob/living/carbon/human/H = M.current
 		if(M.current.faction != my_faction.name)

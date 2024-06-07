@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(capture_nodes)
 			to_chat(user,"\icon[src] <span class='warning'>Your faction has no interest in controlling [src].</span>")
 			return
 
-/obj/machinery/computer/capture_node/process()
+/obj/machinery/computer/capture_node/Process()
 	if(objective_secured && obsec_until > 0 && world.time > obsec_until)
 		objective_secured = 0
 		obsec_until = 0
@@ -234,7 +234,7 @@ GLOBAL_LIST_EMPTY(capture_nodes)
 	vis_flags = VIS_HIDE
 
 /obj/structure/capture_marker/proc/set_owner(var/new_faction)
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	if(new_faction)
 		set_logo_alpha(255)
 	else
@@ -248,7 +248,7 @@ GLOBAL_LIST_EMPTY(capture_nodes)
 		name = initial(name)
 
 /obj/structure/capture_marker/proc/reset_control()
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	if(control_faction)
 		set_logo_alpha(255)
 	else
@@ -259,9 +259,9 @@ GLOBAL_LIST_EMPTY(capture_nodes)
 	if(!control_faction)
 		faction_logo = image(src.icon,src,trigger_faction)
 		set_logo_alpha(fade_alpha1)
-	GLOB.processing_objects |= src
+	START_PROCESSING(SSobj, src)
 
-/obj/structure/capture_marker/process()
+/obj/structure/capture_marker/Process()
 	if(control_faction)
 		if(faction_logo.alpha == 255)
 			set_logo_alpha(fade_alpha1)

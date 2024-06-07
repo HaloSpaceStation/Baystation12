@@ -32,13 +32,13 @@
 	if(href_list["track"])
 		if(isAI(usr))
 			var/mob/living/silicon/ai/AI = usr
-			var/mob/living/carbon/human/H = locate(href_list["track"]) in GLOB.mob_list
+			var/mob/living/carbon/human/H = locate(href_list["track"]) in SSmobs.mob_list
 			if(hassensorlevel(H, SUIT_SENSOR_TRACKING))
 				AI.ai_actual_track(H)
 		return 1
 
 	if(href_list["view_cam"])
-		var/mob/living/carbon/human/H = locate(href_list["view_cam"]) in GLOB.mob_list
+		var/mob/living/carbon/human/H = locate(href_list["view_cam"]) in SSmobs.mob_list
 		view_camera(usr, H)
 
 	if(href_list["stop_cam"])

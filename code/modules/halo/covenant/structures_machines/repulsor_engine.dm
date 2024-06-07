@@ -62,7 +62,7 @@
 	QDEL_NULL(controller)
 	. = ..()
 
-/obj/machinery/repulsor_engine/process()
+/obj/machinery/repulsor_engine/Process()
 	if(use_power == 2)
 		if(world.time > last_burn + 30)
 			use_power = 1

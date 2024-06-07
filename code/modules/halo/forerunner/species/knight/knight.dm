@@ -128,9 +128,9 @@
 /obj/effect/knightroll_tp/Initialize()
 	. = ..()
 	die_at = world.time + KNIGHT_TELEPORT_ANIM_TIME
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
-/obj/effect/knightroll_tp/process()
+/obj/effect/knightroll_tp/Process()
 	if(world.time >= die_at)
 		qdel(src)
 		return

@@ -116,7 +116,7 @@
 	node2 = null
 	node3 = null
 
-	..()
+	. = ..()
 
 /obj/machinery/atmospherics/tvalve/proc/go_to_side()
 
@@ -179,7 +179,7 @@
 	else
 		src.go_to_side()
 
-/obj/machinery/atmospherics/tvalve/process()
+/obj/machinery/atmospherics/tvalve/Process()
 	..()
 	. = PROCESS_KILL
 	//machines.Remove(src)

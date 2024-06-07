@@ -124,7 +124,7 @@ All 3 of these cannot spawn on open space
 
 */
 
-/datum/game_mode/achlys/process()
+/datum/game_mode/achlys/Process()
 	..()
 
 	handle_comms_jamming()

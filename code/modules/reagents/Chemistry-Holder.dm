@@ -96,7 +96,7 @@
 			eligible_reactions |= chemical_reactions_list[R.type]
 
 		for(var/datum/chemical_reaction/C in eligible_reactions)
-			if(C.can_happen(src) && C.process(src))
+			if(C.can_happen(src) && C.Process(src))
 				effect_reactions |= C
 				reaction_occured = 1
 

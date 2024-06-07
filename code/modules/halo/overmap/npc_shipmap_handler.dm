@@ -50,7 +50,7 @@ var/global/datum/npc_ship_map_handler/shipmap_handler = new
 
 			if(del_me)
 				obj_to_clear.loc = null
-				GLOB.processing_objects -= obj_to_clear
+				STOP_PROCESSING(SSobj, obj_to_clear)
 				qdel(obj_to_clear)
 		to_clear.ChangeTurf(/turf/space)
 		if(turf_ticker >= PER_PASS_DELETE_LIMIT)

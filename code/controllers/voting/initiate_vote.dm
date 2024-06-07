@@ -35,7 +35,7 @@
 
 	time_remaining = round(config.vote_period)
 
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	last_process = world.time
 	active = 1
 

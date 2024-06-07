@@ -1,5 +1,5 @@
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
-	GLOB.mob_list -= src
+	STOP_PROCESSING(SSmobs, src)
 	GLOB.dead_mob_list_ -= src
 	GLOB.living_mob_list_ -= src
 	unset_machine()
@@ -42,12 +42,9 @@
 	ability_master = null
 	zone_sel = null
 
-/mob/New()
-	GLOB.mob_list += src
-	..()
-
 /mob/Initialize()
 	. = ..()
+	START_PROCESSING(SSmobs, src)
 	last_z = z
 	var/obj/om_obj = map_sectors["[z]"]
 	if(om_obj)
@@ -138,8 +135,8 @@
 		O.show_message(message, AUDIBLE_MESSAGE, deaf_message, VISIBLE_MESSAGE)
 
 /mob/proc/findname(msg)
-	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == text("[]", msg))
+	for(var/mob/M in SSmobs.mob_list)
+		if (M.real_name == msg)
 			return M
 	return 0
 
@@ -447,7 +444,7 @@
 				namecounts[name] = 1
 			creatures[name] = O
 
-	for(var/mob/M in sortAtom(GLOB.mob_list))
+	for(var/mob/M in sortAtom(SSmobs.mob_list))
 		var/name = M.name
 		if (names.Find(name))
 			namecounts[name]++

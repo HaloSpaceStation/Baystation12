@@ -26,7 +26,7 @@
 		var/remove_targ = input(attacker,"Stop targeting [target_vic] for rearm / repair?","Rearm/Repair selection","No") in list("Yes","No")
 		if(remove_targ == "Yes")
 			target_vic = null
-			GLOB.processing_objects -= src
+			STOP_PROCESSING(SSobj, src)
 		return
 
 	var/list/vics_in_view = list()
@@ -37,7 +37,7 @@
 		return
 	target_vic = repair_target
 	to_chat(attacker,"<span class = 'notice'>Rearm and Repair active on [target_vic]</span>")
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /obj/structure/rearm_repair_station/proc/consume_material(var/amount)
 	var/new_mat = material_stored - amount
@@ -61,13 +61,13 @@
 		consume_material(-to_add)
 		to_chat(user,"<span class = 'notice'>[src] processes [I] into [to_add] units of fabricator materials.</span>")
 
-/obj/structure/rearm_repair_station/process()
+/obj/structure/rearm_repair_station/Process()
 	if(world.time < next_rearm_repair_tick)
 		return
 	if(target_vic)
 		if(get_dist(src,target_vic) > REARM_REPAIR_RANGE)
 			target_vic = null
-			GLOB.processing_objects -= src
+			STOP_PROCESSING(SSobj, src)
 			return
 		var/did_something = 0
 		if(target_vic.can_smoke && target_vic.smoke_ammo < target_vic.smoke_ammo_max)
@@ -98,9 +98,9 @@
 		if(!did_something)
 			visible_message("<span class = 'notice'>[src] sounds a time-out warning, citing lack of action and de-targeting [target_vic]</span>")
 			target_vic = null
-			GLOB.processing_objects -= src
+			STOP_PROCESSING(SSobj, src)
 	else
-		GLOB.processing_objects -= src //Why are we processing when we have no vehicle???
+		STOP_PROCESSING(SSobj, src) //Why are we processing when we have no vehicle???
 	next_rearm_repair_tick = world.time + REARM_REPAIR_DELAY
 	//take material (steel?), allow selection of vehicle to resupply, take time to resupply / repair
 

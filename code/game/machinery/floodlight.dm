@@ -35,7 +35,7 @@
 		overlays += "damage1"
 		desc += " It is lightly damaged, repair it with a welder."
 
-/obj/machinery/floodlight/process()
+/obj/machinery/floodlight/Process()
 	if(!on)
 		return
 

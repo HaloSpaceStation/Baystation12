@@ -22,6 +22,22 @@
 	icon_state = "empty"
 	plane = ABOVE_PLATING_PLANE
 	layer = ABOVE_WIRE_LAYER
+	var/turf/simulated/open/parent
+
+/obj/effect/z_vis/New(var/p)
+	parent = p
+	..()
+
+/obj/effect/z_vis/Initialize()
+	if(!parent)
+		return INITIALIZE_HINT_QDEL
+	. = ..()
+
+/obj/effect/z_vis/Destroy()
+	. = ..()
+	parent.vis_image = null
+	parent = null
+	vis_contents.Cut()
 
 /turf/simulated/open/CanZPass(atom/A, direction)
 	if(locate(/obj/structure/catwalk, src))
@@ -50,7 +66,7 @@
 	plane = OBSCURITY_PLANE
 	density = 0
 	pathweight = 100000 //Seriously, don't try and path over this one numbnuts
-	var/obj/effect/vis_image
+	var/obj/effect/z_vis/vis_image
 
 	var/turf/below
 
@@ -96,7 +112,7 @@
 
 /turf/simulated/open/update_icon()
 	if(!vis_image)
-		vis_image = new /obj/effect/z_vis (src)
+		vis_image = new (src)
 	if(below && vis_image)
 		vis_image.vis_contents += below
 

@@ -51,14 +51,14 @@ SUBSYSTEM_DEF(event)
 		var/datum/event/E = processing_events[processing_events.len]
 		processing_events.len--
 
-		E.process()
+		E.Process()
 
 		if (MC_TICK_CHECK)
 			return
 
 	while (pos <= EVENT_LEVEL_MAJOR)
 		var/list/datum/event_container/EC = event_containers[pos]
-		EC.process()
+		EC.Process()
 		pos++
 
 		if (MC_TICK_CHECK)

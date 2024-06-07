@@ -82,7 +82,7 @@
 	moving_status = SHUTTLE_WARMUP
 	warmup_time = world.time + warmup_length
 
-/datum/shuttle/autodock/ferry/trade/process()
+/datum/shuttle/autodock/ferry/trade/Process()
 	. = ..()
 	switch(moving_status)
 		if(SHUTTLE_IDLE)

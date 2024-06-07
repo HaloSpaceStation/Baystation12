@@ -254,12 +254,12 @@ GLOBAL_DATUM(flood_overmind, /datum/npc_overmind/flood)
 			taskpoints -= taskpoint
 			qdel(taskpoint)
 
-/datum/npc_overmind/proc/process()
+/datum/npc_overmind/Process()
 	prune_taskpoints()
 	prune_trooplists()
 	process_reports()
 	if(overmind_active == 0)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /datum/npc_overmind/flood
 	overmind_name = "Gravemind"
@@ -289,7 +289,7 @@ GLOBAL_DATUM(flood_overmind, /datum/npc_overmind/flood)
 	if(!GLOB.flood_overmind)
 		GLOB.flood_overmind = new()
 		controlling_overmind =  GLOB.flood_overmind
-		GLOB.processing_objects |= GLOB.flood_overmind
+		START_PROCESSING(SSobj, GLOB.flood_overmind)
 		GLOB.flood_overmind.overmind_active = 1
 		GLOB.flood_overmind.reports.Cut() //We're likely activating the overmind here. Cut all previous reports out, they're likely outdated.
 

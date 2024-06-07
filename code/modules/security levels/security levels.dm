@@ -46,7 +46,7 @@
 				post_status("alert", "deltaalert")
 
 		var/newlevel = get_security_level()
-		for(var/obj/machinery/firealarm/FA in GLOB.machines)
+		for(var/obj/machinery/firealarm/FA in SSmachines.machinery)
 			if(FA.z in GLOB.using_map.contact_levels)
 				FA.set_security_level(newlevel)
 

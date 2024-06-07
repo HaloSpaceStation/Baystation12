@@ -23,7 +23,7 @@
 	. = ..()
 	update_icon()
 
-/obj/machinery/thermopod/process()
+/obj/machinery/thermopod/Process()
 	if(stat & (NOPOWER|BROKEN))
 		return
 

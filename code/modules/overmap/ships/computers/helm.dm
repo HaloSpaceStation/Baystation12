@@ -34,7 +34,7 @@
 			known_sectors[S.name] = R
 	..()
 
-/obj/machinery/computer/helm/process()
+/obj/machinery/computer/helm/Process()
 	if(!linked)
 		linked = map_sectors["[z]"]
 	if(..())

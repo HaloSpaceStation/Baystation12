@@ -82,9 +82,9 @@ SUBSYSTEM_DEF(vote)
 	else
 		return (ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_add_finished
 
-/datum/controller/subsystem/vote/proc/process()
+/datum/controller/subsystem/vote/Process()
 	for(var/datum/vote/curvote in active_votes)
-		curvote.process()
+		curvote.Process()
 
 /datum/controller/subsystem/vote/proc/vote_start(var/datum/vote/curvote)
 	inactive_votes -= curvote

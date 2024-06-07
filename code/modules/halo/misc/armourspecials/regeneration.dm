@@ -17,13 +17,13 @@
 /datum/armourspecials/regeneration/on_equip(var/obj/source_armour)
 	worn = source_armour
 	owner = source_armour.loc
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /datum/armourspecials/regeneration/on_drop(var/obj/source_armour)
 	owner = null
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 
-/datum/armourspecials/regeneration/process()
+/datum/armourspecials/regeneration/Process()
 	if(active)
 		heal_tick()
 	else if(world.time >= next_active_time)

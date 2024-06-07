@@ -17,7 +17,7 @@
 	power_channel = EQUIP
 	var/obj/item/unsc_plasma_cell/charging = null
 
-/obj/machinery/unsc_plasma_charger/process()
+/obj/machinery/unsc_plasma_charger/Process()
 //	log_debug("ccpt [charging] [stat]")
 
 	if((stat & (BROKEN|NOPOWER)) || !anchored)

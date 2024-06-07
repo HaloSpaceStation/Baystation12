@@ -52,19 +52,19 @@
 		src.plane = ABOVE_HUMAN_PLANE
 	icon_state = fail_state
 	processing = 1
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 	if(blocks_air)
 		update_nearby_tiles(1)
 
-/obj/structure/energybarricade/process()
+/obj/structure/energybarricade/Process()
 	if(world.time >= time_recharged)
 		//come back to full after being dropped
 		if(shield_health <= 0)
 			shield_health = max_shield
 			update_icon()
 			processing = 0
-			GLOB.processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 
 			if(blocks_air)
 				update_nearby_tiles()
@@ -78,7 +78,7 @@
 		if(shield_health >= max_shield)
 			shield_health = max_shield
 			processing = 0
-			GLOB.processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 
 /obj/structure/energybarricade/CanPass(atom/movable/A, turf/T, height=1.5, air_group = 0)
 	//can mobs pass unhindered using advanced alien technology?
@@ -129,7 +129,7 @@
 
 			//spend some time breaking down the shield
 			if(do_after(user, recharge_time, src))
-				GLOB.processing_objects.Remove(src)
+				STOP_PROCESSING(SSobj, src)
 				var/atom/movable/A = new item_type(src.loc)
 				qdel(src)
 				user.visible_message("<span class='info'>[user] finishes deactivating [src] and packs it for transport.</span>")
@@ -165,7 +165,7 @@
 
 		if(!processing)
 			processing = 1
-			GLOB.processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 
 /obj/structure/energybarricade/update_icon()
 	var/shield_ratio = shield_health/max_shield

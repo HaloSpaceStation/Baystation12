@@ -29,9 +29,9 @@
 	QDEL_NULL(ptank)
 	. = ..()
 
-/obj/item/weapon/flamethrower/process()
+/obj/item/weapon/flamethrower/Process()
 	if(!lit)
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return null
 	var/turf/location = loc
 	if(istype(location, /mob/))
@@ -179,7 +179,7 @@
 		if(!status)	return
 		lit = !lit
 		if(lit)
-			GLOB.processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 	if(href_list["amount"])
 		max_release_pressure = max_release_pressure + text2num(href_list["amount"])
 		max_release_pressure = max(1, min(40, max_release_pressure))

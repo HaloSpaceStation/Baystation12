@@ -41,7 +41,7 @@
 
 	if(world.time >= time_off_cooldown)
 		to_chat(user, "<span class='notice'>You active the hologram decoy emitter contained in your [source_item].</span>")
-		GLOB.processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 		time_off_cooldown = world.time + cooldown
 		time_off_active = world.time + duration
 
@@ -76,9 +76,9 @@
 	else
 		to_chat(user, "<span class='notice'>Your [source_item] is on cooldown for another [(time_off_cooldown - world.time) / 10] seconds.</span>")
 
-/datum/armourspecials/holo_decoy/process()
+/datum/armourspecials/holo_decoy/Process()
 	if(world.time >= time_off_active)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		if(decoy_holo)
 			qdel(decoy_holo)
 

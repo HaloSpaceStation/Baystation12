@@ -32,11 +32,11 @@
 /obj/item/device/flashlight/flaming_torch/attack_self(mob/user)
 	if(..())
 		if(on)
-			GLOB.processing_objects += src
+			START_PROCESSING(SSobj, src)
 		else
-			GLOB.processing_objects -= src
+			STOP_PROCESSING(SSobj, src)
 
-/obj/item/device/flashlight/flaming_torch/process()
+/obj/item/device/flashlight/flaming_torch/Process()
 	fuel_ticks_left -= 1
 	if(fuel_ticks_left <= 0)
 		set_light(0)

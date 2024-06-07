@@ -13,7 +13,7 @@
 
 /obj/structure/invasion_scanner/Initialize()
 	. = ..()
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /obj/structure/invasion_scanner/ex_act(var/severity)
 	explosive_hits -= (round(3/severity))
@@ -21,22 +21,22 @@
 		qdel(src)
 	else
 		if(regen_at == 0)
-			GLOB.processing_objects += src
+			START_PROCESSING(SSobj, src)
 		regen_at = world.time + HIT_REGEN_TIME
 
-/obj/structure/invasion_scanner/process()
+/obj/structure/invasion_scanner/Process()
 	if(gm)
 		if(world.time >= regen_at)
 			explosive_hits = initial(explosive_hits)
 			regen_at = 0
-			GLOB.processing_objects -= src
+			STOP_PROCESSING(SSobj, src)
 	else
 		gm = ticker.mode
 		if(gm)
 			if(!istype(gm,/datum/game_mode/outer_colonies))
 				gm = null
 				forceMove(null)
-				GLOB.processing_objects -= src
+				STOP_PROCESSING(SSobj, src)
 				qdel(src)
 
 /obj/structure/invasion_scanner/examine(var/mob/user)

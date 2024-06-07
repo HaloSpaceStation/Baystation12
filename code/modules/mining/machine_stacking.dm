@@ -93,7 +93,7 @@
 		return
 	return
 
-/obj/machinery/mineral/stacking_machine/process()
+/obj/machinery/mineral/stacking_machine/Process()
 	if (src.output && src.input)
 		for(var/obj/item/O in loading)
 			if(istype(O, /obj/item/stack/material))

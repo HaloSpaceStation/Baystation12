@@ -133,7 +133,7 @@
 
 	venting += 1
 
-/obj/machinery/portable_atmospherics/gas_collector/process()
+/obj/machinery/portable_atmospherics/gas_collector/Process()
 	..()
 
 	if(venting > 0)

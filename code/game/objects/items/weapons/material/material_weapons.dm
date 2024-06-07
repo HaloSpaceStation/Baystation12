@@ -58,7 +58,7 @@
 		if(applies_material_colour)
 			color = material.icon_colour
 		if(material.products_need_process())
-			GLOB.processing_objects |= src
+			START_PROCESSING(SSobj, src)
 		if(material.conductive)
 			flags |= CONDUCT
 		else
@@ -66,7 +66,7 @@
 		update_force()
 
 /obj/item/weapon/material/Destroy()
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/weapon/material/apply_hit_effect()
@@ -94,7 +94,7 @@
 	qdel(src)
 /*
 Commenting this out pending rebalancing of radiation based on small objects.
-/obj/item/weapon/material/process()
+/obj/item/weapon/material/Process()
 	if(!material.radioactivity)
 		return
 	for(var/mob/living/L in range(1,src))

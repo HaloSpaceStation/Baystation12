@@ -84,7 +84,7 @@
 /obj/effect/landmark/mercspawn/New()
 	. = ..()
 	ship_area = locate(ship_area_type) in world
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	dropship = new(src)
 
 /obj/effect/landmark/mercspawn/ram
@@ -95,7 +95,7 @@
 	radio_channel = "BoulderNet"
 	ship_area_type = /area/doisac_boulder_mercenary_ship
 
-/obj/effect/landmark/mercspawn/process()
+/obj/effect/landmark/mercspawn/Process()
 	if(time_merc_dropoff && world.time > time_merc_dropoff)
 		arrive_planet()
 

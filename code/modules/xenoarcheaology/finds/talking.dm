@@ -13,11 +13,11 @@
 
 /datum/talking_atom/proc/init()
 	if(holder_atom)
-		GLOB.processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 
-/datum/talking_atom/proc/process()
+/datum/talking_atom/Process()
 	if(!holder_atom)
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 	else if(heard_words.len >= 1 && world.time > last_talk_time + talk_interval && prob(talk_chance))
 		SaySomething()
@@ -110,7 +110,7 @@
 
 	var/list/listening = viewers(holder_atom)
 	//spawns ghost chat
-	/*for(var/mob/M in GLOB.mob_list)
+	/*for(var/mob/M in SSmobs.mob_list)
 		if (!M.client)
 			continue //skip monkeys and leavers
 		if (istype(M, /mob/new_player))

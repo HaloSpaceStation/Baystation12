@@ -15,11 +15,11 @@
 	. = ..()
 	icon_state = "[initial(icon_state)]_off"
 
-/obj/item/drop_pod_beacon/process()
+/obj/item/drop_pod_beacon/Process()
 	if(world.time > time_expire_at && time_expire_at != 0)
 		is_active = -1
 		visible_message("<span class = 'notice'>The lights on [name] darken, [name] shuts off.</span>")
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		icon_state = "[initial(icon_state)]_burnout"
 		return
 
@@ -38,7 +38,7 @@
 
 	if(user)
 		user.visible_message("<span class = 'notice'>[user] primes [src], activating the tracking module!</span>")
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 	icon_state = "[initial(icon_state)]_on"
 	is_active = 1
 	time_expire_at = world.time + time_to_expire

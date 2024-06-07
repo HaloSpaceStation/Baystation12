@@ -34,7 +34,7 @@
 			UpdateMove()
 	return 1
 
-/datum/artifact_effect/forcefield/process()
+/datum/artifact_effect/forcefield/Process()
 	..()
 	for(var/obj/effect/energy_field/E in created_field)
 		if(E.strength < 1)

@@ -98,7 +98,7 @@
 	G.force_drop()
 	let_go_effect(G)
 
-/datum/grab/proc/process(var/obj/item/grab/G)
+/datum/grab/Process(var/obj/item/grab/G)
 	var/diff_zone = G.target_change()
 	if(diff_zone && G.special_target_functional)
 		special_target_change(G, diff_zone)

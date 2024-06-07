@@ -43,7 +43,7 @@
 				log_and_message_admins(" primed a nuke/anti-matter charge.",user)
 				explode_at = world.time + seconds_to_explode SECONDS
 				exploding = 1
-				GLOB.processing_objects += src
+				START_PROCESSING(SSobj, src)
 				message2discord(config.oni_discord, "Alert! Payload device armed by [user.real_name] ([user.ckey]) @ ([loc.x],[loc.y],[loc.z])")
 				set_anchor(1)
 				checkoverlay(1)
@@ -62,7 +62,7 @@
 				set_anchor(0)
 				desc = initial(desc)
 				checkoverlay(0)
-				GLOB.processing_objects -= src
+				STOP_PROCESSING(SSobj, src)
 				if(do_arm_disarm_alert)
 					var/om_obj = map_sectors["[z]"]
 					if(om_obj)
@@ -91,7 +91,7 @@
 	if(exploding)
 		desc = explodedesc + " [(explode_at - world.time)/10] seconds remain."
 	if(exploding && world.time >= explode_at)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		var/explode_datum = new explodetype(src)
 		loc = null
 		qdel(explode_datum)
@@ -101,7 +101,7 @@
 /obj/payload/proc/set_anchor(var/onoff)
 	anchored = onoff
 
-/obj/payload/process()
+/obj/payload/Process()
 	checkexplode()
 
 //SELF DESTRUCT PAYLOAD DOES NOT MOVE//
@@ -202,7 +202,7 @@
 			b.strength*PAYLOAD_EXPLOSION_MULT_FLASH/3\
 			)
 	if(OM)
-		GLOB.processing_objects |= OM //If they're not already processing, they better start now!
+		START_PROCESSING(SSobj, OM) //If they're not already processing, they better start now!
 		OM.superstructure_process()
 
 /datum/explosion/nuclearexplosion/New(var/obj/payload/b)

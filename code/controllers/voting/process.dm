@@ -1,5 +1,5 @@
 
-/datum/vote/proc/process()
+/datum/vote/Process()
 	// Calculate how much time is remaining by comparing current time, to time of vote start,
 	// plus vote duration
 	if(!delayed)
@@ -11,7 +11,7 @@
 
 /datum/vote/proc/end_vote(var/end_early = 0)
 	active = 0
-	GLOB.processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 
 	vote.vote_finish(src)
 

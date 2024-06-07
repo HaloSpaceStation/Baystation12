@@ -42,8 +42,7 @@
 
 /obj/machinery/atmospherics/unary/vent_scrubber/Destroy()
 	unregister_radio(src, frequency)
-	..()
-
+	. = ..()
 
 /obj/machinery/atmospherics/unary/vent_scrubber/update_icon(var/safety = 0)
 	if(!check_icon_cache())
@@ -137,7 +136,7 @@
 			if(g != "oxygen" && g != "nitrogen")
 				scrubbing_gas += g
 
-/obj/machinery/atmospherics/unary/vent_scrubber/process()
+/obj/machinery/atmospherics/unary/vent_scrubber/Process()
 	..()
 
 	if (hibernate > world.time)

@@ -57,18 +57,18 @@
 		destroy_at = -1
 		return
 	destroy_at = world.time + BOARDING_BEACON_DESTROYDELAY
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/structure/boarding_beacon/process()
+/obj/structure/boarding_beacon/Process()
 	if(isnull(drop_point_created))
 		drop_point_created = new /obj/effect/landmark/drop_pod_landing (loc)
 		drop_point_created.loc = loc
 		drop_point_created.name = "Boarding Beacon"
 	if(destroy_at == -1)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		return
 	if(world.time >= destroy_at)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		qdel(drop_point_created)
 		qdel(src)

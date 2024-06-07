@@ -61,7 +61,7 @@
 
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 
-/obj/machinery/atmospherics/binary/fusion_cooling/process()
+/obj/machinery/atmospherics/binary/fusion_cooling/Process()
 	last_power_draw = 0
 	last_flow_rate = 0
 

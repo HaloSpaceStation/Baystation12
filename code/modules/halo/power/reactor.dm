@@ -55,7 +55,7 @@
 	fuel_overlay = new('fusion_drive.dmi', "fuel[fuelval]")
 	overlays += fuel_overlay
 
-/obj/machinery/power/fusion_drive/process()
+/obj/machinery/power/fusion_drive/Process()
 	//if coolant isn't working properly, lose a little bit of heat naturally
 	if(cooled_last_cycle < ambient_cooling)
 		heat_energy -= (ambient_cooling - cooled_last_cycle)

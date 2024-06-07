@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(om_base_sectors, list())
 	for(var/z_level in map_z)
 		shipmap_handler.free_map(z_level)
 		map_z -= z_level
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	if(my_faction)
 		my_faction.npc_ships -= src
 	qdel(src)
@@ -204,7 +204,10 @@ GLOBAL_LIST_INIT(om_base_sectors, list())
 	else
 		return ..()
 
-/obj/effect/overmap/ship/npc_ship/process()
+/obj/effect/overmap/ship/npc_ship/Process()
+	//Let's wait until gametime to do anything.
+	if(ticker.current_state != 3)
+		return
 	//despawn after a while
 	if(world.time >= unload_at && unload_at != 0)
 		lose_to_space()
@@ -272,7 +275,7 @@ GLOBAL_LIST_INIT(om_base_sectors, list())
 	if(isnull(light_list))
 		light_list = map_z
 	var/list/lights_reset = list() //FORMAT light ref, original light val
-	for(var/obj/machinery/light/light in GLOB.machines)
+	for(var/obj/machinery/light/light in SSmachines.machinery)
 		if(!(text2num("[light.z]") in light_list))
 			continue
 		var/orig_range = light.light_range
@@ -310,12 +313,12 @@ GLOBAL_LIST_INIT(om_base_sectors, list())
 	mapload_reset_lights()
 
 	lighting_overlays_initialised = TRUE
-	makepowernets()
+	SSmachines.makepowernets()
 	cargo_init()
 	create_dropship_markers()
 
 	damage_spawned_ship()
-	GLOB.processing_objects |= src
+	START_PROCESSING(SSobj, src)
 	superstructure_failing = 0 //If we had a process tick inbetween all of this, let's reset our superstructure failure status.
 
 /obj/effect/overmap/ship/npc_ship/proc/damage_spawned_ship()

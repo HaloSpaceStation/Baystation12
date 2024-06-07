@@ -60,13 +60,13 @@
 		return
 	targets_tracking[targ] = world.time
 	if(!processing)
-		GLOB.processing_objects += src
+		START_PROCESSING(SSobj, src)
 		processing = 1
 
 /obj/structure/automated_anti_air/proc/remove_target(var/targ)
 	targets_tracking -= targ
 	if(targets_tracking.len == 0)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		processing = 0
 
 /obj/structure/automated_anti_air/proc/check_target_still_valid(var/atom/targ)
@@ -80,7 +80,7 @@
 /obj/structure/automated_anti_air/proc/do_AA_effect_at(var/turf/location)
 	explosion(location,-1,1,-1,10)
 
-/obj/structure/automated_anti_air/process()
+/obj/structure/automated_anti_air/Process()
 	if(!active)
 		return
 	for(var/atom/movable/target in targets_tracking)

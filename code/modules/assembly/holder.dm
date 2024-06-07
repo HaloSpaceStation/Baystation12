@@ -242,7 +242,7 @@
 		tmr.time=5
 		tmr.secured = 1
 		tmr.holder = src
-		GLOB.processing_objects.Add(tmr)
+		START_PROCESSING(SSobj, tmr)
 		a_left = tmr
 		a_right = ign
 		secured = 1
@@ -297,7 +297,7 @@
 		var/obj/item/device/assembly/prox_sensor/prox = new(src)
 		prox.secured = 1
 		prox.holder = src
-		GLOB.processing_objects.Add(prox)
+		START_PROCESSING(SSobj, prox)
 		a_left = prox
 		a_right = ign
 		secured = 1

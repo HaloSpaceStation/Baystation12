@@ -71,10 +71,10 @@
 /turf/simulated/open/pillar_lift/attackby(obj/item/C as obj, mob/user as mob)
 	return
 
-/turf/simulated/open/pillar_lift/process()
+/turf/simulated/open/pillar_lift/Process()
 	. = 1
 	if(world.time >= time_finish_moving)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		if(move_dir > 0)
 			do_extend()
 		else if(move_dir < 0)
@@ -107,7 +107,7 @@
 
 			//check back later to finish the move
 			move_dir = 1
-			GLOB.processing_objects += src
+			START_PROCESSING(SSobj, src)
 			time_finish_moving = world.time + move_timer
 
 			. = 1
@@ -174,7 +174,7 @@
 
 			//check back later to finish the move
 			move_dir = -1
-			GLOB.processing_objects += src
+			START_PROCESSING(SSobj, src)
 			time_finish_moving = world.time + move_timer
 
 			. = 1

@@ -7,7 +7,7 @@ var/datum/controller/process/chemistry/chemistryProcess
 
 /datum/controller/process/chemistry/setup()
 	name = "chemistry"
-	schedule_interval = 20 // every 2 seconds
+	schedule_interval = 2 SECONDS
 	chemistryProcess = src
 	active_holders = list()
 	chemical_reactions = chemical_reactions_list

@@ -5,13 +5,13 @@
 
 /obj/machinery/door/blast/atmos_close/New()
 	. = ..()
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /obj/machinery/door/blast/atmos_close/Destroy()
 	. = ..()
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 
-/obj/machinery/door/blast/atmos_close/process()
+/obj/machinery/door/blast/atmos_close/Process()
 	. = ..()
 	if(icon_state == icon_state_closed)
 		return

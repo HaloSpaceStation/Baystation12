@@ -210,7 +210,7 @@
 /datum/armourspecials/shields/proc/reset_recharge(var/extra_delay = 0)
 	//begin counting down the recharge
 	if(armour_state == SHIELD_IDLE)
-		GLOB.processing_objects |= src
+		START_PROCESSING(SSobj, src)
 
 	//update the shield effect overlay
 	if(shieldstrength > 0)
@@ -221,7 +221,7 @@
 	armour_state = SHIELD_PROCESS
 	nextcharge = world.time + shield_recharge_delay + extra_delay
 
-/datum/armourspecials/shields/process()
+/datum/armourspecials/shields/Process()
 
 	//reset the shield visual
 	if(armour_state == SHIELD_DAMAGE)
@@ -256,7 +256,7 @@
 	if(shieldstrength >= totalshields)
 		shieldstrength = totalshields
 		armour_state = SHIELD_IDLE
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		update_overlay("shield_overlay")
 		user.update_icons()
 

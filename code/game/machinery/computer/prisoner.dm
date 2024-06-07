@@ -60,13 +60,6 @@
 		onclose(user, "computer")
 		return
 
-
-	process()
-		if(!..())
-			src.updateDialog()
-		return
-
-
 	Topic(href, href_list)
 		if(..())
 			return
@@ -102,3 +95,8 @@
 			src.add_fingerprint(usr)
 		src.updateUsrDialog()
 		return
+
+/obj/machinery/computer/prisoner/Process()
+	if(!..())
+		src.updateDialog()
+	return

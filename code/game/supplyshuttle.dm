@@ -156,7 +156,7 @@ var/list/point_source_descriptions = list(
 
 	// Supply shuttle ticker - handles supply point regeneration
 	// This is called by the process scheduler every thirty seconds
-	proc/process()
+	Process()
 		add_points_from_source(points_per_process, "time")
 
 	//To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.

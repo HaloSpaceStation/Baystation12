@@ -14,6 +14,6 @@
 
 /datum/armourspecials/proc/on_drop(var/obj/source_armour)
 
-/datum/armourspecials/proc/process()
+/datum/armourspecials/Process()
 
 /datum/armourspecials/proc/update_mob_overlay(var/image/generated_overlay)

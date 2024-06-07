@@ -130,7 +130,7 @@
 	var/die_at = 0
 	var/our_dam = 0
 
-/obj/item/weapon/material/shard/shrapnel/needleshrap/process()
+/obj/item/weapon/material/shard/shrapnel/needleshrap/Process()
 	if(world.time >= die_at)
 		var/mob/living/m = loc
 		if(istype(m))
@@ -176,7 +176,7 @@
 				if(istype(needle))
 					needle.our_dam *= NEEDLER_SUPERCOMBINE_SHRAPNEL_DAMAGE_MULT
 					needle.die_at = 0
-					needle.process()
+					needle.Process()
 				else
 					L.embedded -= I
 					L.pinned -= I
@@ -189,7 +189,7 @@
 		var/obj/item/weapon/material/shard/shrapnel/needleshrap/shard = new
 		shard.name = shard_name
 		shard.die_at = world.time + NEEDLER_SHARD_DET_TIME
-		GLOB.processing_objects += shard
+		START_PROCESSING(SSobj, shard)
 		shard.our_dam = shrapnel_damage
 		//We're doing some speshul things here with out embed, so let's not do the usual damage.
 		L.contents += shard

@@ -58,14 +58,14 @@
 		if(flush > 0)
 			flush = 0
 			to_chat(carded_ai,"Wiping process has been cancelled. Restoring core files from backups.")
-			GLOB.processing_objects -= src
+			STOP_PROCESSING(SSobj, src)
 		else
 			var/confirm = alert("Are you sure you want to wipe this card's memory? This takes [AI_FLUSH_TIME/10] seconds and can be cancelled.", "Confirm Wipe", "Yes", "No")
 			if(confirm == "Yes" && (CanUseTopic(user, state) == STATUS_INTERACTIVE))
 				admin_attack_log(user, carded_ai, "Wiped using \the [src.name]", "Was wiped with \the [src.name]", "used \the [src.name] to wipe")
 				flush = world.time + AI_FLUSH_TIME
 				to_chat(carded_ai, "Your core files are being wiped!")
-				GLOB.processing_objects |= src
+				START_PROCESSING(SSobj, src)
 	if (href_list["radio"])
 		carded_ai.aiRadio.disabledAi = text2num(href_list["radio"])
 		to_chat(carded_ai, "<span class='warning'>Your Subspace Transceiver has been [carded_ai.aiRadio.disabledAi ? "disabled" : "enabled"]!</span>")
@@ -89,7 +89,7 @@
 	else
 		icon_state = "aicard"
 
-/obj/item/weapon/aicard/process()
+/obj/item/weapon/aicard/Process()
 	if(world.time > flush)
 		if(!carded_ai)
 			flush = 0

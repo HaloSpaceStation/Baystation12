@@ -11,7 +11,7 @@
 	if(!isnull(net))
 		net.update_visibility(src)
 
-/obj/machinery/camera/New()
+/obj/machinery/camera/Initialize()
 	. = ..()
 	var/datum/visualnet/camera/net = get_cameranet()
 	if(!isnull(net))

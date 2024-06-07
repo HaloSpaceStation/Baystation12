@@ -38,7 +38,7 @@
 			charging_items.Add(I)
 			if(!charging)
 				charging = 1
-				GLOB.processing_objects.Add(src)
+				START_PROCESSING(SSobj, src)
 		return 1
 	else
 		to_chat(user, "<span class='warning'>You can't fit \icon[I] onto [src].</span>")
@@ -73,7 +73,7 @@
 		else
 			held_items -= I
 
-/obj/structure/weapon_rack/process()
+/obj/structure/weapon_rack/Process()
 	for(var/obj/item/I in charging_items)
 		if(I.loc != src.loc)
 			charging_items -= I
@@ -83,4 +83,4 @@
 
 	if(!charging_items.len)
 		charging = 0
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)

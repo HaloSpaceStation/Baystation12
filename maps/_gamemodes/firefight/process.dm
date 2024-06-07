@@ -1,5 +1,5 @@
 
-/datum/game_mode/firefight/process()
+/datum/game_mode/firefight/Process()
 	//latest_tick_time = world.time
 
 	if(is_spawning)

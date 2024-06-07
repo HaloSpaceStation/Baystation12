@@ -103,7 +103,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	zone.fire_tiles |= src
 	if(fuel)
 		zone.fuel_objs += fuel
-	fire.process()
+	fire.Process()
 
 	return 0
 
@@ -123,7 +123,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 	var/firelevel = 1 //Calculated by gas_mixture.calculate_firelevel()
 
-/obj/fire/process()
+/obj/fire/Process()
 	. = 1
 
 	var/turf/simulated/my_tile = loc

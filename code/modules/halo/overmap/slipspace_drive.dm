@@ -24,7 +24,7 @@
 			if(slipspace_jump_time)
 				if(alert("Do you want to shutdown the slipspace engine and remain in the system?","Shutdown slipspace jump","Shutdown","Cancel") == "Shutdown")
 					slipspace_jump_time = 0
-					GLOB.processing_objects -= src
+					STOP_PROCESSING(SSobj, src)
 					src.visible_message("<span class='info'>[user] begins working at the console of [src]...</span>")
 					to_chat(user,"<span class='notice'>You shutdown the slipspace engine.</span>")
 			else
@@ -33,17 +33,17 @@
 					src.visible_message("<span class='info'>[user] begins working at the console of [src]...</span>")
 					if(do_after(user, slipspace_activate_timer))
 						slipspace_jump_time = world.time + slipspace_chargeup_timer
-						GLOB.processing_objects |= src
+						START_PROCESSING(SSobj, src)
 						log_admin("[user] the [user.mind.assigned_role] (CKEY: [user.ckey]) activated the slipspace engine. Jump timer: [slipspace_chargeup_timer / 10] seconds.")
 						if(istype(ship))
 							to_chat(user,"<span class='notice'>[src] has been activated. [ship] will enter slipspace in [slipspace_chargeup_timer / 10] seconds.</span>")
 	else
 		to_chat(user,"<span class='warning'>You are unable to decipher how [src] works.</span>")
 
-/obj/structure/covenant_slipspace/process()
+/obj/structure/covenant_slipspace/Process()
 	if(slipspace_jump_time && world.time > slipspace_jump_time)
 		slipspace_jump_time = 0
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		var/obj/effect/overmap/ship/ship = map_sectors["[z]"]
 		if(istype(ship))
 			//hard brake the ship to avoid visual bugs with the slipspace effect

@@ -12,7 +12,7 @@
 /datum/armourspecials/cloaking/limited/activate_cloak(var/voluntary = 1)
 	if(current_charge >= max_charge * 0.25)
 		last_process_time = world.time
-		GLOB.processing_objects |= src
+		START_PROCESSING(SSobj, src)
 		to_chat(usr,"<span class='notice'>Current cloak charge: [100*current_charge/max_charge]%.</span>")
 		return ..()
 	else
@@ -22,7 +22,7 @@
 	. = ..()
 	to_chat(usr,"<span class='notice'>Current cloak charge: [100*current_charge/max_charge]%.</span>")
 
-/datum/armourspecials/cloaking/limited/process()
+/datum/armourspecials/cloaking/limited/Process()
 	//grab delta time
 	var/delta_time = world.time - last_process_time
 	last_process_time = world.time
@@ -46,7 +46,7 @@
 	//finished charging
 	if(current_charge >= max_charge)
 		current_charge = max_charge
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		to_chat(usr,"<span class='info'>Current cloak charge: [100*current_charge/max_charge]%.</span>")
 
 /datum/armourspecials/cloaking/limited/tryemp(severity)

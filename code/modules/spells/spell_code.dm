@@ -75,7 +75,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	//still_recharging_msg = "<span class='notice'>[name] is still recharging.</span>"
 	charge_counter = charge_max
 
-/spell/proc/process()
+/spell/Process()
 	if(processing)
 		return
 	processing = 1
@@ -275,7 +275,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 		switch(charge_type)
 			if(Sp_RECHARGE)
 				charge_counter = 0 //doesn't start recharging until the targets selecting ends
-				src.process()
+				src.Process()
 				return 1
 			if(Sp_CHARGES)
 				charge_counter-- //returns the charge if the targets selecting fails

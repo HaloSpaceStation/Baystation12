@@ -69,7 +69,7 @@
 		for(var/curtype in typesof(type_parent) - type_parent)
 			add_design(new curtype())
 
-/obj/machinery/item_manufacturer/process()
+/obj/machinery/item_manufacturer/Process()
 	if(building_queue.len && anchored)
 		//chat spam i know... this machine is meant to be loud and crude
 		if(busy_noises.len)

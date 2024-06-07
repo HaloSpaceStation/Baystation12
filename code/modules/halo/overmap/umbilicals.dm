@@ -23,7 +23,7 @@
 	. = ..()
 	if(initial(broke) == -1)
 		broke = FALSE
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /obj/docking_umbilical/ex_act()
 	if(current_connected)
@@ -43,10 +43,10 @@
 	if(!GLOB.using_map.use_overmap)
 		return INITIALIZE_HINT_QDEL
 
-/obj/docking_umbilical/process()
+/obj/docking_umbilical/Process()
 	if(isnull(our_ship))
 		ship_setup()
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /obj/docking_umbilical/proc/visual_umbi_change(var/contract = 0,var/no_message = 0)
 	if(contract == 1)

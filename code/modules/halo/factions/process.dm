@@ -4,7 +4,7 @@
 		GLOB.factions_controller.processing_factions.Add(src)
 		is_processing = 1
 
-/datum/faction/proc/process()
+/datum/faction/Process()
 	//only do a process tick if we need to
 	var/keep_processing = 0
 
@@ -29,7 +29,7 @@
 	//quests need processing sometimes
 	if(processing_quests.len)
 		for(var/datum/npc_quest/Q in processing_quests)
-			if(Q.process() != PROCESS_KILL)
+			if(Q.Process() != PROCESS_KILL)
 				//assume the quest has already been removed from processing_quests elsewhere if PROCESS_KILL is returned
 				keep_processing = 1
 

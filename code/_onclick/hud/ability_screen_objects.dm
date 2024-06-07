@@ -408,5 +408,5 @@
 /obj/screen/movable/ability_master/proc/silence_spells(var/amount)
 	for(var/obj/screen/ability/spell/spell in spell_objects)
 		spell.spell.silenced = amount
-		spell.spell.process()
+		spell.spell.Process()
 		spell.update_charge(1)

@@ -281,7 +281,7 @@ Luckily, this isn't a downside due to the explosive properties of such a large a
 	regen_at = -1
 	update_icon()
 	set_blade_active(1)
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/melee/blamite/proc/det_in_hand()
 	regen_at = world.time + regen_delay * 2
@@ -330,7 +330,7 @@ Luckily, this isn't a downside due to the explosive properties of such a large a
 		return
 	user.visible_message("<span class = 'warning'>[user.name] primes their [src] for detonation!</span>")
 	explode_at = world.time + explode_delay
-	GLOB.processing_objects |= src
+	START_PROCESSING(SSobj, src)
 	update_icon()
 
 /obj/item/weapon/melee/blamite/can_execute(mob/living/carbon/human/user, mob/living/carbon/human/victim)
@@ -344,9 +344,9 @@ Luckily, this isn't a downside due to the explosive properties of such a large a
 		explode_delay = 1
 		pre_explode_in_player(user, victim, TRUE)
 		explode_delay = initial(explode_delay)
-		GLOB.processing_objects |= src
+		START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/melee/blamite/process()
+/obj/item/weapon/melee/blamite/Process()
 	if(explode_at != -1 && world.time > explode_at)
 		det_in_hand()
 	if(regen_at != -1 && world.time > regen_at)

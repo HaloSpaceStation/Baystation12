@@ -46,7 +46,7 @@
 /obj/machinery/research/component_dissembler/attempt_load_item(var/obj/item/I, var/mob/user as mob)
 	. = ..()
 	if(.)
-		GLOB.processing_objects += src
+		START_PROCESSING(SSobj, src)
 		update_use_power(2)
 		icon_state = "h_lathe_wloop"
 		flick("h_lathe_load", src)
@@ -54,7 +54,7 @@
 		//larger items take longer to take apart
 		max_progress = I.w_class * 5
 
-/obj/machinery/research/component_dissembler/process()
+/obj/machinery/research/component_dissembler/Process()
 	. = ..()
 	if(loaded_item)
 		if(progress >= max_progress)
@@ -66,7 +66,7 @@
 				qdel(loaded_item)
 				loaded_item = null
 				progress = 0
-				GLOB.processing_objects -= src
+				STOP_PROCESSING(SSobj, src)
 				icon_state = "h_lathe"
 		else
 			progress += decon_speed

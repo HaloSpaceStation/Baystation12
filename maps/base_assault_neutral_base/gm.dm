@@ -81,7 +81,7 @@
 		do_display(GLOB.UNSC.living_minds,"HIGHCOMM",perc,perc_enemy,points_ours,points_enemy)
 		do_display(GLOB.COVENANT.living_minds,"Local Command",perc_enemy,perc,points_enemy,points_ours)
 
-/datum/game_mode/base_assault/neutral/process()
+/datum/game_mode/base_assault/neutral/Process()
 	. = ..()
 	display_scores()
 

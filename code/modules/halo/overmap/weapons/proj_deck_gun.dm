@@ -115,7 +115,7 @@
 	if(!control_tag)
 		control_tag = "[tag_prefix] - [z]"
 
-/obj/machinery/deck_gun/process()
+/obj/machinery/deck_gun/Process()
 	if(world.time > next_reload_time && next_reload_time != 0)
 		reload_gun()
 		next_reload_time = world.time + round_reload_time
@@ -134,14 +134,14 @@
 	if(new_rounds > max_rounds_loadable)
 		next_reload_time = 0
 		rounds_loaded = max_rounds_loadable
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 	else
 		rounds_loaded = new_rounds
 
 /obj/machinery/deck_gun/proc/can_fire()
 	if(rounds_loaded > 0)
 		return 1
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 	if(next_reload_time == 0)
 		next_reload_time = world.time + round_reload_time
 	return 0

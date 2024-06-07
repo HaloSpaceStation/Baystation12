@@ -48,7 +48,7 @@
 
 	if(trigger_faction == my_faction.name)
 		controlled_nodes |= C
-		GLOB.processing_objects |= src
+		START_PROCESSING(SSobj, src)
 		GLOB.global_announcer.autosay("We have captured [C][old_faction ? " from the [old_faction]" : ""]!", radio_name, my_faction.default_radio_channel, radio_language)
 
 	else if(old_faction == my_faction.name)
@@ -59,10 +59,10 @@
 	if(old_faction == my_faction.name)
 		controlled_nodes -= C
 		if(!controlled_nodes.len)
-			GLOB.processing_objects -= src
+			STOP_PROCESSING(SSobj, src)
 		GLOB.global_announcer.autosay("We have lost control of [C][trigger_faction ? " to the [trigger_faction]" : ""]!", radio_name, my_faction.default_radio_channel, radio_language)
 
-/datum/objective/colony_capture/proc/process()
+/datum/objective/colony_capture/Process()
 	capture_score += score_per_tick * controlled_nodes.len
 
 /datum/objective/colony_capture/get_win_points()

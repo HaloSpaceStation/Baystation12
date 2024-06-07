@@ -1,9 +1,9 @@
-#define MC_TICK_CHECK ( ( world.tick_usage > Master.current_ticklimit || src.state != SS_RUNNING ) ? pause() : 0 )
+#define MC_TICK_CHECK ( ( TICK_USAGE > Master.current_ticklimit || src.state != SS_RUNNING ) ? pause() : 0 )
 
 #define MC_SPLIT_TICK_INIT(phase_count) var/original_tick_limit = Master.current_ticklimit; var/split_tick_phases = ##phase_count
 #define MC_SPLIT_TICK \
     if(split_tick_phases > 1){\
-        Master.current_ticklimit = ((original_tick_limit - world.tick_usage) / split_tick_phases) + world.tick_usage;\
+        Master.current_ticklimit = ((original_tick_limit - TICK_USAGE) / split_tick_phases) + TICK_USAGE;\
         --split_tick_phases;\
     } else {\
         Master.current_ticklimit = original_tick_limit;\
@@ -20,17 +20,7 @@
 #define NEW_SS_GLOBAL(varname) if(varname != src){if(istype(varname)){Recover();qdel(varname);}varname = src;}
 
 /// Register a datum to be processed with a processing subsystem.
-#define START_PROCESSING(Processor, Datum) \
-if (Datum.is_processing) {\
-	if(Datum.is_processing != #Processor)\
-	{\
-		crash_with("Failed to start processing. [log_info_line(Datum)] is already being processed by [Datum.is_processing] but queue attempt occured on [#Processor]."); \
-	}\
-} else {\
-	Datum.is_processing = #Processor;\
-	Processor.processing += Datum;\
-}
-
+#define START_PROCESSING(Processor, Datum) if (!Datum.is_processing) {Datum.is_processing = #Processor;Processor.processing += Datum}
 /// Unregister a datum with a processing subsystem.
 #define STOP_PROCESSING(Processor, Datum) \
 if(Datum.is_processing) {\
@@ -93,5 +83,10 @@ if(Datum.is_processing) {\
 /datum/controller/subsystem/processing/##X/New(){\
     NEW_SS_GLOBAL(SS##X);\
     PreInit();\
+}\
+/datum/controller/subsystem/processing/##X/Recover() {\
+	if(istype(SS##X.processing)) {\
+		processing = SS##X.processing; \
+	}\
 }\
 /datum/controller/subsystem/processing/##X

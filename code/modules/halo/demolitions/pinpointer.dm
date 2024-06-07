@@ -5,18 +5,18 @@
 	var/wall_index = 0
 	var/checks_per_tick = 2
 
-/obj/item/weapon/pinpointer/demolition/process()
+/obj/item/weapon/pinpointer/demolition/Process()
 	workdisk(checks_per_tick)
 
 	if(!active)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/pinpointer/demolition/attack_self()
 	. = ..()
 	if(active)
-		GLOB.processing_objects += src
+		START_PROCESSING(SSobj, src)
 	else
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/pinpointer/demolition/workdisk(var/max_checks = 99)
 	if(!active)

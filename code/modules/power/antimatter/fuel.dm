@@ -92,7 +92,7 @@
 		O.place = "fuel"
 		M.requests += O
 		spawn( 0 )
-			O.process()
+			O.Process()
 			return
 	else
 		for(var/mob/O in viewers(M, null))

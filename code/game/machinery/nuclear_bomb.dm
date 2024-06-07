@@ -54,9 +54,9 @@ var/global/orion_password = null
 	auth = null
 	return ..()
 
-/obj/machinery/nuclearbomb/process()
+/obj/machinery/nuclearbomb/Process(var/wait)
 	if (timing)
-		timeleft = max(timeleft - (process_schedule_interval("machinery") / 10), 0)
+		timeleft = max(timeleft - (wait / 10), 0)
 		if (timeleft <= 0)
 			spawn
 				explode()

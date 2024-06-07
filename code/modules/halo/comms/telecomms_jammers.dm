@@ -49,12 +49,12 @@
 	toggle_active(user)
 	to_chat(user,"<span class = 'notice'>You toggle [src] to [active ? "on":"off"]</span>")
 
-/obj/machinery/overmap_comms/jammer/process()
+/obj/machinery/overmap_comms/jammer/Process()
 	. = ..()
 	if(jam_end_at && world.time > jam_end_at)
 		toggle_active()
 		visible_message("<span class = 'danger'>[src] begins to overheat...</span>")
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		explosion(get_turf(src),-1,1,2,0)
 		qdel(src)
 

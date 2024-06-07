@@ -37,15 +37,15 @@
 	else
 		power_supply = new /obj/item/weapon/cell/device/variable(src, max_shots*charge_cost)
 	if(self_recharge)
-		GLOB.processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	update_icon()
 
 /obj/item/weapon/gun/energy/Destroy()
 	if(self_recharge)
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/weapon/gun/energy/process()
+/obj/item/weapon/gun/energy/Process()
 	. = PROCESS_KILL
 	. = ..()
 	if(self_recharge)
@@ -75,7 +75,7 @@
 	if(!ispath(projectile_type)) return null
 	if(!power_supply.checked_use(charge_cost)) return null
 	if(self_recharge)
-		GLOB.processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	return new projectile_type(src)
 
 /obj/item/weapon/gun/energy/proc/get_external_power_supply()
@@ -120,11 +120,11 @@
 			icon_state = "[modifystate][ratio]"
 		else
 			icon_state = "[initial(icon_state)][ratio]"
-			
+
 /obj/item/weapon/gun/energy/ammo_check()
-	
+
 	if(!power_supply || power_supply.charge < 1)  //If we have no power supply or it does not have enough charge to fire it fails the check
 		return 0
-	else 
+	else
 		return 1
 

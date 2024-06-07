@@ -22,10 +22,12 @@
 			return FALSE
 		. = ..(c, c.can_use())
 		if(.)
-			dd_insertObjectList(cameras, c)
+			ADD_SORTED(cameras, c, /proc/cmp_camera_ctag_asc)
 	else if(isAI(c))
 		var/mob/living/silicon/AI = c
 		return ..(AI, AI.stat != DEAD)
+	else
+		..()
 
 // Add a camera to a chunk.
 
@@ -35,3 +37,5 @@
 	if(isAI(c))
 		var/mob/living/silicon/AI = c
 		return ..(AI, AI.stat != DEAD)
+	else
+		..()

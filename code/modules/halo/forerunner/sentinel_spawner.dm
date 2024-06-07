@@ -14,9 +14,9 @@
 
 /obj/structure/sentinel_spawner/New()
 	. = ..()
-	GLOB.processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
-/obj/structure/sentinel_spawner/process()
+/obj/structure/sentinel_spawner/Process()
 	if(all_sentinels.len < max_sentinels)
 		if(world.time > next_sentinel_spawn)
 			spawn_sentinel()

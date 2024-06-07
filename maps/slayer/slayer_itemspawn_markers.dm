@@ -12,12 +12,12 @@
 
 /obj/effect/itemspawn_marker/Initialize()
 	. = ..()
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/itemspawn_marker/ex_act()
 	return
 
-/obj/effect/itemspawn_marker/process()
+/obj/effect/itemspawn_marker/Process()
 	if(last_spawned_item)
 		if(last_spawned_item.loc != get_turf(loc)) //.loc is intentionally used here to disallow standing on the spawn tile
 			//whilst holding the item and other such things.
@@ -39,7 +39,7 @@
 			new g.magazine_type (t)
 
 /obj/effect/itemspawn_marker/Destroy()
-	GLOB.processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 //Marker Variants//

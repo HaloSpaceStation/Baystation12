@@ -10,7 +10,7 @@
 	var/datum/progressbar/heat_bar
 	var/heat_per_shot = 1
 
-/obj/item/weapon/gun/process()
+/obj/item/weapon/gun/Process()
 
 	if(process_heat())
 		return
@@ -52,7 +52,7 @@
 	if(heat_current > 0)
 		if(!heat_bar)
 			heat_bar = new (src.loc, overheat_capacity, src)
-			GLOB.processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 		heat_bar.update(heat_current)
 
 		if(heat_current >= overheat_capacity)
@@ -62,7 +62,7 @@
 	else
 		qdel(heat_bar)
 		heat_bar = null
-		GLOB.processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/proc/overheat_sfx(var/origin)
 	if(overheat_sfx)

@@ -15,18 +15,18 @@
 	if(charge > 0)
 		if(!draining)
 			icon_state = "in_use"
-			GLOB.processing_objects |= src
+			START_PROCESSING(SSobj, src)
 			draining = 1
 	else
 		icon_state = "drained"
 		. = 0
 
-/obj/structure/plasma_battery/process()
+/obj/structure/plasma_battery/Process()
 	if(world.time > last_use_time + 30)
 		if(charge > 0)
 			icon_state = "full"
 		draining = 0
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /obj/structure/plasma_battery/examine(mob/user, var/distance = -1, var/infix = "", var/suffix = "")
 	..()

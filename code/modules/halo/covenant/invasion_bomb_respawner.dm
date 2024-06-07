@@ -18,7 +18,7 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/invasion_bombspawner/LateInitialize()
-	GLOB.processing_objects += src
+	START_PROCESSING(SSobj, src)
 	stored_bomb = locate(bomb_type) in dview(7,get_turf(src))
 	if(stored_bomb)
 		spawn_at = get_turf(stored_bomb)
@@ -41,13 +41,13 @@
 	new /obj/effect/knightroll_tp (spawn_at)
 	stored_bomb = new bomb_type (spawn_at)
 
-/obj/structure/invasion_bombspawner/process()
+/obj/structure/invasion_bombspawner/Process()
 	var/datum/gm = ticker.mode
 	if(gm)
-		GLOB.processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		if(!istype(gm,/datum/game_mode/outer_colonies))
 			forceMove(null)
-			GLOB.processing_objects -= src
+			STOP_PROCESSING(SSobj, src)
 			qdel(src)
 
 /obj/structure/invasion_bombspawner/ex_act()

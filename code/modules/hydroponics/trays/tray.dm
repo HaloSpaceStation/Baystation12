@@ -433,7 +433,7 @@
 		// Bookkeeping.
 		check_health()
 		force_update = 1
-		process()
+		Process()
 
 		return
 
