@@ -81,8 +81,6 @@
 
 		handle_medical_side_effects()
 
-		handle_armour_regen()
-
 		if(!client && !mind)
 			species.handle_npc(src)
 
@@ -1213,10 +1211,3 @@
 	if(species.handle_flight_failure(src)) //If our species returns 1, then they're fully handling this.
 		return
 	. = ..()
-
-/mob/living/carbon/human/proc/handle_armour_regen()
-	for(var/i in list(head,wear_suit,w_uniform,shoes,gloves))
-		var/obj/item/clothing/c = i
-		if(istype(c))
-			if(c.armor_thickness < c.armor_thickness_max)
-				c.armor_thickness = min(c.armor_thickness + 0.1,c.armor_thickness_max)

@@ -118,3 +118,4 @@
 	var/obj/item/grab/current_grab_type 	// What type of grab they use when they grab someone.
 
 	var/time_last_suppressed = 0
+	var/time_last_regen = 0
