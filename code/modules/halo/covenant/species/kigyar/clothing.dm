@@ -60,7 +60,6 @@
 		"Tvaoan Kig-Yar" = 'code/modules/halo/covenant/species/tvoan/skirm_clothing.dmi')
 	species_restricted = list("Kig-Yar","Tvaoan Kig-Yar")
 	armor = list(melee = 55, bullet = 50, laser = 55, energy = 50, bomb = 40, bio = 25, rad = 25)
-	armor_thickness_modifiers = list()
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	matter = list("nanolaminate" = 1)
 

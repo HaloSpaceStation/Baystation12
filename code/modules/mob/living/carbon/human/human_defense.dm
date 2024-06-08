@@ -107,11 +107,9 @@ cloak disrupt override
 		if(gear)
 			var/obj/item/clothing/C = gear
 			if(istype(C) && C.body_parts_covered & def_zone.body_part)
-				var/effective_armor_thickness = 0
+				var/effective_armor_thickness = 1
 				if(!isnull(C.armor_thickness_max))
-					effective_armor_thickness = (C.armor_thickness/10) + 1
-					if(type in C.armor_thickness_modifiers)
-						effective_armor_thickness *= C.armor_thickness_modifiers[type]
+					effective_armor_thickness += (C.armor_thickness/10)
 				protection = add_armor(protection, (C.armor[type] * effective_armor_thickness * (lore_accuracy ? 0.4 : 1) ))
 	return protection
 
