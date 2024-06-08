@@ -9,6 +9,7 @@
 
 	bound_height = 64
 	bound_width = 96
+	pixel_y = 10
 
 	comp_prof = /datum/component_profile/cobra
 
