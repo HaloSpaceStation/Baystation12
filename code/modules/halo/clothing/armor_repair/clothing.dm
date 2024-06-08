@@ -16,7 +16,7 @@
 	damage /= 10
 	var/thickness_dam_cap = ARMOUR_THICKNESS_DAMAGE_CAP
 
-	var/new_thickness = round(armor_thickness - min(damage,thickness_dam_cap))
+	var/new_thickness = armor_thickness - min(damage,thickness_dam_cap)
 	new_thickness = max(0, new_thickness)
 
 	var/mob/user = src.loc
@@ -29,6 +29,8 @@
 			else if(istype(user))
 				to_chat(user, "<span class = 'warning'>Your [name]'s armor plating is [damage_type == BURN ? "scorched" : "damaged"]! </span>")
 			next_warning_time = world.time + WARNING_DELAY
+	armor_thickness = new_thickness
+	update_damage_description()
 
 /obj/item/clothing/proc/update_damage_description(var/damage_type = BRUTE)
 	var/desc_addition_to_apply = "Its armor plating is nominal."

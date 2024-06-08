@@ -1219,4 +1219,4 @@
 		var/obj/item/clothing/c = i
 		if(istype(c))
 			if(c.armor_thickness < c.armor_thickness_max)
-				c.armor_thickness = min(c.armor_thickness + 0.1,c.armor_thickness_max)
+				c.armor_thickness = min(c.armor_thickness + 0.05,c.armor_thickness_max)
