@@ -21,6 +21,10 @@
 	reconsider_magazine()
 	. = ..()
 
+/obj/item/weapon/gun/vehicle_turret/Destroy()
+	. = ..()
+	linked_vehicle = null
+
 /obj/item/weapon/gun/vehicle_turret/dropped(var/mob/user)
 	. = ..()
 	loc = null
