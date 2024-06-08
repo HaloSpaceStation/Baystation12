@@ -10,7 +10,6 @@
 	icon_state = "combatharness_minor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //Essentially, the entire body besides the head,feet,hands
 	flags_inv = HIDESUITSTORAGE|HIDEBACK
-	armor_thickness_modifiers = list()
 	unacidable = 1
 	allowed = list(\
 		/obj/item/weapon/grenade/plasma,\

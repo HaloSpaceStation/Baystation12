@@ -8,7 +8,6 @@
 	sprite_sheets = list("Tvaoan Kig-Yar" = 'code/modules/halo/covenant/species/tvoan/skirm_clothing.dmi')
 	species_restricted = list("Tvaoan Kig-Yar")
 	armor = list(melee = 55, bullet = 50, laser = 55, energy = 45, bomb = 40, bio = 25, rad = 25)
-	armor_thickness_modifiers = list()
 	body_parts_covered = ARMS|UPPER_TORSO|LOWER_TORSO
 	matter = list("nanolaminate" = 1)
 
