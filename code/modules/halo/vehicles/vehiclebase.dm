@@ -321,13 +321,12 @@
 /obj/vehicles/proc/inactive_pilot_effects() //Overriden on a vehicle-by-vehicle basis.
 
 /obj/vehicles/Process()
-	if(world.time % 3)
-		comp_prof.give_gunner_weapons(src)
-		update_object_sprites()
-		if(active)
-			var/list/drivers = get_occupants_in_position("driver")
-			if(!drivers.len || isnull(drivers) || movement_destroyed)
-				inactive_pilot_effects()
+	comp_prof.give_gunner_weapons(src)
+	update_object_sprites()
+	if(active)
+		var/list/drivers = get_occupants_in_position("driver")
+		if(!drivers.len || isnull(drivers) || movement_destroyed)
+			inactive_pilot_effects()
 	if(!isnull(spawn_datum) && !ispath(spawn_datum))
 		spawn_datum.process_resource_regen()
 

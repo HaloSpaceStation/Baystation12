@@ -104,6 +104,12 @@
 /obj/payload/Process()
 	checkexplode()
 
+/obj/payload/CanPass(atom/movable/mover)
+	if(istype(mover,/obj/item/projectile))
+		return 1
+
+	. = ..()
+
 //SELF DESTRUCT PAYLOAD DOES NOT MOVE//
 /obj/payload/self_destruct
 	anchored = 1

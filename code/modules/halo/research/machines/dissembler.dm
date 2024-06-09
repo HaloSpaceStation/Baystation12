@@ -46,7 +46,7 @@
 /obj/machinery/research/component_dissembler/attempt_load_item(var/obj/item/I, var/mob/user as mob)
 	. = ..()
 	if(.)
-		START_PROCESSING(SSobj, src)
+		START_PROCESSING(SSmachines, src)
 		update_use_power(2)
 		icon_state = "h_lathe_wloop"
 		flick("h_lathe_load", src)
@@ -66,7 +66,7 @@
 				qdel(loaded_item)
 				loaded_item = null
 				progress = 0
-				STOP_PROCESSING(SSobj, src)
+				STOP_PROCESSING(SSmachines, src)
 				icon_state = "h_lathe"
 		else
 			progress += decon_speed

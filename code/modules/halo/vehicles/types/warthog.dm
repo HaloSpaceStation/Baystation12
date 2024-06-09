@@ -9,6 +9,7 @@
 
 	bound_height = 64
 	bound_width = 64
+	pixel_y = 6
 
 	comp_prof = /datum/component_profile/warthog
 
