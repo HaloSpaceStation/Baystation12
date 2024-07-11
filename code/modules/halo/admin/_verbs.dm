@@ -21,4 +21,7 @@
 	admin_verbs_fun.Add(/client/proc/custom_radio_message)
 	admin_verbs_hideable.Add(/client/proc/custom_radio_message)
 
+	admin_verbs_fun.Add(/client/proc/pop_toggle)
+	admin_verbs_hideable.Add(/client/proc/pop_toggle)
+
 	return 1

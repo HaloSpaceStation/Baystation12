@@ -196,7 +196,9 @@
 		return TRUE
 	poplock_bypassing = 0
 	//is this gamemode trying to balance the faction population?
-	var/num_balancing_factions = ticker.mode ? ticker.mode.faction_balance.len : 0
+	var/num_balancing_factions = 0
+	if(GLOB.popbalance_active && ticker.mode)
+		num_balancing_factions = ticker.mode.faction_balance.len
 	if(ticker.current_state == GAME_STATE_PLAYING && num_balancing_factions >= 2) //Only popbalance if we're actually playing rn.
 		if(Debug2)	to_debug_listeners("Checking gamemode balance for [src.title]...")
 
