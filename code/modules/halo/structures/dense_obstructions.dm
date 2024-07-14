@@ -11,6 +11,7 @@
 	icon_state = "bush_1"
 	climb_desc = "manouver past"
 	plane = ABOVE_HUMAN_PLANE
+	density = 1
 	opacity = 1
 	alpha = 150
 	pixel_x = 0
@@ -60,9 +61,11 @@
 //Variants//
 /obj/structure/destructible/dense_obstruction/flora_assorted
 	name = "dense flora"
-	desc = "Hard to see through, and hard to move through. Can be destroyed with enough concentrated firepower."
+	desc = "Hard to see through, but easy to move through. Provides minimal protection against gunfire. Can be destroyed with enough concentrated firepower."
 	icon = 'code/modules/halo/flora/ausflora.dmi'
 	icon_state = "fern_1"
+	density = 0
+	cover_rating = 20
 	states_ignore = list() //States in the provided icon file to ignore whilst randomising tree type.
 	max_offset = 7
 	min_offset = -7
@@ -70,9 +73,11 @@
 
 /obj/structure/destructible/dense_obstruction/flora_jungle
 	name = "dense flora"
-	desc = "Hard to see through, and hard to move through. Can be destroyed with enough concentrated firepower."
+	desc = "Hard to see through, but easy to move through. Provides minimal protection against gunfire. Can be destroyed with enough concentrated firepower."
 	icon = 'code/modules/halo/flora/jungleflora.dmi'
 	icon_state = "bush_1"
+	density = 0
+	cover_rating = 20
 	states_ignore = list("rocks_1","rocks_2","rocks_3","rocks_4") //States in the provided icon file to ignore whilst randomising tree type.
 	max_offset = 10
 	min_offset = -10
@@ -80,10 +85,11 @@
 
 /obj/structure/destructible/dense_obstruction/flora_jungle_large
 	name = "dense flora"
-	desc = "Hard to see through, and hard to move through. Can be destroyed with enough concentrated firepower."
+	desc = "Hard to see through, and hard to move through. Provides minimal protection against gunfire. Can be destroyed with enough concentrated firepower."
 	icon = 'code/modules/halo/flora/swamp_ausflora_large.dmi'
 	icon_state = "bush_1"
 	pixel_x = -16
+	cover_rating = 30
 	states_ignore = list("rocks_1","rocks_2","rocks_3","rocks_4") //States in the provided icon file to ignore whilst randomising tree type.
 	max_offset = 10
 	min_offset = -10
@@ -91,9 +97,10 @@
 
 /obj/structure/destructible/dense_obstruction/rocks
 	name = "boulders"
-	desc = "Hard to see through, and hard to move through. Can be destroyed with enough concentrated firepower."
+	desc = "Hard to see through, and hard to move through. Provides significant protection against gunfire. Can be destroyed with enough concentrated firepower."
 	icon = 'code/modules/halo/flora/jungleflora.dmi'
 	icon_state = "rocks_1"
+	cover_rating = 60
 	states_ignore = list("bush_1","bush_2","bush_3") //States in the provided icon file to ignore whilst randomising tree type.
 	max_offset = 10
 	min_offset = -10
@@ -101,10 +108,11 @@
 
 /obj/structure/destructible/dense_obstruction/rocks_large
 	name = "boulders"
-	desc = "Hard to see through, and hard to move through. Can be destroyed with enough concentrated firepower."
+	desc = "Hard to see through, and hard to move through. Provides significant protection against gunfire. Can be destroyed with enough concentrated firepower."
 	icon = 'code/modules/halo/flora/swamp_ausflora_large.dmi'
 	icon_state = "rocks_1"
 	pixel_x = -16
+	cover_rating = 60
 	states_ignore = list("bush_1","bush_2","bush_3") //States in the provided icon file to ignore whilst randomising tree type.
 	max_offset = 10
 	min_offset = -10
@@ -112,9 +120,10 @@
 
 /obj/structure/destructible/dense_obstruction/trees
 	name = "dense trees"
-	desc = "Hard to see through, and hard to move through. Can be destroyed with enough concentrated firepower."
+	desc = "Hard to see through, and hard to move through. Provides excellent protection against gunfire. Can be destroyed with enough concentrated firepower."
 	icon = 'code/modules/halo/flora/jungletree.dmi'
 	icon_state = "tree_1"
+	cover_rating = 80
 	states_ignore = list() //States in the provided icon file to ignore whilst randomising tree type.
 	pixel_x = -32
 	pixel_y = -6
@@ -124,9 +133,10 @@
 
 /obj/structure/destructible/dense_obstruction/trees_large
 	name = "dense trees"
-	desc = "Hard to see through, and hard to move through. Can be destroyed with enough concentrated firepower."
+	desc = "Hard to see through, and hard to move through. Provides excellent protection against gunfire. Can be destroyed with enough concentrated firepower."
 	icon = 'code/modules/halo/flora/jungletreelarge.dmi'
 	icon_state = "tree_1"
+	cover_rating = 80
 	states_ignore = list() //States in the provided icon file to ignore whilst randomising tree type.
 	pixel_x = -64
 	pixel_y = -16
