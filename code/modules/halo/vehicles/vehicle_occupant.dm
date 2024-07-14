@@ -132,6 +132,8 @@
 	to_chat(user,"<span class = 'info'>You are now in the [position] position of [src].</span>")
 	if(position == "driver")
 		add_remove_vehicle_actions(user)
+	else if(position == "gunner")
+		comp_prof.give_gunner_weapons(src)
 	return 1
 
 /obj/vehicles/proc/do_seat_switch(var/mob/user,var/position)
