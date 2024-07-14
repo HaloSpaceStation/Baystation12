@@ -15,8 +15,8 @@
 	opacity = 1
 	alpha = 150
 	pixel_x = 0
-	health = 2000
-	maxHealth = 2000
+	health = 1250
+	maxHealth = 1250
 	closerange_freefire = 0
 	bump_climb = 1
 	mob_climb_time = 4 SECONDS
