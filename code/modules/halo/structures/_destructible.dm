@@ -10,6 +10,7 @@
 	var/health = 200
 	var/maxHealth = 200
 	var/closerange_freefire = 1 //mobs within 1 tile are allowed to shoot through if set to 1
+	var/climb_desc = "climb over"
 	var/list/maneuvring_mobs = list()
 	var/repair_material_name
 	var/cover_rating = 10
@@ -351,12 +352,12 @@
 		var/turf/T = get_step(user, climb_dir)
 		if(T.CanPass(user, T))
 			user.dir = climb_dir
-			to_chat(user, "<span class='notice'>You start climbing over [src]...</span>")
+			to_chat(user, "<span class='notice'>You start to [climb_desc] [src]...</span>")
 			if(do_after(user, mob_climb_time))
-				src.visible_message("<span class='info'>[user] climbs over [src].</span>")
+				src.visible_message("<span class='info'>[user] begins to [climb_desc] [src].</span>")
 				user.loc = T
 		else
-			to_chat(user,"<span class='warning'>You cannot climb over [src] as it is being blocked.</span>")
+			to_chat(user,"<span class='warning'>You cannot [climb_desc] [src] as it is being blocked.</span>")
 
 /obj/structure/destructible/proc/verb_climb()
 	set name = "Climb over structure"

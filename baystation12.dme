@@ -2116,6 +2116,7 @@
 #include "code\modules\halo\structures\closets.dm"
 #include "code\modules\halo\structures\cryopod.dm"
 #include "code\modules\halo\structures\decals.dm"
+#include "code\modules\halo\structures\dense_obstructions.dm"
 #include "code\modules\halo\structures\diesel_gen.dm"
 #include "code\modules\halo\structures\electric_fence.dm"
 #include "code\modules\halo\structures\explosive.dm"
