@@ -141,7 +141,6 @@
 	comp_prof = new comp_prof(src)
 	if(melee_type)
 		melee_weapon = new melee_type(null)
-	START_PROCESSING(SSobj, src)
 	update_object_sprites()
 	if(light_range != 0)
 		verbs += /obj/vehicles/verb/toggle_headlights
@@ -162,6 +161,7 @@
 		internal_air.temperature = T20C
 
 	GLOB.emp_candidates.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/vehicles/lost_in_space()
 	if(!can_space_move)

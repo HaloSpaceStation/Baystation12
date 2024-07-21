@@ -95,6 +95,8 @@
 	return null
 
 /obj/vehicles/proc/enter_as_position(var/mob/user,var/position = "passenger",var/forced_by_faction = null)
+	if(!is_processing)
+		START_PROCESSING(SSobj,src)
 	var/driver_faction = get_driver_faction()
 	var/faction_use = user.faction
 	if(forced_by_faction && forced_by_faction != "neutral")
