@@ -13,6 +13,7 @@
 	load_method = SINGLE_CASING
 	max_shells = 2
 	ammo_type = /obj/item/ammo_casing/m233
+	fire_sound = 'code/modules/halo/sounds/anti_material_rifle_fire.ogg'
 	one_hand_penalty = -1
 	scoped_accuracy = 7
 	screen_shake = 0
