@@ -7,8 +7,8 @@
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "m90"
 	item_state = "m90"
-	fire_sound = 'code/modules/halo/sounds/shotgun_fire.ogg'
-	reload_sound = 'code/modules/halo/sounds/shotgun_reload.ogg'
+	fire_sound = 'code/modules/halo/sounds/m90_fire.ogg'
+	reload_sound = 'code/modules/halo/sounds/m90_reload.ogg'
 	ammo_type = /obj/item/ammo_casing/shotgun/pellet/high_power
 	caliber = "shotgunhighpower"
 	max_shells = 8
@@ -30,7 +30,7 @@
 		)
 
 /obj/item/weapon/gun/projectile/shotgun/pump/m90_ts/pump(mob/M as mob)
-	playsound(M, 'code/modules/halo/sounds/shotgun_pump.ogg', 60, 1)
+	playsound(M, 'code/modules/halo/sounds/m90_pump.ogg', 60, 1)
 
 	if(chambered)//We have a shell in the chamber
 		chambered.eject(get_turf(src), angle2dir(dir2angle(loc.dir)+ejection_angle))//Eject casing
