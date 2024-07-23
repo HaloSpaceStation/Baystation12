@@ -59,6 +59,7 @@
 	name = "Type-25 Directed Energy Rifle (overcharged)"
 	icon_state = "Brute Plasma Rifle"
 	desc = "Also known as the \"Plasma Rifle\", this weapon fires bursts of superheated plasma at an accelerated rate. This one appears to be overcharged for fire speed at the cost of damage and accuracy."
+	fire_sound = 'code/modules/halo/sounds/brute_plasma_rifle_fire.ogg'
 	projectile_type = /obj/item/projectile/bullet/covenant/plasmarifle/brute
 	fire_delay = 5
 	burst_delay = 1.6
