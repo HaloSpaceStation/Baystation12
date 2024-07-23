@@ -47,7 +47,7 @@
 /obj/item/ammo_magazine/m392
 	name = "M392 magazine"
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
-	icon_state = "M395mag"
+	icon_state = "M395_mag"
 	mag_type = MAGAZINE
 	caliber = "7.62mmdmr"
 	max_ammo = 20
