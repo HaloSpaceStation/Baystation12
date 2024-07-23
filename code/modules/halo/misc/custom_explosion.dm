@@ -55,7 +55,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 
 		if(approximate_intensity >= 2)
 			if(isnull(effect_datum_override))
-				if(approximate_intensity >= 4)
+				if(approximate_intensity >= 25)//Let's not make smoke unless we *really* need to.
 					effect_datum_override = /datum/effect/system/explosion/has_smoke
 				else
 					effect_datum_override = /datum/effect/system/explosion

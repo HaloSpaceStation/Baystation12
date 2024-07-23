@@ -103,15 +103,16 @@
 	var/throw_mob = FALSE
 	var/throw_range = 0
 	var/eyeflash_duration = 20
+	var/ear_damage_stats = null//list(ear damage add, ear damage upper cap, ear deaf add, ear deaf upper cap)
 	switch (severity)
 		if (1.0)
 			b_loss = 90
 			f_loss = 90
 			eyeflash_duration = 20
+			ear_damage_stats = list(30,50,120,120)
 			if (!prob(getarmor(null, "bomb")))
 				b_loss = 150
 				f_loss = 150
-				return
 			else
 				throw_mob = TRUE
 				throw_range = 200 //Be happy you survived the bomb's gibbing
@@ -124,20 +125,20 @@
 			f_loss = 60
 			eyeflash_duration = 10
 
-			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage = min(ear_damage + 30,50*species.explosion_effect_mod)
-				ear_deaf = min(ear_damage + 120,120*species.explosion_effect_mod)
+			ear_damage_stats = list(30,50,120,120)
 			throw_mob = TRUE
 			throw_range = rand(world.view - 2,world.view)
 
 		if(3.0)
 			b_loss = 30
 			eyeflash_duration = 5
-			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage = min(ear_damage + 15,50*species.explosion_effect_mod)
-				ear_deaf = min(ear_damage + 60,120*species.explosion_effect_mod)
+			ear_damage_stats = list(15,50,60,120)
 			throw_mob = TRUE
 			throw_range = rand(world.view - 4, world.view - 2)
+
+	if (!isnull(ear_damage_stats) && !istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
+		ear_damage = min(ear_damage + ear_damage_stats[1],ear_damage_stats[2]*species.explosion_effect_mod)
+		ear_deaf = min(ear_damage + ear_damage_stats[3],ear_damage_stats[4]*species.explosion_effect_mod)
 
 	if(!blinded)
 		flash_eyes(FLASH_PROTECTION_MODERATE,FALSE,FALSE,FALSE, /obj/screen/fullscreen/flash, eyeflash_duration)
