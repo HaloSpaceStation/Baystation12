@@ -6,6 +6,7 @@
 	icon_state = "M41closed"
 	item_state = "m41"
 	fire_sound = 'code/modules/halo/sounds/Rocket_Launcher_Fire_New.wav'
+	reload_sound = 'code/modules/halo/sounds/m41_reload.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/spnkr
 	fire_delay = 20

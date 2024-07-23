@@ -5,7 +5,8 @@
 	icon = 'code/modules/halo/weapons/icons/fuel_rod_cannon.dmi'
 	icon_state = "fuel_rod"
 	item_state = "fuelrod"
-	fire_sound = 'code/modules/halo/sounds/Fuelrodfire.ogg'
+	fire_sound = 'code/modules/halo/sounds/fuel_rod_fire_2.ogg'
+	reload_sound = 'code/modules/halo/sounds/fuel_rod_reload.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/fuel_rod
 	fire_delay = 24 //disencourage spamming even though we have a higher mag size
