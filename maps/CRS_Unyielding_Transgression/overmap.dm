@@ -22,8 +22,9 @@
 /obj/machinery/button/toggle/alarm_button/crs_alarm
 	alert_message = "Alert! Warriors of the Great Journey and crew of this holy vessel, prepare for combat action!"
 	un_alert_message = "Red Alert lifted."
-	alarm_color_string = "#31005c"
-	alarm_sound = 'code/modules/halo/sounds/r_alert_alarm_loop_j2.ogg'
+	alarm_color_string = "#53897"
+	alarm_sound = 'code/modules/halo/sounds/crs_alarm.ogg'
+	alarm_loop_time = 60
 	area_base =/area/covenant_light_cruiser
 
 //Placeholders for the mapfile. If they have no desc they'll self-delete.
