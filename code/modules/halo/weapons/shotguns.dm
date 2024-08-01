@@ -7,8 +7,8 @@
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
 	icon_state = "m90"
 	item_state = "m90"
-	fire_sound = 'code/modules/halo/sounds/Shotgun_Fire_New.wav'
-	reload_sound = 'code/modules/halo/sounds/Shotgun_Reload_New.wav'
+	fire_sound = 'code/modules/halo/sounds/m90_fire.ogg'
+	reload_sound = 'code/modules/halo/sounds/m90_reload.ogg'
 	ammo_type = /obj/item/ammo_casing/shotgun/pellet/high_power
 	caliber = "shotgunhighpower"
 	max_shells = 8
@@ -29,6 +29,17 @@
 		slot_s_store_str = 'code/modules/halo/weapons/icons/Armor_Weapons.dmi',
 		)
 
+/obj/item/weapon/gun/projectile/shotgun/pump/m90_ts/pump(mob/M as mob)
+	playsound(M, 'code/modules/halo/sounds/m90_pump.ogg', 60, 1)
+
+	if(chambered)//We have a shell in the chamber
+		chambered.eject(get_turf(src), angle2dir(dir2angle(loc.dir)+ejection_angle))//Eject casing
+		chambered = null
+
+	if(loaded.len)
+		var/obj/item/ammo_casing/AC = loaded[1] //load next casing.
+		loaded -= AC //Remove casing from loaded list.
+		chambered = AC
 
 /obj/item/weapon/gun/projectile/shotgun/pump/m90_ts/verb/toggle_light()
 	set category = "Object"

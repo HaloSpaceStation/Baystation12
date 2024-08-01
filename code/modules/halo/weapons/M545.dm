@@ -10,8 +10,8 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m545/m118
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
-	//fire_sound = 'code/modules/halo/sounds/MagnumShotSoundEffect.ogg'
-	reload_sound = 'code/modules/halo/sounds/UNSC_Saw_Reload_Sound_Effect.ogg'
+	fire_sound = 'code/modules/halo/sounds/m545_fire.ogg'
+	reload_sound = 'code/modules/halo/sounds/m545_reload.ogg'
 	one_hand_penalty = -1
 	dispersion = list(0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3, 0.3, 0.4, 0.4, 0.4, 0.5)
 	w_class = ITEM_SIZE_HUGE
@@ -24,6 +24,8 @@
 		)
 	burst_delay = 1.5
 	slowdown_general = 0.5
+
+	burst = 12
 
 	firemodes = list(\
 	list(mode_name="short bursts",  burst=12,accuracy=0, dispersion=list(0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3, 0.3, 0.4, 0.4, 0.4, 0.5)),
@@ -51,7 +53,7 @@
 /obj/item/ammo_magazine/m545
 	name = "M545 box magazine"
 	icon = 'code/modules/halo/weapons/icons/Weapon Sprites.dmi'
-	icon_state = "Innie 30cal box - Full"
+	icon_state = "Innie_30cal_Box"
 	mag_type = MAGAZINE
 	caliber = "7.62mm"
 	max_ammo = 150

@@ -6,7 +6,7 @@
 	icon_state = "plasmarepeater"
 	item_state = "repeater"
 	w_class = ITEM_SIZE_HUGE
-	fire_sound = 'code/modules/halo/sounds/plasrifle3burst.ogg'
+	fire_sound = 'code/modules/halo/sounds/plasma_repeater_fire.ogg'
 	projectile_type = /obj/item/projectile/bullet/covenant/plasmarepeater
 	slot_flags = SLOT_BACK
 	one_hand_penalty = -1

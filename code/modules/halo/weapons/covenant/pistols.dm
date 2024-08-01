@@ -137,6 +137,7 @@
 	item_state = "needler"
 	slot_flags = SLOT_BELT||SLOT_HOLSTER
 	fire_sound = 'code/modules/halo/sounds/needlerfire.ogg'
+	reload_sound = 'code/modules/halo/sounds/needler_reload.ogg'
 	magazine_type = /obj/item/ammo_magazine/needles
 	handle_casings = CASELESS
 	caliber = "needler"

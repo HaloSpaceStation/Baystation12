@@ -68,7 +68,7 @@
 	icon_state = "plasmaturret_obj"
 	item_state = ""
 
-	fire_sound = 'code/modules/halo/sounds/Fuelrodfire.ogg'
+	fire_sound = 'code/modules/halo/sounds/fuel_rod_fire_2.ogg'
 	fire_delay = 25
 
 	burst = 4
