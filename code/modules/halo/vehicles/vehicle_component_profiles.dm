@@ -56,12 +56,13 @@
 /datum/component_profile/proc/give_gunner_weapons(var/obj/vehicles/source_vehicle)
 	var/list/gunners = source_vehicle.get_occupants_in_position(pos_to_check)
 	for(var/mob/living/carbon/human/gunner in gunners)
-		if(gunner.get_active_hand() || gunner.get_inactive_hand()) //Let's not give anyone a gun if they're messing with their inventory, or already have a gun.
-			continue
 		var/obj/item/weapon/gun/vehicle_turret/weapon = gunner_weapons[gunners.Find(gunner)]
 		if(isnull(weapon))
 			continue
 		weapon = new weapon(source_vehicle)
+		if(istype(gunner.get_active_hand(),weapon) || istype(gunner.get_inactive_hand(),weapon)) //If they have vehicle gun in their hand(s), let's not bother.
+			qdel(weapon)
+			continue
 		gunner.put_in_hands(weapon)
 		source_vehicle.update_user_view(gunner,1)
 		spawn(1)
