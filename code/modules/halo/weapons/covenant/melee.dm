@@ -92,7 +92,7 @@
 		item_state_slots = list(
 		slot_l_hand_str = "[inhand_icon_state] l",
 		slot_r_hand_str = "[inhand_icon_state] r" )
-		hitsound = 'code/modules/halo/sounds/Energyswordhit.ogg'
+		hitsound = 'code/modules/halo/sounds/energy_sword_hit.ogg'
 		parry_slice_objects = 1
 
 /obj/item/weapon/melee/energy/elite_sword/activate(mob/living/user)
