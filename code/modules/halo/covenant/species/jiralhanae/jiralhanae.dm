@@ -86,6 +86,7 @@ GLOBAL_LIST_INIT(first_names_jiralhanae, world.file2list('code/modules/halo/cove
 /datum/unarmed_attack/brute_punch
     attack_verb = list("clobbers", "smashes", "backhands", "punches", "slams")
     attack_noun = list("fist")
+    attack_sound = 'code/modules/halo/sounds/punch_sfx/brute_punch_1.ogg'
     eye_attack_text = "fingers"
     eye_attack_text_victim = "digits"
     damage = 25
