@@ -71,8 +71,6 @@
 	load_method = MAGAZINE
 	handle_casings = CASELESS
 	fire_sound = 'code/modules/halo/sounds/Spikershotfire.ogg'
-	reload_sound = 'code/modules/halo/sounds/spiker_reload.ogg'
-	hitsound = 'code/modules/halo/sounds/spiker_melee.ogg'
 	burst = 3
 	edge = 1
 	sharp = 1
@@ -161,8 +159,6 @@
 	caliber = "mauler"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	fire_sound = 'code/modules/halo/sounds/mauler_firing.ogg'
-	reload_sound = 'code/modules/halo/sounds/mauler_reload.ogg'
-	hitsound = 'code/modules/halo/sounds/mauler_melee.ogg'
 	edge = 1
 	sharp = 1
 	force = 35
@@ -269,7 +265,7 @@
 
 	if(get_dist(A,user) > 1)
 		return
-
+		
 	var/atom/throw_target = get_edge_target_turf(A, get_dir(user, A))
 	if(istype(A, /mob/living) && !islarge(A) || istype(A, /obj/item/))
 		var/atom/movable/AM = A
@@ -281,7 +277,7 @@
 		for(var/atom/movable/M in range(A,1))
 			if(M == user)
 				continue
-
+			
 			if(M == A)
 				continue
 
@@ -317,7 +313,6 @@
 	icon_state = "bruteshot"
 	item_state = "blank"
 	pump_sound = null
-	hitsound = 'code/modules/halo/sounds/brute_shot_melee.ogg'
 	fire_delay = 10
 	max_grenades = 6
 	one_hand_penalty = -1

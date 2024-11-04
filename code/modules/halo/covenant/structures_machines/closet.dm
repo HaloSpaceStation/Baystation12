@@ -3,8 +3,6 @@
 	name = "storage crate"
 	desc = "It's a basic storage unit for the Covenant."
 	icon = 'code/modules/halo/covenant/structures_machines/crate_tall.dmi'
-	open_sound =  'code/modules/halo/sounds/object_sfx/covenant_crate_open.ogg'
-	close_sound = 'code/modules/halo/sounds/object_sfx/covenant_crate_close.ogg'
 
 /obj/structure/ore_box/covenant
 	icon = 'code/modules/halo/covenant/structures_machines/crate_tall.dmi'

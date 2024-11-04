@@ -136,10 +136,10 @@ ALLOW_ADMIN_OOCCOLOR
 # ALLOW_METADATA
 
 ## allow players to initiate a restart vote
-# ALLOW_VOTE_RESTART
+ALLOW_VOTE_RESTART
 
 ## allow players to initate a mode-change start
-# ALLOW_VOTE_MODE
+ALLOW_VOTE_MODE
 
 ## min delay (deciseconds) between voting sessions (default 10 minutes)
 VOTE_DELAY 6000
@@ -394,7 +394,7 @@ STARLIGHT 0
 
 ## Uncomment to enable map voting; you'll need to use the script at tools/server.sh or an equivalent for it to take effect
 ## You'll also likely need to enable WAIT_FOR_SIGUSR1 below
-MAP_SWITCHING
+# MAP_SWITCHING
 
 ## Uncomment to enable an automatic map vote and switch at end of round. MAP_SWITCHING must also be enabled.
 # AUTO_MAP_VOTE
